@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ table_name }} - 数据库管理 - DocRadar</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <style>
+        .table-header {
+            background-color: #f8f9fa;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid #dee2e6;
+        }
+        .table-responsive {
+            overflow-x: auto;
+        }
+        .table {
+            min-width: 800px;
+        }
+        .pagination {
+            margin-bottom: 0;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="{{ url_for('index') }}">
+                <i class="bi bi-search"></i> DocRadar
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('index') }}">首页</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('db_admin') }}">数据库管理</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-info alert-dismissible fade show">
+                        {{ message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <div class="table-header d-flex justify-content-between align-items-center">
+            <h2><i class="bi bi-table"></i> {{ table_name }}</h2>
+            <div>
+                {% if not is_special_table and table_data.has_id_column %}
+                    <a href="{{ url_for('add_record', table_name=table_name, key=request.args.get('key')) }}" class="btn btn-success me-2">
+                        <i class="bi bi-plus-circle"></i> 添加记录
+                    </a>
+                {% endif %}
+                <a href="{{ url_for('db_admin', key=request.args.get('key')) }}" class="btn btn-outline-secondary me-2">
+                    <i class="bi bi-arrow-left"></i> 返回
+                </a>
+                <a href="{{ url_for('export_table', table_name=table_name, key=request.args.get('key')) }}" class="btn btn-primary">
+                    <i class="bi bi-download"></i> 导出CSV
+                </a>
+            </div>
+        </div>
+
+        <!-- 表结构 -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="mb-0">表结构</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-hover">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>字段名</th>
+                                        <th>数据类型</th>
+                                        <th>是否可空</th>
+                                        <th>默认值</th>
+                                        <th>是否主键</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for col in table_info %}
+                                    <tr>
+                                        <td>{{ col[0] }}</td>
+                                        <td>{{ col[1] }}</td>
+                                        <td>{{ col[2] }}</td>
+                                        <td>{{ "否" if col[3] else "是" }}</td>
+                                        <td>{{ col[4] or "NULL" }}</td>
+                                        <td>{{ "是" if col[5] else "否" }}</td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 表数据 -->
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0">表数据</h5>
+                        <div>
+                            <span class="badge bg-primary">总记录: {{ table_data.total }}</span>
+                            <span class="badge bg-secondary ms-2">页码: {{ table_data.page }}/{{ table_data.pages }}</span>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        {% if table_data.data %}
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-hover table-striped">
+                                <thead class="table-light">
+                                    <tr>
+                                        {% for col in table_data.columns %}
+                                        <th>{{ col }}</th>
+                                        {% endfor %}
+                                        {% if not is_special_table %}
+                                        <th>操作</th>
+                                        {% endif %}
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for row in table_data.data %}
+                                    <tr>
+                                        {% for cell in row %}
+                                        <td>
+                                            {% if cell is not none %}
+                                                {% if cell|string|length > 100 %}
+                                                    {{ cell|string|truncate(100) }}
+                                                {% else %}
+                                                    {{ cell }}
+                                                {% endif %}
+                                            {% else %}
+                                                <span class="text-muted">NULL</span>
+                                            {% endif %}
+                                        </td>
+                                        {% endfor %}
+                                        
+                                        {% if not is_special_table %}
+                                            <td class="text-nowrap">
+                                                {% if table_data.has_id_column %}
+                                                    <a href="{{ url_for('edit_record', table_name=table_name, record_id=row[table_data.id_column_index], key=request.args.get('key')) }}" class="btn btn-sm btn-outline-primary me-1">
+                                                        <i class="bi bi-pencil"></i> 编辑
+                                                    </a>
+                                                    <form method="POST" action="{{ url_for('delete_record', table_name=table_name, record_id=row[table_data.id_column_index], key=request.args.get('key')) }}" style="display: inline;">
+                                                        <button type="submit" class="btn btn-sm btn-outline-danger" onclick="return confirm('确定要删除这条记录吗？此操作不可恢复！')">
+                                                            <i class="bi bi-trash"></i> 删除
+                                                        </button>
+                                                    </form>
+                                                {% else %}
+                                                    <span class="text-muted">不支持编辑</span>
+                                                {% endif %}
+                                            </td>
+                                        {% endif %}
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <!-- 分页 -->
+                        {% if table_data.pages > 1 %}
+                        <nav aria-label="Page navigation">
+                            <ul class="pagination justify-content-center">
+                                <li class="page-item {{ 'disabled' if table_data.page == 1 else '' }}">
+                                    <a class="page-link" href="{{ url_for('view_table', table_name=table_name, page=table_data.page-1, key=request.args.get('key')) if table_data.page > 1 else '#' }}">
+                                        上一页
+                                    </a>
+                                </li>
+                                
+                                {% for i in range(1, table_data.pages + 1) %}
+                                    {% if i == 1 or i == table_data.pages or (i >= table_data.page - 2 and i <= table_data.page + 2) %}
+                                        <li class="page-item {{ 'active' if i == table_data.page else '' }}">
+                                            <a class="page-link" href="{{ url_for('view_table', table_name=table_name, page=i, key=request.args.get('key')) }}">
+                                                {{ i }}
+                                            </a>
+                                        </li>
+                                    {% elif i == 2 or i == table_data.pages - 1 %}
+                                        <li class="page-item disabled">
+                                            <span class="page-link">...</span>
+                                        </li>
+                                    {% endif %}
+                                {% endfor %}
+                                
+                                <li class="page-item {{ 'disabled' if table_data.page == table_data.pages else '' }}">
+                                    <a class="page-link" href="{{ url_for('view_table', table_name=table_name, page=table_data.page+1, key=request.args.get('key')) if table_data.page < table_data.pages else '#' }}">
+                                        下一页
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                        {% endif %}
+                        {% else %}
+                        <div class="alert alert-warning">
+                            <i class="bi bi-exclamation-triangle"></i> 表中没有数据
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer mt-5 py-3 bg-light">
+        <div class="container text-center">
+            <span class="text-muted">DocRadar &copy; 2023</span>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</body>
+</html> 

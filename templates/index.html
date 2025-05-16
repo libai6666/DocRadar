@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="description" content="DocRadar - 本地文档搜索系统">
+    <meta name="theme-color" content="#0d6efd">
+    <title>DocRadar - 本地文档搜索系统</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <style>
+        #drop-area {
+            border: 2px dashed #ccc;
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+        #drop-area.highlight {
+            border-color: #0d6efd;
+            background-color: rgba(13, 110, 253, 0.1);
+        }
+        .file-item {
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-bottom: 8px;
+            background-color: #f8f9fa;
+        }
+        .file-item .file-name {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .progress {
+            height: 5px;
+        }
+        #upload-status {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="{{ url_for('index') }}">
+                <i class="bi bi-search"></i> DocRadar
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="{{ url_for('index') }}">首页</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                        {% for message in messages %}
+                            <div class="alert alert-info alert-dismissible fade show mb-4">
+                                {{ message }}
+                                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+
+                <!-- 搜索框 -->
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <form action="{{ url_for('search') }}" method="GET">
+                            <div class="input-group">
+                                <input type="text" name="q" id="search-input" class="form-control form-control-lg" 
+                                       placeholder="输入关键词搜索文档...">
+                                <button class="btn btn-primary" type="submit">
+                                    <i class="bi bi-search"></i> 搜索
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- 文件上传区域 -->
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title mb-3">上传文档</h5>
+                        <div id="drop-area" class="p-5 text-center">
+                            <i class="bi bi-cloud-upload display-4 text-primary mb-3"></i>
+                            <p class="mb-3">拖放文件到此处或点击下方按钮上传</p>
+                            <p class="text-muted small mb-2">支持PDF, DOCX, TXT格式</p>
+                            <p class="text-primary small fw-bold mb-3">支持批量上传：按住Ctrl键可选择多个文件</p>
+                            <form id="file-form" action="{{ url_for('upload_file') }}" method="POST" enctype="multipart/form-data">
+                                <input type="file" id="fileInput" name="file" class="d-none" accept=".pdf,.docx,.doc,.txt" multiple>
+                                <div class="d-flex justify-content-center">
+                                    <button type="button" class="btn btn-outline-primary me-3" onclick="document.getElementById('fileInput').click()">
+                                        <i class="bi bi-file-earmark-plus"></i> 选择文件
+                                    </button>
+                                    <button type="button" id="upload-btn" class="btn btn-primary d-none">
+                                        <i class="bi bi-upload"></i> 开始上传
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                        
+                        <!-- 文件列表和上传状态 -->
+                        <div id="upload-status" class="mt-4">
+                            <h6 class="mb-3">上传队列 <span id="file-counter" class="badge bg-primary">0</span></h6>
+                            <div id="file-list" class="mb-3"></div>
+                            
+                            <div class="d-flex justify-content-between mb-2">
+                                <span>总体进度：</span>
+                                <span id="upload-progress-text">0%</span>
+                            </div>
+                            <div class="progress mb-3">
+                                <div id="upload-progress-bar" class="progress-bar" role="progressbar" style="width: 0%"></div>
+                            </div>
+                            
+                            <div id="upload-result" class="mt-3"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 已上传文档列表 -->
+                <div class="card mt-4">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0">已上传文档</h5>
+                        <span class="badge bg-primary">{{ pagination.total }}</span>
+                    </div>
+                    <div class="card-body">
+                        <!-- 搜索表单 -->
+                        <form id="document-search-form" class="mb-3">
+                            <div class="input-group">
+                                <input type="text" id="document-search" class="form-control" 
+                                       placeholder="搜索文档..." value="{{ search_query }}">
+                                <button class="btn btn-outline-primary" type="submit">
+                                    <i class="bi bi-search"></i>
+                                </button>
+                                {% if search_query %}
+                                <a href="{{ url_for('index') }}" class="btn btn-outline-secondary">
+                                    <i class="bi bi-x"></i> 清除
+                                </a>
+                                {% endif %}
+                            </div>
+                        </form>
+                        
+                        {% if documents %}
+                        <div class="list-group mb-3">
+                            {% for doc in documents %}
+                            <div class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                <div>
+                                    <h6 class="mb-1">{{ doc.title }}</h6>
+                                    <p class="mb-1 text-muted small">
+                                        <span class="me-3">
+                                            <i class="bi bi-file-earmark"></i> 
+                                            {{ doc.file_type.split('/')[-1]|upper }}
+                                        </span>
+                                        <span class="me-3">
+                                            <i class="bi bi-hdd"></i> 
+                                            {{ doc.file_size|filesizeformat }}
+                                        </span>
+                                        <span>
+                                            <i class="bi bi-calendar"></i> 
+                                            {{ doc.created_at }}
+                                        </span>
+                                    </p>
+                                </div>
+                                <div class="btn-group">
+                                    <a href="{{ url_for('view_document', doc_id=doc.id) }}" 
+                                       class="btn btn-sm btn-outline-primary">
+                                        <i class="bi bi-eye"></i>
+                                    </a>
+                                    <a href="{{ url_for('download_original', doc_id=doc.id) }}" 
+                                       class="btn btn-sm btn-outline-secondary">
+                                        <i class="bi bi-download"></i>
+                                    </a>
+                                    <form action="{{ url_for('delete_document', doc_id=doc.id) }}" 
+                                          method="POST" 
+                                          class="d-inline"
+                                          onsubmit="return confirm('确定要删除这个文档吗？');">
+                                        <button type="submit" class="btn btn-sm btn-outline-danger">
+                                            <i class="bi bi-trash"></i>
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                        
+                        <!-- 分页控件 -->
+                        <div class="d-flex justify-content-between align-items-center">
+                            <!-- 每页显示数量选择器 -->
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-outline-secondary dropdown-toggle" 
+                                        data-bs-toggle="dropdown" aria-expanded="false">
+                                    每页 {{ pagination.limit }} 项
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item {% if pagination.limit == 10 %}active{% endif %}" 
+                                           href="{{ url_for('index', page=1, limit=10, search=search_query) }}">每页 10 项</a></li>
+                                    <li><a class="dropdown-item {% if pagination.limit == 20 %}active{% endif %}" 
+                                           href="{{ url_for('index', page=1, limit=20, search=search_query) }}">每页 20 项</a></li>
+                                    <li><a class="dropdown-item {% if pagination.limit == 50 %}active{% endif %}" 
+                                           href="{{ url_for('index', page=1, limit=50, search=search_query) }}">每页 50 项</a></li>
+                                    <li><a class="dropdown-item {% if pagination.limit == 100 %}active{% endif %}" 
+                                           href="{{ url_for('index', page=1, limit=100, search=search_query) }}">每页 100 项</a></li>
+                                </ul>
+                            </div>
+                            
+                            <!-- 分页导航 -->
+                            <nav aria-label="文档分页">
+                                <ul class="pagination mb-0">
+                                    <li class="page-item {% if pagination.page == 1 %}disabled{% endif %}">
+                                        <a class="page-link" href="{{ url_for('index', page=pagination.page-1, limit=pagination.limit, search=search_query) }}">
+                                            <i class="bi bi-chevron-left"></i>
+                                        </a>
+                                    </li>
+                                    
+                                    {% set start_page = [1, pagination.page - 2]|max %}
+                                    {% set end_page = [start_page + 4, pagination.total_pages]|min %}
+                                    {% set start_page = [end_page - 4, 1]|max %}
+                                    
+                                    {% for p in range(start_page, end_page + 1) %}
+                                    <li class="page-item {% if p == pagination.page %}active{% endif %}">
+                                        <a class="page-link" href="{{ url_for('index', page=p, limit=pagination.limit, search=search_query) }}">
+                                            {{ p }}
+                                        </a>
+                                    </li>
+                                    {% endfor %}
+                                    
+                                    <li class="page-item {% if pagination.page == pagination.total_pages %}disabled{% endif %}">
+                                        <a class="page-link" href="{{ url_for('index', page=pagination.page+1, limit=pagination.limit, search=search_query) }}">
+                                            <i class="bi bi-chevron-right"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                        {% else %}
+                        <div class="alert alert-info">
+                            {% if search_query %}
+                            <div class="text-center py-3">
+                                <i class="bi bi-search display-4 text-muted"></i>
+                                <h5 class="mt-3">未找到匹配文档</h5>
+                                <p>没有找到包含 "{{ search_query }}" 的文档。</p>
+                                <a href="{{ url_for('index') }}" class="btn btn-outline-primary">
+                                    <i class="bi bi-arrow-left"></i> 查看所有文档
+                                </a>
+                            </div>
+                            {% else %}
+                            <div class="text-center py-3">
+                                <i class="bi bi-file-earmark-plus display-4 text-muted"></i>
+                                <h5 class="mt-3">暂无文档</h5>
+                                <p>请上传文档以开始使用系统。</p>
+                            </div>
+                            {% endif %}
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer py-3 bg-light">
+        <div class="container text-center">
+            <span class="text-muted">DocRadar &copy; 2023</span>
+        </div>
+    </footer>
+
+    <!-- 文件覆盖确认模态框 -->
+    <div class="modal fade" id="overwriteConfirmModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">文件已存在</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>文件 "<span id="existing-filename"></span>" 已存在于系统中。</p>
+                    <p>是否要覆盖现有文件？</p>
+                    <input type="hidden" id="confirm-filename">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-danger" id="confirm-overwrite">覆盖</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 批量覆盖选择模态框 -->
+    <div class="modal fade" id="batchOverwriteModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">部分文件已存在</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>以下文件已存在于系统中，请选择要覆盖的文件：</p>
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th width="40">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="select-all-files">
+                                        </div>
+                                    </th>
+                                    <th>文件名</th>
+                                    <th>标题</th>
+                                    <th>类型</th>
+                                    <th>大小</th>
+                                </tr>
+                            </thead>
+                            <tbody id="existing-files-list">
+                                <!-- 动态填充 -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-danger" id="confirm-batch-overwrite">
+                        覆盖选中文件
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 上传结果模态框 -->
+    <div class="modal fade" id="uploadResultModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">上传结果</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="upload-result-content">
+                    <!-- 动态填充 -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal" id="upload-result-close">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html> 
