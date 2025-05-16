@@ -41,10 +41,62 @@
             padding: 0.1em 0.2em;
             border-radius: 2px;
         }
+        mark.current-match {
+            background-color: #ffc107;
+            box-shadow: 0 0 0 2px #ffc107;
+            animation: pulse 1s;
+        }
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(255, 193, 7, 0.7); }
+            70% { box-shadow: 0 0 0 5px rgba(255, 193, 7, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 193, 7, 0); }
+        }
         .document-controls {
             position: sticky;
             top: 1rem;
             z-index: 1000;
+        }
+        /* 搜索导航样式 */
+        .search-navigator {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background-color: #f8f9fa;
+            border-bottom: 1px solid #e9ecef;
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        .search-navigator-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .search-query {
+            display: flex;
+            align-items: center;
+            font-weight: 500;
+        }
+        .search-query i {
+            margin-right: 8px;
+            color: #0d6efd;
+        }
+        .query-text {
+            background-color: #e9ecef;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        .search-navigator-controls {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .match-counter {
+            font-weight: 500;
+            font-size: 14px;
+            margin: 0 8px;
         }
     </style>
 </head>
@@ -86,6 +138,7 @@
                         <h4 class="mb-0">{{ document.title }}</h4>
                     </div>
                     <div class="card-body">
+                        <!-- 搜索导航会在这里通过JS添加 -->
                         <div class="document-content {% if 'html_content' not in document %}text-content{% endif %} {% if document.content and document.content.startswith('无法加载') %}alert alert-warning{% endif %}">
                             {{ document.content|safe }}
                         </div>
@@ -156,6 +209,17 @@
                                             </button>
                                         </div>
                                     </form>
+                                </div>
+                                
+                                <!-- 搜索导航说明 -->
+                                <div class="alert alert-secondary">
+                                    <h6 class="mb-2">搜索导航提示</h6>
+                                    <p class="small mb-1">您可以使用以下方式在匹配项之间导航：</p>
+                                    <ul class="small mb-0">
+                                        <li>点击导航按钮 <i class="bi bi-arrow-up"></i> <i class="bi bi-arrow-down"></i></li>
+                                        <li>使用键盘快捷键：Enter(下一个)，Shift+Enter(上一个)</li>
+                                        <li>直接点击任意高亮文本</li>
+                                    </ul>
                                 </div>
                             </div>
                         {% endif %}

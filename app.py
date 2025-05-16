@@ -372,7 +372,7 @@ def search():
         return render_template('results.html', query='', results=[], search_history=[])
     
     try:
-        # 执行搜索
+        # 执行搜索（现在使用基于LIKE的搜索）
         results = search_engine.search(query)
         
         # 为当前结果添加doc_url
@@ -448,7 +448,9 @@ def view_document(doc_id):
         # 如果有搜索查询且内容不是错误消息，高亮显示匹配内容
         elif query and not document['content'].startswith("无法加载"):
             try:
+                # 使用增强的高亮方法
                 document['content'] = search_engine.highlight_content(document['content'], query)
+                logging.info(f"已高亮文档内容中的搜索词 '{query}'")
             except Exception as highlight_error:
                 logging.error(f"高亮处理失败: {highlight_error}")
                 # 高亮失败不影响内容显示
@@ -512,6 +514,7 @@ def api_search():
         return jsonify({'results': []})
         
     try:
+        # 使用基于LIKE的搜索
         results = search_engine.search(query)
         return jsonify({'results': results})
     except Exception as e:

@@ -31,11 +31,13 @@ class SearchNavigator {
         this.query = query;
         console.log('SearchNavigator初始化，查询词:', query);
         
-        // 如果没有预先高亮的匹配项，自己查找并高亮
+        // 检测是否有预先高亮的匹配项
         const hasExistingHighlights = document.querySelectorAll('.document-content mark').length > 0;
         if (!hasExistingHighlights) {
             console.log('没有找到预先高亮的匹配项，尝试自己高亮');
             this.highlightMatches();
+        } else {
+            console.log('发现预先高亮的匹配项');
         }
         
         this.findMatches();
@@ -57,45 +59,28 @@ class SearchNavigator {
         const contentElement = document.querySelector('.document-content');
         if (!contentElement) return;
         
-        let content = contentElement.innerHTML;
-        // 如果内容是HTML，需要解析和处理
-        const isHtml = content.indexOf('<') >= 0 && content.indexOf('>') >= 0;
+        // 获取查询词
+        const terms = this.query.split(/\s+/);
         
-        if (isHtml) {
-            // 创建临时元素保存内容
-            const tempElement = document.createElement('div');
-            tempElement.innerHTML = content;
+        // 处理HTML内容
+        const tempElement = document.createElement('div');
+        tempElement.innerHTML = contentElement.innerHTML;
             
-            // 高亮处理文本节点
-            this.highlightTextNodes(tempElement, this.query);
+        // 高亮处理文本节点
+        this.highlightTextNodes(tempElement, terms);
             
-            // 替换原始内容
-            contentElement.innerHTML = tempElement.innerHTML;
-        } else {
-            // 纯文本内容，直接替换
-            const terms = this.query.split(/\s+/);
-            let highlightedContent = content;
-            
-            terms.forEach(term => {
-                if (term.length < 2) return;
-                
-                const regex = new RegExp(this.escapeRegExp(term), 'gi');
-                highlightedContent = highlightedContent.replace(regex, match => 
-                    `<mark>${match}</mark>`
-                );
-            });
-            
-            contentElement.innerHTML = highlightedContent;
-        }
+        // 替换原始内容
+        contentElement.innerHTML = tempElement.innerHTML;
     }
     
     /**
      * 递归处理文本节点，高亮匹配内容
+     * @param {Element} element - DOM元素
+     * @param {Array} terms - 搜索词数组
      */
-    highlightTextNodes(element, query) {
+    highlightTextNodes(element, terms) {
         if (!element) return;
         
-        const terms = query.split(/\s+/);
         const childNodes = [...element.childNodes];
         
         for (const node of childNodes) {
@@ -110,7 +95,7 @@ class SearchNavigator {
                     if (regex.test(text)) {
                         hasMatch = true;
                         text = text.replace(regex, match => 
-                            `<mark>${match}</mark>`
+                            `<mark data-match="true">${match}</mark>`
                         );
                     }
                 }
@@ -127,7 +112,7 @@ class SearchNavigator {
                 }
             } else if (node.nodeType === Node.ELEMENT_NODE && 
                        !['script', 'style', 'mark'].includes(node.nodeName.toLowerCase())) {
-                this.highlightTextNodes(node, query);
+                this.highlightTextNodes(node, terms);
             }
         }
     }
