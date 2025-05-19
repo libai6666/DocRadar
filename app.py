@@ -353,6 +353,10 @@ def process_upload(file, overwrite=False):
         
         # 如果文件存在且允许覆盖，先删除旧文件
         if file_exists['exists'] and overwrite:
+            # 确保file_exists有id字段
+            if 'id' not in file_exists and 'doc_id' in file_exists:
+                file_exists['id'] = file_exists['doc_id']
+                
             storage.delete_document(file_exists['id'])
             logging.info(f"覆盖旧文件: {file_exists['id']}")
         

@@ -496,9 +496,6 @@ function initFileUpload() {
                     progressBar.style.width = '100%';
                     progressBar.setAttribute('aria-valuenow', 100);
                     progressText.textContent = '100%';
-                    
-                    // 显示上传结果
-                    showUploadResult();
                 }
                 
                 // 显示最终结果
@@ -612,6 +609,10 @@ function initFileUpload() {
     // 上传结果模态框关闭处理
     if (uploadResultClose) {
         uploadResultClose.addEventListener('click', function() {
+            // 重置文件输入框，确保可以重新选择相同文件
+            if (fileInput) {
+                fileInput.value = '';
+            }
             // 刷新页面以显示新上传的文件
             window.location.reload();
         });
@@ -1002,6 +1003,7 @@ function initFileUpload() {
             resultHTML += `<li class="list-group-item list-group-item-warning">
                 <i class="bi bi-arrow-repeat me-2"></i>
                 成功覆盖: ${uploadStats.overwritten} 个文件
+                <div class="mt-1 small text-success"><i class="bi bi-check-circle"></i> 覆盖操作已成功完成</div>
             </li>`;
         }
         
@@ -1051,6 +1053,11 @@ function initFileUpload() {
             const modal = new bootstrap.Modal(document.getElementById('uploadResultModal'));
             modal.show();
             console.log('上传结果模态框已显示');
+            
+            // 重置文件输入框，确保可以重新选择相同文件
+            if (fileInput) {
+                fileInput.value = '';
+            }
         } catch (error) {
             console.error('显示上传结果模态框时出错:', error);
             alert(`上传完成: 成功 ${uploadStats.success}, 覆盖 ${uploadStats.overwritten}, 跳过 ${uploadStats.skipped}, 失败 ${uploadStats.failed}`);
@@ -1105,6 +1112,21 @@ function initFileUpload() {
         
         // 清空existingFiles数组
         existingFiles = [];
+    }
+    
+    // 显示上传进度结果
+    function showUploadResult() {
+        // 更新进度条为100%
+        if (progressBar && progressText) {
+            progressBar.style.width = '100%';
+            progressBar.setAttribute('aria-valuenow', 100);
+            progressText.textContent = '100%';
+        }
+        
+        // 显示临时上传结果
+        if (uploadResult) {
+            uploadResult.innerHTML = '<div class="alert alert-info">上传完成，正在处理结果...</div>';
+        }
     }
 }
 

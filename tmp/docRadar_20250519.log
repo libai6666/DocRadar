@@ -261,3 +261,407 @@
 2025-05-19 15:07:20,417 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:07:20] "GET /document/250 HTTP/1.1" 200 -
 2025-05-19 15:07:20,426 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:07:20] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
 2025-05-19 15:07:20,430 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:07:20] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 15:11:22,230 - werkzeug - INFO -  * Restarting with stat
+2025-05-19 15:11:22,691 - werkzeug - WARNING -  * Debugger is active!
+2025-05-19 15:11:22,696 - werkzeug - INFO -  * Debugger PIN: 738-969-985
+2025-05-19 15:11:22,774 - werkzeug - INFO -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2025-05-19 15:11:23,035 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:11:23] "GET / HTTP/1.1" 200 -
+2025-05-19 15:11:23,159 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:11:23] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 15:11:23,265 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:11:23] "GET /static/js/main.js HTTP/1.1" 200 -
+2025-05-19 15:11:31,189 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:11:31] "GET / HTTP/1.1" 200 -
+2025-05-19 15:11:31,212 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:11:31] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 15:11:31,213 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:11:31] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 15:11:32,702 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:11:32] "GET / HTTP/1.1" 200 -
+2025-05-19 15:11:32,723 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:11:32] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 15:11:32,723 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:11:32] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 15:11:42,274 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:11:42] "GET / HTTP/1.1" 200 -
+2025-05-19 15:11:42,282 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:11:42] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 15:11:42,283 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:11:42] "GET /static/js/main.js HTTP/1.1" 200 -
+2025-05-19 15:11:48,338 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:11:48] "GET /api/check-file?filename=三期Duoov1.1.0.docx HTTP/1.1" 200 -
+2025-05-19 15:11:49,880 - root - WARNING - Mammoth警告: Message(type='warning', message='Run style with ID 00003f was referenced but not defined in the document')
+2025-05-19 15:11:49,880 - root - WARNING - Mammoth警告: Message(type='warning', message='Table style with ID 000040 was referenced but not defined in the document')
+2025-05-19 15:11:49,880 - root - WARNING - Mammoth警告: Message(type='warning', message='Unrecognised paragraph style: Title (Style ID: 000037)')
+2025-05-19 15:11:49,880 - root - WARNING - Mammoth警告: Message(type='warning', message='Unrecognised run style: None (Style ID: 00003f)')
+2025-05-19 15:11:49,898 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:11:49] "POST /upload/batch HTTP/1.1" 200 -
+2025-05-19 15:11:56,130 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:11:56] "GET / HTTP/1.1" 200 -
+2025-05-19 15:11:56,140 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:11:56] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 15:11:56,140 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:11:56] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 15:12:06,190 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:06] "GET /api/check-file?filename=二期Duoov1.0.1.docx HTTP/1.1" 200 -
+2025-05-19 15:12:07,441 - root - WARNING - Mammoth警告: Message(type='warning', message='Run style with ID 000019 was referenced but not defined in the document')
+2025-05-19 15:12:07,441 - root - WARNING - Mammoth警告: Message(type='warning', message='Table style with ID 00001a was referenced but not defined in the document')
+2025-05-19 15:12:07,441 - root - WARNING - Mammoth警告: Message(type='warning', message='Unrecognised paragraph style: Title (Style ID: 000013)')
+2025-05-19 15:12:07,441 - root - WARNING - Mammoth警告: Message(type='warning', message='Unrecognised run style: None (Style ID: 000019)')
+2025-05-19 15:12:07,454 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:07] "POST /upload/batch HTTP/1.1" 200 -
+2025-05-19 15:12:09,735 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:09] "GET / HTTP/1.1" 200 -
+2025-05-19 15:12:09,744 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:09] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 15:12:09,745 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:09] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 15:12:24,018 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:24] "GET /api/check-file?filename=五十八期Duoov5.8.5.docx HTTP/1.1" 200 -
+2025-05-19 15:12:24,030 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:24] "GET /api/check-file?filename=五十七期Duoov5.8.4.docx HTTP/1.1" 200 -
+2025-05-19 15:12:24,034 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:24] "GET /api/check-file?filename=五十六期Duoov5.7.4.docx HTTP/1.1" 200 -
+2025-05-19 15:12:24,039 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:24] "GET /api/check-file?filename=五十五期Duoov5.6.4.docx HTTP/1.1" 200 -
+2025-05-19 15:12:24,042 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:24] "GET /api/check-file?filename=五十四期Duoov5.6.5.docx HTTP/1.1" 200 -
+2025-05-19 15:12:24,045 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:24] "GET /api/check-file?filename=五十三期Duoov5.6.4.docx HTTP/1.1" 200 -
+2025-05-19 15:12:24,049 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:24] "GET /api/check-file?filename=五十二期Duoov5.6.3.docx HTTP/1.1" 200 -
+2025-05-19 15:12:24,052 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:24] "GET /api/check-file?filename=五十一期Duoov5.6.2.docx HTTP/1.1" 200 -
+2025-05-19 15:12:24,055 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:24] "GET /api/check-file?filename=五十期Duoov5.6.0.docx HTTP/1.1" 200 -
+2025-05-19 15:12:24,059 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:24] "GET /api/check-file?filename=四十九期Duoov5.5.0.docx HTTP/1.1" 200 -
+2025-05-19 15:12:24,062 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:24] "GET /api/check-file?filename=四十八期Duoov5.4.0.docx HTTP/1.1" 200 -
+2025-05-19 15:12:24,066 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:24] "GET /api/check-file?filename=四十七期Duoov5.3.0.docx HTTP/1.1" 200 -
+2025-05-19 15:12:24,070 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:24] "GET /api/check-file?filename=四十六期Duoov5.2.0.docx HTTP/1.1" 200 -
+2025-05-19 15:12:24,073 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:24] "GET /api/check-file?filename=四十五期Duoov5.1.0.docx HTTP/1.1" 200 -
+2025-05-19 15:12:24,078 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:24] "GET /api/check-file?filename=四十四期Duoov5.0.0.docx HTTP/1.1" 200 -
+2025-05-19 15:12:24,081 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:24] "GET /api/check-file?filename=四十三期Duoov4.9.0.docx HTTP/1.1" 200 -
+2025-05-19 15:12:24,085 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:24] "GET /api/check-file?filename=四十二Duoov4.8.0.docx HTTP/1.1" 200 -
+2025-05-19 15:12:24,088 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:24] "GET /api/check-file?filename=四十一Duoov4.7.0.docx HTTP/1.1" 200 -
+2025-05-19 15:12:24,091 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:24] "GET /api/check-file?filename=四十期Duoov4.6.0.docx HTTP/1.1" 200 -
+2025-05-19 15:12:24,094 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:24] "GET /api/check-file?filename=三十九期Duoov4.5.0.docx HTTP/1.1" 200 -
+2025-05-19 15:12:24,098 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:24] "GET /api/check-file?filename=三十八期Duoov4.4.0.docx HTTP/1.1" 200 -
+2025-05-19 15:12:24,101 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:24] "GET /api/check-file?filename=三十七期Duoov4.3.0.docx HTTP/1.1" 200 -
+2025-05-19 15:12:24,104 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:24] "GET /api/check-file?filename=三十六期Duoov4.2.0.docx HTTP/1.1" 200 -
+2025-05-19 15:12:24,108 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:24] "GET /api/check-file?filename=三十五期Duoov4.1.0.docx HTTP/1.1" 200 -
+2025-05-19 15:12:24,111 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:24] "GET /api/check-file?filename=三十四期Duoov4.0.0.docx HTTP/1.1" 200 -
+2025-05-19 15:12:24,114 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:24] "GET /api/check-file?filename=三十三期Duoov3.9.0.docx HTTP/1.1" 200 -
+2025-05-19 15:12:24,118 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:24] "GET /api/check-file?filename=三十二期Duoov3.8.0.docx HTTP/1.1" 200 -
+2025-05-19 15:12:24,121 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:24] "GET /api/check-file?filename=三十一期Duoov3.7.0.docx HTTP/1.1" 200 -
+2025-05-19 15:12:24,124 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:24] "GET /api/check-file?filename=三十期Duoov3.6.0.docx HTTP/1.1" 200 -
+2025-05-19 15:12:24,128 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:24] "GET /api/check-file?filename=二十九期Duoov3.4.0.docx HTTP/1.1" 200 -
+2025-05-19 15:12:24,131 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:24] "GET /api/check-file?filename=二十八期Duoov3.3.0.docx HTTP/1.1" 200 -
+2025-05-19 15:12:24,134 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:24] "GET /api/check-file?filename=二十七期Duoov3.2.0.docx HTTP/1.1" 200 -
+2025-05-19 15:12:24,138 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:24] "GET /api/check-file?filename=二十六期Duoov3.1.0.docx HTTP/1.1" 200 -
+2025-05-19 15:12:24,141 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:24] "GET /api/check-file?filename=二十四期Duoov2.9.0.docx HTTP/1.1" 200 -
+2025-05-19 15:12:24,144 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:24] "GET /api/check-file?filename=23期Duoo直播v1.0.docx HTTP/1.1" 200 -
+2025-05-19 15:12:24,147 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:24] "GET /api/check-file?filename=二十三期Duoov2.8.5.docx HTTP/1.1" 200 -
+2025-05-19 15:12:24,151 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:24] "GET /api/check-file?filename=二十二期Duoov2.8.0.docx HTTP/1.1" 200 -
+2025-05-19 15:12:24,154 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:24] "GET /api/check-file?filename=二十一期Duoov2.7.0.docx HTTP/1.1" 200 -
+2025-05-19 15:12:24,158 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:24] "GET /api/check-file?filename=二十期Duoov2.6.0.docx HTTP/1.1" 200 -
+2025-05-19 15:12:24,161 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:24] "GET /api/check-file?filename=十九期Duoov2.5.0.docx HTTP/1.1" 200 -
+2025-05-19 15:12:24,164 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:24] "GET /api/check-file?filename=十八期Duoov2.4.0.docx HTTP/1.1" 200 -
+2025-05-19 15:12:24,167 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:24] "GET /api/check-file?filename=十七期Duoov2.3.0.docx HTTP/1.1" 200 -
+2025-05-19 15:12:24,170 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:24] "GET /api/check-file?filename=十五(%26十六)期Duoov2.2.0（%26v2.3.0）.docx HTTP/1.1" 200 -
+2025-05-19 15:12:24,173 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:24] "GET /api/check-file?filename=十四期Duoov2.1.0.docx HTTP/1.1" 200 -
+2025-05-19 15:12:24,178 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:24] "GET /api/check-file?filename=十三期Duoov2.0.0.docx HTTP/1.1" 200 -
+2025-05-19 15:12:24,181 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:24] "GET /api/check-file?filename=十二期Duoov1.10.0.docx HTTP/1.1" 200 -
+2025-05-19 15:12:24,184 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:24] "GET /api/check-file?filename=十一期Duoov1.9.0.docx HTTP/1.1" 200 -
+2025-05-19 15:12:24,188 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:24] "GET /api/check-file?filename=十期Duoov1.8.0.docx HTTP/1.1" 200 -
+2025-05-19 15:12:24,191 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:24] "GET /api/check-file?filename=九期Duoov1.7.0.docx HTTP/1.1" 200 -
+2025-05-19 15:12:24,194 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:24] "GET /api/check-file?filename=八期Duoov1.6.0.docx HTTP/1.1" 200 -
+2025-05-19 15:12:24,198 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:24] "GET /api/check-file?filename=七期Duoov1.5.0.docx HTTP/1.1" 200 -
+2025-05-19 15:12:24,202 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:24] "GET /api/check-file?filename=六期Duoov1.4.0.docx HTTP/1.1" 200 -
+2025-05-19 15:12:24,205 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:24] "GET /api/check-file?filename=五期Duoov1.3.0.docx HTTP/1.1" 200 -
+2025-05-19 15:12:24,208 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:24] "GET /api/check-file?filename=四期Duoov1.2.1.docx HTTP/1.1" 200 -
+2025-05-19 15:12:24,211 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:24] "GET /api/check-file?filename=三期Duoov1.1.0.docx HTTP/1.1" 200 -
+2025-05-19 15:12:24,214 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:24] "GET /api/check-file?filename=二期Duoov1.0.1.docx HTTP/1.1" 200 -
+2025-05-19 15:12:28,433 - root - WARNING - Mammoth警告: Message(type='warning', message='Run style with ID 000022 was referenced but not defined in the document')
+2025-05-19 15:12:28,433 - root - WARNING - Mammoth警告: Message(type='warning', message='Table style with ID 000023 was referenced but not defined in the document')
+2025-05-19 15:12:28,433 - root - WARNING - Mammoth警告: Message(type='warning', message='Run style with ID 000062 was referenced but not defined in the document')
+2025-05-19 15:12:28,433 - root - WARNING - Mammoth警告: Message(type='warning', message='Run style with ID  was referenced but not defined in the document')
+2025-05-19 15:12:28,433 - root - WARNING - Mammoth警告: Message(type='warning', message='Unrecognised paragraph style: Title (Style ID: 000013)')
+2025-05-19 15:12:28,433 - root - WARNING - Mammoth警告: Message(type='warning', message='Unrecognised run style: None (Style ID: 000022)')
+2025-05-19 15:12:28,433 - root - WARNING - Mammoth警告: Message(type='warning', message='Unrecognised run style: None (Style ID: 000062)')
+2025-05-19 15:12:28,433 - root - WARNING - Mammoth警告: Message(type='warning', message='Unrecognised run style: None (Style ID: )')
+2025-05-19 15:12:28,445 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:28] "POST /upload/batch HTTP/1.1" 200 -
+2025-05-19 15:12:28,566 - root - WARNING - Mammoth警告: Message(type='warning', message='Run style with ID 000022 was referenced but not defined in the document')
+2025-05-19 15:12:28,566 - root - WARNING - Mammoth警告: Message(type='warning', message='Table style with ID 000023 was referenced but not defined in the document')
+2025-05-19 15:12:28,566 - root - WARNING - Mammoth警告: Message(type='warning', message='Unrecognised paragraph style: Title (Style ID: 000013)')
+2025-05-19 15:12:28,566 - root - WARNING - Mammoth警告: Message(type='warning', message='Unrecognised run style: None (Style ID: 000022)')
+2025-05-19 15:12:28,578 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:28] "POST /upload/batch HTTP/1.1" 200 -
+2025-05-19 15:12:28,642 - root - WARNING - Mammoth警告: Message(type='warning', message='Run style with ID 000022 was referenced but not defined in the document')
+2025-05-19 15:12:28,642 - root - WARNING - Mammoth警告: Message(type='warning', message='Table style with ID 000023 was referenced but not defined in the document')
+2025-05-19 15:12:28,642 - root - WARNING - Mammoth警告: Message(type='warning', message='Run style with ID  was referenced but not defined in the document')
+2025-05-19 15:12:28,642 - root - WARNING - Mammoth警告: Message(type='warning', message='Run style with ID 000020 was referenced but not defined in the document')
+2025-05-19 15:12:28,642 - root - WARNING - Mammoth警告: Message(type='warning', message='Unrecognised paragraph style: Title (Style ID: 000013)')
+2025-05-19 15:12:28,642 - root - WARNING - Mammoth警告: Message(type='warning', message='Unrecognised run style: None (Style ID: 000022)')
+2025-05-19 15:12:28,642 - root - WARNING - Mammoth警告: Message(type='warning', message='Unrecognised run style: None (Style ID: )')
+2025-05-19 15:12:28,642 - root - WARNING - Mammoth警告: Message(type='warning', message='Unrecognised run style: None (Style ID: 000020)')
+2025-05-19 15:12:28,657 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:28] "POST /upload/batch HTTP/1.1" 200 -
+2025-05-19 15:12:28,721 - root - WARNING - Mammoth警告: Message(type='warning', message='Run style with ID 000022 was referenced but not defined in the document')
+2025-05-19 15:12:28,721 - root - WARNING - Mammoth警告: Message(type='warning', message='Table style with ID 000023 was referenced but not defined in the document')
+2025-05-19 15:12:28,721 - root - WARNING - Mammoth警告: Message(type='warning', message='Run style with ID 000020 was referenced but not defined in the document')
+2025-05-19 15:12:28,721 - root - WARNING - Mammoth警告: Message(type='warning', message='Unrecognised paragraph style: Title (Style ID: 000013)')
+2025-05-19 15:12:28,721 - root - WARNING - Mammoth警告: Message(type='warning', message='Unrecognised run style: None (Style ID: 000022)')
+2025-05-19 15:12:28,721 - root - WARNING - Mammoth警告: Message(type='warning', message='Unrecognised run style: None (Style ID: 000020)')
+2025-05-19 15:12:28,732 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:28] "POST /upload/batch HTTP/1.1" 200 -
+2025-05-19 15:12:28,807 - root - WARNING - Mammoth警告: Message(type='warning', message='Run style with ID 000022 was referenced but not defined in the document')
+2025-05-19 15:12:28,807 - root - WARNING - Mammoth警告: Message(type='warning', message='Table style with ID 000023 was referenced but not defined in the document')
+2025-05-19 15:12:28,807 - root - WARNING - Mammoth警告: Message(type='warning', message='Unrecognised paragraph style: Title (Style ID: 000013)')
+2025-05-19 15:12:28,807 - root - WARNING - Mammoth警告: Message(type='warning', message='Unrecognised run style: None (Style ID: 000022)')
+2025-05-19 15:12:28,819 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:28] "POST /upload/batch HTTP/1.1" 200 -
+2025-05-19 15:12:28,878 - root - WARNING - Mammoth警告: Message(type='warning', message='Run style with ID 000022 was referenced but not defined in the document')
+2025-05-19 15:12:28,878 - root - WARNING - Mammoth警告: Message(type='warning', message='Table style with ID 000023 was referenced but not defined in the document')
+2025-05-19 15:12:28,878 - root - WARNING - Mammoth警告: Message(type='warning', message='Run style with ID  was referenced but not defined in the document')
+2025-05-19 15:12:28,878 - root - WARNING - Mammoth警告: Message(type='warning', message='Run style with ID 000049 was referenced but not defined in the document')
+2025-05-19 15:12:28,878 - root - WARNING - Mammoth警告: Message(type='warning', message='Unrecognised paragraph style: Title (Style ID: 000013)')
+2025-05-19 15:12:28,878 - root - WARNING - Mammoth警告: Message(type='warning', message='Unrecognised run style: None (Style ID: 000022)')
+2025-05-19 15:12:28,878 - root - WARNING - Mammoth警告: Message(type='warning', message='Unrecognised run style: None (Style ID: )')
+2025-05-19 15:12:28,878 - root - WARNING - Mammoth警告: Message(type='warning', message='Unrecognised run style: None (Style ID: 000049)')
+2025-05-19 15:12:28,890 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:28] "POST /upload/batch HTTP/1.1" 200 -
+2025-05-19 15:12:28,981 - root - WARNING - Mammoth警告: Message(type='warning', message='Run style with ID 000022 was referenced but not defined in the document')
+2025-05-19 15:12:28,981 - root - WARNING - Mammoth警告: Message(type='warning', message='Table style with ID 000023 was referenced but not defined in the document')
+2025-05-19 15:12:28,981 - root - WARNING - Mammoth警告: Message(type='warning', message='Unrecognised paragraph style: Title (Style ID: 000013)')
+2025-05-19 15:12:28,981 - root - WARNING - Mammoth警告: Message(type='warning', message='Unrecognised run style: None (Style ID: 000022)')
+2025-05-19 15:12:28,994 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:28] "POST /upload/batch HTTP/1.1" 200 -
+2025-05-19 15:12:29,072 - root - WARNING - Mammoth警告: Message(type='warning', message='Run style with ID 000022 was referenced but not defined in the document')
+2025-05-19 15:12:29,073 - root - WARNING - Mammoth警告: Message(type='warning', message='Table style with ID 000023 was referenced but not defined in the document')
+2025-05-19 15:12:29,073 - root - WARNING - Mammoth警告: Message(type='warning', message='Unrecognised paragraph style: Title (Style ID: 000013)')
+2025-05-19 15:12:29,073 - root - WARNING - Mammoth警告: Message(type='warning', message='Unrecognised run style: None (Style ID: 000022)')
+2025-05-19 15:12:29,083 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:29] "POST /upload/batch HTTP/1.1" 200 -
+2025-05-19 15:12:29,146 - root - WARNING - Mammoth警告: Message(type='warning', message='Run style with ID 000022 was referenced but not defined in the document')
+2025-05-19 15:12:29,146 - root - WARNING - Mammoth警告: Message(type='warning', message='Table style with ID 000023 was referenced but not defined in the document')
+2025-05-19 15:12:29,146 - root - WARNING - Mammoth警告: Message(type='warning', message='Unrecognised paragraph style: Title (Style ID: 000013)')
+2025-05-19 15:12:29,146 - root - WARNING - Mammoth警告: Message(type='warning', message='Unrecognised run style: None (Style ID: 000022)')
+2025-05-19 15:12:29,159 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:29] "POST /upload/batch HTTP/1.1" 200 -
+2025-05-19 15:12:29,237 - root - WARNING - Mammoth警告: Message(type='warning', message='Run style with ID 000026 was referenced but not defined in the document')
+2025-05-19 15:12:29,237 - root - WARNING - Mammoth警告: Message(type='warning', message='Table style with ID 000027 was referenced but not defined in the document')
+2025-05-19 15:12:29,238 - root - WARNING - Mammoth警告: Message(type='warning', message='Unrecognised paragraph style: Title (Style ID: 00000c)')
+2025-05-19 15:12:29,238 - root - WARNING - Mammoth警告: Message(type='warning', message='Unrecognised run style: None (Style ID: 000026)')
+2025-05-19 15:12:29,249 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:29] "POST /upload/batch HTTP/1.1" 200 -
+2025-05-19 15:12:29,506 - root - WARNING - Mammoth警告: Message(type='warning', message='Run style with ID 000033 was referenced but not defined in the document')
+2025-05-19 15:12:29,506 - root - WARNING - Mammoth警告: Message(type='warning', message='Table style with ID 000034 was referenced but not defined in the document')
+2025-05-19 15:12:29,506 - root - WARNING - Mammoth警告: Message(type='warning', message='Unrecognised paragraph style: Title (Style ID: 000028)')
+2025-05-19 15:12:29,506 - root - WARNING - Mammoth警告: Message(type='warning', message='Unrecognised run style: None (Style ID: 000033)')
+2025-05-19 15:12:29,530 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:29] "POST /upload/batch HTTP/1.1" 200 -
+2025-05-19 15:12:29,602 - root - WARNING - Mammoth警告: Message(type='warning', message='Run style with ID 00001a was referenced but not defined in the document')
+2025-05-19 15:12:29,602 - root - WARNING - Mammoth警告: Message(type='warning', message='Table style with ID 00001b was referenced but not defined in the document')
+2025-05-19 15:12:29,602 - root - WARNING - Mammoth警告: Message(type='warning', message='Unrecognised paragraph style: Title (Style ID: 000003)')
+2025-05-19 15:12:29,602 - root - WARNING - Mammoth警告: Message(type='warning', message='Unrecognised run style: None (Style ID: 00001a)')
+2025-05-19 15:12:29,619 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:29] "POST /upload/batch HTTP/1.1" 200 -
+2025-05-19 15:12:29,924 - root - WARNING - Mammoth警告: Message(type='warning', message='Run style with ID 00002b was referenced but not defined in the document')
+2025-05-19 15:12:29,924 - root - WARNING - Mammoth警告: Message(type='warning', message='Table style with ID 00002c was referenced but not defined in the document')
+2025-05-19 15:12:29,924 - root - WARNING - Mammoth警告: Message(type='warning', message='Unrecognised paragraph style: Title (Style ID: 000027)')
+2025-05-19 15:12:29,924 - root - WARNING - Mammoth警告: Message(type='warning', message='Unrecognised run style: None (Style ID: 00002b)')
+2025-05-19 15:12:29,941 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:29] "POST /upload/batch HTTP/1.1" 200 -
+2025-05-19 15:12:30,109 - root - WARNING - Mammoth警告: Message(type='warning', message='Run style with ID 00001d was referenced but not defined in the document')
+2025-05-19 15:12:30,110 - root - WARNING - Mammoth警告: Message(type='warning', message='Table style with ID 00001e was referenced but not defined in the document')
+2025-05-19 15:12:30,110 - root - WARNING - Mammoth警告: Message(type='warning', message='Unrecognised paragraph style: Title (Style ID: 00000a)')
+2025-05-19 15:12:30,110 - root - WARNING - Mammoth警告: Message(type='warning', message='Unrecognised run style: None (Style ID: 00001d)')
+2025-05-19 15:12:30,124 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:30] "POST /upload/batch HTTP/1.1" 200 -
+2025-05-19 15:12:30,312 - root - WARNING - Mammoth警告: Message(type='warning', message='Run style with ID 000020 was referenced but not defined in the document')
+2025-05-19 15:12:30,312 - root - WARNING - Mammoth警告: Message(type='warning', message='Table style with ID 000021 was referenced but not defined in the document')
+2025-05-19 15:12:30,312 - root - WARNING - Mammoth警告: Message(type='warning', message='Unrecognised paragraph style: Title (Style ID: 000007)')
+2025-05-19 15:12:30,312 - root - WARNING - Mammoth警告: Message(type='warning', message='Unrecognised run style: None (Style ID: 000020)')
+2025-05-19 15:12:30,328 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:30] "POST /upload/batch HTTP/1.1" 200 -
+2025-05-19 15:12:30,396 - root - WARNING - Mammoth警告: Message(type='warning', message='Run style with ID 00001b was referenced but not defined in the document')
+2025-05-19 15:12:30,396 - root - WARNING - Mammoth警告: Message(type='warning', message='Table style with ID 00001c was referenced but not defined in the document')
+2025-05-19 15:12:30,397 - root - WARNING - Mammoth警告: Message(type='warning', message='Unrecognised paragraph style: Title (Style ID: 000001)')
+2025-05-19 15:12:30,397 - root - WARNING - Mammoth警告: Message(type='warning', message='Unrecognised run style: None (Style ID: 00001b)')
+2025-05-19 15:12:30,413 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:30] "POST /upload/batch HTTP/1.1" 200 -
+2025-05-19 15:12:30,752 - root - WARNING - Mammoth警告: Message(type='warning', message='Run style with ID 00004c was referenced but not defined in the document')
+2025-05-19 15:12:30,753 - root - WARNING - Mammoth警告: Message(type='warning', message='Table style with ID 00004d was referenced but not defined in the document')
+2025-05-19 15:12:30,753 - root - WARNING - Mammoth警告: Message(type='warning', message='Unrecognised paragraph style: Title (Style ID: 000045)')
+2025-05-19 15:12:30,753 - root - WARNING - Mammoth警告: Message(type='warning', message='Unrecognised run style: None (Style ID: 00004c)')
+2025-05-19 15:12:30,769 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:30] "POST /upload/batch HTTP/1.1" 200 -
+2025-05-19 15:12:30,814 - root - WARNING - Mammoth警告: Message(type='warning', message='Run style with ID 000010 was referenced but not defined in the document')
+2025-05-19 15:12:30,814 - root - WARNING - Mammoth警告: Message(type='warning', message='Table style with ID 000011 was referenced but not defined in the document')
+2025-05-19 15:12:30,814 - root - WARNING - Mammoth警告: Message(type='warning', message='Unrecognised paragraph style: Title (Style ID: 000006)')
+2025-05-19 15:12:30,814 - root - WARNING - Mammoth警告: Message(type='warning', message='Unrecognised run style: None (Style ID: 000010)')
+2025-05-19 15:12:30,825 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:30] "POST /upload/batch HTTP/1.1" 200 -
+2025-05-19 15:12:31,008 - root - WARNING - Mammoth警告: Message(type='warning', message='Run style with ID 00001d was referenced but not defined in the document')
+2025-05-19 15:12:31,008 - root - WARNING - Mammoth警告: Message(type='warning', message='Table style with ID 00001e was referenced but not defined in the document')
+2025-05-19 15:12:31,008 - root - WARNING - Mammoth警告: Message(type='warning', message='Unrecognised paragraph style: Title (Style ID: 000009)')
+2025-05-19 15:12:31,008 - root - WARNING - Mammoth警告: Message(type='warning', message='Unrecognised run style: None (Style ID: 00001d)')
+2025-05-19 15:12:31,024 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:31] "POST /upload/batch HTTP/1.1" 200 -
+2025-05-19 15:12:31,171 - root - WARNING - Mammoth警告: Message(type='warning', message='Run style with ID 00002c was referenced but not defined in the document')
+2025-05-19 15:12:31,171 - root - WARNING - Mammoth警告: Message(type='warning', message='Table style with ID 00002d was referenced but not defined in the document')
+2025-05-19 15:12:31,171 - root - WARNING - Mammoth警告: Message(type='warning', message='Unrecognised paragraph style: Title (Style ID: 00001f)')
+2025-05-19 15:12:31,171 - root - WARNING - Mammoth警告: Message(type='warning', message='Unrecognised run style: None (Style ID: 00002c)')
+2025-05-19 15:12:31,187 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:31] "POST /upload/batch HTTP/1.1" 200 -
+2025-05-19 15:12:31,328 - root - WARNING - Mammoth警告: Message(type='warning', message='Run style with ID 000034 was referenced but not defined in the document')
+2025-05-19 15:12:31,328 - root - WARNING - Mammoth警告: Message(type='warning', message='Table style with ID 000035 was referenced but not defined in the document')
+2025-05-19 15:12:31,328 - root - WARNING - Mammoth警告: Message(type='warning', message='Unrecognised paragraph style: Title (Style ID: 00000b)')
+2025-05-19 15:12:31,328 - root - WARNING - Mammoth警告: Message(type='warning', message='Unrecognised run style: None (Style ID: 000034)')
+2025-05-19 15:12:31,341 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:31] "POST /upload/batch HTTP/1.1" 200 -
+2025-05-19 15:12:31,661 - root - WARNING - Mammoth警告: Message(type='warning', message='Run style with ID 00005b was referenced but not defined in the document')
+2025-05-19 15:12:31,661 - root - WARNING - Mammoth警告: Message(type='warning', message='Table style with ID 00005c was referenced but not defined in the document')
+2025-05-19 15:12:31,661 - root - WARNING - Mammoth警告: Message(type='warning', message='Unrecognised paragraph style: Title (Style ID: 000050)')
+2025-05-19 15:12:31,661 - root - WARNING - Mammoth警告: Message(type='warning', message='Unrecognised run style: None (Style ID: 00005b)')
+2025-05-19 15:12:31,678 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:31] "POST /upload/batch HTTP/1.1" 200 -
+2025-05-19 15:12:31,882 - root - WARNING - Mammoth警告: Message(type='warning', message='Run style with ID 000027 was referenced but not defined in the document')
+2025-05-19 15:12:31,882 - root - WARNING - Mammoth警告: Message(type='warning', message='Table style with ID 000028 was referenced but not defined in the document')
+2025-05-19 15:12:31,882 - root - WARNING - Mammoth警告: Message(type='warning', message='Unrecognised paragraph style: Title (Style ID: 000021)')
+2025-05-19 15:12:31,882 - root - WARNING - Mammoth警告: Message(type='warning', message='Unrecognised run style: None (Style ID: 000027)')
+2025-05-19 15:12:31,963 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:31] "POST /upload/batch HTTP/1.1" 200 -
+2025-05-19 15:12:32,058 - root - WARNING - Mammoth警告: Message(type='warning', message='Run style with ID 00002b was referenced but not defined in the document')
+2025-05-19 15:12:32,058 - root - WARNING - Mammoth警告: Message(type='warning', message='Table style with ID 00002c was referenced but not defined in the document')
+2025-05-19 15:12:32,058 - root - WARNING - Mammoth警告: Message(type='warning', message='Unrecognised paragraph style: Title (Style ID: 000029)')
+2025-05-19 15:12:32,058 - root - WARNING - Mammoth警告: Message(type='warning', message='Unrecognised run style: None (Style ID: 00002b)')
+2025-05-19 15:12:32,101 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:32] "POST /upload/batch HTTP/1.1" 200 -
+2025-05-19 15:12:32,263 - root - WARNING - Mammoth警告: Message(type='warning', message='Run style with ID 00003b was referenced but not defined in the document')
+2025-05-19 15:12:32,263 - root - WARNING - Mammoth警告: Message(type='warning', message='Table style with ID 00003c was referenced but not defined in the document')
+2025-05-19 15:12:32,264 - root - WARNING - Mammoth警告: Message(type='warning', message='Unrecognised paragraph style: Title (Style ID: 000038)')
+2025-05-19 15:12:32,264 - root - WARNING - Mammoth警告: Message(type='warning', message='Unrecognised run style: None (Style ID: 00003b)')
+2025-05-19 15:12:32,282 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:32] "POST /upload/batch HTTP/1.1" 200 -
+2025-05-19 15:12:32,583 - root - WARNING - Mammoth警告: Message(type='warning', message='Run style with ID 000058 was referenced but not defined in the document')
+2025-05-19 15:12:32,583 - root - WARNING - Mammoth警告: Message(type='warning', message='Table style with ID 000059 was referenced but not defined in the document')
+2025-05-19 15:12:32,583 - root - WARNING - Mammoth警告: Message(type='warning', message='Unrecognised paragraph style: Title (Style ID: 000050)')
+2025-05-19 15:12:32,583 - root - WARNING - Mammoth警告: Message(type='warning', message='Unrecognised run style: None (Style ID: 000058)')
+2025-05-19 15:12:32,650 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:32] "POST /upload/batch HTTP/1.1" 200 -
+2025-05-19 15:12:33,026 - root - WARNING - Mammoth警告: Message(type='warning', message='Run style with ID 000062 was referenced but not defined in the document')
+2025-05-19 15:12:33,026 - root - WARNING - Mammoth警告: Message(type='warning', message='Table style with ID 000063 was referenced but not defined in the document')
+2025-05-19 15:12:33,026 - root - WARNING - Mammoth警告: Message(type='warning', message='Unrecognised paragraph style: Title (Style ID: 00005e)')
+2025-05-19 15:12:33,026 - root - WARNING - Mammoth警告: Message(type='warning', message='Unrecognised run style: None (Style ID: 000062)')
+2025-05-19 15:12:33,042 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:33] "POST /upload/batch HTTP/1.1" 200 -
+2025-05-19 15:12:33,550 - root - WARNING - Mammoth警告: Message(type='warning', message='Run style with ID 000040 was referenced but not defined in the document')
+2025-05-19 15:12:33,550 - root - WARNING - Mammoth警告: Message(type='warning', message='Table style with ID 000041 was referenced but not defined in the document')
+2025-05-19 15:12:33,550 - root - WARNING - Mammoth警告: Message(type='warning', message='Unrecognised paragraph style: Title (Style ID: 00000b)')
+2025-05-19 15:12:33,550 - root - WARNING - Mammoth警告: Message(type='warning', message='Unrecognised run style: None (Style ID: 000040)')
+2025-05-19 15:12:34,327 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:34] "POST /upload/batch HTTP/1.1" 200 -
+2025-05-19 15:12:34,692 - root - WARNING - Mammoth警告: Message(type='warning', message='Run style with ID 00006e was referenced but not defined in the document')
+2025-05-19 15:12:34,692 - root - WARNING - Mammoth警告: Message(type='warning', message='Table style with ID 00006f was referenced but not defined in the document')
+2025-05-19 15:12:34,692 - root - WARNING - Mammoth警告: Message(type='warning', message='Unrecognised paragraph style: Title (Style ID: 00000b)')
+2025-05-19 15:12:34,692 - root - WARNING - Mammoth警告: Message(type='warning', message='Unrecognised run style: None (Style ID: 00006e)')
+2025-05-19 15:12:34,737 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:34] "POST /upload/batch HTTP/1.1" 200 -
+2025-05-19 15:12:35,352 - root - WARNING - Mammoth警告: Message(type='warning', message='Run style with ID 00009a was referenced but not defined in the document')
+2025-05-19 15:12:35,352 - root - WARNING - Mammoth警告: Message(type='warning', message='Table style with ID 00009b was referenced but not defined in the document')
+2025-05-19 15:12:35,352 - root - WARNING - Mammoth警告: Message(type='warning', message='Unrecognised paragraph style: Title (Style ID: 000094)')
+2025-05-19 15:12:35,352 - root - WARNING - Mammoth警告: Message(type='warning', message='Unrecognised run style: None (Style ID: 00009a)')
+2025-05-19 15:12:35,372 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:35] "POST /upload/batch HTTP/1.1" 200 -
+2025-05-19 15:12:36,115 - root - WARNING - Mammoth警告: Message(type='warning', message='Run style with ID 000063 was referenced but not defined in the document')
+2025-05-19 15:12:36,115 - root - WARNING - Mammoth警告: Message(type='warning', message='Table style with ID 000064 was referenced but not defined in the document')
+2025-05-19 15:12:36,115 - root - WARNING - Mammoth警告: Message(type='warning', message='Unrecognised paragraph style: Title (Style ID: 000062)')
+2025-05-19 15:12:36,115 - root - WARNING - Mammoth警告: Message(type='warning', message='Unrecognised run style: None (Style ID: 000063)')
+2025-05-19 15:12:36,165 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:36] "POST /upload/batch HTTP/1.1" 200 -
+2025-05-19 15:12:36,736 - root - WARNING - Mammoth警告: Message(type='warning', message='Run style with ID 000067 was referenced but not defined in the document')
+2025-05-19 15:12:36,736 - root - WARNING - Mammoth警告: Message(type='warning', message='Table style with ID 000068 was referenced but not defined in the document')
+2025-05-19 15:12:36,736 - root - WARNING - Mammoth警告: Message(type='warning', message='Unrecognised paragraph style: Title (Style ID: 00000a)')
+2025-05-19 15:12:36,736 - root - WARNING - Mammoth警告: Message(type='warning', message='Unrecognised run style: None (Style ID: 000067)')
+2025-05-19 15:12:36,784 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:36] "POST /upload/batch HTTP/1.1" 200 -
+2025-05-19 15:12:37,269 - root - WARNING - Mammoth警告: Message(type='warning', message='Run style with ID 00007f was referenced but not defined in the document')
+2025-05-19 15:12:37,269 - root - WARNING - Mammoth警告: Message(type='warning', message='Table style with ID 000080 was referenced but not defined in the document')
+2025-05-19 15:12:37,269 - root - WARNING - Mammoth警告: Message(type='warning', message='Unrecognised paragraph style: Title (Style ID: 000079)')
+2025-05-19 15:12:37,269 - root - WARNING - Mammoth警告: Message(type='warning', message='Unrecognised run style: None (Style ID: 00007f)')
+2025-05-19 15:12:37,333 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:37] "POST /upload/batch HTTP/1.1" 200 -
+2025-05-19 15:12:37,634 - root - WARNING - Mammoth警告: Message(type='warning', message='Run style with ID 00006c was referenced but not defined in the document')
+2025-05-19 15:12:37,634 - root - WARNING - Mammoth警告: Message(type='warning', message='Table style with ID 00006d was referenced but not defined in the document')
+2025-05-19 15:12:37,634 - root - WARNING - Mammoth警告: Message(type='warning', message='Unrecognised paragraph style: Title (Style ID: 000066)')
+2025-05-19 15:12:37,634 - root - WARNING - Mammoth警告: Message(type='warning', message='Unrecognised run style: None (Style ID: 00006c)')
+2025-05-19 15:12:37,651 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:37] "POST /upload/batch HTTP/1.1" 200 -
+2025-05-19 15:12:37,926 - root - WARNING - Mammoth警告: Message(type='warning', message='Run style with ID 000044 was referenced but not defined in the document')
+2025-05-19 15:12:37,926 - root - WARNING - Mammoth警告: Message(type='warning', message='Table style with ID 000045 was referenced but not defined in the document')
+2025-05-19 15:12:37,926 - root - WARNING - Mammoth警告: Message(type='warning', message='Unrecognised paragraph style: Title (Style ID: 00000a)')
+2025-05-19 15:12:37,926 - root - WARNING - Mammoth警告: Message(type='warning', message='Unrecognised run style: None (Style ID: 000044)')
+2025-05-19 15:12:37,948 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:37] "POST /upload/batch HTTP/1.1" 200 -
+2025-05-19 15:12:38,119 - root - WARNING - Mammoth警告: Message(type='warning', message='Run style with ID 000038 was referenced but not defined in the document')
+2025-05-19 15:12:38,119 - root - WARNING - Mammoth警告: Message(type='warning', message='Table style with ID 000039 was referenced but not defined in the document')
+2025-05-19 15:12:38,119 - root - WARNING - Mammoth警告: Message(type='warning', message='Unrecognised paragraph style: Title (Style ID: 00002d)')
+2025-05-19 15:12:38,119 - root - WARNING - Mammoth警告: Message(type='warning', message='Unrecognised run style: None (Style ID: 000038)')
+2025-05-19 15:12:38,133 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:38] "POST /upload/batch HTTP/1.1" 200 -
+2025-05-19 15:12:38,387 - root - WARNING - Mammoth警告: Message(type='warning', message='Run style with ID 00004d was referenced but not defined in the document')
+2025-05-19 15:12:38,387 - root - WARNING - Mammoth警告: Message(type='warning', message='Table style with ID 00004e was referenced but not defined in the document')
+2025-05-19 15:12:38,387 - root - WARNING - Mammoth警告: Message(type='warning', message='Unrecognised paragraph style: Title (Style ID: 000043)')
+2025-05-19 15:12:38,387 - root - WARNING - Mammoth警告: Message(type='warning', message='Unrecognised run style: None (Style ID: 00004d)')
+2025-05-19 15:12:38,403 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:38] "POST /upload/batch HTTP/1.1" 200 -
+2025-05-19 15:12:38,500 - root - WARNING - Mammoth警告: Message(type='warning', message='Run style with ID 000025 was referenced but not defined in the document')
+2025-05-19 15:12:38,500 - root - WARNING - Mammoth警告: Message(type='warning', message='Table style with ID 000026 was referenced but not defined in the document')
+2025-05-19 15:12:38,500 - root - WARNING - Mammoth警告: Message(type='warning', message='Unrecognised paragraph style: Title (Style ID: 000020)')
+2025-05-19 15:12:38,500 - root - WARNING - Mammoth警告: Message(type='warning', message='Unrecognised run style: None (Style ID: 000025)')
+2025-05-19 15:12:38,768 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:38] "POST /upload/batch HTTP/1.1" 200 -
+2025-05-19 15:12:38,938 - root - WARNING - Mammoth警告: Message(type='warning', message='Run style with ID 000039 was referenced but not defined in the document')
+2025-05-19 15:12:38,938 - root - WARNING - Mammoth警告: Message(type='warning', message='Table style with ID 00003a was referenced but not defined in the document')
+2025-05-19 15:12:38,938 - root - WARNING - Mammoth警告: Message(type='warning', message='Unrecognised paragraph style: Title (Style ID: 000033)')
+2025-05-19 15:12:38,938 - root - WARNING - Mammoth警告: Message(type='warning', message='Unrecognised run style: None (Style ID: 000039)')
+2025-05-19 15:12:38,953 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:38] "POST /upload/batch HTTP/1.1" 200 -
+2025-05-19 15:12:39,197 - root - WARNING - Mammoth警告: Message(type='warning', message='Run style with ID 000049 was referenced but not defined in the document')
+2025-05-19 15:12:39,197 - root - WARNING - Mammoth警告: Message(type='warning', message='Table style with ID 00004a was referenced but not defined in the document')
+2025-05-19 15:12:39,197 - root - WARNING - Mammoth警告: Message(type='warning', message='Unrecognised paragraph style: Title (Style ID: 000044)')
+2025-05-19 15:12:39,197 - root - WARNING - Mammoth警告: Message(type='warning', message='Unrecognised run style: None (Style ID: 000049)')
+2025-05-19 15:12:39,216 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:39] "POST /upload/batch HTTP/1.1" 200 -
+2025-05-19 15:12:39,599 - root - WARNING - Mammoth警告: Message(type='warning', message='Run style with ID 000087 was referenced but not defined in the document')
+2025-05-19 15:12:39,599 - root - WARNING - Mammoth警告: Message(type='warning', message='Table style with ID 000088 was referenced but not defined in the document')
+2025-05-19 15:12:39,599 - root - WARNING - Mammoth警告: Message(type='warning', message='Unrecognised paragraph style: Title (Style ID: 000080)')
+2025-05-19 15:12:39,599 - root - WARNING - Mammoth警告: Message(type='warning', message='Unrecognised run style: None (Style ID: 000087)')
+2025-05-19 15:12:39,617 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:39] "POST /upload/batch HTTP/1.1" 200 -
+2025-05-19 15:12:39,921 - root - WARNING - Mammoth警告: Message(type='warning', message='Run style with ID 00004b was referenced but not defined in the document')
+2025-05-19 15:12:39,922 - root - WARNING - Mammoth警告: Message(type='warning', message='Table style with ID 00004c was referenced but not defined in the document')
+2025-05-19 15:12:39,922 - root - WARNING - Mammoth警告: Message(type='warning', message='Unrecognised paragraph style: Title (Style ID: 000003)')
+2025-05-19 15:12:39,922 - root - WARNING - Mammoth警告: Message(type='warning', message='Unrecognised run style: None (Style ID: 00004b)')
+2025-05-19 15:12:39,969 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:39] "POST /upload/batch HTTP/1.1" 200 -
+2025-05-19 15:12:40,513 - root - WARNING - Mammoth警告: Message(type='warning', message='Run style with ID 00007b was referenced but not defined in the document')
+2025-05-19 15:12:40,513 - root - WARNING - Mammoth警告: Message(type='warning', message='Table style with ID 00007c was referenced but not defined in the document')
+2025-05-19 15:12:40,513 - root - WARNING - Mammoth警告: Message(type='warning', message='Unrecognised paragraph style: Title (Style ID: 000078)')
+2025-05-19 15:12:40,513 - root - WARNING - Mammoth警告: Message(type='warning', message='Unrecognised run style: None (Style ID: 00007b)')
+2025-05-19 15:12:40,532 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:40] "POST /upload/batch HTTP/1.1" 200 -
+2025-05-19 15:12:41,045 - root - WARNING - Mammoth警告: Message(type='warning', message='Run style with ID 00009c was referenced but not defined in the document')
+2025-05-19 15:12:41,045 - root - WARNING - Mammoth警告: Message(type='warning', message='Table style with ID 00009d was referenced but not defined in the document')
+2025-05-19 15:12:41,045 - root - WARNING - Mammoth警告: Message(type='warning', message='Unrecognised paragraph style: Title (Style ID: 00009a)')
+2025-05-19 15:12:41,046 - root - WARNING - Mammoth警告: Message(type='warning', message='Unrecognised run style: None (Style ID: 00009c)')
+2025-05-19 15:12:41,065 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:41] "POST /upload/batch HTTP/1.1" 200 -
+2025-05-19 15:12:41,398 - root - WARNING - Mammoth警告: Message(type='warning', message='Run style with ID 00006d was referenced but not defined in the document')
+2025-05-19 15:12:41,399 - root - WARNING - Mammoth警告: Message(type='warning', message='Table style with ID 00006e was referenced but not defined in the document')
+2025-05-19 15:12:41,399 - root - WARNING - Mammoth警告: Message(type='warning', message='Unrecognised paragraph style: Title (Style ID: 000003)')
+2025-05-19 15:12:41,399 - root - WARNING - Mammoth警告: Message(type='warning', message='Unrecognised run style: None (Style ID: 00006d)')
+2025-05-19 15:12:41,422 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:41] "POST /upload/batch HTTP/1.1" 200 -
+2025-05-19 15:12:41,647 - root - WARNING - Mammoth警告: Message(type='warning', message='Run style with ID 000051 was referenced but not defined in the document')
+2025-05-19 15:12:41,647 - root - WARNING - Mammoth警告: Message(type='warning', message='Table style with ID 000052 was referenced but not defined in the document')
+2025-05-19 15:12:41,647 - root - WARNING - Mammoth警告: Message(type='warning', message='Unrecognised paragraph style: Title (Style ID: 00004d)')
+2025-05-19 15:12:41,647 - root - WARNING - Mammoth警告: Message(type='warning', message='Unrecognised run style: None (Style ID: 000051)')
+2025-05-19 15:12:41,662 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:41] "POST /upload/batch HTTP/1.1" 200 -
+2025-05-19 15:12:41,874 - root - WARNING - Mammoth警告: Message(type='warning', message='Run style with ID 000048 was referenced but not defined in the document')
+2025-05-19 15:12:41,874 - root - WARNING - Mammoth警告: Message(type='warning', message='Table style with ID 000049 was referenced but not defined in the document')
+2025-05-19 15:12:41,874 - root - WARNING - Mammoth警告: Message(type='warning', message='Unrecognised paragraph style: Title (Style ID: 000007)')
+2025-05-19 15:12:41,874 - root - WARNING - Mammoth警告: Message(type='warning', message='Unrecognised run style: None (Style ID: 000048)')
+2025-05-19 15:12:41,889 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:41] "POST /upload/batch HTTP/1.1" 200 -
+2025-05-19 15:12:42,174 - root - WARNING - Mammoth警告: Message(type='warning', message='Run style with ID 000051 was referenced but not defined in the document')
+2025-05-19 15:12:42,174 - root - WARNING - Mammoth警告: Message(type='warning', message='Table style with ID 000052 was referenced but not defined in the document')
+2025-05-19 15:12:42,174 - root - WARNING - Mammoth警告: Message(type='warning', message='Unrecognised paragraph style: Title (Style ID: 00004f)')
+2025-05-19 15:12:42,174 - root - WARNING - Mammoth警告: Message(type='warning', message='Unrecognised run style: None (Style ID: 000051)')
+2025-05-19 15:12:42,191 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:42] "POST /upload/batch HTTP/1.1" 200 -
+2025-05-19 15:12:42,466 - root - WARNING - Mammoth警告: Message(type='warning', message='Run style with ID 000045 was referenced but not defined in the document')
+2025-05-19 15:12:42,466 - root - WARNING - Mammoth警告: Message(type='warning', message='Table style with ID 000046 was referenced but not defined in the document')
+2025-05-19 15:12:42,467 - root - WARNING - Mammoth警告: Message(type='warning', message='Unrecognised paragraph style: Title (Style ID: 00000a)')
+2025-05-19 15:12:42,467 - root - WARNING - Mammoth警告: Message(type='warning', message='Unrecognised run style: None (Style ID: 000045)')
+2025-05-19 15:12:42,482 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:42] "POST /upload/batch HTTP/1.1" 200 -
+2025-05-19 15:12:42,801 - root - WARNING - Mammoth警告: Message(type='warning', message='Run style with ID 000083 was referenced but not defined in the document')
+2025-05-19 15:12:42,801 - root - WARNING - Mammoth警告: Message(type='warning', message='Table style with ID 000084 was referenced but not defined in the document')
+2025-05-19 15:12:42,801 - root - WARNING - Mammoth警告: Message(type='warning', message='Unrecognised paragraph style: Title (Style ID: 00007a)')
+2025-05-19 15:12:42,801 - root - WARNING - Mammoth警告: Message(type='warning', message='Unrecognised run style: None (Style ID: 000083)')
+2025-05-19 15:12:42,820 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:42] "POST /upload/batch HTTP/1.1" 200 -
+2025-05-19 15:12:43,122 - root - WARNING - Mammoth警告: Message(type='warning', message='Run style with ID 000074 was referenced but not defined in the document')
+2025-05-19 15:12:43,122 - root - WARNING - Mammoth警告: Message(type='warning', message='Table style with ID 000075 was referenced but not defined in the document')
+2025-05-19 15:12:43,122 - root - WARNING - Mammoth警告: Message(type='warning', message='Unrecognised paragraph style: Title (Style ID: 00006d)')
+2025-05-19 15:12:43,122 - root - WARNING - Mammoth警告: Message(type='warning', message='Unrecognised run style: None (Style ID: 000074)')
+2025-05-19 15:12:43,138 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:43] "POST /upload/batch HTTP/1.1" 200 -
+2025-05-19 15:12:43,466 - root - WARNING - Mammoth警告: Message(type='warning', message='Run style with ID 00004f was referenced but not defined in the document')
+2025-05-19 15:12:43,466 - root - WARNING - Mammoth警告: Message(type='warning', message='Table style with ID 000050 was referenced but not defined in the document')
+2025-05-19 15:12:43,466 - root - WARNING - Mammoth警告: Message(type='warning', message='Unrecognised paragraph style: Title (Style ID: 000046)')
+2025-05-19 15:12:43,466 - root - WARNING - Mammoth警告: Message(type='warning', message='Unrecognised run style: None (Style ID: 00004f)')
+2025-05-19 15:12:43,482 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:43] "POST /upload/batch HTTP/1.1" 200 -
+2025-05-19 15:12:43,930 - root - WARNING - Mammoth警告: Message(type='warning', message='Run style with ID 00005d was referenced but not defined in the document')
+2025-05-19 15:12:43,930 - root - WARNING - Mammoth警告: Message(type='warning', message='Table style with ID 00005e was referenced but not defined in the document')
+2025-05-19 15:12:43,930 - root - WARNING - Mammoth警告: Message(type='warning', message='Unrecognised paragraph style: Title (Style ID: 00005a)')
+2025-05-19 15:12:43,930 - root - WARNING - Mammoth警告: Message(type='warning', message='Unrecognised run style: None (Style ID: 00005d)')
+2025-05-19 15:12:43,948 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:43] "POST /upload/batch HTTP/1.1" 200 -
+2025-05-19 15:12:44,127 - root - WARNING - Mammoth警告: Message(type='warning', message='Run style with ID 000031 was referenced but not defined in the document')
+2025-05-19 15:12:44,127 - root - WARNING - Mammoth警告: Message(type='warning', message='Table style with ID 000032 was referenced but not defined in the document')
+2025-05-19 15:12:44,127 - root - WARNING - Mammoth警告: Message(type='warning', message='Unrecognised paragraph style: Title (Style ID: 000001)')
+2025-05-19 15:12:44,127 - root - WARNING - Mammoth警告: Message(type='warning', message='Unrecognised run style: None (Style ID: 000031)')
+2025-05-19 15:12:44,882 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:44] "POST /upload/batch HTTP/1.1" 200 -
+2025-05-19 15:12:46,408 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:46] "GET / HTTP/1.1" 200 -
+2025-05-19 15:12:46,417 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:46] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 15:12:46,418 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:46] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 15:12:56,602 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:56] "GET /search?q=adjustments HTTP/1.1" 200 -
+2025-05-19 15:12:56,609 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:56] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 15:12:56,610 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:56] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 15:12:58,071 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:58] "GET /document/277?q=adjustments HTTP/1.1" 200 -
+2025-05-19 15:12:58,080 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:58] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 15:12:58,081 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:58] "GET /static/doc_images/doc_277/image_mammoth_4ce47cbdeabb4d05a79fe98c5bba9e4e_2.png HTTP/1.1" 200 -
+2025-05-19 15:12:58,084 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:58] "GET /static/doc_images/doc_277/image_mammoth_c4ce219bb95f407ebf5c0f57bb8ef942_3.png HTTP/1.1" 200 -
+2025-05-19 15:12:58,086 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:58] "GET /static/doc_images/doc_277/image_mammoth_fd3ea894bf1148ba8c25f5463129494f_4.png HTTP/1.1" 200 -
+2025-05-19 15:12:58,086 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:58] "GET /static/doc_images/doc_277/image_mammoth_fef5179f8ab94428b0dfd9e33b64068f_1.png HTTP/1.1" 200 -
+2025-05-19 15:12:58,087 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:58] "GET /static/doc_images/doc_277/image_mammoth_73197e0d96e6443582c880c4fd2ebeff_5.png HTTP/1.1" 200 -
+2025-05-19 15:12:58,087 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:58] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 15:12:58,096 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:58] "GET /static/doc_images/doc_277/image_mammoth_72b8227ccb2d4344a28cde829e3e9423_6.png HTTP/1.1" 200 -
+2025-05-19 15:12:58,096 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:58] "[36mGET /static/js/search-navigator.js HTTP/1.1[0m" 304 -
+2025-05-19 15:12:58,097 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:58] "GET /static/doc_images/doc_277/image_mammoth_cb9134a0595b4e9a92bd9b906b614171_7.png HTTP/1.1" 200 -
+2025-05-19 15:12:58,100 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:58] "GET /static/doc_images/doc_277/image_mammoth_b985758e42b345e297f469be9245430b_8.png HTTP/1.1" 200 -
+2025-05-19 15:12:58,101 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:58] "GET /static/doc_images/doc_277/image_mammoth_343cdd755ca24d97a8870516f617de73_9.png HTTP/1.1" 200 -
+2025-05-19 15:12:58,103 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:58] "GET /static/doc_images/doc_277/image_mammoth_29a6bd0b68a549618a7d20e561056d68_10.png HTTP/1.1" 200 -
+2025-05-19 15:12:58,104 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:58] "GET /static/doc_images/doc_277/image_mammoth_736b8f4fc8aa45e88e4cd464062bc2eb_11.png HTTP/1.1" 200 -
+2025-05-19 15:12:58,108 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:58] "GET /static/doc_images/doc_277/image_mammoth_c9102026f1da41da8fa7aa4261b386a1_12.png HTTP/1.1" 200 -
+2025-05-19 15:12:58,112 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:58] "GET /static/doc_images/doc_277/image_mammoth_4fa92e2fe1fa4260984c055dbf2fd384_13.png HTTP/1.1" 200 -
+2025-05-19 15:12:58,114 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:58] "GET /static/doc_images/doc_277/image_mammoth_605d1974546f4de1beafa0f0f96e1c06_14.png HTTP/1.1" 200 -
+2025-05-19 15:12:58,114 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:58] "GET /static/doc_images/doc_277/image_mammoth_ad4b0df5b7944709bd20cbe3d8463a48_15.png HTTP/1.1" 200 -
+2025-05-19 15:12:58,117 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:58] "GET /static/doc_images/doc_277/image_mammoth_498731b803c044828252de5a34487815_16.png HTTP/1.1" 200 -
+2025-05-19 15:12:58,118 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:58] "GET /static/doc_images/doc_277/image_mammoth_98d81bfe694c4eee9b07879e91d4ec3d_17.png HTTP/1.1" 200 -
+2025-05-19 15:12:58,120 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:58] "GET /static/doc_images/doc_277/image_mammoth_6e1422a1baee464f8f814c7510944b13_18.png HTTP/1.1" 200 -
+2025-05-19 15:12:58,123 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:58] "GET /static/doc_images/doc_277/image_mammoth_b67dbff9417e4f6283c8031ed94ce97d_19.png HTTP/1.1" 200 -
+2025-05-19 15:13:06,000 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:13:06] "GET /search?q=adjustments HTTP/1.1" 200 -

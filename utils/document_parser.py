@@ -193,8 +193,9 @@ class DocxParser(DocumentParser):
             image_path = os.path.join(image_dir, image_filename)
             image_url = f'{image_url_path}/{image_filename}'
             
-            # 保存图片文件 - 修复：先完整读取数据，再关闭文件句柄
+            # 保存图片文件 - 修复：完全读取图片数据后再写入文件
             try:
+                # 读取图片数据
                 with image.open() as image_data:
                     image_bytes = image_data.read()
                 
