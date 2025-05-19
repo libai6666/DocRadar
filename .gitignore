@@ -24,7 +24,14 @@ var/
 instance/
 .webassets-cache
 docradar.db
+# Docker 数据目录
+data/
+data/uploads/
+data/db/
+data/logs/
 
+# 用户数据
+users.json
 # Upload files
 static/uploads/
 static/doc_images/
