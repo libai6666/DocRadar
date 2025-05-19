@@ -27,6 +27,7 @@ docradar.db
 
 # Upload files
 static/uploads/
+static/doc_images/
 
 # Editor
 .idea/
