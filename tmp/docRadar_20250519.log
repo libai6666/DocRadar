@@ -665,3 +665,491 @@
 2025-05-19 15:12:58,120 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:58] "GET /static/doc_images/doc_277/image_mammoth_6e1422a1baee464f8f814c7510944b13_18.png HTTP/1.1" 200 -
 2025-05-19 15:12:58,123 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:58] "GET /static/doc_images/doc_277/image_mammoth_b67dbff9417e4f6283c8031ed94ce97d_19.png HTTP/1.1" 200 -
 2025-05-19 15:13:06,000 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:13:06] "GET /search?q=adjustments HTTP/1.1" 200 -
+2025-05-19 15:16:04,338 - werkzeug - INFO -  * Restarting with stat
+2025-05-19 15:16:04,803 - werkzeug - WARNING -  * Debugger is active!
+2025-05-19 15:16:04,808 - werkzeug - INFO -  * Debugger PIN: 738-969-985
+2025-05-19 15:16:04,890 - werkzeug - INFO -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2025-05-19 15:16:08,413 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:16:08] "GET / HTTP/1.1" 200 -
+2025-05-19 15:16:08,598 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:16:08] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 15:16:08,598 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:16:08] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 15:16:13,933 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:16:13] "GET /api/check-file?filename=四十九期Duoov5.5.0.docx HTTP/1.1" 200 -
+2025-05-19 15:16:15,163 - root - WARNING - Mammoth警告: Message(type='warning', message='Run style with ID 000026 was referenced but not defined in the document')
+2025-05-19 15:16:15,163 - root - WARNING - Mammoth警告: Message(type='warning', message='Table style with ID 000027 was referenced but not defined in the document')
+2025-05-19 15:16:15,163 - root - WARNING - Mammoth警告: Message(type='warning', message='Unrecognised paragraph style: Title (Style ID: 00000c)')
+2025-05-19 15:16:15,163 - root - WARNING - Mammoth警告: Message(type='warning', message='Unrecognised run style: None (Style ID: 000026)')
+2025-05-19 15:16:15,181 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:16:15] "POST /upload/batch HTTP/1.1" 200 -
+2025-05-19 15:16:16,629 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:16:16] "GET / HTTP/1.1" 200 -
+2025-05-19 15:16:16,638 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:16:16] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 15:16:16,638 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:16:16] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 15:16:24,399 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:16:24] "GET /search?q=adjustments HTTP/1.1" 200 -
+2025-05-19 15:16:24,407 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:16:24] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 15:16:24,408 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:16:24] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 15:16:25,872 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:16:25] "GET /document/277?q=adjustments HTTP/1.1" 200 -
+2025-05-19 15:16:25,879 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:16:25] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 15:16:25,888 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:16:25] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 15:16:25,888 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:16:25] "[36mGET /static/js/search-navigator.js HTTP/1.1[0m" 304 -
+2025-05-19 15:16:28,794 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:16:28] "GET /search?q=adjustments HTTP/1.1" 200 -
+2025-05-19 15:16:33,875 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:16:33] "GET / HTTP/1.1" 200 -
+2025-05-19 15:16:33,884 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:16:33] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 15:16:33,885 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:16:33] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 15:16:36,551 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:16:36] "GET /search?q=adjustments HTTP/1.1" 200 -
+2025-05-19 15:16:36,560 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:16:36] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 15:16:36,561 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:16:36] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 15:16:38,930 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:16:38] "[32mGET /search/delete/1 HTTP/1.1[0m" 302 -
+2025-05-19 15:16:38,937 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:16:38] "GET /search?q= HTTP/1.1" 200 -
+2025-05-19 15:16:38,946 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:16:38] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 15:16:38,946 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:16:38] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 15:16:40,849 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:16:40] "GET /search?q=adjustments HTTP/1.1" 200 -
+2025-05-19 15:16:40,857 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:16:40] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 15:16:40,858 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:16:40] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 15:16:43,934 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:16:43] "GET /search?q=不 HTTP/1.1" 200 -
+2025-05-19 15:16:43,942 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:16:43] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 15:16:43,943 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:16:43] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 15:16:54,324 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:16:54] "GET /search?q=百度 HTTP/1.1" 200 -
+2025-05-19 15:16:54,332 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:16:54] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 15:16:54,332 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:16:54] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 15:16:57,118 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:16:57] "GET /search?q=百度 HTTP/1.1" 200 -
+2025-05-19 15:16:57,126 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:16:57] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 15:16:57,127 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:16:57] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 15:17:02,752 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:17:02] "GET /search?q=你说过后 HTTP/1.1" 200 -
+2025-05-19 15:17:02,759 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:17:02] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 15:17:02,760 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:17:02] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 15:17:10,140 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:17:10] "GET /search?q=不 HTTP/1.1" 200 -
+2025-05-19 15:17:10,148 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:17:10] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 15:17:10,149 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:17:10] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 15:17:20,028 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:17:20] "GET /document/307?q=不 HTTP/1.1" 200 -
+2025-05-19 15:17:20,038 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:17:20] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 15:17:20,040 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:17:20] "GET /static/doc_images/doc_307/image_mammoth_cc8eb9d099d84867b366cf0d0798c87e_2.png HTTP/1.1" 200 -
+2025-05-19 15:17:20,042 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:17:20] "GET /static/doc_images/doc_307/image_mammoth_c0e198ee3bc44213b0c15b0be13637ec_3.png HTTP/1.1" 200 -
+2025-05-19 15:17:20,042 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:17:20] "GET /static/doc_images/doc_307/image_mammoth_865b6d89cd9348e39b4006c49f3b6024_1.png HTTP/1.1" 200 -
+2025-05-19 15:17:20,044 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:17:20] "GET /static/doc_images/doc_307/image_mammoth_6689d7511f6543e199934e1e9090205b_4.png HTTP/1.1" 200 -
+2025-05-19 15:17:20,045 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:17:20] "GET /static/doc_images/doc_307/image_mammoth_1e1f2266ebad48298f1f4bb98c0732fa_5.png HTTP/1.1" 200 -
+2025-05-19 15:17:20,046 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:17:20] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 15:17:20,053 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:17:20] "[36mGET /static/js/search-navigator.js HTTP/1.1[0m" 304 -
+2025-05-19 15:17:25,711 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:17:25] "GET /document/277?q=adjustments HTTP/1.1" 200 -
+2025-05-19 15:17:25,719 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:17:25] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 15:17:25,729 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:17:25] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 15:17:25,729 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:17:25] "[36mGET /static/js/search-navigator.js HTTP/1.1[0m" 304 -
+2025-05-19 15:17:29,231 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:17:29] "[32mGET /search/clear HTTP/1.1[0m" 302 -
+2025-05-19 15:17:29,238 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:17:29] "GET /search?q= HTTP/1.1" 200 -
+2025-05-19 15:17:29,248 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:17:29] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 15:17:29,249 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:17:29] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 15:17:32,897 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:17:32] "GET /search?q=不会 HTTP/1.1" 200 -
+2025-05-19 15:17:32,905 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:17:32] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 15:17:32,906 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:17:32] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 15:17:46,088 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:17:46] "GET /search?q=不 HTTP/1.1" 200 -
+2025-05-19 15:17:46,097 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:17:46] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 15:17:46,097 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:17:46] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 15:17:56,700 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:17:56] "GET /search?q=adjustments HTTP/1.1" 200 -
+2025-05-19 15:17:56,708 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:17:56] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 15:17:56,708 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:17:56] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 15:18:06,789 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:18:06] "GET /search?q=不 HTTP/1.1" 200 -
+2025-05-19 15:18:06,796 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:18:06] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 15:18:06,797 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:18:06] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 15:18:18,842 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:18:18] "GET /search?q=不会 HTTP/1.1" 200 -
+2025-05-19 15:18:18,850 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:18:18] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 15:18:18,851 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:18:18] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 15:18:30,637 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:18:30] "GET /search?q=主播 HTTP/1.1" 200 -
+2025-05-19 15:18:30,646 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:18:30] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 15:18:30,646 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:18:30] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 15:18:39,023 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:18:39] "GET /search?q=你是主播 HTTP/1.1" 200 -
+2025-05-19 15:18:39,031 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:18:39] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 15:18:39,032 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:18:39] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 15:18:52,169 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:18:52] "GET /search?q=你是主播吗 HTTP/1.1" 200 -
+2025-05-19 15:18:52,177 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:18:52] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 15:18:52,177 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:18:52] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 15:19:05,579 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:19:05] "[32mGET /search/delete/3 HTTP/1.1[0m" 302 -
+2025-05-19 15:19:05,585 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:19:05] "GET /search?q= HTTP/1.1" 200 -
+2025-05-19 15:19:05,594 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:19:05] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 15:19:05,595 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:19:05] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 15:19:10,720 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:19:10] "GET /search?q=adjustments HTTP/1.1" 200 -
+2025-05-19 15:19:10,728 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:19:10] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 15:19:10,728 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:19:10] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 15:19:59,841 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:19:59] "[32mGET /search/delete/1 HTTP/1.1[0m" 302 -
+2025-05-19 15:19:59,848 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:19:59] "GET /search?q= HTTP/1.1" 200 -
+2025-05-19 15:19:59,858 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:19:59] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 15:19:59,859 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:19:59] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 15:20:02,027 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:20:02] "GET /search?q=速配中页面信息 HTTP/1.1" 200 -
+2025-05-19 15:20:02,035 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:20:02] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 15:20:02,035 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:20:02] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 15:20:05,811 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:20:05] "[32mGET /search/delete/2 HTTP/1.1[0m" 302 -
+2025-05-19 15:20:05,818 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:20:05] "GET /search?q= HTTP/1.1" 200 -
+2025-05-19 15:20:05,827 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:20:05] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 15:20:05,827 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:20:05] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 15:20:08,967 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:20:08] "GET /search?q=主播 HTTP/1.1" 200 -
+2025-05-19 15:20:08,975 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:20:08] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 15:20:08,976 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:20:08] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 15:20:12,443 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:20:12] "GET /search?q=主播自定义约聊收入入口 HTTP/1.1" 200 -
+2025-05-19 15:20:12,452 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:20:12] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 15:20:12,452 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:20:12] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 15:20:25,997 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:20:25] "GET /search?q=主播 HTTP/1.1" 200 -
+2025-05-19 15:20:26,005 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:20:26] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 15:20:26,006 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:20:26] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 15:20:35,555 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:20:35] "GET /search?q=百度 HTTP/1.1" 200 -
+2025-05-19 15:20:35,564 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:20:35] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 15:20:35,564 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:20:35] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 15:21:21,837 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:21:21] "[32mGET /search/delete/2 HTTP/1.1[0m" 302 -
+2025-05-19 15:21:21,844 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:21:21] "GET /search?q= HTTP/1.1" 200 -
+2025-05-19 15:21:21,853 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:21:21] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 15:21:21,853 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:21:21] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 15:21:25,042 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:21:25] "GET /search?q=百度 HTTP/1.1" 200 -
+2025-05-19 15:21:25,050 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:21:25] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 15:21:25,051 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:21:25] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 15:21:27,383 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:21:27] "GET /search?q=百度 HTTP/1.1" 200 -
+2025-05-19 15:21:27,391 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:21:27] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 15:21:27,391 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:21:27] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 15:21:29,977 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:21:29] "GET /search?q=百度 HTTP/1.1" 200 -
+2025-05-19 15:21:29,985 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:21:29] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 15:21:29,985 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:21:29] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 15:21:31,426 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:21:31] "GET /search?q=百度 HTTP/1.1" 200 -
+2025-05-19 15:21:31,434 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:21:31] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 15:21:31,434 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:21:31] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 15:21:33,349 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:21:33] "GET / HTTP/1.1" 200 -
+2025-05-19 15:21:33,357 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:21:33] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 15:21:33,358 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:21:33] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 15:21:34,496 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:21:34] "GET /search?q= HTTP/1.1" 200 -
+2025-05-19 15:21:34,505 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:21:34] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 15:21:34,505 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:21:34] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 15:21:39,419 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:21:39] "GET /search?q=adjustments HTTP/1.1" 200 -
+2025-05-19 15:21:39,427 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:21:39] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 15:21:39,428 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:21:39] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 15:21:50,083 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:21:50] "GET / HTTP/1.1" 200 -
+2025-05-19 15:21:50,093 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:21:50] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 15:21:50,094 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:21:50] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 15:21:50,715 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:21:50] "GET /search?q= HTTP/1.1" 200 -
+2025-05-19 15:21:50,724 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:21:50] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 15:21:50,724 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:21:50] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 15:21:54,398 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:21:54] "GET /search?q=adjustments HTTP/1.1" 200 -
+2025-05-19 15:21:54,407 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:21:54] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 15:21:54,407 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:21:54] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 15:22:30,875 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:22:30] "GET /document/277?q=adjustments HTTP/1.1" 200 -
+2025-05-19 15:22:30,883 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:22:30] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 15:22:30,891 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:22:30] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 15:22:30,891 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:22:30] "[36mGET /static/js/search-navigator.js HTTP/1.1[0m" 304 -
+2025-05-19 15:22:37,600 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:22:37] "GET /search?q=adjustments HTTP/1.1" 200 -
+2025-05-19 15:22:38,504 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:22:38] "GET /document/277?q=adjustments HTTP/1.1" 200 -
+2025-05-19 15:22:38,512 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:22:38] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 15:22:38,516 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:22:38] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 15:22:38,517 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:22:38] "[36mGET /static/js/search-navigator.js HTTP/1.1[0m" 304 -
+2025-05-19 15:22:41,129 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:22:41] "GET /search?q=adjustments HTTP/1.1" 200 -
+2025-05-19 15:23:38,365 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:23:38] "[32mGET /search/delete/3 HTTP/1.1[0m" 302 -
+2025-05-19 15:23:38,372 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:23:38] "GET /search?q= HTTP/1.1" 200 -
+2025-05-19 15:23:38,382 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:23:38] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 15:23:38,382 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:23:38] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 15:24:07,468 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:24:07] "GET /search?q=百度 HTTP/1.1" 200 -
+2025-05-19 15:24:07,477 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:24:07] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 15:24:07,477 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:24:07] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 15:24:32,105 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:24:32] "[32mGET /search/delete/2 HTTP/1.1[0m" 302 -
+2025-05-19 15:24:32,112 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:24:32] "GET /search?q= HTTP/1.1" 200 -
+2025-05-19 15:24:32,121 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:24:32] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 15:24:32,121 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:24:32] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 15:24:34,582 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:24:34] "GET /search?q=百度 HTTP/1.1" 200 -
+2025-05-19 15:24:34,590 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:24:34] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 15:24:34,591 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:24:34] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 15:24:39,365 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:24:39] "GET /search?q=百度 HTTP/1.1" 200 -
+2025-05-19 15:24:39,374 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:24:39] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 15:24:39,375 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:24:39] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 15:24:40,173 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:24:40] "GET /search?q= HTTP/1.1" 200 -
+2025-05-19 15:24:41,207 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:24:41] "GET /search?q=百度 HTTP/1.1" 200 -
+2025-05-19 15:24:42,553 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:24:42] "GET / HTTP/1.1" 200 -
+2025-05-19 15:24:42,562 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:24:42] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 15:24:42,562 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:24:42] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 15:24:43,680 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:24:43] "GET / HTTP/1.1" 200 -
+2025-05-19 15:24:43,690 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:24:43] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 15:24:43,690 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:24:43] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 15:24:54,733 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:24:54] "GET /search?q= HTTP/1.1" 200 -
+2025-05-19 15:24:54,742 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:24:54] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 15:24:54,742 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:24:54] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 15:25:00,536 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:25:00] "GET /search?q=主播 HTTP/1.1" 200 -
+2025-05-19 15:25:00,545 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:25:00] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 15:25:00,545 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:25:00] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 15:25:05,691 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:25:05] "GET /search?q=主播激励功能 HTTP/1.1" 200 -
+2025-05-19 15:25:05,699 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:25:05] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 15:25:05,700 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:25:05] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 15:28:13,948 - werkzeug - INFO -  * Detected change in 'D:\\tools\\Pycharm\\PycharmWork\\DocRadar\\app.py', reloading
+2025-05-19 15:28:14,011 - werkzeug - INFO -  * Restarting with stat
+2025-05-19 15:28:14,501 - werkzeug - WARNING -  * Debugger is active!
+2025-05-19 15:28:14,505 - werkzeug - INFO -  * Debugger PIN: 738-969-985
+2025-05-19 15:28:14,586 - werkzeug - INFO -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2025-05-19 15:29:37,398 - werkzeug - INFO -  * Detected change in 'D:\\tools\\Pycharm\\PycharmWork\\DocRadar\\app.py', reloading
+2025-05-19 15:29:37,437 - werkzeug - INFO -  * Restarting with stat
+2025-05-19 15:29:37,932 - werkzeug - WARNING -  * Debugger is active!
+2025-05-19 15:29:37,937 - werkzeug - INFO -  * Debugger PIN: 738-969-985
+2025-05-19 15:29:38,043 - werkzeug - INFO -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2025-05-19 15:29:48,532 - werkzeug - INFO -  * Restarting with stat
+2025-05-19 15:29:49,010 - werkzeug - WARNING -  * Debugger is active!
+2025-05-19 15:29:49,014 - werkzeug - INFO -  * Debugger PIN: 738-969-985
+2025-05-19 15:29:49,095 - werkzeug - INFO -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2025-05-19 15:59:39,030 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:59:39] "GET / HTTP/1.1" 200 -
+2025-05-19 15:59:39,272 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:59:39] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 15:59:39,273 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:59:39] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 15:59:43,941 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:59:43] "GET /search?q=adjustments HTTP/1.1" 200 -
+2025-05-19 15:59:43,950 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:59:43] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 15:59:43,950 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:59:43] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 15:59:48,282 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:59:48] "GET /search?q=速配中页面信息 HTTP/1.1" 200 -
+2025-05-19 15:59:48,293 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:59:48] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 15:59:48,293 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:59:48] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 15:59:57,200 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:59:57] "GET /search?q=百度 HTTP/1.1" 200 -
+2025-05-19 15:59:57,211 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:59:57] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 15:59:57,212 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:59:57] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 16:00:01,532 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:00:01] "[32mGET /search/delete/3?q=百度 HTTP/1.1[0m" 302 -
+2025-05-19 16:00:01,557 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:00:01] "GET /search?q=百度 HTTP/1.1" 200 -
+2025-05-19 16:00:01,566 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:00:01] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 16:00:01,567 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:00:01] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 16:00:12,927 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:00:12] "[32mGET /search/delete/2?q=百度 HTTP/1.1[0m" 302 -
+2025-05-19 16:00:12,946 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:00:12] "GET /search?q=百度 HTTP/1.1" 200 -
+2025-05-19 16:00:12,958 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:00:12] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 16:00:12,958 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:00:12] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 16:00:16,343 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:00:16] "[32mGET /search/delete/3?q=百度 HTTP/1.1[0m" 302 -
+2025-05-19 16:00:16,362 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:00:16] "GET /search?q=百度 HTTP/1.1" 200 -
+2025-05-19 16:00:16,373 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:00:16] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 16:00:16,373 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:00:16] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 16:03:51,488 - werkzeug - INFO -  * Detected change in 'D:\\tools\\Pycharm\\PycharmWork\\DocRadar\\app.py', reloading
+2025-05-19 16:03:51,574 - werkzeug - INFO -  * Restarting with stat
+2025-05-19 16:03:52,108 - werkzeug - WARNING -  * Debugger is active!
+2025-05-19 16:03:52,112 - werkzeug - INFO -  * Debugger PIN: 738-969-985
+2025-05-19 16:03:52,199 - werkzeug - INFO -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2025-05-19 16:05:27,593 - werkzeug - INFO -  * Restarting with stat
+2025-05-19 16:05:28,105 - werkzeug - WARNING -  * Debugger is active!
+2025-05-19 16:05:28,110 - werkzeug - INFO -  * Debugger PIN: 738-969-985
+2025-05-19 16:05:28,198 - werkzeug - INFO -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2025-05-19 16:07:24,707 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:07:24] "GET / HTTP/1.1" 200 -
+2025-05-19 16:07:25,015 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:07:25] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 16:07:25,077 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:07:25] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 16:07:37,292 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:07:37] "GET /search?q=adjustments HTTP/1.1" 200 -
+2025-05-19 16:07:37,302 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:07:37] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 16:07:37,302 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:07:37] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 16:07:52,130 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:07:52] "GET /search?q=百度 HTTP/1.1" 200 -
+2025-05-19 16:07:52,139 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:07:52] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 16:07:52,140 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:07:52] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 16:07:54,942 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:07:54] "GET /search/delete/2?q=百度 HTTP/1.1" 200 -
+2025-05-19 16:07:54,963 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:07:54] "GET /search?q=百度 HTTP/1.1" 200 -
+2025-05-19 16:07:54,973 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:07:54] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 16:07:54,974 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:07:54] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 16:08:03,392 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:08:03] "GET /search?q=百度 HTTP/1.1" 200 -
+2025-05-19 16:08:03,400 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:08:03] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 16:08:03,400 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:08:03] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 16:08:07,498 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:08:07] "GET /search/delete/2?q=百度 HTTP/1.1" 200 -
+2025-05-19 16:08:07,520 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:08:07] "GET /search?q=百度 HTTP/1.1" 200 -
+2025-05-19 16:08:07,529 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:08:07] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 16:08:07,529 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:08:07] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 16:13:02,599 - werkzeug - INFO -  * Restarting with stat
+2025-05-19 16:13:03,095 - werkzeug - WARNING -  * Debugger is active!
+2025-05-19 16:13:03,100 - werkzeug - INFO -  * Debugger PIN: 738-969-985
+2025-05-19 16:13:03,190 - werkzeug - INFO -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2025-05-19 16:19:54,878 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:19:54] "GET / HTTP/1.1" 200 -
+2025-05-19 16:19:54,919 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:19:54] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 16:19:54,920 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:19:54] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 16:19:57,995 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:19:57] "GET /search?q=adjustments HTTP/1.1" 200 -
+2025-05-19 16:19:58,004 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:19:58] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 16:19:58,005 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:19:58] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 16:20:03,692 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:20:03] "[32mGET /search/clear?q=adjustments HTTP/1.1[0m" 302 -
+2025-05-19 16:20:03,713 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:20:03] "GET /search?q=adjustments HTTP/1.1" 200 -
+2025-05-19 16:20:03,723 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:20:03] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 16:20:03,724 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:20:03] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 16:20:06,020 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:20:06] "GET /search?q=adjustments HTTP/1.1" 200 -
+2025-05-19 16:20:06,028 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:20:06] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 16:20:06,029 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:20:06] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 16:20:08,295 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:20:08] "GET / HTTP/1.1" 200 -
+2025-05-19 16:20:08,305 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:20:08] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 16:20:08,306 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:20:08] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 16:20:10,535 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:20:10] "GET /search?q=adjustments HTTP/1.1" 200 -
+2025-05-19 16:20:10,544 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:20:10] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 16:20:10,545 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:20:10] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 16:20:20,314 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:20:20] "GET /search?q=主播 HTTP/1.1" 200 -
+2025-05-19 16:20:20,324 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:20:20] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 16:20:20,324 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:20:20] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 16:21:22,610 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:21:22] "[32mGET /search/clear?q=主播 HTTP/1.1[0m" 302 -
+2025-05-19 16:21:22,638 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:21:22] "GET /search?q=主播 HTTP/1.1" 200 -
+2025-05-19 16:21:22,649 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:21:22] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 16:21:22,650 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:21:22] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 16:23:13,101 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:23:13] "GET /document/307?q=主播 HTTP/1.1" 200 -
+2025-05-19 16:23:13,110 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:23:13] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 16:23:13,113 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:23:13] "[36mGET /static/doc_images/doc_307/image_mammoth_cc8eb9d099d84867b366cf0d0798c87e_2.png HTTP/1.1[0m" 304 -
+2025-05-19 16:23:13,115 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:23:13] "[36mGET /static/doc_images/doc_307/image_mammoth_c0e198ee3bc44213b0c15b0be13637ec_3.png HTTP/1.1[0m" 304 -
+2025-05-19 16:23:13,117 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:23:13] "[36mGET /static/doc_images/doc_307/image_mammoth_865b6d89cd9348e39b4006c49f3b6024_1.png HTTP/1.1[0m" 304 -
+2025-05-19 16:23:13,117 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:23:13] "[36mGET /static/doc_images/doc_307/image_mammoth_6689d7511f6543e199934e1e9090205b_4.png HTTP/1.1[0m" 304 -
+2025-05-19 16:23:13,119 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:23:13] "[36mGET /static/doc_images/doc_307/image_mammoth_1e1f2266ebad48298f1f4bb98c0732fa_5.png HTTP/1.1[0m" 304 -
+2025-05-19 16:23:13,120 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:23:13] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 16:23:13,123 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:23:13] "[36mGET /static/js/search-navigator.js HTTP/1.1[0m" 304 -
+2025-05-19 16:23:43,369 - werkzeug - INFO -  * Detected change in 'D:\\tools\\Pycharm\\PycharmWork\\DocRadar\\app.py', reloading
+2025-05-19 16:23:43,419 - werkzeug - INFO -  * Restarting with stat
+2025-05-19 16:23:43,920 - werkzeug - WARNING -  * Debugger is active!
+2025-05-19 16:23:43,925 - werkzeug - INFO -  * Debugger PIN: 738-969-985
+2025-05-19 16:23:44,012 - werkzeug - INFO -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2025-05-19 16:23:49,674 - werkzeug - INFO -  * Restarting with stat
+2025-05-19 16:23:50,177 - werkzeug - WARNING -  * Debugger is active!
+2025-05-19 16:23:50,181 - werkzeug - INFO -  * Debugger PIN: 738-969-985
+2025-05-19 16:23:50,273 - werkzeug - INFO -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2025-05-19 16:24:32,241 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:24:32] "GET / HTTP/1.1" 200 -
+2025-05-19 16:24:32,513 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:24:32] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 16:24:32,515 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:24:32] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 16:24:35,898 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:24:35] "GET /search?q=adjustments HTTP/1.1" 200 -
+2025-05-19 16:24:35,908 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:24:35] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 16:24:35,909 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:24:35] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 16:25:28,028 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:25:28] "GET /search?q=adjustments HTTP/1.1" 200 -
+2025-05-19 16:25:28,037 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:25:28] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 16:25:28,038 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:25:28] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 16:25:32,459 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:25:32] "GET /search?q=百度 HTTP/1.1" 200 -
+2025-05-19 16:25:32,469 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:25:32] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 16:25:32,470 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:25:32] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 16:25:36,616 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:25:36] "GET /search/delete/2?q=百度 HTTP/1.1" 200 -
+2025-05-19 16:25:43,164 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:25:43] "GET /search?q=百度沙发的 HTTP/1.1" 200 -
+2025-05-19 16:25:43,175 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:25:43] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 16:25:43,175 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:25:43] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 16:25:48,618 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:25:48] "GET /search/clear?q=百度沙发的 HTTP/1.1" 200 -
+2025-05-19 16:25:48,642 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:25:48] "GET /search?q=百度沙发的 HTTP/1.1" 200 -
+2025-05-19 16:25:48,652 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:25:48] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 16:25:48,653 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:25:48] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 16:25:54,321 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:25:54] "GET /search/delete/1?q=百度沙发的 HTTP/1.1" 200 -
+2025-05-19 16:25:54,843 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:25:54] "GET /search?q=百度沙发的 HTTP/1.1" 200 -
+2025-05-19 16:25:54,851 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:25:54] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 16:25:54,852 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:25:54] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 16:25:58,621 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:25:58] "GET /search/delete/1?q=百度沙发的 HTTP/1.1" 200 -
+2025-05-19 16:25:59,142 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:25:59] "GET /search?q=百度沙发的 HTTP/1.1" 200 -
+2025-05-19 16:25:59,150 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:25:59] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 16:25:59,150 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:25:59] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 16:26:03,033 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:26:03] "GET /search?q=adjustments HTTP/1.1" 200 -
+2025-05-19 16:26:03,042 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:26:03] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 16:26:03,043 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:26:03] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 16:26:05,065 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:26:05] "GET /search/delete/1?q=adjustments HTTP/1.1" 200 -
+2025-05-19 16:26:13,239 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:26:13] "GET /search/clear?q=adjustments HTTP/1.1" 200 -
+2025-05-19 16:26:13,263 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:26:13] "GET /search?q=adjustments HTTP/1.1" 200 -
+2025-05-19 16:26:13,273 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:26:13] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 16:26:13,274 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:26:13] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 16:26:20,733 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:26:20] "GET /search/clear?q=adjustments HTTP/1.1" 200 -
+2025-05-19 16:26:20,764 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:26:20] "GET /search?q=adjustments HTTP/1.1" 200 -
+2025-05-19 16:26:20,774 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:26:20] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 16:26:20,774 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:26:20] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 16:26:58,864 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:26:58] "GET / HTTP/1.1" 200 -
+2025-05-19 16:26:58,876 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:26:58] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 16:26:58,876 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:26:58] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 16:27:00,964 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:27:00] "GET /search?q=adjustments HTTP/1.1" 200 -
+2025-05-19 16:27:00,975 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:27:00] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 16:27:00,975 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:27:00] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 16:27:03,585 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:27:03] "GET /search/clear?q=adjustments HTTP/1.1" 200 -
+2025-05-19 16:27:03,608 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:27:03] "GET /search?q=adjustments HTTP/1.1" 200 -
+2025-05-19 16:27:03,618 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:27:03] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 16:27:03,618 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:27:03] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 16:27:40,406 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:27:40] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 16:27:40,415 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:27:40] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
+2025-05-19 16:27:44,716 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:27:44] "GET /search?q=adjustments HTTP/1.1" 200 -
+2025-05-19 16:27:44,726 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:27:44] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 16:27:44,726 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:27:44] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 16:27:44,746 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:27:44] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
+2025-05-19 16:27:50,506 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:27:50] "GET /search/clear?q=adjustments HTTP/1.1" 200 -
+2025-05-19 16:27:50,529 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:27:50] "GET /search?q=adjustments HTTP/1.1" 200 -
+2025-05-19 16:27:50,541 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:27:50] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 16:27:50,542 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:27:50] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 16:27:50,556 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:27:50] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
+2025-05-19 16:28:44,284 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:28:44] "GET /search/delete/1?q=adjustments HTTP/1.1" 200 -
+2025-05-19 16:28:44,807 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:28:44] "GET /search?q=adjustments HTTP/1.1" 200 -
+2025-05-19 16:28:44,817 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:28:44] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 16:28:44,817 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:28:44] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 16:28:51,129 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:28:51] "GET /search/delete/1?q=adjustments HTTP/1.1" 200 -
+2025-05-19 16:28:51,661 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:28:51] "GET /search?q=adjustments HTTP/1.1" 200 -
+2025-05-19 16:28:51,672 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:28:51] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 16:28:51,672 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:28:51] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 16:30:33,375 - werkzeug - INFO -  * Detected change in 'D:\\tools\\Pycharm\\PycharmWork\\DocRadar\\app.py', reloading
+2025-05-19 16:30:33,461 - werkzeug - INFO -  * Restarting with stat
+2025-05-19 16:30:33,984 - werkzeug - WARNING -  * Debugger is active!
+2025-05-19 16:30:33,990 - werkzeug - INFO -  * Debugger PIN: 738-969-985
+2025-05-19 16:30:34,080 - werkzeug - INFO -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2025-05-19 16:31:25,066 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:31:25] "GET / HTTP/1.1" 200 -
+2025-05-19 16:31:25,373 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:31:25] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 16:31:25,389 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:31:25] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 16:31:27,990 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:31:27] "GET /search?q=adjustments HTTP/1.1" 200 -
+2025-05-19 16:31:27,998 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:31:27] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 16:31:27,999 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:31:27] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 16:31:33,973 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:31:33] "GET /search/delete/1?q=adjustments HTTP/1.1" 200 -
+2025-05-19 16:31:34,496 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:31:34] "GET /search?q=adjustments HTTP/1.1" 200 -
+2025-05-19 16:31:34,505 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:31:34] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 16:31:34,506 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:31:34] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 16:31:39,912 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:31:39] "GET /search/delete/1?q=adjustments HTTP/1.1" 200 -
+2025-05-19 16:31:40,434 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:31:40] "GET /search?q=adjustments HTTP/1.1" 200 -
+2025-05-19 16:31:40,443 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:31:40] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 16:31:40,443 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:31:40] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 16:31:45,126 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:31:45] "GET /search/clear?q=adjustments HTTP/1.1" 200 -
+2025-05-19 16:31:55,810 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:31:55] "GET /search?q=adjustments HTTP/1.1" 200 -
+2025-05-19 16:31:55,820 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:31:55] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 16:31:55,820 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:31:55] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 16:31:59,189 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:31:59] "GET /search/clear?q=adjustments HTTP/1.1" 200 -
+2025-05-19 16:32:52,147 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:32:52] "GET /search?q=adjustments HTTP/1.1" 200 -
+2025-05-19 16:32:52,157 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:32:52] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 16:32:52,158 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:32:52] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 16:32:55,868 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:32:55] "GET /search/clear?q=adjustments HTTP/1.1" 200 -
+2025-05-19 16:32:58,407 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:32:58] "GET /search?q=adjustments HTTP/1.1" 200 -
+2025-05-19 16:32:58,415 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:32:58] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 16:32:58,415 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:32:58] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 16:33:01,264 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:33:01] "GET /search/delete/1?q=adjustments HTTP/1.1" 200 -
+2025-05-19 16:33:01,784 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:33:01] "GET /search?q=adjustments HTTP/1.1" 200 -
+2025-05-19 16:33:01,794 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:33:01] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 16:33:01,794 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:33:01] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 16:33:07,173 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:33:07] "GET /search?q=百度 HTTP/1.1" 200 -
+2025-05-19 16:33:07,182 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:33:07] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 16:33:07,182 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:33:07] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 16:33:09,390 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:33:09] "GET /search/delete/2?q=百度 HTTP/1.1" 200 -
+2025-05-19 16:34:23,622 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:34:23] "GET /document/277?q=adjustments HTTP/1.1" 200 -
+2025-05-19 16:34:23,632 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:34:23] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 16:34:23,635 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:34:23] "[36mGET /static/doc_images/doc_277/image_mammoth_4ce47cbdeabb4d05a79fe98c5bba9e4e_2.png HTTP/1.1[0m" 304 -
+2025-05-19 16:34:23,640 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:34:23] "[36mGET /static/doc_images/doc_277/image_mammoth_fef5179f8ab94428b0dfd9e33b64068f_1.png HTTP/1.1[0m" 304 -
+2025-05-19 16:34:23,643 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:34:23] "[36mGET /static/doc_images/doc_277/image_mammoth_c4ce219bb95f407ebf5c0f57bb8ef942_3.png HTTP/1.1[0m" 304 -
+2025-05-19 16:34:23,643 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:34:23] "[36mGET /static/doc_images/doc_277/image_mammoth_fd3ea894bf1148ba8c25f5463129494f_4.png HTTP/1.1[0m" 304 -
+2025-05-19 16:34:23,646 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:34:23] "[36mGET /static/doc_images/doc_277/image_mammoth_73197e0d96e6443582c880c4fd2ebeff_5.png HTTP/1.1[0m" 304 -
+2025-05-19 16:34:23,648 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:34:23] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 16:34:23,652 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:34:23] "[36mGET /static/js/search-navigator.js HTTP/1.1[0m" 304 -
+2025-05-19 16:34:23,656 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:34:23] "[36mGET /static/doc_images/doc_277/image_mammoth_72b8227ccb2d4344a28cde829e3e9423_6.png HTTP/1.1[0m" 304 -
+2025-05-19 16:34:23,658 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:34:23] "[36mGET /static/doc_images/doc_277/image_mammoth_cb9134a0595b4e9a92bd9b906b614171_7.png HTTP/1.1[0m" 304 -
+2025-05-19 16:34:23,660 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:34:23] "[36mGET /static/doc_images/doc_277/image_mammoth_b985758e42b345e297f469be9245430b_8.png HTTP/1.1[0m" 304 -
+2025-05-19 16:34:23,662 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:34:23] "[36mGET /static/doc_images/doc_277/image_mammoth_343cdd755ca24d97a8870516f617de73_9.png HTTP/1.1[0m" 304 -
+2025-05-19 16:34:23,664 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:34:23] "[36mGET /static/doc_images/doc_277/image_mammoth_29a6bd0b68a549618a7d20e561056d68_10.png HTTP/1.1[0m" 304 -
+2025-05-19 16:34:23,666 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:34:23] "[36mGET /static/doc_images/doc_277/image_mammoth_736b8f4fc8aa45e88e4cd464062bc2eb_11.png HTTP/1.1[0m" 304 -
+2025-05-19 16:34:23,669 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:34:23] "[36mGET /static/doc_images/doc_277/image_mammoth_c9102026f1da41da8fa7aa4261b386a1_12.png HTTP/1.1[0m" 304 -
+2025-05-19 16:34:23,673 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:34:23] "[36mGET /static/doc_images/doc_277/image_mammoth_4fa92e2fe1fa4260984c055dbf2fd384_13.png HTTP/1.1[0m" 304 -
+2025-05-19 16:34:23,674 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:34:23] "[36mGET /static/doc_images/doc_277/image_mammoth_605d1974546f4de1beafa0f0f96e1c06_14.png HTTP/1.1[0m" 304 -
+2025-05-19 16:34:23,676 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:34:23] "[36mGET /static/doc_images/doc_277/image_mammoth_ad4b0df5b7944709bd20cbe3d8463a48_15.png HTTP/1.1[0m" 304 -
+2025-05-19 16:34:23,679 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:34:23] "[36mGET /static/doc_images/doc_277/image_mammoth_498731b803c044828252de5a34487815_16.png HTTP/1.1[0m" 304 -
+2025-05-19 16:34:23,681 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:34:23] "[36mGET /static/doc_images/doc_277/image_mammoth_98d81bfe694c4eee9b07879e91d4ec3d_17.png HTTP/1.1[0m" 304 -
+2025-05-19 16:34:23,683 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:34:23] "[36mGET /static/doc_images/doc_277/image_mammoth_6e1422a1baee464f8f814c7510944b13_18.png HTTP/1.1[0m" 304 -
+2025-05-19 16:34:23,684 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:34:23] "[36mGET /static/doc_images/doc_277/image_mammoth_b67dbff9417e4f6283c8031ed94ce97d_19.png HTTP/1.1[0m" 304 -
+2025-05-19 16:41:31,331 - werkzeug - INFO -  * Restarting with stat
+2025-05-19 16:41:31,872 - werkzeug - WARNING -  * Debugger is active!
+2025-05-19 16:41:31,876 - werkzeug - INFO -  * Debugger PIN: 738-969-985
+2025-05-19 16:41:31,980 - werkzeug - INFO -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2025-05-19 16:41:33,930 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:41:33] "GET / HTTP/1.1" 200 -
+2025-05-19 16:41:34,240 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:41:34] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 16:41:34,282 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:41:34] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 16:46:33,331 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:46:33] "GET / HTTP/1.1" 200 -
+2025-05-19 16:46:33,353 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:46:33] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 16:46:33,354 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:46:33] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 16:46:34,918 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:46:34] "GET / HTTP/1.1" 200 -
+2025-05-19 16:46:34,937 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:46:34] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 16:46:34,937 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:46:34] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 16:46:37,756 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:46:37] "GET / HTTP/1.1" 200 -
+2025-05-19 16:46:37,775 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:46:37] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 16:46:37,775 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:46:37] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 16:46:44,915 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:46:44] "GET / HTTP/1.1" 200 -
+2025-05-19 16:46:44,947 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:46:44] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 16:46:45,163 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:46:45] "GET /static/js/main.js HTTP/1.1" 200 -
+2025-05-19 16:46:48,181 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:46:48] "GET /search?q=adjustments HTTP/1.1" 200 -
+2025-05-19 16:46:48,204 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:46:48] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 16:46:48,409 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:46:48] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 16:46:53,124 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:46:53] "GET /search/delete/1?q=adjustments HTTP/1.1" 200 -
+2025-05-19 16:47:00,962 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:47:00] "GET /search?q=adjustments HTTP/1.1" 200 -
+2025-05-19 16:47:01,253 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:47:01] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 16:47:01,276 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:47:01] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 16:47:03,446 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:47:03] "GET /search/clear?q=adjustments HTTP/1.1" 200 -
+2025-05-19 16:48:52,953 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:48:52] "GET /api/check-file?filename=五十七期Duoov5.8.4.docx HTTP/1.1" 200 -
+2025-05-19 16:48:52,959 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:48:52] "GET /api/check-file?filename=五十六期Duoov5.7.4.docx HTTP/1.1" 200 -
+2025-05-19 16:48:52,963 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:48:52] "GET /api/check-file?filename=五十五期Duoov5.6.4.docx HTTP/1.1" 200 -
+2025-05-19 16:48:52,968 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:48:52] "GET /api/check-file?filename=五十四期Duoov5.6.5.docx HTTP/1.1" 200 -
+2025-05-19 16:48:52,973 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:48:52] "GET /api/check-file?filename=五十三期Duoov5.6.4.docx HTTP/1.1" 200 -
+2025-05-19 16:48:52,978 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:48:52] "GET /api/check-file?filename=五十二期Duoov5.6.3.docx HTTP/1.1" 200 -
+2025-05-19 16:48:52,982 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:48:52] "GET /api/check-file?filename=五十一期Duoov5.6.2.docx HTTP/1.1" 200 -
+2025-05-19 16:48:52,987 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:48:52] "GET /api/check-file?filename=五十期Duoov5.6.0.docx HTTP/1.1" 200 -
+2025-05-19 16:48:52,991 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:48:52] "GET /api/check-file?filename=四十九期Duoov5.5.0.docx HTTP/1.1" 200 -
+2025-05-19 16:48:52,994 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:48:52] "GET /api/check-file?filename=四十八期Duoov5.4.0.docx HTTP/1.1" 200 -
+2025-05-19 16:48:52,998 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:48:52] "GET /api/check-file?filename=四十七期Duoov5.3.0.docx HTTP/1.1" 200 -
+2025-05-19 16:48:53,003 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:48:53] "GET /api/check-file?filename=四十六期Duoov5.2.0.docx HTTP/1.1" 200 -
+2025-05-19 16:48:53,008 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:48:53] "GET /api/check-file?filename=四十五期Duoov5.1.0.docx HTTP/1.1" 200 -
+2025-05-19 16:48:53,011 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:48:53] "GET /api/check-file?filename=四十四期Duoov5.0.0.docx HTTP/1.1" 200 -

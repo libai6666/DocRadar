@@ -1,10 +1,28 @@
+# Web框架
 Flask==2.0.1
 Werkzeug==2.0.1
+Flask-Session==0.4.0
+Jinja2==3.0.1
+itsdangerous==2.0.1
+
+# 文档解析
 PyPDF2==2.6.0
 python-docx==0.8.11
 pdfplumber==0.7.0
+mammoth==1.5.1
+
+# 搜索引擎
 Whoosh==2.7.4
-python-magic==0.4.24
-python-docx==0.8.11
-Pillow>=9.1
-mammoth==1.5.1 
+
+# 文件和图像处理
+python-magic==0.4.24  # Linux和Mac
+# python-magic-bin==0.4.14  # Windows系统取消注释此行
+Pillow>=9.1.0
+
+# 实用工具
+markupsafe==2.0.1
+click==8.0.1
+
+# 日志和调试
+six==1.16.0
+urllib3==1.26.6 

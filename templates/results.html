@@ -24,6 +24,51 @@
         .search-content.active {
             display: block;
         }
+        /* 标签样式 */
+        .nav-tabs .nav-link {
+            position: relative;
+            display: flex;
+            align-items: center;
+            padding-right: 28px; /* 为关闭图标预留空间 */
+        }
+        /* 删除按钮样式 */
+        .tab-close-icon {
+            position: absolute;
+            right: 6px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #dc3545;
+            background-color: transparent;
+            border-radius: 4px;
+            width: 18px;
+            height: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0.7;
+            font-size: 12px;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: 1px solid transparent;
+        }
+        .nav-tabs .nav-link:hover .tab-close-icon {
+            opacity: 1;
+            border-color: #dc3545;
+            background-color: rgba(220, 53, 69, 0.1);
+        }
+        .tab-close-icon:hover {
+            background-color: #dc3545;
+            color: white;
+            opacity: 1;
+            border-color: #dc3545;
+        }
+        /* 确保标签页内容样式正确 */
+        .tab-content .tab-pane {
+            display: none;
+        }
+        .tab-content .tab-pane.active {
+            display: block;
+        }
         /* 添加Chrome特定的样式修复 */
         @supports (-webkit-appearance: none) {
             .nav-tabs .nav-link {
@@ -91,33 +136,32 @@
                         <div class="d-flex justify-content-between align-items-center">
                             <ul class="nav nav-tabs card-header-tabs" id="searchTabs" role="tablist">
                                 {% for history in search_history %}
-                                <li class="nav-item" role="presentation">
-                                    <div class="d-flex align-items-center">
-                                        <button class="nav-link {% if loop.last %}active{% endif %}" 
-                                                id="search-tab-{{ history.id }}" 
-                                                data-bs-toggle="tab"
-                                                data-bs-target="#search-content-{{ history.id }}" 
-                                                type="button" 
-                                                role="tab">
-                                            <i class="bi bi-search"></i>
-                                            "{{ history.query }}"
-                                            <small class="text-muted">({{ history.timestamp }})</small>
-                                        </button>
-                                        <a href="{{ url_for('delete_search_history', history_id=history.id) }}" 
-                                           class="btn btn-sm btn-outline-danger ms-1" 
+                                <li class="nav-item" role="presentation" id="tab-item-{{ history.id }}">
+                                    <button class="nav-link {% if history.query == query %}active{% endif %}" 
+                                            id="search-tab-{{ history.id }}" 
+                                            data-bs-toggle="tab"
+                                            data-bs-target="#search-content-{{ history.id }}" 
+                                            type="button" 
+                                            role="tab"
+                                            aria-controls="search-content-{{ history.id }}"
+                                            aria-selected="{% if history.query == query %}true{% else %}false{% endif %}">
+                                        <i class="bi bi-search"></i>
+                                        <span class="tab-text">"{{ history.query }}"</span>
+                                        <small class="text-muted d-none d-sm-inline">({{ history.timestamp }})</small>
+                                        
+                                        <!-- 更明显的删除图标 -->
+                                        <i class="bi bi-x-lg tab-close-icon" 
                                            title="删除此搜索记录"
-                                           onclick="return confirm('确定要删除这条搜索记录吗？');">
-                                            <i class="bi bi-x"></i>
-                                        </a>
-                                    </div>
+                                           data-history-id="{{ history.id }}"></i>
+                                    </button>
                                 </li>
                                 {% endfor %}
                             </ul>
                             {% if search_history %}
-                            <a href="{{ url_for('clear_search_history') }}" 
-                               class="btn btn-sm btn-outline-secondary" 
+                            <a href="{{ url_for('clear_search_history', q=query) }}" 
+                               class="btn btn-sm btn-outline-danger" 
                                title="清空所有搜索记录"
-                               onclick="return confirm('确定要清空所有搜索记录吗？');">
+                               id="clear-all-history">
                                 <i class="bi bi-trash"></i> 清空历史
                             </a>
                             {% endif %}
@@ -126,9 +170,10 @@
                     <div class="card-body">
                         <div class="tab-content" id="searchTabsContent">
                             {% for history in search_history %}
-                            <div class="tab-pane fade {% if loop.last %}show active{% endif %}" 
+                            <div class="tab-pane fade {% if history.query == query %}show active{% endif %}" 
                                  id="search-content-{{ history.id }}" 
-                                 role="tabpanel">
+                                 role="tabpanel"
+                                 aria-labelledby="search-tab-{{ history.id }}">
                                 <div class="d-flex justify-content-between align-items-center mb-3">
                                     <h5 class="mb-0">搜索结果: "{{ history.query }}"</h5>
                                     <span class="badge bg-primary">{{ history.results|length }} 个结果</span>
@@ -214,15 +259,272 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK" crossorigin="anonymous"></script>
     <script src="{{ url_for('static', filename='js/main.js') }}"></script>
     <script>
-    // Chrome兼容性修复
-    if (navigator.userAgent.indexOf('Chrome') > -1) {
-        // 修复Chrome下的tab切换问题
-        $(document).ready(function() {
-            $('.nav-tabs .nav-link').on('click', function(e) {
+    document.addEventListener('DOMContentLoaded', function() {
+        // 设置所有提示消息3秒后自动消失
+        setupAutoFadeAlerts();
+        
+        // 修复标签切换问题
+        const searchTabs = document.querySelectorAll('#searchTabs .nav-link');
+        const tabPanes = document.querySelectorAll('.tab-pane');
+        
+        // 为每个标签添加点击事件处理
+        searchTabs.forEach(function(tab) {
+            tab.addEventListener('click', function(e) {
                 e.preventDefault();
-                $(this).tab('show');
+                
+                // 移除所有标签和面板的激活状态
+                searchTabs.forEach(function(t) {
+                    t.classList.remove('active');
+                    t.setAttribute('aria-selected', 'false');
+                });
+                
+                tabPanes.forEach(function(pane) {
+                    pane.classList.remove('show', 'active');
+                });
+                
+                // 激活当前标签和对应面板
+                this.classList.add('active');
+                this.setAttribute('aria-selected', 'true');
+                
+                const targetId = this.getAttribute('data-bs-target');
+                const targetPane = document.querySelector(targetId);
+                if (targetPane) {
+                    targetPane.classList.add('show', 'active');
+                }
             });
         });
+        
+        // 为所有删除图标添加点击事件
+        const closeIcons = document.querySelectorAll('.tab-close-icon');
+        closeIcons.forEach(function(icon) {
+            icon.addEventListener('click', function(e) {
+                e.stopPropagation(); // 阻止事件冒泡到标签
+                const historyId = this.getAttribute('data-history-id');
+                deleteSearchHistory(historyId);
+            });
+        });
+        
+        // 为清空历史按钮添加AJAX处理
+        const clearAllBtn = document.getElementById('clear-all-history');
+        if (clearAllBtn) {
+            clearAllBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                if (confirm('确定要清空所有搜索记录吗？')) {
+                    const currentQuery = new URLSearchParams(window.location.search).get('q') || '';
+                    const clearUrl = this.getAttribute('href');
+                    
+                    // 禁用按钮防止重复点击
+                    this.setAttribute('disabled', 'disabled');
+                    this.innerHTML = '<i class="bi bi-hourglass-split"></i> 处理中...';
+                    
+                    // 使用fetch API进行AJAX请求
+                    fetch(clearUrl, {
+                        method: 'GET',
+                        headers: {
+                            'X-Requested-With': 'XMLHttpRequest'
+                        }
+                    })
+                    .then(function(response) {
+                        if (response.ok) {
+                            return response.json();
+                        }
+                        throw new Error('网络响应异常');
+                    })
+                    .then(function(data) {
+                        if (data.success) {
+                            // 成功清空历史后，直接从DOM中清除所有标签和内容
+                            const tabItems = document.querySelectorAll('#searchTabs .nav-item');
+                            const tabContents = document.querySelectorAll('.tab-pane');
+                            
+                            // 移除所有标签和面板
+                            tabItems.forEach(item => item.remove());
+                            tabContents.forEach(content => content.remove());
+                            
+                            // 移除清空历史按钮
+                            clearAllBtn.remove();
+                            
+                            // 显示成功消息
+                            const alertDiv = document.createElement('div');
+                            alertDiv.className = 'alert alert-info alert-dismissible fade show';
+                            alertDiv.innerHTML = `
+                                ${data.message}
+                                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                            `;
+                            document.querySelector('.container.mt-4').insertBefore(alertDiv, document.querySelector('.container.mt-4').firstChild);
+                            
+                            // 应用自动消失效果
+                            setupAutoFadeAlerts();
+                            
+                            // 显示无搜索记录状态
+                            const noResultsDiv = document.createElement('div');
+                            noResultsDiv.className = 'no-results text-center py-5';
+                            noResultsDiv.innerHTML = `
+                                <i class="bi bi-search display-1 text-muted"></i>
+                                <h3 class="mt-3">暂无搜索记录</h3>
+                                <p class="text-muted">
+                                    请在上方输入关键词开始搜索。
+                                </p>
+                                <a href="{{ url_for('index') }}" class="btn btn-primary mt-2">
+                                    返回首页
+                                </a>
+                            `;
+                            document.querySelector('.tab-content').innerHTML = '';
+                            document.querySelector('.tab-content').appendChild(noResultsDiv);
+                        } else {
+                            console.error('清空历史失败', data.message);
+                            alert('清空历史失败: ' + data.message);
+                            // 恢复按钮状态
+                            clearAllBtn.removeAttribute('disabled');
+                            clearAllBtn.innerHTML = '<i class="bi bi-trash"></i> 清空历史';
+                        }
+                    })
+                    .catch(function(error) {
+                        console.error('清空历史出错:', error);
+                        alert('清空历史记录时出现错误');
+                        // 恢复按钮状态
+                        clearAllBtn.removeAttribute('disabled');
+                        clearAllBtn.innerHTML = '<i class="bi bi-trash"></i> 清空历史';
+                    });
+                }
+            });
+        }
+        
+        // 如果URL中有查询参数，激活对应的标签
+        const urlParams = new URLSearchParams(window.location.search);
+        const queryParam = urlParams.get('q');
+        
+        if (queryParam) {
+            // 查找匹配查询参数的标签
+            searchTabs.forEach(function(tab) {
+                const tabTextElement = tab.querySelector('.tab-text');
+                if (tabTextElement) {
+                    const tabText = tabTextElement.textContent.replace(/"/g, '');
+                    if (tabText === queryParam) {
+                        // 模拟点击该标签
+                        tab.click();
+                    }
+                }
+            });
+        } else if (searchTabs.length > 0) {
+            // 如果没有查询参数但有标签，激活第一个标签
+            searchTabs[0].click();
+        }
+    });
+    
+    // 设置所有提示消息3秒后自动消失
+    function setupAutoFadeAlerts() {
+        // 为所有已存在的alert设置自动消失
+        const alerts = document.querySelectorAll('.alert');
+        alerts.forEach(function(alert) {
+            // 设置3秒后自动消失
+            setTimeout(function() {
+                // 使用Bootstrap的关闭方法
+                const bsAlert = new bootstrap.Alert(alert);
+                bsAlert.close();
+            }, 3000);
+        });
+    }
+    
+    // 删除搜索历史记录的处理函数
+    function deleteSearchHistory(historyId) {
+        if (confirm('确定要删除这条搜索记录吗？')) {
+            const currentQuery = new URLSearchParams(window.location.search).get('q') || '';
+            const deleteUrl = "{{ url_for('delete_search_history', history_id=0) }}".replace('0', historyId) + 
+                              (currentQuery ? '?q=' + encodeURIComponent(currentQuery) : '');
+            
+            // 使用fetch API进行AJAX请求
+            fetch(deleteUrl, {
+                method: 'GET',
+                headers: {
+                    'X-Requested-With': 'XMLHttpRequest'
+                }
+            })
+            .then(function(response) {
+                return response.json();
+            })
+            .then(function(data) {
+                if (data.success) {
+                    // 请求成功，直接从DOM中移除相关元素
+                    const tabItem = document.getElementById('tab-item-' + historyId);
+                    const tabContent = document.getElementById('search-content-' + historyId);
+                    
+                    if (tabItem) {
+                        // 检查是否为当前活动标签
+                        const isActive = tabItem.querySelector('.nav-link.active');
+                        
+                        // 移除标签和内容
+                        tabItem.remove();
+                        if (tabContent) {
+                            tabContent.remove();
+                        }
+                        
+                        // 检查是否删除的是最后一个记录
+                        if (document.querySelectorAll('#searchTabs .nav-item').length === 0) {
+                            // 如果是最后一个记录，显示空状态而不是刷新页面
+                            const clearAllBtn = document.getElementById('clear-all-history');
+                            if (clearAllBtn) {
+                                clearAllBtn.remove();
+                            }
+                            
+                            // 显示成功消息
+                            const alertDiv = document.createElement('div');
+                            alertDiv.className = 'alert alert-info alert-dismissible fade show';
+                            alertDiv.innerHTML = `
+                                ${data.message}
+                                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                            `;
+                            document.querySelector('.container.mt-4').insertBefore(alertDiv, document.querySelector('.container.mt-4').firstChild);
+                            
+                            // 应用自动消失效果
+                            setupAutoFadeAlerts();
+                            
+                            // 显示无搜索记录状态
+                            const noResultsDiv = document.createElement('div');
+                            noResultsDiv.className = 'no-results text-center py-5';
+                            noResultsDiv.innerHTML = `
+                                <i class="bi bi-search display-1 text-muted"></i>
+                                <h3 class="mt-3">暂无搜索记录</h3>
+                                <p class="text-muted">
+                                    请在上方输入关键词开始搜索。
+                                </p>
+                                <a href="{{ url_for('index') }}" class="btn btn-primary mt-2">
+                                    返回首页
+                                </a>
+                            `;
+                            document.querySelector('.tab-content').innerHTML = '';
+                            document.querySelector('.tab-content').appendChild(noResultsDiv);
+                        } else {
+                            // 如果被删除的是活动标签且还有其他标签，激活第一个标签
+                            if (isActive) {
+                                const firstTab = document.querySelector('#searchTabs .nav-link');
+                                if (firstTab) {
+                                    firstTab.click();
+                                }
+                            }
+                            
+                            // 显示成功消息
+                            const alertDiv = document.createElement('div');
+                            alertDiv.className = 'alert alert-info alert-dismissible fade show';
+                            alertDiv.innerHTML = `
+                                ${data.message}
+                                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                            `;
+                            document.querySelector('.container.mt-4').insertBefore(alertDiv, document.querySelector('.container.mt-4').firstChild);
+                            
+                            // 应用自动消失效果
+                            setupAutoFadeAlerts();
+                        }
+                    }
+                } else {
+                    console.error('删除失败', data.message);
+                    alert('删除失败: ' + data.message);
+                }
+            })
+            .catch(function(error) {
+                console.error('请求错误:', error);
+                alert('删除过程中出现错误');
+            });
+        }
     }
     </script>
 </body>

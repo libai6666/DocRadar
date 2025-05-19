@@ -464,13 +464,17 @@ def search():
             # 更新已存在的记录
             existing_record['timestamp'] = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
             existing_record['results'] = history_results
-            # 将该记录移到列表末尾（最新）
-            search_history.remove(existing_record)
-            search_history.append(existing_record)
+            # 不改变ID，只更新内容和时间戳
         else:
+            # 分配一个唯一ID（避免ID冲突）
+            max_id = 0
+            for record in search_history:
+                if record.get('id', 0) > max_id:
+                    max_id = record['id']
+            
             # 添加新记录
             search_history.append({
-                'id': len(search_history) + 1,
+                'id': max_id + 1,
                 'query': query,
                 'timestamp': datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
                 'results': history_results
@@ -478,6 +482,8 @@ def search():
         
         # 限制历史记录数量（保留最近10次）
         if len(search_history) > 10:
+            # 按ID排序，保留ID最大的10条记录
+            search_history.sort(key=lambda x: x.get('id', 0))
             search_history = search_history[-10:]
         
         session['search_history'] = search_history
@@ -599,19 +605,89 @@ def api_search():
 @app.route('/search/delete/<int:history_id>')
 def delete_search_history(history_id):
     """删除搜索历史记录"""
+    # 保存当前请求的引用页面或查询参数
+    referer = request.referrer
+    current_query = request.args.get('q', '')
+    success = False
+    
     if 'search_history' in session:
         search_history = session['search_history']
         # 找到并删除指定ID的搜索记录
-        session['search_history'] = [h for h in search_history if h['id'] != history_id]
-        flash('搜索记录已删除')
+        updated_history = [h for h in search_history if h['id'] != history_id]
+        
+        # 检查是否真的删除了记录
+        if len(updated_history) < len(search_history):
+            session['search_history'] = updated_history
+            success = True
+            flash('搜索记录已删除')
+    
+    # 检查是否是AJAX请求
+    is_ajax = request.headers.get('X-Requested-With') == 'XMLHttpRequest'
+    
+    if is_ajax:
+        # 如果是AJAX请求，返回JSON响应
+        return jsonify({
+            'success': success,
+            'history_id': history_id,
+            'message': '搜索记录已删除' if success else '删除失败'
+        })
+    
+    # 对于常规请求，重定向回搜索页面
+    # 优先使用当前查询参数，如果没有则尝试从引用页提取查询参数
+    if current_query:
+        return redirect(url_for('search', q=current_query))
+    elif referer and 'search?q=' in referer:
+        # 从引用URL中提取查询参数
+        try:
+            query_part = referer.split('search?q=')[1].split('&')[0]
+            if query_part:
+                return redirect(url_for('search', q=query_part))
+        except:
+            pass
+    
+    # 如果没有可用查询，返回到搜索页
     return redirect(url_for('search', q=''))
 
 @app.route('/search/clear')
 def clear_search_history():
     """清空所有搜索历史记录"""
+    # 保存当前请求的引用页面或查询参数
+    referer = request.referrer
+    current_query = request.args.get('q', '')
+    
+    # 检查session中是否有搜索历史
     if 'search_history' in session:
+        # 替换为空列表，确保完全清空
         session['search_history'] = []
+        # 强制session更新
+        session.modified = True
+        # 确保session变更被保存
+        session.permanent = True
+        logging.info("搜索历史记录已清空")
         flash('所有搜索记录已清空')
+    
+    # 检查是否是AJAX请求
+    is_ajax = request.headers.get('X-Requested-With') == 'XMLHttpRequest'
+    
+    if is_ajax:
+        # 如果是AJAX请求，返回JSON响应
+        return jsonify({
+            'success': True,
+            'message': '所有搜索记录已清空'
+        })
+    
+    # 优先使用当前查询参数，如果没有则尝试从引用页提取查询参数
+    if current_query:
+        return redirect(url_for('search', q=current_query))
+    elif referer and 'search?q=' in referer:
+        # 从引用URL中提取查询参数
+        try:
+            query_part = referer.split('search?q=')[1].split('&')[0]
+            if query_part:
+                return redirect(url_for('search', q=query_part))
+        except:
+            pass
+    
     return redirect(url_for('search', q=''))
 
 # 数据库管理路由
