@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  docradar:
+    build: .
+    container_name: docradar
+    ports:
+      - "5000:5000"
+    volumes:
+      # 数据持久化
+      - ./docradar.db:/app/docradar.db
+      - ./static/uploads:/app/static/uploads
+      - ./static/doc_images:/app/static/doc_images
+      - ./tmp:/app/tmp
+      - ./users.json:/app/users.json
+    environment:
+      # 可以在这里通过环境变量设置系统参数
+      - DOCRADAR_ADMIN_KEY=admin_key_here
+    restart: always 

@@ -54,6 +54,16 @@
                     <li class="nav-item">
                         <a class="nav-link active" href="{{ url_for('index') }}">首页</a>
                     </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="bi bi-person-circle"></i> {{ session.user }}
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                            <li><a class="dropdown-item" href="{{ url_for('account') }}"><i class="bi bi-gear"></i> 账号设置</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="{{ url_for('logout') }}"><i class="bi bi-box-arrow-right"></i> 退出登录</a></li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -184,7 +194,7 @@
                                             </span>
                                             <span>
                                                 <i class="bi bi-calendar"></i> 
-                                                {{ doc.created_at }}
+                                                {{ doc.created_at|beijing_time }}
                                             </span>
                                         </p>
                                     </div>
@@ -288,7 +298,7 @@
 
     <footer class="footer py-3 bg-light">
         <div class="container text-center">
-            <span class="text-muted">DocRadar &copy; 2023</span>
+            <span class="text-muted">DocRadar &copy; 2025</span>
         </div>
     </footer>
 

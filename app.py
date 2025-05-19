@@ -14,6 +14,8 @@ from utils.document_parser import DocumentParser
 from utils.search_engine import SearchEngine
 from utils.storage import Storage
 import config
+# 导入认证模块
+from auth import login_required, admin_required as auth_admin_required, authenticate, init_users, get_user_role, change_password as auth_change_password, get_last_login
 
 # 日志目录和文件
 log_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'tmp')
@@ -48,6 +50,22 @@ app.config.from_object(config)
 # 输出ADMIN_KEY到日志，方便管理员使用
 logging.info(f"Current ADMIN_KEY: {app.config.get('ADMIN_KEY')}")
 
+# 添加模板过滤器，用于将UTC时间转换为北京时间
+@app.template_filter('beijing_time')
+def convert_to_beijing(dt_str):
+    """将数据库时间字符串转换为北京时间"""
+    if not dt_str:
+        return ""
+    try:
+        # 尝试解析日期时间字符串，默认假设是UTC时间
+        dt = datetime.strptime(dt_str, '%Y-%m-%d %H:%M:%S')
+        # 添加8小时偏移得到北京时间
+        beijing_time = dt + timedelta(hours=8)
+        return beijing_time.strftime('%Y-%m-%d %H:%M:%S')
+    except Exception as e:
+        logging.error(f"时间转换错误: {e}")
+        return dt_str
+
 # 确保上传目录存在
 if not os.path.exists(config.UPLOAD_FOLDER):
     os.makedirs(config.UPLOAD_FOLDER)
@@ -55,6 +73,9 @@ if not os.path.exists(config.UPLOAD_FOLDER):
 # 初始化存储、搜索引擎
 storage = Storage()
 search_engine = SearchEngine()
+
+# 初始化用户
+init_users()
 
 def add_security_headers(response):
     """添加安全相关的响应头"""
@@ -79,13 +100,8 @@ app.after_request(add_security_headers)
 
 # 管理功能访问控制
 def admin_required(f):
-    @wraps(f)
-    def decorated_function(*args, **kwargs):
-        admin_key = request.args.get('key')
-        if admin_key != app.config.get('ADMIN_KEY'):
-            abort(403)
-        return f(*args, **kwargs)
-    return decorated_function
+    # 使用auth模块的admin_required替代
+    return auth_admin_required(f)
 
 # 数据库管理辅助函数
 def get_db_tables():
@@ -191,7 +207,94 @@ def execute_query(query, params=None):
         conn.close()
         return {'success': False, 'error': str(e)}
 
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    """用户登录"""
+    if request.method == 'POST':
+        username = request.form.get('username')
+        password = request.form.get('password')
+        next_url = request.form.get('next', '/')
+        
+        if authenticate(username, password):
+            session['user'] = username
+            flash('登录成功', 'success')
+            return redirect(next_url)
+        else:
+            flash('用户名或密码错误', 'danger')
+    
+    next_url = request.args.get('next', '/')
+    return render_template('login.html', next=next_url, current_year=datetime.now().year)
+
+@app.route('/logout')
+def logout():
+    """用户退出"""
+    session.pop('user', None)
+    flash('已退出登录', 'info')
+    return redirect(url_for('login'))
+
+@app.route('/account')
+@login_required
+def account():
+    """用户账号设置页面"""
+    username = session.get('user')
+    user_role = None
+    last_login = None
+    
+    if username:
+        # 获取用户角色
+        user_role = get_user_role(username)
+        
+        # 获取上次登录时间
+        last_login = get_last_login(username)
+    
+    return render_template(
+        'account.html',
+        user_role=user_role,
+        last_login=last_login,
+        current_year=datetime.now().year
+    )
+
+@app.route('/account/change-password', methods=['POST'])
+@login_required
+def change_password():
+    """修改用户密码"""
+    username = session.get('user')
+    current_password = request.form.get('current_password')
+    new_password = request.form.get('new_password')
+    confirm_password = request.form.get('confirm_password')
+    
+    # 验证输入
+    if not all([current_password, new_password, confirm_password]):
+        flash('所有字段都必须填写', 'danger')
+        return redirect(url_for('account'))
+    
+    if new_password != confirm_password:
+        flash('两次输入的新密码不一致', 'danger')
+        return redirect(url_for('account'))
+    
+    if len(new_password) < 8:
+        flash('新密码长度必须至少为8个字符', 'danger')
+        return redirect(url_for('account'))
+    
+    # 验证当前密码
+    if not authenticate(username, current_password):
+        flash('当前密码不正确', 'danger')
+        return redirect(url_for('account'))
+    
+    # 修改密码
+    success = auth_change_password(username, new_password)
+    
+    if success:
+        # 密码修改成功后，清除用户会话并重定向到登录页面
+        flash('密码修改成功，请使用新密码重新登录', 'success')
+        session.pop('user', None)  # 清除用户会话
+        return redirect(url_for('login'))
+    else:
+        flash('密码修改失败，请稍后重试', 'danger')
+        return redirect(url_for('account'))
+
 @app.route('/')
+@login_required
 def index():
     """首页路由"""
     # 获取分页和搜索参数
@@ -210,6 +313,7 @@ def index():
     )
 
 @app.route('/api/documents')
+@login_required
 def get_documents():
     """获取文档列表API"""
     page = request.args.get('page', 1, type=int)
@@ -224,6 +328,7 @@ def get_documents():
         return jsonify({'error': str(e)}), 500
 
 @app.route('/api/check-file')
+@login_required
 def check_existing_file():
     """检查文件是否已存在"""
     filename = request.args.get('filename', '')
@@ -246,6 +351,7 @@ def check_existing_file():
         })
 
 @app.route('/upload', methods=['POST'])
+@login_required
 def upload_file():
     """文件上传处理"""
     if 'file' not in request.files:
@@ -275,6 +381,7 @@ def upload_file():
     return redirect(url_for('index'))
 
 @app.route('/upload/batch', methods=['POST'])
+@login_required
 def upload_batch():
     """批量文件上传处理（Ajax）"""
     if 'file' not in request.files:
@@ -422,6 +529,7 @@ def process_upload(file, overwrite=False):
         }
 
 @app.route('/search')
+@login_required
 def search():
     """搜索处理"""
     query = request.args.get('q', '')
@@ -500,6 +608,7 @@ def search():
         return render_template('results.html', query=query, results=[], search_history=[])
 
 @app.route('/document/<int:doc_id>')
+@login_required
 def view_document(doc_id):
     """查看文档内容"""
     query = request.args.get('q', '')
@@ -542,6 +651,7 @@ def view_document(doc_id):
         return redirect(url_for('index'))
 
 @app.route('/document/<int:doc_id>/original')
+@login_required
 def download_original(doc_id):
     """下载原始文档"""
     try:
@@ -570,6 +680,7 @@ def download_original(doc_id):
         return redirect(url_for('index'))
 
 @app.route('/document/<int:doc_id>/delete', methods=['POST'])
+@login_required
 def delete_document(doc_id):
     """删除文档"""
     try:
@@ -587,6 +698,7 @@ def delete_document(doc_id):
     return redirect(url_for('index'))
 
 @app.route('/api/search')
+@login_required
 def api_search():
     """搜索API，用于异步搜索请求"""
     query = request.args.get('q', '')
@@ -603,6 +715,7 @@ def api_search():
         return jsonify({'error': str(e)}), 500
 
 @app.route('/search/delete/<int:history_id>')
+@login_required
 def delete_search_history(history_id):
     """删除搜索历史记录"""
     # 保存当前请求的引用页面或查询参数
@@ -649,6 +762,7 @@ def delete_search_history(history_id):
     return redirect(url_for('search', q=''))
 
 @app.route('/search/clear')
+@login_required
 def clear_search_history():
     """清空所有搜索历史记录"""
     # 保存当前请求的引用页面或查询参数
@@ -932,6 +1046,7 @@ def add_record(table_name):
         return redirect(url_for('view_table', table_name=table_name, key=request.args.get('key')))
 
 @app.route('/documents/batch-delete', methods=['POST'])
+@login_required
 def batch_delete_documents():
     """批量删除文档"""
     try:
@@ -1025,4 +1140,5 @@ def serve_doc_image(filename):
         abort(404)
 
 if __name__ == '__main__':
-    app.run(debug=True) 
+    # 启动应用服务器，监听所有网络接口
+    app.run(host='0.0.0.0', port=5000, debug=config.DEBUG) 

@@ -1153,3 +1153,135 @@
 2025-05-19 16:48:53,003 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:48:53] "GET /api/check-file?filename=四十六期Duoov5.2.0.docx HTTP/1.1" 200 -
 2025-05-19 16:48:53,008 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:48:53] "GET /api/check-file?filename=四十五期Duoov5.1.0.docx HTTP/1.1" 200 -
 2025-05-19 16:48:53,011 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:48:53] "GET /api/check-file?filename=四十四期Duoov5.0.0.docx HTTP/1.1" 200 -
+2025-05-19 17:11:52,944 - werkzeug - WARNING -  * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2025-05-19 17:11:52,944 - werkzeug - INFO -  * Running on http://192.168.0.110:5000/ (Press CTRL+C to quit)
+2025-05-19 17:12:07,102 - werkzeug - INFO - 192.168.0.110 - - [19/May/2025 17:12:07] "[32mGET / HTTP/1.1[0m" 302 -
+2025-05-19 17:12:07,137 - werkzeug - INFO - 192.168.0.110 - - [19/May/2025 17:12:07] "GET /login?next=http%3A%2F%2F192.168.0.110%3A5000%2F HTTP/1.1" 200 -
+2025-05-19 17:12:07,284 - werkzeug - INFO - 192.168.0.110 - - [19/May/2025 17:12:07] "GET /static/css/style.css HTTP/1.1" 200 -
+2025-05-19 17:12:08,756 - werkzeug - INFO - 192.168.0.110 - - [19/May/2025 17:12:08] "[32mGET / HTTP/1.1[0m" 302 -
+2025-05-19 17:12:08,775 - werkzeug - INFO - 192.168.0.110 - - [19/May/2025 17:12:08] "GET /login?next=http%3A%2F%2F192.168.0.110%3A5000%2F HTTP/1.1" 200 -
+2025-05-19 17:12:08,786 - werkzeug - INFO - 192.168.0.110 - - [19/May/2025 17:12:08] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 17:12:09,494 - werkzeug - INFO - 192.168.0.110 - - [19/May/2025 17:12:09] "[32mGET / HTTP/1.1[0m" 302 -
+2025-05-19 17:12:09,514 - werkzeug - INFO - 192.168.0.110 - - [19/May/2025 17:12:09] "GET /login?next=http%3A%2F%2F192.168.0.110%3A5000%2F HTTP/1.1" 200 -
+2025-05-19 17:12:09,526 - werkzeug - INFO - 192.168.0.110 - - [19/May/2025 17:12:09] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 17:12:25,049 - werkzeug - INFO - 192.168.0.110 - - [19/May/2025 17:12:25] "[32mGET / HTTP/1.1[0m" 302 -
+2025-05-19 17:12:25,065 - werkzeug - INFO - 192.168.0.110 - - [19/May/2025 17:12:25] "GET /login?next=http%3A%2F%2F192.168.0.110%3A5000%2F HTTP/1.1" 200 -
+2025-05-19 17:12:25,080 - werkzeug - INFO - 192.168.0.110 - - [19/May/2025 17:12:25] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 17:12:28,175 - werkzeug - INFO - 192.168.0.110 - - [19/May/2025 17:12:28] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-05-19 17:13:22,239 - werkzeug - INFO - 192.168.0.110 - - [19/May/2025 17:13:22] "POST /login HTTP/1.1" 200 -
+2025-05-19 17:13:22,248 - werkzeug - INFO - 192.168.0.110 - - [19/May/2025 17:13:22] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 17:13:47,226 - werkzeug - INFO - 192.168.0.110 - - [19/May/2025 17:13:47] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 17:13:54,589 - werkzeug - INFO - 192.168.0.110 - - [19/May/2025 17:13:54] "POST /login HTTP/1.1" 200 -
+2025-05-19 17:13:54,600 - werkzeug - INFO - 192.168.0.110 - - [19/May/2025 17:13:54] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 17:15:55,040 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 17:15:55] "[32mGET / HTTP/1.1[0m" 302 -
+2025-05-19 17:15:55,045 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 17:15:55] "GET /login?next=http%3A%2F%2Flocalhost%3A5000%2F HTTP/1.1" 200 -
+2025-05-19 17:15:55,290 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 17:15:55] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 17:16:11,660 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 17:16:11] "[32mGET / HTTP/1.1[0m" 302 -
+2025-05-19 17:16:11,687 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 17:16:11] "GET /login?next=http%3A%2F%2Flocalhost%3A5000%2F HTTP/1.1" 200 -
+2025-05-19 17:16:11,911 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 17:16:11] "GET /static/css/style.css HTTP/1.1" 200 -
+2025-05-19 17:16:12,577 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 17:16:12] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-05-19 17:18:47,247 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 17:18:47] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-05-19 17:18:47,267 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 17:18:47] "GET / HTTP/1.1" 200 -
+2025-05-19 17:18:47,496 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 17:18:47] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 17:18:47,588 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 17:18:47] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 17:20:12,494 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 17:20:12] "GET /search?q=adjustments HTTP/1.1" 200 -
+2025-05-19 17:20:12,514 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 17:20:12] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 17:20:12,722 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 17:20:12] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 17:20:16,427 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 17:20:16] "GET /search/clear?q=adjustments HTTP/1.1" 200 -
+2025-05-19 17:25:47,915 - werkzeug - WARNING -  * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2025-05-19 17:25:47,915 - werkzeug - INFO -  * Running on http://192.168.0.110:5000/ (Press CTRL+C to quit)
+2025-05-19 17:26:06,861 - werkzeug - INFO - 192.168.0.110 - - [19/May/2025 17:26:06] "[32mGET / HTTP/1.1[0m" 302 -
+2025-05-19 17:26:06,893 - werkzeug - INFO - 192.168.0.110 - - [19/May/2025 17:26:06] "GET /login?next=http%3A%2F%2F192.168.0.110%3A5000%2F HTTP/1.1" 200 -
+2025-05-19 17:26:07,032 - werkzeug - INFO - 192.168.0.110 - - [19/May/2025 17:26:07] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 17:26:28,882 - werkzeug - INFO - 192.168.0.110 - - [19/May/2025 17:26:28] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-05-19 17:26:28,909 - werkzeug - INFO - 192.168.0.110 - - [19/May/2025 17:26:28] "GET / HTTP/1.1" 200 -
+2025-05-19 17:26:28,919 - werkzeug - INFO - 192.168.0.110 - - [19/May/2025 17:26:28] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 17:26:28,919 - werkzeug - INFO - 192.168.0.110 - - [19/May/2025 17:26:28] "GET /static/js/main.js HTTP/1.1" 200 -
+2025-05-19 17:26:33,363 - werkzeug - INFO - 192.168.0.110 - - [19/May/2025 17:26:33] "GET /account HTTP/1.1" 200 -
+2025-05-19 17:26:33,372 - werkzeug - INFO - 192.168.0.110 - - [19/May/2025 17:26:33] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 17:26:33,373 - werkzeug - INFO - 192.168.0.110 - - [19/May/2025 17:26:33] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 17:26:51,997 - werkzeug - INFO - 192.168.0.110 - - [19/May/2025 17:26:51] "[32mPOST /account/change-password HTTP/1.1[0m" 302 -
+2025-05-19 17:26:52,004 - werkzeug - INFO - 192.168.0.110 - - [19/May/2025 17:26:52] "GET /account HTTP/1.1" 200 -
+2025-05-19 17:26:52,013 - werkzeug - INFO - 192.168.0.110 - - [19/May/2025 17:26:52] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 17:26:52,014 - werkzeug - INFO - 192.168.0.110 - - [19/May/2025 17:26:52] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 17:27:01,924 - werkzeug - INFO - 192.168.0.110 - - [19/May/2025 17:27:01] "GET /account HTTP/1.1" 200 -
+2025-05-19 17:27:01,933 - werkzeug - INFO - 192.168.0.110 - - [19/May/2025 17:27:01] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 17:27:01,933 - werkzeug - INFO - 192.168.0.110 - - [19/May/2025 17:27:01] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 17:27:35,096 - werkzeug - INFO - 192.168.0.110 - - [19/May/2025 17:27:35] "[32mGET /logout HTTP/1.1[0m" 302 -
+2025-05-19 17:27:35,105 - werkzeug - INFO - 192.168.0.110 - - [19/May/2025 17:27:35] "GET /login HTTP/1.1" 200 -
+2025-05-19 17:27:35,112 - werkzeug - INFO - 192.168.0.110 - - [19/May/2025 17:27:35] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 17:27:45,892 - werkzeug - INFO - 192.168.0.110 - - [19/May/2025 17:27:45] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-05-19 17:27:45,902 - werkzeug - INFO - 192.168.0.110 - - [19/May/2025 17:27:45] "GET / HTTP/1.1" 200 -
+2025-05-19 17:27:45,914 - werkzeug - INFO - 192.168.0.110 - - [19/May/2025 17:27:45] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 17:27:45,915 - werkzeug - INFO - 192.168.0.110 - - [19/May/2025 17:27:45] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 17:27:59,974 - werkzeug - INFO - 192.168.0.110 - - [19/May/2025 17:27:59] "GET /account HTTP/1.1" 200 -
+2025-05-19 17:27:59,980 - werkzeug - INFO - 192.168.0.110 - - [19/May/2025 17:27:59] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 17:27:59,981 - werkzeug - INFO - 192.168.0.110 - - [19/May/2025 17:27:59] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 17:29:31,522 - werkzeug - INFO - 192.168.0.110 - - [19/May/2025 17:29:31] "[32mPOST /account/change-password HTTP/1.1[0m" 302 -
+2025-05-19 17:29:31,528 - werkzeug - INFO - 192.168.0.110 - - [19/May/2025 17:29:31] "GET /account HTTP/1.1" 200 -
+2025-05-19 17:29:31,539 - werkzeug - INFO - 192.168.0.110 - - [19/May/2025 17:29:31] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 17:29:31,540 - werkzeug - INFO - 192.168.0.110 - - [19/May/2025 17:29:31] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 17:29:33,861 - werkzeug - INFO - 192.168.0.110 - - [19/May/2025 17:29:33] "GET /account HTTP/1.1" 200 -
+2025-05-19 17:29:33,871 - werkzeug - INFO - 192.168.0.110 - - [19/May/2025 17:29:33] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 17:29:33,871 - werkzeug - INFO - 192.168.0.110 - - [19/May/2025 17:29:33] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 17:29:43,345 - werkzeug - WARNING -  * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2025-05-19 17:29:43,346 - werkzeug - INFO -  * Running on http://192.168.0.110:5000/ (Press CTRL+C to quit)
+2025-05-19 17:29:50,860 - werkzeug - INFO - 192.168.0.110 - - [19/May/2025 17:29:50] "[32mGET / HTTP/1.1[0m" 302 -
+2025-05-19 17:29:50,893 - werkzeug - INFO - 192.168.0.110 - - [19/May/2025 17:29:50] "GET /login?next=http%3A%2F%2F192.168.0.110%3A5000%2F HTTP/1.1" 200 -
+2025-05-19 17:29:51,031 - werkzeug - INFO - 192.168.0.110 - - [19/May/2025 17:29:51] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 17:29:58,606 - werkzeug - INFO - 192.168.0.110 - - [19/May/2025 17:29:58] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-05-19 17:29:58,630 - werkzeug - INFO - 192.168.0.110 - - [19/May/2025 17:29:58] "GET / HTTP/1.1" 200 -
+2025-05-19 17:29:58,640 - werkzeug - INFO - 192.168.0.110 - - [19/May/2025 17:29:58] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 17:29:58,640 - werkzeug - INFO - 192.168.0.110 - - [19/May/2025 17:29:58] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 17:30:01,338 - werkzeug - INFO - 192.168.0.110 - - [19/May/2025 17:30:01] "[32mGET /logout HTTP/1.1[0m" 302 -
+2025-05-19 17:30:01,346 - werkzeug - INFO - 192.168.0.110 - - [19/May/2025 17:30:01] "GET /login HTTP/1.1" 200 -
+2025-05-19 17:30:01,354 - werkzeug - INFO - 192.168.0.110 - - [19/May/2025 17:30:01] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 17:30:09,017 - werkzeug - INFO - 192.168.0.110 - - [19/May/2025 17:30:09] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-05-19 17:30:09,029 - werkzeug - INFO - 192.168.0.110 - - [19/May/2025 17:30:09] "GET / HTTP/1.1" 200 -
+2025-05-19 17:30:09,042 - werkzeug - INFO - 192.168.0.110 - - [19/May/2025 17:30:09] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 17:30:09,042 - werkzeug - INFO - 192.168.0.110 - - [19/May/2025 17:30:09] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 17:30:10,579 - werkzeug - INFO - 192.168.0.110 - - [19/May/2025 17:30:10] "GET /account HTTP/1.1" 200 -
+2025-05-19 17:30:10,589 - werkzeug - INFO - 192.168.0.110 - - [19/May/2025 17:30:10] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 17:30:10,589 - werkzeug - INFO - 192.168.0.110 - - [19/May/2025 17:30:10] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 17:30:20,317 - werkzeug - INFO - 192.168.0.110 - - [19/May/2025 17:30:20] "[32mPOST /account/change-password HTTP/1.1[0m" 302 -
+2025-05-19 17:30:20,322 - werkzeug - INFO - 192.168.0.110 - - [19/May/2025 17:30:20] "GET /login HTTP/1.1" 200 -
+2025-05-19 17:30:20,330 - werkzeug - INFO - 192.168.0.110 - - [19/May/2025 17:30:20] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 17:30:33,381 - werkzeug - INFO - 192.168.0.110 - - [19/May/2025 17:30:33] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-05-19 17:30:33,388 - werkzeug - INFO - 192.168.0.110 - - [19/May/2025 17:30:33] "GET / HTTP/1.1" 200 -
+2025-05-19 17:30:33,403 - werkzeug - INFO - 192.168.0.110 - - [19/May/2025 17:30:33] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 17:30:33,404 - werkzeug - INFO - 192.168.0.110 - - [19/May/2025 17:30:33] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 17:30:35,346 - werkzeug - INFO - 192.168.0.110 - - [19/May/2025 17:30:35] "GET /account HTTP/1.1" 200 -
+2025-05-19 17:30:35,353 - werkzeug - INFO - 192.168.0.110 - - [19/May/2025 17:30:35] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 17:30:35,354 - werkzeug - INFO - 192.168.0.110 - - [19/May/2025 17:30:35] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 17:35:23,463 - werkzeug - WARNING -  * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2025-05-19 17:35:23,463 - werkzeug - INFO -  * Running on http://192.168.0.110:5000/ (Press CTRL+C to quit)
+2025-05-19 17:35:31,462 - werkzeug - INFO - 192.168.0.110 - - [19/May/2025 17:35:31] "[32mGET / HTTP/1.1[0m" 302 -
+2025-05-19 17:35:31,504 - werkzeug - INFO - 192.168.0.110 - - [19/May/2025 17:35:31] "GET /login?next=http%3A%2F%2F192.168.0.110%3A5000%2F HTTP/1.1" 200 -
+2025-05-19 17:35:31,646 - werkzeug - INFO - 192.168.0.110 - - [19/May/2025 17:35:31] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 17:35:40,048 - werkzeug - INFO - 192.168.0.110 - - [19/May/2025 17:35:40] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-05-19 17:35:40,076 - werkzeug - INFO - 192.168.0.110 - - [19/May/2025 17:35:40] "GET / HTTP/1.1" 200 -
+2025-05-19 17:35:40,086 - werkzeug - INFO - 192.168.0.110 - - [19/May/2025 17:35:40] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 17:35:40,086 - werkzeug - INFO - 192.168.0.110 - - [19/May/2025 17:35:40] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 17:35:44,588 - werkzeug - INFO - 192.168.0.110 - - [19/May/2025 17:35:44] "GET /account HTTP/1.1" 200 -
+2025-05-19 17:35:44,597 - werkzeug - INFO - 192.168.0.110 - - [19/May/2025 17:35:44] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 17:35:44,597 - werkzeug - INFO - 192.168.0.110 - - [19/May/2025 17:35:44] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 17:35:50,781 - werkzeug - INFO - 192.168.0.110 - - [19/May/2025 17:35:50] "GET / HTTP/1.1" 200 -
+2025-05-19 17:35:50,790 - werkzeug - INFO - 192.168.0.110 - - [19/May/2025 17:35:50] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 17:35:50,791 - werkzeug - INFO - 192.168.0.110 - - [19/May/2025 17:35:50] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 17:35:55,101 - werkzeug - INFO - 192.168.0.110 - - [19/May/2025 17:35:55] "GET /search?q=adjustments HTTP/1.1" 200 -
+2025-05-19 17:35:55,109 - werkzeug - INFO - 192.168.0.110 - - [19/May/2025 17:35:55] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 17:35:55,110 - werkzeug - INFO - 192.168.0.110 - - [19/May/2025 17:35:55] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 17:35:57,973 - werkzeug - INFO - 192.168.0.110 - - [19/May/2025 17:35:57] "GET /search/clear?q=adjustments HTTP/1.1" 200 -
+2025-05-19 17:36:02,157 - werkzeug - INFO - 192.168.0.110 - - [19/May/2025 17:36:02] "[32mGET /logout HTTP/1.1[0m" 302 -
+2025-05-19 17:36:02,166 - werkzeug - INFO - 192.168.0.110 - - [19/May/2025 17:36:02] "GET /login HTTP/1.1" 200 -
+2025-05-19 17:36:02,176 - werkzeug - INFO - 192.168.0.110 - - [19/May/2025 17:36:02] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 17:36:11,588 - werkzeug - INFO - 192.168.0.110 - - [19/May/2025 17:36:11] "POST /login HTTP/1.1" 200 -
+2025-05-19 17:36:11,598 - werkzeug - INFO - 192.168.0.110 - - [19/May/2025 17:36:11] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 17:36:16,995 - werkzeug - INFO - 192.168.0.110 - - [19/May/2025 17:36:16] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-05-19 17:36:17,006 - werkzeug - INFO - 192.168.0.110 - - [19/May/2025 17:36:17] "GET / HTTP/1.1" 200 -
+2025-05-19 17:36:17,015 - werkzeug - INFO - 192.168.0.110 - - [19/May/2025 17:36:17] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 17:36:17,015 - werkzeug - INFO - 192.168.0.110 - - [19/May/2025 17:36:17] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -

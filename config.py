@@ -8,6 +8,23 @@ BASE_DIR = os.path.abspath(os.path.dirname(__file__))
 # 数据库配置
 DATABASE = os.path.join(BASE_DIR, 'docradar.db')
 
+# SQLite优化配置
+SQLITE_CONFIG = {
+    'timeout': 30,           # 等待锁定的超时时间（秒）
+    'isolation_level': None, # 自动提交模式
+    'check_same_thread': False, # 允许多线程访问
+    'uri': True              # 使用URI连接方式，支持更多配置
+}
+
+# 修改DATABASE为URI格式，启用WAL模式提高并发性能
+DATABASE_URI = f"file:{DATABASE}?mode=rwc&journal_mode=WAL&cache=shared"
+
+# 最大数据库连接池数
+DB_POOL_SIZE = 10
+
+# 开发模式
+DEBUG = False  # 生产环境设为False
+
 # 文件上传配置
 UPLOAD_FOLDER = os.path.join(BASE_DIR, 'static', 'uploads')
 MAX_CONTENT_LENGTH = 16 * 1024 * 1024  # 16MB 最大上传文件大小

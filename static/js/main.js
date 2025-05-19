@@ -12,7 +12,39 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // 初始化文档搜索功能
     initDocumentSearch();
+    
+    // 初始化消息自动关闭功能
+    initAutoCloseAlerts();
 });
+
+/**
+ * 初始化所有页面的消息自动关闭功能
+ */
+function initAutoCloseAlerts() {
+    // 获取所有的提示消息元素
+    const alerts = document.querySelectorAll('.alert');
+    
+    if (alerts.length > 0) {
+        // 设置3秒后自动关闭所有提示消息
+        setTimeout(function() {
+            alerts.forEach(function(alert) {
+                // 检查Bootstrap版本，使用适当的方法关闭提示框
+                if (typeof bootstrap !== 'undefined') {
+                    // Bootstrap 5
+                    const bsAlert = new bootstrap.Alert(alert);
+                    bsAlert.close();
+                } else {
+                    // 手动关闭（添加淡出效果）
+                    alert.style.transition = 'opacity 0.5s';
+                    alert.style.opacity = '0';
+                    setTimeout(function() {
+                        alert.style.display = 'none';
+                    }, 500);
+                }
+            });
+        }, 3000);
+    }
+}
 
 /**
  * 初始化文档搜索功能
