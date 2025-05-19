@@ -569,4 +569,124 @@ class Storage:
             except Exception as e:
                 logging.error(f"添加文档失败: {e}")
                 
-        return doc_ids 
+        return doc_ids
+    
+    def update_document_metadata(self, doc_id, title=None, metadata=None):
+        """
+        更新文档元数据
+        
+        Args:
+            doc_id: 文档ID
+            title: 文档标题
+            metadata: 文档元数据字典
+            
+        Returns:
+            bool: 操作是否成功
+        """
+        try:
+            conn = sqlite3.connect(self.db_path)
+            cursor = conn.cursor()
+            
+            # 准备更新字段
+            update_fields = []
+            params = []
+            
+            if title is not None:
+                update_fields.append("title = ?")
+                params.append(title)
+                
+            if metadata is not None:
+                update_fields.append("metadata = ?")
+                params.append(json.dumps(metadata))
+                
+            if not update_fields:
+                logging.warning("没有提供要更新的字段")
+                return False
+                
+            # 添加文档ID到参数列表
+            params.append(doc_id)
+            
+            # 执行更新
+            cursor.execute(
+                f"UPDATE documents SET {', '.join(update_fields)} WHERE id = ?",
+                params
+            )
+            
+            conn.commit()
+            conn.close()
+            
+            logging.info(f"文档元数据更新成功: {doc_id}")
+            return True
+            
+        except sqlite3.Error as e:
+            logging.error(f"更新文档元数据失败: {e}")
+            return False
+    
+    def add_document_content(self, doc_id, text_content, html_content=None):
+        """
+        添加或更新文档内容
+        
+        Args:
+            doc_id: 文档ID
+            text_content: 文本内容（用于搜索）
+            html_content: HTML内容（用于显示）
+            
+        Returns:
+            bool: 操作是否成功
+        """
+        try:
+            conn = sqlite3.connect(self.db_path)
+            cursor = conn.cursor()
+            
+            # 检查是否已存在内容记录
+            cursor.execute("SELECT 1 FROM document_content WHERE doc_id = ?", (doc_id,))
+            exists = cursor.fetchone()
+            
+            if exists:
+                # 更新现有记录 - 使用replace语法，因为FTS5表不支持UPDATE
+                cursor.execute(
+                    "DELETE FROM document_content WHERE doc_id = ?",
+                    (doc_id,)
+                )
+                cursor.execute(
+                    "INSERT INTO document_content (doc_id, content) VALUES (?, ?)",
+                    (doc_id, text_content)
+                )
+                logging.info(f"更新文档内容: {doc_id}")
+            else:
+                # 插入新记录
+                cursor.execute(
+                    "INSERT INTO document_content (doc_id, content) VALUES (?, ?)",
+                    (doc_id, text_content)
+                )
+                logging.info(f"添加文档内容: {doc_id}")
+            
+            # 处理HTML内容 - 存储在单独的表中
+            if html_content:
+                # 检查HTML内容是否已存在
+                cursor.execute("SELECT 1 FROM document_html_content WHERE doc_id = ?", (doc_id,))
+                html_exists = cursor.fetchone()
+                
+                if html_exists:
+                    # 更新现有HTML内容
+                    cursor.execute(
+                        "UPDATE document_html_content SET html_content = ? WHERE doc_id = ?",
+                        (html_content, doc_id)
+                    )
+                    logging.info(f"更新文档HTML内容: {doc_id}")
+                else:
+                    # 插入新的HTML内容
+                    cursor.execute(
+                        "INSERT INTO document_html_content (doc_id, html_content) VALUES (?, ?)",
+                        (doc_id, html_content)
+                    )
+                    logging.info(f"添加文档HTML内容: {doc_id}")
+            
+            conn.commit()
+            conn.close()
+            
+            return True
+            
+        except sqlite3.Error as e:
+            logging.error(f"添加文档内容失败: {e}")
+            return False 

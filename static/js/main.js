@@ -437,7 +437,7 @@ function initFileUpload() {
     
     // 单文件覆盖确认处理
     if (confirmOverwrite) {
-        confirmOverwrite.addEventListener('click', function() {
+        confirmOverwrite.addEventListener('click', async function() {
             console.log('单文件覆盖确认按钮被点击');
             const filename = confirmFilename ? confirmFilename.value : '';
             if (!filename) {
@@ -473,31 +473,52 @@ function initFileUpload() {
                 console.error('隐藏覆盖确认模态框时出错:', error);
             }
             
-            // 获取所有需要上传的文件（不在existingFiles中的文件）
+            // 执行文件上传操作，设置overwrite=true
+            console.log('开始上传文件并覆盖:', fileInfo.file.name);
+            try {
+                // 显示上传状态
+                if (uploadStatus) {
+                    uploadStatus.classList.remove('d-none');
+                    progressBar.style.width = '0%';
+                    progressBar.setAttribute('aria-valuenow', 0);
+                    progressText.textContent = '0%';
+                }
+                
+                // 上传文件
+                const result = await uploadSingleFile(fileInfo.file, true);
+                console.log('文件上传结果:', result);
+                
+                // 更新上传统计
+                updateUploadStats(result);
+                
+                // 显示上传结果
+                if (uploadStatus) {
+                    progressBar.style.width = '100%';
+                    progressBar.setAttribute('aria-valuenow', 100);
+                    progressText.textContent = '100%';
+                    
+                    // 显示上传结果
+                    showUploadResult();
+                }
+                
+                // 显示最终结果
+                showFinalResult();
+            } catch (error) {
+                console.error('上传文件时出错:', error);
+                if (uploadStatus) {
+                    uploadStatus.classList.add('d-none');
+                }
+            }
+            
+            // 上传其他新文件
             const newFiles = selectedFiles.filter(file => 
                 !existingFiles.some(existing => existing.filename === file.name)
             );
             
-            // 先上传所有新文件
-            try {
+            if (newFiles.length > 0) {
+                console.log('上传其他新文件:', newFiles.length);
                 uploadAllNewFiles(newFiles);
-            } catch (error) {
-                console.error('上传新文件时出错:', error);
             }
-            
-            // 然后上传需要覆盖的文件
-            uploadResult.innerHTML = '<div class="alert alert-info">上传覆盖文件中，请稍候...</div>';
-            
-            uploadSingleFile(fileInfo.file, true)
-                .then(result => {
-                    updateUploadStats(result);
-                    showFinalResult();
-                })
-                .catch(error => {
-                    console.error(`上传文件 ${fileInfo.file.name} 时出错:`, error);
-                    uploadStats.failed++;
-                    showFinalResult();
-                });
         });
     }
     

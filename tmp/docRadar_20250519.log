@@ -1,0 +1,263 @@
+2025-05-19 14:14:30,497 - werkzeug - WARNING -  * Debugger is active!
+2025-05-19 14:14:30,502 - werkzeug - INFO -  * Debugger PIN: 738-969-985
+2025-05-19 14:14:30,569 - werkzeug - INFO -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2025-05-19 14:18:05,214 - werkzeug - INFO -  * Detected change in 'D:\\tools\\Pycharm\\PycharmWork\\DocRadar\\utils\\storage.py', reloading
+2025-05-19 14:18:05,670 - werkzeug - WARNING -  * Debugger is active!
+2025-05-19 14:18:05,674 - werkzeug - INFO -  * Debugger PIN: 738-969-985
+2025-05-19 14:18:05,741 - werkzeug - INFO -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2025-05-19 14:20:51,231 - werkzeug - INFO -  * Detected change in 'D:\\tools\\Pycharm\\PycharmWork\\DocRadar\\utils\\document_parser.py', reloading
+2025-05-19 14:20:51,730 - werkzeug - WARNING -  * Debugger is active!
+2025-05-19 14:20:51,735 - werkzeug - INFO -  * Debugger PIN: 738-969-985
+2025-05-19 14:20:51,809 - werkzeug - INFO -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2025-05-19 14:21:30,047 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:21:30] "GET / HTTP/1.1" 200 -
+2025-05-19 14:21:30,323 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:21:30] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 14:21:30,325 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:21:30] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 14:21:32,723 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:21:32] "GET /document/246 HTTP/1.1" 200 -
+2025-05-19 14:21:32,730 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:21:32] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 14:21:32,739 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:21:32] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 14:21:39,877 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:21:39] "POST /documents/batch-delete HTTP/1.1" 200 -
+2025-05-19 14:21:39,887 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:21:39] "GET / HTTP/1.1" 200 -
+2025-05-19 14:21:39,895 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:21:39] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 14:21:39,895 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:21:39] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 14:21:44,854 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:21:44] "GET /api/check-file?filename=二期Duoov1.0.1.docx HTTP/1.1" 200 -
+2025-05-19 14:21:44,930 - root - ERROR - Mammoth转换失败: module 'mammoth.transforms' has no attribute 'get_style_id'
+2025-05-19 14:21:44,930 - root - ERROR - 解析DOCX文件失败: module 'mammoth.transforms' has no attribute 'get_style_id'
+2025-05-19 14:21:44,930 - root - ERROR - 文件处理失败: module 'mammoth.transforms' has no attribute 'get_style_id'
+2025-05-19 14:21:44,930 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:21:44] "POST /upload/batch HTTP/1.1" 200 -
+2025-05-19 14:21:46,899 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:21:46] "GET / HTTP/1.1" 200 -
+2025-05-19 14:21:46,908 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:21:46] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 14:21:46,908 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:21:46] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 14:21:57,944 - root - ERROR - Mammoth转换失败: module 'mammoth.transforms' has no attribute 'get_style_id'
+2025-05-19 14:21:57,944 - root - ERROR - 解析DOCX文件失败: module 'mammoth.transforms' has no attribute 'get_style_id'
+2025-05-19 14:21:57,944 - root - ERROR - 从文件解析内容失败: module 'mammoth.transforms' has no attribute 'get_style_id'
+2025-05-19 14:21:57,997 - root - ERROR - Mammoth转换失败: module 'mammoth.transforms' has no attribute 'get_style_id'
+2025-05-19 14:21:57,997 - root - ERROR - 解析DOCX文件失败: module 'mammoth.transforms' has no attribute 'get_style_id'
+2025-05-19 14:21:57,997 - root - WARNING - 重新解析DOCX文件失败: module 'mammoth.transforms' has no attribute 'get_style_id'
+2025-05-19 14:21:57,998 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:21:57] "GET /document/247 HTTP/1.1" 200 -
+2025-05-19 14:21:58,004 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:21:58] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 14:21:58,005 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:21:58] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 14:23:13,871 - werkzeug - INFO -  * Detected change in 'D:\\tools\\Pycharm\\PycharmWork\\DocRadar\\utils\\document_parser.py', reloading
+2025-05-19 14:23:14,389 - werkzeug - WARNING -  * Debugger is active!
+2025-05-19 14:23:14,394 - werkzeug - INFO -  * Debugger PIN: 738-969-985
+2025-05-19 14:23:14,467 - werkzeug - INFO -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2025-05-19 14:24:17,963 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:24:17] "GET / HTTP/1.1" 200 -
+2025-05-19 14:24:18,219 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:24:18] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 14:24:18,220 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:24:18] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 14:24:21,322 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:24:21] "[32mPOST /document/247/delete HTTP/1.1[0m" 302 -
+2025-05-19 14:24:21,328 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:24:21] "GET / HTTP/1.1" 200 -
+2025-05-19 14:24:21,337 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:24:21] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 14:24:21,337 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:24:21] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 14:24:27,279 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:24:27] "GET /api/check-file?filename=二期Duoov1.0.1.docx HTTP/1.1" 200 -
+2025-05-19 14:24:27,355 - root - ERROR - Mammoth转换失败: 'closing' object has no attribute 'read'
+2025-05-19 14:24:27,355 - root - ERROR - 解析DOCX文件失败: 'closing' object has no attribute 'read'
+2025-05-19 14:24:27,355 - root - ERROR - 文件处理失败: 'closing' object has no attribute 'read'
+2025-05-19 14:24:27,356 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:24:27] "POST /upload/batch HTTP/1.1" 200 -
+2025-05-19 14:24:28,470 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:24:28] "GET / HTTP/1.1" 200 -
+2025-05-19 14:24:28,477 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:24:28] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 14:24:28,477 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:24:28] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 14:25:19,172 - werkzeug - INFO -  * Detected change in 'D:\\tools\\Pycharm\\PycharmWork\\DocRadar\\utils\\document_parser.py', reloading
+2025-05-19 14:25:19,688 - werkzeug - WARNING -  * Debugger is active!
+2025-05-19 14:25:19,692 - werkzeug - INFO -  * Debugger PIN: 738-969-985
+2025-05-19 14:25:19,765 - werkzeug - INFO -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2025-05-19 14:25:47,553 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:25:47] "GET / HTTP/1.1" 200 -
+2025-05-19 14:25:47,802 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:25:47] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 14:25:47,802 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:25:47] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 14:25:50,405 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:25:50] "GET / HTTP/1.1" 200 -
+2025-05-19 14:25:50,431 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:25:50] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 14:25:50,431 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:25:50] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 14:25:55,898 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:25:55] "[32mPOST /document/248/delete HTTP/1.1[0m" 302 -
+2025-05-19 14:25:55,904 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:25:55] "GET / HTTP/1.1" 200 -
+2025-05-19 14:25:55,912 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:25:55] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 14:25:55,913 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:25:55] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 14:26:00,789 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:26:00] "GET /api/check-file?filename=二期Duoov1.0.1.docx HTTP/1.1" 200 -
+2025-05-19 14:26:00,870 - root - WARNING - Mammoth警告: Message(type='warning', message='Run style with ID 000019 was referenced but not defined in the document')
+2025-05-19 14:26:00,870 - root - WARNING - Mammoth警告: Message(type='warning', message='Table style with ID 00001a was referenced but not defined in the document')
+2025-05-19 14:26:00,870 - root - WARNING - Mammoth警告: Message(type='warning', message='Unrecognised paragraph style: Title (Style ID: 000013)')
+2025-05-19 14:26:00,870 - root - WARNING - Mammoth警告: Message(type='warning', message='Unrecognised run style: None (Style ID: 000019)')
+2025-05-19 14:26:00,885 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:26:00] "POST /upload/batch HTTP/1.1" 200 -
+2025-05-19 14:26:01,914 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:26:01] "GET / HTTP/1.1" 200 -
+2025-05-19 14:26:01,922 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:26:01] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 14:26:01,922 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:26:01] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 14:26:03,570 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:26:03] "GET /document/249 HTTP/1.1" 200 -
+2025-05-19 14:26:03,577 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:26:03] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 14:26:03,578 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:26:03] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 14:26:03,579 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:26:03] "GET /static/doc_images/doc_249/image_mammoth_4a9df438d7eb444e81c4861cd0468ba5_1.png HTTP/1.1" 200 -
+2025-05-19 14:26:22,081 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:26:22] "GET /search?q=速配中页面信息 HTTP/1.1" 200 -
+2025-05-19 14:26:22,089 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:26:22] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 14:26:22,090 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:26:22] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 14:26:23,736 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:26:23] "GET /document/249?q=速配中页面信息 HTTP/1.1" 200 -
+2025-05-19 14:26:23,742 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:26:23] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 14:26:23,745 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:26:23] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 14:26:23,746 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:26:23] "[36mGET /static/js/search-navigator.js HTTP/1.1[0m" 304 -
+2025-05-19 14:26:29,858 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:26:29] "GET /search?q=速配中页面信息 HTTP/1.1" 200 -
+2025-05-19 14:26:32,563 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:26:32] "[32mGET /search/delete/2 HTTP/1.1[0m" 302 -
+2025-05-19 14:26:32,569 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:26:32] "GET /search?q= HTTP/1.1" 200 -
+2025-05-19 14:26:32,578 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:26:32] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 14:26:32,578 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:26:32] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 14:26:37,952 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:26:37] "GET /search?q=速配中页面信息 HTTP/1.1" 200 -
+2025-05-19 14:26:37,962 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:26:37] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 14:26:37,962 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:26:37] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 14:26:57,678 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:26:57] "[32mGET /search/clear HTTP/1.1[0m" 302 -
+2025-05-19 14:26:57,684 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:26:57] "GET /search?q= HTTP/1.1" 200 -
+2025-05-19 14:26:57,692 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:26:57] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 14:26:57,692 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:26:57] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 14:26:58,357 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:26:58] "GET / HTTP/1.1" 200 -
+2025-05-19 14:26:58,365 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:26:58] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 14:26:58,365 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:26:58] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 14:27:43,613 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:27:43] "GET /api/check-file?filename=二期Duoov1.0.1.docx HTTP/1.1" 200 -
+2025-05-19 14:27:45,025 - root - ERROR - 文件处理失败: 'id'
+2025-05-19 14:27:45,026 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:27:45] "POST /upload/batch HTTP/1.1" 200 -
+2025-05-19 14:27:46,974 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:27:46] "GET / HTTP/1.1" 200 -
+2025-05-19 14:27:46,982 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:27:46] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 14:27:46,982 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:27:46] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 14:27:51,874 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:27:51] "GET /api/check-file?filename=三期Duoov1.1.0.docx HTTP/1.1" 200 -
+2025-05-19 14:27:52,143 - root - WARNING - Mammoth警告: Message(type='warning', message='Run style with ID 00003f was referenced but not defined in the document')
+2025-05-19 14:27:52,143 - root - WARNING - Mammoth警告: Message(type='warning', message='Table style with ID 000040 was referenced but not defined in the document')
+2025-05-19 14:27:52,143 - root - WARNING - Mammoth警告: Message(type='warning', message='Unrecognised paragraph style: Title (Style ID: 000037)')
+2025-05-19 14:27:52,143 - root - WARNING - Mammoth警告: Message(type='warning', message='Unrecognised run style: None (Style ID: 00003f)')
+2025-05-19 14:27:52,156 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:27:52] "POST /upload/batch HTTP/1.1" 200 -
+2025-05-19 14:27:53,089 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:27:53] "GET / HTTP/1.1" 200 -
+2025-05-19 14:27:53,098 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:27:53] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 14:27:53,099 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:27:53] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 14:27:54,458 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:27:54] "GET /document/250 HTTP/1.1" 200 -
+2025-05-19 14:27:54,466 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:27:54] "GET /static/doc_images/doc_250/image_mammoth_db26a3ddcbcb48089271977de0aab92e_1.png HTTP/1.1" 200 -
+2025-05-19 14:27:54,467 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:27:54] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 14:27:54,468 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:27:54] "GET /static/doc_images/doc_250/image_mammoth_7c4c7e0e2cd741f093e3f735bffd174b_2.png HTTP/1.1" 200 -
+2025-05-19 14:27:54,468 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:27:54] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 14:28:27,410 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:28:27] "GET /search?q=速配中页面信息 HTTP/1.1" 200 -
+2025-05-19 14:28:27,419 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:28:27] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 14:28:27,420 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:28:27] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 14:28:35,305 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:28:35] "GET /search?q=速配中页面信息 HTTP/1.1" 200 -
+2025-05-19 14:28:35,313 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:28:35] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 14:28:35,313 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:28:35] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 14:28:39,095 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:28:39] "[32mGET /search/delete/2 HTTP/1.1[0m" 302 -
+2025-05-19 14:28:39,103 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:28:39] "GET /search?q= HTTP/1.1" 200 -
+2025-05-19 14:28:39,111 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:28:39] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 14:28:39,111 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:28:39] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 14:28:40,369 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:28:40] "GET /search?q=速配中页面信息 HTTP/1.1" 200 -
+2025-05-19 14:28:42,191 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:28:42] "GET / HTTP/1.1" 200 -
+2025-05-19 14:28:42,199 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:28:42] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 14:28:42,199 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:28:42] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 14:28:44,460 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:28:44] "GET /search?q=速配中页面信息 HTTP/1.1" 200 -
+2025-05-19 14:28:44,468 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:28:44] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 14:28:44,469 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:28:44] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 14:29:05,831 - werkzeug - INFO -  * Detected change in 'D:\\tools\\Pycharm\\PycharmWork\\DocRadar\\app.py', reloading
+2025-05-19 14:29:06,367 - werkzeug - WARNING -  * Debugger is active!
+2025-05-19 14:29:06,372 - werkzeug - INFO -  * Debugger PIN: 738-969-985
+2025-05-19 14:29:06,450 - werkzeug - INFO -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2025-05-19 14:29:07,348 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:29:07] "[32mGET /search/delete/3 HTTP/1.1[0m" 302 -
+2025-05-19 14:29:07,367 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:29:07] "GET /search?q= HTTP/1.1" 200 -
+2025-05-19 14:29:07,601 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:29:07] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 14:29:07,602 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:29:07] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 14:29:09,597 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:29:09] "GET / HTTP/1.1" 200 -
+2025-05-19 14:29:09,605 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:29:09] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 14:29:09,605 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:29:09] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 14:30:11,618 - werkzeug - INFO -  * Restarting with stat
+2025-05-19 14:30:12,074 - werkzeug - WARNING -  * Debugger is active!
+2025-05-19 14:30:12,079 - werkzeug - INFO -  * Debugger PIN: 738-969-985
+2025-05-19 14:30:12,155 - werkzeug - INFO -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2025-05-19 14:30:16,450 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:30:16] "GET / HTTP/1.1" 200 -
+2025-05-19 14:30:16,733 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:30:16] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 14:30:16,733 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:30:16] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 14:30:19,641 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:30:19] "GET /search?q=速配中页面信息 HTTP/1.1" 200 -
+2025-05-19 14:30:19,649 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:30:19] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 14:30:19,650 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:30:19] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 14:30:21,992 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:30:21] "GET / HTTP/1.1" 200 -
+2025-05-19 14:30:22,001 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:30:22] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 14:30:22,001 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:30:22] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 14:30:24,106 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:30:24] "GET /search?q=速配中页面信息 HTTP/1.1" 200 -
+2025-05-19 14:30:24,119 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:30:24] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 14:30:24,120 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:30:24] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 14:30:26,251 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:30:26] "[32mGET /search/delete/1 HTTP/1.1[0m" 302 -
+2025-05-19 14:30:26,256 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:30:26] "GET /search?q= HTTP/1.1" 200 -
+2025-05-19 14:30:26,264 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:30:26] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 14:30:26,264 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:30:26] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 14:30:33,980 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:30:33] "GET /search?q=速配中页面信息 HTTP/1.1" 200 -
+2025-05-19 14:30:33,989 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:30:33] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 14:30:33,989 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:30:33] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 14:30:35,520 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:30:35] "GET /search?q=速配中页面信息 HTTP/1.1" 200 -
+2025-05-19 14:30:35,527 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:30:35] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 14:30:35,527 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:30:35] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 14:30:36,144 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:30:36] "GET / HTTP/1.1" 200 -
+2025-05-19 14:30:36,152 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:30:36] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 14:30:36,153 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:30:36] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 14:30:37,941 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:30:37] "GET /search?q= HTTP/1.1" 200 -
+2025-05-19 14:30:37,949 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:30:37] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 14:30:37,949 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:30:37] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 14:30:39,291 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:30:39] "GET / HTTP/1.1" 200 -
+2025-05-19 14:30:39,298 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:30:39] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 14:30:39,299 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:30:39] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 14:30:40,935 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:30:40] "GET /search?q=速配中页面信息 HTTP/1.1" 200 -
+2025-05-19 14:30:40,943 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:30:40] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 14:30:40,944 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:30:40] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 14:30:43,298 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:30:43] "GET / HTTP/1.1" 200 -
+2025-05-19 14:30:43,306 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:30:43] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 14:30:43,307 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:30:43] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 14:30:50,461 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:30:50] "GET /api/check-file?filename=二期Duoov1.0.1.docx HTTP/1.1" 200 -
+2025-05-19 14:30:51,512 - root - ERROR - 文件处理失败: 'id'
+2025-05-19 14:30:51,512 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:30:51] "POST /upload/batch HTTP/1.1" 200 -
+2025-05-19 14:30:52,556 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:30:52] "GET / HTTP/1.1" 200 -
+2025-05-19 14:30:52,566 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:30:52] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 14:30:52,566 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:30:52] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 14:40:18,557 - werkzeug - INFO -  * Detected change in 'D:\\tools\\Pycharm\\PycharmWork\\DocRadar\\utils\\document_parser.py', reloading
+2025-05-19 14:40:18,595 - werkzeug - INFO -  * Restarting with stat
+2025-05-19 14:40:19,060 - werkzeug - WARNING -  * Debugger is active!
+2025-05-19 14:40:19,066 - werkzeug - INFO -  * Debugger PIN: 738-969-985
+2025-05-19 14:40:19,138 - werkzeug - INFO -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2025-05-19 14:41:41,889 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:41:41] "GET / HTTP/1.1" 200 -
+2025-05-19 14:41:42,160 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:41:42] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 14:41:42,161 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:41:42] "GET /static/js/main.js HTTP/1.1" 200 -
+2025-05-19 14:41:46,833 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:41:46] "GET / HTTP/1.1" 200 -
+2025-05-19 14:41:46,842 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:41:46] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 14:41:46,843 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:41:46] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 14:41:48,020 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:41:48] "GET /document/250 HTTP/1.1" 200 -
+2025-05-19 14:41:48,027 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:41:48] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 14:41:48,029 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:41:48] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 14:41:59,625 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:41:59] "GET /document/249 HTTP/1.1" 200 -
+2025-05-19 14:41:59,633 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:41:59] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 14:41:59,633 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:41:59] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 14:42:11,329 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:42:11] "GET /api/check-file?filename=二期Duoov1.0.1.docx HTTP/1.1" 200 -
+2025-05-19 14:42:12,484 - root - ERROR - 文件处理失败: 'id'
+2025-05-19 14:42:12,484 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:42:12] "POST /upload/batch HTTP/1.1" 200 -
+2025-05-19 14:42:24,684 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:42:24] "GET /api/check-file?filename=三期Duoov1.1.0.docx HTTP/1.1" 200 -
+2025-05-19 14:42:29,874 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:42:29] "GET / HTTP/1.1" 200 -
+2025-05-19 14:42:29,883 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:42:29] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 14:42:29,883 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:42:29] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 14:42:40,863 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:42:40] "GET /api/check-file?filename=二期Duoov1.0.1.docx HTTP/1.1" 200 -
+2025-05-19 14:42:47,557 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:42:47] "GET /api/check-file?filename=三期Duoov1.1.0.docx HTTP/1.1" 200 -
+2025-05-19 14:42:49,072 - root - ERROR - 文件处理失败: 'id'
+2025-05-19 14:42:49,072 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:42:49] "POST /upload/batch HTTP/1.1" 200 -
+2025-05-19 14:49:26,950 - werkzeug - INFO -  * Restarting with stat
+2025-05-19 14:49:27,421 - werkzeug - WARNING -  * Debugger is active!
+2025-05-19 14:49:27,426 - werkzeug - INFO -  * Debugger PIN: 738-969-985
+2025-05-19 14:49:27,501 - werkzeug - INFO -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2025-05-19 14:49:29,177 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:49:29] "GET / HTTP/1.1" 200 -
+2025-05-19 14:49:29,458 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:49:29] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 14:49:29,459 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:49:29] "GET /static/js/main.js HTTP/1.1" 200 -
+2025-05-19 14:49:35,432 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:49:35] "GET /api/check-file?filename=二期Duoov1.0.1.docx HTTP/1.1" 200 -
+2025-05-19 14:49:36,330 - root - ERROR - 文件处理失败: 'id'
+2025-05-19 14:49:36,330 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:49:36] "POST /upload/batch HTTP/1.1" 200 -
+2025-05-19 14:49:38,353 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:49:38] "GET / HTTP/1.1" 200 -
+2025-05-19 14:49:38,362 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:49:38] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 14:49:38,362 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:49:38] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 14:49:46,399 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:49:46] "GET /api/check-file?filename=三期Duoov1.1.0.docx HTTP/1.1" 200 -
+2025-05-19 15:00:47,554 - werkzeug - INFO -  * Restarting with stat
+2025-05-19 15:00:48,010 - werkzeug - WARNING -  * Debugger is active!
+2025-05-19 15:00:48,014 - werkzeug - INFO -  * Debugger PIN: 738-969-985
+2025-05-19 15:00:48,088 - werkzeug - INFO -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2025-05-19 15:07:03,780 - werkzeug - INFO -  * Restarting with stat
+2025-05-19 15:07:04,240 - werkzeug - WARNING -  * Debugger is active!
+2025-05-19 15:07:04,244 - werkzeug - INFO -  * Debugger PIN: 738-969-985
+2025-05-19 15:07:04,319 - werkzeug - INFO -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2025-05-19 15:07:06,257 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:07:06] "GET / HTTP/1.1" 200 -
+2025-05-19 15:07:06,455 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:07:06] "GET /static/js/main.js HTTP/1.1" 200 -
+2025-05-19 15:07:06,456 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:07:06] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 15:07:08,795 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:07:08] "GET / HTTP/1.1" 200 -
+2025-05-19 15:07:08,815 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:07:08] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 15:07:08,815 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:07:08] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 15:07:15,415 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:07:15] "GET /api/check-file?filename=三期Duoov1.1.0.docx HTTP/1.1" 200 -
+2025-05-19 15:07:16,282 - root - ERROR - 文件处理失败: 'id'
+2025-05-19 15:07:16,282 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:07:16] "POST /upload/batch HTTP/1.1" 200 -
+2025-05-19 15:07:20,417 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:07:20] "GET /document/250 HTTP/1.1" 200 -
+2025-05-19 15:07:20,426 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:07:20] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 15:07:20,430 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:07:20] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -

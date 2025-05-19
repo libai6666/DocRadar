@@ -6,19 +6,40 @@ import os
 import logging
 from flask import Flask, render_template, request, redirect, url_for, flash, jsonify, abort, send_file, session, make_response
 from werkzeug.utils import secure_filename
-from datetime import datetime
+from datetime import datetime, timedelta
 from functools import wraps
+import mimetypes
 
 from utils.document_parser import DocumentParser
 from utils.search_engine import SearchEngine
 from utils.storage import Storage
 import config
 
-# 配置日志
-logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
-)
+# 日志目录和文件
+log_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'tmp')
+if not os.path.exists(log_dir):
+    os.makedirs(log_dir)
+# 按天分割日志文件
+log_file = os.path.join(log_dir, f'docRadar_{datetime.now().strftime("%Y%m%d")}.log')
+
+# 自动清理7天前的日志
+for fname in os.listdir(log_dir):
+    if fname.startswith('docRadar_') and fname.endswith('.log'):
+        try:
+            date_str = fname[len('docRadar_'):-len('.log')]
+            log_date = datetime.strptime(date_str, '%Y%m%d')
+            if (datetime.now() - log_date).days > 7:
+                os.remove(os.path.join(log_dir, fname))
+        except Exception as e:
+            logging.warning(f'日志清理失败: {fname}, {e}')
+
+# 配置日志到文件和控制台
+file_handler = logging.FileHandler(log_file, encoding='utf-8')
+file_handler.setLevel(logging.INFO)
+formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+file_handler.setFormatter(formatter)
+
+logging.getLogger().addHandler(file_handler)
 
 # 初始化Flask应用
 app = Flask(__name__)
@@ -329,33 +350,58 @@ def process_upload(file, overwrite=False):
                 'filename': original_filename,
                 'existing_doc': file_exists
             }
-            
-        # 如果文件存在且需要覆盖，先删除旧文件
+        
+        # 如果文件存在且允许覆盖，先删除旧文件
         if file_exists['exists'] and overwrite:
-            storage.delete_document(file_exists['doc_id'])
-            
+            storage.delete_document(file_exists['id'])
+            logging.info(f"覆盖旧文件: {file_exists['id']}")
+        
         # 保存文件
-        file_path = storage.save_file(file)
-        file_size = os.path.getsize(file_path)
+        file_path = storage.save_file(file, filename)
         
         # 解析文档内容
         parser = DocumentParser.get_parser(file_path)
-        doc_content = parser.parse(file_path)
+        
+        # 添加文档元数据（先添加以获取文档ID）
+        title = os.path.splitext(original_filename)[0]  # 默认使用文件名作为标题
+        file_size = os.path.getsize(file_path)
         
         # 添加文档元数据
-        title = doc_content['metadata'].get('title', filename)
         doc_id = storage.add_document_metadata(
-            filename=original_filename,  # 使用原始文件名作为存储名
+            filename=original_filename,
             filepath=file_path,
             title=title,
             file_type=file_type,
             file_size=file_size,
-            metadata=doc_content['metadata'],
-            original_filename=original_filename  # 传递原始文件名
+            metadata=None,
+            original_filename=original_filename
         )
         
-        # 添加文档内容到搜索索引
-        search_engine.add_document(doc_id, doc_content['text'])
+        # 解析文档内容（传递文档ID）
+        doc_content = parser.parse(file_path, doc_id)
+        
+        # 更新文档元数据
+        title = doc_content['metadata'].get('title', filename)
+        storage.update_document_metadata(
+            doc_id,
+            title=title,
+            metadata=doc_content['metadata']
+        )
+        
+        # 添加文档内容到索引
+        storage.add_document_content(
+            doc_id,
+            doc_content['text'],
+            doc_content.get('html_content', '')
+        )
+        
+        # 更新搜索索引
+        search_engine.index_document(
+            doc_id,
+            title,
+            doc_content['text'],
+            file_type
+        )
         
         return {
             'success': True,
@@ -403,12 +449,28 @@ def search():
             history_result['doc_url'] = url_for('view_document', doc_id=result['id'], q=query)
             history_results.append(history_result)
         
-        search_history.append({
-            'id': len(search_history) + 1,
-            'query': query,
-            'timestamp': datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
-            'results': history_results
-        })
+        # 检查是否已存在相同关键词的搜索记录
+        existing_record = None
+        for record in search_history:
+            if record['query'] == query:
+                existing_record = record
+                break
+        
+        if existing_record:
+            # 更新已存在的记录
+            existing_record['timestamp'] = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+            existing_record['results'] = history_results
+            # 将该记录移到列表末尾（最新）
+            search_history.remove(existing_record)
+            search_history.append(existing_record)
+        else:
+            # 添加新记录
+            search_history.append({
+                'id': len(search_history) + 1,
+                'query': query,
+                'timestamp': datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
+                'results': history_results
+            })
         
         # 限制历史记录数量（保留最近10次）
         if len(search_history) > 10:
@@ -855,6 +917,32 @@ def page_not_found(e):
 def server_error(e):
     """500错误处理"""
     return render_template('500.html'), 500
+
+@app.route('/static/doc_images/<path:filename>')
+def serve_doc_image(filename):
+    """提供文档图片文件"""
+    try:
+        # 获取图片文件的完整路径
+        image_path = os.path.join(app.static_folder, 'doc_images', filename)
+        logging.info(f"请求图片: {filename}")
+        logging.info(f"图片完整路径: {image_path}")
+        
+        if not os.path.exists(image_path):
+            logging.warning(f"请求的图片不存在: {image_path}")
+            abort(404)
+            
+        # 设置正确的MIME类型
+        mime_type = mimetypes.guess_type(image_path)[0] or 'application/octet-stream'
+        logging.info(f"图片MIME类型: {mime_type}")
+        
+        return send_file(
+            image_path,
+            mimetype=mime_type,
+            cache_timeout=3600  # 缓存1小时
+        )
+    except Exception as e:
+        logging.error(f"提供文档图片失败: {e}")
+        abort(404)
 
 if __name__ == '__main__':
     app.run(debug=True) 

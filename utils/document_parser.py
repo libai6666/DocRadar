@@ -9,6 +9,8 @@ import docx
 import logging
 import uuid
 import shutil
+import hashlib
+import mammoth
 from abc import ABC, abstractmethod
 
 class DocumentParser(ABC):
@@ -84,44 +86,54 @@ class PDFParser(DocumentParser):
 class DocxParser(DocumentParser):
     """DOCX文档解析器"""
     
-    def _get_image_directory(self, file_path):
+    def _get_image_directory(self, file_path, doc_id=None):
         """
-        为文档创建唯一的图片目录
+        获取文档图片存储目录
         
         Args:
             file_path: 文档路径
+            doc_id: 文档ID（如果有）
             
         Returns:
-            tuple: (图片目录路径, 相对于静态目录的URL路径)
+            tuple: (图片目录路径, 图片URL路径)
         """
-        # 从文件路径中提取基本名称
-        file_basename = os.path.basename(file_path)
-        # 使用文件名或生成一个唯一ID
-        doc_id = os.path.splitext(file_basename)[0]
+        # 获取静态文件夹路径
+        static_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'static')
         
-        # 设置图片目录路径
-        static_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'static')
-        image_dir = os.path.join(static_dir, 'doc_images', doc_id)
-        image_url_path = f'/static/doc_images/{doc_id}'
+        # 根据文档ID或文件名生成唯一目录名
+        if doc_id:
+            dir_name = f'doc_{doc_id}'
+        else:
+            # 使用文件名的哈希值作为目录名
+            file_hash = hashlib.md5(os.path.basename(file_path).encode()).hexdigest()
+            dir_name = file_hash
+        
+        # 构建图片目录和URL路径
+        image_dir = os.path.join(static_dir, 'doc_images', dir_name)
+        image_url_path = f'/static/doc_images/{dir_name}'
         
         # 确保目录存在
         if not os.path.exists(image_dir):
             os.makedirs(image_dir)
+            logging.info(f"创建图片目录: {image_dir}")
+        else:
+            logging.info(f"图片目录已存在: {image_dir}")
             
         return image_dir, image_url_path
     
-    def _extract_images(self, doc, file_path):
+    def _extract_images(self, doc, file_path, doc_id=None):
         """
         从DOCX文档中提取图片
         
         Args:
             doc: python-docx Document对象
             file_path: 文档路径
+            doc_id: 文档ID（如果有）
             
         Returns:
             dict: 图片关系ID到图片URL的映射
         """
-        image_dir, image_url_path = self._get_image_directory(file_path)
+        image_dir, image_url_path = self._get_image_directory(file_path, doc_id)
         logging.info(f"文档图片目录: {image_dir}")
         logging.info(f"文档图片URL路径: {image_url_path}")
         
@@ -130,26 +142,179 @@ class DocxParser(DocumentParser):
         
         # 处理文档关系中的图片
         for rel in doc.part.rels.values():
+            # 支持多种图片类型：常规图片和嵌入对象
             if rel.reltype == docx.opc.constants.RELATIONSHIP_TYPE.IMAGE:
-                image_blob = rel.target_part.blob
-                # 为图片生成唯一文件名
-                image_filename = f'image_{uuid.uuid4().hex}.png'
-                image_path = os.path.join(image_dir, image_filename)
-                image_url = f'{image_url_path}/{image_filename}'
-                
-                # 保存图片文件
-                with open(image_path, 'wb') as f:
-                    f.write(image_blob)
-                
-                # 添加到映射
-                image_map[rel.rId] = image_url
-                logging.info(f"提取图片: {rel.rId} -> {image_url}")
+                try:
+                    image_blob = rel.target_part.blob
+                    # 为图片生成唯一文件名
+                    image_filename = f'image_{uuid.uuid4().hex}.png'
+                    image_path = os.path.join(image_dir, image_filename)
+                    image_url = f'{image_url_path}/{image_filename}'
+                    
+                    # 保存图片文件
+                    with open(image_path, 'wb') as f:
+                        f.write(image_blob)
+                    
+                    # 添加到映射
+                    image_map[rel.rId] = image_url
+                    logging.info(f"提取图片: {rel.rId} -> {image_url}")
+                except Exception as e:
+                    logging.error(f"提取图片失败 {rel.rId}: {e}")
+                    continue
                 
         logging.info(f"从文档中提取了 {len(image_map)} 个图片")
         return image_map
     
-    def parse(self, file_path):
-        """解析DOCX文档内容，支持富文本格式和图片"""
+    def _extract_images_mammoth(self, file_path, doc_id=None):
+        """
+        使用mammoth提取DOCX文档中的图片
+        
+        Args:
+            file_path: 文档路径
+            doc_id: 文档ID（如果有）
+            
+        Returns:
+            dict: 图片处理器，用于mammoth转换
+        """
+        image_dir, image_url_path = self._get_image_directory(file_path, doc_id)
+        logging.info(f"Mammoth图片目录: {image_dir}")
+        logging.info(f"Mammoth图片URL路径: {image_url_path}")
+        
+        # 图片计数器
+        image_counter = [0]
+        # 存储所有提取的图片路径，用于兜底展示
+        extracted_images = []
+        
+        # 图片处理器
+        def image_handler(image):
+            # 为图片生成唯一文件名
+            image_counter[0] += 1
+            image_filename = f'image_mammoth_{uuid.uuid4().hex}_{image_counter[0]}.png'
+            image_path = os.path.join(image_dir, image_filename)
+            image_url = f'{image_url_path}/{image_filename}'
+            
+            # 保存图片文件 - 修复：先完整读取数据，再关闭文件句柄
+            try:
+                with image.open() as image_data:
+                    image_bytes = image_data.read()
+                
+                # 将读取的图片数据写入文件
+                with open(image_path, 'wb') as f:
+                    f.write(image_bytes)
+                
+                logging.info(f"Mammoth提取图片: {image_filename} -> {image_url}")
+                
+                # 记录提取的图片
+                extracted_images.append(image_url)
+                
+                # 返回图片URL
+                return {'src': image_url}
+            except Exception as e:
+                logging.error(f"Mammoth提取图片失败: {e}")
+                return {'src': ''}
+        
+        # 返回图片处理器和提取的图片列表
+        return image_handler, extracted_images
+    
+    def _convert_docx_to_html_mammoth(self, file_path, doc_id=None):
+        """
+        使用mammoth将DOCX转换为高保真HTML
+        
+        Args:
+            file_path: 文档路径
+            doc_id: 文档ID（如果有）
+            
+        Returns:
+            str: 转换后的HTML内容
+        """
+        try:
+            # 配置转换选项
+            image_handler, extracted_images = self._extract_images_mammoth(file_path, doc_id)
+            style_map = """
+                p[style-name='Heading 1'] => h1:fresh
+                p[style-name='Heading 2'] => h2:fresh
+                p[style-name='Heading 3'] => h3:fresh
+                p[style-name='Heading 4'] => h4:fresh
+                p[style-name='Heading 5'] => h5:fresh
+                p[style-name='Heading 6'] => h6:fresh
+                r[style-name='Strong'] => strong
+                r[style-name='Emphasis'] => em
+                p[style-name='Quote'] => blockquote
+                p[style-name='Intense Quote'] => blockquote.intense
+                r[style-name='Underline'] => u
+                p[style-name='List Paragraph'] => li
+                table => table.table.table-bordered
+            """
+            
+            # 转换DOCX为HTML
+            with open(file_path, 'rb') as docx_file:
+                result = mammoth.convert_to_html(
+                    docx_file,
+                    convert_image=mammoth.images.img_element(image_handler),
+                    style_map=style_map
+                )
+            
+            html = result.value
+            messages = result.messages
+            
+            # 记录警告信息
+            for message in messages:
+                if message.type == "warning":
+                    logging.warning(f"Mammoth警告: {message}")
+            
+            # 添加兜底展示：如果有提取的图片但在HTML中找不到，在底部显示
+            if extracted_images:
+                # 检查HTML中是否包含所有提取的图片
+                missing_images = []
+                for img_url in extracted_images:
+                    # 从URL中提取文件名
+                    img_filename = img_url.split('/')[-1]
+                    if img_filename not in html:
+                        missing_images.append(img_url)
+                
+                # 如果有未在HTML中找到的图片，添加到底部
+                if missing_images:
+                    html += '<div class="document-images-fallback"><h3>文档中的其他图片</h3><div class="image-gallery">'
+                    for img_url in missing_images:
+                        html += f'<div class="image-item"><img src="{img_url}" alt="文档图片"><div class="image-caption">文档图片</div></div>'
+                    html += '</div></div>'
+            
+            # 包装HTML，添加额外样式
+            html = f"""
+            <div class="docx-document mammoth-converted">
+                <style>
+                    .mammoth-converted table {{ border-collapse: collapse; width: 100%; margin-bottom: 1rem; }}
+                    .mammoth-converted th, .mammoth-converted td {{ border: 1px solid #dee2e6; padding: 0.75rem; }}
+                    .mammoth-converted img {{ max-width: 100%; height: auto; }}
+                    .mammoth-converted blockquote {{ padding: 0.5rem 1rem; border-left: 5px solid #eee; }}
+                    .mammoth-converted blockquote.intense {{ background-color: #f8f9fa; }}
+                    .mammoth-converted h1, .mammoth-converted h2, .mammoth-converted h3 {{ margin-top: 1rem; margin-bottom: 0.5rem; }}
+                    .document-images-fallback {{ margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #dee2e6; }}
+                    .image-gallery {{ display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 1rem; }}
+                    .image-item {{ width: 200px; }}
+                    .image-caption {{ font-size: 0.8rem; color: #6c757d; margin-top: 0.5rem; text-align: center; }}
+                </style>
+                {html}
+            </div>
+            """
+            
+            logging.info(f"Mammoth成功转换文档: {file_path}, HTML长度: {len(html)}")
+            return html
+            
+        except Exception as e:
+            logging.error(f"Mammoth转换失败: {e}")
+            raise
+    
+    def parse(self, file_path, doc_id=None):
+        """解析DOCX文档内容，支持富文本格式和图片
+        
+        Args:
+            file_path: 文档路径
+            doc_id: 文档ID（如果有）
+            
+        Returns:
+            dict: 包含文本内容、HTML内容和元数据的字典
+        """
         text = ""
         html_content = ""
         metadata = {}
@@ -172,82 +337,12 @@ class DocxParser(DocumentParser):
             for para in doc.paragraphs:
                 text += para.text + "\n"
             
-            # 提取图片并获取映射
-            image_map = self._extract_images(doc, file_path)
-            
-            # 生成HTML内容（用于显示）
-            html_content = '<div class="docx-document">'
-            
-            # 添加标题
-            if metadata['title']:
-                html_content += f'<h1 class="document-title">{metadata["title"]}</h1>'
-            
-            # 处理文档内容
-            for para in doc.paragraphs:
-                if para.text.strip():
-                    # 检查段落样式
-                    style = ""
-                    if para.style.name.startswith('Heading'):
-                        level = para.style.name[-1]
-                        html_content += f'<h{level}>{para.text}</h{level}>'
-                    else:
-                        # 处理段落中的图片
-                        has_image = False
-                        for run in para.runs:
-                            for element in run._element:
-                                if element.tag.endswith('drawing'):
-                                    # 在段落中查找图片
-                                    image_found = False
-                                    xml_str = str(element)
-                                    for rId in image_map:
-                                        if rId in xml_str:
-                                            img_url = image_map[rId]
-                                            html_content += f'<p><img src="{img_url}" alt="文档图片" class="img-fluid"></p>'
-                                            has_image = True
-                                            image_found = True
-                                            logging.info(f"在段落中找到图片: {rId} -> {img_url}")
-                                            break
-                                    
-                                    if not image_found:
-                                        logging.warning(f"段落中包含图片元素，但未找到对应的图片ID")
-                        
-                        # 如果段落中没有图片，则添加文本内容
-                        if not has_image:
-                            html_content += f'<p>{para.text}</p>'
-                else:
-                    html_content += '<p>&nbsp;</p>'  # 空段落
-            
-            # 处理表格
-            for table in doc.tables:
-                html_content += '<table class="table table-bordered table-sm my-3">'
-                
-                # 遍历行和单元格
-                for i, row in enumerate(table.rows):
-                    html_content += '<tr>'
-                    
-                    for cell in row.cells:
-                        tag = 'th' if i == 0 else 'td'  # 第一行使用th
-                        cell_text = ""
-                        
-                        # 获取单元格内容
-                        for paragraph in cell.paragraphs:
-                            if paragraph.text:
-                                cell_text += paragraph.text + " "
-                        
-                        html_content += f'<{tag}>{cell_text.strip()}</{tag}>'
-                    
-                    html_content += '</tr>'
-                
-                html_content += '</table>'
-            
-            html_content += '</div>'
-            
-            # 记录是否生成了HTML内容和图片
-            logging.info(f"文档 {os.path.basename(file_path)} 生成了HTML内容，长度: {len(html_content)}")
-            logging.info(f"文档 {os.path.basename(file_path)} 包含 {len(image_map)} 个图片")
+            # 使用mammoth生成高保真HTML
+            html_content = self._convert_docx_to_html_mammoth(file_path, doc_id)
             
             # 保存图片目录信息，用于后续文档删除时清理
-            metadata['image_directory'] = self._get_image_directory(file_path)[0]
+            image_dir, _ = self._get_image_directory(file_path, doc_id)
+            metadata['image_directory'] = image_dir
                 
         except Exception as e:
             logging.error(f"解析DOCX文件失败: {e}")

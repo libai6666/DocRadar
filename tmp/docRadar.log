@@ -1,0 +1,37 @@
+2025-05-19 14:10:53,164 - werkzeug - WARNING -  * Debugger is active!
+2025-05-19 14:10:53,168 - werkzeug - INFO -  * Debugger PIN: 738-969-985
+2025-05-19 14:10:53,235 - werkzeug - INFO -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2025-05-19 14:10:58,654 - werkzeug - INFO -  * Detected change in 'D:\\tools\\Pycharm\\PycharmWork\\DocRadar\\utils\\document_parser.py', reloading
+2025-05-19 14:10:59,108 - werkzeug - WARNING -  * Debugger is active!
+2025-05-19 14:10:59,113 - werkzeug - INFO -  * Debugger PIN: 738-969-985
+2025-05-19 14:10:59,184 - werkzeug - INFO -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2025-05-19 14:12:36,252 - werkzeug - INFO -  * Restarting with stat
+2025-05-19 14:12:36,653 - werkzeug - WARNING -  * Debugger is active!
+2025-05-19 14:12:36,660 - werkzeug - INFO -  * Debugger PIN: 738-969-985
+2025-05-19 14:12:36,727 - werkzeug - INFO -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2025-05-19 14:14:09,334 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:14:09] "GET / HTTP/1.1" 200 -
+2025-05-19 14:14:09,606 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:14:09] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 14:14:09,608 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:14:09] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 14:14:16,933 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:14:16] "GET /api/check-file?filename=五十八期Duoov5.8.5.docx HTTP/1.1" 200 -
+2025-05-19 14:14:17,002 - root - WARNING - 段落中包含图片元素，但未找到对应的图片ID, tag={http://schemas.openxmlformats.org/wordprocessingml/2006/main}drawing
+2025-05-19 14:14:17,020 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:14:17] "POST /upload/batch HTTP/1.1" 200 -
+2025-05-19 14:14:18,067 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:14:18] "GET / HTTP/1.1" 200 -
+2025-05-19 14:14:18,074 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:14:18] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 14:14:18,074 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:14:18] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 14:14:19,379 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:14:19] "GET /document/246 HTTP/1.1" 200 -
+2025-05-19 14:14:19,386 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:14:19] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-19 14:14:19,387 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:14:19] "GET /static/doc_images/doc_246/image_10c2d6dcd8bc45389115ee2694c96b7a.png HTTP/1.1" 200 -
+2025-05-19 14:14:19,389 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:14:19] "GET /static/doc_images/doc_246/image_7d45b9f6dcc44600b805feacc564c02f.png HTTP/1.1" 200 -
+2025-05-19 14:14:19,392 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:14:19] "GET /static/doc_images/doc_246/image_fb7fa5ad625647ed8f322d9c463eeeab.png HTTP/1.1" 200 -
+2025-05-19 14:14:19,392 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:14:19] "GET /static/doc_images/doc_246/image_0fa648d424f94ad8969095f3d5612d79.png HTTP/1.1" 200 -
+2025-05-19 14:14:19,394 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:14:19] "GET /static/doc_images/doc_246/image_ba5d0ef7c47745869fc652f94e454463.png HTTP/1.1" 200 -
+2025-05-19 14:14:19,395 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:14:19] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-19 14:14:19,399 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:14:19] "GET /static/doc_images/doc_246/image_8f0302986b0c44e89dc51bc817b3e519.png HTTP/1.1" 200 -
+2025-05-19 14:14:19,401 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 14:14:19] "GET /static/doc_images/doc_246/image_ea896f3d62ca4c56be846ffd16c7c7ab.png HTTP/1.1" 200 -
+2025-05-19 14:14:30,020 - werkzeug - INFO -  * Detected change in 'D:\\tools\\Pycharm\\PycharmWork\\DocRadar\\app.py', reloading
+2025-05-19 14:14:30,053 - werkzeug - INFO -  * Restarting with stat
+2025-05-19 14:18:05,246 - werkzeug - INFO -  * Restarting with stat
+2025-05-19 14:20:51,267 - werkzeug - INFO -  * Restarting with stat
+2025-05-19 14:23:13,924 - werkzeug - INFO -  * Restarting with stat
+2025-05-19 14:25:19,220 - werkzeug - INFO -  * Restarting with stat
+2025-05-19 14:29:05,891 - werkzeug - INFO -  * Restarting with stat

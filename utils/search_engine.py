@@ -37,22 +37,46 @@ class SearchEngine:
                 file_type TEXT NOT NULL,
                 file_size INTEGER NOT NULL,
                 created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-                metadata TEXT
+                metadata TEXT,
+                original_filename TEXT
             )
             ''')
             
-            # 创建文档内容表（不使用FTS5）
+            # 检查是否需要添加original_filename列到documents表
+            cursor.execute("PRAGMA table_info(documents)")
+            columns = cursor.fetchall()
+            column_names = [col[1] for col in columns]
+            
+            if 'original_filename' not in column_names:
+                logging.info("添加original_filename列到documents表")
+                cursor.execute("ALTER TABLE documents ADD COLUMN original_filename TEXT")
+            
+            # 检查document_content表是否存在
+            cursor.execute("SELECT name FROM sqlite_master WHERE type='table' AND name='document_content'")
+            if not cursor.fetchone():
+                # 创建文档内容表（使用FTS5）
+                cursor.execute('''
+                CREATE VIRTUAL TABLE document_content USING fts5(
+                    doc_id UNINDEXED,
+                    content,
+                    tokenize='porter unicode61'  
+                )
+                ''')
+                logging.info("创建document_content虚拟表")
+            
+            # 创建HTML内容表
             cursor.execute('''
-            CREATE TABLE IF NOT EXISTS document_content (
+            CREATE TABLE IF NOT EXISTS document_html_content (
                 doc_id INTEGER PRIMARY KEY,
-                content TEXT,
+                html_content TEXT,
                 FOREIGN KEY (doc_id) REFERENCES documents(id) ON DELETE CASCADE
             )
             ''')
+            logging.info("创建或确认document_html_content表存在")
             
             conn.commit()
             conn.close()
-            logging.info("数据库初始化完成，使用基础SQL查询功能")
+            logging.info("数据库初始化完成")
             
         except sqlite3.Error as e:
             logging.error(f"数据库初始化错误: {e}")
@@ -80,10 +104,14 @@ class SearchEngine:
             exists = cursor.fetchone()
             
             if exists:
-                # 更新现有内容
+                # 更新现有内容 - 使用replace语法，因为FTS5表不支持UPDATE
                 cursor.execute(
-                    "UPDATE document_content SET content = ? WHERE doc_id = ?",
-                    (content, doc_id)
+                    "DELETE FROM document_content WHERE doc_id = ?",
+                    (doc_id,)
+                )
+                cursor.execute(
+                    "INSERT INTO document_content (doc_id, content) VALUES (?, ?)",
+                    (doc_id, content)
                 )
             else:
                 # 插入新内容
@@ -360,11 +388,14 @@ class SearchEngine:
             cursor.execute('''
             SELECT 
                 d.*, 
-                c.content
+                c.content,
+                h.html_content
             FROM 
                 documents d
             LEFT JOIN 
                 document_content c ON d.id = c.doc_id
+            LEFT JOIN
+                document_html_content h ON d.id = h.doc_id
             WHERE 
                 d.id = ?
             ''', (doc_id,))
@@ -382,31 +413,70 @@ class SearchEngine:
                     'content': row['content'] or ""
                 }
                 
+                # 如果存在HTML内容，添加到文档信息中
+                if row['html_content']:
+                    document['html_content'] = row['html_content']
+                    logging.info(f"从数据库获取到HTML内容: {doc_id}")
+                else:
+                    logging.info(f"数据库中没有HTML内容: {doc_id}")
+                
                 # 如果内容为空，尝试从文件直接读取
-                if not document['content'] and os.path.exists(row['filepath']):
+                if (not document['content'] or 'html_content' not in document) and os.path.exists(row['filepath']):
                     try:
                         logging.info(f"尝试直接从文件读取内容: {row['filepath']}")
                         
                         # 根据文件类型选择解析方法
                         from utils.document_parser import DocumentParser
                         parser = DocumentParser.get_parser(row['filepath'])
-                        doc_content = parser.parse(row['filepath'])
+                        doc_content = parser.parse(row['filepath'], doc_id)
                         
                         document['content'] = doc_content['text']
                         if 'html_content' in doc_content:
                             document['html_content'] = doc_content['html_content']
                             
                         logging.info(f"成功从文件直接解析内容: {row['filepath']}")
+                        
+                        # 更新数据库中的内容
+                        # 更新文本内容
+                        cursor.execute(
+                            "DELETE FROM document_content WHERE doc_id = ?",
+                            (doc_id,)
+                        )
+                        cursor.execute(
+                            "INSERT INTO document_content (doc_id, content) VALUES (?, ?)",
+                            (doc_id, doc_content['text'])
+                        )
+                        
+                        # 更新HTML内容
+                        if 'html_content' in doc_content:
+                            cursor.execute(
+                                "SELECT 1 FROM document_html_content WHERE doc_id = ?",
+                                (doc_id,)
+                            )
+                            if cursor.fetchone():
+                                cursor.execute(
+                                    "UPDATE document_html_content SET html_content = ? WHERE doc_id = ?",
+                                    (doc_content['html_content'], doc_id)
+                                )
+                            else:
+                                cursor.execute(
+                                    "INSERT INTO document_html_content (doc_id, html_content) VALUES (?, ?)",
+                                    (doc_id, doc_content['html_content'])
+                                )
+                                
+                        conn.commit()
+                        logging.info(f"更新了数据库中的文档内容: {doc_id}")
                     except Exception as file_error:
                         logging.error(f"从文件解析内容失败: {file_error}")
-                        document['content'] = "无法加载文档内容。可能是因为文件格式不支持或文件已损坏。"
+                        if not document['content']:
+                            document['content'] = "无法加载文档内容。可能是因为文件格式不支持或文件已损坏。"
             
             # 如果是DOCX文件且内容存在，但html_content不存在，尝试重新解析获取HTML内容
             if document and document['file_type'] == 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' and os.path.exists(document['filepath']) and 'html_content' not in document:
                 try:
                     from utils.document_parser import DocxParser
                     parser = DocxParser()
-                    doc_content = parser.parse(document['filepath'])
+                    doc_content = parser.parse(document['filepath'], doc_id)
                     if 'html_content' in doc_content:
                         document['html_content'] = doc_content['html_content']
                 except Exception as e:
@@ -494,4 +564,26 @@ class SearchEngine:
         
         logging.info(f"高亮搜索词 '{query}' 找到 {len(highlight_ranges)} 个匹配")
         
-        return result 
+        return result
+    
+    def index_document(self, doc_id, title, content, file_type):
+        """
+        索引文档内容，用于搜索
+        
+        Args:
+            doc_id: 文档ID
+            title: 文档标题
+            content: 文档内容
+            file_type: 文档类型
+            
+        Returns:
+            bool: 索引是否成功
+        """
+        try:
+            # 添加到搜索索引
+            self.add_document(doc_id, content)
+            logging.info(f"文档已成功索引: {doc_id}, 标题: {title}")
+            return True
+        except Exception as e:
+            logging.error(f"索引文档失败: {e}")
+            return False 
