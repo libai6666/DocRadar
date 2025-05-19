@@ -59,10 +59,10 @@ function initFileUpload() {
     const progressText = document.getElementById('upload-progress-text');
     const uploadResult = document.getElementById('upload-result');
     
-    // 覆盖确认模态框
-    const overwriteModal = new bootstrap.Modal(document.getElementById('overwriteConfirmModal'));
-    const batchOverwriteModal = new bootstrap.Modal(document.getElementById('batchOverwriteModal'));
-    const uploadResultModal = new bootstrap.Modal(document.getElementById('uploadResultModal'));
+    // 覆盖确认模态框元素
+    const overwriteModalEl = document.getElementById('overwriteConfirmModal');
+    const batchOverwriteModalEl = document.getElementById('batchOverwriteModal');
+    const uploadResultModalEl = document.getElementById('uploadResultModal');
     const existingFilename = document.getElementById('existing-filename');
     const confirmFilename = document.getElementById('confirm-filename');
     const confirmOverwrite = document.getElementById('confirm-overwrite');
@@ -71,6 +71,76 @@ function initFileUpload() {
     const confirmBatchOverwrite = document.getElementById('confirm-batch-overwrite');
     const uploadResultContent = document.getElementById('upload-result-content');
     const uploadResultClose = document.getElementById('upload-result-close');
+    
+    // 初始化模态框对象
+    let overwriteModal, batchOverwriteModal, uploadResultModal;
+    
+    // 直接初始化模态框，不使用嵌套的DOMContentLoaded事件
+    console.log('初始化模态框');
+    
+    // 确保模态框元素存在后再初始化
+    if (overwriteModalEl) {
+        try {
+            overwriteModal = new bootstrap.Modal(overwriteModalEl);
+            console.log('单文件覆盖模态框初始化成功');
+            
+            // 为取消按钮添加事件处理
+            const cancelOverwriteBtn = overwriteModalEl.querySelector('button[data-bs-dismiss="modal"]');
+            if (cancelOverwriteBtn) {
+                cancelOverwriteBtn.addEventListener('click', function() {
+                    console.log('取消覆盖按钮被点击');
+                    removeExistingFilesFromQueue();
+                });
+            }
+            
+            // 为模态框关闭事件添加处理
+            overwriteModalEl.addEventListener('hidden.bs.modal', function() {
+                console.log('覆盖确认模态框被关闭');
+                removeExistingFilesFromQueue();
+            });
+        } catch (error) {
+            console.error('单文件覆盖模态框初始化失败:', error);
+        }
+    } else {
+        console.error('覆盖确认模态框元素不存在');
+    }
+    
+    if (batchOverwriteModalEl) {
+        try {
+            batchOverwriteModal = new bootstrap.Modal(batchOverwriteModalEl);
+            console.log('批量覆盖模态框初始化成功');
+            
+            // 为取消按钮添加事件处理
+            const cancelBatchOverwriteBtn = batchOverwriteModalEl.querySelector('button[data-bs-dismiss="modal"]');
+            if (cancelBatchOverwriteBtn) {
+                cancelBatchOverwriteBtn.addEventListener('click', function() {
+                    console.log('取消批量覆盖按钮被点击');
+                    removeExistingFilesFromQueue();
+                });
+            }
+            
+            // 为模态框关闭事件添加处理
+            batchOverwriteModalEl.addEventListener('hidden.bs.modal', function() {
+                console.log('批量覆盖模态框被关闭');
+                removeExistingFilesFromQueue();
+            });
+        } catch (error) {
+            console.error('批量覆盖模态框初始化失败:', error);
+        }
+    } else {
+        console.error('批量覆盖模态框元素不存在');
+    }
+    
+    if (uploadResultModalEl) {
+        try {
+            uploadResultModal = new bootstrap.Modal(uploadResultModalEl);
+            console.log('上传结果模态框初始化成功');
+        } catch (error) {
+            console.error('上传结果模态框初始化失败:', error);
+        }
+    } else {
+        console.error('上传结果模态框元素不存在');
+    }
     
     if (!dropArea || !fileInput) return;
     
@@ -146,12 +216,103 @@ function initFileUpload() {
         fileList.innerHTML = '';
         fileCounter.textContent = selectedFiles.length;
         
+        // 添加批量操作按钮
+        if (selectedFiles.length > 0) {
+            const batchActionsDiv = document.createElement('div');
+            batchActionsDiv.className = 'd-flex justify-content-between align-items-center mb-2';
+            
+            // 全选复选框
+            const selectAllDiv = document.createElement('div');
+            selectAllDiv.className = 'form-check';
+            
+            const selectAllCheckbox = document.createElement('input');
+            selectAllCheckbox.type = 'checkbox';
+            selectAllCheckbox.className = 'form-check-input';
+            selectAllCheckbox.id = 'select-all-queue-files';
+            
+            const selectAllLabel = document.createElement('label');
+            selectAllLabel.className = 'form-check-label';
+            selectAllLabel.htmlFor = 'select-all-queue-files';
+            selectAllLabel.textContent = '全选';
+            
+            selectAllDiv.appendChild(selectAllCheckbox);
+            selectAllDiv.appendChild(selectAllLabel);
+            
+            // 批量删除按钮
+            const batchDeleteBtn = document.createElement('button');
+            batchDeleteBtn.type = 'button';
+            batchDeleteBtn.className = 'btn btn-sm btn-danger';
+            batchDeleteBtn.id = 'batch-delete-queue';
+            batchDeleteBtn.innerHTML = '<i class="bi bi-trash"></i> 批量删除';
+            batchDeleteBtn.disabled = true; // 默认禁用，直到选择了文件
+            
+            batchActionsDiv.appendChild(selectAllDiv);
+            batchActionsDiv.appendChild(batchDeleteBtn);
+            
+            fileList.appendChild(batchActionsDiv);
+            
+            // 全选事件
+            selectAllCheckbox.addEventListener('change', function() {
+                const checkboxes = fileList.querySelectorAll('.file-checkbox');
+                checkboxes.forEach(checkbox => {
+                    checkbox.checked = this.checked;
+                });
+                updateQueueDeleteButtonState();
+            });
+            
+            // 批量删除事件
+            batchDeleteBtn.addEventListener('click', function() {
+                const checkedFiles = fileList.querySelectorAll('.file-checkbox:checked');
+                if (checkedFiles.length === 0) {
+                    alert('请选择要删除的文件');
+                    return;
+                }
+                
+                if (confirm(`确定要删除选中的 ${checkedFiles.length} 个文件吗？`)) {
+                    const indexesToRemove = [];
+                    checkedFiles.forEach(checkbox => {
+                        indexesToRemove.push(parseInt(checkbox.dataset.index));
+                    });
+                    
+                    // 从大到小排序，避免删除时索引变化
+                    indexesToRemove.sort((a, b) => b - a);
+                    
+                    // 删除选中的文件
+                    indexesToRemove.forEach(index => {
+                        selectedFiles.splice(index, 1);
+                    });
+                    
+                    // 更新文件列表
+                    updateFileList();
+                    
+                    if (selectedFiles.length === 0) {
+                        hideUploadUI();
+                    }
+                }
+            });
+        }
+        
+        // 添加文件列表
         selectedFiles.forEach((file, index) => {
             const fileItem = document.createElement('div');
             fileItem.className = 'file-item d-flex justify-content-between align-items-center';
             
+            // 添加复选框
+            const checkboxDiv = document.createElement('div');
+            checkboxDiv.className = 'form-check me-2';
+            
+            const checkbox = document.createElement('input');
+            checkbox.type = 'checkbox';
+            checkbox.className = 'form-check-input file-checkbox';
+            checkbox.dataset.index = index;
+            
+            // 添加复选框变化事件
+            checkbox.addEventListener('change', updateQueueDeleteButtonState);
+            
+            checkboxDiv.appendChild(checkbox);
+            
             const fileInfo = document.createElement('div');
-            fileInfo.className = 'file-info d-flex align-items-center';
+            fileInfo.className = 'file-info d-flex align-items-center flex-grow-1';
             
             // 文件类型图标
             const fileIcon = document.createElement('i');
@@ -196,10 +357,41 @@ function initFileUpload() {
             fileInfo.appendChild(fileName);
             fileInfo.appendChild(fileSize);
             
+            fileItem.appendChild(checkboxDiv);
             fileItem.appendChild(fileInfo);
             fileItem.appendChild(removeBtn);
             fileList.appendChild(fileItem);
         });
+        
+        // 初始化批量删除按钮状态
+        updateQueueDeleteButtonState();
+    }
+    
+    // 更新上传队列批量删除按钮状态
+    function updateQueueDeleteButtonState() {
+        const batchDeleteBtn = document.getElementById('batch-delete-queue');
+        if (!batchDeleteBtn) return;
+        
+        const checkedFiles = fileList.querySelectorAll('.file-checkbox:checked');
+        batchDeleteBtn.disabled = checkedFiles.length === 0;
+        
+        // 更新全选框状态
+        const selectAllCheckbox = document.getElementById('select-all-queue-files');
+        if (selectAllCheckbox) {
+            const allCheckboxes = fileList.querySelectorAll('.file-checkbox');
+            if (allCheckboxes.length > 0) {
+                if (checkedFiles.length === 0) {
+                    selectAllCheckbox.checked = false;
+                    selectAllCheckbox.indeterminate = false;
+                } else if (checkedFiles.length === allCheckboxes.length) {
+                    selectAllCheckbox.checked = true;
+                    selectAllCheckbox.indeterminate = false;
+                } else {
+                    selectAllCheckbox.checked = false;
+                    selectAllCheckbox.indeterminate = true;
+                }
+            }
+        }
     }
     
     // 显示上传UI
@@ -246,46 +438,149 @@ function initFileUpload() {
     // 单文件覆盖确认处理
     if (confirmOverwrite) {
         confirmOverwrite.addEventListener('click', function() {
-            const filename = confirmFilename.value;
-            if (!filename) return;
+            console.log('单文件覆盖确认按钮被点击');
+            const filename = confirmFilename ? confirmFilename.value : '';
+            if (!filename) {
+                console.error('确认文件名为空');
+                return;
+            }
             
             // 找到文件对象
-            const file = selectedFiles.find(f => f.name === filename);
-            if (!file) return;
+            const fileInfo = existingFiles.find(f => f.filename === filename);
+            if (!fileInfo || !fileInfo.file) {
+                console.error('找不到对应的文件信息');
+                return;
+            }
             
             // 隐藏模态框
-            overwriteModal.hide();
+            try {
+                // 获取当前显示的模态框实例并隐藏
+                const modalElement = document.getElementById('overwriteConfirmModal');
+                if (modalElement) {
+                    const modalInstance = bootstrap.Modal.getInstance(modalElement);
+                    if (modalInstance) {
+                        modalInstance.hide();
+                        console.log('隐藏覆盖确认模态框成功');
+                    } else {
+                        console.log('未找到模态框实例，尝试使用jQuery隐藏');
+                        // 尝试使用jQuery隐藏
+                        if (typeof $ !== 'undefined') {
+                            $('#overwriteConfirmModal').modal('hide');
+                        }
+                    }
+                }
+            } catch (error) {
+                console.error('隐藏覆盖确认模态框时出错:', error);
+            }
             
-            // 带覆盖标志上传文件
-            uploadSingleFile(file, true);
+            // 获取所有需要上传的文件（不在existingFiles中的文件）
+            const newFiles = selectedFiles.filter(file => 
+                !existingFiles.some(existing => existing.filename === file.name)
+            );
+            
+            // 先上传所有新文件
+            try {
+                uploadAllNewFiles(newFiles);
+            } catch (error) {
+                console.error('上传新文件时出错:', error);
+            }
+            
+            // 然后上传需要覆盖的文件
+            uploadResult.innerHTML = '<div class="alert alert-info">上传覆盖文件中，请稍候...</div>';
+            
+            uploadSingleFile(fileInfo.file, true)
+                .then(result => {
+                    updateUploadStats(result);
+                    showFinalResult();
+                })
+                .catch(error => {
+                    console.error(`上传文件 ${fileInfo.file.name} 时出错:`, error);
+                    uploadStats.failed++;
+                    showFinalResult();
+                });
         });
     }
     
     // 批量覆盖确认处理
     if (confirmBatchOverwrite) {
         confirmBatchOverwrite.addEventListener('click', async function() {
+            console.log('批量覆盖确认按钮被点击');
+            
             // 获取所有选中的文件
-            const checkboxes = existingFilesList.querySelectorAll('input[type="checkbox"]:checked');
+            const checkboxes = existingFilesList ? existingFilesList.querySelectorAll('input[type="checkbox"]:checked') : [];
+            console.log(`选中了${checkboxes.length}个文件进行覆盖`);
+            
             const filesToOverwrite = Array.from(checkboxes).map(cb => cb.dataset.filename);
             
             // 隐藏模态框
-            batchOverwriteModal.hide();
+            try {
+                // 获取当前显示的模态框实例并隐藏
+                const modalElement = document.getElementById('batchOverwriteModal');
+                if (modalElement) {
+                    const modalInstance = bootstrap.Modal.getInstance(modalElement);
+                    if (modalInstance) {
+                        modalInstance.hide();
+                        console.log('隐藏批量覆盖模态框成功');
+                    } else {
+                        console.log('未找到模态框实例，尝试使用jQuery隐藏');
+                        // 尝试使用jQuery隐藏
+                        if (typeof $ !== 'undefined') {
+                            $('#batchOverwriteModal').modal('hide');
+                        }
+                    }
+                }
+            } catch (error) {
+                console.error('隐藏批量覆盖模态框时出错:', error);
+            }
             
-            // 上传选中的文件（带覆盖标志）
-            for (const filename of filesToOverwrite) {
-                const file = selectedFiles.find(f => f.name === filename);
-                if (file) {
+            // 获取所有新文件(不在existingFiles中的文件)
+            const newFiles = selectedFiles.filter(file => 
+                !existingFiles.some(existing => existing.filename === file.name)
+            );
+            
+            // 标记未选中的文件为跳过
+            const unselectedFiles = existingFiles.filter(fileInfo => 
+                !filesToOverwrite.includes(fileInfo.filename)
+            );
+            
+            console.log(`${unselectedFiles.length}个文件被标记为跳过`);
+            uploadStats.skipped += unselectedFiles.length;
+            
+            // 先上传所有新文件
+            if (newFiles.length > 0) {
+                try {
+                    await uploadAllNewFiles(newFiles);
+                } catch (error) {
+                    console.error('上传新文件时出错:', error);
+                }
+            }
+            
+            // 如果没有选中要覆盖的文件，直接显示结果
+            if (filesToOverwrite.length === 0) {
+                showFinalResult();
+                return;
+            }
+            
+            // 然后上传需要覆盖的文件
+            uploadResult.innerHTML = '<div class="alert alert-info">上传覆盖文件中，请稍候...</div>';
+            
+            for (let i = 0; i < filesToOverwrite.length; i++) {
+                const filename = filesToOverwrite[i];
+                const fileInfo = existingFiles.find(f => f.filename === filename);
+                
+                if (fileInfo && fileInfo.file) {
                     try {
-                        const result = await uploadSingleFile(file, true);
+                        console.log(`准备覆盖文件: ${filename}`);
+                        const result = await uploadSingleFile(fileInfo.file, true);
                         updateUploadStats(result);
                     } catch (error) {
-                        console.error(`上传文件 ${file.name} 时出错:`, error);
+                        console.error(`上传文件 ${filename} 时出错:`, error);
                         uploadStats.failed++;
                     }
-                    
-                    // 更新进度
-                    updateProgress((uploadStats.success + uploadStats.failed + uploadStats.skipped + uploadStats.overwritten) / selectedFiles.length);
                 }
+                
+                // 更新进度
+                updateProgress((i + 1) / filesToOverwrite.length);
             }
             
             // 显示最终结果
@@ -305,22 +600,37 @@ function initFileUpload() {
     uploadBtn.addEventListener('click', () => {
         if (selectedFiles.length === 0) return;
         
+        console.log('开始上传按钮被点击');
         uploadFiles();
     });
     
     // 上传文件
     async function uploadFiles() {
+        console.log('开始执行uploadFiles函数');
         resetProgress();
         uploadBtn.disabled = true;
-        uploadResult.innerHTML = '<div class="alert alert-info">检查文件并上传中，请稍候...</div>';
         
-        // 重置已存在文件列表
-        existingFiles = [];
+        // 禁用批量删除按钮
+        const batchDeleteBtn = document.getElementById('batch-delete-queue');
+        if (batchDeleteBtn) {
+            batchDeleteBtn.disabled = true;
+        }
         
+        uploadResult.innerHTML = '<div class="alert alert-info">检查文件中，请稍候...</div>';
+        
+        // 重置文件列表
+        let newFiles = []; // 存储新文件
+        existingFiles = []; // 存储已存在文件
+        
+        console.log(`准备检查 ${selectedFiles.length} 个文件是否存在`);
+        
+        // 第一阶段: 检查所有文件是否存在
         for (const file of selectedFiles) {
             try {
+                console.log(`检查文件是否存在: ${file.name}`);
                 // 检查文件是否存在
                 const checkResult = await checkFileExists(file.name);
+                console.log(`文件 ${file.name} 检查结果:`, checkResult);
                 
                 if (checkResult.exists) {
                     // 收集已存在的文件信息
@@ -328,46 +638,168 @@ function initFileUpload() {
                         ...checkResult,
                         file: file
                     });
+                    console.log(`文件 ${file.name} 已存在，添加到existingFiles。数据库中的文件名: ${checkResult.filename}`);
                 } else {
-                    // 文件不存在，直接上传
-                    const result = await uploadSingleFile(file, false);
-                    updateUploadStats(result);
+                    // 收集新文件
+                    newFiles.push(file);
+                    console.log(`文件 ${file.name} 不存在，添加到newFiles`);
                 }
             } catch (error) {
                 console.error(`检查文件 ${file.name} 时出错:`, error);
-                uploadStats.failed++;
             }
             
-            // 更新进度（基于检查进度）
-            updateProgress((uploadStats.success + uploadStats.failed + uploadStats.skipped) / selectedFiles.length);
+            // 更新检查进度
+            updateProgress((newFiles.length + existingFiles.length) / selectedFiles.length);
         }
         
-        // 如果有已存在的文件
+        console.log(`检查完成: ${newFiles.length}个新文件, ${existingFiles.length}个已存在文件`);
+        console.log('新文件列表:', newFiles.map(f => f.name));
+        console.log('已存在文件列表:', existingFiles.map(f => f.filename));
+        
+        // 如果有已存在的文件，显示覆盖确认对话框
         if (existingFiles.length > 0) {
+            console.log(`发现${existingFiles.length}个已存在的文件，准备显示覆盖确认对话框`);
+            
             // 如果只有一个文件，显示单文件覆盖确认
             if (existingFiles.length === 1) {
                 const fileInfo = existingFiles[0];
-                existingFilename.textContent = fileInfo.filename;
+                console.log('准备显示单文件覆盖确认模态框');
+                
+                // 确保元素存在
+                if (!existingFilename || !confirmFilename) {
+                    console.error('覆盖确认模态框的必要元素不存在');
+                    uploadBtn.disabled = false;
+                    
+                    // 恢复批量删除按钮
+                    if (batchDeleteBtn) {
+                        batchDeleteBtn.disabled = false;
+                    }
+                    return;
+                }
+                
+                // 显示原始文件名（如果有）
+                if (fileInfo.original_filename && fileInfo.original_filename !== fileInfo.filename) {
+                    existingFilename.innerHTML = `${fileInfo.original_filename}<br><small class="text-muted">存储为: ${fileInfo.filename}</small>`;
+                } else {
+                    existingFilename.textContent = fileInfo.filename;
+                }
                 confirmFilename.value = fileInfo.filename;
-                overwriteModal.show();
+                console.log(`设置文件名: ${fileInfo.filename}, 原始文件名: ${fileInfo.original_filename || fileInfo.filename}`);
+                
+                // 确保模态框对象已初始化
+                if (!overwriteModal) {
+                    console.log('覆盖确认模态框未初始化，尝试重新初始化');
+                    if (overwriteModalEl) {
+                        try {
+                            overwriteModal = new bootstrap.Modal(overwriteModalEl);
+                            console.log('重新初始化覆盖确认模态框成功');
+                        } catch (error) {
+                            console.error('重新初始化覆盖确认模态框失败:', error);
+                            // 如果无法初始化模态框，直接上传新文件
+                            uploadAllNewFiles(newFiles);
+                            uploadBtn.disabled = false;
+                            
+                            // 恢复批量删除按钮
+                            if (batchDeleteBtn) {
+                                batchDeleteBtn.disabled = false;
+                            }
+                            return;
+                        }
+                    } else {
+                        console.error('覆盖确认模态框元素不存在');
+                        // 如果模态框元素不存在，直接上传新文件
+                        uploadAllNewFiles(newFiles);
+                        uploadBtn.disabled = false;
+                        
+                        // 恢复批量删除按钮
+                        if (batchDeleteBtn) {
+                            batchDeleteBtn.disabled = false;
+                        }
+                        return;
+                    }
+                }
+                
+                try {
+                    console.log('尝试显示覆盖确认模态框');
+                    // 确保bootstrap已加载
+                    if (typeof bootstrap === 'undefined') {
+                        console.error('Bootstrap未加载');
+                        alert('系统错误: Bootstrap库未加载，无法显示确认对话框');
+                        uploadAllNewFiles(newFiles);
+                        uploadBtn.disabled = false;
+                        
+                        // 恢复批量删除按钮
+                        if (batchDeleteBtn) {
+                            batchDeleteBtn.disabled = false;
+                        }
+                        return;
+                    }
+                    
+                    // 手动创建新的Modal实例
+                    const modal = new bootstrap.Modal(overwriteModalEl);
+                    modal.show();
+                    console.log('显示单文件覆盖确认模态框成功');
+                } catch (error) {
+                    console.error('显示单文件覆盖确认模态框时出错:', error);
+                    // 如果无法显示模态框，直接上传新文件
+                    uploadAllNewFiles(newFiles);
+                    
+                    // 恢复批量删除按钮
+                    if (batchDeleteBtn) {
+                        batchDeleteBtn.disabled = false;
+                    }
+                }
             } 
             // 如果有多个文件，显示批量覆盖选择界面
             else {
-                showBatchOverwriteModal();
+                console.log('准备显示批量覆盖选择界面');
+                showBatchOverwriteModal(newFiles);
             }
         } else {
-            // 所有文件都已上传，显示结果
-            showFinalResult();
+            // 如果没有已存在的文件，直接上传所有新文件
+            console.log('没有已存在的文件，直接上传所有新文件');
+            uploadAllNewFiles(newFiles);
         }
         
         uploadBtn.disabled = false;
     }
     
+    // 上传所有新文件
+    async function uploadAllNewFiles(files) {
+        if (files.length === 0) {
+            showFinalResult();
+            return;
+        }
+        
+        uploadResult.innerHTML = '<div class="alert alert-info">上传新文件中，请稍候...</div>';
+        
+        // 上传所有新文件
+        for (let i = 0; i < files.length; i++) {
+            try {
+                const result = await uploadSingleFile(files[i], false);
+                updateUploadStats(result);
+            } catch (error) {
+                console.error(`上传文件 ${files[i].name} 时出错:`, error);
+                uploadStats.failed++;
+            }
+            
+            // 更新上传进度
+            updateProgress((i + 1) / files.length);
+        }
+        
+        showFinalResult();
+    }
+    
     // 检查文件是否存在
     async function checkFileExists(filename) {
         try {
+            console.log(`检查文件是否存在: ${filename}`);
+            
+            // 直接使用原始文件名检查
             const response = await fetch(`/api/check-file?filename=${encodeURIComponent(filename)}`);
-            return await response.json();
+            const result = await response.json();
+            console.log(`文件 ${filename} 检查结果:`, result);
+            return result;
         } catch (error) {
             console.error('检查文件存在失败:', error);
             return { exists: false, error: error.message };
@@ -375,10 +807,36 @@ function initFileUpload() {
     }
     
     // 显示批量覆盖选择模态框
-    function showBatchOverwriteModal() {
+    function showBatchOverwriteModal(newFiles) {
+        console.log('准备显示批量覆盖选择模态框', existingFiles.length);
+        console.log('已存在文件列表:', existingFiles);
+        
+        // 确保模态框元素和对象存在
+        if (!batchOverwriteModalEl) {
+            console.error('找不到批量覆盖模态框元素');
+            // 如果无法显示模态框，直接上传新文件
+            if (newFiles && newFiles.length > 0) {
+                uploadAllNewFiles(newFiles);
+            }
+            return;
+        }
+        
+        // 确保existingFilesList元素存在
+        if (!existingFilesList) {
+            console.error('找不到existingFilesList元素');
+            // 如果无法显示模态框，直接上传新文件
+            if (newFiles && newFiles.length > 0) {
+                uploadAllNewFiles(newFiles);
+            }
+            return;
+        }
+        
+        // 清空列表
         existingFilesList.innerHTML = '';
         
+        // 添加文件到列表
         existingFiles.forEach(fileInfo => {
+            console.log(`添加文件到批量覆盖列表: ${fileInfo.filename}`);
             const row = document.createElement('tr');
             
             // 复选框
@@ -388,26 +846,40 @@ function initFileUpload() {
             const checkbox = document.createElement('input');
             checkbox.className = 'form-check-input';
             checkbox.type = 'checkbox';
-            checkbox.checked = true;
+            checkbox.checked = true; // 默认选中
             checkbox.dataset.filename = fileInfo.filename;
             checkboxDiv.appendChild(checkbox);
             checkboxCell.appendChild(checkboxDiv);
             
             // 文件名
             const filenameCell = document.createElement('td');
-            filenameCell.textContent = fileInfo.filename;
+            // 显示原始文件名和数据库中的文件名
+            if (fileInfo.file && fileInfo.file.name !== fileInfo.filename) {
+                filenameCell.innerHTML = `
+                    <div>${fileInfo.file.name}</div>
+                    <small class="text-muted">将覆盖: ${fileInfo.original_filename || fileInfo.filename}</small>
+                `;
+            } else if (fileInfo.original_filename && fileInfo.original_filename !== fileInfo.filename) {
+                filenameCell.innerHTML = `
+                    <div>${fileInfo.original_filename}</div>
+                    <small class="text-muted">存储为: ${fileInfo.filename}</small>
+                `;
+            } else {
+                filenameCell.textContent = fileInfo.filename;
+            }
             
             // 标题
             const titleCell = document.createElement('td');
-            titleCell.textContent = fileInfo.title;
+            titleCell.textContent = fileInfo.title || fileInfo.filename;
             
             // 类型
             const typeCell = document.createElement('td');
-            typeCell.textContent = fileInfo.file_type.split('/').pop().toUpperCase();
+            const fileType = fileInfo.file_type ? fileInfo.file_type.split('/').pop().toUpperCase() : '未知';
+            typeCell.textContent = fileType;
             
             // 大小
             const sizeCell = document.createElement('td');
-            sizeCell.textContent = formatFileSize(fileInfo.file_size);
+            sizeCell.textContent = fileInfo.file_size ? formatFileSize(fileInfo.file_size) : '未知';
             
             row.appendChild(checkboxCell);
             row.appendChild(filenameCell);
@@ -418,7 +890,29 @@ function initFileUpload() {
             existingFilesList.appendChild(row);
         });
         
-        batchOverwriteModal.show();
+        // 确保bootstrap已加载
+        if (typeof bootstrap === 'undefined') {
+            console.error('Bootstrap未加载');
+            alert('系统错误: Bootstrap库未加载，无法显示确认对话框');
+            if (newFiles && newFiles.length > 0) {
+                uploadAllNewFiles(newFiles);
+            }
+            return;
+        }
+        
+        try {
+            console.log('尝试显示批量覆盖模态框');
+            // 手动创建新的Modal实例
+            const modal = new bootstrap.Modal(batchOverwriteModalEl);
+            modal.show();
+            console.log('批量覆盖模态框已显示');
+        } catch (error) {
+            console.error('显示批量覆盖模态框时出错:', error);
+            // 如果无法显示模态框，直接上传新文件
+            if (newFiles && newFiles.length > 0) {
+                uploadAllNewFiles(newFiles);
+            }
+        }
     }
     
     // 上传单个文件
@@ -459,28 +953,47 @@ function initFileUpload() {
     
     // 显示最终结果
     function showFinalResult() {
+        console.log('显示上传结果', uploadStats);
+        
+        // 恢复批量删除按钮
+        const batchDeleteBtn = document.getElementById('batch-delete-queue');
+        if (batchDeleteBtn) {
+            batchDeleteBtn.disabled = false;
+        }
+        
+        // 确保uploadResultContent元素存在
+        if (!uploadResultContent) {
+            console.error('找不到上传结果内容元素');
+            alert(`上传完成: 成功 ${uploadStats.success}, 覆盖 ${uploadStats.overwritten}, 跳过 ${uploadStats.skipped}, 失败 ${uploadStats.failed}`);
+            return;
+        }
+        
         let resultHTML = '<ul class="list-group mb-3">';
         
         if (uploadStats.success > 0) {
             resultHTML += `<li class="list-group-item list-group-item-success">
+                <i class="bi bi-check-circle-fill me-2"></i>
                 新上传成功: ${uploadStats.success} 个文件
             </li>`;
         }
         
         if (uploadStats.overwritten > 0) {
             resultHTML += `<li class="list-group-item list-group-item-warning">
+                <i class="bi bi-arrow-repeat me-2"></i>
                 成功覆盖: ${uploadStats.overwritten} 个文件
             </li>`;
         }
         
         if (uploadStats.skipped > 0) {
             resultHTML += `<li class="list-group-item list-group-item-info">
+                <i class="bi bi-skip-forward-fill me-2"></i>
                 跳过上传: ${uploadStats.skipped} 个文件
             </li>`;
         }
         
         if (uploadStats.failed > 0) {
             resultHTML += `<li class="list-group-item list-group-item-danger">
+                <i class="bi bi-exclamation-triangle-fill me-2"></i>
                 上传失败: ${uploadStats.failed} 个文件
             </li>`;
         }
@@ -489,11 +1002,38 @@ function initFileUpload() {
         
         // 根据是否有成功上传决定显示提示
         if (uploadStats.success > 0 || uploadStats.overwritten > 0) {
-            resultHTML += '<div class="alert alert-success">系统将在关闭此窗口后刷新页面，显示最新上传的文件。</div>';
+            resultHTML += '<div class="alert alert-success"><i class="bi bi-info-circle-fill me-2"></i>系统将在关闭此窗口后刷新页面，显示最新上传的文件。</div>';
+        }
+        
+        // 如果有跳过的文件，添加提示信息
+        if (uploadStats.skipped > 0) {
+            resultHTML += '<div class="alert alert-info"><i class="bi bi-info-circle-fill me-2"></i>如需覆盖跳过的文件，请重新选择这些文件并选择覆盖选项。</div>';
+        }
+        
+        // 如果所有文件都被跳过，显示特殊提示
+        if (uploadStats.success === 0 && uploadStats.overwritten === 0 && uploadStats.skipped > 0 && uploadStats.failed === 0) {
+            resultHTML += '<div class="alert alert-warning"><i class="bi bi-exclamation-triangle-fill me-2"></i>所有文件都已跳过上传，没有任何文件被添加或覆盖。</div>';
         }
         
         uploadResultContent.innerHTML = resultHTML;
-        uploadResultModal.show();
+        
+        // 确保bootstrap已加载
+        if (typeof bootstrap === 'undefined') {
+            console.error('Bootstrap未加载');
+            alert(`上传完成: 成功 ${uploadStats.success}, 覆盖 ${uploadStats.overwritten}, 跳过 ${uploadStats.skipped}, 失败 ${uploadStats.failed}`);
+            return;
+        }
+        
+        try {
+            console.log('尝试显示上传结果模态框');
+            // 手动创建新的Modal实例
+            const modal = new bootstrap.Modal(document.getElementById('uploadResultModal'));
+            modal.show();
+            console.log('上传结果模态框已显示');
+        } catch (error) {
+            console.error('显示上传结果模态框时出错:', error);
+            alert(`上传完成: 成功 ${uploadStats.success}, 覆盖 ${uploadStats.overwritten}, 跳过 ${uploadStats.skipped}, 失败 ${uploadStats.failed}`);
+        }
         
         // 清空文件列表
         if (uploadStats.success > 0 || uploadStats.overwritten > 0) {
@@ -519,6 +1059,31 @@ function initFileUpload() {
         const i = Math.floor(Math.log(bytes) / Math.log(k));
         
         return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+    }
+    
+    // 从上传队列中移除已存在的文件
+    function removeExistingFilesFromQueue() {
+        if (!existingFiles || existingFiles.length === 0) return;
+        
+        console.log(`准备从队列中移除 ${existingFiles.length} 个已存在的文件`);
+        
+        // 获取要移除的文件名
+        const filesToRemove = existingFiles.map(fileInfo => fileInfo.file.name);
+        
+        // 从selectedFiles中移除这些文件
+        selectedFiles = selectedFiles.filter(file => !filesToRemove.includes(file.name));
+        console.log(`移除后队列中还剩 ${selectedFiles.length} 个文件`);
+        
+        // 更新文件列表UI
+        updateFileList();
+        
+        // 如果没有文件了，隐藏上传UI
+        if (selectedFiles.length === 0) {
+            hideUploadUI();
+        }
+        
+        // 清空existingFiles数组
+        existingFiles = [];
     }
 }
 

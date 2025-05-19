@@ -54,7 +54,7 @@ DocRadar是一个本地文档管理和搜索系统，旨在解决需要在大量
 ### 后端
 
 - **Python Flask**: 提供Web服务和路由管理
-- **SQLite + FTS5**: 存储文档元数据和全文搜索索引
+- **SQLite **: 存储文档元数据
 - **文档解析引擎**:
   - PyPDF2/pdfplumber: PDF文件解析
   - python-docx: Word文档解析，包括图片提取

@@ -61,17 +61,18 @@ class Storage:
         
         return file_path
     
-    def add_document_metadata(self, filename, filepath, title, file_type, file_size, metadata=None):
+    def add_document_metadata(self, filename, filepath, title, file_type, file_size, metadata=None, original_filename=None):
         """
         添加文档元数据到数据库
         
         Args:
-            filename: 原始文件名
+            filename: 存储的文件名（基本文件名）
             filepath: 存储的文件路径
             title: 文档标题
             file_type: 文件类型
             file_size: 文件大小
             metadata: 文档元数据字典
+            original_filename: 原始文件名（包含前缀等）
             
         Returns:
             int: 文档ID
@@ -80,22 +81,26 @@ class Storage:
             conn = sqlite3.connect(self.db_path)
             cursor = conn.cursor()
             
+            # 如果没有提供原始文件名，使用基本文件名
+            if original_filename is None:
+                original_filename = filename
+            
             # 序列化元数据为JSON
             metadata_json = json.dumps(metadata) if metadata else None
             
             # 插入元数据
             cursor.execute('''
             INSERT INTO documents 
-                (filename, filepath, title, file_type, file_size, metadata)
+                (filename, filepath, title, file_type, file_size, metadata, original_filename)
             VALUES 
-                (?, ?, ?, ?, ?, ?)
-            ''', (filename, filepath, title, file_type, file_size, metadata_json))
+                (?, ?, ?, ?, ?, ?, ?)
+            ''', (filename, filepath, title, file_type, file_size, metadata_json, original_filename))
             
             doc_id = cursor.lastrowid
             conn.commit()
             conn.close()
             
-            logging.info(f"Document metadata added with ID: {doc_id}")
+            logging.info(f"Document metadata added with ID: {doc_id}, filename: {filename}, original_filename: {original_filename}")
             return doc_id
             
         except sqlite3.Error as e:
@@ -118,7 +123,7 @@ class Storage:
             cursor = conn.cursor()
             
             # 获取文件路径和元数据
-            cursor.execute("SELECT filepath, metadata FROM documents WHERE id = ?", (doc_id,))
+            cursor.execute("SELECT filepath, metadata, filename, original_filename FROM documents WHERE id = ?", (doc_id,))
             result = cursor.fetchone()
             
             if not result:
@@ -127,9 +132,34 @@ class Storage:
                 return False
                 
             filepath = result['filepath']
+            filename = result['filename']
             
-            # 检查是否有图片目录需要清理
+            # 正确处理original_filename字段
+            # 检查original_filename是否在结果中，并且不为None
+            original_filename = filename  # 默认值
+            if 'original_filename' in result.keys() and result['original_filename'] is not None:
+                original_filename = result['original_filename']
+            
+            logging.info(f"开始删除文档 ID: {doc_id}, 文件名: {filename}, 原始文件名: {original_filename}")
+            logging.info(f"文件路径: {filepath}")
+            
+            # 清理文档相关的所有文件
             try:
+                # 1. 清理文档文件
+                if os.path.exists(filepath):
+                    os.remove(filepath)
+                    logging.info(f"删除文件: {filepath}")
+                else:
+                    logging.warning(f"文件不存在: {filepath}")
+                    
+                    # 如果filepath不是绝对路径，尝试构建绝对路径
+                    if not os.path.isabs(filepath):
+                        abs_filepath = os.path.join(self.upload_folder, os.path.basename(filepath))
+                        if os.path.exists(abs_filepath):
+                            os.remove(abs_filepath)
+                            logging.info(f"删除文件(绝对路径): {abs_filepath}")
+                
+                # 2. 检查元数据中的图片目录
                 if result['metadata']:
                     metadata = json.loads(result['metadata'])
                     # 清理文档关联的图片目录
@@ -137,10 +167,60 @@ class Storage:
                         image_dir = metadata['image_directory']
                         if os.path.exists(image_dir) and os.path.isdir(image_dir):
                             shutil.rmtree(image_dir)
-                            logging.info(f"Removed image directory: {image_dir}")
+                            logging.info(f"删除元数据中的图片目录: {image_dir}")
+                
+                # 3. 获取应用根目录和静态目录
+                base_dir = os.path.dirname(os.path.dirname(__file__))
+                static_dir = os.path.join(base_dir, 'static')
+                doc_images_dir = os.path.join(static_dir, 'doc_images')
+                
+                # 4. 清理基于各种ID和文件名的图片目录
+                patterns_to_check = [
+                    # 基于文档ID
+                    str(doc_id),
+                    
+                    # 基于文件路径
+                    os.path.splitext(os.path.basename(filepath))[0],
+                    
+                    # 基于文件名
+                    os.path.splitext(filename)[0],
+                    
+                    # 基于原始文件名
+                    os.path.splitext(original_filename)[0] if original_filename else None,
+                    
+                    # 基于UUID (如果文件名是UUID格式)
+                    os.path.basename(filepath)
+                ]
+                
+                # 过滤掉None值
+                patterns_to_check = [p for p in patterns_to_check if p]
+                
+                # 检查并清理匹配的目录
+                for pattern in patterns_to_check:
+                    pattern_dir = os.path.join(doc_images_dir, pattern)
+                    if os.path.exists(pattern_dir) and os.path.isdir(pattern_dir):
+                        shutil.rmtree(pattern_dir)
+                        logging.info(f"删除图片目录: {pattern_dir}")
+                
+                # 5. 尝试查找可能的图片目录（模糊匹配）
+                if os.path.exists(doc_images_dir) and os.path.isdir(doc_images_dir):
+                    # 获取所有图片目录
+                    for dirname in os.listdir(doc_images_dir):
+                        dir_path = os.path.join(doc_images_dir, dirname)
+                        if os.path.isdir(dir_path):
+                            # 检查目录名是否与文件名相关
+                            basename = os.path.splitext(filename)[0]
+                            original_basename = os.path.splitext(original_filename)[0] if original_filename else None
+                            
+                            # 如果目录名包含文件名或原始文件名的一部分（至少5个字符），则删除
+                            if ((basename and len(basename) >= 5 and basename in dirname) or
+                                (original_basename and len(original_basename) >= 5 and original_basename in dirname)):
+                                shutil.rmtree(dir_path)
+                                logging.info(f"删除相关图片目录(模糊匹配): {dir_path}")
+                
             except Exception as e:
-                logging.error(f"Error cleaning up image directory: {e}")
-                # 继续处理文档删除，不因图片清理失败而中断
+                logging.error(f"清理文件时出错: {e}")
+                # 继续处理文档删除，不因文件清理失败而中断
             
             # 删除文件记录
             cursor.execute("DELETE FROM documents WHERE id = ?", (doc_id,))
@@ -149,16 +229,11 @@ class Storage:
             conn.commit()
             conn.close()
             
-            # 删除物理文件
-            if os.path.exists(filepath):
-                os.remove(filepath)
-                logging.info(f"File deleted: {filepath}")
-            
-            logging.info(f"Document deleted: {doc_id}")
+            logging.info(f"文档删除成功: {doc_id}")
             return True
             
         except (sqlite3.Error, OSError) as e:
-            logging.error(f"Error deleting document: {e}")
+            logging.error(f"删除文档失败: {e}")
             return False
     
     def get_documents_count(self, search_query=None):
@@ -216,7 +291,7 @@ class Storage:
             # 构建SQL查询
             sql = '''
             SELECT 
-                id, filename, filepath, title, file_type, file_size, created_at 
+                id, filename, filepath, title, file_type, file_size, created_at, original_filename 
             FROM 
                 documents 
             '''
@@ -225,8 +300,8 @@ class Storage:
             
             # 添加搜索条件
             if search_query:
-                sql += "WHERE title LIKE ? OR filename LIKE ? "
-                params.extend([f'%{search_query}%', f'%{search_query}%'])
+                sql += "WHERE title LIKE ? OR filename LIKE ? OR original_filename LIKE ? "
+                params.extend([f'%{search_query}%', f'%{search_query}%', f'%{search_query}%'])
             
             # 添加排序
             sql += "ORDER BY created_at DESC "
@@ -247,7 +322,8 @@ class Storage:
                     'title': row['title'] or row['filename'],
                     'file_type': row['file_type'],
                     'file_size': row['file_size'],
-                    'created_at': row['created_at']
+                    'created_at': row['created_at'],
+                    'original_filename': row['original_filename'] if 'original_filename' in row.keys() else row['filename']
                 }
                 documents.append(document)
                 
@@ -290,13 +366,24 @@ class Storage:
             conn.row_factory = sqlite3.Row
             cursor = conn.cursor()
             
+            # 先检查filename字段（基本文件名）
             cursor.execute('''
-            SELECT id, filename, title, file_type, file_size 
+            SELECT id, filename, original_filename, title, file_type, file_size 
             FROM documents 
             WHERE filename = ?
             ''', (filename,))
             
             row = cursor.fetchone()
+            
+            # 如果没找到，再检查original_filename字段
+            if not row:
+                cursor.execute('''
+                SELECT id, filename, original_filename, title, file_type, file_size 
+                FROM documents 
+                WHERE original_filename = ?
+                ''', (filename,))
+                row = cursor.fetchone()
+            
             conn.close()
             
             if row:
@@ -304,6 +391,7 @@ class Storage:
                     'exists': True,
                     'doc_id': row['id'],
                     'filename': row['filename'],
+                    'original_filename': row['original_filename'] if 'original_filename' in row.keys() else row['filename'],
                     'title': row['title'] or row['filename'],
                     'file_type': row['file_type'],
                     'file_size': row['file_size']
@@ -313,6 +401,49 @@ class Storage:
             
         except sqlite3.Error as e:
             logging.error(f"Error checking file existence: {e}")
+            return {'exists': False, 'error': str(e)}
+    
+    def check_file_exists_by_pattern(self, pattern):
+        """
+        通过模式匹配检查文件是否存在
+        
+        Args:
+            pattern: 文件名模式，可以是部分文件名
+            
+        Returns:
+            dict: 包含是否存在及文档信息
+        """
+        try:
+            conn = sqlite3.connect(self.db_path)
+            conn.row_factory = sqlite3.Row
+            cursor = conn.cursor()
+            
+            # 使用LIKE操作符进行模糊匹配，同时检查filename和original_filename
+            cursor.execute('''
+            SELECT id, filename, original_filename, title, file_type, file_size 
+            FROM documents 
+            WHERE filename LIKE ? OR filename = ? OR original_filename LIKE ? OR original_filename = ?
+            LIMIT 1
+            ''', (f"%{pattern}", pattern, f"%{pattern}", pattern))
+            
+            row = cursor.fetchone()
+            conn.close()
+            
+            if row:
+                return {
+                    'exists': True,
+                    'doc_id': row['id'],
+                    'filename': row['filename'],
+                    'original_filename': row['original_filename'] if 'original_filename' in row.keys() else row['filename'],
+                    'title': row['title'] or row['filename'],
+                    'file_type': row['file_type'],
+                    'file_size': row['file_size']
+                }
+            
+            return {'exists': False}
+            
+        except sqlite3.Error as e:
+            logging.error(f"Error checking file existence by pattern: {e}")
             return {'exists': False, 'error': str(e)}
     
     @staticmethod

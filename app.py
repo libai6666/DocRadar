@@ -214,6 +214,7 @@ def check_existing_file():
         })
     
     try:
+        # 使用原始文件名检查
         result = storage.check_file_exists(filename)
         return jsonify(result)
     except Exception as e:
@@ -301,8 +302,14 @@ def process_upload(file, overwrite=False):
         dict: 处理结果
     """
     try:
+        # 保存原始文件名
+        original_filename = file.filename
+        
+        # 安全处理文件名
         filename = secure_filename(file.filename)
         file_type = storage.get_file_type(filename)
+        
+        logging.info(f"原始文件名: {original_filename}, 安全文件名: {filename}")
         
         # 检查文件类型是否支持
         ext = os.path.splitext(filename)[1].lower()[1:]
@@ -313,13 +320,13 @@ def process_upload(file, overwrite=False):
             }
         
         # 检查文件是否已存在
-        file_exists = storage.check_file_exists(filename)
+        file_exists = storage.check_file_exists(original_filename)
         if file_exists['exists'] and not overwrite:
             return {
                 'success': False,
-                'error': f'文件 "{filename}" 已存在',
+                'error': f'文件 "{original_filename}" 已存在',
                 'exists': True,
-                'filename': filename,
+                'filename': original_filename,
                 'existing_doc': file_exists
             }
             
@@ -338,12 +345,13 @@ def process_upload(file, overwrite=False):
         # 添加文档元数据
         title = doc_content['metadata'].get('title', filename)
         doc_id = storage.add_document_metadata(
-            filename=filename,
+            filename=original_filename,  # 使用原始文件名作为存储名
             filepath=file_path,
             title=title,
             file_type=file_type,
             file_size=file_size,
-            metadata=doc_content['metadata']
+            metadata=doc_content['metadata'],
+            original_filename=original_filename  # 传递原始文件名
         )
         
         # 添加文档内容到搜索索引
@@ -470,18 +478,19 @@ def download_original(doc_id):
         conn = sqlite3.connect(conn)
         cursor = conn.cursor()
         
-        cursor.execute("SELECT filepath, filename FROM documents WHERE id = ?", (doc_id,))
+        cursor.execute("SELECT filepath, filename, original_filename FROM documents WHERE id = ?", (doc_id,))
         result = cursor.fetchone()
         
         if not result:
             abort(404)
             
-        filepath, filename = result
+        filepath, filename, original_filename = result
+        download_name = original_filename if original_filename else filename
         
         return send_file(
             filepath,
             as_attachment=True,
-            download_name=filename
+            download_name=download_name
         )
     except Exception as e:
         logging.error(f"下载文档失败: {e}")
@@ -779,6 +788,58 @@ def add_record(table_name):
         logging.error(f"添加记录出错: {str(e)}")
         flash(f'添加记录出错: {str(e)}')
         return redirect(url_for('view_table', table_name=table_name, key=request.args.get('key')))
+
+@app.route('/documents/batch-delete', methods=['POST'])
+def batch_delete_documents():
+    """批量删除文档"""
+    try:
+        # 获取要删除的文档ID列表
+        doc_ids = request.json.get('doc_ids', [])
+        
+        if not doc_ids:
+            return jsonify({
+                'success': False,
+                'message': '未提供要删除的文档ID'
+            })
+        
+        # 记录删除请求
+        logging.info(f"批量删除文档请求: {doc_ids}")
+        
+        # 存储删除结果
+        results = {
+            'success': [],
+            'failed': []
+        }
+        
+        # 逐个删除文档
+        for doc_id in doc_ids:
+            try:
+                success = storage.delete_document(doc_id)
+                if success:
+                    results['success'].append(doc_id)
+                else:
+                    results['failed'].append(doc_id)
+            except Exception as e:
+                logging.error(f"删除文档 {doc_id} 失败: {e}")
+                results['failed'].append(doc_id)
+        
+        # 返回结果
+        message = f"成功删除 {len(results['success'])} 个文档"
+        if results['failed']:
+            message += f"，{len(results['failed'])} 个文档删除失败"
+        
+        return jsonify({
+            'success': True,
+            'message': message,
+            'results': results
+        })
+            
+    except Exception as e:
+        logging.error(f"批量删除文档失败: {e}")
+        return jsonify({
+            'success': False,
+            'message': f'批量删除文档失败: {str(e)}'
+        })
 
 @app.errorhandler(403)
 def forbidden(e):
