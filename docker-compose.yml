@@ -14,6 +14,6 @@ services:
       - ./data/logs:/app/data/logs
       - ./users.json:/app/users.json
     environment:
-      - SECRET_KEY=change_this_to_a_secure_random_string
-      - ADMIN_KEY=change_this_to_a_secure_random_string
+      - SECRET_KEY=Hwkqzxsl9eOirB2MNmK3P7cTndWQ1a6y
+      - ADMIN_KEY=IEbdFkZWuwm4zHpUy61BX9gD7aj3qoti
     command: gunicorn --workers=4 --bind 0.0.0.0:5000 app:app 

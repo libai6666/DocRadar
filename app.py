@@ -19,8 +19,10 @@ from auth import login_required, admin_required as auth_admin_required, authenti
 
 # 日志目录和文件
 log_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'tmp')
-if not os.path.exists(log_dir):
-    os.makedirs(log_dir)
+try:
+    os.makedirs(log_dir, exist_ok=True)
+except FileExistsError:
+    pass
 # 按天分割日志文件
 log_file = os.path.join(log_dir, f'docRadar_{datetime.now().strftime("%Y%m%d")}.log')
 
