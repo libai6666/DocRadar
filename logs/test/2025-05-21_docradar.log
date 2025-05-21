@@ -4024,3 +4024,677 @@
 2025-05-21 14:56:53,490 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 14:56:53] "[36mGET /static/js/document-search.js HTTP/1.1[0m" 304 -
 2025-05-21 14:56:53,494 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 14:56:53] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
 2025-05-21 14:56:53,509 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 14:56:53] "GET /static/doc_images/doc_49/image_mammoth_d4c1a913c8b04259a6cde1a76ce9fbcc_2.png HTTP/1.1" 200 -
+2025-05-21 15:01:11,094 [INFO] - werkzeug -  * Detected change in 'D:\\tools\\Pycharm\\PycharmWork\\DocRadar\\app\\core\\document_routes.py', reloading
+2025-05-21 15:01:11,141 [INFO] - werkzeug -  * Restarting with stat
+2025-05-21 15:01:11,224 [INFO] - werkzeug -  * Detected change in 'D:\\tools\\Pycharm\\PycharmWork\\DocRadar\\app\\core\\document_routes.py', reloading
+2025-05-21 15:01:11,284 [INFO] - werkzeug -  * Detected change in 'D:\\tools\\Pycharm\\PycharmWork\\DocRadar\\app\\core\\document_routes.py', reloading
+2025-05-21 15:01:11,303 [INFO] - werkzeug -  * Restarting with stat
+2025-05-21 15:01:11,344 [INFO] - werkzeug -  * Restarting with stat
+2025-05-21 15:01:11,722 [INFO] - root - 日志系统初始化完成，使用日志文件: 2025-05-21_docradar.log
+2025-05-21 15:01:11,743 [WARNING] - werkzeug -  * Debugger is active!
+2025-05-21 15:01:11,750 [INFO] - werkzeug -  * Debugger PIN: 547-956-756
+2025-05-21 15:01:11,848 [INFO] - root - 日志系统初始化完成，使用日志文件: 2025-05-21_docradar.log
+2025-05-21 15:01:11,866 [WARNING] - werkzeug -  * Debugger is active!
+2025-05-21 15:01:11,871 [INFO] - werkzeug -  * Debugger PIN: 547-956-756
+2025-05-21 15:01:11,890 [INFO] - werkzeug -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2025-05-21 15:01:11,890 [INFO] - root - 日志系统初始化完成，使用日志文件: 2025-05-21_docradar.log
+2025-05-21 15:01:11,910 [WARNING] - werkzeug -  * Debugger is active!
+2025-05-21 15:01:11,917 [INFO] - werkzeug -  * Debugger PIN: 547-956-756
+2025-05-21 15:01:12,016 [INFO] - werkzeug -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2025-05-21 15:01:12,050 [INFO] - werkzeug -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2025-05-21 15:05:05,783 [INFO] - root - 文档ID 56: 标题为空，使用原始文件名 '四期Duoov1.2.1.docx' 作为标题
+2025-05-21 15:05:05,784 [INFO] - root - 文档ID 57: 标题为空，使用原始文件名 '三期Duoov1.1.0.docx' 作为标题
+2025-05-21 15:05:05,785 [INFO] - root - 文档ID 52: 标题为空，使用原始文件名 '八期Duoov1.6.0.docx' 作为标题
+2025-05-21 15:05:05,786 [INFO] - root - 文档ID 49: 标题为空，使用原始文件名 '十一期Duoov1.9.0.docx' 作为标题
+2025-05-21 15:05:05,786 [INFO] - root - 文档ID 50: 标题为空，使用原始文件名 '十期Duoov1.8.0.docx' 作为标题
+2025-05-21 15:05:05,787 [INFO] - root - 文档ID 51: 标题为空，使用原始文件名 '九期Duoov1.7.0.docx' 作为标题
+2025-05-21 15:05:05,787 [INFO] - root - 文档ID 46: 标题为空，使用原始文件名 '十四期Duoov2.1.0.docx' 作为标题
+2025-05-21 15:05:05,788 [INFO] - root - 文档ID 47: 标题为空，使用原始文件名 '十三期Duoov2.0.0.docx' 作为标题
+2025-05-21 15:05:05,788 [INFO] - root - 文档ID 48: 标题为空，使用原始文件名 '十二期Duoov1.10.0.docx' 作为标题
+2025-05-21 15:05:05,788 [INFO] - root - 文档ID 45: 标题为空，使用原始文件名 '十五(&十六)期Duoov2.2.0（&v2.3.0）.docx' 作为标题
+2025-05-21 15:05:05,789 [INFO] - root - 文档ID 43: 标题为空，使用原始文件名 '十八期Duoov2.4.0.docx' 作为标题
+2025-05-21 15:05:05,790 [INFO] - root - 文档ID 37: 标题为空，使用原始文件名 '23期Duoo直播v1.0.docx' 作为标题
+2025-05-21 15:05:05,791 [INFO] - root - 文档ID 38: 标题为空，使用原始文件名 '二十三期Duoov2.8.5.docx' 作为标题
+2025-05-21 15:05:05,791 [INFO] - root - 文档ID 39: 标题为空，使用原始文件名 '二十二期Duoov2.8.0.docx' 作为标题
+2025-05-21 15:05:05,792 [INFO] - root - 文档ID 36: 标题为空，使用原始文件名 '二十四期Duoov2.9.0.docx' 作为标题
+2025-05-21 15:05:05,792 [INFO] - root - 文档ID 31: 标题为空，使用原始文件名 '三十期Duoov3.6.0.docx' 作为标题
+2025-05-21 15:05:05,793 [INFO] - root - 文档ID 32: 标题为空，使用原始文件名 '二十九期Duoov3.4.0.docx' 作为标题
+2025-05-21 15:05:05,793 [INFO] - root - 文档ID 30: 标题为空，使用原始文件名 '三十一期Duoov3.7.0.docx' 作为标题
+2025-05-21 15:05:05,794 [INFO] - root - 文档ID 19: 标题为空，使用原始文件名 '四十二Duoov4.8.0.docx' 作为标题
+2025-05-21 15:05:05,794 [INFO] - root - 文档ID 21: 标题为空，使用原始文件名 '四十期Duoov4.6.0.docx' 作为标题
+2025-05-21 15:05:05,795 [INFO] - root - 搜索 '个人主页' 找到 20 个结果
+2025-05-21 15:05:05,796 [INFO] - root - 执行搜索: '个人主页' 找到 20 个结果
+2025-05-21 15:05:05,796 [INFO] - root - 搜索结果 #0: id=56, title=四期Duoov1.2.1
+2025-05-21 15:05:05,797 [INFO] - root - 搜索结果 #1: id=57, title=三期Duoov1.1.0
+2025-05-21 15:05:05,797 [INFO] - root - 搜索结果 #2: id=52, title=八期Duoov1.6.0
+2025-05-21 15:05:05,798 [INFO] - root - 搜索结果 #3: id=49, title=十一期Duoov1.9.0
+2025-05-21 15:05:05,798 [INFO] - root - 搜索结果 #4: id=50, title=十期Duoov1.8.0
+2025-05-21 15:05:05,798 [INFO] - root - 搜索结果 #5: id=51, title=九期Duoov1.7.0
+2025-05-21 15:05:05,799 [INFO] - root - 搜索结果 #6: id=46, title=十四期Duoov2.1.0
+2025-05-21 15:05:05,799 [INFO] - root - 搜索结果 #7: id=47, title=十三期Duoov2.0.0
+2025-05-21 15:05:05,800 [INFO] - root - 搜索结果 #8: id=48, title=十二期Duoov1.10.0
+2025-05-21 15:05:05,800 [INFO] - root - 搜索结果 #9: id=45, title=十五(&十六)期Duoov2.2.0（&v2.3.0）
+2025-05-21 15:05:05,801 [INFO] - root - 搜索结果 #10: id=43, title=十八期Duoov2.4.0
+2025-05-21 15:05:05,801 [INFO] - root - 搜索结果 #11: id=37, title=23期Duoo直播v1.0
+2025-05-21 15:05:05,802 [INFO] - root - 搜索结果 #12: id=38, title=二十三期Duoov2.8.5
+2025-05-21 15:05:05,802 [INFO] - root - 搜索结果 #13: id=39, title=二十二期Duoov2.8.0
+2025-05-21 15:05:05,803 [INFO] - root - 搜索结果 #14: id=36, title=二十四期Duoov2.9.0
+2025-05-21 15:05:05,803 [INFO] - root - 搜索结果 #15: id=31, title=三十期Duoov3.6.0
+2025-05-21 15:05:05,804 [INFO] - root - 搜索结果 #16: id=32, title=二十九期Duoov3.4.0
+2025-05-21 15:05:05,804 [INFO] - root - 搜索结果 #17: id=30, title=三十一期Duoov3.7.0
+2025-05-21 15:05:05,805 [INFO] - root - 搜索结果 #18: id=19, title=四十二Duoov4.8.0
+2025-05-21 15:05:05,805 [INFO] - root - 搜索结果 #19: id=21, title=四十期Duoov4.6.0
+2025-05-21 15:05:05,805 [INFO] - root - 添加搜索历史: 查询='个人主页', 结果数=20, 历史ID=3
+2025-05-21 15:05:05,806 [INFO] - root - 搜索结果ID: [56, 57, 52, 49, 50, 51, 46, 47, 48, 45, 43, 37, 38, 39, 36, 31, 32, 30, 19, 21]
+2025-05-21 15:05:05,840 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:05:05] "GET /search?q=个人主页 HTTP/1.1" 200 -
+2025-05-21 15:05:06,076 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:05:06] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-21 15:05:06,078 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:05:06] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-21 15:06:56,042 [INFO] - root - 文档ID 53: 标题为空，使用原始文件名 '七期Duoov1.5.0.docx' 作为标题
+2025-05-21 15:06:56,043 [INFO] - root - 文档ID 50: 标题为空，使用原始文件名 '十期Duoov1.8.0.docx' 作为标题
+2025-05-21 15:06:56,043 [INFO] - root - 文档ID 44: 标题为空，使用原始文件名 '十七期Duoov2.3.0.docx' 作为标题
+2025-05-21 15:06:56,044 [INFO] - root - 搜索 '视频审核' 找到 3 个结果
+2025-05-21 15:06:56,044 [INFO] - root - 执行搜索: '视频审核' 找到 3 个结果
+2025-05-21 15:06:56,045 [INFO] - root - 搜索结果 #0: id=53, title=七期Duoov1.5.0
+2025-05-21 15:06:56,045 [INFO] - root - 搜索结果 #1: id=50, title=十期Duoov1.8.0
+2025-05-21 15:06:56,046 [INFO] - root - 搜索结果 #2: id=44, title=十七期Duoov2.3.0
+2025-05-21 15:06:56,046 [INFO] - root - 添加搜索历史: 查询='视频审核', 结果数=3, 历史ID=4
+2025-05-21 15:06:56,047 [INFO] - root - 搜索结果ID: [53, 50, 44]
+2025-05-21 15:06:56,057 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:06:56] "GET /search?q=视频审核 HTTP/1.1" 200 -
+2025-05-21 15:06:56,085 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:06:56] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-21 15:06:56,103 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:06:56] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-21 15:07:03,465 [INFO] - root - 文档ID 53: 标题为空，使用原始文件名 '七期Duoov1.5.0.docx' 作为标题
+2025-05-21 15:07:03,466 [INFO] - root - 文档 53 使用HTML内容显示
+2025-05-21 15:07:03,466 [INFO] - root - 传递查询参数到模板: '视频审核', 搜索ID: '4'
+2025-05-21 15:07:03,478 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:07:03] "GET /document/53?q=视频审核&search_id=4 HTTP/1.1" 200 -
+2025-05-21 15:07:03,512 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:07:03] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-21 15:07:03,514 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:07:03] "[36mGET /static/doc_images/doc_53/image_mammoth_188d6cc82b154c0c97f3dc24ce9a6a61_5.png HTTP/1.1[0m" 304 -
+2025-05-21 15:07:03,515 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:07:03] "[36mGET /static/doc_images/doc_53/image_mammoth_204b3569a8bd4b1288fc285f551d7178_2.png HTTP/1.1[0m" 304 -
+2025-05-21 15:07:03,515 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:07:03] "[36mGET /static/doc_images/doc_53/image_mammoth_a474a373b8034793a580eee0e27e4749_3.png HTTP/1.1[0m" 304 -
+2025-05-21 15:07:03,516 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:07:03] "[36mGET /static/doc_images/doc_53/image_mammoth_891331f4c9e74f84a39b90ba43e69a4a_1.png HTTP/1.1[0m" 304 -
+2025-05-21 15:07:03,519 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:07:03] "[36mGET /static/doc_images/doc_53/image_mammoth_23ad1befc99e4b7ca1c2c26a13f45a1b_4.png HTTP/1.1[0m" 304 -
+2025-05-21 15:07:03,530 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:07:03] "GET /static/js/document-search.js HTTP/1.1" 200 -
+2025-05-21 15:07:03,531 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:07:03] "[36mGET /static/doc_images/doc_53/image_mammoth_0d96fd8412ca4d8aa2ad59b41b3694d1_8.png HTTP/1.1[0m" 304 -
+2025-05-21 15:07:03,531 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:07:03] "[36mGET /static/doc_images/doc_53/image_mammoth_b581672d79cb40e6b4a0202494c19dc4_9.png HTTP/1.1[0m" 304 -
+2025-05-21 15:07:03,531 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:07:03] "[36mGET /static/doc_images/doc_53/image_mammoth_e5a95a29246949ea9e3d182361762903_7.png HTTP/1.1[0m" 304 -
+2025-05-21 15:07:03,535 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:07:03] "[36mGET /static/doc_images/doc_53/image_mammoth_d7c785d49d21408abe234a5b1452f956_6.png HTTP/1.1[0m" 304 -
+2025-05-21 15:07:03,547 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:07:03] "[36mGET /static/doc_images/doc_53/image_mammoth_f9f6b196e31749adad38648703294436_11.png HTTP/1.1[0m" 304 -
+2025-05-21 15:07:03,548 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:07:03] "[36mGET /static/doc_images/doc_53/image_mammoth_c467e39e063e43549afa84fdffaf38f2_10.png HTTP/1.1[0m" 304 -
+2025-05-21 15:07:03,548 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:07:03] "[36mGET /static/doc_images/doc_53/image_mammoth_60a9e9f29641436493760d2af73083e6_12.png HTTP/1.1[0m" 304 -
+2025-05-21 15:07:03,548 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:07:03] "[36mGET /static/doc_images/doc_53/image_mammoth_41242a20e8ec4744bf700fbdb9e6b3b7_14.png HTTP/1.1[0m" 304 -
+2025-05-21 15:07:03,551 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:07:03] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-21 15:07:03,565 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:07:03] "[36mGET /static/doc_images/doc_53/image_mammoth_23c6c42f96714ff9b3b45a905fe4bdf8_17.png HTTP/1.1[0m" 304 -
+2025-05-21 15:07:03,565 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:07:03] "[36mGET /static/doc_images/doc_53/image_mammoth_e593c36ca8484e1999fd541c36c2164a_16.png HTTP/1.1[0m" 304 -
+2025-05-21 15:07:03,566 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:07:03] "[36mGET /static/doc_images/doc_53/image_mammoth_795e81472bfb43698930d596eb8cd313_15.png HTTP/1.1[0m" 304 -
+2025-05-21 15:07:03,568 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:07:03] "[36mGET /static/doc_images/doc_53/image_mammoth_d8a5e63147374abfaaf693a65443b995_13.png HTTP/1.1[0m" 304 -
+2025-05-21 15:07:03,583 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:07:03] "[36mGET /static/doc_images/doc_53/image_mammoth_e06e367e87ae4717a4aa3c35bf164539_19.png HTTP/1.1[0m" 304 -
+2025-05-21 15:07:03,584 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:07:03] "[36mGET /static/doc_images/doc_53/image_mammoth_c16e6814ff0145a4bef3c62d5c5e35a3_21.png HTTP/1.1[0m" 304 -
+2025-05-21 15:07:03,585 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:07:03] "[36mGET /static/doc_images/doc_53/image_mammoth_df69b1647ad04af89f055848444d0f8e_23.png HTTP/1.1[0m" 304 -
+2025-05-21 15:07:03,597 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:07:03] "[36mGET /static/doc_images/doc_53/image_mammoth_0ce965c836444b2487c7534e6413e87a_25.png HTTP/1.1[0m" 304 -
+2025-05-21 15:07:03,599 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:07:03] "[36mGET /static/doc_images/doc_53/image_mammoth_ca742f3c127e46dbb08be2fa7c11edb2_26.png HTTP/1.1[0m" 304 -
+2025-05-21 15:07:03,599 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:07:03] "[36mGET /static/doc_images/doc_53/image_mammoth_e80a2aa413e94022a16054751286bd5c_18.png HTTP/1.1[0m" 304 -
+2025-05-21 15:07:03,607 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:07:03] "[36mGET /static/doc_images/doc_53/image_mammoth_327e49f8f49944d5b20f0f5c3bf004ff_27.png HTTP/1.1[0m" 304 -
+2025-05-21 15:07:03,612 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:07:03] "[36mGET /static/doc_images/doc_53/image_mammoth_0aee39fafa694975a9faf2992e28d05a_24.png HTTP/1.1[0m" 304 -
+2025-05-21 15:07:03,612 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:07:03] "[36mGET /static/doc_images/doc_53/image_mammoth_d348dd88517c4353b4cdaf98d3b5b4f2_22.png HTTP/1.1[0m" 304 -
+2025-05-21 15:07:03,627 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:07:03] "[36mGET /static/doc_images/doc_53/image_mammoth_f26a732d747f4728adff05c94d151951_20.png HTTP/1.1[0m" 304 -
+2025-05-21 15:07:49,179 [INFO] - root - 文档ID 50: 标题为空，使用原始文件名 '十期Duoov1.8.0.docx' 作为标题
+2025-05-21 15:07:49,181 [INFO] - root - 文档 50 使用HTML内容显示
+2025-05-21 15:07:49,182 [INFO] - root - 传递查询参数到模板: '视频审核', 搜索ID: '4'
+2025-05-21 15:07:49,185 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:07:49] "GET /document/50?q=视频审核&search_id=4 HTTP/1.1" 200 -
+2025-05-21 15:07:49,207 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:07:49] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-21 15:07:49,219 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:07:49] "GET /static/doc_images/doc_50/image_mammoth_852b69e3de424040ae835b5f168a1163_1.png HTTP/1.1" 200 -
+2025-05-21 15:07:49,219 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:07:49] "GET /static/doc_images/doc_50/image_mammoth_8f379cfe96d84a279056737ea039ab97_3.png HTTP/1.1" 200 -
+2025-05-21 15:07:49,219 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:07:49] "GET /static/doc_images/doc_50/image_mammoth_13e93de7a5074f4b8b45127ded1b4bf7_4.png HTTP/1.1" 200 -
+2025-05-21 15:07:49,221 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:07:49] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-21 15:07:49,222 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:07:49] "GET /static/doc_images/doc_50/image_mammoth_526622566fad46928d63f75ffac2e1e5_5.png HTTP/1.1" 200 -
+2025-05-21 15:07:49,231 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:07:49] "[36mGET /static/js/document-search.js HTTP/1.1[0m" 304 -
+2025-05-21 15:07:49,237 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:07:49] "GET /static/doc_images/doc_50/image_mammoth_ed59d6a21d5749a8a3647d534a52c29b_6.png HTTP/1.1" 200 -
+2025-05-21 15:07:49,252 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:07:49] "GET /static/doc_images/doc_50/image_mammoth_9a3b6c541c174248b2d38028d5363199_2.png HTTP/1.1" 200 -
+2025-05-21 15:07:49,268 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:07:49] "GET /static/doc_images/doc_50/image_mammoth_fe24d4ed8354407f8789360a93997182_7.png HTTP/1.1" 200 -
+2025-05-21 15:08:27,837 [INFO] - root - 文档ID 44: 标题为空，使用原始文件名 '十七期Duoov2.3.0.docx' 作为标题
+2025-05-21 15:08:27,841 [INFO] - root - 文档 44 使用HTML内容显示
+2025-05-21 15:08:27,841 [INFO] - root - 传递查询参数到模板: '视频审核', 搜索ID: '4'
+2025-05-21 15:08:27,844 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:08:27] "GET /document/44?q=视频审核&search_id=4 HTTP/1.1" 200 -
+2025-05-21 15:08:27,866 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:08:27] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-21 15:08:27,879 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:08:27] "GET /static/doc_images/doc_44/image_mammoth_6d4258b38af54aba92d143d5b1735bf2_1.png HTTP/1.1" 200 -
+2025-05-21 15:08:27,882 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:08:27] "GET /static/doc_images/doc_44/image_mammoth_dee6bb0121e34768a15535a5a4733831_3.png HTTP/1.1" 200 -
+2025-05-21 15:08:27,882 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:08:27] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-21 15:08:27,892 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:08:27] "GET /static/doc_images/doc_44/image_mammoth_e03a302dc2f6461f93228e43bc746f6e_6.png HTTP/1.1" 200 -
+2025-05-21 15:08:27,892 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:08:27] "GET /static/doc_images/doc_44/image_mammoth_eb7d14356efc4523b4846fb70fc101ae_7.png HTTP/1.1" 200 -
+2025-05-21 15:08:27,898 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:08:27] "[36mGET /static/js/document-search.js HTTP/1.1[0m" 304 -
+2025-05-21 15:08:27,903 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:08:27] "GET /static/doc_images/doc_44/image_mammoth_af0b8f06d4f84823ab8d408765c62400_8.png HTTP/1.1" 200 -
+2025-05-21 15:08:27,909 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:08:27] "GET /static/doc_images/doc_44/image_mammoth_a75fdf641fcc4318852b74d01a9b3454_10.png HTTP/1.1" 200 -
+2025-05-21 15:08:27,914 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:08:27] "GET /static/doc_images/doc_44/image_mammoth_622a9624d458447bbdcd28ba39437a73_4.png HTTP/1.1" 200 -
+2025-05-21 15:08:27,917 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:08:27] "GET /static/doc_images/doc_44/image_mammoth_fe269ba1b90647618c83f0c50966045a_11.png HTTP/1.1" 200 -
+2025-05-21 15:08:27,930 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:08:27] "GET /static/doc_images/doc_44/image_mammoth_b84af5acb7844741b460662ea7ed3670_9.png HTTP/1.1" 200 -
+2025-05-21 15:08:27,930 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:08:27] "GET /static/doc_images/doc_44/image_mammoth_89a270f280c949c4be56e3d68504489e_2.png HTTP/1.1" 200 -
+2025-05-21 15:08:27,931 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:08:27] "GET /static/doc_images/doc_44/image_mammoth_ab1cce23f848499c8a1710620d407614_12.png HTTP/1.1" 200 -
+2025-05-21 15:08:27,950 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:08:27] "GET /static/doc_images/doc_44/image_mammoth_546bd7aed3ee4eeba6ec94ce763c345d_13.png HTTP/1.1" 200 -
+2025-05-21 15:08:27,952 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:08:27] "GET /static/doc_images/doc_44/image_mammoth_0d06b430a4a944d2bf600dd3fff4818c_15.png HTTP/1.1" 200 -
+2025-05-21 15:08:27,954 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:08:27] "GET /static/doc_images/doc_44/image_mammoth_d6e19a0c7ef4411da9503dd84074e3f4_16.png HTTP/1.1" 200 -
+2025-05-21 15:08:27,961 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:08:27] "GET /static/doc_images/doc_44/image_mammoth_78debc76489940f58d16067ec3e4a8b1_14.png HTTP/1.1" 200 -
+2025-05-21 15:08:27,962 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:08:27] "GET /static/doc_images/doc_44/image_mammoth_5345d995532347f283e92e00e5c484ff_5.png HTTP/1.1" 200 -
+2025-05-21 15:09:10,052 [INFO] - root - 文档ID 53: 标题为空，使用原始文件名 '七期Duoov1.5.0.docx' 作为标题
+2025-05-21 15:09:10,053 [INFO] - root - 文档 53 使用HTML内容显示
+2025-05-21 15:09:10,053 [INFO] - root - 传递查询参数到模板: '视频审核', 搜索ID: '4'
+2025-05-21 15:09:10,057 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:09:10] "GET /document/53?q=视频审核&search_id=4 HTTP/1.1" 200 -
+2025-05-21 15:09:10,077 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:09:10] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-21 15:09:10,095 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:09:10] "[36mGET /static/doc_images/doc_53/image_mammoth_188d6cc82b154c0c97f3dc24ce9a6a61_5.png HTTP/1.1[0m" 304 -
+2025-05-21 15:09:10,095 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:09:10] "[36mGET /static/doc_images/doc_53/image_mammoth_23ad1befc99e4b7ca1c2c26a13f45a1b_4.png HTTP/1.1[0m" 304 -
+2025-05-21 15:09:10,095 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:09:10] "[36mGET /static/doc_images/doc_53/image_mammoth_891331f4c9e74f84a39b90ba43e69a4a_1.png HTTP/1.1[0m" 304 -
+2025-05-21 15:09:10,104 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:09:10] "[36mGET /static/js/document-search.js HTTP/1.1[0m" 304 -
+2025-05-21 15:09:10,105 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:09:10] "[36mGET /static/doc_images/doc_53/image_mammoth_e5a95a29246949ea9e3d182361762903_7.png HTTP/1.1[0m" 304 -
+2025-05-21 15:09:10,107 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:09:10] "[36mGET /static/doc_images/doc_53/image_mammoth_a474a373b8034793a580eee0e27e4749_3.png HTTP/1.1[0m" 304 -
+2025-05-21 15:09:10,119 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:09:10] "[36mGET /static/doc_images/doc_53/image_mammoth_b581672d79cb40e6b4a0202494c19dc4_9.png HTTP/1.1[0m" 304 -
+2025-05-21 15:09:10,122 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:09:10] "[36mGET /static/doc_images/doc_53/image_mammoth_204b3569a8bd4b1288fc285f551d7178_2.png HTTP/1.1[0m" 304 -
+2025-05-21 15:09:10,128 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:09:10] "[36mGET /static/doc_images/doc_53/image_mammoth_f9f6b196e31749adad38648703294436_11.png HTTP/1.1[0m" 304 -
+2025-05-21 15:09:10,133 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:09:10] "[36mGET /static/doc_images/doc_53/image_mammoth_60a9e9f29641436493760d2af73083e6_12.png HTTP/1.1[0m" 304 -
+2025-05-21 15:09:10,139 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:09:10] "[36mGET /static/doc_images/doc_53/image_mammoth_d7c785d49d21408abe234a5b1452f956_6.png HTTP/1.1[0m" 304 -
+2025-05-21 15:09:10,143 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:09:10] "[36mGET /static/doc_images/doc_53/image_mammoth_41242a20e8ec4744bf700fbdb9e6b3b7_14.png HTTP/1.1[0m" 304 -
+2025-05-21 15:09:10,148 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:09:10] "[36mGET /static/doc_images/doc_53/image_mammoth_795e81472bfb43698930d596eb8cd313_15.png HTTP/1.1[0m" 304 -
+2025-05-21 15:09:10,152 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:09:10] "[36mGET /static/doc_images/doc_53/image_mammoth_e593c36ca8484e1999fd541c36c2164a_16.png HTTP/1.1[0m" 304 -
+2025-05-21 15:09:10,153 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:09:10] "[36mGET /static/doc_images/doc_53/image_mammoth_c467e39e063e43549afa84fdffaf38f2_10.png HTTP/1.1[0m" 304 -
+2025-05-21 15:09:10,159 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:09:10] "[36mGET /static/doc_images/doc_53/image_mammoth_23c6c42f96714ff9b3b45a905fe4bdf8_17.png HTTP/1.1[0m" 304 -
+2025-05-21 15:09:10,164 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:09:10] "[36mGET /static/doc_images/doc_53/image_mammoth_e80a2aa413e94022a16054751286bd5c_18.png HTTP/1.1[0m" 304 -
+2025-05-21 15:09:10,165 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:09:10] "[36mGET /static/doc_images/doc_53/image_mammoth_e06e367e87ae4717a4aa3c35bf164539_19.png HTTP/1.1[0m" 304 -
+2025-05-21 15:09:10,168 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:09:10] "[36mGET /static/doc_images/doc_53/image_mammoth_d8a5e63147374abfaaf693a65443b995_13.png HTTP/1.1[0m" 304 -
+2025-05-21 15:09:10,172 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:09:10] "[36mGET /static/doc_images/doc_53/image_mammoth_f26a732d747f4728adff05c94d151951_20.png HTTP/1.1[0m" 304 -
+2025-05-21 15:09:10,181 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:09:10] "[36mGET /static/doc_images/doc_53/image_mammoth_c16e6814ff0145a4bef3c62d5c5e35a3_21.png HTTP/1.1[0m" 304 -
+2025-05-21 15:09:10,182 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:09:10] "[36mGET /static/doc_images/doc_53/image_mammoth_d348dd88517c4353b4cdaf98d3b5b4f2_22.png HTTP/1.1[0m" 304 -
+2025-05-21 15:09:10,184 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:09:10] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-21 15:09:10,187 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:09:10] "[36mGET /static/doc_images/doc_53/image_mammoth_0aee39fafa694975a9faf2992e28d05a_24.png HTTP/1.1[0m" 304 -
+2025-05-21 15:09:10,197 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:09:10] "[36mGET /static/doc_images/doc_53/image_mammoth_0ce965c836444b2487c7534e6413e87a_25.png HTTP/1.1[0m" 304 -
+2025-05-21 15:09:10,197 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:09:10] "[36mGET /static/doc_images/doc_53/image_mammoth_ca742f3c127e46dbb08be2fa7c11edb2_26.png HTTP/1.1[0m" 304 -
+2025-05-21 15:09:10,199 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:09:10] "[36mGET /static/doc_images/doc_53/image_mammoth_327e49f8f49944d5b20f0f5c3bf004ff_27.png HTTP/1.1[0m" 304 -
+2025-05-21 15:09:10,201 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:09:10] "[36mGET /static/doc_images/doc_53/image_mammoth_df69b1647ad04af89f055848444d0f8e_23.png HTTP/1.1[0m" 304 -
+2025-05-21 15:09:10,245 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:09:10] "[36mGET /static/doc_images/doc_53/image_mammoth_0d96fd8412ca4d8aa2ad59b41b3694d1_8.png HTTP/1.1[0m" 304 -
+2025-05-21 15:12:45,449 [INFO] - root - 日志系统初始化完成，使用日志文件: 2025-05-21_docradar.log
+2025-05-21 15:12:45,471 [INFO] - werkzeug -  * Restarting with stat
+2025-05-21 15:12:45,966 [INFO] - root - 日志系统初始化完成，使用日志文件: 2025-05-21_docradar.log
+2025-05-21 15:12:45,984 [WARNING] - werkzeug -  * Debugger is active!
+2025-05-21 15:12:45,990 [INFO] - werkzeug -  * Debugger PIN: 547-956-756
+2025-05-21 15:12:46,117 [INFO] - werkzeug -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2025-05-21 15:12:47,274 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:12:47] "GET / HTTP/1.1" 200 -
+2025-05-21 15:12:47,296 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:12:47] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-21 15:12:47,300 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:12:47] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-21 15:12:49,944 [INFO] - root - 找到已存在的搜索历史: ID=2, 查询='adjustments', 索引=1
+2025-05-21 15:12:49,944 [INFO] - root - 重用已有搜索结果: 'adjustments'
+2025-05-21 15:12:49,945 [INFO] - root - 找到已存在的搜索历史: ID=2, 查询='adjustments', 索引=1
+2025-05-21 15:12:49,946 [INFO] - root - 更新搜索历史: 查询='adjustments', 结果数=1, 历史ID=2, 位置保持在索引=1
+2025-05-21 15:12:49,956 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:12:49] "GET /search?q=adjustments HTTP/1.1" 200 -
+2025-05-21 15:12:49,982 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:12:49] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-21 15:12:49,998 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:12:49] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-21 15:12:57,831 [INFO] - root - 文档ID 56: 标题为空，使用原始文件名 '四期Duoov1.2.1.docx' 作为标题
+2025-05-21 15:12:57,832 [INFO] - root - 文档 56 使用HTML内容显示
+2025-05-21 15:12:57,832 [INFO] - root - 传递查询参数到模板: 'adjustments', 搜索ID: '1'
+2025-05-21 15:12:57,838 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:12:57] "GET /document/56?q=adjustments&search_id=1 HTTP/1.1" 200 -
+2025-05-21 15:12:57,871 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:12:57] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-21 15:12:57,871 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:12:57] "[36mGET /static/doc_images/doc_56/image_mammoth_9e8a9e5fdb5546afa386860c0068624a_2.png HTTP/1.1[0m" 304 -
+2025-05-21 15:12:57,872 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:12:57] "[36mGET /static/doc_images/doc_56/image_mammoth_31840b2dc603435897fdc4fd7b7f8380_5.png HTTP/1.1[0m" 304 -
+2025-05-21 15:12:57,882 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:12:57] "[36mGET /static/js/document-search.js HTTP/1.1[0m" 304 -
+2025-05-21 15:12:57,882 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:12:57] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-21 15:12:57,886 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:12:57] "[36mGET /static/doc_images/doc_56/image_mammoth_d4268ea6d4ce41c7bf2dac16a23ace9f_3.png HTTP/1.1[0m" 304 -
+2025-05-21 15:12:57,889 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:12:57] "[36mGET /static/doc_images/doc_56/image_mammoth_18410c6b74f744d688b6384dedd94e5c_7.png HTTP/1.1[0m" 304 -
+2025-05-21 15:12:57,901 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:12:57] "[36mGET /static/doc_images/doc_56/image_mammoth_b30eafedf1b342fa96986cc9b40bd90e_4.png HTTP/1.1[0m" 304 -
+2025-05-21 15:12:57,917 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:12:57] "[36mGET /static/doc_images/doc_56/image_mammoth_6dcdf997f7584cffa6767e7c1786f0d1_1.png HTTP/1.1[0m" 304 -
+2025-05-21 15:12:57,933 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:12:57] "[36mGET /static/doc_images/doc_56/image_mammoth_3c014d832ffb4b5bae4f5a1bf2800667_6.png HTTP/1.1[0m" 304 -
+2025-05-21 15:13:03,804 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:13:03] "GET /search/clear?q=adjustments HTTP/1.1" 200 -
+2025-05-21 15:13:05,190 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:13:05] "GET / HTTP/1.1" 200 -
+2025-05-21 15:13:05,216 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:13:05] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-21 15:13:05,217 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:13:05] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-21 15:13:07,350 [INFO] - root - 文档ID 55: 标题为空，使用原始文件名 '五期Duoov1.3.0.docx' 作为标题
+2025-05-21 15:13:07,350 [INFO] - root - 文档ID 56: 标题为空，使用原始文件名 '四期Duoov1.2.1.docx' 作为标题
+2025-05-21 15:13:07,351 [INFO] - root - 文档ID 57: 标题为空，使用原始文件名 '三期Duoov1.1.0.docx' 作为标题
+2025-05-21 15:13:07,352 [INFO] - root - 文档ID 52: 标题为空，使用原始文件名 '八期Duoov1.6.0.docx' 作为标题
+2025-05-21 15:13:07,352 [INFO] - root - 文档ID 53: 标题为空，使用原始文件名 '七期Duoov1.5.0.docx' 作为标题
+2025-05-21 15:13:07,353 [INFO] - root - 文档ID 54: 标题为空，使用原始文件名 '六期Duoov1.4.0.docx' 作为标题
+2025-05-21 15:13:07,353 [INFO] - root - 文档ID 49: 标题为空，使用原始文件名 '十一期Duoov1.9.0.docx' 作为标题
+2025-05-21 15:13:07,354 [INFO] - root - 文档ID 50: 标题为空，使用原始文件名 '十期Duoov1.8.0.docx' 作为标题
+2025-05-21 15:13:07,354 [INFO] - root - 文档ID 51: 标题为空，使用原始文件名 '九期Duoov1.7.0.docx' 作为标题
+2025-05-21 15:13:07,355 [INFO] - root - 文档ID 46: 标题为空，使用原始文件名 '十四期Duoov2.1.0.docx' 作为标题
+2025-05-21 15:13:07,357 [INFO] - root - 文档ID 47: 标题为空，使用原始文件名 '十三期Duoov2.0.0.docx' 作为标题
+2025-05-21 15:13:07,357 [INFO] - root - 文档ID 48: 标题为空，使用原始文件名 '十二期Duoov1.10.0.docx' 作为标题
+2025-05-21 15:13:07,358 [INFO] - root - 文档ID 44: 标题为空，使用原始文件名 '十七期Duoov2.3.0.docx' 作为标题
+2025-05-21 15:13:07,359 [INFO] - root - 文档ID 45: 标题为空，使用原始文件名 '十五(&十六)期Duoov2.2.0（&v2.3.0）.docx' 作为标题
+2025-05-21 15:13:07,359 [INFO] - root - 文档ID 40: 标题为空，使用原始文件名 '二十一期Duoov2.7.0.docx' 作为标题
+2025-05-21 15:13:07,360 [INFO] - root - 文档ID 41: 标题为空，使用原始文件名 '二十期Duoov2.6.0.docx' 作为标题
+2025-05-21 15:13:07,360 [INFO] - root - 文档ID 42: 标题为空，使用原始文件名 '十九期Duoov2.5.0.docx' 作为标题
+2025-05-21 15:13:07,361 [INFO] - root - 文档ID 43: 标题为空，使用原始文件名 '十八期Duoov2.4.0.docx' 作为标题
+2025-05-21 15:13:07,361 [INFO] - root - 文档ID 37: 标题为空，使用原始文件名 '23期Duoo直播v1.0.docx' 作为标题
+2025-05-21 15:13:07,362 [INFO] - root - 文档ID 38: 标题为空，使用原始文件名 '二十三期Duoov2.8.5.docx' 作为标题
+2025-05-21 15:13:07,362 [INFO] - root - 搜索 '主播' 找到 20 个结果
+2025-05-21 15:13:07,363 [INFO] - root - 执行搜索: '主播' 找到 20 个结果
+2025-05-21 15:13:07,363 [INFO] - root - 搜索结果 #0: id=55, title=五期Duoov1.3.0
+2025-05-21 15:13:07,364 [INFO] - root - 搜索结果 #1: id=56, title=四期Duoov1.2.1
+2025-05-21 15:13:07,364 [INFO] - root - 搜索结果 #2: id=57, title=三期Duoov1.1.0
+2025-05-21 15:13:07,365 [INFO] - root - 搜索结果 #3: id=52, title=八期Duoov1.6.0
+2025-05-21 15:13:07,365 [INFO] - root - 搜索结果 #4: id=53, title=七期Duoov1.5.0
+2025-05-21 15:13:07,366 [INFO] - root - 搜索结果 #5: id=54, title=六期Duoov1.4.0
+2025-05-21 15:13:07,366 [INFO] - root - 搜索结果 #6: id=49, title=十一期Duoov1.9.0
+2025-05-21 15:13:07,367 [INFO] - root - 搜索结果 #7: id=50, title=十期Duoov1.8.0
+2025-05-21 15:13:07,367 [INFO] - root - 搜索结果 #8: id=51, title=九期Duoov1.7.0
+2025-05-21 15:13:07,368 [INFO] - root - 搜索结果 #9: id=46, title=十四期Duoov2.1.0
+2025-05-21 15:13:07,368 [INFO] - root - 搜索结果 #10: id=47, title=十三期Duoov2.0.0
+2025-05-21 15:13:07,369 [INFO] - root - 搜索结果 #11: id=48, title=十二期Duoov1.10.0
+2025-05-21 15:13:07,369 [INFO] - root - 搜索结果 #12: id=44, title=十七期Duoov2.3.0
+2025-05-21 15:13:07,370 [INFO] - root - 搜索结果 #13: id=45, title=十五(&十六)期Duoov2.2.0（&v2.3.0）
+2025-05-21 15:13:07,370 [INFO] - root - 搜索结果 #14: id=40, title=二十一期Duoov2.7.0
+2025-05-21 15:13:07,371 [INFO] - root - 搜索结果 #15: id=41, title=二十期Duoov2.6.0
+2025-05-21 15:13:07,371 [INFO] - root - 搜索结果 #16: id=42, title=十九期Duoov2.5.0
+2025-05-21 15:13:07,371 [INFO] - root - 搜索结果 #17: id=43, title=十八期Duoov2.4.0
+2025-05-21 15:13:07,372 [INFO] - root - 搜索结果 #18: id=37, title=23期Duoo直播v1.0
+2025-05-21 15:13:07,372 [INFO] - root - 搜索结果 #19: id=38, title=二十三期Duoov2.8.5
+2025-05-21 15:13:07,373 [INFO] - root - 添加搜索历史: 查询='主播', 结果数=20, 历史ID=1
+2025-05-21 15:13:07,373 [INFO] - root - 搜索结果ID: [55, 56, 57, 52, 53, 54, 49, 50, 51, 46, 47, 48, 44, 45, 40, 41, 42, 43, 37, 38]
+2025-05-21 15:13:07,380 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:13:07] "GET /search?q=主播 HTTP/1.1" 200 -
+2025-05-21 15:13:07,407 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:13:07] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-21 15:13:07,422 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:13:07] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-21 15:13:08,577 [INFO] - root - 文档ID 55: 标题为空，使用原始文件名 '五期Duoov1.3.0.docx' 作为标题
+2025-05-21 15:13:08,578 [INFO] - root - 文档 55 使用HTML内容显示
+2025-05-21 15:13:08,579 [INFO] - root - 传递查询参数到模板: '主播', 搜索ID: '1'
+2025-05-21 15:13:08,583 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:13:08] "GET /document/55?q=主播&search_id=1 HTTP/1.1" 200 -
+2025-05-21 15:13:08,618 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:13:08] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-21 15:13:08,619 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:13:08] "[36mGET /static/doc_images/doc_55/image_mammoth_d2ccc89a42524da2a474afae3cfde41d_2.png HTTP/1.1[0m" 304 -
+2025-05-21 15:13:08,620 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:13:08] "[36mGET /static/doc_images/doc_55/image_mammoth_50740f8ee05b42f5882b5d13eb864e95_3.png HTTP/1.1[0m" 304 -
+2025-05-21 15:13:08,620 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:13:08] "[36mGET /static/doc_images/doc_55/image_mammoth_f9409ce987ec476e821e0ab3e91d2526_1.png HTTP/1.1[0m" 304 -
+2025-05-21 15:13:08,631 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:13:08] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-21 15:13:08,631 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:13:08] "[36mGET /static/doc_images/doc_55/image_mammoth_a43562662e5f456182cd3f448691ee8c_6.png HTTP/1.1[0m" 304 -
+2025-05-21 15:13:08,632 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:13:08] "[36mGET /static/doc_images/doc_55/image_mammoth_f3a1898a61a044ec98ce925dd285d88a_7.png HTTP/1.1[0m" 304 -
+2025-05-21 15:13:08,632 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:13:08] "[36mGET /static/doc_images/doc_55/image_mammoth_f834ad9ca41a4c29830e2e851fc9879d_5.png HTTP/1.1[0m" 304 -
+2025-05-21 15:13:08,645 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:13:08] "[36mGET /static/doc_images/doc_55/image_mammoth_0afc03be14c54fb3a21998b12f662d16_9.png HTTP/1.1[0m" 304 -
+2025-05-21 15:13:08,645 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:13:08] "[36mGET /static/doc_images/doc_55/image_mammoth_23cbeae574d44a3197ae35b956daf153_8.png HTTP/1.1[0m" 304 -
+2025-05-21 15:13:08,646 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:13:08] "[36mGET /static/doc_images/doc_55/image_mammoth_1eb0f39dd27442c8b4ec928dfbe0df61_10.png HTTP/1.1[0m" 304 -
+2025-05-21 15:13:08,647 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:13:08] "[36mGET /static/doc_images/doc_55/image_mammoth_9724e9e83f824b7cbd7b32578b44b633_11.png HTTP/1.1[0m" 304 -
+2025-05-21 15:13:08,648 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:13:08] "[36mGET /static/doc_images/doc_55/image_mammoth_bc257a22da6b4535957725e65adbaf6e_4.png HTTP/1.1[0m" 304 -
+2025-05-21 15:13:08,662 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:13:08] "[36mGET /static/doc_images/doc_55/image_mammoth_f95689eecec341199773b9f1032f831a_12.png HTTP/1.1[0m" 304 -
+2025-05-21 15:13:08,662 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:13:08] "[36mGET /static/doc_images/doc_55/image_mammoth_f15e2ecebdc64100bbfb0d67f7d20c90_14.png HTTP/1.1[0m" 304 -
+2025-05-21 15:13:08,664 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:13:08] "[36mGET /static/doc_images/doc_55/image_mammoth_32093aa002e24c408e4b5338d6b401a8_15.png HTTP/1.1[0m" 304 -
+2025-05-21 15:13:08,665 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:13:08] "[36mGET /static/doc_images/doc_55/image_mammoth_a3223e2981a64740a2872b15092f92a5_16.png HTTP/1.1[0m" 304 -
+2025-05-21 15:13:08,665 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:13:08] "[36mGET /static/js/document-search.js HTTP/1.1[0m" 304 -
+2025-05-21 15:13:08,679 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:13:08] "[36mGET /static/doc_images/doc_55/image_mammoth_897ae1cbca564182acdbb26b4183ec8d_13.png HTTP/1.1[0m" 304 -
+2025-05-21 15:13:08,680 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:13:08] "[36mGET /static/doc_images/doc_55/image_mammoth_28da44ee969a4b918eff5a1640a65d62_17.png HTTP/1.1[0m" 304 -
+2025-05-21 15:13:08,682 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:13:08] "[36mGET /static/doc_images/doc_55/image_mammoth_60f28562c5e74fe69cff3cb8f364616a_18.png HTTP/1.1[0m" 304 -
+2025-05-21 15:13:08,683 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:13:08] "[36mGET /static/doc_images/doc_55/image_mammoth_eae4924fa92b48ca8e6c87b6557d23c5_19.png HTTP/1.1[0m" 304 -
+2025-05-21 15:13:08,684 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:13:08] "[36mGET /static/doc_images/doc_55/image_mammoth_0935df03930b4a718fdc85941d23efb6_20.png HTTP/1.1[0m" 304 -
+2025-05-21 15:13:08,684 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:13:08] "[36mGET /static/doc_images/doc_55/image_mammoth_f520137c54b94659b3cb0ea7686d22ed_21.png HTTP/1.1[0m" 304 -
+2025-05-21 15:13:08,691 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:13:08] "[36mGET /static/doc_images/doc_55/image_mammoth_c755349334274ce68adf289a55069a53_22.png HTTP/1.1[0m" 304 -
+2025-05-21 15:13:08,701 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:13:08] "[36mGET /static/doc_images/doc_55/image_mammoth_01df9e8f6de74f28a7e79b2c380057fd_23.png HTTP/1.1[0m" 304 -
+2025-05-21 15:13:08,703 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:13:08] "[36mGET /static/doc_images/doc_55/image_mammoth_d2dd2ebe2d014bad967ead973b27f24e_24.png HTTP/1.1[0m" 304 -
+2025-05-21 15:13:08,705 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:13:08] "[36mGET /static/doc_images/doc_55/image_mammoth_2c003cbd326c46128754819029337f2e_25.png HTTP/1.1[0m" 304 -
+2025-05-21 15:13:08,706 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:13:08] "[36mGET /static/doc_images/doc_55/image_mammoth_a077ca2b90144a88a88ab67c5f46d601_27.png HTTP/1.1[0m" 304 -
+2025-05-21 15:13:08,709 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:13:08] "[36mGET /static/doc_images/doc_55/image_mammoth_e5abeb512aaa4d0781918f9ef0fe8c97_26.png HTTP/1.1[0m" 304 -
+2025-05-21 15:13:08,726 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:13:08] "[36mGET /static/doc_images/doc_55/image_mammoth_91fc6ed247774371b6042600a3fc8b6f_28.png HTTP/1.1[0m" 304 -
+2025-05-21 15:13:12,589 [INFO] - root - 文档ID 27: 标题为空，使用原始文件名 '三十四期Duoov4.0.0.docx' 作为标题
+2025-05-21 15:13:12,590 [INFO] - root - 搜索 'adjustments' 找到 1 个结果
+2025-05-21 15:13:12,591 [INFO] - root - 执行搜索: 'adjustments' 找到 1 个结果
+2025-05-21 15:13:12,591 [INFO] - root - 搜索结果 #0: id=27, title=三十四期Duoov4.0.0
+2025-05-21 15:13:12,592 [INFO] - root - 添加搜索历史: 查询='adjustments', 结果数=1, 历史ID=2
+2025-05-21 15:13:12,592 [INFO] - root - 搜索结果ID: [27]
+2025-05-21 15:13:12,599 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:13:12] "GET /search?q=adjustments HTTP/1.1" 200 -
+2025-05-21 15:13:12,626 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:13:12] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-21 15:13:12,631 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:13:12] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-21 15:13:13,892 [INFO] - root - 文档ID 27: 标题为空，使用原始文件名 '三十四期Duoov4.0.0.docx' 作为标题
+2025-05-21 15:13:13,893 [INFO] - root - 文档 27 使用HTML内容显示
+2025-05-21 15:13:13,893 [INFO] - root - 传递查询参数到模板: 'adjustments', 搜索ID: '2'
+2025-05-21 15:13:13,896 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:13:13] "GET /document/27?q=adjustments&search_id=2 HTTP/1.1" 200 -
+2025-05-21 15:13:13,941 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:13:13] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-21 15:13:13,941 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:13:13] "[36mGET /static/doc_images/doc_27/image_mammoth_3d55d9d5fae44358a13307a4947b710e_2.png HTTP/1.1[0m" 304 -
+2025-05-21 15:13:13,942 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:13:13] "[36mGET /static/doc_images/doc_27/image_mammoth_64f594ddaca942fbb78c1e42e23ef245_4.png HTTP/1.1[0m" 304 -
+2025-05-21 15:13:13,942 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:13:13] "[36mGET /static/doc_images/doc_27/image_mammoth_711ae610005c46e0b950460895fc447a_3.png HTTP/1.1[0m" 304 -
+2025-05-21 15:13:13,944 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:13:13] "[36mGET /static/doc_images/doc_27/image_mammoth_c9261f8fea95446c8b878c1ef325d02f_1.png HTTP/1.1[0m" 304 -
+2025-05-21 15:13:13,953 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:13:13] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-21 15:13:13,956 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:13:13] "[36mGET /static/doc_images/doc_27/image_mammoth_0733fdc51e0446be86378770c369aa44_6.png HTTP/1.1[0m" 304 -
+2025-05-21 15:13:13,957 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:13:13] "[36mGET /static/doc_images/doc_27/image_mammoth_f0b6abeed5cb43eab7dbaa66798ce845_7.png HTTP/1.1[0m" 304 -
+2025-05-21 15:13:13,957 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:13:13] "[36mGET /static/doc_images/doc_27/image_mammoth_c7b26b63b9624eeeaebf3510e9f9087a_8.png HTTP/1.1[0m" 304 -
+2025-05-21 15:13:13,961 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:13:13] "[36mGET /static/js/document-search.js HTTP/1.1[0m" 304 -
+2025-05-21 15:13:13,962 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:13:13] "[36mGET /static/doc_images/doc_27/image_mammoth_9c18632f3d5143d2bbf1501d77db5816_5.png HTTP/1.1[0m" 304 -
+2025-05-21 15:13:13,973 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:13:13] "[36mGET /static/doc_images/doc_27/image_mammoth_0f985aff79de423daeac2c85af8e40e4_10.png HTTP/1.1[0m" 304 -
+2025-05-21 15:13:13,974 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:13:13] "[36mGET /static/doc_images/doc_27/image_mammoth_d2aecb089e304b00875250baba86c37f_13.png HTTP/1.1[0m" 304 -
+2025-05-21 15:13:13,974 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:13:13] "[36mGET /static/doc_images/doc_27/image_mammoth_e78a6a754c26448b95663ba393514390_12.png HTTP/1.1[0m" 304 -
+2025-05-21 15:13:13,976 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:13:13] "[36mGET /static/doc_images/doc_27/image_mammoth_17528cb9dbd34508ba64438c7720a4e7_9.png HTTP/1.1[0m" 304 -
+2025-05-21 15:13:13,990 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:13:13] "[36mGET /static/doc_images/doc_27/image_mammoth_7949dfb05dd8454b9ee4b4385fb8e3e1_15.png HTTP/1.1[0m" 304 -
+2025-05-21 15:13:13,992 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:13:13] "[36mGET /static/doc_images/doc_27/image_mammoth_6cba556bd33e4a66ab79f4301c106884_18.png HTTP/1.1[0m" 304 -
+2025-05-21 15:13:13,993 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:13:13] "[36mGET /static/doc_images/doc_27/image_mammoth_77b7321d416d49c2bac4b4a7130816b8_14.png HTTP/1.1[0m" 304 -
+2025-05-21 15:13:14,002 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:13:14] "[36mGET /static/doc_images/doc_27/image_mammoth_e1b61504d7f043a8883b022fcaf9615f_19.png HTTP/1.1[0m" 304 -
+2025-05-21 15:13:14,007 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:13:14] "[36mGET /static/doc_images/doc_27/image_mammoth_a63051de67d545bf926b9fc34b9abcd5_11.png HTTP/1.1[0m" 304 -
+2025-05-21 15:13:14,007 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:13:14] "[36mGET /static/doc_images/doc_27/image_mammoth_2407a19d8aa04372b2b201aa87429da2_17.png HTTP/1.1[0m" 304 -
+2025-05-21 15:13:14,022 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:13:14] "[36mGET /static/doc_images/doc_27/image_mammoth_0b793680a02a4b9b88863424436c9501_16.png HTTP/1.1[0m" 304 -
+2025-05-21 15:13:18,709 [INFO] - root - 文档ID 55: 标题为空，使用原始文件名 '五期Duoov1.3.0.docx' 作为标题
+2025-05-21 15:13:18,710 [INFO] - root - 文档 55 使用HTML内容显示
+2025-05-21 15:13:18,711 [INFO] - root - 传递查询参数到模板: 'adjustments', 搜索ID: '1'
+2025-05-21 15:13:18,715 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:13:18] "GET /document/55?q=adjustments&search_id=1 HTTP/1.1" 200 -
+2025-05-21 15:13:18,734 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:13:18] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-21 15:13:18,749 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:13:18] "[36mGET /static/doc_images/doc_55/image_mammoth_f9409ce987ec476e821e0ab3e91d2526_1.png HTTP/1.1[0m" 304 -
+2025-05-21 15:13:18,749 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:13:18] "[36mGET /static/doc_images/doc_55/image_mammoth_d2ccc89a42524da2a474afae3cfde41d_2.png HTTP/1.1[0m" 304 -
+2025-05-21 15:13:18,750 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:13:18] "[36mGET /static/doc_images/doc_55/image_mammoth_f834ad9ca41a4c29830e2e851fc9879d_5.png HTTP/1.1[0m" 304 -
+2025-05-21 15:13:18,750 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:13:18] "[36mGET /static/doc_images/doc_55/image_mammoth_bc257a22da6b4535957725e65adbaf6e_4.png HTTP/1.1[0m" 304 -
+2025-05-21 15:13:18,751 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:13:18] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-21 15:13:18,762 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:13:18] "[36mGET /static/js/document-search.js HTTP/1.1[0m" 304 -
+2025-05-21 15:13:18,763 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:13:18] "[36mGET /static/doc_images/doc_55/image_mammoth_a43562662e5f456182cd3f448691ee8c_6.png HTTP/1.1[0m" 304 -
+2025-05-21 15:13:18,771 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:13:18] "[36mGET /static/doc_images/doc_55/image_mammoth_f3a1898a61a044ec98ce925dd285d88a_7.png HTTP/1.1[0m" 304 -
+2025-05-21 15:13:18,773 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:13:18] "[36mGET /static/doc_images/doc_55/image_mammoth_23cbeae574d44a3197ae35b956daf153_8.png HTTP/1.1[0m" 304 -
+2025-05-21 15:13:18,774 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:13:18] "[36mGET /static/doc_images/doc_55/image_mammoth_0afc03be14c54fb3a21998b12f662d16_9.png HTTP/1.1[0m" 304 -
+2025-05-21 15:13:18,774 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:13:18] "[36mGET /static/doc_images/doc_55/image_mammoth_50740f8ee05b42f5882b5d13eb864e95_3.png HTTP/1.1[0m" 304 -
+2025-05-21 15:13:18,776 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:13:18] "[36mGET /static/doc_images/doc_55/image_mammoth_9724e9e83f824b7cbd7b32578b44b633_11.png HTTP/1.1[0m" 304 -
+2025-05-21 15:13:18,776 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:13:18] "[36mGET /static/doc_images/doc_55/image_mammoth_1eb0f39dd27442c8b4ec928dfbe0df61_10.png HTTP/1.1[0m" 304 -
+2025-05-21 15:13:18,788 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:13:18] "[36mGET /static/doc_images/doc_55/image_mammoth_897ae1cbca564182acdbb26b4183ec8d_13.png HTTP/1.1[0m" 304 -
+2025-05-21 15:13:18,792 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:13:18] "[36mGET /static/doc_images/doc_55/image_mammoth_f15e2ecebdc64100bbfb0d67f7d20c90_14.png HTTP/1.1[0m" 304 -
+2025-05-21 15:13:18,793 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:13:18] "[36mGET /static/doc_images/doc_55/image_mammoth_28da44ee969a4b918eff5a1640a65d62_17.png HTTP/1.1[0m" 304 -
+2025-05-21 15:13:18,793 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:13:18] "[36mGET /static/doc_images/doc_55/image_mammoth_a3223e2981a64740a2872b15092f92a5_16.png HTTP/1.1[0m" 304 -
+2025-05-21 15:13:18,794 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:13:18] "[36mGET /static/doc_images/doc_55/image_mammoth_32093aa002e24c408e4b5338d6b401a8_15.png HTTP/1.1[0m" 304 -
+2025-05-21 15:13:18,798 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:13:18] "[36mGET /static/doc_images/doc_55/image_mammoth_60f28562c5e74fe69cff3cb8f364616a_18.png HTTP/1.1[0m" 304 -
+2025-05-21 15:13:18,810 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:13:18] "[36mGET /static/doc_images/doc_55/image_mammoth_eae4924fa92b48ca8e6c87b6557d23c5_19.png HTTP/1.1[0m" 304 -
+2025-05-21 15:13:18,810 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:13:18] "[36mGET /static/doc_images/doc_55/image_mammoth_0935df03930b4a718fdc85941d23efb6_20.png HTTP/1.1[0m" 304 -
+2025-05-21 15:13:18,810 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:13:18] "[36mGET /static/doc_images/doc_55/image_mammoth_f520137c54b94659b3cb0ea7686d22ed_21.png HTTP/1.1[0m" 304 -
+2025-05-21 15:13:18,823 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:13:18] "[36mGET /static/doc_images/doc_55/image_mammoth_f95689eecec341199773b9f1032f831a_12.png HTTP/1.1[0m" 304 -
+2025-05-21 15:13:18,827 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:13:18] "[36mGET /static/doc_images/doc_55/image_mammoth_e5abeb512aaa4d0781918f9ef0fe8c97_26.png HTTP/1.1[0m" 304 -
+2025-05-21 15:13:18,833 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:13:18] "[36mGET /static/doc_images/doc_55/image_mammoth_a077ca2b90144a88a88ab67c5f46d601_27.png HTTP/1.1[0m" 304 -
+2025-05-21 15:13:18,838 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:13:18] "[36mGET /static/doc_images/doc_55/image_mammoth_2c003cbd326c46128754819029337f2e_25.png HTTP/1.1[0m" 304 -
+2025-05-21 15:13:18,838 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:13:18] "[36mGET /static/doc_images/doc_55/image_mammoth_01df9e8f6de74f28a7e79b2c380057fd_23.png HTTP/1.1[0m" 304 -
+2025-05-21 15:13:18,838 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:13:18] "[36mGET /static/doc_images/doc_55/image_mammoth_91fc6ed247774371b6042600a3fc8b6f_28.png HTTP/1.1[0m" 304 -
+2025-05-21 15:13:18,853 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:13:18] "[36mGET /static/doc_images/doc_55/image_mammoth_d2dd2ebe2d014bad967ead973b27f24e_24.png HTTP/1.1[0m" 304 -
+2025-05-21 15:13:18,868 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:13:18] "[36mGET /static/doc_images/doc_55/image_mammoth_c755349334274ce68adf289a55069a53_22.png HTTP/1.1[0m" 304 -
+2025-05-21 15:25:04,049 [INFO] - root - 日志系统初始化完成，使用日志文件: 2025-05-21_docradar.log
+2025-05-21 15:25:04,072 [INFO] - werkzeug -  * Restarting with stat
+2025-05-21 15:25:04,562 [INFO] - root - 日志系统初始化完成，使用日志文件: 2025-05-21_docradar.log
+2025-05-21 15:25:04,580 [WARNING] - werkzeug -  * Debugger is active!
+2025-05-21 15:25:04,585 [INFO] - werkzeug -  * Debugger PIN: 547-956-756
+2025-05-21 15:25:04,704 [INFO] - werkzeug -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2025-05-21 15:25:05,802 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:05] "GET / HTTP/1.1" 200 -
+2025-05-21 15:25:05,829 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:05] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-21 15:25:05,830 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:05] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-21 15:25:08,428 [INFO] - root - 找到已存在的搜索历史: ID=2, 查询='adjustments', 索引=1
+2025-05-21 15:25:08,429 [INFO] - root - 重用已有搜索结果: 'adjustments'
+2025-05-21 15:25:08,429 [INFO] - root - 找到已存在的搜索历史: ID=2, 查询='adjustments', 索引=1
+2025-05-21 15:25:08,430 [INFO] - root - 更新搜索历史: 查询='adjustments', 结果数=1, 历史ID=2, 位置保持在索引=1
+2025-05-21 15:25:08,459 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:08] "GET /search?q=adjustments HTTP/1.1" 200 -
+2025-05-21 15:25:08,488 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:08] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-21 15:25:08,500 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:08] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-21 15:25:11,334 [INFO] - root - 文档ID 55: 标题为空，使用原始文件名 '五期Duoov1.3.0.docx' 作为标题
+2025-05-21 15:25:11,336 [INFO] - root - 文档 55 使用HTML内容显示
+2025-05-21 15:25:11,336 [INFO] - root - 传递查询参数到模板: '主播', 搜索ID: '1'
+2025-05-21 15:25:11,342 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:11] "GET /document/55?q=主播&search_id=1 HTTP/1.1" 200 -
+2025-05-21 15:25:11,374 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:11] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-21 15:25:11,380 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:11] "[36mGET /static/doc_images/doc_55/image_mammoth_bc257a22da6b4535957725e65adbaf6e_4.png HTTP/1.1[0m" 304 -
+2025-05-21 15:25:11,380 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:11] "[36mGET /static/doc_images/doc_55/image_mammoth_50740f8ee05b42f5882b5d13eb864e95_3.png HTTP/1.1[0m" 304 -
+2025-05-21 15:25:11,380 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:11] "[36mGET /static/doc_images/doc_55/image_mammoth_f9409ce987ec476e821e0ab3e91d2526_1.png HTTP/1.1[0m" 304 -
+2025-05-21 15:25:11,380 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:11] "[36mGET /static/doc_images/doc_55/image_mammoth_d2ccc89a42524da2a474afae3cfde41d_2.png HTTP/1.1[0m" 304 -
+2025-05-21 15:25:11,392 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:11] "[36mGET /static/doc_images/doc_55/image_mammoth_f3a1898a61a044ec98ce925dd285d88a_7.png HTTP/1.1[0m" 304 -
+2025-05-21 15:25:11,394 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:11] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-21 15:25:11,399 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:11] "[36mGET /static/doc_images/doc_55/image_mammoth_1eb0f39dd27442c8b4ec928dfbe0df61_10.png HTTP/1.1[0m" 304 -
+2025-05-21 15:25:11,406 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:11] "[36mGET /static/doc_images/doc_55/image_mammoth_9724e9e83f824b7cbd7b32578b44b633_11.png HTTP/1.1[0m" 304 -
+2025-05-21 15:25:11,408 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:11] "[36mGET /static/doc_images/doc_55/image_mammoth_f834ad9ca41a4c29830e2e851fc9879d_5.png HTTP/1.1[0m" 304 -
+2025-05-21 15:25:11,408 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:11] "[36mGET /static/doc_images/doc_55/image_mammoth_23cbeae574d44a3197ae35b956daf153_8.png HTTP/1.1[0m" 304 -
+2025-05-21 15:25:11,414 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:11] "[36mGET /static/doc_images/doc_55/image_mammoth_f95689eecec341199773b9f1032f831a_12.png HTTP/1.1[0m" 304 -
+2025-05-21 15:25:11,418 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:11] "[36mGET /static/doc_images/doc_55/image_mammoth_897ae1cbca564182acdbb26b4183ec8d_13.png HTTP/1.1[0m" 304 -
+2025-05-21 15:25:11,424 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:11] "[36mGET /static/doc_images/doc_55/image_mammoth_32093aa002e24c408e4b5338d6b401a8_15.png HTTP/1.1[0m" 304 -
+2025-05-21 15:25:11,424 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:11] "GET /static/js/document-search.js HTTP/1.1" 200 -
+2025-05-21 15:25:11,425 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:11] "[36mGET /static/doc_images/doc_55/image_mammoth_f15e2ecebdc64100bbfb0d67f7d20c90_14.png HTTP/1.1[0m" 304 -
+2025-05-21 15:25:11,425 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:11] "[36mGET /static/doc_images/doc_55/image_mammoth_a43562662e5f456182cd3f448691ee8c_6.png HTTP/1.1[0m" 304 -
+2025-05-21 15:25:11,432 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:11] "[36mGET /static/doc_images/doc_55/image_mammoth_a3223e2981a64740a2872b15092f92a5_16.png HTTP/1.1[0m" 304 -
+2025-05-21 15:25:11,440 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:11] "[36mGET /static/doc_images/doc_55/image_mammoth_0afc03be14c54fb3a21998b12f662d16_9.png HTTP/1.1[0m" 304 -
+2025-05-21 15:25:11,440 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:11] "[36mGET /static/doc_images/doc_55/image_mammoth_28da44ee969a4b918eff5a1640a65d62_17.png HTTP/1.1[0m" 304 -
+2025-05-21 15:25:11,443 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:11] "[36mGET /static/doc_images/doc_55/image_mammoth_eae4924fa92b48ca8e6c87b6557d23c5_19.png HTTP/1.1[0m" 304 -
+2025-05-21 15:25:11,444 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:11] "[36mGET /static/doc_images/doc_55/image_mammoth_0935df03930b4a718fdc85941d23efb6_20.png HTTP/1.1[0m" 304 -
+2025-05-21 15:25:11,466 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:11] "[36mGET /static/doc_images/doc_55/image_mammoth_f520137c54b94659b3cb0ea7686d22ed_21.png HTTP/1.1[0m" 304 -
+2025-05-21 15:25:11,468 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:11] "[36mGET /static/doc_images/doc_55/image_mammoth_60f28562c5e74fe69cff3cb8f364616a_18.png HTTP/1.1[0m" 304 -
+2025-05-21 15:25:11,478 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:11] "[36mGET /static/doc_images/doc_55/image_mammoth_c755349334274ce68adf289a55069a53_22.png HTTP/1.1[0m" 304 -
+2025-05-21 15:25:11,489 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:11] "[36mGET /static/doc_images/doc_55/image_mammoth_d2dd2ebe2d014bad967ead973b27f24e_24.png HTTP/1.1[0m" 304 -
+2025-05-21 15:25:11,490 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:11] "[36mGET /static/doc_images/doc_55/image_mammoth_2c003cbd326c46128754819029337f2e_25.png HTTP/1.1[0m" 304 -
+2025-05-21 15:25:11,493 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:11] "[36mGET /static/doc_images/doc_55/image_mammoth_a077ca2b90144a88a88ab67c5f46d601_27.png HTTP/1.1[0m" 304 -
+2025-05-21 15:25:11,495 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:11] "[36mGET /static/doc_images/doc_55/image_mammoth_e5abeb512aaa4d0781918f9ef0fe8c97_26.png HTTP/1.1[0m" 304 -
+2025-05-21 15:25:11,496 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:11] "[36mGET /static/doc_images/doc_55/image_mammoth_91fc6ed247774371b6042600a3fc8b6f_28.png HTTP/1.1[0m" 304 -
+2025-05-21 15:25:11,499 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:11] "[36mGET /static/doc_images/doc_55/image_mammoth_01df9e8f6de74f28a7e79b2c380057fd_23.png HTTP/1.1[0m" 304 -
+2025-05-21 15:25:14,479 [INFO] - root - 文档ID 27: 标题为空，使用原始文件名 '三十四期Duoov4.0.0.docx' 作为标题
+2025-05-21 15:25:14,481 [INFO] - root - 文档 27 使用HTML内容显示
+2025-05-21 15:25:14,482 [INFO] - root - 传递查询参数到模板: 'adjustments', 搜索ID: '2'
+2025-05-21 15:25:14,487 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:14] "GET /document/27?q=adjustments&search_id=2 HTTP/1.1" 200 -
+2025-05-21 15:25:14,507 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:14] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-21 15:25:14,522 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:14] "[36mGET /static/doc_images/doc_27/image_mammoth_3d55d9d5fae44358a13307a4947b710e_2.png HTTP/1.1[0m" 304 -
+2025-05-21 15:25:14,522 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:14] "[36mGET /static/doc_images/doc_27/image_mammoth_c9261f8fea95446c8b878c1ef325d02f_1.png HTTP/1.1[0m" 304 -
+2025-05-21 15:25:14,523 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:14] "[36mGET /static/doc_images/doc_27/image_mammoth_9c18632f3d5143d2bbf1501d77db5816_5.png HTTP/1.1[0m" 304 -
+2025-05-21 15:25:14,523 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:14] "[36mGET /static/doc_images/doc_27/image_mammoth_64f594ddaca942fbb78c1e42e23ef245_4.png HTTP/1.1[0m" 304 -
+2025-05-21 15:25:14,524 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:14] "[36mGET /static/doc_images/doc_27/image_mammoth_711ae610005c46e0b950460895fc447a_3.png HTTP/1.1[0m" 304 -
+2025-05-21 15:25:14,536 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:14] "[36mGET /static/js/document-search.js HTTP/1.1[0m" 304 -
+2025-05-21 15:25:14,536 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:14] "[36mGET /static/doc_images/doc_27/image_mammoth_0733fdc51e0446be86378770c369aa44_6.png HTTP/1.1[0m" 304 -
+2025-05-21 15:25:14,537 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:14] "[36mGET /static/doc_images/doc_27/image_mammoth_17528cb9dbd34508ba64438c7720a4e7_9.png HTTP/1.1[0m" 304 -
+2025-05-21 15:25:14,540 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:14] "[36mGET /static/doc_images/doc_27/image_mammoth_c7b26b63b9624eeeaebf3510e9f9087a_8.png HTTP/1.1[0m" 304 -
+2025-05-21 15:25:14,548 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:14] "[36mGET /static/doc_images/doc_27/image_mammoth_0f985aff79de423daeac2c85af8e40e4_10.png HTTP/1.1[0m" 304 -
+2025-05-21 15:25:14,549 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:14] "[36mGET /static/doc_images/doc_27/image_mammoth_e78a6a754c26448b95663ba393514390_12.png HTTP/1.1[0m" 304 -
+2025-05-21 15:25:14,549 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:14] "[36mGET /static/doc_images/doc_27/image_mammoth_d2aecb089e304b00875250baba86c37f_13.png HTTP/1.1[0m" 304 -
+2025-05-21 15:25:14,556 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:14] "[36mGET /static/doc_images/doc_27/image_mammoth_a63051de67d545bf926b9fc34b9abcd5_11.png HTTP/1.1[0m" 304 -
+2025-05-21 15:25:14,566 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:14] "[36mGET /static/doc_images/doc_27/image_mammoth_0b793680a02a4b9b88863424436c9501_16.png HTTP/1.1[0m" 304 -
+2025-05-21 15:25:14,568 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:14] "[36mGET /static/doc_images/doc_27/image_mammoth_2407a19d8aa04372b2b201aa87429da2_17.png HTTP/1.1[0m" 304 -
+2025-05-21 15:25:14,571 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:14] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-21 15:25:14,577 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:14] "[36mGET /static/doc_images/doc_27/image_mammoth_6cba556bd33e4a66ab79f4301c106884_18.png HTTP/1.1[0m" 304 -
+2025-05-21 15:25:14,587 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:14] "[36mGET /static/doc_images/doc_27/image_mammoth_7949dfb05dd8454b9ee4b4385fb8e3e1_15.png HTTP/1.1[0m" 304 -
+2025-05-21 15:25:14,602 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:14] "[36mGET /static/doc_images/doc_27/image_mammoth_77b7321d416d49c2bac4b4a7130816b8_14.png HTTP/1.1[0m" 304 -
+2025-05-21 15:25:14,618 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:14] "[36mGET /static/doc_images/doc_27/image_mammoth_f0b6abeed5cb43eab7dbaa66798ce845_7.png HTTP/1.1[0m" 304 -
+2025-05-21 15:25:14,634 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:14] "[36mGET /static/doc_images/doc_27/image_mammoth_e1b61504d7f043a8883b022fcaf9615f_19.png HTTP/1.1[0m" 304 -
+2025-05-21 15:25:17,135 [INFO] - root - 文档ID 55: 标题为空，使用原始文件名 '五期Duoov1.3.0.docx' 作为标题
+2025-05-21 15:25:17,137 [INFO] - root - 文档 55 使用HTML内容显示
+2025-05-21 15:25:17,137 [INFO] - root - 传递查询参数到模板: '主播', 搜索ID: '1'
+2025-05-21 15:25:17,141 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:17] "GET /document/55?q=主播&search_id=1 HTTP/1.1" 200 -
+2025-05-21 15:25:17,163 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:17] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-21 15:25:17,179 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:17] "[36mGET /static/doc_images/doc_55/image_mammoth_f834ad9ca41a4c29830e2e851fc9879d_5.png HTTP/1.1[0m" 304 -
+2025-05-21 15:25:17,179 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:17] "[36mGET /static/doc_images/doc_55/image_mammoth_bc257a22da6b4535957725e65adbaf6e_4.png HTTP/1.1[0m" 304 -
+2025-05-21 15:25:17,179 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:17] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-21 15:25:17,188 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:17] "[36mGET /static/doc_images/doc_55/image_mammoth_d2ccc89a42524da2a474afae3cfde41d_2.png HTTP/1.1[0m" 304 -
+2025-05-21 15:25:17,188 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:17] "[36mGET /static/doc_images/doc_55/image_mammoth_f9409ce987ec476e821e0ab3e91d2526_1.png HTTP/1.1[0m" 304 -
+2025-05-21 15:25:17,190 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:17] "[36mGET /static/js/document-search.js HTTP/1.1[0m" 304 -
+2025-05-21 15:25:17,194 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:17] "[36mGET /static/doc_images/doc_55/image_mammoth_f3a1898a61a044ec98ce925dd285d88a_7.png HTTP/1.1[0m" 304 -
+2025-05-21 15:25:17,203 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:17] "[36mGET /static/doc_images/doc_55/image_mammoth_a43562662e5f456182cd3f448691ee8c_6.png HTTP/1.1[0m" 304 -
+2025-05-21 15:25:17,204 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:17] "[36mGET /static/doc_images/doc_55/image_mammoth_23cbeae574d44a3197ae35b956daf153_8.png HTTP/1.1[0m" 304 -
+2025-05-21 15:25:17,205 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:17] "[36mGET /static/doc_images/doc_55/image_mammoth_0afc03be14c54fb3a21998b12f662d16_9.png HTTP/1.1[0m" 304 -
+2025-05-21 15:25:17,206 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:17] "[36mGET /static/doc_images/doc_55/image_mammoth_1eb0f39dd27442c8b4ec928dfbe0df61_10.png HTTP/1.1[0m" 304 -
+2025-05-21 15:25:17,207 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:17] "[36mGET /static/doc_images/doc_55/image_mammoth_9724e9e83f824b7cbd7b32578b44b633_11.png HTTP/1.1[0m" 304 -
+2025-05-21 15:25:17,219 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:17] "[36mGET /static/doc_images/doc_55/image_mammoth_50740f8ee05b42f5882b5d13eb864e95_3.png HTTP/1.1[0m" 304 -
+2025-05-21 15:25:17,220 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:17] "[36mGET /static/doc_images/doc_55/image_mammoth_f95689eecec341199773b9f1032f831a_12.png HTTP/1.1[0m" 304 -
+2025-05-21 15:25:17,221 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:17] "[36mGET /static/doc_images/doc_55/image_mammoth_f15e2ecebdc64100bbfb0d67f7d20c90_14.png HTTP/1.1[0m" 304 -
+2025-05-21 15:25:17,221 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:17] "[36mGET /static/doc_images/doc_55/image_mammoth_897ae1cbca564182acdbb26b4183ec8d_13.png HTTP/1.1[0m" 304 -
+2025-05-21 15:25:17,222 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:17] "[36mGET /static/doc_images/doc_55/image_mammoth_a3223e2981a64740a2872b15092f92a5_16.png HTTP/1.1[0m" 304 -
+2025-05-21 15:25:17,236 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:17] "[36mGET /static/doc_images/doc_55/image_mammoth_32093aa002e24c408e4b5338d6b401a8_15.png HTTP/1.1[0m" 304 -
+2025-05-21 15:25:17,238 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:17] "[36mGET /static/doc_images/doc_55/image_mammoth_28da44ee969a4b918eff5a1640a65d62_17.png HTTP/1.1[0m" 304 -
+2025-05-21 15:25:17,238 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:17] "[36mGET /static/doc_images/doc_55/image_mammoth_60f28562c5e74fe69cff3cb8f364616a_18.png HTTP/1.1[0m" 304 -
+2025-05-21 15:25:17,239 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:17] "[36mGET /static/doc_images/doc_55/image_mammoth_eae4924fa92b48ca8e6c87b6557d23c5_19.png HTTP/1.1[0m" 304 -
+2025-05-21 15:25:17,240 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:17] "[36mGET /static/doc_images/doc_55/image_mammoth_0935df03930b4a718fdc85941d23efb6_20.png HTTP/1.1[0m" 304 -
+2025-05-21 15:25:17,240 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:17] "[36mGET /static/doc_images/doc_55/image_mammoth_f520137c54b94659b3cb0ea7686d22ed_21.png HTTP/1.1[0m" 304 -
+2025-05-21 15:25:17,257 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:17] "[36mGET /static/doc_images/doc_55/image_mammoth_01df9e8f6de74f28a7e79b2c380057fd_23.png HTTP/1.1[0m" 304 -
+2025-05-21 15:25:17,289 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:17] "[36mGET /static/doc_images/doc_55/image_mammoth_a077ca2b90144a88a88ab67c5f46d601_27.png HTTP/1.1[0m" 304 -
+2025-05-21 15:25:17,291 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:17] "[36mGET /static/doc_images/doc_55/image_mammoth_e5abeb512aaa4d0781918f9ef0fe8c97_26.png HTTP/1.1[0m" 304 -
+2025-05-21 15:25:17,291 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:17] "[36mGET /static/doc_images/doc_55/image_mammoth_d2dd2ebe2d014bad967ead973b27f24e_24.png HTTP/1.1[0m" 304 -
+2025-05-21 15:25:17,297 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:17] "[36mGET /static/doc_images/doc_55/image_mammoth_2c003cbd326c46128754819029337f2e_25.png HTTP/1.1[0m" 304 -
+2025-05-21 15:25:17,298 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:17] "[36mGET /static/doc_images/doc_55/image_mammoth_91fc6ed247774371b6042600a3fc8b6f_28.png HTTP/1.1[0m" 304 -
+2025-05-21 15:25:17,301 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:17] "[36mGET /static/doc_images/doc_55/image_mammoth_c755349334274ce68adf289a55069a53_22.png HTTP/1.1[0m" 304 -
+2025-05-21 15:25:21,271 [INFO] - root - 文档ID 57: 标题为空，使用原始文件名 '三期Duoov1.1.0.docx' 作为标题
+2025-05-21 15:25:21,271 [INFO] - root - 搜索 '主播激励功能' 找到 1 个结果
+2025-05-21 15:25:21,272 [INFO] - root - 执行搜索: '主播激励功能' 找到 1 个结果
+2025-05-21 15:25:21,272 [INFO] - root - 搜索结果 #0: id=57, title=三期Duoov1.1.0
+2025-05-21 15:25:21,273 [INFO] - root - 添加搜索历史: 查询='主播激励功能', 结果数=1, 历史ID=3
+2025-05-21 15:25:21,273 [INFO] - root - 搜索结果ID: [57]
+2025-05-21 15:25:21,280 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:21] "GET /search?q=主播激励功能 HTTP/1.1" 200 -
+2025-05-21 15:25:21,311 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:21] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-21 15:25:21,311 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:21] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-21 15:25:22,818 [INFO] - root - 文档ID 57: 标题为空，使用原始文件名 '三期Duoov1.1.0.docx' 作为标题
+2025-05-21 15:25:22,820 [INFO] - root - 文档 57 使用HTML内容显示
+2025-05-21 15:25:22,820 [INFO] - root - 传递查询参数到模板: '主播激励功能', 搜索ID: '3'
+2025-05-21 15:25:22,824 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:22] "GET /document/57?q=主播激励功能&search_id=3 HTTP/1.1" 200 -
+2025-05-21 15:25:22,865 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:22] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-21 15:25:22,865 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:22] "[36mGET /static/doc_images/doc_57/image_mammoth_11c60fb0a79a4315b190b37f18ca7d33_2.png HTTP/1.1[0m" 304 -
+2025-05-21 15:25:22,867 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:22] "[36mGET /static/js/document-search.js HTTP/1.1[0m" 304 -
+2025-05-21 15:25:22,867 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:22] "[36mGET /static/doc_images/doc_57/image_mammoth_e5bd57727e5e44de8340ebb08a8b3683_1.png HTTP/1.1[0m" 304 -
+2025-05-21 15:25:22,867 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:22] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-21 15:25:25,963 [INFO] - root - 文档ID 27: 标题为空，使用原始文件名 '三十四期Duoov4.0.0.docx' 作为标题
+2025-05-21 15:25:25,964 [INFO] - root - 文档 27 使用HTML内容显示
+2025-05-21 15:25:25,965 [INFO] - root - 传递查询参数到模板: 'adjustments', 搜索ID: '2'
+2025-05-21 15:25:25,969 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:25] "GET /document/27?q=adjustments&search_id=2 HTTP/1.1" 200 -
+2025-05-21 15:25:25,989 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:25] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-21 15:25:26,004 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:26] "[36mGET /static/doc_images/doc_27/image_mammoth_c9261f8fea95446c8b878c1ef325d02f_1.png HTTP/1.1[0m" 304 -
+2025-05-21 15:25:26,004 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:26] "[36mGET /static/doc_images/doc_27/image_mammoth_9c18632f3d5143d2bbf1501d77db5816_5.png HTTP/1.1[0m" 304 -
+2025-05-21 15:25:26,005 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:26] "[36mGET /static/doc_images/doc_27/image_mammoth_3d55d9d5fae44358a13307a4947b710e_2.png HTTP/1.1[0m" 304 -
+2025-05-21 15:25:26,005 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:26] "[36mGET /static/doc_images/doc_27/image_mammoth_64f594ddaca942fbb78c1e42e23ef245_4.png HTTP/1.1[0m" 304 -
+2025-05-21 15:25:26,005 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:26] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-21 15:25:26,019 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:26] "[36mGET /static/doc_images/doc_27/image_mammoth_711ae610005c46e0b950460895fc447a_3.png HTTP/1.1[0m" 304 -
+2025-05-21 15:25:26,020 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:26] "[36mGET /static/js/document-search.js HTTP/1.1[0m" 304 -
+2025-05-21 15:25:26,020 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:26] "[36mGET /static/doc_images/doc_27/image_mammoth_c7b26b63b9624eeeaebf3510e9f9087a_8.png HTTP/1.1[0m" 304 -
+2025-05-21 15:25:26,021 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:26] "[36mGET /static/doc_images/doc_27/image_mammoth_0733fdc51e0446be86378770c369aa44_6.png HTTP/1.1[0m" 304 -
+2025-05-21 15:25:26,022 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:26] "[36mGET /static/doc_images/doc_27/image_mammoth_f0b6abeed5cb43eab7dbaa66798ce845_7.png HTTP/1.1[0m" 304 -
+2025-05-21 15:25:26,023 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:26] "[36mGET /static/doc_images/doc_27/image_mammoth_17528cb9dbd34508ba64438c7720a4e7_9.png HTTP/1.1[0m" 304 -
+2025-05-21 15:25:26,039 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:26] "[36mGET /static/doc_images/doc_27/image_mammoth_0f985aff79de423daeac2c85af8e40e4_10.png HTTP/1.1[0m" 304 -
+2025-05-21 15:25:26,041 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:26] "[36mGET /static/doc_images/doc_27/image_mammoth_d2aecb089e304b00875250baba86c37f_13.png HTTP/1.1[0m" 304 -
+2025-05-21 15:25:26,041 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:26] "[36mGET /static/doc_images/doc_27/image_mammoth_77b7321d416d49c2bac4b4a7130816b8_14.png HTTP/1.1[0m" 304 -
+2025-05-21 15:25:26,042 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:26] "[36mGET /static/doc_images/doc_27/image_mammoth_7949dfb05dd8454b9ee4b4385fb8e3e1_15.png HTTP/1.1[0m" 304 -
+2025-05-21 15:25:26,050 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:26] "[36mGET /static/doc_images/doc_27/image_mammoth_a63051de67d545bf926b9fc34b9abcd5_11.png HTTP/1.1[0m" 304 -
+2025-05-21 15:25:26,053 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:26] "[36mGET /static/doc_images/doc_27/image_mammoth_0b793680a02a4b9b88863424436c9501_16.png HTTP/1.1[0m" 304 -
+2025-05-21 15:25:26,055 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:26] "[36mGET /static/doc_images/doc_27/image_mammoth_2407a19d8aa04372b2b201aa87429da2_17.png HTTP/1.1[0m" 304 -
+2025-05-21 15:25:26,055 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:26] "[36mGET /static/doc_images/doc_27/image_mammoth_e1b61504d7f043a8883b022fcaf9615f_19.png HTTP/1.1[0m" 304 -
+2025-05-21 15:25:26,064 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:26] "[36mGET /static/doc_images/doc_27/image_mammoth_6cba556bd33e4a66ab79f4301c106884_18.png HTTP/1.1[0m" 304 -
+2025-05-21 15:25:26,080 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:26] "[36mGET /static/doc_images/doc_27/image_mammoth_e78a6a754c26448b95663ba393514390_12.png HTTP/1.1[0m" 304 -
+2025-05-21 15:25:29,421 [INFO] - root - 文档ID 55: 标题为空，使用原始文件名 '五期Duoov1.3.0.docx' 作为标题
+2025-05-21 15:25:29,423 [INFO] - root - 文档 55 使用HTML内容显示
+2025-05-21 15:25:29,423 [INFO] - root - 传递查询参数到模板: '主播', 搜索ID: '1'
+2025-05-21 15:25:29,428 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:29] "GET /document/55?q=主播&search_id=1 HTTP/1.1" 200 -
+2025-05-21 15:25:29,448 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:29] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-21 15:25:29,463 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:29] "[36mGET /static/doc_images/doc_55/image_mammoth_bc257a22da6b4535957725e65adbaf6e_4.png HTTP/1.1[0m" 304 -
+2025-05-21 15:25:29,464 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:29] "[36mGET /static/doc_images/doc_55/image_mammoth_f834ad9ca41a4c29830e2e851fc9879d_5.png HTTP/1.1[0m" 304 -
+2025-05-21 15:25:29,471 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:29] "[36mGET /static/doc_images/doc_55/image_mammoth_a43562662e5f456182cd3f448691ee8c_6.png HTTP/1.1[0m" 304 -
+2025-05-21 15:25:29,477 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:29] "[36mGET /static/doc_images/doc_55/image_mammoth_f3a1898a61a044ec98ce925dd285d88a_7.png HTTP/1.1[0m" 304 -
+2025-05-21 15:25:29,480 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:29] "[36mGET /static/doc_images/doc_55/image_mammoth_f9409ce987ec476e821e0ab3e91d2526_1.png HTTP/1.1[0m" 304 -
+2025-05-21 15:25:29,480 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:29] "[36mGET /static/js/document-search.js HTTP/1.1[0m" 304 -
+2025-05-21 15:25:29,485 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:29] "[36mGET /static/doc_images/doc_55/image_mammoth_23cbeae574d44a3197ae35b956daf153_8.png HTTP/1.1[0m" 304 -
+2025-05-21 15:25:29,490 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:29] "[36mGET /static/doc_images/doc_55/image_mammoth_1eb0f39dd27442c8b4ec928dfbe0df61_10.png HTTP/1.1[0m" 304 -
+2025-05-21 15:25:29,493 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:29] "[36mGET /static/doc_images/doc_55/image_mammoth_9724e9e83f824b7cbd7b32578b44b633_11.png HTTP/1.1[0m" 304 -
+2025-05-21 15:25:29,496 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:29] "[36mGET /static/doc_images/doc_55/image_mammoth_d2ccc89a42524da2a474afae3cfde41d_2.png HTTP/1.1[0m" 304 -
+2025-05-21 15:25:29,496 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:29] "[36mGET /static/doc_images/doc_55/image_mammoth_0afc03be14c54fb3a21998b12f662d16_9.png HTTP/1.1[0m" 304 -
+2025-05-21 15:25:29,500 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:29] "[36mGET /static/doc_images/doc_55/image_mammoth_f95689eecec341199773b9f1032f831a_12.png HTTP/1.1[0m" 304 -
+2025-05-21 15:25:29,506 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:29] "[36mGET /static/doc_images/doc_55/image_mammoth_897ae1cbca564182acdbb26b4183ec8d_13.png HTTP/1.1[0m" 304 -
+2025-05-21 15:25:29,508 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:29] "[36mGET /static/doc_images/doc_55/image_mammoth_f15e2ecebdc64100bbfb0d67f7d20c90_14.png HTTP/1.1[0m" 304 -
+2025-05-21 15:25:29,508 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:29] "[36mGET /static/doc_images/doc_55/image_mammoth_32093aa002e24c408e4b5338d6b401a8_15.png HTTP/1.1[0m" 304 -
+2025-05-21 15:25:29,511 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:29] "[36mGET /static/doc_images/doc_55/image_mammoth_50740f8ee05b42f5882b5d13eb864e95_3.png HTTP/1.1[0m" 304 -
+2025-05-21 15:25:29,513 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:29] "[36mGET /static/doc_images/doc_55/image_mammoth_a3223e2981a64740a2872b15092f92a5_16.png HTTP/1.1[0m" 304 -
+2025-05-21 15:25:29,519 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:29] "[36mGET /static/doc_images/doc_55/image_mammoth_28da44ee969a4b918eff5a1640a65d62_17.png HTTP/1.1[0m" 304 -
+2025-05-21 15:25:29,522 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:29] "[36mGET /static/doc_images/doc_55/image_mammoth_60f28562c5e74fe69cff3cb8f364616a_18.png HTTP/1.1[0m" 304 -
+2025-05-21 15:25:29,525 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:29] "[36mGET /static/doc_images/doc_55/image_mammoth_eae4924fa92b48ca8e6c87b6557d23c5_19.png HTTP/1.1[0m" 304 -
+2025-05-21 15:25:29,528 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:29] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-21 15:25:29,534 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:29] "[36mGET /static/doc_images/doc_55/image_mammoth_c755349334274ce68adf289a55069a53_22.png HTTP/1.1[0m" 304 -
+2025-05-21 15:25:29,534 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:29] "[36mGET /static/doc_images/doc_55/image_mammoth_01df9e8f6de74f28a7e79b2c380057fd_23.png HTTP/1.1[0m" 304 -
+2025-05-21 15:25:29,541 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:29] "[36mGET /static/doc_images/doc_55/image_mammoth_2c003cbd326c46128754819029337f2e_25.png HTTP/1.1[0m" 304 -
+2025-05-21 15:25:29,542 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:29] "[36mGET /static/doc_images/doc_55/image_mammoth_0935df03930b4a718fdc85941d23efb6_20.png HTTP/1.1[0m" 304 -
+2025-05-21 15:25:29,542 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:29] "[36mGET /static/doc_images/doc_55/image_mammoth_f520137c54b94659b3cb0ea7686d22ed_21.png HTTP/1.1[0m" 304 -
+2025-05-21 15:25:29,550 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:29] "[36mGET /static/doc_images/doc_55/image_mammoth_e5abeb512aaa4d0781918f9ef0fe8c97_26.png HTTP/1.1[0m" 304 -
+2025-05-21 15:25:29,551 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:29] "[36mGET /static/doc_images/doc_55/image_mammoth_a077ca2b90144a88a88ab67c5f46d601_27.png HTTP/1.1[0m" 304 -
+2025-05-21 15:25:29,554 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:29] "[36mGET /static/doc_images/doc_55/image_mammoth_91fc6ed247774371b6042600a3fc8b6f_28.png HTTP/1.1[0m" 304 -
+2025-05-21 15:25:29,556 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:25:29] "[36mGET /static/doc_images/doc_55/image_mammoth_d2dd2ebe2d014bad967ead973b27f24e_24.png HTTP/1.1[0m" 304 -
+2025-05-21 15:33:21,176 [INFO] - root - 文档ID 55: 标题为空，使用原始文件名 '五期Duoov1.3.0.docx' 作为标题
+2025-05-21 15:33:21,177 [INFO] - root - 文档 55 使用HTML内容显示
+2025-05-21 15:33:21,177 [INFO] - root - 传递查询参数到模板: '主播', 搜索ID: '1'
+2025-05-21 15:33:21,182 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:33:21] "GET /document/55?q=主播&search_id=1 HTTP/1.1" 200 -
+2025-05-21 15:33:21,214 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:33:21] "[36mGET /static/doc_images/doc_55/image_mammoth_d2ccc89a42524da2a474afae3cfde41d_2.png HTTP/1.1[0m" 304 -
+2025-05-21 15:33:21,214 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:33:21] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-21 15:33:21,216 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:33:21] "[36mGET /static/doc_images/doc_55/image_mammoth_50740f8ee05b42f5882b5d13eb864e95_3.png HTTP/1.1[0m" 304 -
+2025-05-21 15:33:21,216 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:33:21] "[36mGET /static/doc_images/doc_55/image_mammoth_bc257a22da6b4535957725e65adbaf6e_4.png HTTP/1.1[0m" 304 -
+2025-05-21 15:33:21,227 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:33:21] "[36mGET /static/js/document-search.js HTTP/1.1[0m" 304 -
+2025-05-21 15:33:21,229 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:33:21] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-21 15:33:21,235 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:33:21] "[36mGET /static/doc_images/doc_55/image_mammoth_a43562662e5f456182cd3f448691ee8c_6.png HTTP/1.1[0m" 304 -
+2025-05-21 15:33:21,237 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:33:21] "[36mGET /static/doc_images/doc_55/image_mammoth_f3a1898a61a044ec98ce925dd285d88a_7.png HTTP/1.1[0m" 304 -
+2025-05-21 15:33:21,238 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:33:21] "[36mGET /static/doc_images/doc_55/image_mammoth_f9409ce987ec476e821e0ab3e91d2526_1.png HTTP/1.1[0m" 304 -
+2025-05-21 15:33:21,251 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:33:21] "[36mGET /static/doc_images/doc_55/image_mammoth_23cbeae574d44a3197ae35b956daf153_8.png HTTP/1.1[0m" 304 -
+2025-05-21 15:33:21,252 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:33:21] "[36mGET /static/doc_images/doc_55/image_mammoth_1eb0f39dd27442c8b4ec928dfbe0df61_10.png HTTP/1.1[0m" 304 -
+2025-05-21 15:33:21,253 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:33:21] "[36mGET /static/doc_images/doc_55/image_mammoth_9724e9e83f824b7cbd7b32578b44b633_11.png HTTP/1.1[0m" 304 -
+2025-05-21 15:33:21,253 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:33:21] "[36mGET /static/doc_images/doc_55/image_mammoth_f95689eecec341199773b9f1032f831a_12.png HTTP/1.1[0m" 304 -
+2025-05-21 15:33:21,264 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:33:21] "[36mGET /static/doc_images/doc_55/image_mammoth_897ae1cbca564182acdbb26b4183ec8d_13.png HTTP/1.1[0m" 304 -
+2025-05-21 15:33:21,265 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:33:21] "[36mGET /static/doc_images/doc_55/image_mammoth_f15e2ecebdc64100bbfb0d67f7d20c90_14.png HTTP/1.1[0m" 304 -
+2025-05-21 15:33:21,268 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:33:21] "[36mGET /static/doc_images/doc_55/image_mammoth_32093aa002e24c408e4b5338d6b401a8_15.png HTTP/1.1[0m" 304 -
+2025-05-21 15:33:21,275 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:33:21] "[36mGET /static/doc_images/doc_55/image_mammoth_60f28562c5e74fe69cff3cb8f364616a_18.png HTTP/1.1[0m" 304 -
+2025-05-21 15:33:21,282 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:33:21] "[36mGET /static/doc_images/doc_55/image_mammoth_0935df03930b4a718fdc85941d23efb6_20.png HTTP/1.1[0m" 304 -
+2025-05-21 15:33:21,283 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:33:21] "[36mGET /static/doc_images/doc_55/image_mammoth_a3223e2981a64740a2872b15092f92a5_16.png HTTP/1.1[0m" 304 -
+2025-05-21 15:33:21,293 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:33:21] "[36mGET /static/doc_images/doc_55/image_mammoth_c755349334274ce68adf289a55069a53_22.png HTTP/1.1[0m" 304 -
+2025-05-21 15:33:21,300 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:33:21] "[36mGET /static/doc_images/doc_55/image_mammoth_28da44ee969a4b918eff5a1640a65d62_17.png HTTP/1.1[0m" 304 -
+2025-05-21 15:33:21,300 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:33:21] "[36mGET /static/doc_images/doc_55/image_mammoth_eae4924fa92b48ca8e6c87b6557d23c5_19.png HTTP/1.1[0m" 304 -
+2025-05-21 15:33:21,305 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:33:21] "[36mGET /static/doc_images/doc_55/image_mammoth_01df9e8f6de74f28a7e79b2c380057fd_23.png HTTP/1.1[0m" 304 -
+2025-05-21 15:33:21,314 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:33:21] "[36mGET /static/doc_images/doc_55/image_mammoth_2c003cbd326c46128754819029337f2e_25.png HTTP/1.1[0m" 304 -
+2025-05-21 15:33:21,316 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:33:21] "[36mGET /static/doc_images/doc_55/image_mammoth_e5abeb512aaa4d0781918f9ef0fe8c97_26.png HTTP/1.1[0m" 304 -
+2025-05-21 15:33:21,323 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:33:21] "[36mGET /static/doc_images/doc_55/image_mammoth_a077ca2b90144a88a88ab67c5f46d601_27.png HTTP/1.1[0m" 304 -
+2025-05-21 15:33:21,324 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:33:21] "[36mGET /static/doc_images/doc_55/image_mammoth_91fc6ed247774371b6042600a3fc8b6f_28.png HTTP/1.1[0m" 304 -
+2025-05-21 15:33:21,329 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:33:21] "[36mGET /static/doc_images/doc_55/image_mammoth_f520137c54b94659b3cb0ea7686d22ed_21.png HTTP/1.1[0m" 304 -
+2025-05-21 15:33:21,344 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:33:21] "[36mGET /static/doc_images/doc_55/image_mammoth_0afc03be14c54fb3a21998b12f662d16_9.png HTTP/1.1[0m" 304 -
+2025-05-21 15:33:21,361 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:33:21] "[36mGET /static/doc_images/doc_55/image_mammoth_d2dd2ebe2d014bad967ead973b27f24e_24.png HTTP/1.1[0m" 304 -
+2025-05-21 15:33:21,423 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:33:21] "[36mGET /static/doc_images/doc_55/image_mammoth_f834ad9ca41a4c29830e2e851fc9879d_5.png HTTP/1.1[0m" 304 -
+2025-05-21 15:33:26,241 [INFO] - root - 文档ID 27: 标题为空，使用原始文件名 '三十四期Duoov4.0.0.docx' 作为标题
+2025-05-21 15:33:26,242 [INFO] - root - 文档 27 使用HTML内容显示
+2025-05-21 15:33:26,242 [INFO] - root - 传递查询参数到模板: 'adjustments', 搜索ID: '2'
+2025-05-21 15:33:26,247 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:33:26] "GET /document/27?q=adjustments&search_id=2 HTTP/1.1" 200 -
+2025-05-21 15:33:26,267 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:33:26] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-21 15:33:26,282 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:33:26] "[36mGET /static/doc_images/doc_27/image_mammoth_64f594ddaca942fbb78c1e42e23ef245_4.png HTTP/1.1[0m" 304 -
+2025-05-21 15:33:26,284 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:33:26] "[36mGET /static/doc_images/doc_27/image_mammoth_3d55d9d5fae44358a13307a4947b710e_2.png HTTP/1.1[0m" 304 -
+2025-05-21 15:33:26,284 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:33:26] "[36mGET /static/doc_images/doc_27/image_mammoth_9c18632f3d5143d2bbf1501d77db5816_5.png HTTP/1.1[0m" 304 -
+2025-05-21 15:33:26,290 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:33:26] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-21 15:33:26,295 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:33:26] "[36mGET /static/js/document-search.js HTTP/1.1[0m" 304 -
+2025-05-21 15:33:26,297 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:33:26] "[36mGET /static/doc_images/doc_27/image_mammoth_0733fdc51e0446be86378770c369aa44_6.png HTTP/1.1[0m" 304 -
+2025-05-21 15:33:26,298 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:33:26] "[36mGET /static/doc_images/doc_27/image_mammoth_f0b6abeed5cb43eab7dbaa66798ce845_7.png HTTP/1.1[0m" 304 -
+2025-05-21 15:33:26,299 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:33:26] "[36mGET /static/doc_images/doc_27/image_mammoth_c9261f8fea95446c8b878c1ef325d02f_1.png HTTP/1.1[0m" 304 -
+2025-05-21 15:33:26,302 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:33:26] "[36mGET /static/doc_images/doc_27/image_mammoth_c7b26b63b9624eeeaebf3510e9f9087a_8.png HTTP/1.1[0m" 304 -
+2025-05-21 15:33:26,309 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:33:26] "[36mGET /static/doc_images/doc_27/image_mammoth_17528cb9dbd34508ba64438c7720a4e7_9.png HTTP/1.1[0m" 304 -
+2025-05-21 15:33:26,311 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:33:26] "[36mGET /static/doc_images/doc_27/image_mammoth_0f985aff79de423daeac2c85af8e40e4_10.png HTTP/1.1[0m" 304 -
+2025-05-21 15:33:26,313 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:33:26] "[36mGET /static/doc_images/doc_27/image_mammoth_e78a6a754c26448b95663ba393514390_12.png HTTP/1.1[0m" 304 -
+2025-05-21 15:33:26,314 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:33:26] "[36mGET /static/doc_images/doc_27/image_mammoth_711ae610005c46e0b950460895fc447a_3.png HTTP/1.1[0m" 304 -
+2025-05-21 15:33:26,314 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:33:26] "[36mGET /static/doc_images/doc_27/image_mammoth_d2aecb089e304b00875250baba86c37f_13.png HTTP/1.1[0m" 304 -
+2025-05-21 15:33:26,323 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:33:26] "[36mGET /static/doc_images/doc_27/image_mammoth_7949dfb05dd8454b9ee4b4385fb8e3e1_15.png HTTP/1.1[0m" 304 -
+2025-05-21 15:33:26,327 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:33:26] "[36mGET /static/doc_images/doc_27/image_mammoth_0b793680a02a4b9b88863424436c9501_16.png HTTP/1.1[0m" 304 -
+2025-05-21 15:33:26,327 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:33:26] "[36mGET /static/doc_images/doc_27/image_mammoth_6cba556bd33e4a66ab79f4301c106884_18.png HTTP/1.1[0m" 304 -
+2025-05-21 15:33:26,329 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:33:26] "[36mGET /static/doc_images/doc_27/image_mammoth_2407a19d8aa04372b2b201aa87429da2_17.png HTTP/1.1[0m" 304 -
+2025-05-21 15:33:26,332 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:33:26] "[36mGET /static/doc_images/doc_27/image_mammoth_e1b61504d7f043a8883b022fcaf9615f_19.png HTTP/1.1[0m" 304 -
+2025-05-21 15:33:26,343 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:33:26] "[36mGET /static/doc_images/doc_27/image_mammoth_a63051de67d545bf926b9fc34b9abcd5_11.png HTTP/1.1[0m" 304 -
+2025-05-21 15:33:26,359 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:33:26] "[36mGET /static/doc_images/doc_27/image_mammoth_77b7321d416d49c2bac4b4a7130816b8_14.png HTTP/1.1[0m" 304 -
+2025-05-21 15:33:29,563 [INFO] - root - 文档ID 57: 标题为空，使用原始文件名 '三期Duoov1.1.0.docx' 作为标题
+2025-05-21 15:33:29,564 [INFO] - root - 文档 57 使用HTML内容显示
+2025-05-21 15:33:29,564 [INFO] - root - 传递查询参数到模板: '主播激励功能', 搜索ID: '3'
+2025-05-21 15:33:29,568 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:33:29] "GET /document/57?q=主播激励功能&search_id=3 HTTP/1.1" 200 -
+2025-05-21 15:33:29,588 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:33:29] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-21 15:33:29,599 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:33:29] "[36mGET /static/doc_images/doc_57/image_mammoth_e5bd57727e5e44de8340ebb08a8b3683_1.png HTTP/1.1[0m" 304 -
+2025-05-21 15:33:29,599 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:33:29] "[36mGET /static/doc_images/doc_57/image_mammoth_11c60fb0a79a4315b190b37f18ca7d33_2.png HTTP/1.1[0m" 304 -
+2025-05-21 15:33:29,599 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:33:29] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-21 15:33:29,602 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:33:29] "[36mGET /static/js/document-search.js HTTP/1.1[0m" 304 -
+2025-05-21 15:33:39,320 [INFO] - root - 文档ID 57: 标题为空，使用原始文件名 '三期Duoov1.1.0.docx' 作为标题
+2025-05-21 15:33:39,321 [INFO] - root - 文档 57 使用HTML内容显示
+2025-05-21 15:33:39,321 [INFO] - root - 传递查询参数到模板: '主播激励功能', 搜索ID: '3'
+2025-05-21 15:33:39,326 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:33:39] "GET /document/57?q=主播激励功能&search_id=3 HTTP/1.1" 200 -
+2025-05-21 15:33:39,360 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:33:39] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-21 15:33:39,371 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:33:39] "[36mGET /static/doc_images/doc_57/image_mammoth_11c60fb0a79a4315b190b37f18ca7d33_2.png HTTP/1.1[0m" 304 -
+2025-05-21 15:33:39,377 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:33:39] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-21 15:33:39,378 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:33:39] "[36mGET /static/js/document-search.js HTTP/1.1[0m" 304 -
+2025-05-21 15:33:39,380 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:33:39] "[36mGET /static/doc_images/doc_57/image_mammoth_e5bd57727e5e44de8340ebb08a8b3683_1.png HTTP/1.1[0m" 304 -
+2025-05-21 15:33:42,240 [INFO] - root - 文档ID 55: 标题为空，使用原始文件名 '五期Duoov1.3.0.docx' 作为标题
+2025-05-21 15:33:42,241 [INFO] - root - 文档 55 使用HTML内容显示
+2025-05-21 15:33:42,241 [INFO] - root - 传递查询参数到模板: '主播', 搜索ID: '1'
+2025-05-21 15:33:42,244 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:33:42] "GET /document/55?q=主播&search_id=1 HTTP/1.1" 200 -
+2025-05-21 15:33:42,267 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:33:42] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-21 15:33:42,280 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:33:42] "[36mGET /static/doc_images/doc_55/image_mammoth_d2ccc89a42524da2a474afae3cfde41d_2.png HTTP/1.1[0m" 304 -
+2025-05-21 15:33:42,281 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:33:42] "[36mGET /static/doc_images/doc_55/image_mammoth_f9409ce987ec476e821e0ab3e91d2526_1.png HTTP/1.1[0m" 304 -
+2025-05-21 15:33:42,281 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:33:42] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-21 15:33:42,283 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:33:42] "[36mGET /static/doc_images/doc_55/image_mammoth_50740f8ee05b42f5882b5d13eb864e95_3.png HTTP/1.1[0m" 304 -
+2025-05-21 15:33:42,294 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:33:42] "[36mGET /static/doc_images/doc_55/image_mammoth_a43562662e5f456182cd3f448691ee8c_6.png HTTP/1.1[0m" 304 -
+2025-05-21 15:33:42,294 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:33:42] "[36mGET /static/js/document-search.js HTTP/1.1[0m" 304 -
+2025-05-21 15:33:42,301 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:33:42] "[36mGET /static/doc_images/doc_55/image_mammoth_0afc03be14c54fb3a21998b12f662d16_9.png HTTP/1.1[0m" 304 -
+2025-05-21 15:33:42,308 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:33:42] "[36mGET /static/doc_images/doc_55/image_mammoth_9724e9e83f824b7cbd7b32578b44b633_11.png HTTP/1.1[0m" 304 -
+2025-05-21 15:33:42,313 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:33:42] "[36mGET /static/doc_images/doc_55/image_mammoth_f95689eecec341199773b9f1032f831a_12.png HTTP/1.1[0m" 304 -
+2025-05-21 15:33:42,315 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:33:42] "[36mGET /static/doc_images/doc_55/image_mammoth_bc257a22da6b4535957725e65adbaf6e_4.png HTTP/1.1[0m" 304 -
+2025-05-21 15:33:42,315 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:33:42] "[36mGET /static/doc_images/doc_55/image_mammoth_1eb0f39dd27442c8b4ec928dfbe0df61_10.png HTTP/1.1[0m" 304 -
+2025-05-21 15:33:42,323 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:33:42] "[36mGET /static/doc_images/doc_55/image_mammoth_f15e2ecebdc64100bbfb0d67f7d20c90_14.png HTTP/1.1[0m" 304 -
+2025-05-21 15:33:42,323 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:33:42] "[36mGET /static/doc_images/doc_55/image_mammoth_32093aa002e24c408e4b5338d6b401a8_15.png HTTP/1.1[0m" 304 -
+2025-05-21 15:33:42,331 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:33:42] "[36mGET /static/doc_images/doc_55/image_mammoth_f3a1898a61a044ec98ce925dd285d88a_7.png HTTP/1.1[0m" 304 -
+2025-05-21 15:33:42,333 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:33:42] "[36mGET /static/doc_images/doc_55/image_mammoth_a3223e2981a64740a2872b15092f92a5_16.png HTTP/1.1[0m" 304 -
+2025-05-21 15:33:42,341 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:33:42] "[36mGET /static/doc_images/doc_55/image_mammoth_60f28562c5e74fe69cff3cb8f364616a_18.png HTTP/1.1[0m" 304 -
+2025-05-21 15:33:42,343 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:33:42] "[36mGET /static/doc_images/doc_55/image_mammoth_eae4924fa92b48ca8e6c87b6557d23c5_19.png HTTP/1.1[0m" 304 -
+2025-05-21 15:33:42,348 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:33:42] "[36mGET /static/doc_images/doc_55/image_mammoth_23cbeae574d44a3197ae35b956daf153_8.png HTTP/1.1[0m" 304 -
+2025-05-21 15:33:42,349 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:33:42] "[36mGET /static/doc_images/doc_55/image_mammoth_28da44ee969a4b918eff5a1640a65d62_17.png HTTP/1.1[0m" 304 -
+2025-05-21 15:33:42,356 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:33:42] "[36mGET /static/doc_images/doc_55/image_mammoth_0935df03930b4a718fdc85941d23efb6_20.png HTTP/1.1[0m" 304 -
+2025-05-21 15:33:42,362 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:33:42] "[36mGET /static/doc_images/doc_55/image_mammoth_01df9e8f6de74f28a7e79b2c380057fd_23.png HTTP/1.1[0m" 304 -
+2025-05-21 15:33:42,366 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:33:42] "[36mGET /static/doc_images/doc_55/image_mammoth_d2dd2ebe2d014bad967ead973b27f24e_24.png HTTP/1.1[0m" 304 -
+2025-05-21 15:33:42,371 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:33:42] "[36mGET /static/doc_images/doc_55/image_mammoth_2c003cbd326c46128754819029337f2e_25.png HTTP/1.1[0m" 304 -
+2025-05-21 15:33:42,373 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:33:42] "[36mGET /static/doc_images/doc_55/image_mammoth_e5abeb512aaa4d0781918f9ef0fe8c97_26.png HTTP/1.1[0m" 304 -
+2025-05-21 15:33:42,378 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:33:42] "[36mGET /static/doc_images/doc_55/image_mammoth_f520137c54b94659b3cb0ea7686d22ed_21.png HTTP/1.1[0m" 304 -
+2025-05-21 15:33:42,380 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:33:42] "[36mGET /static/doc_images/doc_55/image_mammoth_a077ca2b90144a88a88ab67c5f46d601_27.png HTTP/1.1[0m" 304 -
+2025-05-21 15:33:42,380 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:33:42] "[36mGET /static/doc_images/doc_55/image_mammoth_91fc6ed247774371b6042600a3fc8b6f_28.png HTTP/1.1[0m" 304 -
+2025-05-21 15:33:42,392 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:33:42] "[36mGET /static/doc_images/doc_55/image_mammoth_c755349334274ce68adf289a55069a53_22.png HTTP/1.1[0m" 304 -
+2025-05-21 15:33:42,408 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:33:42] "[36mGET /static/doc_images/doc_55/image_mammoth_f834ad9ca41a4c29830e2e851fc9879d_5.png HTTP/1.1[0m" 304 -
+2025-05-21 15:33:42,454 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 15:33:42] "[36mGET /static/doc_images/doc_55/image_mammoth_897ae1cbca564182acdbb26b4183ec8d_13.png HTTP/1.1[0m" 304 -

@@ -198,7 +198,7 @@
                                             {% if result and result.id %}
                                             <div class="search-result-item mb-4 p-3 border rounded">
                                                 <h5 class="result-title">
-                                                    <a href="{{ url_for('document.view_document', doc_id=result.id, q=query) }}">
+                                                    <a href="{{ url_for('document.view_document', doc_id=result.id, q=history.query, search_id=history.id) }}">
                                                         {% if result.title %}
                                                             {{ result.title }}
                                                         {% elif result.original_filename %}
@@ -234,7 +234,7 @@
                                                     {% endif %}
                                                 </div>
                                                 <div class="result-actions mt-2">
-                                                    <a href="{{ url_for('document.view_document', doc_id=result.id, q=query) }}" class="btn btn-sm btn-primary me-1">
+                                                    <a href="{{ url_for('document.view_document', doc_id=result.id, q=history.query, search_id=history.id) }}" class="btn btn-sm btn-primary me-1">
                                                         <i class="bi bi-eye"></i> 查看
                                                     </a>
                                                     <a href="{{ url_for('document.download_original', doc_id=result.id) }}"
@@ -267,7 +267,7 @@
                                             {% if result and result.id %}
                                             <div class="search-result-item mb-4 p-3 border rounded">
                                                 <h5 class="result-title">
-                                                    <a href="{{ url_for('document.view_document', doc_id=result.id, q=query) }}">
+                                                    <a href="{{ url_for('document.view_document', doc_id=result.id, q=history.query, search_id=history.id) }}">
                                                         {% if result.title %}
                                                             {{ result.title }}
                                                         {% elif result.original_filename %}
@@ -303,7 +303,7 @@
                                                     {% endif %}
                                                 </div>
                                                 <div class="result-actions mt-2">
-                                                    <a href="{{ url_for('document.view_document', doc_id=result.id, q=query) }}" class="btn btn-sm btn-primary me-1">
+                                                    <a href="{{ url_for('document.view_document', doc_id=result.id, q=history.query, search_id=history.id) }}" class="btn btn-sm btn-primary me-1">
                                                         <i class="bi bi-eye"></i> 查看
                                                     </a>
                                                     <a href="{{ url_for('document.download_original', doc_id=result.id) }}"

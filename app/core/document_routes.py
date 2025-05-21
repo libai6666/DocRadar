@@ -136,6 +136,7 @@ def process_upload(file, overwrite=False):
 def view_document(doc_id):
     """查看文档内容"""
     query = request.args.get('q', '')
+    search_id = request.args.get('search_id', '')
     
     try:
         document = search_engine.get_document_by_id(doc_id)
@@ -158,9 +159,9 @@ def view_document(doc_id):
         
         # 不再在后端进行高亮处理，交由前端处理
         # 记录查询参数，用于前端搜索
-        logging.info(f"传递查询参数到模板: '{query}'")
+        logging.info(f"传递查询参数到模板: '{query}', 搜索ID: '{search_id}'")
             
-        return render_template('view.html', document=document, query=query)
+        return render_template('view.html', document=document, query=query, search_id=search_id)
     except Exception as e:
         logging.error(f"查看文档失败: {e}")
         flash(f'查看文档失败: {str(e)}')

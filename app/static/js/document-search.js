@@ -45,13 +45,32 @@ document.addEventListener('DOMContentLoaded', function() {
         // 获取URL中的查询参数
         const urlParams = new URLSearchParams(window.location.search);
         const query = urlParams.get('q');
+        const searchId = urlParams.get('search_id');
         
-        console.log(`初始化搜索，URL查询参数: "${query}"`);
+        console.log(`初始化搜索，URL查询参数: "${query}", 搜索ID: "${searchId}"`);
         
-        if (query && searchInput) {
+        // 生成唯一的存储键，确保不同搜索标签之间不会相互干扰
+        const storageKeyPrefix = 'docradar_search_';
+        
+        // 如果URL中有查询参数和搜索ID，则使用它们
+        if (query && searchId) {
+            // 清除所有旧的搜索存储，防止干扰
+            clearAllSearchStorage();
+            
+            // 存储当前的搜索ID和查询词
+            const storageKey = `${storageKeyPrefix}${searchId}`;
+            sessionStorage.setItem(storageKey, query);
+            
+            // 同时存储当前活动的搜索ID，用于标记当前正在使用哪个搜索
+            sessionStorage.setItem('docradar_active_search_id', searchId);
+            
+            console.log(`已存储搜索参数: searchId=${searchId}, query=${query}, storageKey=${storageKey}`);
+            
             // 设置搜索框的值
-            searchInput.value = query;
-            console.log(`设置搜索框值为: "${query}"`);
+            if (searchInput) {
+                searchInput.value = query;
+                console.log(`设置搜索框值为: "${query}"`);
+            }
             
             // 稍微延迟执行搜索，确保DOM完全加载
             setTimeout(() => {
@@ -59,8 +78,61 @@ document.addEventListener('DOMContentLoaded', function() {
                 performSearch(query);
             }, 500); // 500ms延迟
         } else {
+            // 如果URL中没有参数，尝试从会话存储中获取最后一次活动的搜索
+            const activeSearchId = sessionStorage.getItem('docradar_active_search_id');
+            
+            if (activeSearchId) {
+                const storageKey = `${storageKeyPrefix}${activeSearchId}`;
+                const storedQuery = sessionStorage.getItem(storageKey);
+                
+                if (storedQuery) {
+                    console.log(`从会话存储中恢复搜索参数: searchId=${activeSearchId}, query=${storedQuery}`);
+                    
+                    // 更新URL，但不刷新页面
+                    const newUrl = new URL(window.location.href);
+                    newUrl.searchParams.set('q', storedQuery);
+                    newUrl.searchParams.set('search_id', activeSearchId);
+                    window.history.replaceState({}, '', newUrl);
+                    
+                    // 使用存储的查询词
+                    if (searchInput) {
+                        searchInput.value = storedQuery;
+                    }
+                    
+                    // 延迟执行搜索
+                    setTimeout(() => {
+                        console.log(`使用存储的查询词执行搜索: "${storedQuery}"`);
+                        performSearch(storedQuery);
+                    }, 500);
+                    
+                    return; // 已处理，退出函数
+                }
+            }
+            
             console.log('没有查询参数或搜索框不存在');
         }
+    }
+    
+    // 清除所有搜索相关的会话存储
+    function clearAllSearchStorage() {
+        // 获取所有以docradar_search_开头的键
+        const keysToRemove = [];
+        for (let i = 0; i < sessionStorage.length; i++) {
+            const key = sessionStorage.key(i);
+            if (key && key.startsWith('docradar_search_')) {
+                keysToRemove.push(key);
+            }
+        }
+        
+        // 删除所有匹配的键
+        keysToRemove.forEach(key => {
+            sessionStorage.removeItem(key);
+            console.log(`已删除会话存储项: ${key}`);
+        });
+        
+        // 同时删除活动搜索ID
+        sessionStorage.removeItem('docradar_active_search_id');
+        console.log('已清除所有搜索相关的会话存储');
     }
     
     // 执行搜索
@@ -212,6 +284,15 @@ document.addEventListener('DOMContentLoaded', function() {
         if (searchInput) {
             searchInput.value = '';
         }
+        
+        // 清除会话存储
+        clearAllSearchStorage();
+        
+        // 更新URL，移除搜索参数
+        const newUrl = new URL(window.location.href);
+        newUrl.searchParams.delete('q');
+        newUrl.searchParams.delete('search_id');
+        window.history.replaceState({}, '', newUrl);
         
         totalMatches = 0;
         currentIndex = 0;

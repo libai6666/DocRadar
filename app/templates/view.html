@@ -252,6 +252,8 @@
                 <i class="bi bi-search"></i>
             </div>
             <input type="text" id="search-input" value="{{ query or '' }}" placeholder="在文档中搜索..." class="form-control form-control-sm">
+            <!-- 添加隐藏的search_id字段 -->
+            <input type="hidden" id="search-id" value="{{ search_id or '' }}">
             <div class="nav-buttons ms-2">
                 <button id="prev-btn" class="btn btn-sm btn-outline-secondary" title="上一个匹配 (Shift+Enter)">
                     <i class="bi bi-arrow-up"></i> 上一个
