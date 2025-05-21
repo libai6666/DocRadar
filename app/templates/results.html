@@ -560,9 +560,118 @@
     // 删除搜索历史条目
     function deleteHistoryItem(historyId) {
         if (confirm('确定要删除这条搜索历史记录吗？')) {
-            const deleteUrl = "{{ url_for('search.delete_history', history_id=0) }}".replace('0', historyId) +
-                             "?return_to={{ request.url|urlencode }}";
-            window.location.href = deleteUrl;
+            const deleteUrl = "{{ url_for('search.delete_history', history_id=0) }}".replace('0', historyId);
+            const currentUrl = "{{ request.url|urlencode }}";
+            
+            // 获取要删除的标签和面板元素
+            const tabItem = document.getElementById('tab-item-' + historyId);
+            const tabContent = document.getElementById('search-content-' + historyId);
+            
+            // 检查是否为最后一个标签
+            const isLastTab = document.querySelectorAll('#searchTabs .nav-item').length <= 1;
+            
+            // 使用fetch API进行AJAX请求
+            fetch(deleteUrl + '?return_to=' + currentUrl, {
+                method: 'GET',
+                headers: {
+                    'X-Requested-With': 'XMLHttpRequest'
+                }
+            })
+            .then(function(response) {
+                if (response.ok) {
+                    // 尝试解析JSON响应，如果不是JSON则返回null
+                    return response.json().catch(() => null);
+                }
+                throw new Error('网络响应异常');
+            })
+            .then(function(data) {
+                // 无论服务器返回什么，我们都认为删除成功（因为服务器会重定向）
+                
+                // 如果有活动的标签，先找到下一个要激活的标签
+                let nextActiveTab = null;
+                if (tabItem && tabItem.querySelector('.nav-link').classList.contains('active') && !isLastTab) {
+                    // 尝试激活下一个标签，如果没有则激活上一个
+                    nextActiveTab = tabItem.nextElementSibling || tabItem.previousElementSibling;
+                }
+                
+                // 从DOM中移除标签和内容面板
+                if (tabItem) tabItem.remove();
+                if (tabContent) tabContent.remove();
+                
+                // 如果是最后一个标签，显示"暂无搜索记录"提示
+                if (isLastTab) {
+                    // 移除清空历史按钮
+                    const clearAllBtn = document.getElementById('clear-all-history');
+                    if (clearAllBtn) clearAllBtn.remove();
+                    
+                    // 显示无搜索记录状态
+                    const noResultsDiv = document.createElement('div');
+                    noResultsDiv.className = 'no-results text-center py-5';
+                    noResultsDiv.innerHTML = `
+                        <i class="bi bi-search display-1 text-muted"></i>
+                        <h3 class="mt-3">暂无搜索记录</h3>
+                        <p class="text-muted">
+                            请在上方输入关键词开始搜索。
+                        </p>
+                        <a href="{{ url_for('main.index') }}" class="btn btn-primary mt-2">
+                            返回首页
+                        </a>
+                    `;
+                    const tabContent = document.querySelector('.tab-content');
+                    if (tabContent) {
+                        tabContent.innerHTML = '';
+                        tabContent.appendChild(noResultsDiv);
+                    }
+                } else if (nextActiveTab) {
+                    // 获取下一个要激活的标签的链接元素和目标内容ID
+                    const nextTabLink = nextActiveTab.querySelector('.nav-link');
+                    const nextTabContentId = nextTabLink.getAttribute('data-bs-target');
+                    const nextTabContent = document.querySelector(nextTabContentId);
+                    
+                    // 移除所有标签和面板的激活状态
+                    document.querySelectorAll('#searchTabs .nav-link').forEach(function(t) {
+                        t.classList.remove('active');
+                        t.setAttribute('aria-selected', 'false');
+                    });
+                    
+                    document.querySelectorAll('.tab-pane').forEach(function(pane) {
+                        pane.classList.remove('show', 'active');
+                    });
+                    
+                    // 激活下一个标签
+                    nextTabLink.classList.add('active');
+                    nextTabLink.setAttribute('aria-selected', 'true');
+                    
+                    // 激活下一个标签内容
+                    if (nextTabContent) {
+                        nextTabContent.classList.add('show', 'active');
+                        
+                        // 更新URL查询参数以反映当前活动的搜索
+                        const tabText = nextTabLink.querySelector('.tab-text').textContent.replace(/"/g, '');
+                        const currentUrl = new URL(window.location.href);
+                        currentUrl.searchParams.set('q', tabText);
+                        window.history.replaceState({}, '', currentUrl.toString());
+                        
+                        // 移除更新搜索输入框的值的代码
+                    }
+                }
+                
+                // 显示成功消息
+                const alertDiv = document.createElement('div');
+                alertDiv.className = 'alert alert-info alert-dismissible fade show';
+                alertDiv.innerHTML = `
+                    搜索记录已删除
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                `;
+                document.querySelector('.container.mt-4').insertBefore(alertDiv, document.querySelector('.container.mt-4').firstChild);
+                
+                // 应用自动消失效果
+                setupAutoFadeAlerts();
+            })
+            .catch(function(error) {
+                console.error('删除搜索历史出错:', error);
+                alert('删除搜索历史记录时出现错误');
+            });
         }
     }
     </script>

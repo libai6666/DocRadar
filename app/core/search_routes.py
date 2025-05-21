@@ -243,6 +243,14 @@ def delete_history(history_id):
     
     logging.info(f"删除搜索历史: ID={history_id}, 剩余历史记录数量={len(new_history)}")
     
+    # 如果是AJAX请求，返回JSON响应
+    if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
+        return jsonify({
+            'success': True,
+            'message': '搜索历史已删除',
+            'remaining_count': len(new_history)
+        })
+    
     # 返回到原始页面
     return_url = request.args.get('return_to', request.referrer or '/')
     return redirect(return_url)
