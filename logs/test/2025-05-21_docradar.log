@@ -1,10 +1,327 @@
-2025-05-21 16:00:42,401 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:00:42] "[33mGET /api/check-file?filename=二期Duoov1.0.1.docx HTTP/1.1[0m" 404 -
-2025-05-21 16:00:42,412 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:00:42] "[33mPOST /upload/batch HTTP/1.1[0m" 404 -
-2025-05-21 16:00:43,487 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:00:43] "GET / HTTP/1.1" 200 -
-2025-05-21 16:00:43,506 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:00:43] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
-2025-05-21 16:00:43,509 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:00:43] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
-2025-05-21 16:00:55,747 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:00:55] "[33mGET /api/check-file?filename=二期Duoov1.0.1.docx HTTP/1.1[0m" 404 -
-2025-05-21 16:00:55,756 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:00:55] "[33mPOST /upload/batch HTTP/1.1[0m" 404 -
-2025-05-21 16:00:57,158 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:00:57] "GET / HTTP/1.1" 200 -
-2025-05-21 16:00:57,177 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:00:57] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
-2025-05-21 16:00:57,190 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:00:57] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-21 16:16:41,480 [INFO] - root - 日志系统初始化完成，使用日志文件: 2025-05-21_docradar.log
+2025-05-21 16:16:41,503 [INFO] - werkzeug -  * Restarting with stat
+2025-05-21 16:16:41,979 [INFO] - root - 日志系统初始化完成，使用日志文件: 2025-05-21_docradar.log
+2025-05-21 16:16:41,996 [WARNING] - werkzeug -  * Debugger is active!
+2025-05-21 16:16:42,001 [INFO] - werkzeug -  * Debugger PIN: 547-956-756
+2025-05-21 16:16:42,140 [INFO] - werkzeug -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2025-05-21 16:16:47,312 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:16:47] "GET / HTTP/1.1" 200 -
+2025-05-21 16:16:47,332 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:16:47] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-21 16:16:47,334 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:16:47] "GET /static/js/main.js HTTP/1.1" 200 -
+2025-05-21 16:16:53,712 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:16:53] "GET /api/check-file?filename=八期Duoov1.6.0.docx&csrf_token=IjA4YzY1ZWViZGM4ZTFmNDM0YzE0N2EyNGJhNTRhODlkYjBhZjA0MDQi.aC2L7w.84NK6hjPmCFRpJT42GwxDfoCQ7Y HTTP/1.1" 200 -
+2025-05-21 16:21:53,417 [INFO] - root - 日志系统初始化完成，使用日志文件: 2025-05-21_docradar.log
+2025-05-21 16:21:53,440 [INFO] - werkzeug -  * Restarting with stat
+2025-05-21 16:21:53,923 [INFO] - root - 日志系统初始化完成，使用日志文件: 2025-05-21_docradar.log
+2025-05-21 16:21:53,942 [WARNING] - werkzeug -  * Debugger is active!
+2025-05-21 16:21:53,948 [INFO] - werkzeug -  * Debugger PIN: 547-956-756
+2025-05-21 16:21:54,072 [INFO] - werkzeug -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2025-05-21 16:21:55,565 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:21:55] "GET / HTTP/1.1" 200 -
+2025-05-21 16:21:55,583 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:21:55] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-21 16:21:55,583 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:21:55] "GET /static/js/main.js HTTP/1.1" 200 -
+2025-05-21 16:22:04,117 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:22:04] "GET /api/check-file?filename=二十八期Duoov3.3.0.docx&csrf_token=IjA4YzY1ZWViZGM4ZTFmNDM0YzE0N2EyNGJhNTRhODlkYjBhZjA0MDQi.aC2NIw.6o9tbFjC0_VcUthlo-aL3ylb3v8 HTTP/1.1" 200 -
+2025-05-21 16:22:05,506 [INFO] - root - 原始文件名: 二十八期Duoov3.3.0.docx, 安全文件名: Duoov3.3.0.docx
+2025-05-21 16:22:05,523 [INFO] - root - 删除文档图片目录: D:\tools\Pycharm\PycharmWork\DocRadar\static\doc_images\doc_33
+2025-05-21 16:22:05,526 [INFO] - root - 删除文档成功: 33
+2025-05-21 16:22:05,526 [INFO] - root - 覆盖旧文件: 33
+2025-05-21 16:22:05,530 [INFO] - root - 文件已保存: D:\tools\Pycharm\PycharmWork\DocRadar\data\test\uploads\20250521162205_Duoov3.3.0.docx
+2025-05-21 16:22:05,533 [INFO] - root - 添加文档元数据: 59
+2025-05-21 16:22:05,569 [ERROR] - root - 提取DOCX图片失败: [Errno 2] No such file or directory: 'app\\static\\images\\docs\\59\\'
+2025-05-21 16:22:05,806 [ERROR] - root - 转换DOCX为HTML失败: convert_document_element_to_html() got an unexpected keyword argument 'options'
+2025-05-21 16:22:05,812 [INFO] - root - 更新文档元数据: 59
+2025-05-21 16:22:05,817 [INFO] - root - 添加文档内容: 59
+2025-05-21 16:22:05,817 [INFO] - root - 保存文档HTML内容: 59
+2025-05-21 16:22:05,829 [INFO] - root - 文档 59 索引请求 - 操作已转移到Storage类
+2025-05-21 16:22:05,832 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:22:05] "POST /upload/batch HTTP/1.1" 200 -
+2025-05-21 16:22:09,493 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:22:09] "GET / HTTP/1.1" 200 -
+2025-05-21 16:22:09,510 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:22:09] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-21 16:22:09,510 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:22:09] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-21 16:22:12,129 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:22:12] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-21 16:22:12,159 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:22:12] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
+2025-05-21 16:23:10,737 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:23:10] "GET /api/check-file?filename=二期Duoov1.0.1.docx&csrf_token=IjA4YzY1ZWViZGM4ZTFmNDM0YzE0N2EyNGJhNTRhODlkYjBhZjA0MDQi.aC2NMQ.k5rip1Q32xQvIQwzmlE2mVU0ZhA HTTP/1.1" 200 -
+2025-05-21 16:23:27,317 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:23:27] "GET / HTTP/1.1" 200 -
+2025-05-21 16:23:27,337 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:23:27] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-21 16:23:27,342 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:23:27] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-21 16:23:27,349 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:23:27] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
+2025-05-21 16:23:34,040 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:23:34] "GET /api/check-file?filename=二期Duoov1.0.1.docx&csrf_token=IjA4YzY1ZWViZGM4ZTFmNDM0YzE0N2EyNGJhNTRhODlkYjBhZjA0MDQi.aC2Nfw.mHLSBG7If9NHC-qZzz-sR0peQqM HTTP/1.1" 200 -
+2025-05-21 16:23:38,020 [INFO] - root - 原始文件名: 二期Duoov1.0.1.docx, 安全文件名: Duoov1.0.1.docx
+2025-05-21 16:23:38,024 [INFO] - root - 删除文档图片目录: app\static\images\docs\58
+2025-05-21 16:23:38,029 [INFO] - root - 删除文档成功: 58
+2025-05-21 16:23:38,030 [INFO] - root - 覆盖旧文件: 58
+2025-05-21 16:23:38,033 [INFO] - root - 文件已保存: D:\tools\Pycharm\PycharmWork\DocRadar\data\test\uploads\20250521162338_Duoov1.0.1.docx
+2025-05-21 16:23:38,037 [INFO] - root - 添加文档元数据: 60
+2025-05-21 16:23:38,044 [ERROR] - root - 提取DOCX图片失败: [Errno 2] No such file or directory: 'app\\static\\images\\docs\\60\\'
+2025-05-21 16:23:38,077 [ERROR] - root - 转换DOCX为HTML失败: convert_document_element_to_html() got an unexpected keyword argument 'options'
+2025-05-21 16:23:38,080 [INFO] - root - 更新文档元数据: 60
+2025-05-21 16:23:38,084 [INFO] - root - 添加文档内容: 60
+2025-05-21 16:23:38,084 [INFO] - root - 保存文档HTML内容: 60
+2025-05-21 16:23:38,088 [INFO] - root - 文档 60 索引请求 - 操作已转移到Storage类
+2025-05-21 16:23:38,090 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:23:38] "POST /upload/batch HTTP/1.1" 200 -
+2025-05-21 16:23:39,644 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:23:39] "GET / HTTP/1.1" 200 -
+2025-05-21 16:23:39,664 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:23:39] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-21 16:23:39,666 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:23:39] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-21 16:23:39,672 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:23:39] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
+2025-05-21 16:23:42,201 [INFO] - root - 文档ID 60: 标题为空，使用原始文件名 '二期Duoov1.0.1.docx' 作为标题
+2025-05-21 16:23:42,202 [INFO] - root - 文档 60 使用HTML内容显示
+2025-05-21 16:23:42,202 [INFO] - root - 传递查询参数到模板: '', 搜索ID: ''
+2025-05-21 16:23:42,214 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:23:42] "GET /document/60 HTTP/1.1" 200 -
+2025-05-21 16:23:42,237 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:23:42] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
+2025-05-21 16:23:42,238 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:23:42] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-21 16:23:42,246 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:23:42] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-21 16:23:42,257 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:23:42] "[36mGET /static/js/document-search.js HTTP/1.1[0m" 304 -
+2025-05-21 16:23:45,219 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:23:45] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
+2025-05-21 16:23:46,067 [INFO] - root - 文档ID 59: 标题为空，使用原始文件名 '二十八期Duoov3.3.0.docx' 作为标题
+2025-05-21 16:23:46,068 [INFO] - root - 文档 59 使用HTML内容显示
+2025-05-21 16:23:46,068 [INFO] - root - 传递查询参数到模板: '', 搜索ID: ''
+2025-05-21 16:23:46,072 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:23:46] "GET /document/59 HTTP/1.1" 200 -
+2025-05-21 16:23:46,098 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:23:46] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
+2025-05-21 16:23:46,098 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:23:46] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-21 16:23:46,107 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:23:46] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-21 16:23:46,110 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:23:46] "[36mGET /static/js/document-search.js HTTP/1.1[0m" 304 -
+2025-05-21 16:23:52,136 [INFO] - root - 文档ID 60: 标题为空，使用原始文件名 '二期Duoov1.0.1.docx' 作为标题
+2025-05-21 16:23:52,137 [INFO] - root - 文档 60 使用HTML内容显示
+2025-05-21 16:23:52,138 [INFO] - root - 传递查询参数到模板: '', 搜索ID: ''
+2025-05-21 16:23:52,140 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:23:52] "GET /document/60 HTTP/1.1" 200 -
+2025-05-21 16:23:52,159 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:23:52] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-21 16:23:52,160 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:23:52] "[36mGET /static/js/document-search.js HTTP/1.1[0m" 304 -
+2025-05-21 16:23:52,177 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:23:52] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-21 16:24:22,499 [INFO] - root - 文档ID 27: 标题为空，使用原始文件名 '三十四期Duoov4.0.0.docx' 作为标题
+2025-05-21 16:24:22,500 [INFO] - root - 搜索 'adjustments' 找到 1 个结果
+2025-05-21 16:24:22,501 [INFO] - root - 执行搜索: 'adjustments' 找到 1 个结果
+2025-05-21 16:24:22,501 [INFO] - root - 搜索结果 #0: id=27, title=三十四期Duoov4.0.0
+2025-05-21 16:24:22,502 [INFO] - root - 添加搜索历史: 查询='adjustments', 结果数=1, 历史ID=1
+2025-05-21 16:24:22,502 [INFO] - root - 搜索结果ID: [27]
+2025-05-21 16:24:22,528 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:24:22] "GET /search?q=adjustments HTTP/1.1" 200 -
+2025-05-21 16:24:22,548 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:24:22] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-21 16:24:22,553 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:24:22] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-21 16:24:23,793 [INFO] - root - 文档ID 27: 标题为空，使用原始文件名 '三十四期Duoov4.0.0.docx' 作为标题
+2025-05-21 16:24:23,793 [INFO] - root - 文档 27 使用HTML内容显示
+2025-05-21 16:24:23,794 [INFO] - root - 传递查询参数到模板: 'adjustments', 搜索ID: '1'
+2025-05-21 16:24:23,797 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:24:23] "GET /document/27?q=adjustments&search_id=1 HTTP/1.1" 200 -
+2025-05-21 16:24:23,823 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:24:23] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-21 16:24:23,824 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:24:23] "[36mGET /static/doc_images/doc_27/image_mammoth_64f594ddaca942fbb78c1e42e23ef245_4.png HTTP/1.1[0m" 304 -
+2025-05-21 16:24:23,824 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:24:23] "[36mGET /static/doc_images/doc_27/image_mammoth_711ae610005c46e0b950460895fc447a_3.png HTTP/1.1[0m" 304 -
+2025-05-21 16:24:23,824 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:24:23] "[36mGET /static/doc_images/doc_27/image_mammoth_3d55d9d5fae44358a13307a4947b710e_2.png HTTP/1.1[0m" 304 -
+2025-05-21 16:24:23,825 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:24:23] "[36mGET /static/doc_images/doc_27/image_mammoth_9c18632f3d5143d2bbf1501d77db5816_5.png HTTP/1.1[0m" 304 -
+2025-05-21 16:24:23,831 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:24:23] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-21 16:24:23,837 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:24:23] "[36mGET /static/doc_images/doc_27/image_mammoth_c9261f8fea95446c8b878c1ef325d02f_1.png HTTP/1.1[0m" 304 -
+2025-05-21 16:24:23,841 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:24:23] "[36mGET /static/js/document-search.js HTTP/1.1[0m" 304 -
+2025-05-21 16:24:23,843 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:24:23] "[36mGET /static/doc_images/doc_27/image_mammoth_c7b26b63b9624eeeaebf3510e9f9087a_8.png HTTP/1.1[0m" 304 -
+2025-05-21 16:24:23,843 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:24:23] "[36mGET /static/doc_images/doc_27/image_mammoth_17528cb9dbd34508ba64438c7720a4e7_9.png HTTP/1.1[0m" 304 -
+2025-05-21 16:24:23,848 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:24:23] "[36mGET /static/doc_images/doc_27/image_mammoth_0f985aff79de423daeac2c85af8e40e4_10.png HTTP/1.1[0m" 304 -
+2025-05-21 16:24:23,852 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:24:23] "[36mGET /static/doc_images/doc_27/image_mammoth_f0b6abeed5cb43eab7dbaa66798ce845_7.png HTTP/1.1[0m" 304 -
+2025-05-21 16:24:23,855 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:24:23] "[36mGET /static/doc_images/doc_27/image_mammoth_a63051de67d545bf926b9fc34b9abcd5_11.png HTTP/1.1[0m" 304 -
+2025-05-21 16:24:23,855 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:24:23] "[36mGET /static/doc_images/doc_27/image_mammoth_d2aecb089e304b00875250baba86c37f_13.png HTTP/1.1[0m" 304 -
+2025-05-21 16:24:23,856 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:24:23] "[36mGET /static/doc_images/doc_27/image_mammoth_e78a6a754c26448b95663ba393514390_12.png HTTP/1.1[0m" 304 -
+2025-05-21 16:24:23,861 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:24:23] "[36mGET /static/doc_images/doc_27/image_mammoth_77b7321d416d49c2bac4b4a7130816b8_14.png HTTP/1.1[0m" 304 -
+2025-05-21 16:24:23,864 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:24:23] "[36mGET /static/doc_images/doc_27/image_mammoth_7949dfb05dd8454b9ee4b4385fb8e3e1_15.png HTTP/1.1[0m" 304 -
+2025-05-21 16:24:23,868 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:24:23] "[36mGET /static/doc_images/doc_27/image_mammoth_0733fdc51e0446be86378770c369aa44_6.png HTTP/1.1[0m" 304 -
+2025-05-21 16:24:23,873 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:24:23] "[36mGET /static/doc_images/doc_27/image_mammoth_2407a19d8aa04372b2b201aa87429da2_17.png HTTP/1.1[0m" 304 -
+2025-05-21 16:24:23,873 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:24:23] "[36mGET /static/doc_images/doc_27/image_mammoth_6cba556bd33e4a66ab79f4301c106884_18.png HTTP/1.1[0m" 304 -
+2025-05-21 16:24:23,883 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:24:23] "[36mGET /static/doc_images/doc_27/image_mammoth_0b793680a02a4b9b88863424436c9501_16.png HTTP/1.1[0m" 304 -
+2025-05-21 16:24:23,898 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:24:23] "[36mGET /static/doc_images/doc_27/image_mammoth_e1b61504d7f043a8883b022fcaf9615f_19.png HTTP/1.1[0m" 304 -
+2025-05-21 16:24:33,497 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:24:33] "GET /?search=三十&page=1 HTTP/1.1" 200 -
+2025-05-21 16:24:33,514 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:24:33] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-21 16:24:33,518 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:24:33] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-21 16:24:38,335 [INFO] - root - 文档ID 27: 标题为空，使用原始文件名 '三十四期Duoov4.0.0.docx' 作为标题
+2025-05-21 16:24:38,336 [INFO] - root - 文档 27 使用HTML内容显示
+2025-05-21 16:24:38,336 [INFO] - root - 传递查询参数到模板: '', 搜索ID: ''
+2025-05-21 16:24:38,340 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:24:38] "GET /document/27 HTTP/1.1" 200 -
+2025-05-21 16:24:38,356 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:24:38] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-21 16:24:38,370 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:24:38] "[36mGET /static/doc_images/doc_27/image_mammoth_3d55d9d5fae44358a13307a4947b710e_2.png HTTP/1.1[0m" 304 -
+2025-05-21 16:24:38,370 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:24:38] "[36mGET /static/doc_images/doc_27/image_mammoth_64f594ddaca942fbb78c1e42e23ef245_4.png HTTP/1.1[0m" 304 -
+2025-05-21 16:24:38,371 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:24:38] "[36mGET /static/doc_images/doc_27/image_mammoth_711ae610005c46e0b950460895fc447a_3.png HTTP/1.1[0m" 304 -
+2025-05-21 16:24:38,379 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:24:38] "[36mGET /static/js/document-search.js HTTP/1.1[0m" 304 -
+2025-05-21 16:24:38,379 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:24:38] "[36mGET /static/doc_images/doc_27/image_mammoth_f0b6abeed5cb43eab7dbaa66798ce845_7.png HTTP/1.1[0m" 304 -
+2025-05-21 16:24:38,387 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:24:38] "[36mGET /static/doc_images/doc_27/image_mammoth_9c18632f3d5143d2bbf1501d77db5816_5.png HTTP/1.1[0m" 304 -
+2025-05-21 16:24:38,389 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:24:38] "[36mGET /static/doc_images/doc_27/image_mammoth_17528cb9dbd34508ba64438c7720a4e7_9.png HTTP/1.1[0m" 304 -
+2025-05-21 16:24:38,394 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:24:38] "[36mGET /static/doc_images/doc_27/image_mammoth_0f985aff79de423daeac2c85af8e40e4_10.png HTTP/1.1[0m" 304 -
+2025-05-21 16:24:38,396 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:24:38] "[36mGET /static/doc_images/doc_27/image_mammoth_a63051de67d545bf926b9fc34b9abcd5_11.png HTTP/1.1[0m" 304 -
+2025-05-21 16:24:38,403 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:24:38] "[36mGET /static/doc_images/doc_27/image_mammoth_e78a6a754c26448b95663ba393514390_12.png HTTP/1.1[0m" 304 -
+2025-05-21 16:24:38,403 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:24:38] "[36mGET /static/doc_images/doc_27/image_mammoth_c9261f8fea95446c8b878c1ef325d02f_1.png HTTP/1.1[0m" 304 -
+2025-05-21 16:24:38,405 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:24:38] "[36mGET /static/doc_images/doc_27/image_mammoth_d2aecb089e304b00875250baba86c37f_13.png HTTP/1.1[0m" 304 -
+2025-05-21 16:24:38,413 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:24:38] "[36mGET /static/doc_images/doc_27/image_mammoth_7949dfb05dd8454b9ee4b4385fb8e3e1_15.png HTTP/1.1[0m" 304 -
+2025-05-21 16:24:38,413 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:24:38] "[36mGET /static/doc_images/doc_27/image_mammoth_77b7321d416d49c2bac4b4a7130816b8_14.png HTTP/1.1[0m" 304 -
+2025-05-21 16:24:38,418 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:24:38] "[36mGET /static/doc_images/doc_27/image_mammoth_c7b26b63b9624eeeaebf3510e9f9087a_8.png HTTP/1.1[0m" 304 -
+2025-05-21 16:24:38,425 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:24:38] "[36mGET /static/doc_images/doc_27/image_mammoth_2407a19d8aa04372b2b201aa87429da2_17.png HTTP/1.1[0m" 304 -
+2025-05-21 16:24:38,427 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:24:38] "[36mGET /static/doc_images/doc_27/image_mammoth_e1b61504d7f043a8883b022fcaf9615f_19.png HTTP/1.1[0m" 304 -
+2025-05-21 16:24:38,433 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:24:38] "[36mGET /static/doc_images/doc_27/image_mammoth_6cba556bd33e4a66ab79f4301c106884_18.png HTTP/1.1[0m" 304 -
+2025-05-21 16:24:38,448 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:24:38] "[36mGET /static/doc_images/doc_27/image_mammoth_0b793680a02a4b9b88863424436c9501_16.png HTTP/1.1[0m" 304 -
+2025-05-21 16:24:38,464 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:24:38] "[36mGET /static/doc_images/doc_27/image_mammoth_0733fdc51e0446be86378770c369aa44_6.png HTTP/1.1[0m" 304 -
+2025-05-21 16:24:38,511 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:24:38] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-21 16:24:43,894 [INFO] - root - 文档ID 22: 标题为空，使用原始文件名 '三十九期Duoov4.5.0.docx' 作为标题
+2025-05-21 16:24:43,895 [INFO] - root - 文档 22 使用HTML内容显示
+2025-05-21 16:24:43,896 [INFO] - root - 传递查询参数到模板: '', 搜索ID: ''
+2025-05-21 16:24:43,899 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:24:43] "GET /document/22 HTTP/1.1" 200 -
+2025-05-21 16:24:43,918 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:24:43] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-21 16:24:43,932 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:24:43] "GET /static/doc_images/doc_22/image_mammoth_ba387c76121e4791aba6d0b2d21064f8_2.png HTTP/1.1" 200 -
+2025-05-21 16:24:43,932 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:24:43] "GET /static/doc_images/doc_22/image_mammoth_cce848edcf01448e86120a03047d7991_3.png HTTP/1.1" 200 -
+2025-05-21 16:24:43,933 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:24:43] "GET /static/doc_images/doc_22/image_mammoth_b2a103e2816f4efbb9750a525413c382_5.png HTTP/1.1" 200 -
+2025-05-21 16:24:43,933 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:24:43] "GET /static/doc_images/doc_22/image_mammoth_ed3588ca05ad4dad8a220b34a6de9e2e_4.png HTTP/1.1" 200 -
+2025-05-21 16:24:43,942 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:24:43] "[36mGET /static/js/document-search.js HTTP/1.1[0m" 304 -
+2025-05-21 16:24:43,942 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:24:43] "GET /static/doc_images/doc_22/image_mammoth_bc67c48da4a748d4bf06b0e3147c7b33_6.png HTTP/1.1" 200 -
+2025-05-21 16:24:43,944 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:24:43] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-21 16:24:43,960 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:24:43] "GET /static/doc_images/doc_22/image_mammoth_ac590b402eab4da3986a4b063ddd1a09_1.png HTTP/1.1" 200 -
+2025-05-21 16:24:43,960 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:24:43] "GET /static/doc_images/doc_22/image_mammoth_bfc039b080ef4b0d8e150807ecadcd18_7.png HTTP/1.1" 200 -
+2025-05-21 16:24:43,961 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:24:43] "GET /static/doc_images/doc_22/image_mammoth_740902c2671d455e88954266fed78df6_8.png HTTP/1.1" 200 -
+2025-05-21 16:24:43,969 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:24:43] "GET /static/doc_images/doc_22/image_mammoth_9976c87922ac44b4b9070993bddeeaf5_10.png HTTP/1.1" 200 -
+2025-05-21 16:24:43,977 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:24:43] "GET /static/doc_images/doc_22/image_mammoth_3cdb996fcee04800be05b451854495d8_9.png HTTP/1.1" 200 -
+2025-05-21 16:24:46,947 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:24:46] "GET / HTTP/1.1" 200 -
+2025-05-21 16:24:46,963 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:24:46] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-21 16:24:46,968 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:24:46] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-21 16:24:48,995 [INFO] - root - 文档ID 55: 标题为空，使用原始文件名 '五期Duoov1.3.0.docx' 作为标题
+2025-05-21 16:24:48,997 [INFO] - root - 文档 55 使用HTML内容显示
+2025-05-21 16:24:48,998 [INFO] - root - 传递查询参数到模板: '', 搜索ID: ''
+2025-05-21 16:24:49,001 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:24:49] "GET /document/55 HTTP/1.1" 200 -
+2025-05-21 16:24:49,044 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:24:49] "[36mGET /static/doc_images/doc_55/image_mammoth_bc257a22da6b4535957725e65adbaf6e_4.png HTTP/1.1[0m" 304 -
+2025-05-21 16:24:49,045 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:24:49] "[36mGET /static/doc_images/doc_55/image_mammoth_50740f8ee05b42f5882b5d13eb864e95_3.png HTTP/1.1[0m" 304 -
+2025-05-21 16:24:49,045 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:24:49] "[36mGET /static/doc_images/doc_55/image_mammoth_d2ccc89a42524da2a474afae3cfde41d_2.png HTTP/1.1[0m" 304 -
+2025-05-21 16:24:49,054 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:24:49] "[36mGET /static/doc_images/doc_55/image_mammoth_f834ad9ca41a4c29830e2e851fc9879d_5.png HTTP/1.1[0m" 304 -
+2025-05-21 16:24:49,054 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:24:49] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-21 16:24:49,055 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:24:49] "[36mGET /static/doc_images/doc_55/image_mammoth_a43562662e5f456182cd3f448691ee8c_6.png HTTP/1.1[0m" 304 -
+2025-05-21 16:24:49,064 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:24:49] "[36mGET /static/doc_images/doc_55/image_mammoth_f3a1898a61a044ec98ce925dd285d88a_7.png HTTP/1.1[0m" 304 -
+2025-05-21 16:24:49,065 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:24:49] "[36mGET /static/doc_images/doc_55/image_mammoth_23cbeae574d44a3197ae35b956daf153_8.png HTTP/1.1[0m" 304 -
+2025-05-21 16:24:49,070 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:24:49] "[36mGET /static/doc_images/doc_55/image_mammoth_f9409ce987ec476e821e0ab3e91d2526_1.png HTTP/1.1[0m" 304 -
+2025-05-21 16:24:49,074 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:24:49] "[36mGET /static/doc_images/doc_55/image_mammoth_1eb0f39dd27442c8b4ec928dfbe0df61_10.png HTTP/1.1[0m" 304 -
+2025-05-21 16:24:49,074 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:24:49] "[36mGET /static/doc_images/doc_55/image_mammoth_9724e9e83f824b7cbd7b32578b44b633_11.png HTTP/1.1[0m" 304 -
+2025-05-21 16:24:49,079 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:24:49] "[36mGET /static/doc_images/doc_55/image_mammoth_f95689eecec341199773b9f1032f831a_12.png HTTP/1.1[0m" 304 -
+2025-05-21 16:24:49,084 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:24:49] "[36mGET /static/doc_images/doc_55/image_mammoth_897ae1cbca564182acdbb26b4183ec8d_13.png HTTP/1.1[0m" 304 -
+2025-05-21 16:24:49,085 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:24:49] "[36mGET /static/doc_images/doc_55/image_mammoth_0afc03be14c54fb3a21998b12f662d16_9.png HTTP/1.1[0m" 304 -
+2025-05-21 16:24:49,087 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:24:49] "[36mGET /static/doc_images/doc_55/image_mammoth_32093aa002e24c408e4b5338d6b401a8_15.png HTTP/1.1[0m" 304 -
+2025-05-21 16:24:49,093 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:24:49] "[36mGET /static/doc_images/doc_55/image_mammoth_a3223e2981a64740a2872b15092f92a5_16.png HTTP/1.1[0m" 304 -
+2025-05-21 16:24:49,098 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:24:49] "[36mGET /static/doc_images/doc_55/image_mammoth_28da44ee969a4b918eff5a1640a65d62_17.png HTTP/1.1[0m" 304 -
+2025-05-21 16:24:49,099 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:24:49] "[36mGET /static/doc_images/doc_55/image_mammoth_60f28562c5e74fe69cff3cb8f364616a_18.png HTTP/1.1[0m" 304 -
+2025-05-21 16:24:49,101 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:24:49] "[36mGET /static/js/document-search.js HTTP/1.1[0m" 304 -
+2025-05-21 16:24:49,104 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:24:49] "[36mGET /static/doc_images/doc_55/image_mammoth_eae4924fa92b48ca8e6c87b6557d23c5_19.png HTTP/1.1[0m" 304 -
+2025-05-21 16:24:49,112 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:24:49] "[36mGET /static/doc_images/doc_55/image_mammoth_0935df03930b4a718fdc85941d23efb6_20.png HTTP/1.1[0m" 304 -
+2025-05-21 16:24:49,112 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:24:49] "[36mGET /static/doc_images/doc_55/image_mammoth_f520137c54b94659b3cb0ea7686d22ed_21.png HTTP/1.1[0m" 304 -
+2025-05-21 16:24:49,114 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:24:49] "[36mGET /static/doc_images/doc_55/image_mammoth_c755349334274ce68adf289a55069a53_22.png HTTP/1.1[0m" 304 -
+2025-05-21 16:24:49,115 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:24:49] "[36mGET /static/doc_images/doc_55/image_mammoth_01df9e8f6de74f28a7e79b2c380057fd_23.png HTTP/1.1[0m" 304 -
+2025-05-21 16:24:49,116 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:24:49] "[36mGET /static/doc_images/doc_55/image_mammoth_f15e2ecebdc64100bbfb0d67f7d20c90_14.png HTTP/1.1[0m" 304 -
+2025-05-21 16:24:49,126 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:24:49] "[36mGET /static/doc_images/doc_55/image_mammoth_d2dd2ebe2d014bad967ead973b27f24e_24.png HTTP/1.1[0m" 304 -
+2025-05-21 16:24:49,126 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:24:49] "[36mGET /static/doc_images/doc_55/image_mammoth_2c003cbd326c46128754819029337f2e_25.png HTTP/1.1[0m" 304 -
+2025-05-21 16:24:49,128 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:24:49] "[36mGET /static/doc_images/doc_55/image_mammoth_e5abeb512aaa4d0781918f9ef0fe8c97_26.png HTTP/1.1[0m" 304 -
+2025-05-21 16:24:49,129 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:24:49] "[36mGET /static/doc_images/doc_55/image_mammoth_91fc6ed247774371b6042600a3fc8b6f_28.png HTTP/1.1[0m" 304 -
+2025-05-21 16:24:49,131 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:24:49] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-21 16:24:49,147 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:24:49] "[36mGET /static/doc_images/doc_55/image_mammoth_a077ca2b90144a88a88ab67c5f46d601_27.png HTTP/1.1[0m" 304 -
+2025-05-21 16:24:51,513 [INFO] - root - 文档ID 59: 标题为空，使用原始文件名 '二十八期Duoov3.3.0.docx' 作为标题
+2025-05-21 16:24:51,514 [INFO] - root - 文档 59 使用HTML内容显示
+2025-05-21 16:24:51,514 [INFO] - root - 传递查询参数到模板: '', 搜索ID: ''
+2025-05-21 16:24:51,518 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:24:51] "GET /document/59 HTTP/1.1" 200 -
+2025-05-21 16:24:51,534 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:24:51] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-21 16:24:51,534 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:24:51] "[36mGET /static/js/document-search.js HTTP/1.1[0m" 304 -
+2025-05-21 16:24:51,538 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:24:51] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-21 16:26:22,254 [INFO] - root - 删除文档图片目录: app\static\images\docs\60
+2025-05-21 16:26:22,257 [INFO] - root - 删除文档成功: 60
+2025-05-21 16:26:22,260 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:26:22] "[32mPOST /document/60/delete HTTP/1.1[0m" 302 -
+2025-05-21 16:26:22,269 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:26:22] "GET / HTTP/1.1" 200 -
+2025-05-21 16:26:22,286 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:26:22] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-21 16:26:22,290 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:26:22] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-21 16:26:26,963 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:26:26] "GET /api/check-file?filename=二期Duoov1.0.1.docx&csrf_token=IjA4YzY1ZWViZGM4ZTFmNDM0YzE0N2EyNGJhNTRhODlkYjBhZjA0MDQi.aC2OLg.ew7UqHjFBAmo3LwG0N_SzUoQ1Gs HTTP/1.1" 200 -
+2025-05-21 16:26:26,970 [INFO] - root - 原始文件名: 二期Duoov1.0.1.docx, 安全文件名: Duoov1.0.1.docx
+2025-05-21 16:26:26,972 [INFO] - root - 文件已保存: D:\tools\Pycharm\PycharmWork\DocRadar\data\test\uploads\20250521162626_Duoov1.0.1.docx
+2025-05-21 16:26:26,977 [INFO] - root - 添加文档元数据: 61
+2025-05-21 16:26:26,984 [ERROR] - root - 提取DOCX图片失败: [Errno 2] No such file or directory: 'app\\static\\images\\docs\\61\\'
+2025-05-21 16:26:27,018 [ERROR] - root - 转换DOCX为HTML失败: convert_document_element_to_html() got an unexpected keyword argument 'options'
+2025-05-21 16:26:27,022 [INFO] - root - 更新文档元数据: 61
+2025-05-21 16:26:27,026 [INFO] - root - 添加文档内容: 61
+2025-05-21 16:26:27,027 [INFO] - root - 保存文档HTML内容: 61
+2025-05-21 16:26:27,029 [INFO] - root - 文档 61 索引请求 - 操作已转移到Storage类
+2025-05-21 16:26:27,032 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:26:27] "POST /upload/batch HTTP/1.1" 200 -
+2025-05-21 16:26:28,497 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:26:28] "GET / HTTP/1.1" 200 -
+2025-05-21 16:26:28,514 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:26:28] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-21 16:26:28,516 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:26:28] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-21 16:26:29,870 [INFO] - root - 文档ID 61: 标题为空，使用原始文件名 '二期Duoov1.0.1.docx' 作为标题
+2025-05-21 16:26:29,871 [INFO] - root - 文档 61 使用HTML内容显示
+2025-05-21 16:26:29,871 [INFO] - root - 传递查询参数到模板: '', 搜索ID: ''
+2025-05-21 16:26:29,875 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:26:29] "GET /document/61 HTTP/1.1" 200 -
+2025-05-21 16:26:29,890 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:26:29] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-21 16:26:29,896 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:26:29] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-21 16:26:29,898 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:26:29] "[36mGET /static/js/document-search.js HTTP/1.1[0m" 304 -
+2025-05-21 16:28:09,530 [INFO] - werkzeug -  * Detected change in 'D:\\tools\\Pycharm\\PycharmWork\\DocRadar\\app\\utils\\document_parser.py', reloading
+2025-05-21 16:28:09,580 [INFO] - werkzeug -  * Restarting with stat
+2025-05-21 16:28:09,862 [INFO] - werkzeug -  * Detected change in 'D:\\tools\\Pycharm\\PycharmWork\\DocRadar\\app\\utils\\document_parser.py', reloading
+2025-05-21 16:28:09,917 [INFO] - werkzeug -  * Restarting with stat
+2025-05-21 16:28:10,114 [INFO] - root - 日志系统初始化完成，使用日志文件: 2025-05-21_docradar.log
+2025-05-21 16:28:10,133 [WARNING] - werkzeug -  * Debugger is active!
+2025-05-21 16:28:10,139 [INFO] - werkzeug -  * Debugger PIN: 547-956-756
+2025-05-21 16:28:10,261 [INFO] - werkzeug -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2025-05-21 16:28:10,432 [INFO] - werkzeug -  * Detected change in 'D:\\tools\\Pycharm\\PycharmWork\\DocRadar\\app\\utils\\document_parser.py', reloading
+2025-05-21 16:28:10,435 [INFO] - root - 日志系统初始化完成，使用日志文件: 2025-05-21_docradar.log
+2025-05-21 16:28:10,447 [INFO] - werkzeug -  * Detected change in 'D:\\tools\\Pycharm\\PycharmWork\\DocRadar\\app\\utils\\document_parser.py', reloading
+2025-05-21 16:28:10,454 [WARNING] - werkzeug -  * Debugger is active!
+2025-05-21 16:28:10,460 [INFO] - werkzeug -  * Debugger PIN: 547-956-756
+2025-05-21 16:28:10,503 [INFO] - werkzeug -  * Restarting with stat
+2025-05-21 16:28:10,519 [INFO] - werkzeug -  * Restarting with stat
+2025-05-21 16:28:10,601 [INFO] - werkzeug -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2025-05-21 16:28:11,044 [INFO] - root - 日志系统初始化完成，使用日志文件: 2025-05-21_docradar.log
+2025-05-21 16:28:11,058 [INFO] - root - 日志系统初始化完成，使用日志文件: 2025-05-21_docradar.log
+2025-05-21 16:28:11,063 [WARNING] - werkzeug -  * Debugger is active!
+2025-05-21 16:28:11,069 [INFO] - werkzeug -  * Debugger PIN: 547-956-756
+2025-05-21 16:28:11,080 [WARNING] - werkzeug -  * Debugger is active!
+2025-05-21 16:28:11,088 [INFO] - werkzeug -  * Debugger PIN: 547-956-756
+2025-05-21 16:28:11,232 [INFO] - werkzeug -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2025-05-21 16:28:11,236 [INFO] - werkzeug -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2025-05-21 16:28:52,839 [INFO] - root - 日志系统初始化完成，使用日志文件: 2025-05-21_docradar.log
+2025-05-21 16:28:52,864 [INFO] - werkzeug -  * Restarting with stat
+2025-05-21 16:28:53,410 [INFO] - root - 日志系统初始化完成，使用日志文件: 2025-05-21_docradar.log
+2025-05-21 16:28:53,428 [WARNING] - werkzeug -  * Debugger is active!
+2025-05-21 16:28:53,434 [INFO] - werkzeug -  * Debugger PIN: 547-956-756
+2025-05-21 16:28:53,564 [INFO] - werkzeug -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2025-05-21 16:32:42,704 [INFO] - root - 日志系统初始化完成，使用日志文件: 2025-05-21_docradar.log
+2025-05-21 16:32:42,728 [INFO] - werkzeug -  * Restarting with stat
+2025-05-21 16:32:43,227 [INFO] - root - 日志系统初始化完成，使用日志文件: 2025-05-21_docradar.log
+2025-05-21 16:32:43,245 [WARNING] - werkzeug -  * Debugger is active!
+2025-05-21 16:32:43,250 [INFO] - werkzeug -  * Debugger PIN: 547-956-756
+2025-05-21 16:32:43,364 [INFO] - werkzeug -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2025-05-21 16:32:44,270 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:32:44] "GET / HTTP/1.1" 200 -
+2025-05-21 16:32:44,489 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:32:44] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-21 16:32:44,499 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:32:44] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-21 16:32:53,331 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:32:53] "GET /api/check-file?filename=二期Duoov1.0.1.docx&csrf_token=IjA4YzY1ZWViZGM4ZTFmNDM0YzE0N2EyNGJhNTRhODlkYjBhZjA0MDQi.aC2PrA.S0eQmlM2mdbInqqpGM1adkAWqu4 HTTP/1.1" 200 -
+2025-05-21 16:32:54,243 [INFO] - root - 原始文件名: 二期Duoov1.0.1.docx, 安全文件名: Duoov1.0.1.docx
+2025-05-21 16:32:54,248 [INFO] - root - 删除文档图片目录: app\static\images\docs\61
+2025-05-21 16:32:54,250 [INFO] - root - 删除文档成功: 61
+2025-05-21 16:32:54,251 [INFO] - root - 覆盖旧文件: 61
+2025-05-21 16:32:54,252 [INFO] - root - 文件已保存: D:\tools\Pycharm\PycharmWork\DocRadar\data\test\uploads\20250521163254_Duoov1.0.1.docx
+2025-05-21 16:32:54,256 [INFO] - root - 添加文档元数据: 62
+2025-05-21 16:32:54,264 [ERROR] - root - 提取DOCX图片失败: [Errno 2] No such file or directory: 'app\\static\\images\\docs\\62\\'
+2025-05-21 16:32:54,309 [INFO] - root - 更新文档元数据: 62
+2025-05-21 16:32:54,312 [INFO] - root - 添加文档内容: 62
+2025-05-21 16:32:54,313 [INFO] - root - 保存文档HTML内容: 62
+2025-05-21 16:32:54,317 [INFO] - root - 文档 62 索引请求 - 操作已转移到Storage类
+2025-05-21 16:32:54,320 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:32:54] "POST /upload/batch HTTP/1.1" 200 -
+2025-05-21 16:32:55,522 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:32:55] "GET / HTTP/1.1" 200 -
+2025-05-21 16:32:55,537 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:32:55] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-21 16:32:55,539 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:32:55] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-21 16:32:56,958 [INFO] - root - 文档ID 62: 标题为空，使用原始文件名 '二期Duoov1.0.1.docx' 作为标题
+2025-05-21 16:32:56,959 [INFO] - root - 文档 62 使用HTML内容显示
+2025-05-21 16:32:56,960 [INFO] - root - 传递查询参数到模板: '', 搜索ID: ''
+2025-05-21 16:32:56,971 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:32:56] "GET /document/62 HTTP/1.1" 200 -
+2025-05-21 16:32:56,987 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:32:56] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-21 16:32:56,993 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:32:56] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-21 16:32:56,993 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:32:56] "[36mGET /static/js/document-search.js HTTP/1.1[0m" 304 -
+2025-05-21 16:32:57,008 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:32:57] "GET /static/images/docs/62/img_edde898b2e694faf96901ace8fc8b99e.png HTTP/1.1" 200 -
+2025-05-21 16:33:19,126 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:33:19] "GET /api/check-file?filename=二期Duoov1.0.1.docx&csrf_token=IjA4YzY1ZWViZGM4ZTFmNDM0YzE0N2EyNGJhNTRhODlkYjBhZjA0MDQi.aC2Ptw.2nVUC7VwbtH-gWLZ9L8wHhGaR6w HTTP/1.1" 200 -
+2025-05-21 16:33:20,065 [INFO] - root - 原始文件名: 二期Duoov1.0.1.docx, 安全文件名: Duoov1.0.1.docx
+2025-05-21 16:33:20,070 [ERROR] - root - 删除文档失败: [WinError 32] 另一个程序正在使用此文件，进程无法访问。: 'D:\\tools\\Pycharm\\PycharmWork\\DocRadar\\data\\test\\uploads\\20250521163254_Duoov1.0.1.docx'
+2025-05-21 16:33:20,072 [INFO] - root - 覆盖旧文件: 62
+2025-05-21 16:33:20,073 [INFO] - root - 文件已保存: D:\tools\Pycharm\PycharmWork\DocRadar\data\test\uploads\20250521163320_Duoov1.0.1.docx
+2025-05-21 16:33:20,076 [INFO] - root - 添加文档元数据: 63
+2025-05-21 16:33:20,084 [ERROR] - root - 提取DOCX图片失败: [Errno 2] No such file or directory: 'app\\static\\images\\docs\\63\\'
+2025-05-21 16:33:20,128 [INFO] - root - 更新文档元数据: 63
+2025-05-21 16:33:20,131 [INFO] - root - 添加文档内容: 63
+2025-05-21 16:33:20,132 [INFO] - root - 保存文档HTML内容: 63
+2025-05-21 16:33:20,135 [INFO] - root - 文档 63 索引请求 - 操作已转移到Storage类
+2025-05-21 16:33:20,139 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:33:20] "POST /upload/batch HTTP/1.1" 200 -
+2025-05-21 16:33:21,203 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:33:21] "GET / HTTP/1.1" 200 -
+2025-05-21 16:33:21,219 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:33:21] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-21 16:33:21,223 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:33:21] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-21 16:33:22,788 [INFO] - root - 文档ID 63: 标题为空，使用原始文件名 '二期Duoov1.0.1.docx' 作为标题
+2025-05-21 16:33:22,789 [INFO] - root - 文档 63 使用HTML内容显示
+2025-05-21 16:33:22,789 [INFO] - root - 传递查询参数到模板: '', 搜索ID: ''
+2025-05-21 16:33:22,793 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:33:22] "GET /document/63 HTTP/1.1" 200 -
+2025-05-21 16:33:22,809 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:33:22] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-21 16:33:22,815 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:33:22] "GET /static/images/docs/63/img_4bea8909efca4da99778e5cce0b753cf.png HTTP/1.1" 200 -
+2025-05-21 16:33:22,815 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:33:22] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-21 16:33:22,822 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:33:22] "[36mGET /static/js/document-search.js HTTP/1.1[0m" 304 -
+2025-05-21 16:33:29,128 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:33:29] "GET /?page=1&limit=100&search= HTTP/1.1" 200 -
+2025-05-21 16:33:29,142 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:33:29] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-21 16:33:29,147 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 16:33:29] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -

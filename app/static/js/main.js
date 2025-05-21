@@ -474,35 +474,102 @@ function initFileUpload() {
             const filename = confirmFilename ? confirmFilename.value : '';
             if (!filename) {
                 console.error('确认文件名为空');
+                alert('错误：文件名为空，无法继续上传');
                 return;
             }
             
             // 找到文件对象
-            const fileInfo = existingFiles.find(f => f.filename === filename);
+            console.log('尝试查找文件信息，文件名:', filename);
+            console.log('现有文件列表:', existingFiles);
+            
+            // 尝试多种方式查找文件信息
+            let fileInfo = null;
+            
+            // 方法1: 通过filename精确匹配
+            fileInfo = existingFiles.find(f => f.filename === filename);
+            
+            // 方法2: 如果没找到，尝试通过file.name匹配
+            if (!fileInfo) {
+                fileInfo = existingFiles.find(f => f.file && f.file.name === filename);
+            }
+            
+            // 方法3: 如果还没找到，尝试使用original_filename
+            if (!fileInfo) {
+                fileInfo = existingFiles.find(f => f.original_filename === filename);
+            }
+            
+            // 方法4: 如果existingFiles只有一个元素，直接使用它
+            if (!fileInfo && existingFiles.length === 1) {
+                fileInfo = existingFiles[0];
+                console.log('使用唯一的文件信息:', fileInfo);
+            }
+            
             if (!fileInfo || !fileInfo.file) {
-                console.error('找不到对应的文件信息');
+                console.error('找不到对应的文件信息', {
+                    filename,
+                    existingFiles
+                });
+                alert('错误：找不到对应的文件信息，无法继续上传');
                 return;
             }
             
-            // 隐藏模态框
+            console.log('找到文件信息:', fileInfo);
+            
+            // 隐藏模态框 - 使用多种方法尝试确保模态框被隐藏
             try {
-                // 获取当前显示的模态框实例并隐藏
+                console.log('尝试隐藏覆盖确认模态框');
                 const modalElement = document.getElementById('overwriteConfirmModal');
-                if (modalElement) {
-                    const modalInstance = bootstrap.Modal.getInstance(modalElement);
-                    if (modalInstance) {
-                        modalInstance.hide();
-                        console.log('隐藏覆盖确认模态框成功');
-                    } else {
-                        console.log('未找到模态框实例，尝试使用jQuery隐藏');
-                        // 尝试使用jQuery隐藏
-                        if (typeof $ !== 'undefined') {
-                            $('#overwriteConfirmModal').modal('hide');
+                
+                // 方法1: 使用Bootstrap API
+                if (typeof bootstrap !== 'undefined') {
+                    try {
+                        const modalInstance = bootstrap.Modal.getInstance(modalElement);
+                        if (modalInstance) {
+                            modalInstance.hide();
+                            console.log('使用Bootstrap API隐藏模态框成功');
+                        } else {
+                            console.log('未找到模态框实例，尝试创建新实例');
+                            const newModal = new bootstrap.Modal(modalElement);
+                            newModal.hide();
                         }
+                    } catch (err) {
+                        console.error('使用Bootstrap API隐藏模态框失败:', err);
                     }
                 }
+                
+                // 方法2: 使用jQuery (如果可用)
+                if (typeof $ !== 'undefined') {
+                    try {
+                        $('#overwriteConfirmModal').modal('hide');
+                        console.log('使用jQuery隐藏模态框');
+                    } catch (err) {
+                        console.error('使用jQuery隐藏模态框失败:', err);
+                    }
+                }
+                
+                // 方法3: 使用data-bs-dismiss属性触发关闭
+                if (modalElement) {
+                    const closeButton = modalElement.querySelector('[data-bs-dismiss="modal"]');
+                    if (closeButton) {
+                        closeButton.click();
+                        console.log('通过点击关闭按钮隐藏模态框');
+                    }
+                }
+                
+                // 方法4: 直接修改DOM (最后手段)
+                if (modalElement) {
+                    modalElement.classList.remove('show');
+                    modalElement.style.display = 'none';
+                    document.body.classList.remove('modal-open');
+                    const backdrop = document.querySelector('.modal-backdrop');
+                    if (backdrop) {
+                        backdrop.parentNode.removeChild(backdrop);
+                    }
+                    console.log('通过直接修改DOM隐藏模态框');
+                }
             } catch (error) {
-                console.error('隐藏覆盖确认模态框时出错:', error);
+                console.error('所有隐藏模态框的方法都失败:', error);
+                // 继续执行上传，即使模态框隐藏失败
             }
             
             // 执行文件上传操作，设置overwrite=true
@@ -520,6 +587,12 @@ function initFileUpload() {
                 const result = await uploadSingleFile(fileInfo.file, true);
                 console.log('文件上传结果:', result);
                 
+                if (!result.success && result.error) {
+                    console.error('上传失败:', result.error);
+                    alert('上传失败: ' + result.error);
+                    return;
+                }
+                
                 // 更新上传统计
                 updateUploadStats(result);
                 
@@ -534,6 +607,7 @@ function initFileUpload() {
                 showFinalResult();
             } catch (error) {
                 console.error('上传文件时出错:', error);
+                alert('上传文件时出错: ' + error.message);
                 if (uploadStatus) {
                     uploadStatus.classList.add('d-none');
                 }
@@ -549,6 +623,8 @@ function initFileUpload() {
                 uploadAllNewFiles(newFiles);
             }
         });
+    } else {
+        console.error('确认覆盖按钮元素不存在');
     }
     
     // 批量覆盖确认处理
@@ -687,12 +763,24 @@ function initFileUpload() {
                 console.log(`文件 ${file.name} 检查结果:`, checkResult);
                 
                 if (checkResult.exists) {
-                    // 收集已存在的文件信息
-                    existingFiles.push({
+                    // 详细记录服务器返回的数据结构
+                    console.log('服务器返回的文件信息:', JSON.stringify(checkResult));
+                    
+                    // 收集已存在的文件信息，确保关键字段存在
+                    const fileInfo = {
                         ...checkResult,
-                        file: file
-                    });
-                    console.log(`文件 ${file.name} 已存在，添加到existingFiles。数据库中的文件名: ${checkResult.filename}`);
+                        file: file,
+                        // 确保filename字段存在，优先使用服务器返回的filename，如果没有则使用文件名
+                        filename: file.name
+                    };
+                    
+                    // 如果服务器返回了文件ID，确保它被正确保存
+                    if (checkResult.doc_id) {
+                        fileInfo.id = checkResult.doc_id;
+                    }
+                    
+                    existingFiles.push(fileInfo);
+                    console.log(`文件 ${file.name} 已存在，添加到existingFiles。完整信息:`, fileInfo);
                 } else {
                     // 收集新文件
                     newFiles.push(file);
@@ -732,13 +820,23 @@ function initFileUpload() {
                 }
                 
                 // 显示原始文件名（如果有）
+                console.log('准备设置模态框显示的文件名，文件信息:', fileInfo);
+                
+                // 确定要显示的文件名
+                const displayFilename = fileInfo.original_filename || fileInfo.filename || fileInfo.file.name;
+                
+                // 确定要用于确认的文件名（用于后续查找）
+                const confirmValue = fileInfo.file.name; // 使用实际文件对象的名称
+                
                 if (fileInfo.original_filename && fileInfo.original_filename !== fileInfo.filename) {
-                    existingFilename.innerHTML = `${fileInfo.original_filename}<br><small class="text-muted">存储为: ${fileInfo.filename}</small>`;
+                    existingFilename.innerHTML = `${displayFilename}<br><small class="text-muted">存储为: ${fileInfo.filename}</small>`;
                 } else {
-                    existingFilename.textContent = fileInfo.filename;
+                    existingFilename.textContent = displayFilename;
                 }
-                confirmFilename.value = fileInfo.filename;
-                console.log(`设置文件名: ${fileInfo.filename}, 原始文件名: ${fileInfo.original_filename || fileInfo.filename}`);
+                
+                // 设置确认文件名为文件对象的名称，确保后续能找到
+                confirmFilename.value = confirmValue;
+                console.log(`设置显示文件名: ${displayFilename}, 确认文件名: ${confirmValue}`);
                 
                 // 确保模态框对象已初始化
                 if (!overwriteModal) {
@@ -844,13 +942,64 @@ function initFileUpload() {
         showFinalResult();
     }
     
+    // 获取CSRF令牌的辅助函数
+    function getCSRFToken() {
+        // 尝试多种方法获取CSRF令牌
+        
+        // 方法1: 从表单中获取CSRF令牌
+        const tokenField = document.querySelector('input[name="csrf_token"]');
+        if (tokenField && tokenField.value) {
+            console.log('从表单字段获取到CSRF令牌');
+            return tokenField.value;
+        }
+        
+        // 方法2: 从meta标签获取
+        const metaToken = document.querySelector('meta[name="csrf-token"]');
+        if (metaToken && metaToken.getAttribute('content')) {
+            console.log('从meta标签获取到CSRF令牌');
+            return metaToken.getAttribute('content');
+        }
+        
+        // 方法3: 从cookie获取
+        const cookies = document.cookie.split(';');
+        for (let cookie of cookies) {
+            cookie = cookie.trim();
+            if (cookie.startsWith('csrf_token=')) {
+                const token = cookie.substring('csrf_token='.length, cookie.length);
+                if (token) {
+                    console.log('从cookie获取到CSRF令牌');
+                    return decodeURIComponent(token);
+                }
+            }
+        }
+        
+        // 方法4: 从任何隐藏的csrf_token字段获取
+        const allHiddenInputs = document.querySelectorAll('input[type="hidden"]');
+        for (let input of allHiddenInputs) {
+            if (input.name && input.name.includes('csrf') && input.value) {
+                console.log(`从隐藏字段 ${input.name} 获取到可能的CSRF令牌`);
+                return input.value;
+            }
+        }
+        
+        // 如果没有找到，记录错误并返回空字符串
+        console.error('未找到CSRF令牌，这可能导致请求被服务器拒绝');
+        return '';
+    }
+
     // 检查文件是否存在
     async function checkFileExists(filename) {
         try {
             console.log(`检查文件是否存在: ${filename}`);
             
-            // 直接使用原始文件名检查
-            const response = await fetch(`/api/check-file?filename=${encodeURIComponent(filename)}`);
+            // 构建URL，包含CSRF令牌作为查询参数
+            const csrfToken = getCSRFToken();
+            let url = `/api/check-file?filename=${encodeURIComponent(filename)}`;
+            if (csrfToken) {
+                url += `&csrf_token=${encodeURIComponent(csrfToken)}`;
+            }
+            
+            const response = await fetch(url);
             const result = await response.json();
             console.log(`文件 ${filename} 检查结果:`, result);
             return result;
@@ -971,21 +1120,69 @@ function initFileUpload() {
     
     // 上传单个文件
     async function uploadSingleFile(file, overwrite = false) {
+        console.log(`准备上传文件: ${file.name}, 覆盖模式: ${overwrite}`);
+        
         const formData = new FormData();
         formData.append('file', file);
         formData.append('overwrite', overwrite ? 'true' : 'false');
         
+        // 添加CSRF令牌
+        const csrfToken = getCSRFToken();
+        if (csrfToken) {
+            console.log('已添加CSRF令牌到请求');
+            formData.append('csrf_token', csrfToken);
+        } else {
+            console.warn('未能获取CSRF令牌，尝试继续上传');
+        }
+        
         try {
+            console.log('发送文件上传请求...');
+            
+            // 添加请求超时处理
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), 30000); // 30秒超时
+            
             const response = await fetch('/upload/batch', {
                 method: 'POST',
-                body: formData
+                body: formData,
+                signal: controller.signal
             });
             
-            return await response.json();
+            // 清除超时计时器
+            clearTimeout(timeoutId);
+            
+            if (!response.ok) {
+                console.error(`服务器响应错误: ${response.status} ${response.statusText}`);
+                return { 
+                    success: false, 
+                    error: `服务器响应错误: ${response.status} ${response.statusText}` 
+                };
+            }
+            
+            const result = await response.json();
+            console.log(`文件 ${file.name} 上传结果:`, result);
+            
+            // 检查结果中是否包含嵌套的结果数组
+            if (result.results && Array.isArray(result.results) && result.results.length > 0) {
+                // 返回第一个结果项
+                return result.results[0];
+            }
+            
+            return result;
         } catch (error) {
+            console.error(`上传文件 ${file.name} 时发生错误:`, error);
+            
+            // 检查是否是超时错误
+            if (error.name === 'AbortError') {
+                return { 
+                    success: false, 
+                    error: '请求超时，请检查网络连接或稍后重试' 
+                };
+            }
+            
             return { 
                 success: false, 
-                error: error.message 
+                error: error.message || '未知错误' 
             };
         }
     }

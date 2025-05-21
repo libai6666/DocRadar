@@ -21,7 +21,7 @@ except ImportError:
 
 from app.core.config import SECRET_KEY, LOG_DIR, LOG_LEVEL, LOG_FILE
 from app.core.routes import main_bp
-from app.core.document_routes import document_bp
+from app.core.document_routes import document_bp, compat_bp
 from app.core.search_routes import search_bp
 from app.core.admin_routes import admin_bp
 
@@ -51,6 +51,11 @@ def create_app(test_config=None):
     if has_csrf:
         csrf = CSRFProtect(app)
         logging.info("CSRF保护已启用")
+        
+        # 为兼容性路由添加CSRF豁免
+        csrf.exempt('compat.compat_check_file_exists_get')
+        csrf.exempt('compat.compat_batch_upload')
+        logging.info("已为兼容性路由添加CSRF豁免")
     
     # 尝试初始化会话扩展
     try:
@@ -143,6 +148,7 @@ def create_app(test_config=None):
     app.register_blueprint(document_bp)
     app.register_blueprint(search_bp)
     app.register_blueprint(admin_bp)
+    app.register_blueprint(compat_bp)  # 注册兼容性路由蓝图
     
     # 错误处理
     @app.errorhandler(404)

@@ -206,13 +206,11 @@ class DocxParser(DocumentParser):
                         
                         return {"src": image_url}
             
-            # 转换配置
-            options = {
-                "convert_image": mammoth.images.img_element(image_handler)
-            }
-            
-            # 执行转换
-            result = mammoth.convert_to_html(file_path, options=options)
+            # 执行转换 - 直接传递关键字参数而不是options字典
+            result = mammoth.convert_to_html(
+                file_path, 
+                convert_image=mammoth.images.img_element(image_handler)
+            )
             html = result.value
             
             # 添加基本样式

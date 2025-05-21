@@ -14,8 +14,18 @@ from app.utils.search_engine import SearchEngine
 from app.utils.storage import Storage
 from app.core.config import ALLOWED_EXTENSIONS
 
+# 尝试导入CSRF保护
+try:
+    from flask_wtf.csrf import CSRFProtect, csrf
+    has_csrf = True
+except ImportError:
+    has_csrf = False
+
 # 创建蓝图
 document_bp = Blueprint('document', __name__, url_prefix='/document')
+
+# 创建兼容性路由蓝图（无前缀，用于处理旧的URL格式）
+compat_bp = Blueprint('compat', __name__)
 
 # 初始化存储、搜索引擎
 storage = Storage()
@@ -362,4 +372,61 @@ def check_file_exists():
         'success': True,
         'exists': result.get('exists', False),
         'file_info': result
+    })
+
+# 添加兼容性路由，处理直接访问/api/check-file的GET请求
+@compat_bp.route('/api/check-file', methods=['GET'])
+@login_required
+def compat_check_file_exists_get():
+    """兼容旧版前端的文件检查GET请求"""
+    # 从查询参数获取文件名
+    filename = request.args.get('filename', '')
+    
+    if not filename:
+        return jsonify({
+            'success': False,
+            'message': '未提供文件名'
+        })
+    
+    # 复用存储层的检查方法
+    result = storage.check_file_exists(filename)
+    
+    return jsonify({
+        'success': True,
+        'exists': result.get('exists', False),
+        'file_info': result
+    })
+
+# 添加兼容性路由，处理直接访问/upload/batch的请求
+@compat_bp.route('/upload/batch', methods=['POST'])
+@login_required
+def compat_batch_upload():
+    """兼容旧版前端的批量上传请求"""
+    # 检查请求中是否有文件
+    if 'file' not in request.files:
+        return jsonify({
+            'success': False,
+            'message': '没有提供文件'
+        })
+    
+    file = request.files['file']
+    
+    # 检查文件名是否为空
+    if file.filename == '':
+        return jsonify({
+            'success': False,
+            'message': '未选择文件'
+        })
+    
+    # 检查覆盖选项
+    overwrite = request.form.get('overwrite', 'false') == 'true'
+    
+    # 处理文件上传
+    result = process_upload(file, overwrite)
+    result['filename'] = file.filename
+    
+    return jsonify({
+        'success': True,
+        'message': '上传完成',
+        'results': [result]
     }) 
