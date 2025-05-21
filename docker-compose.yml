@@ -1,19 +1,59 @@
 version: '3'
 
 services:
+  # 生产环境容器
   docradar:
     build: .
     image: docradar:latest
     container_name: docradar
     restart: always
     ports:
-      - "5000:5000"
+      - "192.168.0.110:5000:5000"  # 只绑定到192.168.0.110
     volumes:
-      - ./data/uploads:/app/data/uploads
-      - ./data/db:/app/data/db
-      - ./data/logs:/app/data/logs
-      - ./users.json:/app/users.json
+      - ./data/production/uploads:/app/data/production/uploads
+      - ./data/production/db:/app/data/production/db
+      - ./logs/production:/app/logs/production
+      - ./config/users_production.json:/app/config/users_production.json
+      - ./config/admin_config_production.json:/app/config/admin_config_production.json
     environment:
       - SECRET_KEY=Hwkqzxsl9eOirB2MNmK3P7cTndWQ1a6y
       - ADMIN_KEY=IEbdFkZWuwm4zHpUy61BX9gD7aj3qoti
-    command: gunicorn --workers=4 --bind 0.0.0.0:5000 app:app 
+      - DOCRADAR_ENV=production
+      - FLASK_DEBUG=0
+    command: gunicorn --workers=4 --bind=0.0.0.0:5000 --env DOCRADAR_ENV=production app:app
+    # 使用网络别名，使内部服务保持一致
+    networks:
+      docradar_net:
+        aliases:
+          - docradar-prod
+
+  # 测试环境容器  
+  docradar_test:
+    build: .
+    image: docradar:latest
+    container_name: docradar_test
+    restart: always
+    ports:
+      - "127.0.0.1:5001:5000"  # 只绑定到127.0.0.1
+    volumes:
+      - ./data/test/uploads:/app/data/test/uploads
+      - ./data/test/db:/app/data/test/db
+      - ./logs/test:/app/logs/test
+      - ./config/users_test.json:/app/config/users_test.json
+      - ./config/admin_config_test.json:/app/config/admin_config_test.json
+    environment:
+      - SECRET_KEY=TestSecretKeyDifferentFromProduction
+      - ADMIN_KEY=TestAdminKeyDifferentFromProduction
+      - DOCRADAR_ENV=test
+      - FLASK_DEBUG=1
+    command: gunicorn --workers=2 --bind=0.0.0.0:5000 --env DOCRADAR_ENV=test app:app
+    # 使用网络别名，使内部服务保持一致
+    networks:
+      docradar_net:
+        aliases:
+          - docradar-test
+
+# 创建自定义网络
+networks:
+  docradar_net:
+    driver: bridge 

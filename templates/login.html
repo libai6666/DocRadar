@@ -15,6 +15,7 @@
             background-size: cover;
             background-position: center;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
             padding: 20px;
@@ -119,6 +120,24 @@
             animation: fadeIn 0.3s ease-in;
         }
         
+        .env-indicator {
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            color: white;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+        
+        .env-test {
+            background-color: #17a2b8;
+        }
+        
+        .env-production {
+            background-color: #dc3545;
+        }
+        
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(-10px); }
             to { opacity: 1; transform: translateY(0); }
@@ -132,6 +151,16 @@
     </style>
 </head>
 <body>
+    {% if is_test_env or is_prod_env %}
+    <div class="env-indicator {% if is_test_env %}env-test{% else %}env-production{% endif %}">
+        {% if is_test_env %}
+        <i class="bi bi-gear-fill"></i> 测试环境 ({{ host }}:{{ port }})
+        {% else %}
+        <i class="bi bi-exclamation-triangle-fill"></i> 生产环境 ({{ host }}:{{ port }})
+        {% endif %}
+    </div>
+    {% endif %}
+    
     <main class="form-signin">
         <div class="card">
             <div class="card-header">
@@ -152,7 +181,7 @@
                     {% endif %}
                 {% endwith %}
                 
-                <form method="post" action="{{ url_for('login') }}">
+                <form method="post" action="{{ url_for('main.login') }}">
                     <input type="hidden" name="next" value="{{ next }}">
                     <div class="form-floating">
                         <input type="text" class="form-control" id="username" name="username" placeholder="用户名" required autofocus>

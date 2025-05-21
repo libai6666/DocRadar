@@ -16,16 +16,14 @@ COPY . .
 # 安装Python依赖
 RUN pip install --no-cache-dir -i https://pypi.tuna.tsinghua.edu.cn/simple -r requirements.txt
 
-# 创建数据目录
-RUN mkdir -p /app/data/uploads /app/data/db /app/data/logs
+# 确保目录存在
+RUN mkdir -p /app/data/uploads /app/data/db /app/logs/production /app/logs/test
 
 # 设置环境变量
-ENV FLASK_APP=app.py
-ENV FLASK_ENV=production
 ENV PYTHONUNBUFFERED=1
 
 # 暴露端口
 EXPOSE 5000
 
-# 启动应用
+# 启动应用（仍使用app.py兼容层，后续可改为run.py）
 CMD ["gunicorn", "--bind", "0.0.0.0:5000", "app:app"] 

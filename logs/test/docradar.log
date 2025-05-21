@@ -1,0 +1,455 @@
+2025-05-20 19:05:33,568 [INFO] - werkzeug -  * Restarting with stat
+2025-05-20 19:05:34,049 [WARNING] - werkzeug -  * Debugger is active!
+2025-05-20 19:05:34,055 [INFO] - werkzeug -  * Debugger PIN: 129-233-724
+2025-05-20 19:05:34,169 [INFO] - werkzeug -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2025-05-20 19:06:21,893 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:06:21] "[35m[1mGET / HTTP/1.1[0m" 500 -
+2025-05-20 19:06:22,112 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:06:22] "GET /?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2025-05-20 19:06:22,112 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:06:22] "GET /?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2025-05-20 19:06:22,156 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:06:22] "GET /?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+2025-05-20 19:06:22,161 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:06:22] "GET /?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2025-05-20 19:06:22,212 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:06:22] "GET /?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2025-05-20 19:07:27,476 [INFO] - werkzeug -  * Restarting with stat
+2025-05-20 19:07:27,950 [WARNING] - werkzeug -  * Debugger is active!
+2025-05-20 19:07:27,955 [INFO] - werkzeug -  * Debugger PIN: 129-233-724
+2025-05-20 19:07:28,071 [INFO] - werkzeug -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2025-05-20 19:10:13,748 [INFO] - werkzeug -  * Restarting with stat
+2025-05-20 19:10:14,214 [WARNING] - werkzeug -  * Debugger is active!
+2025-05-20 19:10:14,220 [INFO] - werkzeug -  * Debugger PIN: 129-233-724
+2025-05-20 19:10:14,332 [INFO] - werkzeug -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2025-05-20 19:10:25,107 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:10:25] "[32mGET / HTTP/1.1[0m" 302 -
+2025-05-20 19:10:25,142 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:10:25] "[35m[1mGET /login?next=http%3A%2F%2F127.0.0.1%3A5000%2F HTTP/1.1[0m" 500 -
+2025-05-20 19:10:25,343 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:10:25] "GET /login?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2025-05-20 19:10:25,344 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:10:25] "GET /login?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2025-05-20 19:10:25,389 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:10:25] "GET /login?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+2025-05-20 19:10:25,396 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:10:25] "GET /login?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2025-05-20 19:10:25,435 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:10:25] "GET /login?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2025-05-20 19:10:59,118 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:10:59] "[32mGET / HTTP/1.1[0m" 302 -
+2025-05-20 19:10:59,143 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:10:59] "[35m[1mGET /login?next=http%3A%2F%2F127.0.0.1%3A5000%2F HTTP/1.1[0m" 500 -
+2025-05-20 19:10:59,154 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:10:59] "GET /login?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2025-05-20 19:10:59,155 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:10:59] "GET /login?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2025-05-20 19:10:59,198 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:10:59] "GET /login?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+2025-05-20 19:10:59,204 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:10:59] "GET /login?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2025-05-20 19:11:39,830 [INFO] - werkzeug -  * Restarting with stat
+2025-05-20 19:11:40,295 [WARNING] - werkzeug -  * Debugger is active!
+2025-05-20 19:11:40,300 [INFO] - werkzeug -  * Debugger PIN: 129-233-724
+2025-05-20 19:11:40,413 [INFO] - werkzeug -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2025-05-20 19:12:53,670 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:12:53] "[32mGET / HTTP/1.1[0m" 302 -
+2025-05-20 19:12:53,702 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:12:53] "[35m[1mGET /login?next=http%3A%2F%2F127.0.0.1%3A5000%2F HTTP/1.1[0m" 500 -
+2025-05-20 19:12:53,908 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:12:53] "GET /login?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2025-05-20 19:12:53,909 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:12:53] "GET /login?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2025-05-20 19:12:53,948 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:12:53] "GET /login?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+2025-05-20 19:12:53,953 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:12:53] "GET /login?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2025-05-20 19:14:12,089 [INFO] - werkzeug -  * Restarting with stat
+2025-05-20 19:14:12,588 [WARNING] - werkzeug -  * Debugger is active!
+2025-05-20 19:14:12,594 [INFO] - werkzeug -  * Debugger PIN: 129-233-724
+2025-05-20 19:14:12,707 [INFO] - werkzeug -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2025-05-20 19:14:33,549 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:14:33] "[32mGET / HTTP/1.1[0m" 302 -
+2025-05-20 19:14:33,563 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:14:33] "GET /login?next=http%3A%2F%2F127.0.0.1%3A5000%2F HTTP/1.1" 200 -
+2025-05-20 19:14:33,710 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:14:33] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-20 19:14:46,425 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:14:46] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-05-20 19:14:46,461 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:14:46] "[35m[1mGET / HTTP/1.1[0m" 500 -
+2025-05-20 19:14:46,479 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:14:46] "GET /?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2025-05-20 19:14:46,482 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:14:46] "GET /?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2025-05-20 19:14:46,490 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:14:46] "GET /?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2025-05-20 19:14:46,511 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:14:46] "GET /?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+2025-05-20 19:14:46,560 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:14:46] "GET /?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2025-05-20 19:17:42,656 [INFO] - werkzeug -  * Restarting with stat
+2025-05-20 19:17:43,110 [WARNING] - werkzeug -  * Debugger is active!
+2025-05-20 19:17:43,116 [INFO] - werkzeug -  * Debugger PIN: 129-233-724
+2025-05-20 19:17:43,224 [INFO] - werkzeug -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2025-05-20 19:18:11,341 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:18:11] "[32mGET / HTTP/1.1[0m" 302 -
+2025-05-20 19:18:11,356 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:18:11] "GET /login?next=http%3A%2F%2F127.0.0.1%3A5000%2F HTTP/1.1" 200 -
+2025-05-20 19:18:11,497 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:18:11] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-20 19:18:18,266 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:18:18] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-05-20 19:18:18,309 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:18:18] "[35m[1mGET / HTTP/1.1[0m" 500 -
+2025-05-20 19:18:18,327 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:18:18] "GET /?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2025-05-20 19:18:18,331 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:18:18] "GET /?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2025-05-20 19:18:18,338 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:18:18] "GET /?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2025-05-20 19:18:18,361 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:18:18] "GET /?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+2025-05-20 19:20:56,506 [INFO] - werkzeug -  * Restarting with stat
+2025-05-20 19:20:56,992 [WARNING] - werkzeug -  * Debugger is active!
+2025-05-20 19:20:56,998 [INFO] - werkzeug -  * Debugger PIN: 129-233-724
+2025-05-20 19:20:57,109 [INFO] - werkzeug -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2025-05-20 19:21:26,844 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:21:26] "[32mGET / HTTP/1.1[0m" 302 -
+2025-05-20 19:21:26,858 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:21:26] "GET /login?next=http%3A%2F%2F127.0.0.1%3A5000%2F HTTP/1.1" 200 -
+2025-05-20 19:21:27,003 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:21:27] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-20 19:21:34,668 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:21:34] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-05-20 19:21:34,711 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:21:34] "[35m[1mGET / HTTP/1.1[0m" 500 -
+2025-05-20 19:21:34,733 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:21:34] "GET /?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2025-05-20 19:21:34,733 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:21:34] "GET /?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2025-05-20 19:21:34,742 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:21:34] "GET /?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2025-05-20 19:21:34,764 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:21:34] "GET /?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+2025-05-20 19:22:39,658 [INFO] - werkzeug -  * Restarting with stat
+2025-05-20 19:22:40,129 [WARNING] - werkzeug -  * Debugger is active!
+2025-05-20 19:22:40,134 [INFO] - werkzeug -  * Debugger PIN: 129-233-724
+2025-05-20 19:22:40,244 [INFO] - werkzeug -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2025-05-20 19:23:04,785 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:23:04] "[32mGET / HTTP/1.1[0m" 302 -
+2025-05-20 19:23:04,799 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:23:04] "GET /login?next=http%3A%2F%2F127.0.0.1%3A5000%2F HTTP/1.1" 200 -
+2025-05-20 19:23:04,935 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:23:04] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-20 19:23:13,183 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:23:13] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-05-20 19:23:13,227 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:23:13] "[35m[1mGET / HTTP/1.1[0m" 500 -
+2025-05-20 19:23:13,243 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:23:13] "GET /?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2025-05-20 19:23:13,248 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:23:13] "GET /?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2025-05-20 19:23:13,256 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:23:13] "GET /?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2025-05-20 19:23:13,278 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:23:13] "GET /?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+2025-05-20 19:25:37,391 [INFO] - werkzeug -  * Restarting with stat
+2025-05-20 19:25:37,855 [WARNING] - werkzeug -  * Debugger is active!
+2025-05-20 19:25:37,860 [INFO] - werkzeug -  * Debugger PIN: 129-233-724
+2025-05-20 19:25:37,970 [INFO] - werkzeug -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2025-05-20 19:25:41,760 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:25:41] "[32mGET / HTTP/1.1[0m" 302 -
+2025-05-20 19:25:41,770 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:25:41] "GET /login?next=http%3A%2F%2F127.0.0.1%3A5000%2F HTTP/1.1" 200 -
+2025-05-20 19:25:41,996 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:25:41] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-20 19:25:48,443 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:25:48] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-05-20 19:25:48,468 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:25:48] "GET / HTTP/1.1" 200 -
+2025-05-20 19:25:48,489 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:25:48] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-20 19:25:48,489 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:25:48] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-20 19:25:55,390 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:25:55] "GET /account HTTP/1.1" 200 -
+2025-05-20 19:25:55,406 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:25:55] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-20 19:25:55,410 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:25:55] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-20 19:26:02,621 [INFO] - root - FTS5ËÑË÷ 'adjustments' ÕÒµ½ 4 ¸ö½á¹û
+2025-05-20 19:26:02,653 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:26:02] "[35m[1mGET /search?q=adjustments HTTP/1.1[0m" 500 -
+2025-05-20 19:26:02,677 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:26:02] "GET /search?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2025-05-20 19:26:02,677 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:26:02] "GET /search?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2025-05-20 19:26:02,684 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:26:02] "GET /search?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2025-05-20 19:26:02,696 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:26:02] "GET /search?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+2025-05-20 19:26:02,751 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:26:02] "GET /search?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2025-05-20 19:26:07,632 [INFO] - root - FTS5ËÑË÷ 'adjustments' ÕÒµ½ 4 ¸ö½á¹û
+2025-05-20 19:26:07,651 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:26:07] "[35m[1mGET /search?q=adjustments HTTP/1.1[0m" 500 -
+2025-05-20 19:26:07,669 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:26:07] "GET /search?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2025-05-20 19:26:07,673 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:26:07] "GET /search?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2025-05-20 19:26:07,679 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:26:07] "GET /search?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2025-05-20 19:26:07,683 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:26:07] "GET /search?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+2025-05-20 19:27:22,226 [INFO] - werkzeug -  * Restarting with stat
+2025-05-20 19:27:22,696 [WARNING] - werkzeug -  * Debugger is active!
+2025-05-20 19:27:22,700 [INFO] - werkzeug -  * Debugger PIN: 129-233-724
+2025-05-20 19:27:22,812 [INFO] - werkzeug -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2025-05-20 19:28:11,193 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:28:11] "[32mGET /search?q=adjustments HTTP/1.1[0m" 302 -
+2025-05-20 19:28:11,206 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:28:11] "GET /login?next=http%3A%2F%2F127.0.0.1%3A5000%2Fsearch%3Fq%3Dadjustments HTTP/1.1" 200 -
+2025-05-20 19:28:11,358 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:28:11] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-20 19:28:17,149 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:28:17] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-05-20 19:28:17,154 [INFO] - root - FTS5ËÑË÷ 'adjustments' ÕÒµ½ 4 ¸ö½á¹û
+2025-05-20 19:28:17,169 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:28:17] "GET /search?q=adjustments HTTP/1.1" 200 -
+2025-05-20 19:28:17,194 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:28:17] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-20 19:28:17,194 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:28:17] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-20 19:28:19,021 [INFO] - root - FTS5ËÑË÷ 'adjustments' ÕÒµ½ 4 ¸ö½á¹û
+2025-05-20 19:28:19,023 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:28:19] "GET /search?q=adjustments HTTP/1.1" 200 -
+2025-05-20 19:28:19,036 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:28:19] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-20 19:28:19,036 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:28:19] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-20 19:28:21,236 [INFO] - root - FTS5ËÑË÷ 'adjustments' ÕÒµ½ 4 ¸ö½á¹û
+2025-05-20 19:28:21,237 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:28:21] "GET /search?q=adjustments HTTP/1.1" 200 -
+2025-05-20 19:28:21,253 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:28:21] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-20 19:28:21,256 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:28:21] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-20 19:28:22,991 [INFO] - root - FTS5ËÑË÷ 'adjustments' ÕÒµ½ 4 ¸ö½á¹û
+2025-05-20 19:28:22,992 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:28:22] "GET /search?q=adjustments HTTP/1.1" 200 -
+2025-05-20 19:28:25,872 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:28:25] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-05-20 19:28:25,877 [INFO] - root - FTS5ËÑË÷ 'adjustments' ÕÒµ½ 4 ¸ö½á¹û
+2025-05-20 19:28:25,880 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:28:25] "GET /search?q=adjustments HTTP/1.1" 200 -
+2025-05-20 19:28:25,898 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:28:25] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-20 19:28:25,902 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:28:25] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-20 19:28:27,686 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:28:27] "GET / HTTP/1.1" 200 -
+2025-05-20 19:28:27,706 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:28:27] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-20 19:28:27,707 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:28:27] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-20 19:28:31,202 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:28:31] "GET /?page=1&limit=100&search= HTTP/1.1" 200 -
+2025-05-20 19:28:31,224 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:28:31] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-20 19:28:31,229 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:28:31] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-20 19:28:32,749 [INFO] - root - ²é¿´ÎÄµµ: 50, ÎÄ¼þÀàÐÍ: application/vnd.openxmlformats-officedocument.wordprocessingml.document
+2025-05-20 19:28:32,750 [INFO] - root - ÎÄµµ 50 Ê¹ÓÃHTMLÄÚÈÝÏÔÊ¾
+2025-05-20 19:28:32,759 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:28:32] "GET /document/50 HTTP/1.1" 200 -
+2025-05-20 19:28:32,776 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:28:32] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-20 19:28:32,785 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:28:32] "GET /static/doc_images/doc_50/image_mammoth_8f379cfe96d84a279056737ea039ab97_3.png HTTP/1.1" 200 -
+2025-05-20 19:28:32,786 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:28:32] "GET /static/doc_images/doc_50/image_mammoth_13e93de7a5074f4b8b45127ded1b4bf7_4.png HTTP/1.1" 200 -
+2025-05-20 19:28:32,786 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:28:32] "GET /static/doc_images/doc_50/image_mammoth_852b69e3de424040ae835b5f168a1163_1.png HTTP/1.1" 200 -
+2025-05-20 19:28:32,786 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:28:32] "GET /static/doc_images/doc_50/image_mammoth_9a3b6c541c174248b2d38028d5363199_2.png HTTP/1.1" 200 -
+2025-05-20 19:28:32,786 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:28:32] "GET /static/doc_images/doc_50/image_mammoth_526622566fad46928d63f75ffac2e1e5_5.png HTTP/1.1" 200 -
+2025-05-20 19:28:32,787 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:28:32] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-20 19:28:32,793 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:28:32] "GET /static/doc_images/doc_50/image_mammoth_ed59d6a21d5749a8a3647d534a52c29b_6.png HTTP/1.1" 200 -
+2025-05-20 19:28:32,794 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:28:32] "GET /static/doc_images/doc_50/image_mammoth_fe24d4ed8354407f8789360a93997182_7.png HTTP/1.1" 200 -
+2025-05-20 19:28:41,819 [INFO] - root - FTS5ËÑË÷ 'Ö÷²¥' ÕÒµ½ 20 ¸ö½á¹û
+2025-05-20 19:28:41,821 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:28:41] "GET /search?q=Ö÷²¥ HTTP/1.1" 200 -
+2025-05-20 19:28:41,850 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:28:41] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-20 19:28:41,851 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:28:41] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-20 19:32:02,727 [INFO] - werkzeug -  * Restarting with stat
+2025-05-20 19:32:03,257 [WARNING] - werkzeug -  * Debugger is active!
+2025-05-20 19:32:03,263 [INFO] - werkzeug -  * Debugger PIN: 129-233-724
+2025-05-20 19:32:03,371 [INFO] - werkzeug -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2025-05-20 19:34:02,507 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:34:02] "[32mGET / HTTP/1.1[0m" 302 -
+2025-05-20 19:34:02,520 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:34:02] "GET /login?next=http%3A%2F%2F127.0.0.1%3A5000%2F HTTP/1.1" 200 -
+2025-05-20 19:34:02,668 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:34:02] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-20 19:34:12,472 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:34:12] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-05-20 19:34:12,497 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:34:12] "GET / HTTP/1.1" 200 -
+2025-05-20 19:34:12,516 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:34:12] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-20 19:34:12,517 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:34:12] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-20 19:34:15,445 [INFO] - root - ËÑË÷ 'adjustments' ÕÒµ½ 1 ¸ö½á¹û
+2025-05-20 19:34:15,458 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:34:15] "GET /search?q=adjustments HTTP/1.1" 200 -
+2025-05-20 19:34:15,480 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:34:15] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-20 19:34:15,481 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:34:15] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-20 19:34:21,237 [INFO] - root - ²é¿´ÎÄµµ: 55, ÎÄ¼þÀàÐÍ: application/vnd.openxmlformats-officedocument.wordprocessingml.document
+2025-05-20 19:34:21,238 [INFO] - root - ÎÄµµ 55 Ê¹ÓÃHTMLÄÚÈÝÏÔÊ¾
+2025-05-20 19:34:21,247 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:34:21] "GET /document/55 HTTP/1.1" 200 -
+2025-05-20 19:34:21,268 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:34:21] "GET /static/doc_images/doc_55/image_mammoth_f9409ce987ec476e821e0ab3e91d2526_1.png HTTP/1.1" 200 -
+2025-05-20 19:34:21,274 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:34:21] "GET /static/doc_images/doc_55/image_mammoth_d2ccc89a42524da2a474afae3cfde41d_2.png HTTP/1.1" 200 -
+2025-05-20 19:34:21,274 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:34:21] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-20 19:34:21,274 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:34:21] "GET /static/doc_images/doc_55/image_mammoth_50740f8ee05b42f5882b5d13eb864e95_3.png HTTP/1.1" 200 -
+2025-05-20 19:34:21,275 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:34:21] "GET /static/doc_images/doc_55/image_mammoth_bc257a22da6b4535957725e65adbaf6e_4.png HTTP/1.1" 200 -
+2025-05-20 19:34:21,276 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:34:21] "GET /static/doc_images/doc_55/image_mammoth_f834ad9ca41a4c29830e2e851fc9879d_5.png HTTP/1.1" 200 -
+2025-05-20 19:34:21,283 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:34:21] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-20 19:34:21,284 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:34:21] "GET /static/doc_images/doc_55/image_mammoth_a43562662e5f456182cd3f448691ee8c_6.png HTTP/1.1" 200 -
+2025-05-20 19:34:21,288 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:34:21] "GET /static/doc_images/doc_55/image_mammoth_f3a1898a61a044ec98ce925dd285d88a_7.png HTTP/1.1" 200 -
+2025-05-20 19:34:21,288 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:34:21] "GET /static/doc_images/doc_55/image_mammoth_23cbeae574d44a3197ae35b956daf153_8.png HTTP/1.1" 200 -
+2025-05-20 19:34:21,291 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:34:21] "GET /static/doc_images/doc_55/image_mammoth_0afc03be14c54fb3a21998b12f662d16_9.png HTTP/1.1" 200 -
+2025-05-20 19:34:21,294 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:34:21] "GET /static/doc_images/doc_55/image_mammoth_1eb0f39dd27442c8b4ec928dfbe0df61_10.png HTTP/1.1" 200 -
+2025-05-20 19:34:21,298 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:34:21] "GET /static/doc_images/doc_55/image_mammoth_9724e9e83f824b7cbd7b32578b44b633_11.png HTTP/1.1" 200 -
+2025-05-20 19:34:21,300 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:34:21] "GET /static/doc_images/doc_55/image_mammoth_f95689eecec341199773b9f1032f831a_12.png HTTP/1.1" 200 -
+2025-05-20 19:34:21,300 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:34:21] "GET /static/doc_images/doc_55/image_mammoth_897ae1cbca564182acdbb26b4183ec8d_13.png HTTP/1.1" 200 -
+2025-05-20 19:34:21,302 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:34:21] "GET /static/doc_images/doc_55/image_mammoth_f15e2ecebdc64100bbfb0d67f7d20c90_14.png HTTP/1.1" 200 -
+2025-05-20 19:34:21,351 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:34:21] "GET /static/doc_images/doc_55/image_mammoth_32093aa002e24c408e4b5338d6b401a8_15.png HTTP/1.1" 200 -
+2025-05-20 19:34:21,353 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:34:21] "GET /static/doc_images/doc_55/image_mammoth_a3223e2981a64740a2872b15092f92a5_16.png HTTP/1.1" 200 -
+2025-05-20 19:34:21,358 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:34:21] "GET /static/doc_images/doc_55/image_mammoth_28da44ee969a4b918eff5a1640a65d62_17.png HTTP/1.1" 200 -
+2025-05-20 19:34:21,433 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:34:21] "GET /static/doc_images/doc_55/image_mammoth_60f28562c5e74fe69cff3cb8f364616a_18.png HTTP/1.1" 200 -
+2025-05-20 19:34:21,478 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:34:21] "GET /static/doc_images/doc_55/image_mammoth_eae4924fa92b48ca8e6c87b6557d23c5_19.png HTTP/1.1" 200 -
+2025-05-20 19:34:21,481 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:34:21] "GET /static/doc_images/doc_55/image_mammoth_0935df03930b4a718fdc85941d23efb6_20.png HTTP/1.1" 200 -
+2025-05-20 19:34:21,482 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:34:21] "GET /static/doc_images/doc_55/image_mammoth_f520137c54b94659b3cb0ea7686d22ed_21.png HTTP/1.1" 200 -
+2025-05-20 19:34:21,490 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:34:21] "GET /static/doc_images/doc_55/image_mammoth_c755349334274ce68adf289a55069a53_22.png HTTP/1.1" 200 -
+2025-05-20 19:34:21,509 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:34:21] "GET /static/doc_images/doc_55/image_mammoth_01df9e8f6de74f28a7e79b2c380057fd_23.png HTTP/1.1" 200 -
+2025-05-20 19:34:21,513 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:34:21] "GET /static/doc_images/doc_55/image_mammoth_d2dd2ebe2d014bad967ead973b27f24e_24.png HTTP/1.1" 200 -
+2025-05-20 19:34:21,513 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:34:21] "GET /static/doc_images/doc_55/image_mammoth_2c003cbd326c46128754819029337f2e_25.png HTTP/1.1" 200 -
+2025-05-20 19:34:21,519 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:34:21] "GET /static/doc_images/doc_55/image_mammoth_e5abeb512aaa4d0781918f9ef0fe8c97_26.png HTTP/1.1" 200 -
+2025-05-20 19:34:21,524 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:34:21] "GET /static/doc_images/doc_55/image_mammoth_a077ca2b90144a88a88ab67c5f46d601_27.png HTTP/1.1" 200 -
+2025-05-20 19:34:21,539 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:34:21] "GET /static/doc_images/doc_55/image_mammoth_91fc6ed247774371b6042600a3fc8b6f_28.png HTTP/1.1" 200 -
+2025-05-20 19:34:33,355 [INFO] - root - ËÑË÷ 'Ö÷²¥Ö÷¶¯½áÊøÔ¼ÁÄ' ÕÒµ½ 2 ¸ö½á¹û
+2025-05-20 19:34:33,359 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:34:33] "GET /search?q=Ö÷²¥Ö÷¶¯½áÊøÔ¼ÁÄ HTTP/1.1" 200 -
+2025-05-20 19:34:33,386 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:34:33] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-20 19:34:33,387 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:34:33] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-20 19:34:48,264 [INFO] - root - ËÑË÷ 'adjustments' ÕÒµ½ 1 ¸ö½á¹û
+2025-05-20 19:34:48,267 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:34:48] "GET /search?q=adjustments HTTP/1.1" 200 -
+2025-05-20 19:34:48,285 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:34:48] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-20 19:34:48,290 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:34:48] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-20 19:36:28,333 [INFO] - werkzeug -  * Restarting with stat
+2025-05-20 19:36:28,805 [WARNING] - werkzeug -  * Debugger is active!
+2025-05-20 19:36:28,811 [INFO] - werkzeug -  * Debugger PIN: 129-233-724
+2025-05-20 19:36:28,923 [INFO] - werkzeug -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2025-05-20 19:36:31,208 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:36:31] "[32mGET / HTTP/1.1[0m" 302 -
+2025-05-20 19:36:31,221 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:36:31] "GET /login?next=http%3A%2F%2F127.0.0.1%3A5000%2F HTTP/1.1" 200 -
+2025-05-20 19:36:31,372 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:36:31] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-20 19:36:42,398 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:36:42] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-05-20 19:36:42,424 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:36:42] "GET / HTTP/1.1" 200 -
+2025-05-20 19:36:42,442 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:36:42] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-20 19:36:42,446 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:36:42] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-20 19:36:46,374 [INFO] - root - ËÑË÷ 'adjustments' ÕÒµ½ 1 ¸ö½á¹û
+2025-05-20 19:36:46,387 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:36:46] "GET /search?q=adjustments HTTP/1.1" 200 -
+2025-05-20 19:36:46,411 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:36:46] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-20 19:36:46,412 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:36:46] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-20 19:37:24,673 [INFO] - werkzeug -  * Detected change in 'D:\\tools\\Pycharm\\PycharmWork\\DocRadar\\app\\core\\search_routes.py', reloading
+2025-05-20 19:37:24,719 [INFO] - werkzeug -  * Restarting with stat
+2025-05-20 19:37:25,231 [WARNING] - werkzeug -  * Debugger is active!
+2025-05-20 19:37:25,236 [INFO] - werkzeug -  * Debugger PIN: 129-233-724
+2025-05-20 19:37:25,354 [INFO] - werkzeug -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2025-05-20 19:38:44,859 [INFO] - werkzeug -  * Restarting with stat
+2025-05-20 19:38:45,333 [WARNING] - werkzeug -  * Debugger is active!
+2025-05-20 19:38:45,338 [INFO] - werkzeug -  * Debugger PIN: 129-233-724
+2025-05-20 19:38:45,448 [INFO] - werkzeug -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2025-05-20 19:39:46,000 [INFO] - werkzeug -  * Detected change in 'D:\\tools\\Pycharm\\PycharmWork\\DocRadar\\app\\utils\\storage.py', reloading
+2025-05-20 19:39:46,051 [INFO] - werkzeug -  * Restarting with stat
+2025-05-20 19:39:46,294 [INFO] - werkzeug -  * Detected change in 'D:\\tools\\Pycharm\\PycharmWork\\DocRadar\\app\\utils\\storage.py', reloading
+2025-05-20 19:39:46,347 [INFO] - werkzeug -  * Restarting with stat
+2025-05-20 19:39:46,553 [WARNING] - werkzeug -  * Debugger is active!
+2025-05-20 19:39:46,560 [INFO] - werkzeug -  * Debugger PIN: 129-233-724
+2025-05-20 19:39:46,686 [INFO] - werkzeug -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2025-05-20 19:39:46,850 [WARNING] - werkzeug -  * Debugger is active!
+2025-05-20 19:39:46,856 [INFO] - werkzeug -  * Debugger PIN: 129-233-724
+2025-05-20 19:39:46,970 [INFO] - werkzeug -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2025-05-20 19:41:05,842 [INFO] - werkzeug -  * Detected change in 'D:\\tools\\Pycharm\\PycharmWork\\DocRadar\\app\\core\\search_routes.py', reloading
+2025-05-20 19:41:05,897 [INFO] - werkzeug -  * Restarting with stat
+2025-05-20 19:41:06,374 [WARNING] - werkzeug -  * Debugger is active!
+2025-05-20 19:41:06,379 [INFO] - werkzeug -  * Debugger PIN: 129-233-724
+2025-05-20 19:41:06,487 [INFO] - werkzeug -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2025-05-20 19:41:06,664 [INFO] - werkzeug -  * Detected change in 'D:\\tools\\Pycharm\\PycharmWork\\DocRadar\\app\\core\\search_routes.py', reloading
+2025-05-20 19:41:06,710 [INFO] - werkzeug -  * Restarting with stat
+2025-05-20 19:41:07,221 [WARNING] - werkzeug -  * Debugger is active!
+2025-05-20 19:41:07,226 [INFO] - werkzeug -  * Debugger PIN: 129-233-724
+2025-05-20 19:41:07,334 [INFO] - werkzeug -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2025-05-20 19:41:32,437 [INFO] - werkzeug -  * Restarting with stat
+2025-05-20 19:41:32,914 [WARNING] - werkzeug -  * Debugger is active!
+2025-05-20 19:41:32,921 [INFO] - werkzeug -  * Debugger PIN: 129-233-724
+2025-05-20 19:41:33,038 [INFO] - werkzeug -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2025-05-20 19:42:43,159 [INFO] - werkzeug -  * Detected change in 'D:\\tools\\Pycharm\\PycharmWork\\DocRadar\\app\\utils\\search_engine.py', reloading
+2025-05-20 19:42:43,204 [INFO] - werkzeug -  * Restarting with stat
+2025-05-20 19:42:43,700 [WARNING] - werkzeug -  * Debugger is active!
+2025-05-20 19:42:43,705 [INFO] - werkzeug -  * Debugger PIN: 129-233-724
+2025-05-20 19:42:43,826 [INFO] - werkzeug -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2025-05-20 19:42:43,859 [INFO] - werkzeug -  * Detected change in 'D:\\tools\\Pycharm\\PycharmWork\\DocRadar\\app\\utils\\search_engine.py', reloading
+2025-05-20 19:42:43,906 [INFO] - werkzeug -  * Restarting with stat
+2025-05-20 19:42:44,003 [INFO] - werkzeug -  * Detected change in 'D:\\tools\\Pycharm\\PycharmWork\\DocRadar\\app\\utils\\search_engine.py', reloading
+2025-05-20 19:42:44,064 [INFO] - werkzeug -  * Restarting with stat
+2025-05-20 19:42:44,406 [WARNING] - werkzeug -  * Debugger is active!
+2025-05-20 19:42:44,412 [INFO] - werkzeug -  * Debugger PIN: 129-233-724
+2025-05-20 19:42:44,527 [INFO] - werkzeug -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2025-05-20 19:42:44,553 [WARNING] - werkzeug -  * Debugger is active!
+2025-05-20 19:42:44,560 [INFO] - werkzeug -  * Debugger PIN: 129-233-724
+2025-05-20 19:42:44,677 [INFO] - werkzeug -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2025-05-20 19:43:01,694 [INFO] - werkzeug -  * Detected change in 'D:\\tools\\Pycharm\\PycharmWork\\DocRadar\\app\\utils\\storage.py', reloading
+2025-05-20 19:43:01,740 [INFO] - werkzeug -  * Restarting with stat
+2025-05-20 19:43:02,225 [WARNING] - werkzeug -  * Debugger is active!
+2025-05-20 19:43:02,231 [INFO] - werkzeug -  * Debugger PIN: 129-233-724
+2025-05-20 19:43:02,360 [INFO] - werkzeug -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2025-05-20 19:43:02,374 [INFO] - werkzeug -  * Detected change in 'D:\\tools\\Pycharm\\PycharmWork\\DocRadar\\app\\utils\\storage.py', reloading
+2025-05-20 19:43:02,432 [INFO] - werkzeug -  * Restarting with stat
+2025-05-20 19:43:02,555 [INFO] - werkzeug -  * Detected change in 'D:\\tools\\Pycharm\\PycharmWork\\DocRadar\\app\\utils\\storage.py', reloading
+2025-05-20 19:43:02,604 [INFO] - werkzeug -  * Restarting with stat
+2025-05-20 19:43:02,931 [WARNING] - werkzeug -  * Debugger is active!
+2025-05-20 19:43:02,937 [INFO] - werkzeug -  * Debugger PIN: 129-233-724
+2025-05-20 19:43:03,052 [INFO] - werkzeug -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2025-05-20 19:43:03,088 [WARNING] - werkzeug -  * Debugger is active!
+2025-05-20 19:43:03,093 [INFO] - werkzeug -  * Debugger PIN: 129-233-724
+2025-05-20 19:43:03,207 [INFO] - werkzeug -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2025-05-20 19:44:10,452 [INFO] - werkzeug -  * Detected change in 'D:\\tools\\Pycharm\\PycharmWork\\DocRadar\\scripts\\init_db.py', reloading
+2025-05-20 19:44:10,501 [INFO] - werkzeug -  * Restarting with stat
+2025-05-20 19:44:10,991 [WARNING] - werkzeug -  * Debugger is active!
+2025-05-20 19:44:10,997 [INFO] - werkzeug -  * Debugger PIN: 129-233-724
+2025-05-20 19:44:11,110 [INFO] - werkzeug -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2025-05-20 19:44:11,223 [INFO] - werkzeug -  * Detected change in 'D:\\tools\\Pycharm\\PycharmWork\\DocRadar\\scripts\\init_db.py', reloading
+2025-05-20 19:44:11,275 [INFO] - werkzeug -  * Restarting with stat
+2025-05-20 19:44:11,284 [INFO] - werkzeug -  * Detected change in 'D:\\tools\\Pycharm\\PycharmWork\\DocRadar\\scripts\\init_db.py', reloading
+2025-05-20 19:44:11,337 [INFO] - werkzeug -  * Restarting with stat
+2025-05-20 19:44:11,789 [WARNING] - werkzeug -  * Debugger is active!
+2025-05-20 19:44:11,795 [INFO] - werkzeug -  * Debugger PIN: 129-233-724
+2025-05-20 19:44:11,850 [WARNING] - werkzeug -  * Debugger is active!
+2025-05-20 19:44:11,856 [INFO] - werkzeug -  * Debugger PIN: 129-233-724
+2025-05-20 19:44:11,956 [INFO] - werkzeug -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2025-05-20 19:44:12,021 [INFO] - werkzeug -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2025-05-20 19:44:33,944 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:44:33] "[32mGET /search?q=adjustments HTTP/1.1[0m" 302 -
+2025-05-20 19:44:33,954 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:44:33] "GET /login?next=http%3A%2F%2F127.0.0.1%3A5000%2Fsearch%3Fq%3Dadjustments HTTP/1.1" 200 -
+2025-05-20 19:44:34,099 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:44:34] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-20 19:44:39,421 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:44:39] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-05-20 19:44:39,429 [INFO] - root - ËÑË÷ 'adjustments' ÕÒµ½ 1 ¸ö½á¹û
+2025-05-20 19:44:39,443 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:44:39] "GET /search?q=adjustments HTTP/1.1" 200 -
+2025-05-20 19:44:39,465 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:44:39] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-20 19:44:39,465 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:44:39] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-20 19:44:41,113 [INFO] - root - ËÑË÷ 'adjustments' ÕÒµ½ 1 ¸ö½á¹û
+2025-05-20 19:44:41,115 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:44:41] "GET /search?q=adjustments HTTP/1.1" 200 -
+2025-05-20 19:44:41,128 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:44:41] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-20 19:44:41,129 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:44:41] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-20 19:44:43,526 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:44:43] "GET / HTTP/1.1" 200 -
+2025-05-20 19:44:43,552 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:44:43] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-20 19:44:43,553 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:44:43] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-20 19:44:45,076 [INFO] - root - ²é¿´ÎÄµµ: 57, ÎÄ¼þÀàÐÍ: application/vnd.openxmlformats-officedocument.wordprocessingml.document
+2025-05-20 19:44:45,078 [INFO] - root - ÎÄµµ 57 Ê¹ÓÃHTMLÄÚÈÝÏÔÊ¾
+2025-05-20 19:44:45,087 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:44:45] "GET /document/57 HTTP/1.1" 200 -
+2025-05-20 19:44:45,101 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:44:45] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-20 19:44:45,108 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:44:45] "GET /static/doc_images/doc_57/image_mammoth_e5bd57727e5e44de8340ebb08a8b3683_1.png HTTP/1.1" 200 -
+2025-05-20 19:44:45,108 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:44:45] "GET /static/doc_images/doc_57/image_mammoth_11c60fb0a79a4315b190b37f18ca7d33_2.png HTTP/1.1" 200 -
+2025-05-20 19:44:45,109 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:44:45] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-20 19:44:54,873 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:44:54] "[35m[1mGET /search?q= HTTP/1.1[0m" 500 -
+2025-05-20 19:44:54,889 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:44:54] "GET /search?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2025-05-20 19:44:54,893 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:44:54] "GET /search?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2025-05-20 19:44:54,899 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:44:54] "GET /search?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2025-05-20 19:44:54,918 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:44:54] "GET /search?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+2025-05-20 19:44:54,965 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:44:54] "GET /search?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2025-05-20 19:44:59,888 [INFO] - root - ²é¿´ÎÄµµ: 54, ÎÄ¼þÀàÐÍ: application/vnd.openxmlformats-officedocument.wordprocessingml.document
+2025-05-20 19:44:59,889 [INFO] - root - ÎÄµµ 54 Ê¹ÓÃHTMLÄÚÈÝÏÔÊ¾
+2025-05-20 19:44:59,890 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:44:59] "GET /document/54 HTTP/1.1" 200 -
+2025-05-20 19:44:59,910 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:44:59] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-20 19:44:59,919 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:44:59] "GET /static/doc_images/doc_54/image_mammoth_436c07d16a2a4457880d7ff06aff7e49_1.png HTTP/1.1" 200 -
+2025-05-20 19:44:59,920 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:44:59] "GET /static/doc_images/doc_54/image_mammoth_ba4af1acf4284e7c8f7555733a27d330_3.png HTTP/1.1" 200 -
+2025-05-20 19:44:59,920 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:44:59] "GET /static/doc_images/doc_54/image_mammoth_0f7a117863f84ce2a3f7efa691421571_2.png HTTP/1.1" 200 -
+2025-05-20 19:44:59,922 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:44:59] "GET /static/doc_images/doc_54/image_mammoth_9b3ba1c0ab67450a8712931ef75a8e41_4.png HTTP/1.1" 200 -
+2025-05-20 19:44:59,923 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:44:59] "GET /static/doc_images/doc_54/image_mammoth_e315863dc0964a29ade9a6f21ddbd596_5.png HTTP/1.1" 200 -
+2025-05-20 19:44:59,924 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:44:59] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-20 19:44:59,934 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:44:59] "GET /static/doc_images/doc_54/image_mammoth_1eae2e6fe78d4c909114927b9c54bea1_6.png HTTP/1.1" 200 -
+2025-05-20 19:44:59,935 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:44:59] "GET /static/doc_images/doc_54/image_mammoth_ca47cf4e82da4ce48b84d5f117502cc3_7.png HTTP/1.1" 200 -
+2025-05-20 19:44:59,937 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:44:59] "GET /static/doc_images/doc_54/image_mammoth_245867b9acde417ba1d5149e80b6ece6_8.png HTTP/1.1" 200 -
+2025-05-20 19:44:59,940 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:44:59] "GET /static/doc_images/doc_54/image_mammoth_7aa9b6f2680540a9802dc33f9bcb9f7c_9.png HTTP/1.1" 200 -
+2025-05-20 19:44:59,946 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:44:59] "GET /static/doc_images/doc_54/image_mammoth_afd98da5488c4d9d8a1487ec692b7d3f_10.png HTTP/1.1" 200 -
+2025-05-20 19:44:59,983 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:44:59] "GET /static/doc_images/doc_54/image_mammoth_9b3b8f89a28e42779bafa108200a2443_11.png HTTP/1.1" 200 -
+2025-05-20 19:44:59,984 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:44:59] "GET /static/doc_images/doc_54/image_mammoth_d226d370f42c42e1b25b28f42c9f835d_12.png HTTP/1.1" 200 -
+2025-05-20 19:45:13,285 [INFO] - werkzeug -  * Restarting with stat
+2025-05-20 19:45:13,771 [WARNING] - werkzeug -  * Debugger is active!
+2025-05-20 19:45:13,777 [INFO] - werkzeug -  * Debugger PIN: 129-233-724
+2025-05-20 19:45:13,896 [INFO] - werkzeug -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2025-05-20 19:45:15,289 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:45:15] "GET / HTTP/1.1" 200 -
+2025-05-20 19:45:15,314 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:45:15] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-20 19:45:15,315 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:45:15] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-20 19:45:19,145 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:45:19] "GET / HTTP/1.1" 200 -
+2025-05-20 19:45:19,157 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:45:19] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-20 19:45:19,161 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:45:19] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-20 19:45:26,073 [INFO] - root - ËÑË÷ 'adjustments' ÕÒµ½ 1 ¸ö½á¹û
+2025-05-20 19:45:26,074 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:45:26] "GET /search?q=adjustments HTTP/1.1" 200 -
+2025-05-20 19:45:26,109 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:45:26] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-20 19:45:26,110 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:45:26] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-20 19:45:28,335 [INFO] - root - ËÑË÷ 'adjustments' ÕÒµ½ 1 ¸ö½á¹û
+2025-05-20 19:45:28,337 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:45:28] "GET /search?q=adjustments HTTP/1.1" 200 -
+2025-05-20 19:45:28,353 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:45:28] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-20 19:45:28,356 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:45:28] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-20 19:45:31,328 [INFO] - root - ËÑË÷ 'adjustments' ÕÒµ½ 1 ¸ö½á¹û
+2025-05-20 19:45:31,330 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:45:31] "GET /search?q=adjustments HTTP/1.1" 200 -
+2025-05-20 19:45:31,344 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:45:31] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-20 19:45:31,348 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:45:31] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-20 19:45:56,236 [INFO] - root - ËÑË÷ 'adjustments' ÕÒµ½ 1 ¸ö½á¹û
+2025-05-20 19:45:56,238 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:45:56] "GET /search?q=adjustments HTTP/1.1" 200 -
+2025-05-20 19:45:56,254 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:45:56] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-20 19:45:56,254 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:45:56] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-20 19:45:58,436 [INFO] - root - ËÑË÷ 'adjustments' ÕÒµ½ 1 ¸ö½á¹û
+2025-05-20 19:45:58,438 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:45:58] "GET /search?q=adjustments HTTP/1.1" 200 -
+2025-05-20 19:45:58,449 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:45:58] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-20 19:45:58,452 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:45:58] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-20 19:45:59,964 [INFO] - root - ËÑË÷ 'adjustments' ÕÒµ½ 1 ¸ö½á¹û
+2025-05-20 19:45:59,966 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:45:59] "GET /search?q=adjustments HTTP/1.1" 200 -
+2025-05-20 19:45:59,979 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:45:59] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-20 19:45:59,984 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:45:59] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-20 19:48:16,725 [INFO] - root - ËÑË÷ 'adjustments' ÕÒµ½ 1 ¸ö½á¹û
+2025-05-20 19:48:16,728 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:48:16] "GET /search?q=adjustments HTTP/1.1" 200 -
+2025-05-20 19:48:16,743 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:48:16] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-20 19:48:16,746 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:48:16] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-20 19:48:18,068 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:48:18] "GET / HTTP/1.1" 200 -
+2025-05-20 19:48:18,091 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:48:18] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-20 19:48:18,091 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:48:18] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-20 19:48:20,143 [INFO] - root - ²é¿´ÎÄµµ: 55, ÎÄ¼þÀàÐÍ: application/vnd.openxmlformats-officedocument.wordprocessingml.document
+2025-05-20 19:48:20,143 [INFO] - root - ÎÄµµ 55 Ê¹ÓÃHTMLÄÚÈÝÏÔÊ¾
+2025-05-20 19:48:20,145 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:48:20] "GET /document/55 HTTP/1.1" 200 -
+2025-05-20 19:48:20,163 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:48:20] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-20 19:48:20,175 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:48:20] "[36mGET /static/doc_images/doc_55/image_mammoth_f834ad9ca41a4c29830e2e851fc9879d_5.png HTTP/1.1[0m" 304 -
+2025-05-20 19:48:20,176 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:48:20] "[36mGET /static/doc_images/doc_55/image_mammoth_f9409ce987ec476e821e0ab3e91d2526_1.png HTTP/1.1[0m" 304 -
+2025-05-20 19:48:20,176 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:48:20] "[36mGET /static/doc_images/doc_55/image_mammoth_d2ccc89a42524da2a474afae3cfde41d_2.png HTTP/1.1[0m" 304 -
+2025-05-20 19:48:20,176 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:48:20] "[36mGET /static/doc_images/doc_55/image_mammoth_50740f8ee05b42f5882b5d13eb864e95_3.png HTTP/1.1[0m" 304 -
+2025-05-20 19:48:20,177 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:48:20] "[36mGET /static/doc_images/doc_55/image_mammoth_bc257a22da6b4535957725e65adbaf6e_4.png HTTP/1.1[0m" 304 -
+2025-05-20 19:48:20,177 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:48:20] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-20 19:48:20,182 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:48:20] "[36mGET /static/doc_images/doc_55/image_mammoth_a43562662e5f456182cd3f448691ee8c_6.png HTTP/1.1[0m" 304 -
+2025-05-20 19:48:20,185 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:48:20] "[36mGET /static/doc_images/doc_55/image_mammoth_f3a1898a61a044ec98ce925dd285d88a_7.png HTTP/1.1[0m" 304 -
+2025-05-20 19:48:20,186 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:48:20] "[36mGET /static/doc_images/doc_55/image_mammoth_23cbeae574d44a3197ae35b956daf153_8.png HTTP/1.1[0m" 304 -
+2025-05-20 19:48:20,190 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:48:20] "[36mGET /static/doc_images/doc_55/image_mammoth_1eb0f39dd27442c8b4ec928dfbe0df61_10.png HTTP/1.1[0m" 304 -
+2025-05-20 19:48:20,191 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:48:20] "[36mGET /static/doc_images/doc_55/image_mammoth_0afc03be14c54fb3a21998b12f662d16_9.png HTTP/1.1[0m" 304 -
+2025-05-20 19:48:20,193 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:48:20] "[36mGET /static/doc_images/doc_55/image_mammoth_9724e9e83f824b7cbd7b32578b44b633_11.png HTTP/1.1[0m" 304 -
+2025-05-20 19:48:20,194 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:48:20] "[36mGET /static/doc_images/doc_55/image_mammoth_f95689eecec341199773b9f1032f831a_12.png HTTP/1.1[0m" 304 -
+2025-05-20 19:48:20,196 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:48:20] "[36mGET /static/doc_images/doc_55/image_mammoth_897ae1cbca564182acdbb26b4183ec8d_13.png HTTP/1.1[0m" 304 -
+2025-05-20 19:48:20,196 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:48:20] "[36mGET /static/doc_images/doc_55/image_mammoth_f15e2ecebdc64100bbfb0d67f7d20c90_14.png HTTP/1.1[0m" 304 -
+2025-05-20 19:48:20,199 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:48:20] "[36mGET /static/doc_images/doc_55/image_mammoth_32093aa002e24c408e4b5338d6b401a8_15.png HTTP/1.1[0m" 304 -
+2025-05-20 19:48:20,201 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:48:20] "[36mGET /static/doc_images/doc_55/image_mammoth_a3223e2981a64740a2872b15092f92a5_16.png HTTP/1.1[0m" 304 -
+2025-05-20 19:48:20,203 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:48:20] "[36mGET /static/doc_images/doc_55/image_mammoth_28da44ee969a4b918eff5a1640a65d62_17.png HTTP/1.1[0m" 304 -
+2025-05-20 19:48:20,204 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:48:20] "[36mGET /static/doc_images/doc_55/image_mammoth_60f28562c5e74fe69cff3cb8f364616a_18.png HTTP/1.1[0m" 304 -
+2025-05-20 19:48:20,210 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:48:20] "[36mGET /static/doc_images/doc_55/image_mammoth_eae4924fa92b48ca8e6c87b6557d23c5_19.png HTTP/1.1[0m" 304 -
+2025-05-20 19:48:20,213 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:48:20] "[36mGET /static/doc_images/doc_55/image_mammoth_0935df03930b4a718fdc85941d23efb6_20.png HTTP/1.1[0m" 304 -
+2025-05-20 19:48:20,215 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:48:20] "[36mGET /static/doc_images/doc_55/image_mammoth_f520137c54b94659b3cb0ea7686d22ed_21.png HTTP/1.1[0m" 304 -
+2025-05-20 19:48:20,218 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:48:20] "[36mGET /static/doc_images/doc_55/image_mammoth_01df9e8f6de74f28a7e79b2c380057fd_23.png HTTP/1.1[0m" 304 -
+2025-05-20 19:48:20,219 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:48:20] "[36mGET /static/doc_images/doc_55/image_mammoth_c755349334274ce68adf289a55069a53_22.png HTTP/1.1[0m" 304 -
+2025-05-20 19:48:20,220 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:48:20] "[36mGET /static/doc_images/doc_55/image_mammoth_d2dd2ebe2d014bad967ead973b27f24e_24.png HTTP/1.1[0m" 304 -
+2025-05-20 19:48:20,222 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:48:20] "[36mGET /static/doc_images/doc_55/image_mammoth_2c003cbd326c46128754819029337f2e_25.png HTTP/1.1[0m" 304 -
+2025-05-20 19:48:20,225 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:48:20] "[36mGET /static/doc_images/doc_55/image_mammoth_e5abeb512aaa4d0781918f9ef0fe8c97_26.png HTTP/1.1[0m" 304 -
+2025-05-20 19:48:20,227 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:48:20] "[36mGET /static/doc_images/doc_55/image_mammoth_a077ca2b90144a88a88ab67c5f46d601_27.png HTTP/1.1[0m" 304 -
+2025-05-20 19:48:20,229 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:48:20] "[36mGET /static/doc_images/doc_55/image_mammoth_91fc6ed247774371b6042600a3fc8b6f_28.png HTTP/1.1[0m" 304 -
+2025-05-20 19:49:25,929 [INFO] - werkzeug -  * Detected change in 'D:\\tools\\Pycharm\\PycharmWork\\DocRadar\\app\\__init__.py', reloading
+2025-05-20 19:49:25,982 [INFO] - werkzeug -  * Restarting with stat
+2025-05-20 19:49:26,032 [INFO] - werkzeug -  * Detected change in 'D:\\tools\\Pycharm\\PycharmWork\\DocRadar\\app\\__init__.py', reloading
+2025-05-20 19:49:26,094 [INFO] - werkzeug -  * Restarting with stat
+2025-05-20 19:49:26,127 [INFO] - werkzeug -  * Detected change in 'D:\\tools\\Pycharm\\PycharmWork\\DocRadar\\app\\__init__.py', reloading
+2025-05-20 19:49:26,188 [INFO] - werkzeug -  * Restarting with stat
+2025-05-20 19:49:45,027 [INFO] - werkzeug -  * Restarting with stat
+2025-05-20 19:49:45,054 [INFO] - werkzeug -  * Restarting with stat
+2025-05-20 19:49:45,932 [INFO] - werkzeug -  * Restarting with stat
+2025-05-20 19:53:38,531 [INFO] - werkzeug -  * Restarting with stat
+2025-05-20 19:53:38,991 [INFO] - werkzeug -  * Restarting with stat
+2025-05-20 19:53:51,662 [INFO] - werkzeug -  * Restarting with stat
+2025-05-20 19:53:52,007 [INFO] - werkzeug -  * Restarting with stat
+2025-05-20 19:54:58,377 [INFO] - werkzeug -  * Restarting with stat
+2025-05-20 19:54:58,412 [INFO] - werkzeug -  * Restarting with stat
+2025-05-20 19:55:22,669 [INFO] - werkzeug -  * Restarting with stat
+2025-05-20 19:55:22,726 [INFO] - werkzeug -  * Restarting with stat

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="description" content="DocRadar - 本地文档搜索系统">
+    <meta name="theme-color" content="#0d6efd">
+    <title>账号设置 - DocRadar</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="{{ url_for('main.index') }}">
+                <i class="bi bi-search"></i> DocRadar
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('main.index') }}">首页</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle active" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="bi bi-person-circle"></i> {{ session.user }}
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                            <li><a class="dropdown-item active" href="{{ url_for('main.account') }}"><i class="bi bi-gear"></i> 账号设置</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="{{ url_for('main.logout') }}"><i class="bi bi-box-arrow-right"></i> 退出登录</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                        {% for category, message in messages %}
+                            <div class="alert alert-{{ category }} alert-dismissible fade show mb-4">
+                                {{ message }}
+                                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+
+                <div class="card">
+                    <div class="card-header bg-light">
+                        <h5 class="mb-0">
+                            <i class="bi bi-person-circle me-2"></i>账号设置
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="nav flex-column nav-pills" id="account-tab" role="tablist">
+                                    <button class="nav-link active" id="profile-tab" data-bs-toggle="pill" data-bs-target="#profile" type="button" role="tab">
+                                        <i class="bi bi-person me-2"></i>个人信息
+                                    </button>
+                                    <button class="nav-link" id="password-tab" data-bs-toggle="pill" data-bs-target="#password" type="button" role="tab">
+                                        <i class="bi bi-key me-2"></i>修改密码
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="col-md-9">
+                                <div class="tab-content" id="account-tab-content">
+                                    <!-- 个人信息 -->
+                                    <div class="tab-pane fade show active" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                                        <h5 class="mb-3">个人信息</h5>
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <div class="mb-3 row">
+                                                    <label class="col-sm-3 col-form-label">用户名</label>
+                                                    <div class="col-sm-9">
+                                                        <p class="form-control-plaintext">{{ session.user }}</p>
+                                                    </div>
+                                                </div>
+                                                <div class="mb-3 row">
+                                                    <label class="col-sm-3 col-form-label">用户角色</label>
+                                                    <div class="col-sm-9">
+                                                        <p class="form-control-plaintext">
+                                                            {% if user_role == 'admin' %}
+                                                                <span class="badge bg-danger">管理员</span>
+                                                            {% else %}
+                                                                <span class="badge bg-primary">普通用户</span>
+                                                            {% endif %}
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <div class="mb-3 row">
+                                                    <label class="col-sm-3 col-form-label">上次登录</label>
+                                                    <div class="col-sm-9">
+                                                        <p class="form-control-plaintext">
+                                                            {% if last_login %}
+                                                                {{ last_login }}
+                                                                <span class="text-muted">(北京时间)</span>
+                                                            {% else %}
+                                                                <span class="text-muted">首次登录</span>
+                                                            {% endif %}
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- 修改密码 -->
+                                    <div class="tab-pane fade" id="password" role="tabpanel" aria-labelledby="password-tab">
+                                        <h5 class="mb-3">修改密码</h5>
+                                        <form action="{{ url_for('main.change_password') }}" method="POST">
+                                            <div class="mb-3">
+                                                <label for="current_password" class="form-label">当前密码</label>
+                                                <div class="input-group">
+                                                    <span class="input-group-text"><i class="bi bi-lock"></i></span>
+                                                    <input type="password" class="form-control" id="current_password" name="current_password" required>
+                                                </div>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="new_password" class="form-label">新密码</label>
+                                                <div class="input-group">
+                                                    <span class="input-group-text"><i class="bi bi-key"></i></span>
+                                                    <input type="password" class="form-control" id="new_password" name="new_password" required>
+                                                </div>
+                                                <div class="form-text">密码长度至少8个字符</div>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="confirm_password" class="form-label">确认新密码</label>
+                                                <div class="input-group">
+                                                    <span class="input-group-text"><i class="bi bi-key-fill"></i></span>
+                                                    <input type="password" class="form-control" id="confirm_password" name="confirm_password" required>
+                                                </div>
+                                            </div>
+                                            <div class="d-grid gap-2">
+                                                <button type="submit" class="btn btn-primary">
+                                                    <i class="bi bi-check-circle me-2"></i>保存更改
+                                                </button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer py-3 bg-light">
+        <div class="container text-center">
+            <span class="text-muted">DocRadar &copy; {{ current_year }}</span>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <script>
+        // 验证两次输入的密码是否一致
+        document.querySelector('form').addEventListener('submit', function(e) {
+            const newPassword = document.getElementById('new_password').value;
+            const confirmPassword = document.getElementById('confirm_password').value;
+            
+            if (newPassword !== confirmPassword) {
+                e.preventDefault();
+                alert('两次输入的密码不一致，请重新输入');
+            }
+        });
+    </script>
+</body>
+</html> 

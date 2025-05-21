@@ -85,39 +85,49 @@ DocRadar是一个本地文档管理和搜索系统，旨在解决需要在大量
 
 ```
 DocRadar/
-├── app.py                 # 主应用入口
-├── config.py              # 配置文件
+├── app/                   # 应用主包
+│   ├── __init__.py        # 应用初始化
+│   ├── core/              # 核心模块
+│   │   ├── __init__.py    # 核心模块初始化
+│   │   ├── config.py      # 应用配置
+│   │   ├── auth.py        # 认证系统
+│   │   ├── routes.py      # 主要路由
+│   │   ├── document_routes.py # 文档管理路由
+│   │   ├── search_routes.py   # 搜索功能路由
+│   │   └── admin_routes.py    # 管理功能路由
+│   ├── models/            # 数据模型
+│   ├── utils/             # 工具模块
+│   │   ├── __init__.py    # 工具模块初始化
+│   │   ├── document_parser.py # 文档解析模块
+│   │   ├── search_engine.py   # 搜索引擎模块
+│   │   └── storage.py     # 存储管理模块
+│   ├── static/            # 静态资源
+│   │   ├── css/           # 样式文件
+│   │   ├── js/            # JavaScript文件
+│   │   └── images/        # 图片和文档图片存储
+│   └── templates/         # HTML模板
+├── config/                # 配置文件目录
+│   ├── admin_config_production.json # 生产环境管理配置
+│   └── admin_config_test.json       # 测试环境管理配置
+├── data/                  # 数据目录
+│   ├── production/        # 生产环境数据
+│   │   ├── uploads/       # 上传文档存储
+│   │   └── db/            # 数据库文件
+│   └── test/              # 测试环境数据
+│       ├── uploads/       # 测试环境上传文档
+│       └── db/            # 测试环境数据库
+├── logs/                  # 日志目录
+│   ├── production/        # 生产环境日志
+│   └── test/              # 测试环境日志
+├── scripts/               # 脚本工具
+├── docs/                  # 项目文档
+├── tests/                 # 测试代码
+├── app.py                 # 应用兼容层入口
+├── run.py                 # 应用启动脚本
 ├── requirements.txt       # 依赖包列表
-├── database.md            # 数据库结构说明
-├── admin_config.json      # 管理员配置文件
-├── init_db.py             # 数据库初始化脚本
-├── static/                # 静态资源
-│   ├── css/               # 样式文件
-│   │   └── style.css      # 主样式文件
-│   ├── js/                # JavaScript文件
-│   │   ├── main.js        # 主JS功能
-│   │   └── search-navigator.js # 搜索导航功能
-│   ├── doc_images/        # 文档图片存储
-│   └── uploads/           # 上传文档存储目录
-├── templates/             # HTML模板
-│   ├── index.html         # 主页
-│   ├── results.html       # 搜索结果页
-│   ├── view.html          # 文档查看页
-│   ├── 403.html           # 权限错误页
-│   ├── 404.html           # 页面未找到
-│   ├── 500.html           # 服务器错误页
-│   └── admin/             # 管理界面模板
-│       ├── db.html        # 数据库管理页
-│       ├── table.html     # 表格数据页
-│       ├── query.html     # SQL查询页
-│       ├── edit_record.html # 记录编辑页
-│       └── add_record.html  # 记录添加页
-├── tmp/                   # 临时文件和日志
-│   └── docRadar_YYYYMMDD.log # 按日期分割的日志
-└── utils/                 # 工具函数
-    ├── document_parser.py # 文档解析模块
-    ├── search_engine.py   # 搜索引擎模块
-    └── storage.py         # 存储管理模块
+├── docker-compose.yml     # Docker配置文件
+├── Dockerfile             # Docker构建文件
+└── README.md              # 项目说明文档
 ```
 
 ## 数据库结构

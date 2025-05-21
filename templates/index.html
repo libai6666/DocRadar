@@ -38,12 +38,36 @@
         #upload-status {
             display: none;
         }
+        .env-indicator {
+            margin-right: 15px;
+            padding: 2px 10px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            color: white;
+        }
+        .env-test {
+            background-color: #17a2b8;
+        }
+        .env-production {
+            background-color: #dc3545;
+        }
     </style>
 </head>
 <body>
+    {% if is_test_env or is_prod_env %}
+    <div class="bg-dark text-white py-1 text-center small">
+        {% if is_test_env %}
+        <i class="bi bi-gear-fill"></i> 测试环境 ({{ host }}:{{ port }}) - 此环境下的操作不会影响生产数据
+        {% else %}
+        <i class="bi bi-exclamation-triangle-fill"></i> 生产环境 ({{ host }}:{{ port }}) - 请谨慎操作
+        {% endif %}
+    </div>
+    {% endif %}
+    
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <div class="container">
-            <a class="navbar-brand" href="{{ url_for('index') }}">
+            <a class="navbar-brand" href="{{ url_for('main.index') }}">
                 <i class="bi bi-search"></i> DocRadar
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -52,16 +76,25 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" href="{{ url_for('index') }}">首页</a>
+                        <a class="nav-link active" href="{{ url_for('main.index') }}">首页</a>
                     </li>
+                    {% if is_test_env or is_prod_env %}
+                    <li class="nav-item">
+                        <span class="nav-link">
+                            <span class="env-indicator {% if is_test_env %}env-test{% else %}env-production{% endif %}">
+                                {% if is_test_env %}测试{% else %}生产{% endif %}
+                            </span>
+                        </span>
+                    </li>
+                    {% endif %}
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             <i class="bi bi-person-circle"></i> {{ session.user }}
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
-                            <li><a class="dropdown-item" href="{{ url_for('account') }}"><i class="bi bi-gear"></i> 账号设置</a></li>
+                            <li><a class="dropdown-item" href="{{ url_for('main.account') }}"><i class="bi bi-gear"></i> 账号设置</a></li>
                             <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="{{ url_for('logout') }}"><i class="bi bi-box-arrow-right"></i> 退出登录</a></li>
+                            <li><a class="dropdown-item" href="{{ url_for('main.logout') }}"><i class="bi bi-box-arrow-right"></i> 退出登录</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -86,7 +119,7 @@
                 <!-- 搜索框 -->
                 <div class="card mb-4">
                     <div class="card-body">
-                        <form action="{{ url_for('search') }}" method="GET">
+                        <form action="{{ url_for('search.search') }}" method="GET">
                             <div class="input-group">
                                 <input type="text" name="q" id="search-input" class="form-control form-control-lg" 
                                        placeholder="输入关键词搜索文档...">
@@ -107,7 +140,7 @@
                             <p class="mb-3">拖放文件到此处或点击下方按钮上传</p>
                             <p class="text-muted small mb-2">支持PDF, DOCX, TXT格式</p>
                             <p class="text-primary small fw-bold mb-3">支持批量上传：按住Ctrl键可选择多个文件</p>
-                            <form id="file-form" action="{{ url_for('upload_file') }}" method="POST" enctype="multipart/form-data">
+                            <form id="file-form" action="{{ url_for('document.upload_document') }}" method="POST" enctype="multipart/form-data">
                                 <input type="file" id="fileInput" name="file" class="d-none" accept=".pdf,.docx,.doc,.txt" multiple>
                                 <div class="d-flex justify-content-center">
                                     <button type="button" class="btn btn-outline-primary me-3" onclick="document.getElementById('fileInput').click()">
@@ -154,7 +187,7 @@
                                     <i class="bi bi-search"></i>
                                 </button>
                                 {% if search_query %}
-                                <a href="{{ url_for('index') }}" class="btn btn-outline-secondary">
+                                <a href="{{ url_for('main.index') }}" class="btn btn-outline-secondary">
                                     <i class="bi bi-x"></i> 清除
                                 </a>
                                 {% endif %}
@@ -199,15 +232,15 @@
                                         </p>
                                     </div>
                                     <div class="btn-group">
-                                        <a href="{{ url_for('view_document', doc_id=doc.id) }}" 
+                                        <a href="{{ url_for('document.view_document', doc_id=doc.id) }}" 
                                            class="btn btn-sm btn-outline-primary">
                                             <i class="bi bi-eye"></i>
                                         </a>
-                                        <a href="{{ url_for('download_original', doc_id=doc.id) }}" 
+                                        <a href="{{ url_for('document.download_original', doc_id=doc.id) }}" 
                                            class="btn btn-sm btn-outline-secondary">
                                             <i class="bi bi-download"></i>
                                         </a>
-                                        <form action="{{ url_for('delete_document', doc_id=doc.id) }}" 
+                                        <form action="{{ url_for('document.delete_document', doc_id=doc.id) }}" 
                                               method="POST" 
                                               class="d-inline"
                                               onsubmit="return confirm('确定要删除这个文档吗？');">
@@ -230,14 +263,18 @@
                                     每页 {{ pagination.limit }} 项
                                 </button>
                                 <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item {% if pagination.limit == 10 %}active{% endif %}" 
-                                           href="{{ url_for('index', page=1, limit=10, search=search_query) }}">每页 10 项</a></li>
-                                    <li><a class="dropdown-item {% if pagination.limit == 20 %}active{% endif %}" 
-                                           href="{{ url_for('index', page=1, limit=20, search=search_query) }}">每页 20 项</a></li>
-                                    <li><a class="dropdown-item {% if pagination.limit == 50 %}active{% endif %}" 
-                                           href="{{ url_for('index', page=1, limit=50, search=search_query) }}">每页 50 项</a></li>
-                                    <li><a class="dropdown-item {% if pagination.limit == 100 %}active{% endif %}" 
-                                           href="{{ url_for('index', page=1, limit=100, search=search_query) }}">每页 100 项</a></li>
+                                    <li class="nav-item">
+                                        <a class="nav-link {% if pagination.limit == 10 %}active{% endif %}"
+                                        href="{{ url_for('main.index', page=1, limit=10, search=search_query) }}">每页 10 项</a></li>
+                                    <li class="nav-item">
+                                        <a class="nav-link {% if pagination.limit == 20 %}active{% endif %}"
+                                        href="{{ url_for('main.index', page=1, limit=20, search=search_query) }}">每页 20 项</a></li>
+                                    <li class="nav-item">
+                                        <a class="nav-link {% if pagination.limit == 50 %}active{% endif %}"
+                                        href="{{ url_for('main.index', page=1, limit=50, search=search_query) }}">每页 50 项</a></li>
+                                    <li class="nav-item">
+                                        <a class="nav-link {% if pagination.limit == 100 %}active{% endif %}"
+                                        href="{{ url_for('main.index', page=1, limit=100, search=search_query) }}">每页 100 项</a></li>
                                 </ul>
                             </div>
                             
@@ -245,25 +282,25 @@
                             <nav aria-label="文档分页">
                                 <ul class="pagination mb-0">
                                     <li class="page-item {% if pagination.page == 1 %}disabled{% endif %}">
-                                        <a class="page-link" href="{{ url_for('index', page=pagination.page-1, limit=pagination.limit, search=search_query) }}">
+                                        <a class="page-link" href="{{ url_for('main.index', page=pagination.page-1, limit=pagination.limit, search=search_query) }}">
                                             <i class="bi bi-chevron-left"></i>
                                         </a>
                                     </li>
                                     
                                     {% set start_page = [1, pagination.page - 2]|max %}
-                                    {% set end_page = [start_page + 4, pagination.total_pages]|min %}
+                                    {% set end_page = [start_page + 4, pagination.pages]|min %}
                                     {% set start_page = [end_page - 4, 1]|max %}
                                     
                                     {% for p in range(start_page, end_page + 1) %}
                                     <li class="page-item {% if p == pagination.page %}active{% endif %}">
-                                        <a class="page-link" href="{{ url_for('index', page=p, limit=pagination.limit, search=search_query) }}">
+                                        <a class="page-link" href="{{ url_for('main.index', page=p, limit=pagination.limit, search=search_query) }}">
                                             {{ p }}
                                         </a>
                                     </li>
                                     {% endfor %}
                                     
-                                    <li class="page-item {% if pagination.page == pagination.total_pages %}disabled{% endif %}">
-                                        <a class="page-link" href="{{ url_for('index', page=pagination.page+1, limit=pagination.limit, search=search_query) }}">
+                                    <li class="page-item {% if pagination.page == pagination.pages %}disabled{% endif %}">
+                                        <a class="page-link" href="{{ url_for('main.index', page=pagination.page+1, limit=pagination.limit, search=search_query) }}">
                                             <i class="bi bi-chevron-right"></i>
                                         </a>
                                     </li>

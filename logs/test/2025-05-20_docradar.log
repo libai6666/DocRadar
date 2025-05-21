@@ -1,0 +1,549 @@
+2025-05-20 19:49:26,562 [WARNING] - werkzeug -  * Debugger is active!
+2025-05-20 19:49:26,569 [INFO] - werkzeug -  * Debugger PIN: 129-233-724
+2025-05-20 19:49:26,649 [WARNING] - werkzeug -  * Debugger is active!
+2025-05-20 19:49:26,655 [INFO] - werkzeug -  * Debugger PIN: 129-233-724
+2025-05-20 19:49:26,693 [INFO] - werkzeug -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2025-05-20 19:49:26,727 [WARNING] - werkzeug -  * Debugger is active!
+2025-05-20 19:49:26,733 [INFO] - werkzeug -  * Debugger PIN: 129-233-724
+2025-05-20 19:49:26,784 [INFO] - werkzeug -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2025-05-20 19:49:26,858 [INFO] - werkzeug -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2025-05-20 19:49:44,954 [INFO] - werkzeug -  * Detected change in 'D:\\tools\\Pycharm\\PycharmWork\\DocRadar\\scripts\\cleanup_logs.py', reloading
+2025-05-20 19:49:44,988 [INFO] - werkzeug -  * Detected change in 'D:\\tools\\Pycharm\\PycharmWork\\DocRadar\\scripts\\cleanup_logs.py', reloading
+2025-05-20 19:49:45,613 [WARNING] - werkzeug -  * Debugger is active!
+2025-05-20 19:49:45,620 [INFO] - werkzeug -  * Debugger PIN: 129-233-724
+2025-05-20 19:49:45,628 [WARNING] - werkzeug -  * Debugger is active!
+2025-05-20 19:49:45,634 [INFO] - werkzeug -  * Debugger PIN: 129-233-724
+2025-05-20 19:49:45,753 [INFO] - werkzeug -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2025-05-20 19:49:45,767 [INFO] - werkzeug -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2025-05-20 19:49:45,879 [INFO] - werkzeug -  * Detected change in 'D:\\tools\\Pycharm\\PycharmWork\\DocRadar\\scripts\\cleanup_logs.py', reloading
+2025-05-20 19:49:46,413 [WARNING] - werkzeug -  * Debugger is active!
+2025-05-20 19:49:46,419 [INFO] - werkzeug -  * Debugger PIN: 129-233-724
+2025-05-20 19:49:46,529 [INFO] - werkzeug -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2025-05-20 19:50:10,676 [INFO] - werkzeug -  * Restarting with stat
+2025-05-20 19:50:11,205 [WARNING] - werkzeug -  * Debugger is active!
+2025-05-20 19:50:11,212 [INFO] - werkzeug -  * Debugger PIN: 129-233-724
+2025-05-20 19:50:11,335 [INFO] - werkzeug -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2025-05-20 19:50:34,404 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:50:34] "[32mGET / HTTP/1.1[0m" 302 -
+2025-05-20 19:50:34,419 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:50:34] "GET /login?next=http%3A%2F%2F127.0.0.1%3A5000%2F HTTP/1.1" 200 -
+2025-05-20 19:50:34,579 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:50:34] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-20 19:50:45,353 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:50:45] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-05-20 19:50:45,381 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:50:45] "GET / HTTP/1.1" 200 -
+2025-05-20 19:50:45,397 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:50:45] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-20 19:50:45,402 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:50:45] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-20 19:50:48,063 [INFO] - root - 搜索 'adjustments' 找到 1 个结果
+2025-05-20 19:50:48,077 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:50:48] "GET /search?q=adjustments HTTP/1.1" 200 -
+2025-05-20 19:50:48,100 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:50:48] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-20 19:50:48,101 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:50:48] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-20 19:50:59,960 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:50:59] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-20 19:50:59,975 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:50:59] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
+2025-05-20 19:51:04,061 [INFO] - root - 搜索 'adjustments' 找到 1 个结果
+2025-05-20 19:51:04,063 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:51:04] "GET /search?q=adjustments HTTP/1.1" 200 -
+2025-05-20 19:51:04,083 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:51:04] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-20 19:51:04,084 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:51:04] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-20 19:51:04,087 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:51:04] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
+2025-05-20 19:53:04,327 [INFO] - werkzeug -  * Restarting with stat
+2025-05-20 19:53:04,810 [WARNING] - werkzeug -  * Debugger is active!
+2025-05-20 19:53:04,816 [INFO] - werkzeug -  * Debugger PIN: 129-233-724
+2025-05-20 19:53:04,923 [INFO] - werkzeug -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2025-05-20 19:53:38,306 [INFO] - werkzeug -  * Detected change in 'D:\\tools\\Pycharm\\PycharmWork\\DocRadar\\app\\core\\search_routes.py', reloading
+2025-05-20 19:53:38,353 [INFO] - werkzeug -  * Detected change in 'D:\\tools\\Pycharm\\PycharmWork\\DocRadar\\app\\core\\search_routes.py', reloading
+2025-05-20 19:53:38,358 [INFO] - werkzeug -  * Restarting with stat
+2025-05-20 19:53:38,411 [INFO] - werkzeug -  * Restarting with stat
+2025-05-20 19:53:38,472 [INFO] - werkzeug -  * Detected change in 'D:\\tools\\Pycharm\\PycharmWork\\DocRadar\\app\\core\\search_routes.py', reloading
+2025-05-20 19:53:38,904 [WARNING] - werkzeug -  * Debugger is active!
+2025-05-20 19:53:38,911 [INFO] - werkzeug -  * Debugger PIN: 129-233-724
+2025-05-20 19:53:38,923 [INFO] - werkzeug -  * Detected change in 'D:\\tools\\Pycharm\\PycharmWork\\DocRadar\\app\\core\\search_routes.py', reloading
+2025-05-20 19:53:38,942 [WARNING] - werkzeug -  * Debugger is active!
+2025-05-20 19:53:38,950 [INFO] - werkzeug -  * Debugger PIN: 129-233-724
+2025-05-20 19:53:39,055 [INFO] - werkzeug -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2025-05-20 19:53:39,075 [WARNING] - werkzeug -  * Debugger is active!
+2025-05-20 19:53:39,084 [INFO] - werkzeug -  * Debugger PIN: 129-233-724
+2025-05-20 19:53:39,090 [INFO] - werkzeug -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2025-05-20 19:53:39,231 [INFO] - werkzeug -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2025-05-20 19:53:39,491 [WARNING] - werkzeug -  * Debugger is active!
+2025-05-20 19:53:39,495 [INFO] - werkzeug -  * Debugger PIN: 129-233-724
+2025-05-20 19:53:39,613 [INFO] - werkzeug -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2025-05-20 19:53:51,376 [INFO] - werkzeug -  * Detected change in 'D:\\tools\\Pycharm\\PycharmWork\\DocRadar\\app\\core\\search_routes.py', reloading
+2025-05-20 19:53:51,438 [INFO] - werkzeug -  * Restarting with stat
+2025-05-20 19:53:51,455 [INFO] - werkzeug -  * Detected change in 'D:\\tools\\Pycharm\\PycharmWork\\DocRadar\\app\\core\\search_routes.py', reloading
+2025-05-20 19:53:51,519 [INFO] - werkzeug -  * Restarting with stat
+2025-05-20 19:53:51,582 [INFO] - werkzeug -  * Detected change in 'D:\\tools\\Pycharm\\PycharmWork\\DocRadar\\app\\core\\search_routes.py', reloading
+2025-05-20 19:53:51,945 [INFO] - werkzeug -  * Detected change in 'D:\\tools\\Pycharm\\PycharmWork\\DocRadar\\app\\core\\search_routes.py', reloading
+2025-05-20 19:53:52,047 [WARNING] - werkzeug -  * Debugger is active!
+2025-05-20 19:53:52,053 [INFO] - werkzeug -  * Debugger PIN: 129-233-724
+2025-05-20 19:53:52,141 [WARNING] - werkzeug -  * Debugger is active!
+2025-05-20 19:53:52,147 [INFO] - werkzeug -  * Debugger PIN: 129-233-724
+2025-05-20 19:53:52,190 [INFO] - werkzeug -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2025-05-20 19:53:52,260 [WARNING] - werkzeug -  * Debugger is active!
+2025-05-20 19:53:52,266 [INFO] - werkzeug -  * Debugger PIN: 129-233-724
+2025-05-20 19:53:52,283 [INFO] - werkzeug -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2025-05-20 19:53:52,402 [INFO] - werkzeug -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2025-05-20 19:53:52,543 [WARNING] - werkzeug -  * Debugger is active!
+2025-05-20 19:53:52,549 [INFO] - werkzeug -  * Debugger PIN: 129-233-724
+2025-05-20 19:53:52,661 [INFO] - werkzeug -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2025-05-20 19:54:58,289 [INFO] - werkzeug -  * Detected change in 'D:\\tools\\Pycharm\\PycharmWork\\DocRadar\\app\\__init__.py', reloading
+2025-05-20 19:54:58,330 [INFO] - werkzeug -  * Detected change in 'D:\\tools\\Pycharm\\PycharmWork\\DocRadar\\app\\__init__.py', reloading
+2025-05-20 19:54:58,898 [WARNING] - werkzeug -  * Debugger is active!
+2025-05-20 19:54:58,904 [INFO] - werkzeug -  * Debugger PIN: 129-233-724
+2025-05-20 19:54:58,914 [WARNING] - werkzeug -  * Debugger is active!
+2025-05-20 19:54:58,921 [INFO] - werkzeug -  * Debugger PIN: 129-233-724
+2025-05-20 19:54:58,993 [INFO] - werkzeug -  * Detected change in 'D:\\tools\\Pycharm\\PycharmWork\\DocRadar\\app\\__init__.py', reloading
+2025-05-20 19:54:59,035 [INFO] - werkzeug -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2025-05-20 19:54:59,051 [INFO] - werkzeug -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2025-05-20 19:54:59,052 [INFO] - werkzeug -  * Restarting with stat
+2025-05-20 19:54:59,264 [INFO] - werkzeug -  * Detected change in 'D:\\tools\\Pycharm\\PycharmWork\\DocRadar\\app\\__init__.py', reloading
+2025-05-20 19:54:59,322 [INFO] - werkzeug -  * Restarting with stat
+2025-05-20 19:54:59,639 [WARNING] - werkzeug -  * Debugger is active!
+2025-05-20 19:54:59,644 [INFO] - werkzeug -  * Debugger PIN: 129-233-724
+2025-05-20 19:54:59,764 [INFO] - werkzeug -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2025-05-20 19:54:59,829 [WARNING] - werkzeug -  * Debugger is active!
+2025-05-20 19:54:59,834 [INFO] - werkzeug -  * Debugger PIN: 129-233-724
+2025-05-20 19:54:59,942 [INFO] - werkzeug -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2025-05-20 19:55:22,613 [INFO] - werkzeug -  * Detected change in 'D:\\tools\\Pycharm\\PycharmWork\\DocRadar\\app\\core\\search_routes.py', reloading
+2025-05-20 19:55:22,670 [INFO] - werkzeug -  * Detected change in 'D:\\tools\\Pycharm\\PycharmWork\\DocRadar\\app\\core\\search_routes.py', reloading
+2025-05-20 19:55:23,137 [INFO] - werkzeug -  * Detected change in 'D:\\tools\\Pycharm\\PycharmWork\\DocRadar\\app\\core\\search_routes.py', reloading
+2025-05-20 19:55:23,193 [WARNING] - werkzeug -  * Debugger is active!
+2025-05-20 19:55:23,200 [INFO] - werkzeug -  * Debugger PIN: 129-233-724
+2025-05-20 19:55:23,200 [INFO] - werkzeug -  * Restarting with stat
+2025-05-20 19:55:23,256 [WARNING] - werkzeug -  * Debugger is active!
+2025-05-20 19:55:23,263 [INFO] - werkzeug -  * Debugger PIN: 129-233-724
+2025-05-20 19:55:23,332 [INFO] - werkzeug -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2025-05-20 19:55:23,374 [INFO] - werkzeug -  * Detected change in 'D:\\tools\\Pycharm\\PycharmWork\\DocRadar\\app\\core\\search_routes.py', reloading
+2025-05-20 19:55:23,408 [INFO] - werkzeug -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2025-05-20 19:55:23,448 [INFO] - werkzeug -  * Restarting with stat
+2025-05-20 19:55:23,740 [WARNING] - werkzeug -  * Debugger is active!
+2025-05-20 19:55:23,746 [INFO] - werkzeug -  * Debugger PIN: 129-233-724
+2025-05-20 19:55:23,867 [INFO] - werkzeug -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2025-05-20 19:55:23,982 [WARNING] - werkzeug -  * Debugger is active!
+2025-05-20 19:55:23,987 [INFO] - werkzeug -  * Debugger PIN: 129-233-724
+2025-05-20 19:55:24,100 [INFO] - werkzeug -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2025-05-20 19:55:53,382 [INFO] - werkzeug -  * Restarting with stat
+2025-05-20 19:55:53,864 [WARNING] - werkzeug -  * Debugger is active!
+2025-05-20 19:55:53,870 [INFO] - werkzeug -  * Debugger PIN: 129-233-724
+2025-05-20 19:55:53,981 [INFO] - werkzeug -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2025-05-20 19:56:10,484 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:56:10] "[32mGET / HTTP/1.1[0m" 302 -
+2025-05-20 19:56:10,497 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:56:10] "GET /login?next=http%3A%2F%2F127.0.0.1%3A5000%2F HTTP/1.1" 200 -
+2025-05-20 19:56:10,641 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:56:10] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-20 19:56:18,253 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:56:18] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-05-20 19:56:18,277 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:56:18] "GET / HTTP/1.1" 200 -
+2025-05-20 19:56:18,296 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:56:18] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-20 19:56:18,296 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:56:18] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-20 19:56:22,686 [INFO] - root - 搜索 'adjustments' 找到 1 个结果
+2025-05-20 19:56:22,686 [INFO] - root - 执行搜索: 'adjustments' 找到 1 个结果
+2025-05-20 19:56:22,687 [INFO] - root - 搜索结果 #0: id=27, title=
+2025-05-20 19:56:22,687 [INFO] - root - 添加搜索历史: 查询='adjustments', 结果数=1, 历史ID=1
+2025-05-20 19:56:22,687 [INFO] - root - 搜索结果ID: [27]
+2025-05-20 19:56:22,709 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:56:22] "GET /search?q=adjustments HTTP/1.1" 200 -
+2025-05-20 19:56:22,732 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:56:22] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-20 19:56:22,732 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 19:56:22] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-20 20:15:25,274 [INFO] - werkzeug -  * Restarting with stat
+2025-05-20 20:15:25,787 [WARNING] - werkzeug -  * Debugger is active!
+2025-05-20 20:15:25,792 [INFO] - werkzeug -  * Debugger PIN: 129-233-724
+2025-05-20 20:15:25,899 [INFO] - werkzeug -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2025-05-20 20:15:35,701 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 20:15:35] "[32mGET / HTTP/1.1[0m" 302 -
+2025-05-20 20:15:35,721 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 20:15:35] "GET /login?next=http%3A%2F%2F127.0.0.1%3A5000%2F HTTP/1.1" 200 -
+2025-05-20 20:15:35,872 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 20:15:35] "GET /static/css/style.css HTTP/1.1" 200 -
+2025-05-20 20:15:40,961 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 20:15:40] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-05-20 20:15:40,985 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 20:15:40] "GET / HTTP/1.1" 200 -
+2025-05-20 20:15:41,003 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 20:15:41] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-20 20:15:41,007 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 20:15:41] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-20 20:15:46,403 [INFO] - root - 搜索 'adjustments' 找到 1 个结果
+2025-05-20 20:15:46,404 [INFO] - root - 执行搜索: 'adjustments' 找到 1 个结果
+2025-05-20 20:15:46,404 [INFO] - root - 搜索结果 #0: id=27, title=
+2025-05-20 20:15:46,405 [INFO] - root - 添加搜索历史: 查询='adjustments', 结果数=1, 历史ID=1
+2025-05-20 20:15:46,405 [INFO] - root - 搜索结果ID: [27]
+2025-05-20 20:15:46,426 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 20:15:46] "GET /search?q=adjustments HTTP/1.1" 200 -
+2025-05-20 20:15:46,457 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 20:15:46] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-20 20:15:46,461 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 20:15:46] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-20 20:22:05,213 [INFO] - root - 搜索 'adjustments' 找到 1 个结果
+2025-05-20 20:22:05,213 [INFO] - root - 执行搜索: 'adjustments' 找到 1 个结果
+2025-05-20 20:22:05,215 [INFO] - root - 搜索结果 #0: id=27, title=
+2025-05-20 20:22:05,215 [INFO] - root - 添加搜索历史: 查询='adjustments', 结果数=1, 历史ID=2
+2025-05-20 20:22:05,216 [INFO] - root - 搜索结果ID: [27]
+2025-05-20 20:22:05,242 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 20:22:05] "GET /search?q=adjustments HTTP/1.1" 200 -
+2025-05-20 20:22:05,254 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 20:22:05] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-20 20:22:05,257 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 20:22:05] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-20 20:22:08,617 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 20:22:08] "[32mGET /search/delete/1?return_to=http%3A//127.0.0.1%3A5000/search%3Fq%3Dadjustments HTTP/1.1[0m" 302 -
+2025-05-20 20:22:08,624 [INFO] - root - 搜索 'adjustments' 找到 1 个结果
+2025-05-20 20:22:08,625 [INFO] - root - 执行搜索: 'adjustments' 找到 1 个结果
+2025-05-20 20:22:08,625 [INFO] - root - 搜索结果 #0: id=27, title=
+2025-05-20 20:22:08,626 [INFO] - root - 添加搜索历史: 查询='adjustments', 结果数=1, 历史ID=3
+2025-05-20 20:22:08,626 [INFO] - root - 搜索结果ID: [27]
+2025-05-20 20:22:08,628 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 20:22:08] "GET /search?q=adjustments HTTP/1.1" 200 -
+2025-05-20 20:22:08,645 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 20:22:08] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-20 20:22:08,645 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 20:22:08] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-20 20:22:09,838 [INFO] - root - 搜索 'adjustments' 找到 1 个结果
+2025-05-20 20:22:09,839 [INFO] - root - 执行搜索: 'adjustments' 找到 1 个结果
+2025-05-20 20:22:09,839 [INFO] - root - 搜索结果 #0: id=27, title=
+2025-05-20 20:22:09,840 [INFO] - root - 添加搜索历史: 查询='adjustments', 结果数=1, 历史ID=4
+2025-05-20 20:22:09,841 [INFO] - root - 搜索结果ID: [27]
+2025-05-20 20:22:09,843 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 20:22:09] "GET /search?q=adjustments HTTP/1.1" 200 -
+2025-05-20 20:22:09,854 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 20:22:09] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-20 20:22:09,855 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 20:22:09] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-20 20:22:11,187 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 20:22:11] "GET / HTTP/1.1" 200 -
+2025-05-20 20:22:11,209 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 20:22:11] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-20 20:22:11,210 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 20:22:11] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-20 20:22:12,487 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 20:22:12] "GET / HTTP/1.1" 200 -
+2025-05-20 20:22:12,498 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 20:22:12] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-20 20:22:12,502 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 20:22:12] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-20 20:22:16,557 [INFO] - root - 搜索 'adjustments' 找到 1 个结果
+2025-05-20 20:22:16,557 [INFO] - root - 执行搜索: 'adjustments' 找到 1 个结果
+2025-05-20 20:22:16,558 [INFO] - root - 搜索结果 #0: id=27, title=
+2025-05-20 20:22:16,558 [INFO] - root - 添加搜索历史: 查询='adjustments', 结果数=1, 历史ID=5
+2025-05-20 20:22:16,559 [INFO] - root - 搜索结果ID: [27]
+2025-05-20 20:22:16,560 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 20:22:16] "GET /search?q=adjustments HTTP/1.1" 200 -
+2025-05-20 20:22:16,584 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 20:22:16] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-20 20:22:16,585 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 20:22:16] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-20 20:22:20,263 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 20:22:20] "[32mGET /search/clear?q=adjustments HTTP/1.1[0m" 302 -
+2025-05-20 20:22:20,269 [INFO] - root - 搜索 'adjustments' 找到 1 个结果
+2025-05-20 20:22:20,269 [INFO] - root - 执行搜索: 'adjustments' 找到 1 个结果
+2025-05-20 20:22:20,270 [INFO] - root - 搜索结果 #0: id=27, title=
+2025-05-20 20:22:20,270 [INFO] - root - 添加搜索历史: 查询='adjustments', 结果数=1, 历史ID=1
+2025-05-20 20:22:20,271 [INFO] - root - 搜索结果ID: [27]
+2025-05-20 20:22:20,272 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 20:22:20] "GET /search?q=adjustments HTTP/1.1" 200 -
+2025-05-20 20:22:23,855 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 20:22:23] "[32mGET /search/delete/2?return_to=http%3A//127.0.0.1%3A5000/search%3Fq%3Dadjustments HTTP/1.1[0m" 302 -
+2025-05-20 20:22:23,861 [INFO] - root - 搜索 'adjustments' 找到 1 个结果
+2025-05-20 20:22:23,863 [INFO] - root - 执行搜索: 'adjustments' 找到 1 个结果
+2025-05-20 20:22:23,863 [INFO] - root - 搜索结果 #0: id=27, title=
+2025-05-20 20:22:23,863 [INFO] - root - 添加搜索历史: 查询='adjustments', 结果数=1, 历史ID=2
+2025-05-20 20:22:23,864 [INFO] - root - 搜索结果ID: [27]
+2025-05-20 20:22:23,866 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 20:22:23] "GET /search?q=adjustments HTTP/1.1" 200 -
+2025-05-20 20:22:23,880 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 20:22:23] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-20 20:22:23,880 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 20:22:23] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-20 20:22:26,328 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 20:22:26] "[32mGET /search/delete/1?return_to=http%3A//127.0.0.1%3A5000/search%3Fq%3Dadjustments HTTP/1.1[0m" 302 -
+2025-05-20 20:22:26,335 [INFO] - root - 搜索 'adjustments' 找到 1 个结果
+2025-05-20 20:22:26,335 [INFO] - root - 执行搜索: 'adjustments' 找到 1 个结果
+2025-05-20 20:22:26,336 [INFO] - root - 搜索结果 #0: id=27, title=
+2025-05-20 20:22:26,336 [INFO] - root - 添加搜索历史: 查询='adjustments', 结果数=1, 历史ID=3
+2025-05-20 20:22:26,336 [INFO] - root - 搜索结果ID: [27]
+2025-05-20 20:22:26,338 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 20:22:26] "GET /search?q=adjustments HTTP/1.1" 200 -
+2025-05-20 20:22:26,353 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 20:22:26] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-20 20:22:26,357 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 20:22:26] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-20 20:22:43,338 [INFO] - werkzeug -  * Restarting with stat
+2025-05-20 20:22:43,797 [WARNING] - werkzeug -  * Debugger is active!
+2025-05-20 20:22:43,802 [INFO] - werkzeug -  * Debugger PIN: 129-233-724
+2025-05-20 20:22:43,911 [INFO] - werkzeug -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2025-05-20 20:22:45,082 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 20:22:45] "[32mGET / HTTP/1.1[0m" 302 -
+2025-05-20 20:22:45,098 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 20:22:45] "GET /login?next=http%3A%2F%2F127.0.0.1%3A5000%2F HTTP/1.1" 200 -
+2025-05-20 20:22:45,308 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 20:22:45] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-20 20:22:51,857 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 20:22:51] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-05-20 20:22:51,882 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 20:22:51] "GET / HTTP/1.1" 200 -
+2025-05-20 20:22:51,900 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 20:22:51] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-20 20:22:51,901 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 20:22:51] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-20 20:22:56,211 [INFO] - root - 搜索 'adjustments' 找到 1 个结果
+2025-05-20 20:22:56,212 [INFO] - root - 执行搜索: 'adjustments' 找到 1 个结果
+2025-05-20 20:22:56,212 [INFO] - root - 搜索结果 #0: id=27, title=
+2025-05-20 20:22:56,213 [INFO] - root - 添加搜索历史: 查询='adjustments', 结果数=1, 历史ID=1
+2025-05-20 20:22:56,213 [INFO] - root - 搜索结果ID: [27]
+2025-05-20 20:22:56,233 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 20:22:56] "GET /search?q=adjustments HTTP/1.1" 200 -
+2025-05-20 20:22:56,256 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 20:22:56] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-20 20:22:56,256 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 20:22:56] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-20 20:25:38,811 [INFO] - root - 搜索 'adjustments' 找到 1 个结果
+2025-05-20 20:25:38,812 [INFO] - root - 执行搜索: 'adjustments' 找到 1 个结果
+2025-05-20 20:25:38,812 [INFO] - root - 搜索结果 #0: id=27, title=
+2025-05-20 20:25:38,813 [INFO] - root - 添加搜索历史: 查询='adjustments', 结果数=1, 历史ID=2
+2025-05-20 20:25:38,813 [INFO] - root - 搜索结果ID: [27]
+2025-05-20 20:25:38,834 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 20:25:38] "GET /search?q=adjustments HTTP/1.1" 200 -
+2025-05-20 20:25:38,850 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 20:25:38] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-20 20:25:38,850 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 20:25:38] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-20 20:26:29,746 [INFO] - root - 查看文档: 27, 文件类型: application/vnd.openxmlformats-officedocument.wordprocessingml.document
+2025-05-20 20:26:29,746 [INFO] - root - 文档 27 使用HTML内容显示
+2025-05-20 20:26:29,755 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 20:26:29] "GET /document/27 HTTP/1.1" 200 -
+2025-05-20 20:26:29,781 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 20:26:29] "GET /static/doc_images/doc_27/image_mammoth_c9261f8fea95446c8b878c1ef325d02f_1.png HTTP/1.1" 200 -
+2025-05-20 20:26:29,786 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 20:26:29] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-20 20:26:29,787 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 20:26:29] "GET /static/doc_images/doc_27/image_mammoth_9c18632f3d5143d2bbf1501d77db5816_5.png HTTP/1.1" 200 -
+2025-05-20 20:26:29,787 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 20:26:29] "GET /static/doc_images/doc_27/image_mammoth_64f594ddaca942fbb78c1e42e23ef245_4.png HTTP/1.1" 200 -
+2025-05-20 20:26:29,787 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 20:26:29] "GET /static/doc_images/doc_27/image_mammoth_711ae610005c46e0b950460895fc447a_3.png HTTP/1.1" 200 -
+2025-05-20 20:26:29,788 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 20:26:29] "GET /static/doc_images/doc_27/image_mammoth_3d55d9d5fae44358a13307a4947b710e_2.png HTTP/1.1" 200 -
+2025-05-20 20:26:29,793 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 20:26:29] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-20 20:26:29,798 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 20:26:29] "GET /static/doc_images/doc_27/image_mammoth_0733fdc51e0446be86378770c369aa44_6.png HTTP/1.1" 200 -
+2025-05-20 20:26:29,800 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 20:26:29] "GET /static/doc_images/doc_27/image_mammoth_f0b6abeed5cb43eab7dbaa66798ce845_7.png HTTP/1.1" 200 -
+2025-05-20 20:26:29,803 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 20:26:29] "GET /static/doc_images/doc_27/image_mammoth_c7b26b63b9624eeeaebf3510e9f9087a_8.png HTTP/1.1" 200 -
+2025-05-20 20:26:29,804 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 20:26:29] "GET /static/doc_images/doc_27/image_mammoth_17528cb9dbd34508ba64438c7720a4e7_9.png HTTP/1.1" 200 -
+2025-05-20 20:26:29,804 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 20:26:29] "GET /static/doc_images/doc_27/image_mammoth_0f985aff79de423daeac2c85af8e40e4_10.png HTTP/1.1" 200 -
+2025-05-20 20:26:29,812 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 20:26:29] "GET /static/doc_images/doc_27/image_mammoth_a63051de67d545bf926b9fc34b9abcd5_11.png HTTP/1.1" 200 -
+2025-05-20 20:26:29,821 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 20:26:29] "GET /static/doc_images/doc_27/image_mammoth_e78a6a754c26448b95663ba393514390_12.png HTTP/1.1" 200 -
+2025-05-20 20:26:29,824 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 20:26:29] "GET /static/doc_images/doc_27/image_mammoth_d2aecb089e304b00875250baba86c37f_13.png HTTP/1.1" 200 -
+2025-05-20 20:26:29,827 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 20:26:29] "GET /static/doc_images/doc_27/image_mammoth_77b7321d416d49c2bac4b4a7130816b8_14.png HTTP/1.1" 200 -
+2025-05-20 20:26:29,828 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 20:26:29] "GET /static/doc_images/doc_27/image_mammoth_7949dfb05dd8454b9ee4b4385fb8e3e1_15.png HTTP/1.1" 200 -
+2025-05-20 20:26:29,830 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 20:26:29] "GET /static/doc_images/doc_27/image_mammoth_0b793680a02a4b9b88863424436c9501_16.png HTTP/1.1" 200 -
+2025-05-20 20:26:29,832 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 20:26:29] "GET /static/doc_images/doc_27/image_mammoth_2407a19d8aa04372b2b201aa87429da2_17.png HTTP/1.1" 200 -
+2025-05-20 20:26:29,839 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 20:26:29] "GET /static/doc_images/doc_27/image_mammoth_6cba556bd33e4a66ab79f4301c106884_18.png HTTP/1.1" 200 -
+2025-05-20 20:26:29,847 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 20:26:29] "GET /static/doc_images/doc_27/image_mammoth_e1b61504d7f043a8883b022fcaf9615f_19.png HTTP/1.1" 200 -
+2025-05-20 20:27:23,474 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 20:27:23] "[32mGET /search/delete/1?return_to=http%3A//127.0.0.1%3A5000/search%3Fq%3Dadjustments HTTP/1.1[0m" 302 -
+2025-05-20 20:27:23,480 [INFO] - root - 搜索 'adjustments' 找到 1 个结果
+2025-05-20 20:27:23,481 [INFO] - root - 执行搜索: 'adjustments' 找到 1 个结果
+2025-05-20 20:27:23,482 [INFO] - root - 搜索结果 #0: id=27, title=
+2025-05-20 20:27:23,482 [INFO] - root - 添加搜索历史: 查询='adjustments', 结果数=1, 历史ID=3
+2025-05-20 20:27:23,483 [INFO] - root - 搜索结果ID: [27]
+2025-05-20 20:27:23,485 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 20:27:23] "GET /search?q=adjustments HTTP/1.1" 200 -
+2025-05-20 20:27:23,505 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 20:27:23] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-20 20:27:23,506 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 20:27:23] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-20 20:27:25,427 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 20:27:25] "[32mGET /search/delete/3?return_to=http%3A//127.0.0.1%3A5000/search%3Fq%3Dadjustments HTTP/1.1[0m" 302 -
+2025-05-20 20:27:25,432 [INFO] - root - 搜索 'adjustments' 找到 1 个结果
+2025-05-20 20:27:25,433 [INFO] - root - 执行搜索: 'adjustments' 找到 1 个结果
+2025-05-20 20:27:25,434 [INFO] - root - 搜索结果 #0: id=27, title=
+2025-05-20 20:27:25,435 [INFO] - root - 添加搜索历史: 查询='adjustments', 结果数=1, 历史ID=3
+2025-05-20 20:27:25,436 [INFO] - root - 搜索结果ID: [27]
+2025-05-20 20:27:25,438 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 20:27:25] "GET /search?q=adjustments HTTP/1.1" 200 -
+2025-05-20 20:27:25,452 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 20:27:25] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-20 20:27:25,453 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 20:27:25] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-20 20:27:28,142 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 20:27:28] "[32mGET /search/clear?q=adjustments HTTP/1.1[0m" 302 -
+2025-05-20 20:27:28,149 [INFO] - root - 搜索 'adjustments' 找到 1 个结果
+2025-05-20 20:27:28,150 [INFO] - root - 执行搜索: 'adjustments' 找到 1 个结果
+2025-05-20 20:27:28,150 [INFO] - root - 搜索结果 #0: id=27, title=
+2025-05-20 20:27:28,150 [INFO] - root - 添加搜索历史: 查询='adjustments', 结果数=1, 历史ID=1
+2025-05-20 20:27:28,151 [INFO] - root - 搜索结果ID: [27]
+2025-05-20 20:27:28,153 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 20:27:28] "GET /search?q=adjustments HTTP/1.1" 200 -
+2025-05-20 20:27:30,325 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 20:27:30] "GET / HTTP/1.1" 200 -
+2025-05-20 20:27:30,348 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 20:27:30] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-20 20:27:30,348 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 20:27:30] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-20 20:27:35,256 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 20:27:35] "[33mGET /api/check-file?filename=二期Duoov1.0.1.docx HTTP/1.1[0m" 404 -
+2025-05-20 20:27:35,264 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 20:27:35] "[33mPOST /upload/batch HTTP/1.1[0m" 404 -
+2025-05-20 20:27:36,796 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 20:27:36] "GET / HTTP/1.1" 200 -
+2025-05-20 20:27:36,815 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 20:27:36] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-20 20:27:36,818 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 20:27:36] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-20 20:27:51,648 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 20:27:51] "GET /?page=5&limit=10&search= HTTP/1.1" 200 -
+2025-05-20 20:27:51,670 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 20:27:51] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-20 20:27:51,670 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 20:27:51] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-20 20:27:52,963 [INFO] - werkzeug -  * Detected change in 'D:\\tools\\Pycharm\\PycharmWork\\DocRadar\\app\\utils\\search_engine.py', reloading
+2025-05-20 20:27:53,011 [INFO] - werkzeug -  * Restarting with stat
+2025-05-20 20:27:53,546 [WARNING] - werkzeug -  * Debugger is active!
+2025-05-20 20:27:53,552 [INFO] - werkzeug -  * Debugger PIN: 129-233-724
+2025-05-20 20:27:53,667 [INFO] - werkzeug -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2025-05-20 20:27:53,783 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 20:27:53] "[32mGET /?page=2&limit=10&search= HTTP/1.1[0m" 302 -
+2025-05-20 20:27:53,793 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 20:27:53] "GET /login?next=http%3A%2F%2F127.0.0.1%3A5000%2F%3Fpage%3D2%26limit%3D10%26search%3D HTTP/1.1" 200 -
+2025-05-20 20:27:53,934 [INFO] - werkzeug - 127.0.0.1 - - [20/May/2025 20:27:53] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-20 20:28:13,853 [INFO] - werkzeug -  * Detected change in 'D:\\tools\\Pycharm\\PycharmWork\\DocRadar\\app\\utils\\search_engine.py', reloading
+2025-05-20 20:28:13,904 [INFO] - werkzeug -  * Restarting with stat
+2025-05-20 20:28:14,425 [WARNING] - werkzeug -  * Debugger is active!
+2025-05-20 20:28:14,430 [INFO] - werkzeug -  * Debugger PIN: 129-233-724
+2025-05-20 20:28:14,542 [INFO] - werkzeug -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2025-05-20 20:35:09,287 [INFO] - werkzeug -  * Detected change in 'D:\\tools\\Pycharm\\PycharmWork\\DocRadar\\app\\utils\\search_engine.py', reloading
+2025-05-20 20:35:09,331 [INFO] - werkzeug -  * Restarting with stat
+2025-05-20 20:35:09,846 [WARNING] - werkzeug -  * Debugger is active!
+2025-05-20 20:35:09,851 [INFO] - werkzeug -  * Debugger PIN: 129-233-724
+2025-05-20 20:35:09,960 [INFO] - werkzeug -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2025-05-20 20:35:30,019 [INFO] - werkzeug -  * Detected change in 'D:\\tools\\Pycharm\\PycharmWork\\DocRadar\\app\\utils\\search_engine.py', reloading
+2025-05-20 20:35:30,069 [INFO] - werkzeug -  * Restarting with stat
+2025-05-20 20:35:30,526 [WARNING] - werkzeug -  * Debugger is active!
+2025-05-20 20:35:30,531 [INFO] - werkzeug -  * Debugger PIN: 129-233-724
+2025-05-20 20:35:30,636 [INFO] - werkzeug -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2025-05-20 20:35:50,649 [INFO] - werkzeug -  * Detected change in 'D:\\tools\\Pycharm\\PycharmWork\\DocRadar\\app\\core\\document_routes.py', reloading
+2025-05-20 20:35:50,712 [INFO] - werkzeug -  * Restarting with stat
+2025-05-20 20:35:51,164 [WARNING] - werkzeug -  * Debugger is active!
+2025-05-20 20:35:51,169 [INFO] - werkzeug -  * Debugger PIN: 129-233-724
+2025-05-20 20:35:51,279 [INFO] - werkzeug -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2025-05-20 20:36:00,623 [INFO] - werkzeug -  * Restarting with stat
+2025-05-20 20:36:01,071 [WARNING] - werkzeug -  * Debugger is active!
+2025-05-20 20:36:01,076 [INFO] - werkzeug -  * Debugger PIN: 129-233-724
+2025-05-20 20:36:01,181 [INFO] - werkzeug -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2025-05-20 20:36:20,225 [INFO] - werkzeug -  * Detected change in 'D:\\tools\\Pycharm\\PycharmWork\\DocRadar\\app\\core\\search_routes.py', reloading
+2025-05-20 20:36:20,261 [INFO] - werkzeug -  * Detected change in 'D:\\tools\\Pycharm\\PycharmWork\\DocRadar\\app\\core\\search_routes.py', reloading
+2025-05-20 20:36:20,276 [INFO] - werkzeug -  * Restarting with stat
+2025-05-20 20:36:20,318 [INFO] - werkzeug -  * Restarting with stat
+2025-05-20 20:36:20,768 [WARNING] - werkzeug -  * Debugger is active!
+2025-05-20 20:36:20,773 [INFO] - werkzeug -  * Debugger PIN: 129-233-724
+2025-05-20 20:36:20,805 [WARNING] - werkzeug -  * Debugger is active!
+2025-05-20 20:36:20,812 [INFO] - werkzeug -  * Debugger PIN: 129-233-724
+2025-05-20 20:36:20,898 [INFO] - werkzeug -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2025-05-20 20:36:20,932 [INFO] - werkzeug -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2025-05-20 20:36:34,134 [INFO] - werkzeug -  * Restarting with stat
+2025-05-20 20:36:34,576 [WARNING] - werkzeug -  * Debugger is active!
+2025-05-20 20:36:34,580 [INFO] - werkzeug -  * Debugger PIN: 129-233-724
+2025-05-20 20:36:34,687 [INFO] - werkzeug -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2025-05-20 20:36:55,786 [INFO] - werkzeug -  * Detected change in 'D:\\tools\\Pycharm\\PycharmWork\\DocRadar\\app\\utils\\search_engine.py', reloading
+2025-05-20 20:36:55,825 [INFO] - werkzeug -  * Restarting with stat
+2025-05-20 20:36:56,285 [WARNING] - werkzeug -  * Debugger is active!
+2025-05-20 20:36:56,289 [INFO] - werkzeug -  * Debugger PIN: 129-233-724
+2025-05-20 20:36:56,398 [INFO] - werkzeug -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2025-05-20 20:37:22,983 [INFO] - werkzeug -  * Detected change in 'D:\\tools\\Pycharm\\PycharmWork\\DocRadar\\app\\utils\\search_engine.py', reloading
+2025-05-20 20:37:23,021 [INFO] - werkzeug -  * Restarting with stat
+2025-05-20 20:37:23,478 [WARNING] - werkzeug -  * Debugger is active!
+2025-05-20 20:37:23,482 [INFO] - werkzeug -  * Debugger PIN: 129-233-724
+2025-05-20 20:37:23,589 [INFO] - werkzeug -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2025-05-21 09:16:45,260 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 09:16:45] "[32mGET / HTTP/1.1[0m" 302 -
+2025-05-21 09:16:45,288 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 09:16:45] "GET /login?next=http%3A%2F%2F127.0.0.1%3A5000%2F HTTP/1.1" 200 -
+2025-05-21 09:16:45,488 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 09:16:45] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-21 09:16:51,697 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 09:16:51] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-05-21 09:16:51,726 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 09:16:51] "GET / HTTP/1.1" 200 -
+2025-05-21 09:16:51,746 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 09:16:51] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-21 09:16:51,752 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 09:16:51] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-21 09:16:53,878 [INFO] - root - 文档ID 55: 标题为空，使用原始文件名 '五期Duoov1.3.0.docx' 作为标题
+2025-05-21 09:16:53,879 [INFO] - root - 文档 55 使用HTML内容显示
+2025-05-21 09:16:53,890 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 09:16:53] "GET /document/55 HTTP/1.1" 200 -
+2025-05-21 09:16:53,913 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 09:16:53] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-21 09:16:53,922 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 09:16:53] "[36mGET /static/doc_images/doc_55/image_mammoth_d2ccc89a42524da2a474afae3cfde41d_2.png HTTP/1.1[0m" 304 -
+2025-05-21 09:16:53,922 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 09:16:53] "[36mGET /static/doc_images/doc_55/image_mammoth_f9409ce987ec476e821e0ab3e91d2526_1.png HTTP/1.1[0m" 304 -
+2025-05-21 09:16:53,922 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 09:16:53] "[36mGET /static/doc_images/doc_55/image_mammoth_bc257a22da6b4535957725e65adbaf6e_4.png HTTP/1.1[0m" 304 -
+2025-05-21 09:16:53,922 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 09:16:53] "[36mGET /static/doc_images/doc_55/image_mammoth_f834ad9ca41a4c29830e2e851fc9879d_5.png HTTP/1.1[0m" 304 -
+2025-05-21 09:16:53,922 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 09:16:53] "[36mGET /static/doc_images/doc_55/image_mammoth_50740f8ee05b42f5882b5d13eb864e95_3.png HTTP/1.1[0m" 304 -
+2025-05-21 09:16:53,923 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 09:16:53] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-21 09:16:53,930 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 09:16:53] "[36mGET /static/doc_images/doc_55/image_mammoth_a43562662e5f456182cd3f448691ee8c_6.png HTTP/1.1[0m" 304 -
+2025-05-21 09:16:53,931 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 09:16:53] "[36mGET /static/doc_images/doc_55/image_mammoth_f3a1898a61a044ec98ce925dd285d88a_7.png HTTP/1.1[0m" 304 -
+2025-05-21 09:16:53,937 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 09:16:53] "[36mGET /static/doc_images/doc_55/image_mammoth_23cbeae574d44a3197ae35b956daf153_8.png HTTP/1.1[0m" 304 -
+2025-05-21 09:16:53,937 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 09:16:53] "[36mGET /static/doc_images/doc_55/image_mammoth_0afc03be14c54fb3a21998b12f662d16_9.png HTTP/1.1[0m" 304 -
+2025-05-21 09:16:53,938 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 09:16:53] "[36mGET /static/doc_images/doc_55/image_mammoth_1eb0f39dd27442c8b4ec928dfbe0df61_10.png HTTP/1.1[0m" 304 -
+2025-05-21 09:16:53,939 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 09:16:53] "[36mGET /static/doc_images/doc_55/image_mammoth_9724e9e83f824b7cbd7b32578b44b633_11.png HTTP/1.1[0m" 304 -
+2025-05-21 09:16:53,940 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 09:16:53] "[36mGET /static/doc_images/doc_55/image_mammoth_f95689eecec341199773b9f1032f831a_12.png HTTP/1.1[0m" 304 -
+2025-05-21 09:16:53,942 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 09:16:53] "[36mGET /static/doc_images/doc_55/image_mammoth_897ae1cbca564182acdbb26b4183ec8d_13.png HTTP/1.1[0m" 304 -
+2025-05-21 09:16:53,949 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 09:16:53] "[36mGET /static/doc_images/doc_55/image_mammoth_f15e2ecebdc64100bbfb0d67f7d20c90_14.png HTTP/1.1[0m" 304 -
+2025-05-21 09:16:53,949 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 09:16:53] "[36mGET /static/doc_images/doc_55/image_mammoth_32093aa002e24c408e4b5338d6b401a8_15.png HTTP/1.1[0m" 304 -
+2025-05-21 09:16:53,953 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 09:16:53] "[36mGET /static/doc_images/doc_55/image_mammoth_a3223e2981a64740a2872b15092f92a5_16.png HTTP/1.1[0m" 304 -
+2025-05-21 09:16:53,953 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 09:16:53] "[36mGET /static/doc_images/doc_55/image_mammoth_28da44ee969a4b918eff5a1640a65d62_17.png HTTP/1.1[0m" 304 -
+2025-05-21 09:16:53,958 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 09:16:53] "[36mGET /static/doc_images/doc_55/image_mammoth_60f28562c5e74fe69cff3cb8f364616a_18.png HTTP/1.1[0m" 304 -
+2025-05-21 09:16:53,960 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 09:16:53] "[36mGET /static/doc_images/doc_55/image_mammoth_eae4924fa92b48ca8e6c87b6557d23c5_19.png HTTP/1.1[0m" 304 -
+2025-05-21 09:16:53,964 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 09:16:53] "[36mGET /static/doc_images/doc_55/image_mammoth_0935df03930b4a718fdc85941d23efb6_20.png HTTP/1.1[0m" 304 -
+2025-05-21 09:16:53,965 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 09:16:53] "[36mGET /static/doc_images/doc_55/image_mammoth_f520137c54b94659b3cb0ea7686d22ed_21.png HTTP/1.1[0m" 304 -
+2025-05-21 09:16:53,969 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 09:16:53] "[36mGET /static/doc_images/doc_55/image_mammoth_c755349334274ce68adf289a55069a53_22.png HTTP/1.1[0m" 304 -
+2025-05-21 09:16:53,973 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 09:16:53] "[36mGET /static/doc_images/doc_55/image_mammoth_01df9e8f6de74f28a7e79b2c380057fd_23.png HTTP/1.1[0m" 304 -
+2025-05-21 09:16:53,975 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 09:16:53] "[36mGET /static/doc_images/doc_55/image_mammoth_d2dd2ebe2d014bad967ead973b27f24e_24.png HTTP/1.1[0m" 304 -
+2025-05-21 09:16:53,976 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 09:16:53] "[36mGET /static/doc_images/doc_55/image_mammoth_2c003cbd326c46128754819029337f2e_25.png HTTP/1.1[0m" 304 -
+2025-05-21 09:16:53,980 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 09:16:53] "[36mGET /static/doc_images/doc_55/image_mammoth_e5abeb512aaa4d0781918f9ef0fe8c97_26.png HTTP/1.1[0m" 304 -
+2025-05-21 09:16:53,981 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 09:16:53] "[36mGET /static/doc_images/doc_55/image_mammoth_a077ca2b90144a88a88ab67c5f46d601_27.png HTTP/1.1[0m" 304 -
+2025-05-21 09:16:53,981 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 09:16:53] "[36mGET /static/doc_images/doc_55/image_mammoth_91fc6ed247774371b6042600a3fc8b6f_28.png HTTP/1.1[0m" 304 -
+2025-05-21 09:16:59,671 [INFO] - root - 文档ID 27: 标题为空，使用原始文件名 '三十四期Duoov4.0.0.docx' 作为标题
+2025-05-21 09:16:59,672 [INFO] - root - 搜索 'adjustments' 找到 1 个结果
+2025-05-21 09:16:59,673 [INFO] - root - 执行搜索: 'adjustments' 找到 1 个结果
+2025-05-21 09:16:59,673 [INFO] - root - 搜索结果 #0: id=27, title=三十四期Duoov4.0.0
+2025-05-21 09:16:59,674 [INFO] - root - 添加搜索历史: 查询='adjustments', 结果数=1, 历史ID=1
+2025-05-21 09:16:59,674 [INFO] - root - 搜索结果ID: [27]
+2025-05-21 09:16:59,698 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 09:16:59] "GET /search?q=adjustments HTTP/1.1" 200 -
+2025-05-21 09:16:59,726 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 09:16:59] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-21 09:16:59,726 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 09:16:59] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-21 09:17:03,325 [INFO] - root - 文档ID 27: 标题为空，使用原始文件名 '三十四期Duoov4.0.0.docx' 作为标题
+2025-05-21 09:17:03,328 [INFO] - root - 文档 27 使用HTML内容显示
+2025-05-21 09:17:03,329 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 09:17:03] "GET /document/27 HTTP/1.1" 200 -
+2025-05-21 09:17:03,362 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 09:17:03] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-21 09:17:03,365 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 09:17:03] "[36mGET /static/doc_images/doc_27/image_mammoth_c9261f8fea95446c8b878c1ef325d02f_1.png HTTP/1.1[0m" 304 -
+2025-05-21 09:17:03,365 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 09:17:03] "[36mGET /static/doc_images/doc_27/image_mammoth_64f594ddaca942fbb78c1e42e23ef245_4.png HTTP/1.1[0m" 304 -
+2025-05-21 09:17:03,366 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 09:17:03] "[36mGET /static/doc_images/doc_27/image_mammoth_3d55d9d5fae44358a13307a4947b710e_2.png HTTP/1.1[0m" 304 -
+2025-05-21 09:17:03,368 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 09:17:03] "[36mGET /static/doc_images/doc_27/image_mammoth_711ae610005c46e0b950460895fc447a_3.png HTTP/1.1[0m" 304 -
+2025-05-21 09:17:03,369 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 09:17:03] "[36mGET /static/doc_images/doc_27/image_mammoth_9c18632f3d5143d2bbf1501d77db5816_5.png HTTP/1.1[0m" 304 -
+2025-05-21 09:17:03,370 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 09:17:03] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-21 09:17:03,376 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 09:17:03] "[36mGET /static/doc_images/doc_27/image_mammoth_0733fdc51e0446be86378770c369aa44_6.png HTTP/1.1[0m" 304 -
+2025-05-21 09:17:03,377 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 09:17:03] "[36mGET /static/doc_images/doc_27/image_mammoth_f0b6abeed5cb43eab7dbaa66798ce845_7.png HTTP/1.1[0m" 304 -
+2025-05-21 09:17:03,378 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 09:17:03] "[36mGET /static/doc_images/doc_27/image_mammoth_c7b26b63b9624eeeaebf3510e9f9087a_8.png HTTP/1.1[0m" 304 -
+2025-05-21 09:17:03,382 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 09:17:03] "[36mGET /static/doc_images/doc_27/image_mammoth_17528cb9dbd34508ba64438c7720a4e7_9.png HTTP/1.1[0m" 304 -
+2025-05-21 09:17:03,384 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 09:17:03] "[36mGET /static/doc_images/doc_27/image_mammoth_0f985aff79de423daeac2c85af8e40e4_10.png HTTP/1.1[0m" 304 -
+2025-05-21 09:17:03,386 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 09:17:03] "[36mGET /static/doc_images/doc_27/image_mammoth_a63051de67d545bf926b9fc34b9abcd5_11.png HTTP/1.1[0m" 304 -
+2025-05-21 09:17:03,388 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 09:17:03] "[36mGET /static/doc_images/doc_27/image_mammoth_e78a6a754c26448b95663ba393514390_12.png HTTP/1.1[0m" 304 -
+2025-05-21 09:17:03,391 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 09:17:03] "[36mGET /static/doc_images/doc_27/image_mammoth_d2aecb089e304b00875250baba86c37f_13.png HTTP/1.1[0m" 304 -
+2025-05-21 09:17:03,392 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 09:17:03] "[36mGET /static/doc_images/doc_27/image_mammoth_77b7321d416d49c2bac4b4a7130816b8_14.png HTTP/1.1[0m" 304 -
+2025-05-21 09:17:03,393 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 09:17:03] "[36mGET /static/doc_images/doc_27/image_mammoth_7949dfb05dd8454b9ee4b4385fb8e3e1_15.png HTTP/1.1[0m" 304 -
+2025-05-21 09:17:03,396 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 09:17:03] "[36mGET /static/doc_images/doc_27/image_mammoth_0b793680a02a4b9b88863424436c9501_16.png HTTP/1.1[0m" 304 -
+2025-05-21 09:17:03,397 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 09:17:03] "[36mGET /static/doc_images/doc_27/image_mammoth_2407a19d8aa04372b2b201aa87429da2_17.png HTTP/1.1[0m" 304 -
+2025-05-21 09:17:03,402 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 09:17:03] "[36mGET /static/doc_images/doc_27/image_mammoth_6cba556bd33e4a66ab79f4301c106884_18.png HTTP/1.1[0m" 304 -
+2025-05-21 09:17:03,403 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 09:17:03] "[36mGET /static/doc_images/doc_27/image_mammoth_e1b61504d7f043a8883b022fcaf9615f_19.png HTTP/1.1[0m" 304 -
+2025-05-21 09:17:08,871 [INFO] - root - 文档ID 27: 标题为空，使用原始文件名 '三十四期Duoov4.0.0.docx' 作为标题
+2025-05-21 09:17:08,872 [INFO] - root - 搜索 'adjustments' 找到 1 个结果
+2025-05-21 09:17:08,873 [INFO] - root - 执行搜索: 'adjustments' 找到 1 个结果
+2025-05-21 09:17:08,873 [INFO] - root - 搜索结果 #0: id=27, title=三十四期Duoov4.0.0
+2025-05-21 09:17:08,874 [INFO] - root - 添加搜索历史: 查询='adjustments', 结果数=1, 历史ID=2
+2025-05-21 09:17:08,874 [INFO] - root - 搜索结果ID: [27]
+2025-05-21 09:17:08,876 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 09:17:08] "GET /search?q=adjustments HTTP/1.1" 200 -
+2025-05-21 09:17:08,915 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 09:17:08] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-21 09:17:08,915 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 09:17:08] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-21 09:17:12,367 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 09:17:12] "[32mGET /search/delete/2?return_to=http%3A//127.0.0.1%3A5000/search%3Fq%3Dadjustments HTTP/1.1[0m" 302 -
+2025-05-21 09:17:12,374 [INFO] - root - 文档ID 27: 标题为空，使用原始文件名 '三十四期Duoov4.0.0.docx' 作为标题
+2025-05-21 09:17:12,375 [INFO] - root - 搜索 'adjustments' 找到 1 个结果
+2025-05-21 09:17:12,375 [INFO] - root - 执行搜索: 'adjustments' 找到 1 个结果
+2025-05-21 09:17:12,376 [INFO] - root - 搜索结果 #0: id=27, title=三十四期Duoov4.0.0
+2025-05-21 09:17:12,376 [INFO] - root - 添加搜索历史: 查询='adjustments', 结果数=1, 历史ID=2
+2025-05-21 09:17:12,377 [INFO] - root - 搜索结果ID: [27]
+2025-05-21 09:17:12,379 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 09:17:12] "GET /search?q=adjustments HTTP/1.1" 200 -
+2025-05-21 09:17:12,400 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 09:17:12] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-21 09:17:12,400 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 09:17:12] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-21 09:17:14,528 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 09:17:14] "[32mGET /search/delete/2?return_to=http%3A//127.0.0.1%3A5000/search%3Fq%3Dadjustments HTTP/1.1[0m" 302 -
+2025-05-21 09:17:14,536 [INFO] - root - 文档ID 27: 标题为空，使用原始文件名 '三十四期Duoov4.0.0.docx' 作为标题
+2025-05-21 09:17:14,537 [INFO] - root - 搜索 'adjustments' 找到 1 个结果
+2025-05-21 09:17:14,538 [INFO] - root - 执行搜索: 'adjustments' 找到 1 个结果
+2025-05-21 09:17:14,538 [INFO] - root - 搜索结果 #0: id=27, title=三十四期Duoov4.0.0
+2025-05-21 09:17:14,539 [INFO] - root - 添加搜索历史: 查询='adjustments', 结果数=1, 历史ID=2
+2025-05-21 09:17:14,540 [INFO] - root - 搜索结果ID: [27]
+2025-05-21 09:17:14,542 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 09:17:14] "GET /search?q=adjustments HTTP/1.1" 200 -
+2025-05-21 09:17:14,558 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 09:17:14] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-21 09:17:14,558 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 09:17:14] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-21 09:17:19,201 [INFO] - root - 文档ID 55: 标题为空，使用原始文件名 '五期Duoov1.3.0.docx' 作为标题
+2025-05-21 09:17:19,202 [INFO] - root - 文档ID 56: 标题为空，使用原始文件名 '四期Duoov1.2.1.docx' 作为标题
+2025-05-21 09:17:19,203 [INFO] - root - 文档ID 57: 标题为空，使用原始文件名 '三期Duoov1.1.0.docx' 作为标题
+2025-05-21 09:17:19,203 [INFO] - root - 文档ID 52: 标题为空，使用原始文件名 '八期Duoov1.6.0.docx' 作为标题
+2025-05-21 09:17:19,204 [INFO] - root - 文档ID 53: 标题为空，使用原始文件名 '七期Duoov1.5.0.docx' 作为标题
+2025-05-21 09:17:19,204 [INFO] - root - 文档ID 54: 标题为空，使用原始文件名 '六期Duoov1.4.0.docx' 作为标题
+2025-05-21 09:17:19,205 [INFO] - root - 文档ID 49: 标题为空，使用原始文件名 '十一期Duoov1.9.0.docx' 作为标题
+2025-05-21 09:17:19,205 [INFO] - root - 文档ID 50: 标题为空，使用原始文件名 '十期Duoov1.8.0.docx' 作为标题
+2025-05-21 09:17:19,205 [INFO] - root - 文档ID 51: 标题为空，使用原始文件名 '九期Duoov1.7.0.docx' 作为标题
+2025-05-21 09:17:19,206 [INFO] - root - 文档ID 46: 标题为空，使用原始文件名 '十四期Duoov2.1.0.docx' 作为标题
+2025-05-21 09:17:19,206 [INFO] - root - 文档ID 47: 标题为空，使用原始文件名 '十三期Duoov2.0.0.docx' 作为标题
+2025-05-21 09:17:19,207 [INFO] - root - 文档ID 48: 标题为空，使用原始文件名 '十二期Duoov1.10.0.docx' 作为标题
+2025-05-21 09:17:19,208 [INFO] - root - 文档ID 44: 标题为空，使用原始文件名 '十七期Duoov2.3.0.docx' 作为标题
+2025-05-21 09:17:19,208 [INFO] - root - 文档ID 45: 标题为空，使用原始文件名 '十五(&十六)期Duoov2.2.0（&v2.3.0）.docx' 作为标题
+2025-05-21 09:17:19,209 [INFO] - root - 文档ID 40: 标题为空，使用原始文件名 '二十一期Duoov2.7.0.docx' 作为标题
+2025-05-21 09:17:19,209 [INFO] - root - 文档ID 41: 标题为空，使用原始文件名 '二十期Duoov2.6.0.docx' 作为标题
+2025-05-21 09:17:19,210 [INFO] - root - 文档ID 42: 标题为空，使用原始文件名 '十九期Duoov2.5.0.docx' 作为标题
+2025-05-21 09:17:19,210 [INFO] - root - 文档ID 43: 标题为空，使用原始文件名 '十八期Duoov2.4.0.docx' 作为标题
+2025-05-21 09:17:19,211 [INFO] - root - 文档ID 37: 标题为空，使用原始文件名 '23期Duoo直播v1.0.docx' 作为标题
+2025-05-21 09:17:19,211 [INFO] - root - 文档ID 38: 标题为空，使用原始文件名 '二十三期Duoov2.8.5.docx' 作为标题
+2025-05-21 09:17:19,212 [INFO] - root - 搜索 '主播' 找到 20 个结果
+2025-05-21 09:17:19,212 [INFO] - root - 执行搜索: '主播' 找到 20 个结果
+2025-05-21 09:17:19,213 [INFO] - root - 搜索结果 #0: id=55, title=五期Duoov1.3.0
+2025-05-21 09:17:19,213 [INFO] - root - 搜索结果 #1: id=56, title=四期Duoov1.2.1
+2025-05-21 09:17:19,213 [INFO] - root - 搜索结果 #2: id=57, title=三期Duoov1.1.0
+2025-05-21 09:17:19,214 [INFO] - root - 搜索结果 #3: id=52, title=八期Duoov1.6.0
+2025-05-21 09:17:19,214 [INFO] - root - 搜索结果 #4: id=53, title=七期Duoov1.5.0
+2025-05-21 09:17:19,214 [INFO] - root - 搜索结果 #5: id=54, title=六期Duoov1.4.0
+2025-05-21 09:17:19,215 [INFO] - root - 搜索结果 #6: id=49, title=十一期Duoov1.9.0
+2025-05-21 09:17:19,215 [INFO] - root - 搜索结果 #7: id=50, title=十期Duoov1.8.0
+2025-05-21 09:17:19,215 [INFO] - root - 搜索结果 #8: id=51, title=九期Duoov1.7.0
+2025-05-21 09:17:19,215 [INFO] - root - 搜索结果 #9: id=46, title=十四期Duoov2.1.0
+2025-05-21 09:17:19,216 [INFO] - root - 搜索结果 #10: id=47, title=十三期Duoov2.0.0
+2025-05-21 09:17:19,216 [INFO] - root - 搜索结果 #11: id=48, title=十二期Duoov1.10.0
+2025-05-21 09:17:19,217 [INFO] - root - 搜索结果 #12: id=44, title=十七期Duoov2.3.0
+2025-05-21 09:17:19,217 [INFO] - root - 搜索结果 #13: id=45, title=十五(&十六)期Duoov2.2.0（&v2.3.0）
+2025-05-21 09:17:19,217 [INFO] - root - 搜索结果 #14: id=40, title=二十一期Duoov2.7.0
+2025-05-21 09:17:19,217 [INFO] - root - 搜索结果 #15: id=41, title=二十期Duoov2.6.0
+2025-05-21 09:17:19,218 [INFO] - root - 搜索结果 #16: id=42, title=十九期Duoov2.5.0
+2025-05-21 09:17:19,218 [INFO] - root - 搜索结果 #17: id=43, title=十八期Duoov2.4.0
+2025-05-21 09:17:19,219 [INFO] - root - 搜索结果 #18: id=37, title=23期Duoo直播v1.0
+2025-05-21 09:17:19,219 [INFO] - root - 搜索结果 #19: id=38, title=二十三期Duoov2.8.5
+2025-05-21 09:17:19,220 [INFO] - root - 添加搜索历史: 查询='主播', 结果数=20, 历史ID=3
+2025-05-21 09:17:19,220 [INFO] - root - 搜索结果ID: [55, 56, 57, 52, 53, 54, 49, 50, 51, 46, 47, 48, 44, 45, 40, 41, 42, 43, 37, 38]
+2025-05-21 09:17:19,229 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 09:17:19] "GET /search?q=主播 HTTP/1.1" 200 -
+2025-05-21 09:17:19,247 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 09:17:19] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-21 09:17:19,251 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 09:17:19] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-21 09:17:22,722 [INFO] - root - 文档ID 55: 标题为空，使用原始文件名 '五期Duoov1.3.0.docx' 作为标题
+2025-05-21 09:17:22,723 [INFO] - root - 文档 55 使用HTML内容显示
+2025-05-21 09:17:22,724 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 09:17:22] "GET /document/55 HTTP/1.1" 200 -
+2025-05-21 09:17:22,767 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 09:17:22] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-21 09:17:22,770 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 09:17:22] "[36mGET /static/doc_images/doc_55/image_mammoth_50740f8ee05b42f5882b5d13eb864e95_3.png HTTP/1.1[0m" 304 -
+2025-05-21 09:17:22,771 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 09:17:22] "[36mGET /static/doc_images/doc_55/image_mammoth_f834ad9ca41a4c29830e2e851fc9879d_5.png HTTP/1.1[0m" 304 -
+2025-05-21 09:17:22,771 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 09:17:22] "[36mGET /static/doc_images/doc_55/image_mammoth_d2ccc89a42524da2a474afae3cfde41d_2.png HTTP/1.1[0m" 304 -
+2025-05-21 09:17:22,771 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 09:17:22] "[36mGET /static/doc_images/doc_55/image_mammoth_f9409ce987ec476e821e0ab3e91d2526_1.png HTTP/1.1[0m" 304 -
+2025-05-21 09:17:22,773 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 09:17:22] "[36mGET /static/doc_images/doc_55/image_mammoth_bc257a22da6b4535957725e65adbaf6e_4.png HTTP/1.1[0m" 304 -
+2025-05-21 09:17:22,778 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 09:17:22] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-21 09:17:22,782 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 09:17:22] "[36mGET /static/doc_images/doc_55/image_mammoth_a43562662e5f456182cd3f448691ee8c_6.png HTTP/1.1[0m" 304 -
+2025-05-21 09:17:22,786 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 09:17:22] "[36mGET /static/doc_images/doc_55/image_mammoth_f3a1898a61a044ec98ce925dd285d88a_7.png HTTP/1.1[0m" 304 -
+2025-05-21 09:17:22,789 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 09:17:22] "[36mGET /static/doc_images/doc_55/image_mammoth_23cbeae574d44a3197ae35b956daf153_8.png HTTP/1.1[0m" 304 -
+2025-05-21 09:17:22,790 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 09:17:22] "[36mGET /static/doc_images/doc_55/image_mammoth_0afc03be14c54fb3a21998b12f662d16_9.png HTTP/1.1[0m" 304 -
+2025-05-21 09:17:22,792 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 09:17:22] "[36mGET /static/doc_images/doc_55/image_mammoth_1eb0f39dd27442c8b4ec928dfbe0df61_10.png HTTP/1.1[0m" 304 -
+2025-05-21 09:17:22,795 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 09:17:22] "[36mGET /static/doc_images/doc_55/image_mammoth_9724e9e83f824b7cbd7b32578b44b633_11.png HTTP/1.1[0m" 304 -
+2025-05-21 09:17:22,796 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 09:17:22] "[36mGET /static/doc_images/doc_55/image_mammoth_f95689eecec341199773b9f1032f831a_12.png HTTP/1.1[0m" 304 -
+2025-05-21 09:17:22,801 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 09:17:22] "[36mGET /static/doc_images/doc_55/image_mammoth_f15e2ecebdc64100bbfb0d67f7d20c90_14.png HTTP/1.1[0m" 304 -
+2025-05-21 09:17:22,802 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 09:17:22] "[36mGET /static/doc_images/doc_55/image_mammoth_897ae1cbca564182acdbb26b4183ec8d_13.png HTTP/1.1[0m" 304 -
+2025-05-21 09:17:22,808 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 09:17:22] "[36mGET /static/doc_images/doc_55/image_mammoth_32093aa002e24c408e4b5338d6b401a8_15.png HTTP/1.1[0m" 304 -
+2025-05-21 09:17:22,808 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 09:17:22] "[36mGET /static/doc_images/doc_55/image_mammoth_a3223e2981a64740a2872b15092f92a5_16.png HTTP/1.1[0m" 304 -
+2025-05-21 09:17:22,819 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 09:17:22] "[36mGET /static/doc_images/doc_55/image_mammoth_28da44ee969a4b918eff5a1640a65d62_17.png HTTP/1.1[0m" 304 -
+2025-05-21 09:17:22,828 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 09:17:22] "[36mGET /static/doc_images/doc_55/image_mammoth_eae4924fa92b48ca8e6c87b6557d23c5_19.png HTTP/1.1[0m" 304 -
+2025-05-21 09:17:22,829 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 09:17:22] "[36mGET /static/doc_images/doc_55/image_mammoth_60f28562c5e74fe69cff3cb8f364616a_18.png HTTP/1.1[0m" 304 -
+2025-05-21 09:17:22,832 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 09:17:22] "[36mGET /static/doc_images/doc_55/image_mammoth_f520137c54b94659b3cb0ea7686d22ed_21.png HTTP/1.1[0m" 304 -
+2025-05-21 09:17:22,832 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 09:17:22] "[36mGET /static/doc_images/doc_55/image_mammoth_0935df03930b4a718fdc85941d23efb6_20.png HTTP/1.1[0m" 304 -
+2025-05-21 09:17:22,833 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 09:17:22] "[36mGET /static/doc_images/doc_55/image_mammoth_c755349334274ce68adf289a55069a53_22.png HTTP/1.1[0m" 304 -
+2025-05-21 09:17:22,835 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 09:17:22] "[36mGET /static/doc_images/doc_55/image_mammoth_01df9e8f6de74f28a7e79b2c380057fd_23.png HTTP/1.1[0m" 304 -
+2025-05-21 09:17:22,839 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 09:17:22] "[36mGET /static/doc_images/doc_55/image_mammoth_d2dd2ebe2d014bad967ead973b27f24e_24.png HTTP/1.1[0m" 304 -
+2025-05-21 09:17:22,842 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 09:17:22] "[36mGET /static/doc_images/doc_55/image_mammoth_2c003cbd326c46128754819029337f2e_25.png HTTP/1.1[0m" 304 -
+2025-05-21 09:17:22,848 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 09:17:22] "[36mGET /static/doc_images/doc_55/image_mammoth_e5abeb512aaa4d0781918f9ef0fe8c97_26.png HTTP/1.1[0m" 304 -
+2025-05-21 09:17:22,850 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 09:17:22] "[36mGET /static/doc_images/doc_55/image_mammoth_a077ca2b90144a88a88ab67c5f46d601_27.png HTTP/1.1[0m" 304 -
+2025-05-21 09:17:22,851 [INFO] - werkzeug - 127.0.0.1 - - [21/May/2025 09:17:22] "[36mGET /static/doc_images/doc_55/image_mammoth_91fc6ed247774371b6042600a3fc8b6f_28.png HTTP/1.1[0m" 304 -
+2025-05-21 09:26:13,901 [INFO] - werkzeug -  * Detected change in 'D:\\tools\\Pycharm\\PycharmWork\\DocRadar\\app\\__init__.py', reloading
+2025-05-21 09:26:13,962 [INFO] - werkzeug -  * Restarting with stat
+2025-05-21 09:29:45,221 [INFO] - werkzeug -  * Restarting with stat
