@@ -160,11 +160,12 @@
                                         {% if not is_special_table %}
                                             <td class="text-nowrap">
                                                 {% if table_data.has_id_column %}
-                                                    <a href="{{ url_for('edit_record', table_name=table_name, record_id=row[table_data.id_column_index], key=request.args.get('key')) }}" class="btn btn-sm btn-outline-primary me-1">
+                                                    <a href="{{ url_for('edit_record', table_name=table_name, record_id=row[table_data.id_column_index], key=request.args.get('key')) }}" class="btn btn-sm btn-outline-primary">
                                                         <i class="bi bi-pencil"></i> 编辑
                                                     </a>
                                                     <form method="POST" action="{{ url_for('delete_record', table_name=table_name, record_id=row[table_data.id_column_index], key=request.args.get('key')) }}" style="display: inline;">
-                                                        <button type="submit" class="btn btn-sm btn-outline-danger" onclick="return confirm('确定要删除这条记录吗？此操作不可恢复！')">
+                                                        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+                                                        <button type="submit" class="btn btn-sm btn-outline-danger" onclick="return confirm('确定要删除此记录吗？此操作不可撤销。')">
                                                             <i class="bi bi-trash"></i> 删除
                                                         </button>
                                                     </form>

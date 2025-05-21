@@ -1,0 +1,298 @@
+/**
+ * 文档内容搜索与高亮
+ * 使用mark.js库实现高效的文本搜索和高亮
+ */
+document.addEventListener('DOMContentLoaded', function() {
+    // 初始化变量
+    let currentIndex = 0;
+    let totalMatches = 0;
+    let markInstance = null;
+    
+    // 获取DOM元素
+    const searchInput = document.getElementById('search-input');
+    const prevBtn = document.getElementById('prev-btn');
+    const nextBtn = document.getElementById('next-btn');
+    const closeBtn = document.getElementById('close-search');
+    const matchInfo = document.getElementById('match-info');
+    const contentElement = document.querySelector('.document-content');
+    
+    // 创建mark.js实例
+    if (contentElement) {
+        console.log('创建mark.js实例');
+        // 使用更高级的配置初始化mark.js
+        markInstance = new Mark(contentElement, {
+            "element": "mark",
+            "className": "mark-highlight",
+            "exclude": [
+                "script", 
+                "style", 
+                "iframe", 
+                "canvas", 
+                ".browser-search", 
+                ".search-navigator"
+            ],
+            "iframes": false,
+            "acrossElements": true,
+            "debug": true
+        });
+        console.log('mark.js实例创建完成');
+    } else {
+        console.error('找不到文档内容元素');
+    }
+    
+    // 初始化搜索
+    function initSearch() {
+        // 获取URL中的查询参数
+        const urlParams = new URLSearchParams(window.location.search);
+        const query = urlParams.get('q');
+        
+        console.log(`初始化搜索，URL查询参数: "${query}"`);
+        
+        if (query && searchInput) {
+            // 设置搜索框的值
+            searchInput.value = query;
+            console.log(`设置搜索框值为: "${query}"`);
+            
+            // 稍微延迟执行搜索，确保DOM完全加载
+            setTimeout(() => {
+                console.log(`开始执行搜索: "${query}"`);
+                performSearch(query);
+            }, 500); // 500ms延迟
+        } else {
+            console.log('没有查询参数或搜索框不存在');
+        }
+    }
+    
+    // 执行搜索
+    function performSearch(query) {
+        if (!query || !markInstance) return;
+        
+        // 重置计数器
+        totalMatches = 0;
+        currentIndex = 0;
+        
+        console.log(`执行搜索: "${query}"`);
+        
+        // 清除之前的高亮
+        markInstance.unmark({
+            done: function() {
+                console.log('已清除之前的高亮');
+                
+                // 执行新的高亮，使用更适合中文的配置
+                markInstance.mark(query, {
+                    separateWordSearch: false,
+                    accuracy: "partially", // 改为partially，更适合中文搜索
+                    diacritics: true,
+                    caseSensitive: false,
+                    acrossElements: true,
+                    each: function(element) {
+                        // 为每个匹配项添加索引
+                        element.setAttribute('data-match-index', totalMatches);
+                        totalMatches++;
+                    },
+                    done: function(totalMarks) {
+                        console.log(`第一次高亮完成，找到 ${totalMarks} 个匹配项`);
+                        
+                        // 如果没有找到匹配项，尝试使用更宽松的配置
+                        if (totalMarks === 0) {
+                            console.log('尝试使用更宽松的配置再次搜索...');
+                            
+                            // 使用更宽松的配置再次搜索
+                            markInstance.mark(query, {
+                                separateWordSearch: true, // 允许分词搜索
+                                accuracy: "complementary", // 最宽松的匹配模式
+                                wildcards: 'enabled', // 启用通配符
+                                diacritics: true,
+                                caseSensitive: false,
+                                acrossElements: true,
+                                each: function(element) {
+                                    // 为每个匹配项添加索引
+                                    element.setAttribute('data-match-index', totalMatches);
+                                    totalMatches++;
+                                },
+                                done: function(fallbackTotalMarks) {
+                                    console.log(`备用高亮完成，找到 ${fallbackTotalMarks} 个匹配项`);
+                                    
+                                    // 更新匹配信息
+                                    updateMatchInfo();
+                                    
+                                    // 如果有匹配项，导航到第一个
+                                    if (fallbackTotalMarks > 0) {
+                                        navigateToMatch(0);
+                                    }
+                                }
+                            });
+                        } else {
+                            // 更新匹配信息
+                            updateMatchInfo();
+                            
+                            // 如果有匹配项，导航到第一个
+                            if (totalMarks > 0) {
+                                navigateToMatch(0);
+                            }
+                        }
+                    }
+                });
+            }
+        });
+    }
+    
+    // 更新匹配信息
+    function updateMatchInfo() {
+        if (matchInfo) {
+            if (totalMatches > 0) {
+                matchInfo.textContent = `${currentIndex + 1}/${totalMatches}`;
+                matchInfo.classList.remove('text-danger');
+                matchInfo.classList.add('text-success');
+            } else {
+                matchInfo.textContent = '未找到匹配项';
+                matchInfo.classList.remove('text-success');
+                matchInfo.classList.add('text-danger');
+            }
+        }
+    }
+    
+    // 导航到指定匹配项
+    function navigateToMatch(index) {
+        if (index < 0 || index >= totalMatches) return;
+        
+        console.log(`导航到匹配项 ${index + 1}/${totalMatches}`);
+        
+        // 移除当前高亮的活动状态
+        document.querySelectorAll('mark.current-match').forEach(el => {
+            el.classList.remove('current-match');
+            el.classList.remove('blink');
+        });
+        
+        // 设置新高亮
+        const mark = document.querySelector(`mark[data-match-index="${index}"]`);
+        if (mark) {
+            mark.classList.add('current-match');
+            mark.classList.add('blink');
+            
+            // 更新当前索引
+            currentIndex = index;
+            updateMatchInfo();
+            
+            // 滚动到视图
+            mark.scrollIntoView({
+                behavior: 'smooth',
+                block: 'center'
+            });
+            
+            // 一段时间后移除闪烁效果
+            setTimeout(() => {
+                mark.classList.remove('blink');
+            }, 2000);
+        }
+    }
+    
+    // 上一个匹配
+    function prevMatch() {
+        if (totalMatches === 0) return;
+        
+        currentIndex = (currentIndex - 1 + totalMatches) % totalMatches;
+        navigateToMatch(currentIndex);
+    }
+    
+    // 下一个匹配
+    function nextMatch() {
+        if (totalMatches === 0) return;
+        
+        currentIndex = (currentIndex + 1) % totalMatches;
+        navigateToMatch(currentIndex);
+    }
+    
+    // 关闭搜索
+    function closeSearch() {
+        if (markInstance) {
+            markInstance.unmark();
+        }
+        
+        if (searchInput) {
+            searchInput.value = '';
+        }
+        
+        totalMatches = 0;
+        currentIndex = 0;
+        
+        if (matchInfo) {
+            matchInfo.textContent = '0/0';
+            matchInfo.classList.remove('text-success', 'text-danger');
+        }
+    }
+    
+    // 绑定事件
+    if (searchInput) {
+        // 搜索框输入事件 (使用防抖动)
+        let debounceTimer;
+        searchInput.addEventListener('input', () => {
+            clearTimeout(debounceTimer);
+            debounceTimer = setTimeout(() => {
+                const query = searchInput.value.trim();
+                
+                if (query) {
+                    performSearch(query);
+                } else {
+                    closeSearch();
+                }
+            }, 300); // 300ms延迟
+        });
+        
+        // 键盘事件
+        searchInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                if (e.shiftKey) {
+                    prevMatch();
+                } else {
+                    nextMatch();
+                }
+            } else if (e.key === 'Escape') {
+                closeSearch();
+            }
+        });
+    }
+    
+    // 上一个匹配按钮
+    if (prevBtn) {
+        prevBtn.addEventListener('click', prevMatch);
+    }
+    
+    // 下一个匹配按钮
+    if (nextBtn) {
+        nextBtn.addEventListener('click', nextMatch);
+    }
+    
+    // 关闭搜索按钮
+    if (closeBtn) {
+        closeBtn.addEventListener('click', closeSearch);
+    }
+    
+    // 点击高亮文本导航到该匹配项
+    document.addEventListener('click', (e) => {
+        if (e.target.tagName.toLowerCase() === 'mark') {
+            const index = parseInt(e.target.getAttribute('data-match-index'), 10);
+            if (!isNaN(index) && index >= 0 && index < totalMatches) {
+                navigateToMatch(index);
+            }
+        }
+    });
+    
+    // 添加全局键盘事件监听器
+    document.addEventListener('keydown', function(e) {
+        // 检测Ctrl+F
+        if ((e.ctrlKey || e.metaKey) && e.key === 'f') {
+            e.preventDefault(); // 阻止浏览器默认的查找行为
+            
+            // 聚焦到搜索框
+            if (searchInput) {
+                searchInput.focus();
+                searchInput.select();
+            }
+        }
+    });
+    
+    // 初始化搜索
+    initSearch();
+}); 

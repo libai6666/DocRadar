@@ -141,6 +141,7 @@
                             <p class="text-muted small mb-2">支持PDF, DOCX, TXT格式</p>
                             <p class="text-primary small fw-bold mb-3">支持批量上传：按住Ctrl键可选择多个文件</p>
                             <form id="file-form" action="{{ url_for('document.upload_document') }}" method="POST" enctype="multipart/form-data">
+                                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
                                 <input type="file" id="fileInput" name="file" class="d-none" accept=".pdf,.docx,.doc,.txt" multiple>
                                 <div class="d-flex justify-content-center">
                                     <button type="button" class="btn btn-outline-primary me-3" onclick="document.getElementById('fileInput').click()">
@@ -244,6 +245,7 @@
                                               method="POST" 
                                               class="d-inline"
                                               onsubmit="return confirm('确定要删除这个文档吗？此操作不可撤销。');">
+                                            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
                                             <button type="submit" class="btn btn-sm btn-outline-danger">
                                                 <i class="bi bi-trash"></i>
                                             </button>

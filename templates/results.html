@@ -83,7 +83,7 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <div class="container">
-            <a class="navbar-brand" href="{{ url_for('index') }}">
+            <a class="navbar-brand" href="{{ url_for('main.index') }}">
                 <i class="bi bi-search"></i> DocRadar
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -92,7 +92,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('index') }}">首页</a>
+                        <a class="nav-link" href="{{ url_for('main.index') }}">首页</a>
                     </li>
                     <!-- 添加用户下拉菜单 -->
                     <li class="nav-item dropdown">
@@ -100,9 +100,9 @@
                             <i class="bi bi-person-circle"></i> {{ session.user }}
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
-                            <li><a class="dropdown-item" href="{{ url_for('account') }}"><i class="bi bi-gear"></i> 账号设置</a></li>
+                            <li><a class="dropdown-item" href="{{ url_for('main.account') }}"><i class="bi bi-gear"></i> 账号设置</a></li>
                             <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="{{ url_for('logout') }}"><i class="bi bi-box-arrow-right"></i> 退出登录</a></li>
+                            <li><a class="dropdown-item" href="{{ url_for('main.logout') }}"><i class="bi bi-box-arrow-right"></i> 退出登录</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -126,7 +126,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-                        <form action="{{ url_for('search') }}" method="GET">
+                        <form action="{{ url_for('search.search') }}" method="GET">
                             <div class="input-group">
                                 <input type="text" name="q" id="search-input" class="form-control" 
                                        value="{{ query }}" placeholder="输入关键词搜索文档...">
@@ -169,7 +169,7 @@
                                 {% endfor %}
                             </ul>
                             {% if search_history %}
-                            <a href="{{ url_for('clear_search_history', q=query) }}" 
+                            <a href="{{ url_for('search.clear_history', q=query) }}" 
                                class="btn btn-sm btn-outline-danger" 
                                title="清空所有搜索记录"
                                id="clear-all-history">
@@ -193,9 +193,10 @@
                                 {% if history.results %}
                                     <div class="search-results">
                                         {% for result in history.results %}
+                                            {% if result and result.id %}
                                             <div class="search-result-item mb-4 p-3 border rounded">
                                                 <h5 class="result-title">
-                                                    <a href="{{ result.doc_url }}">
+                                                    <a href="{{ url_for('document.view_document', doc_id=result.id, q=history.query) }}">
                                                         {{ result.title }}
                                                     </a>
                                                 </h5>
@@ -214,19 +215,28 @@
                                                     </span>
                                                 </div>
                                                 <div class="result-preview">
-                                                    {{ result.snippet|safe }}
+                                                    {% if result.preview %}
+                                                        {{ result.preview|safe }}
+                                                    {% else %}
+                                                        <div class="text-muted fst-italic">无预览内容可用</div>
+                                                    {% endif %}
                                                 </div>
                                                 <div class="result-actions mt-2">
-                                                    <a href="{{ result.doc_url }}" 
+                                                    <a href="{{ url_for('document.view_document', doc_id=result.id, q=history.query) }}" 
                                                        class="btn btn-sm btn-outline-primary">
                                                         查看完整文档
                                                     </a>
-                                                    <a href="{{ url_for('download_original', doc_id=result.id) }}" 
+                                                    <a href="{{ url_for('document.download_original', doc_id=result.id) }}" 
                                                        class="btn btn-sm btn-outline-secondary">
                                                         下载原文档
                                                     </a>
                                                 </div>
                                             </div>
+                                            {% else %}
+                                            <div class="alert alert-warning">
+                                                检测到无效的搜索结果数据。请尝试清除浏览器缓存后重新搜索。
+                                            </div>
+                                            {% endif %}
                                         {% endfor %}
                                     </div>
                                 {% else %}
@@ -248,7 +258,7 @@
                                     <p class="text-muted">
                                         请在上方输入关键词开始搜索。
                                     </p>
-                                    <a href="{{ url_for('index') }}" class="btn btn-primary mt-2">
+                                    <a href="{{ url_for('main.index') }}" class="btn btn-primary mt-2">
                                         返回首页
                                     </a>
                                 </div>
@@ -311,7 +321,7 @@
             icon.addEventListener('click', function(e) {
                 e.stopPropagation(); // 阻止事件冒泡到标签
                 const historyId = this.getAttribute('data-history-id');
-                deleteSearchHistory(historyId);
+                deleteHistoryItem(historyId);
             });
         });
         
@@ -375,7 +385,7 @@
                                 <p class="text-muted">
                                     请在上方输入关键词开始搜索。
                                 </p>
-                                <a href="{{ url_for('index') }}" class="btn btn-primary mt-2">
+                                <a href="{{ url_for('main.index') }}" class="btn btn-primary mt-2">
                                     返回首页
                                 </a>
                             `;
@@ -437,10 +447,10 @@
     }
     
     // 删除搜索历史记录的处理函数
-    function deleteSearchHistory(historyId) {
+    function deleteHistoryItem(historyId) {
         if (confirm('确定要删除这条搜索记录吗？')) {
             const currentQuery = new URLSearchParams(window.location.search).get('q') || '';
-            const deleteUrl = "{{ url_for('delete_search_history', history_id=0) }}".replace('0', historyId) + 
+            const deleteUrl = "{{ url_for('search.delete_history', history_id=0) }}".replace('0', historyId) + 
                               (currentQuery ? '?q=' + encodeURIComponent(currentQuery) : '');
             
             // 使用fetch API进行AJAX请求
@@ -498,7 +508,7 @@
                                 <p class="text-muted">
                                     请在上方输入关键词开始搜索。
                                 </p>
-                                <a href="{{ url_for('index') }}" class="btn btn-primary mt-2">
+                                <a href="{{ url_for('main.index') }}" class="btn btn-primary mt-2">
                                     返回首页
                                 </a>
                             `;

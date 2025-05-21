@@ -155,15 +155,10 @@ def view_document(doc_id):
         if 'html_content' in document:
             logging.info(f"文档 {doc_id} 使用HTML内容显示")
             document['content'] = document['html_content']
-        # 如果有搜索查询且内容不是错误消息，高亮显示匹配内容
-        elif query and not document['content'].startswith("无法加载"):
-            try:
-                # 使用增强的高亮方法
-                document['content'] = search_engine.highlight_content(document['content'], query)
-                logging.info(f"已高亮文档内容中的搜索词 '{query}'")
-            except Exception as highlight_error:
-                logging.error(f"高亮处理失败: {highlight_error}")
-                # 高亮失败不影响内容显示
+        
+        # 不再在后端进行高亮处理，交由前端处理
+        # 记录查询参数，用于前端搜索
+        logging.info(f"传递查询参数到模板: '{query}'")
             
         return render_template('view.html', document=document, query=query)
     except Exception as e:

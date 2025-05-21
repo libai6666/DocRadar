@@ -198,7 +198,7 @@
                                             {% if result and result.id %}
                                             <div class="search-result-item mb-4 p-3 border rounded">
                                                 <h5 class="result-title">
-                                                    <a href="{{ url_for('document.view_document', doc_id=result.id) }}">
+                                                    <a href="{{ url_for('document.view_document', doc_id=result.id, q=query) }}">
                                                         {% if result.title %}
                                                             {{ result.title }}
                                                         {% elif result.original_filename %}
@@ -234,7 +234,7 @@
                                                     {% endif %}
                                                 </div>
                                                 <div class="result-actions mt-2">
-                                                    <a href="{{ url_for('document.view_document', doc_id=result.id) }}" class="btn btn-sm btn-primary me-1">
+                                                    <a href="{{ url_for('document.view_document', doc_id=result.id, q=query) }}" class="btn btn-sm btn-primary me-1">
                                                         <i class="bi bi-eye"></i> 查看
                                                     </a>
                                                     <a href="{{ url_for('document.download_original', doc_id=result.id) }}"
@@ -267,7 +267,7 @@
                                             {% if result and result.id %}
                                             <div class="search-result-item mb-4 p-3 border rounded">
                                                 <h5 class="result-title">
-                                                    <a href="{{ url_for('document.view_document', doc_id=result.id) }}">
+                                                    <a href="{{ url_for('document.view_document', doc_id=result.id, q=query) }}">
                                                         {% if result.title %}
                                                             {{ result.title }}
                                                         {% elif result.original_filename %}
@@ -303,7 +303,7 @@
                                                     {% endif %}
                                                 </div>
                                                 <div class="result-actions mt-2">
-                                                    <a href="{{ url_for('document.view_document', doc_id=result.id) }}" class="btn btn-sm btn-primary me-1">
+                                                    <a href="{{ url_for('document.view_document', doc_id=result.id, q=query) }}" class="btn btn-sm btn-primary me-1">
                                                         <i class="bi bi-eye"></i> 查看
                                                     </a>
                                                     <a href="{{ url_for('document.download_original', doc_id=result.id) }}"
@@ -365,6 +365,35 @@
     document.addEventListener('DOMContentLoaded', function() {
         // 设置所有提示消息3秒后自动消失
         setupAutoFadeAlerts();
+        
+        // 页面加载完成后立即清空搜索框，但保留URL中的查询参数
+        const searchInput = document.getElementById('search-input');
+        if (searchInput && searchInput.value.trim() !== '') {
+            // 使用短暂延迟确保用户能看到搜索词
+            setTimeout(function() {
+                searchInput.value = '';
+            }, 100);
+        }
+        
+        // 搜索表单自动清空功能
+        const searchForm = document.querySelector("form[action='{{ url_for('search.search') }}']");
+        if (searchForm) {
+            searchForm.addEventListener('submit', function(e) {
+                // 获取搜索框元素
+                const searchInput = document.getElementById('search-input');
+                
+                // 提交表单后，设置一个短暂的延时后清空搜索框
+                // 这样可以确保表单已经提交，但用户还能看到他们搜索了什么
+                if (searchInput && searchInput.value.trim() !== '') {
+                    setTimeout(function() {
+                        searchInput.value = '';
+                    }, 100);
+                }
+                
+                // 继续正常提交表单
+                return true;
+            });
+        }
         
         // 修复标签切换问题
         const searchTabs = document.querySelectorAll('#searchTabs .nav-link');

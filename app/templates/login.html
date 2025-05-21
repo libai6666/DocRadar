@@ -182,6 +182,7 @@
                 {% endwith %}
                 
                 <form method="post" action="{{ url_for('main.login') }}">
+                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
                     <input type="hidden" name="next" value="{{ next }}">
                     <div class="form-floating">
                         <input type="text" class="form-control" id="username" name="username" placeholder="用户名" required autofocus>

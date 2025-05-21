@@ -70,6 +70,7 @@
                     </div>
                     <div class="card-body">
                         <form action="{{ url_for('edit_record', table_name=table_name, record_id=record.id, key=request.args.get('key')) }}" method="POST">
+                            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
                             {% for col in columns %}
                                 {% if col[1] != 'id' %}
                                     <div class="mb-3">
