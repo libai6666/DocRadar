@@ -47,6 +47,8 @@ body {
 /* 搜索结果样式 */
 .search-result-item {
     transition: all 0.3s ease;
+    position: relative;
+    border-left: 4px solid transparent;
 }
 
 .search-result-item:hover {
@@ -277,4 +279,28 @@ mark.current-match {
 
 body.debug .debug-info {
     display: block;
+}
+
+/* 已浏览文档样式 */
+.search-result-item.visited {
+    border-left: 4px solid #6c757d !important;
+    background-color: rgba(108, 117, 125, 0.05);
+}
+
+.search-result-item.visited .result-title a {
+    color: #495057;
+    font-weight: 500;
+}
+
+.search-result-item.visited::before {
+    content: "已浏览";
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    font-size: 12px;
+    padding: 2px 6px;
+    border-radius: 4px;
+    background-color: #6c757d;
+    color: white;
+    opacity: 0.7;
 } 

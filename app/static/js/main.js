@@ -3,6 +3,78 @@
  * 负责文件拖放上传和实时搜索功能
  */
 
+/**
+ * 检测页面加载类型（刷新、正常导航或从缓存恢复）
+ * @returns {Object} 页面加载类型信息
+ */
+function detectPageLoadType() {
+    // 检测是否为刷新
+    let isRefresh = false;
+    
+    try {
+        // 检查performance API
+        if (performance && performance.navigation) {
+            isRefresh = performance.navigation.type === 1;
+        } else if (window.performance && window.performance.getEntriesByType) {
+            // 现代浏览器中的方法
+            const navEntries = window.performance.getEntriesByType('navigation');
+            if (navEntries.length > 0 && navEntries[0].type === 'reload') {
+                isRefresh = true;
+            }
+        }
+        
+        // 检查会话存储中的标记作为后备
+        const pageLoadFlag = sessionStorage.getItem('docradar_page_loaded');
+        if (pageLoadFlag) {
+            // 如果标记存在，这很可能是刷新
+            isRefresh = true;
+        }
+        // 无论如何设置标记，以便下次可以检测
+        sessionStorage.setItem('docradar_page_loaded', 'true');
+    } catch (error) {
+        console.error('检测页面加载类型时出错:', error);
+    }
+    
+    return {
+        isRefresh: isRefresh
+    };
+}
+
+// 添加全局错误处理函数
+window.addEventListener('error', function(event) {
+    // 记录错误信息到控制台
+    console.error('捕获到全局JavaScript错误:', {
+        message: event.message,
+        source: event.filename,
+        lineno: event.lineno,
+        colno: event.colno,
+        error: event.error
+    });
+    
+    // 如果错误是来自第三方脚本，忽略它们，不阻止默认处理
+    if (event.filename && (
+        event.filename.includes('jquery') || 
+        event.filename.includes('bootstrap') ||
+        event.filename.includes('mark.js')
+    )) {
+        console.log('忽略第三方脚本错误');
+        return;
+    }
+    
+    // 记录自定义错误堆栈，更易于调试
+    try {
+        if (event.error && event.error.stack) {
+            const stackLines = event.error.stack.split('\n');
+            console.log('错误堆栈详情:', stackLines);
+        }
+    } catch (e) {
+        console.error('处理错误堆栈时出错:', e);
+    }
+    
+    // 不阻止默认错误处理，允许浏览器继续处理错误
+    return false;
+});
+
 document.addEventListener('DOMContentLoaded', function() {
     // 初始化拖放上传功能
     initFileUpload();
@@ -15,6 +87,50 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // 初始化消息自动关闭功能
     initAutoCloseAlerts();
+    
+    // 检测页面加载类型
+    const pageLoadInfo = detectPageLoadType();
+    console.log(`DOMContentLoaded: 页面加载类型检测结果 - 刷新=${pageLoadInfo.isRefresh}`);
+    
+    // 初始化已浏览文档跟踪功能，传入刷新状态
+    initVisitedDocumentsTracker(pageLoadInfo.isRefresh);
+});
+
+// 添加pageshow事件处理，处理从浏览器缓存恢复页面的情况
+// 这确保了当用户点击返回按钮时也能正确标记已浏览文档
+window.addEventListener('pageshow', function(event) {
+    // 从浏览历史返回(例如用户点击浏览器的返回按钮)
+    if (event.persisted) {
+        console.log('页面从浏览器缓存恢复，可能是用户点击了返回按钮');
+        
+        // 清除页面加载标记，确保这不会被错误地识别为刷新
+        sessionStorage.removeItem('docradar_page_loaded');
+    }
+    
+    // 检查当前页面是否为搜索结果页面
+    const isSearch = window.location.pathname.includes('/search');
+    if (isSearch) {
+        // 获取当前URL中的搜索查询
+        const urlParams = new URLSearchParams(window.location.search);
+        const currentQuery = urlParams.get('q') || '';
+        
+        // 检查是否有上次搜索查询的记录
+        const previousQuery = sessionStorage.getItem('docradar_current_search');
+        
+        console.log(`搜索结果页面，当前搜索词: "${currentQuery}", 上次搜索词: "${previousQuery || ''}"`);
+        
+        // 如果是从文档页面返回，并且有保存的搜索查询
+        const isBackFromDocument = sessionStorage.getItem('docradar_back_to_search') === 'true';
+        if (isBackFromDocument && previousQuery) {
+            console.log(`从文档页面返回到搜索页面，使用保存的搜索查询: "${previousQuery}"`);
+            // 清除保存的搜索查询
+            sessionStorage.removeItem('docradar_current_search');
+        }
+        
+        // 重新标记已浏览文档
+        console.log('搜索结果页面，正在重新标记已浏览文档');
+        markVisitedDocumentsInResults(false); // 总是传递false，保留已浏览标记
+    }
 });
 
 /**
@@ -1916,5 +2032,288 @@ function initLiveSearch() {
             moreResults.textContent = `查看全部 ${results.length} 个结果`;
             resultsContainer.appendChild(moreResults);
         }
+    }
+}
+
+/**
+ * 初始化已浏览文档跟踪功能
+ */
+function initVisitedDocumentsTracker(isRefresh = false) {
+    console.log('初始化已浏览文档跟踪功能');
+    
+    try {
+        // 在当前页面URL中查找文档ID
+        const urlPath = window.location.pathname;
+        const docRegex = /\/document\/(\d+)/;
+        const match = urlPath.match(docRegex);
+        
+        if (match) {
+            // 当前页面是文档查看页面，记录已浏览
+            const docId = match[1];
+            console.log(`当前正在查看文档ID: ${docId}`);
+            
+            // 获取URL查询参数中的搜索关键词
+            const urlParams = new URLSearchParams(window.location.search);
+            const searchQuery = urlParams.get('q') || '';
+            
+            // 标记文档为已浏览，传递搜索关键词
+            markDocumentAsVisited(docId, isRefresh, searchQuery);
+            
+            // 为返回搜索结果按钮添加点击事件
+            const backToSearchBtn = document.getElementById('back-to-search');
+            if (backToSearchBtn) {
+                backToSearchBtn.addEventListener('click', function(e) {
+                    // 不阻止默认行为，但强制确保已浏览状态已保存
+                    console.log('点击返回搜索结果按钮，确保已浏览状态已保存');
+                    markDocumentAsVisited(docId, true, searchQuery);
+                    
+                    // 设置会话标记，告知页面不要在下一个搜索页面加载时重置访问状态
+                    sessionStorage.setItem('docradar_back_to_search', 'true');
+                    
+                    // 保存当前搜索查询，确保返回后仍使用同一个查询
+                    if (searchQuery) {
+                        sessionStorage.setItem('docradar_current_search', searchQuery);
+                    }
+                });
+            }
+        } else {
+            // 在搜索结果页面检查并标记已浏览文档
+            markVisitedDocumentsInResults(isRefresh);
+        }
+    } catch (error) {
+        console.error('初始化已浏览文档跟踪功能时发生错误:', error);
+    }
+}
+
+/**
+ * 将文档标记为已浏览
+ * @param {string} docId - 文档ID
+ * @param {boolean} [force=false] - 是否强制更新时间戳
+ * @param {string} [searchQuery=''] - 搜索关键词
+ */
+function markDocumentAsVisited(docId, force = false, searchQuery = '') {
+    if (!docId) return;
+    
+    try {
+        // 获取URL中的搜索查询参数
+        if (!searchQuery) {
+            const urlParams = new URLSearchParams(window.location.search);
+            searchQuery = urlParams.get('q') || '';
+        }
+        
+        console.log(`标记文档 ${docId} 为已浏览，关联搜索词: "${searchQuery}"`);
+        
+        // 从localStorage中获取已浏览文档映射表
+        let visitedDocsMap = {};
+        const visitedDocsMapStr = localStorage.getItem('docradar_visited_docs_map');
+        if (visitedDocsMapStr) {
+            try {
+                visitedDocsMap = JSON.parse(visitedDocsMapStr);
+            } catch (e) {
+                console.error('解析已浏览文档映射表失败:', e);
+                // 重置为空对象
+                visitedDocsMap = {};
+            }
+        }
+        
+        // 确保搜索查询键存在
+        if (!visitedDocsMap[searchQuery]) {
+            visitedDocsMap[searchQuery] = [];
+        }
+        
+        // 检查文档是否已在对应查询的列表中
+        if (!visitedDocsMap[searchQuery].includes(docId) || force) {
+            // 如果不在列表中或强制更新
+            if (!visitedDocsMap[searchQuery].includes(docId)) {
+                // 添加到列表
+                visitedDocsMap[searchQuery].push(docId);
+            }
+            
+            // 如果列表过长，删除较早的记录（保留最新的50条）
+            if (visitedDocsMap[searchQuery].length > 50) {
+                visitedDocsMap[searchQuery] = visitedDocsMap[searchQuery].slice(-50);
+            }
+            
+            // 保存到localStorage
+            localStorage.setItem('docradar_visited_docs_map', JSON.stringify(visitedDocsMap));
+            
+            // 添加最后访问时间戳，用于后续控制刷新时是否恢复样式
+            const visitTime = new Date().getTime();
+            localStorage.setItem(`docradar_visit_time_${searchQuery}_${docId}`, visitTime);
+            
+            console.log(`文档 ${docId} 已标记为已浏览，关联搜索词: "${searchQuery}", 时间戳: ${visitTime}`);
+        } else {
+            console.log(`文档 ${docId} 之前已在搜索 "${searchQuery}" 中浏览过`);
+        }
+        
+        // 兼容性处理：也保存到原来的格式
+        // 这是为了确保其他地方的代码仍能正常工作
+        let visitedDocs = getVisitedDocuments();
+        if (!visitedDocs.includes(docId)) {
+            visitedDocs.push(docId);
+            if (visitedDocs.length > 100) {
+                visitedDocs = visitedDocs.slice(-100);
+            }
+            localStorage.setItem('docradar_visited_docs', JSON.stringify(visitedDocs));
+        }
+    } catch (error) {
+        console.error('标记文档为已浏览时发生错误:', error);
+    }
+}
+
+/**
+ * 获取已浏览文档列表
+ * @param {string} [searchQuery=''] - 搜索关键词，如果提供则返回该搜索下的已浏览文档
+ * @returns {Array} 已浏览文档ID数组
+ */
+function getVisitedDocuments(searchQuery = '') {
+    try {
+        // 如果没有指定搜索关键词，尝试从URL获取
+        if (!searchQuery) {
+            const urlParams = new URLSearchParams(window.location.search);
+            searchQuery = urlParams.get('q') || '';
+        }
+        
+        // 如果使用新的存储方式
+        const visitedDocsMapStr = localStorage.getItem('docradar_visited_docs_map');
+        if (visitedDocsMapStr) {
+            try {
+                const visitedDocsMap = JSON.parse(visitedDocsMapStr);
+                
+                // 如果指定了搜索查询且该查询存在于映射表中，返回对应的文档列表
+                if (searchQuery && visitedDocsMap[searchQuery]) {
+                    console.log(`获取搜索"${searchQuery}"的已浏览文档列表: ${JSON.stringify(visitedDocsMap[searchQuery])}`);
+                    return visitedDocsMap[searchQuery];
+                }
+                
+                // 如果没有指定搜索查询或该查询不存在，返回空数组
+                if (searchQuery) {
+                    console.log(`搜索"${searchQuery}"没有已浏览文档记录`);
+                    return [];
+                }
+            } catch (e) {
+                console.error('解析已浏览文档映射表失败:', e);
+            }
+        }
+        
+        // 兼容旧版存储方式
+        const visitedDocsStr = localStorage.getItem('docradar_visited_docs');
+        return visitedDocsStr ? JSON.parse(visitedDocsStr) : [];
+    } catch (error) {
+        console.error('获取已浏览文档列表时发生错误:', error);
+        return [];
+    }
+}
+
+/**
+ * 在搜索结果页面标记已浏览的文档
+ * @param {boolean} [isRefresh=false] - 是否是页面刷新
+ */
+function markVisitedDocumentsInResults(isRefresh = false) {
+    try {
+        // 确认当前是搜索结果页面
+        if (!window.location.pathname.includes('/search')) {
+            console.log('不是搜索结果页面，跳过标记');
+            return;
+        }
+        
+        console.log(`===== 开始标记已浏览文档 =====`);
+        console.log(`页面加载状态: 刷新=${isRefresh}`);
+        
+        // 获取当前搜索查询
+        const urlParams = new URLSearchParams(window.location.search);
+        const currentQuery = urlParams.get('q') || '';
+        console.log(`当前搜索查询: "${currentQuery}"`);
+        
+        // 获取搜索结果列表
+        const resultItems = document.querySelectorAll('.search-result-item');
+        if (!resultItems.length) {
+            console.log('页面上没有搜索结果元素');
+            return;
+        }
+        
+        console.log(`找到 ${resultItems.length} 个搜索结果元素`);
+        
+        // 检查是否从文档查看页面返回
+        const isBackFromDocument = sessionStorage.getItem('docradar_back_to_search') === 'true';
+        console.log(`是否从文档查看页面返回: ${isBackFromDocument}`);
+        
+        // 根据当前搜索查询获取已浏览文档列表
+        const visitedDocs = getVisitedDocuments(currentQuery);
+        console.log(`当前搜索"${currentQuery}"的已浏览文档列表: ${JSON.stringify(visitedDocs)}`);
+        
+        if (!visitedDocs.length) {
+            console.log(`搜索"${currentQuery}"没有已浏览的文档记录`);
+            // 清除所有已浏览标记
+            resultItems.forEach(item => {
+                item.classList.remove('visited');
+            });
+            return;
+        }
+        
+        // 如果是刷新页面且不是从文档返回，恢复原来的行为，移除所有已浏览标记
+        if (isRefresh && !isBackFromDocument) {
+            console.log('检测到页面刷新，移除所有已浏览标记');
+            resultItems.forEach(item => {
+                if (item.classList.contains('visited')) {
+                    item.classList.remove('visited');
+                }
+            });
+            console.log('已移除所有文档的已浏览标记');
+            
+            // 清除会话标记
+            if (isBackFromDocument) {
+                sessionStorage.removeItem('docradar_back_to_search');
+            }
+            
+            return;
+        }
+        
+        // 记录成功标记的数量，用于调试
+        let markedCount = 0;
+        
+        // 遍历搜索结果，检查每个结果是否已浏览
+        resultItems.forEach(item => {
+            try {
+                // 首先确保元素处于正确状态 - 移除所有访问标记
+                item.classList.remove('visited');
+                
+                // 获取文档链接元素
+                const linkElement = item.querySelector('a[href*="/document/"]');
+                if (!linkElement) {
+                    console.log('结果项中没有找到文档链接');
+                    return;
+                }
+                
+                // 从链接中提取文档ID
+                const href = linkElement.getAttribute('href');
+                const docRegex = /\/document\/(\d+)/;
+                const match = href.match(docRegex);
+                
+                if (match && match[1]) {
+                    const resultDocId = match[1];
+                    
+                    // 检查文档是否已浏览 - 只检查当前搜索查询的浏览记录
+                    if (visitedDocs.includes(resultDocId)) {
+                        // 标记为已浏览
+                        item.classList.add('visited');
+                        console.log(`标记文档 ${resultDocId} 为已浏览`);
+                        markedCount++;
+                    }
+                }
+            } catch (itemError) {
+                console.error('处理单个结果项时出错:', itemError);
+            }
+        });
+        
+        // 如果从文档页面返回，清除标记
+        if (isBackFromDocument) {
+            sessionStorage.removeItem('docradar_back_to_search');
+            console.log('已清除从文档返回的会话标记');
+        }
+        
+        console.log(`==== 标记完成，共标记 ${markedCount} 个已浏览文档 ====`);
+    } catch (error) {
+        console.error('标记已浏览文档时发生错误:', error);
     }
 } 
