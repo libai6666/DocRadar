@@ -467,6 +467,13 @@
                 // 设置返回标记，告知搜索结果页面这是从文档页面返回的
                 sessionStorage.setItem('docradar_back_to_search', 'true');
                 
+                // 检查是否是正常导航（点击返回按钮），如果不是则添加时间戳
+                if (sessionStorage.getItem('docradar_normal_navigation') !== 'true') {
+                    // 添加返回时间戳，用于识别返回后的刷新操作
+                    sessionStorage.setItem('docradar_back_to_search_time', new Date().getTime());
+                    console.log('设置浏览器返回时间戳 (beforeunload)');
+                }
+                
                 // 保存当前搜索查询
                 if (searchQuery) {
                     sessionStorage.setItem('docradar_current_search', searchQuery);

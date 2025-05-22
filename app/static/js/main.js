@@ -146,6 +146,9 @@ window.addEventListener('pageshow', function(event) {
         // 清除页面加载标记，确保这不会被错误地识别为刷新
         sessionStorage.removeItem('docradar_page_loaded');
         
+        // 清除正常导航标记，因为这是浏览器返回操作
+        sessionStorage.removeItem('docradar_normal_navigation');
+        
         // 检查是否是从文档页面返回到搜索结果页面
         const docId = sessionStorage.getItem('docradar_last_viewed_doc_id');
         const docQuery = sessionStorage.getItem('docradar_last_viewed_doc_query');
@@ -153,6 +156,10 @@ window.addEventListener('pageshow', function(event) {
         if (docId && window.location.pathname.includes('/search')) {
             console.log(`从文档页面(ID: ${docId})返回到搜索结果页面，设置返回标记`);
             sessionStorage.setItem('docradar_back_to_search', 'true');
+            
+            // 添加返回时间戳，用于识别返回后的刷新操作（仅适用于浏览器返回按钮）
+            sessionStorage.setItem('docradar_back_to_search_time', new Date().getTime());
+            console.log('已记录浏览器返回时间戳:', new Date().getTime());
             
             if (docQuery) {
                 console.log(`恢复文档的搜索查询: "${docQuery}"`);
@@ -211,6 +218,14 @@ window.addEventListener('pageshow', function(event) {
         if (isBackFromDocument) {
             console.log(`从文档页面返回到搜索页面，之前的搜索查询: "${previousQuery}"`);
             
+            // 检查是否是正常导航
+            const isNormalNavigation = sessionStorage.getItem('docradar_normal_navigation') === 'true';
+            
+            // 如果是正常导航，记录信息
+            if (isNormalNavigation) {
+                console.log('这是通过页面按钮的正常导航，保留浏览状态');
+            }
+            
             // 如果返回后搜索查询发生变化，则不显示之前的浏览状态
             if (isQueryChanged) {
                 console.log(`搜索查询已变化(${previousQuery} -> ${currentQuery})，不恢复之前的浏览状态`);
@@ -225,6 +240,7 @@ window.addEventListener('pageshow', function(event) {
             // 清除保存的搜索查询和返回标记
             sessionStorage.removeItem('docradar_current_search');
             sessionStorage.removeItem('docradar_back_to_search');
+            sessionStorage.removeItem('docradar_normal_navigation');
         } else {
             // 如果不是从文档页面返回，但搜索查询变化了，模拟刷新行为
             if (isQueryChanged) {
@@ -2211,6 +2227,9 @@ function initVisitedDocumentsTracker(isRefresh = false) {
                     console.log('点击返回搜索结果按钮，确保已浏览状态已保存');
                     markDocumentAsVisited(docId, true, searchQuery);
                     
+                    // 设置正常导航标记，与浏览器返回按钮区分
+                    sessionStorage.setItem('docradar_normal_navigation', 'true');
+                    
                     // 设置会话标记，告知页面不要在下一个搜索页面加载时重置访问状态
                     sessionStorage.setItem('docradar_back_to_search', 'true');
                     
@@ -2399,6 +2418,28 @@ function markVisitedDocumentsInResults(isRefresh = false, isTabSwitch = false) {
         const isBackFromDocument = sessionStorage.getItem('docradar_back_to_search') === 'true';
         console.log(`是否从文档查看页面返回: ${isBackFromDocument}`);
         
+        // 获取返回时间戳
+        const backToSearchTime = sessionStorage.getItem('docradar_back_to_search_time');
+        const currentTime = new Date().getTime();
+        const isNormalNavigation = sessionStorage.getItem('docradar_normal_navigation') === 'true';
+        
+        // 检查是否是从文档返回后的刷新操作
+        // 如果有返回时间戳，且在5秒内刷新，且不是正常导航，则视为返回后的刷新操作
+        const isRefreshAfterBack = isRefresh && backToSearchTime && 
+            (currentTime - parseInt(backToSearchTime)) < 5000 && 
+            !isNormalNavigation;
+        
+        if (isRefreshAfterBack) {
+            console.log('检测到从文档返回后的刷新操作，清除当前关键词的浏览记录');
+            // 清除时间戳和返回标记
+            sessionStorage.removeItem('docradar_back_to_search');
+            sessionStorage.removeItem('docradar_back_to_search_time');
+            
+            // 清除当前关键词的浏览记录
+            clearCurrentQueryVisitedDocs(currentQuery);
+            return;
+        }
+        
         // 在任何情况下，首先清除所有已浏览标记
         // 这确保不同关键词结果列表的浏览状态不会互相干扰
         resultItems.forEach(item => {
@@ -2498,3 +2539,38 @@ function markVisitedDocumentsInResults(isRefresh = false, isTabSwitch = false) {
         console.error('标记已浏览文档时发生错误:', error);
     }
 } 
+
+/**
+ * 清除特定搜索查询的已浏览文档记录
+ * @param {string} searchQuery - 要清除记录的搜索查询
+ */
+function clearCurrentQueryVisitedDocs(searchQuery) {
+    if (!searchQuery) return;
+    
+    try {
+        console.log(`清除搜索"${searchQuery}"的浏览记录`);
+        
+        // 尝试获取并更新映射表
+        const visitedDocsMapStr = localStorage.getItem('docradar_visited_docs_map');
+        if (visitedDocsMapStr) {
+            try {
+                const visitedDocsMap = JSON.parse(visitedDocsMapStr);
+                
+                // 如果存在该查询的记录，删除它
+                if (visitedDocsMap[searchQuery]) {
+                    delete visitedDocsMap[searchQuery];
+                    localStorage.setItem('docradar_visited_docs_map', JSON.stringify(visitedDocsMap));
+                    console.log(`已清除搜索"${searchQuery}"的浏览记录`);
+                } else {
+                    console.log(`搜索"${searchQuery}"没有浏览记录，无需清除`);
+                }
+            } catch (e) {
+                console.error('解析已浏览文档映射表失败:', e);
+            }
+        } else {
+            console.log('没有找到浏览记录映射表');
+        }
+    } catch (error) {
+        console.error('清除浏览记录时发生错误:', error);
+    }
+}
