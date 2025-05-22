@@ -25,5 +25,5 @@ ENV PYTHONUNBUFFERED=1
 # 暴露端口
 EXPOSE 5000
 
-# 启动应用（仍使用app.py兼容层，后续可改为run.py）
+# 启动应用（仍使用app.py）
 CMD ["gunicorn", "--bind", "0.0.0.0:5000", "app:app"] 

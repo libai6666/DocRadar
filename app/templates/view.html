@@ -452,7 +452,18 @@
             const searchQuery = urlParams.get('q') || '';
             const searchId = urlParams.get('search_id') || '';
             
-            console.log(`当前页面文档ID: ${docId}, 搜索查询: "${searchQuery}", 搜索ID: ${searchId}`);
+            // 判断是否来自搜索结果页
+            const isFromSearchResults = !!(searchQuery && searchId);
+            
+            console.log(`当前页面文档ID: ${docId}, 搜索查询: "${searchQuery}", 搜索ID: ${searchId}, 是否来自搜索结果页: ${isFromSearchResults}`);
+            
+            // 如果不是来自搜索结果页，清除localStorage中的搜索状态
+            // 这确保从文档列表直接查看的文档不会受到之前搜索的影响
+            if (!isFromSearchResults) {
+                console.log('文档不是来自搜索结果页，清除localStorage中的搜索状态');
+                localStorage.removeItem('docradar_current_active_query');
+                localStorage.removeItem('docradar_current_active_search_id');
+            }
             
             // 存储到sessionStorage，用于恢复
             sessionStorage.setItem('docradar_last_viewed_doc_id', docId);

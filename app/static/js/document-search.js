@@ -40,16 +40,40 @@ document.addEventListener('DOMContentLoaded', function() {
         console.error('找不到文档内容元素');
     }
     
-    // 添加新函数：保存当前搜索状态
-    function saveCurrentSearchState() {
+    /**
+     * 检测当前文档页面的来源
+     * @returns {Object} 包含来源信息的对象
+     */
+    function detectDocumentSource() {
+        // 获取URL参数
         const urlParams = new URLSearchParams(window.location.search);
         const query = urlParams.get('q');
         const searchId = urlParams.get('search_id');
         
-        if (query && searchId) {
-            console.log(`保存当前搜索状态: query="${query}", searchId=${searchId}`);
-            localStorage.setItem('docradar_current_active_query', query);
-            localStorage.setItem('docradar_current_active_search_id', searchId);
+        // 如果URL中有查询参数和搜索ID，说明是从搜索结果页来的
+        const isFromSearchResults = !!(query && searchId);
+        
+        console.log(`检测文档来源: 是否来自搜索结果页=${isFromSearchResults}, 查询参数="${query}", 搜索ID=${searchId}`);
+        
+        return {
+            isFromSearchResults,
+            query,
+            searchId
+        };
+    }
+    
+    // 添加新函数：保存当前搜索状态
+    function saveCurrentSearchState() {
+        // 先检测文档来源
+        const source = detectDocumentSource();
+        
+        // 只有当文档来自搜索结果页时，才保存搜索状态
+        if (source.isFromSearchResults) {
+            console.log(`保存当前搜索状态: query="${source.query}", searchId=${source.searchId}`);
+            localStorage.setItem('docradar_current_active_query', source.query);
+            localStorage.setItem('docradar_current_active_search_id', source.searchId);
+        } else {
+            console.log('文档不是来自搜索结果页，不保存搜索状态');
         }
     }
     
@@ -60,40 +84,45 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // 初始化搜索
     function initSearch() {
-        // 获取URL中的查询参数
-        const urlParams = new URLSearchParams(window.location.search);
-        const query = urlParams.get('q');
-        const searchId = urlParams.get('search_id');
+        // 检测文档来源
+        const source = detectDocumentSource();
         
-        console.log(`初始化搜索，URL查询参数: "${query}", 搜索ID: "${searchId}"`);
+        console.log(`初始化搜索，来源检测结果: 是否来自搜索结果页=${source.isFromSearchResults}, 查询参数="${source.query}", 搜索ID="${source.searchId}"`);
         
         // 生成唯一的存储键，确保不同搜索标签之间不会相互干扰
         const storageKeyPrefix = 'docradar_search_';
         
+        // 如果直接从文档列表访问，清除之前的搜索状态
+        if (!source.isFromSearchResults) {
+            console.log('当前文档不是从搜索结果页访问的，清除所有搜索存储');
+            clearAllSearchStorage(true); // 传入参数true，表示清除localStorage中的状态
+            return; // 直接返回，不执行搜索
+        }
+        
         // 如果URL中有查询参数和搜索ID，则使用它们
-        if (query && searchId) {
+        if (source.query && source.searchId) {
             // 清除所有旧的搜索存储，防止干扰
-            clearAllSearchStorage();
+            clearAllSearchStorage(false); // 只清除sessionStorage中的状态
             
             // 存储当前的搜索ID和查询词
-            const storageKey = `${storageKeyPrefix}${searchId}`;
-            sessionStorage.setItem(storageKey, query);
+            const storageKey = `${storageKeyPrefix}${source.searchId}`;
+            sessionStorage.setItem(storageKey, source.query);
             
             // 同时存储当前活动的搜索ID，用于标记当前正在使用哪个搜索
-            sessionStorage.setItem('docradar_active_search_id', searchId);
+            sessionStorage.setItem('docradar_active_search_id', source.searchId);
             
-            console.log(`已存储搜索参数: searchId=${searchId}, query=${query}, storageKey=${storageKey}`);
+            console.log(`已存储搜索参数: searchId=${source.searchId}, query=${source.query}, storageKey=${storageKey}`);
             
             // 设置搜索框的值
             if (searchInput) {
-                searchInput.value = query;
-                console.log(`设置搜索框值为: "${query}"`);
+                searchInput.value = source.query;
+                console.log(`设置搜索框值为: "${source.query}"`);
             }
             
             // 稍微延迟执行搜索，确保DOM完全加载
             setTimeout(() => {
-                console.log(`开始执行搜索: "${query}"`);
-                performSearch(query);
+                console.log(`开始执行搜索: "${source.query}"`);
+                performSearch(source.query);
             }, 500); // 500ms延迟
         } else {
             // 检测页面是否是刷新
@@ -173,7 +202,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     // 清除所有搜索相关的会话存储
-    function clearAllSearchStorage() {
+    function clearAllSearchStorage(clearLocalStorage = false) {
         // 获取所有以docradar_search_开头的键
         const keysToRemove = [];
         for (let i = 0; i < sessionStorage.length; i++) {
@@ -191,6 +220,14 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // 同时删除活动搜索ID
         sessionStorage.removeItem('docradar_active_search_id');
+        
+        // 如果需要，清除localStorage中的搜索状态
+        if (clearLocalStorage) {
+            localStorage.removeItem('docradar_current_active_query');
+            localStorage.removeItem('docradar_current_active_search_id');
+            console.log('已清除本地存储中的搜索状态');
+        }
+        
         console.log('已清除所有搜索相关的会话存储');
     }
     
@@ -253,14 +290,13 @@ document.addEventListener('DOMContentLoaded', function() {
                                     }
                                 }
                             });
-                        } else {
-                            // 更新匹配信息
-                            updateMatchInfo();
-                            
-                            // 如果有匹配项，导航到第一个
-                            if (totalMarks > 0) {
-                                navigateToMatch(0);
-                            }
+                        }
+                        // 更新匹配信息
+                        updateMatchInfo();
+                        
+                        // 如果有匹配项，导航到第一个
+                        if (totalMarks > 0) {
+                            navigateToMatch(0);
                         }
                     }
                 });
@@ -344,8 +380,8 @@ document.addEventListener('DOMContentLoaded', function() {
             searchInput.value = '';
         }
         
-        // 清除会话存储
-        clearAllSearchStorage();
+        // 清除会话存储和本地存储中的搜索状态
+        clearAllSearchStorage(true);
         
         // 更新URL，移除搜索参数
         const newUrl = new URL(window.location.href);
