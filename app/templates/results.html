@@ -422,6 +422,25 @@
                 const targetPane = document.querySelector(targetId);
                 if (targetPane) {
                     targetPane.classList.add('show', 'active');
+                    
+                    // 获取当前标签的查询词和搜索ID
+                    const tabTextElement = this.querySelector('.tab-text');
+                    if (tabTextElement) {
+                        const tabText = tabTextElement.textContent.replace(/"/g, '');
+                        // 从data-bs-target属性中提取history ID (格式: #search-content-xxx)
+                        const historyId = targetId ? targetId.replace('#search-content-', '') : '';
+                        
+                        // 更新URL查询参数
+                        const currentUrl = new URL(window.location.href);
+                        currentUrl.searchParams.set('q', tabText);
+                        currentUrl.searchParams.set('search_id', historyId);
+                        window.history.replaceState({}, '', currentUrl.toString());
+                        
+                        // 保存当前活动的搜索状态到localStorage
+                        localStorage.setItem('docradar_current_active_query', tabText);
+                        localStorage.setItem('docradar_current_active_search_id', historyId);
+                        console.log(`已保存当前活动的搜索状态: query="${tabText}", searchId=${historyId}`);
+                    }
                 }
             });
         });
@@ -646,13 +665,19 @@
                     if (nextTabContent) {
                         nextTabContent.classList.add('show', 'active');
                         
-                        // 更新URL查询参数以反映当前活动的搜索
+                        // 获取下一个标签的查询词
                         const tabText = nextTabLink.querySelector('.tab-text').textContent.replace(/"/g, '');
+                        
+                        // 更新URL查询参数以反映当前活动的搜索
                         const currentUrl = new URL(window.location.href);
                         currentUrl.searchParams.set('q', tabText);
+                        currentUrl.searchParams.set('search_id', nextActiveTab.id.replace('tab-item-', ''));
                         window.history.replaceState({}, '', currentUrl.toString());
                         
-                        // 移除更新搜索输入框的值的代码
+                        // 保存当前活动的搜索状态到localStorage
+                        localStorage.setItem('docradar_current_active_query', tabText);
+                        localStorage.setItem('docradar_current_active_search_id', nextActiveTab.id.replace('tab-item-', ''));
+                        console.log(`已保存当前活动的搜索状态: query="${tabText}", searchId=${nextActiveTab.id.replace('tab-item-', '')}`);
                     }
                 }
                 

@@ -31,6 +31,21 @@ function detectPageLoadType() {
         }
         // 无论如何设置标记，以便下次可以检测
         sessionStorage.setItem('docradar_page_loaded', 'true');
+        
+        // 判断是否有之前保存的搜索状态，如果有，可能是刷新
+        const savedQuery = localStorage.getItem('docradar_current_active_query');
+        const savedSearchId = localStorage.getItem('docradar_current_active_search_id');
+        if (savedQuery && savedSearchId) {
+            // 进一步判断URL是否有搜索参数，如果没有更可能是刷新
+            const urlParams = new URLSearchParams(window.location.search);
+            const urlQuery = urlParams.get('q');
+            const urlSearchId = urlParams.get('search_id');
+            
+            if (!urlQuery || !urlSearchId) {
+                console.log('检测到保存的搜索状态，但URL中没有搜索参数，可能是刷新');
+                isRefresh = true;
+            }
+        }
     } catch (error) {
         console.error('检测页面加载类型时出错:', error);
     }
@@ -113,6 +128,32 @@ window.addEventListener('pageshow', function(event) {
         // 获取当前URL中的搜索查询
         const urlParams = new URLSearchParams(window.location.search);
         const currentQuery = urlParams.get('q') || '';
+        
+        // 检查是否有保存的当前活动搜索状态
+        const savedQuery = localStorage.getItem('docradar_current_active_query');
+        const savedSearchId = localStorage.getItem('docradar_current_active_search_id');
+        
+        // 如果URL中没有查询参数但有保存的搜索状态，说明可能是刷新
+        if ((!currentQuery || !urlParams.get('search_id')) && savedQuery && savedSearchId) {
+            console.log(`检测到页面刷新，从localStorage恢复搜索状态: query="${savedQuery}", searchId=${savedSearchId}`);
+            
+            // 更新URL参数
+            const newUrl = new URL(window.location.href);
+            newUrl.searchParams.set('q', savedQuery);
+            newUrl.searchParams.set('search_id', savedSearchId);
+            window.history.replaceState({}, '', newUrl);
+            
+            // 激活对应的标签
+            const tabSelector = `#search-tab-${savedSearchId}`;
+            const tab = document.querySelector(tabSelector);
+            if (tab) {
+                tab.click();
+                console.log(`已激活标签: ${tabSelector}`);
+            }
+            
+            // 不继续执行后续代码
+            return;
+        }
         
         // 获取上次访问的搜索查询
         const previousQuery = sessionStorage.getItem('docradar_current_search');

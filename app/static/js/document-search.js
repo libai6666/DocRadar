@@ -40,6 +40,24 @@ document.addEventListener('DOMContentLoaded', function() {
         console.error('找不到文档内容元素');
     }
     
+    // 添加新函数：保存当前搜索状态
+    function saveCurrentSearchState() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const query = urlParams.get('q');
+        const searchId = urlParams.get('search_id');
+        
+        if (query && searchId) {
+            console.log(`保存当前搜索状态: query="${query}", searchId=${searchId}`);
+            localStorage.setItem('docradar_current_active_query', query);
+            localStorage.setItem('docradar_current_active_search_id', searchId);
+        }
+    }
+    
+    // 添加页面刷新前的事件监听器
+    window.addEventListener('beforeunload', function() {
+        saveCurrentSearchState();
+    });
+    
     // 初始化搜索
     function initSearch() {
         // 获取URL中的查询参数
@@ -78,7 +96,48 @@ document.addEventListener('DOMContentLoaded', function() {
                 performSearch(query);
             }, 500); // 500ms延迟
         } else {
-            // 如果URL中没有参数，尝试从会话存储中获取最后一次活动的搜索
+            // 检测页面是否是刷新
+            const pageLoadFlag = sessionStorage.getItem('docradar_page_loaded');
+            const isRefresh = !!pageLoadFlag;
+            console.log(`检测到页面加载类型: isRefresh=${isRefresh}`);
+            
+            // 如果是刷新，尝试从localStorage中恢复当前活动的搜索
+            if (isRefresh) {
+                const currentActiveQuery = localStorage.getItem('docradar_current_active_query');
+                const currentActiveSearchId = localStorage.getItem('docradar_current_active_search_id');
+                
+                if (currentActiveQuery && currentActiveSearchId) {
+                    console.log(`从本地存储中恢复当前活动的搜索: query="${currentActiveQuery}", searchId=${currentActiveSearchId}`);
+                    
+                    // 更新URL，但不刷新页面
+                    const newUrl = new URL(window.location.href);
+                    newUrl.searchParams.set('q', currentActiveQuery);
+                    newUrl.searchParams.set('search_id', currentActiveSearchId);
+                    window.history.replaceState({}, '', newUrl);
+                    
+                    // 使用存储的查询词
+                    if (searchInput) {
+                        searchInput.value = currentActiveQuery;
+                    }
+                    
+                    // 同时更新sessionStorage
+                    const storageKey = `${storageKeyPrefix}${currentActiveSearchId}`;
+                    sessionStorage.setItem(storageKey, currentActiveQuery);
+                    sessionStorage.setItem('docradar_active_search_id', currentActiveSearchId);
+                    
+                    // 延迟执行搜索
+                    setTimeout(() => {
+                        console.log(`使用当前活动的搜索词执行搜索: "${currentActiveQuery}"`);
+                        performSearch(currentActiveQuery);
+                    }, 500);
+                    
+                    return; // 已处理，退出函数
+                } else {
+                    console.log('未找到当前活动的搜索状态');
+                }
+            }
+            
+            // 如果不是刷新或没有找到当前活动的搜索状态，尝试从会话存储中获取最后一次活动的搜索
             const activeSearchId = sessionStorage.getItem('docradar_active_search_id');
             
             if (activeSearchId) {
