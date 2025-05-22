@@ -2217,6 +2217,9 @@ function markDocumentAsVisited(docId, force = false, searchQuery = '') {
             console.log(`文档 ${docId} 之前已在搜索 "${searchQuery}" 中浏览过`);
         }
         
+        // 移除对全局文档列表的更新，确保文档浏览状态仅关联到特定搜索关键词
+        // 下面的代码已被注释，不再使用全局列表
+        /*
         // 兼容性处理：也保存到原来的格式
         // 这是为了确保其他地方的代码仍能正常工作
         let visitedDocs = getVisitedDocuments();
@@ -2227,6 +2230,7 @@ function markDocumentAsVisited(docId, force = false, searchQuery = '') {
             }
             localStorage.setItem('docradar_visited_docs', JSON.stringify(visitedDocs));
         }
+        */
     } catch (error) {
         console.error('标记文档为已浏览时发生错误:', error);
     }
@@ -2245,7 +2249,7 @@ function getVisitedDocuments(searchQuery = '') {
             searchQuery = urlParams.get('q') || '';
         }
         
-        // 如果使用新的存储方式
+        // 使用搜索关键词从映射表中获取已浏览文档列表
         const visitedDocsMapStr = localStorage.getItem('docradar_visited_docs_map');
         if (visitedDocsMapStr) {
             try {
@@ -2258,18 +2262,23 @@ function getVisitedDocuments(searchQuery = '') {
                 }
                 
                 // 如果没有指定搜索查询或该查询不存在，返回空数组
-                if (searchQuery) {
-                    console.log(`搜索"${searchQuery}"没有已浏览文档记录`);
-                    return [];
-                }
+                console.log(`搜索"${searchQuery}"没有已浏览文档记录，返回空数组`);
+                return [];
             } catch (e) {
                 console.error('解析已浏览文档映射表失败:', e);
+                return [];
             }
         }
         
+        // 如果没有映射表，返回空数组
+        return [];
+        
+        // 移除以下回退到全局文档列表的逻辑
+        /*
         // 兼容旧版存储方式
         const visitedDocsStr = localStorage.getItem('docradar_visited_docs');
         return visitedDocsStr ? JSON.parse(visitedDocsStr) : [];
+        */
     } catch (error) {
         console.error('获取已浏览文档列表时发生错误:', error);
         return [];
@@ -2279,8 +2288,9 @@ function getVisitedDocuments(searchQuery = '') {
 /**
  * 在搜索结果页面标记已浏览的文档
  * @param {boolean} [isRefresh=false] - 是否是页面刷新
+ * @param {boolean} [isTabSwitch=false] - 是否是标签切换
  */
-function markVisitedDocumentsInResults(isRefresh = false) {
+function markVisitedDocumentsInResults(isRefresh = false, isTabSwitch = false) {
     try {
         // 确认当前是搜索结果页面
         if (!window.location.pathname.includes('/search')) {
@@ -2289,7 +2299,7 @@ function markVisitedDocumentsInResults(isRefresh = false) {
         }
         
         console.log(`===== 开始标记已浏览文档 =====`);
-        console.log(`页面加载状态: 刷新=${isRefresh}`);
+        console.log(`页面加载状态: 刷新=${isRefresh}, 标签切换=${isTabSwitch}`);
         
         // 获取当前搜索查询
         const urlParams = new URLSearchParams(window.location.search);
@@ -2309,16 +2319,18 @@ function markVisitedDocumentsInResults(isRefresh = false) {
         const isBackFromDocument = sessionStorage.getItem('docradar_back_to_search') === 'true';
         console.log(`是否从文档查看页面返回: ${isBackFromDocument}`);
         
-        // 如果是刷新页面且不是从文档返回，清除所有已浏览标记（包括localStorage中的记录）
-        if (isRefresh && !isBackFromDocument) {
-            console.log('检测到页面刷新，清除所有已浏览标记和存储记录');
-            
-            // 清除DOM元素上的visited类
-            resultItems.forEach(item => {
-                if (item.classList.contains('visited')) {
-                    item.classList.remove('visited');
-                }
-            });
+        // 在任何情况下，首先清除所有已浏览标记
+        // 这确保不同关键词结果列表的浏览状态不会互相干扰
+        resultItems.forEach(item => {
+            if (item.classList.contains('visited')) {
+                item.classList.remove('visited');
+            }
+        });
+        console.log('已清除所有结果项的已浏览标记');
+        
+        // 如果是刷新页面且不是从文档返回，清除当前关键词的浏览记录
+        if (isRefresh && !isBackFromDocument && !isTabSwitch) {
+            console.log('检测到页面刷新，清除当前关键词的浏览记录');
             
             // 清除当前搜索查询的localStorage记录
             if (currentQuery) {
@@ -2343,21 +2355,16 @@ function markVisitedDocumentsInResults(isRefresh = false) {
             // 清除会话标记
             sessionStorage.removeItem('docradar_back_to_search');
             
-            console.log('已清除所有文档的已浏览标记和存储记录');
+            console.log('已清除当前关键词的浏览记录');
             return;
         }
         
-        // 如果没有刷新或是从文档返回，继续标记已浏览文档
         // 根据当前搜索查询获取已浏览文档列表
         const visitedDocs = getVisitedDocuments(currentQuery);
         console.log(`当前搜索"${currentQuery}"的已浏览文档列表: ${JSON.stringify(visitedDocs)}`);
         
         if (!visitedDocs.length) {
             console.log(`搜索"${currentQuery}"没有已浏览的文档记录`);
-            // 清除所有已浏览标记
-            resultItems.forEach(item => {
-                item.classList.remove('visited');
-            });
             return;
         }
         
@@ -2367,9 +2374,6 @@ function markVisitedDocumentsInResults(isRefresh = false) {
         // 遍历搜索结果，检查每个结果是否已浏览
         resultItems.forEach(item => {
             try {
-                // 首先确保元素处于正确状态 - 移除所有访问标记
-                item.classList.remove('visited');
-                
                 // 获取文档链接元素
                 const linkElement = item.querySelector('a[href*="/document/"]');
                 if (!linkElement) {

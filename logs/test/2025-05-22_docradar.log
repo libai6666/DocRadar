@@ -1373,3 +1373,422 @@
 2025-05-22 18:58:33,877 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 18:58:33] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
 2025-05-22 18:58:33,881 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 18:58:33] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
 2025-05-22 18:58:33,889 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 18:58:33] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-22 18:59:37,753 [INFO] - root - 日志系统初始化完成，使用日志文件: 2025-05-22_docradar.log
+2025-05-22 18:59:37,775 [INFO] - werkzeug -  * Restarting with stat
+2025-05-22 18:59:38,277 [INFO] - root - 日志系统初始化完成，使用日志文件: 2025-05-22_docradar.log
+2025-05-22 18:59:38,294 [WARNING] - werkzeug -  * Debugger is active!
+2025-05-22 18:59:38,298 [INFO] - werkzeug -  * Debugger PIN: 114-528-488
+2025-05-22 18:59:38,387 [INFO] - werkzeug -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2025-05-22 18:59:39,890 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 18:59:39] "GET / HTTP/1.1" 200 -
+2025-05-22 18:59:40,120 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 18:59:40] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-22 18:59:40,133 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 18:59:40] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-22 18:59:44,323 [INFO] - root - 找到已存在的搜索历史: ID=3, 查询='主播激励功能', 索引=2
+2025-05-22 18:59:44,323 [INFO] - root - 重用已有搜索结果: '主播激励功能'
+2025-05-22 18:59:44,324 [INFO] - root - 找到已存在的搜索历史: ID=3, 查询='主播激励功能', 索引=2
+2025-05-22 18:59:44,325 [INFO] - root - 更新搜索历史: 查询='主播激励功能', 结果数=1, 历史ID=3, 位置保持在索引=2
+2025-05-22 18:59:44,357 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 18:59:44] "GET /search?q=主播激励功能 HTTP/1.1" 200 -
+2025-05-22 18:59:44,383 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 18:59:44] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-22 18:59:44,384 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 18:59:44] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-22 18:59:49,735 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 18:59:49] "GET / HTTP/1.1" 200 -
+2025-05-22 18:59:49,770 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 18:59:49] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-22 18:59:49,773 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 18:59:49] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-22 18:59:51,947 [INFO] - root - 找到已存在的搜索历史: ID=2, 查询='主播', 索引=1
+2025-05-22 18:59:51,947 [INFO] - root - 重用已有搜索结果: '主播'
+2025-05-22 18:59:51,948 [INFO] - root - 找到已存在的搜索历史: ID=2, 查询='主播', 索引=1
+2025-05-22 18:59:51,948 [INFO] - root - 更新搜索历史: 查询='主播', 结果数=20, 历史ID=2, 位置保持在索引=1
+2025-05-22 18:59:51,958 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 18:59:51] "GET /search?q=主播 HTTP/1.1" 200 -
+2025-05-22 18:59:51,985 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 18:59:51] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-22 18:59:52,002 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 18:59:52] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-22 19:00:08,167 [INFO] - root - 文档ID 339: 使用原始标题 '三期Duoov1.1.0'
+2025-05-22 19:00:08,168 [INFO] - root - 文档 339 使用HTML内容显示
+2025-05-22 19:00:08,169 [INFO] - root - 传递查询参数到模板: '信用分', 搜索ID: '1'
+2025-05-22 19:00:08,183 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:00:08] "GET /document/339?q=信用分&search_id=1 HTTP/1.1" 200 -
+2025-05-22 19:00:08,212 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:00:08] "[36mGET /static/images/docs/bdbc5e5f86/img_f095508bf1004f4d915aaaaa6336033b.png HTTP/1.1[0m" 304 -
+2025-05-22 19:00:08,212 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:00:08] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-22 19:00:08,212 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:00:08] "GET /static/js/document-search.js HTTP/1.1" 200 -
+2025-05-22 19:00:08,226 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:00:08] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-22 19:00:08,242 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:00:08] "[36mGET /static/images/docs/bdbc5e5f86/img_7f2f42803dc14537bae750cf404d9609.png HTTP/1.1[0m" 304 -
+2025-05-22 19:00:24,224 [INFO] - root - 文档ID 337: 使用原始标题 '五期Duoov1.3.0'
+2025-05-22 19:00:24,225 [INFO] - root - 文档 337 使用HTML内容显示
+2025-05-22 19:00:24,225 [INFO] - root - 传递查询参数到模板: '主播', 搜索ID: '2'
+2025-05-22 19:00:24,230 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:00:24] "GET /document/337?q=主播&search_id=2 HTTP/1.1" 200 -
+2025-05-22 19:00:24,254 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:00:24] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-22 19:00:24,268 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:00:24] "[36mGET /static/images/docs/045e5b7761/img_9fc894fde78e47e4bc055bced3565bd5.png HTTP/1.1[0m" 304 -
+2025-05-22 19:00:24,273 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:00:24] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-22 19:00:24,275 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:00:24] "[36mGET /static/js/document-search.js HTTP/1.1[0m" 304 -
+2025-05-22 19:00:24,280 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:00:24] "[36mGET /static/images/docs/045e5b7761/img_c31bb5bf6e5f4658b4a2e9e3c4fb9ebd.png HTTP/1.1[0m" 304 -
+2025-05-22 19:00:24,282 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:00:24] "[36mGET /static/images/docs/045e5b7761/img_d2245bf5ecc549318f15f4d0995eb235.png HTTP/1.1[0m" 304 -
+2025-05-22 19:00:24,289 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:00:24] "[36mGET /static/images/docs/045e5b7761/img_ce17241289de4567ba8d74f75d37a0b8.png HTTP/1.1[0m" 304 -
+2025-05-22 19:00:24,290 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:00:24] "[36mGET /static/images/docs/045e5b7761/img_3a683e24eb3448f8b601e54c7f4c8b0d.png HTTP/1.1[0m" 304 -
+2025-05-22 19:00:24,292 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:00:24] "[36mGET /static/images/docs/045e5b7761/img_d20206c4a9f048d4aea0c263e22471f8.png HTTP/1.1[0m" 304 -
+2025-05-22 19:00:24,300 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:00:24] "[36mGET /static/images/docs/045e5b7761/img_e693876626b344c091ae983a26e68492.png HTTP/1.1[0m" 304 -
+2025-05-22 19:00:24,304 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:00:24] "[36mGET /static/images/docs/045e5b7761/img_cfde1346ce0448bbb8dff5b1eb952b54.png HTTP/1.1[0m" 304 -
+2025-05-22 19:00:24,308 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:00:24] "[36mGET /static/images/docs/045e5b7761/img_86c18a1c031c46c6b75512c5b5009141.png HTTP/1.1[0m" 304 -
+2025-05-22 19:00:24,313 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:00:24] "[36mGET /static/images/docs/045e5b7761/img_b930f50943bf441984b41ef60fd7c9c4.png HTTP/1.1[0m" 304 -
+2025-05-22 19:00:24,319 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:00:24] "[36mGET /static/images/docs/045e5b7761/img_77d5064094fb4b9cb534761fd27ddcbf.png HTTP/1.1[0m" 304 -
+2025-05-22 19:00:24,322 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:00:24] "[36mGET /static/images/docs/045e5b7761/img_5d113118e684417eb99aff260a16b51b.png HTTP/1.1[0m" 304 -
+2025-05-22 19:00:24,327 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:00:24] "[36mGET /static/images/docs/045e5b7761/img_9d4d618b4bb74b138c2d7eb28c3306d9.png HTTP/1.1[0m" 304 -
+2025-05-22 19:00:24,332 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:00:24] "[36mGET /static/images/docs/045e5b7761/img_e65a053be11d4557907d8c7bd439042c.png HTTP/1.1[0m" 304 -
+2025-05-22 19:00:24,332 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:00:24] "[36mGET /static/images/docs/045e5b7761/img_469aa702597e4b6a8f5167e21c572ea5.png HTTP/1.1[0m" 304 -
+2025-05-22 19:00:24,344 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:00:24] "[36mGET /static/images/docs/045e5b7761/img_831ca964573f4b30baf3473622f147d2.png HTTP/1.1[0m" 304 -
+2025-05-22 19:00:24,347 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:00:24] "[36mGET /static/images/docs/045e5b7761/img_958d5aa109e64797aa99f2ec5e8c63ce.png HTTP/1.1[0m" 304 -
+2025-05-22 19:00:24,351 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:00:24] "[36mGET /static/images/docs/045e5b7761/img_e8747dae5f6b4d14ae4bd3f8840573bf.png HTTP/1.1[0m" 304 -
+2025-05-22 19:00:24,352 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:00:24] "[36mGET /static/images/docs/045e5b7761/img_70b0f874c14a4518a61aa1c4b42ca647.png HTTP/1.1[0m" 304 -
+2025-05-22 19:00:24,358 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:00:24] "[36mGET /static/images/docs/045e5b7761/img_aeca5a5751f34beca8212b6009a07e4b.png HTTP/1.1[0m" 304 -
+2025-05-22 19:00:24,359 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:00:24] "[36mGET /static/images/docs/045e5b7761/img_65af7637cc684a96bbbd407ebec8ba6c.png HTTP/1.1[0m" 304 -
+2025-05-22 19:00:24,363 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:00:24] "[36mGET /static/images/docs/045e5b7761/img_fd1653a5499a4cf6b49691f89adcc58d.png HTTP/1.1[0m" 304 -
+2025-05-22 19:00:24,365 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:00:24] "[36mGET /static/images/docs/045e5b7761/img_b49159ff3c3d4e568c269095b8bf2e50.png HTTP/1.1[0m" 304 -
+2025-05-22 19:00:24,372 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:00:24] "[36mGET /static/images/docs/045e5b7761/img_c8b45fcad4494c76a975cae1962c65b1.png HTTP/1.1[0m" 304 -
+2025-05-22 19:00:24,372 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:00:24] "[36mGET /static/images/docs/045e5b7761/img_8f54a3507637405aa4508f4555c3e2a4.png HTTP/1.1[0m" 304 -
+2025-05-22 19:00:24,373 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:00:24] "[36mGET /static/images/docs/045e5b7761/img_a1a09a1a411c45428738c1ae413638bb.png HTTP/1.1[0m" 304 -
+2025-05-22 19:00:24,399 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:00:24] "[36mGET /static/images/docs/045e5b7761/img_57a94969df924d2186060fad5f72cd9c.png HTTP/1.1[0m" 304 -
+2025-05-22 19:00:24,474 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:00:24] "[36mGET /static/images/docs/045e5b7761/img_ec8ee64429184f9b8ccad83e9257799a.png HTTP/1.1[0m" 304 -
+2025-05-22 19:00:28,704 [INFO] - root - 文档ID 335: 使用原始标题 '七期Duoov1.5.0'
+2025-05-22 19:00:28,705 [INFO] - root - 文档 335 使用HTML内容显示
+2025-05-22 19:00:28,705 [INFO] - root - 传递查询参数到模板: '主播', 搜索ID: '2'
+2025-05-22 19:00:28,708 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:00:28] "GET /document/335?q=主播&search_id=2 HTTP/1.1" 200 -
+2025-05-22 19:00:28,730 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:00:28] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-22 19:00:28,746 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:00:28] "[36mGET /static/images/docs/77f0816336/img_89d3725f6f954d54bea47336f7fd885e.png HTTP/1.1[0m" 304 -
+2025-05-22 19:00:28,746 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:00:28] "[36mGET /static/images/docs/77f0816336/img_9c99bc3fe77a4110b281a60c8c2e3e32.png HTTP/1.1[0m" 304 -
+2025-05-22 19:00:28,746 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:00:28] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-22 19:00:28,756 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:00:28] "[36mGET /static/images/docs/77f0816336/img_d08b49f919ca429cb241568363fbed5d.png HTTP/1.1[0m" 304 -
+2025-05-22 19:00:28,758 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:00:28] "[36mGET /static/js/document-search.js HTTP/1.1[0m" 304 -
+2025-05-22 19:00:28,759 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:00:28] "[36mGET /static/images/docs/77f0816336/img_d1ae2711f9774a8ab8a363bb024c3a1e.png HTTP/1.1[0m" 304 -
+2025-05-22 19:00:28,766 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:00:28] "[36mGET /static/images/docs/77f0816336/img_7d569e8ade0f44efbaf4ccdc1a6b0332.png HTTP/1.1[0m" 304 -
+2025-05-22 19:00:28,767 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:00:28] "[36mGET /static/images/docs/77f0816336/img_be8adc5520e943c1a5d3610e2db91e79.png HTTP/1.1[0m" 304 -
+2025-05-22 19:00:28,769 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:00:28] "[36mGET /static/images/docs/77f0816336/img_c06c0b70beea4815b35428439059e961.png HTTP/1.1[0m" 304 -
+2025-05-22 19:00:28,772 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:00:28] "[36mGET /static/images/docs/77f0816336/img_4b81fd1d4ec94b1d97e9044e85556b19.png HTTP/1.1[0m" 304 -
+2025-05-22 19:00:28,782 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:00:28] "[36mGET /static/images/docs/77f0816336/img_606a721727614dbf8d70826158863130.png HTTP/1.1[0m" 304 -
+2025-05-22 19:00:28,782 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:00:28] "[36mGET /static/images/docs/77f0816336/img_76af6ef0d8d34300b3a6776f57b8cc92.png HTTP/1.1[0m" 304 -
+2025-05-22 19:00:28,790 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:00:28] "[36mGET /static/images/docs/77f0816336/img_fbe1979e074a4897b9eb94603668e365.png HTTP/1.1[0m" 304 -
+2025-05-22 19:00:28,798 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:00:28] "[36mGET /static/images/docs/77f0816336/img_96047c8acd164a5da582315d10dc4f71.png HTTP/1.1[0m" 304 -
+2025-05-22 19:00:28,803 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:00:28] "[36mGET /static/images/docs/77f0816336/img_ac05fa3b52b9497d97963ee451937ef4.png HTTP/1.1[0m" 304 -
+2025-05-22 19:00:28,804 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:00:28] "[36mGET /static/images/docs/77f0816336/img_87c816b3082145bb9b3ed578cd2dd6f6.png HTTP/1.1[0m" 304 -
+2025-05-22 19:00:28,804 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:00:28] "[36mGET /static/images/docs/77f0816336/img_ab299e470dfb4b59a2477cb1fa2135c0.png HTTP/1.1[0m" 304 -
+2025-05-22 19:00:28,808 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:00:28] "[36mGET /static/images/docs/77f0816336/img_3ce82e69fbab4d94beeba320caf32447.png HTTP/1.1[0m" 304 -
+2025-05-22 19:00:28,821 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:00:28] "[36mGET /static/images/docs/77f0816336/img_85eaad7fc85d414c9acd3d6ba02abf6d.png HTTP/1.1[0m" 304 -
+2025-05-22 19:00:28,821 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:00:28] "[36mGET /static/images/docs/77f0816336/img_9e9b79e360c94dd69ca9fbd23d7d4e96.png HTTP/1.1[0m" 304 -
+2025-05-22 19:00:28,823 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:00:28] "[36mGET /static/images/docs/77f0816336/img_993d743f7ccd413cbbdfd870eb35f57d.png HTTP/1.1[0m" 304 -
+2025-05-22 19:00:28,833 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:00:28] "[36mGET /static/images/docs/77f0816336/img_e9e3577b601b414292a539e9456aebe3.png HTTP/1.1[0m" 304 -
+2025-05-22 19:00:28,834 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:00:28] "[36mGET /static/images/docs/77f0816336/img_3894aa48c4414af1b5f6638a3f508421.png HTTP/1.1[0m" 304 -
+2025-05-22 19:00:28,834 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:00:28] "[36mGET /static/images/docs/77f0816336/img_49942128bbe24a1c9f5308fff50d9e3e.png HTTP/1.1[0m" 304 -
+2025-05-22 19:00:28,844 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:00:28] "[36mGET /static/images/docs/77f0816336/img_6f4a5e6cfffb40598615dceea784c319.png HTTP/1.1[0m" 304 -
+2025-05-22 19:00:28,849 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:00:28] "[36mGET /static/images/docs/77f0816336/img_ba647cef4806454d8c3900c1caef19d9.png HTTP/1.1[0m" 304 -
+2025-05-22 19:00:28,865 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:00:28] "[36mGET /static/images/docs/77f0816336/img_8ad8323e02984b4a931ac4ee15fe46f3.png HTTP/1.1[0m" 304 -
+2025-05-22 19:00:28,882 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:00:28] "[36mGET /static/images/docs/77f0816336/img_c86facda468a4149ac16bf722496374b.png HTTP/1.1[0m" 304 -
+2025-05-22 19:00:28,959 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:00:28] "[36mGET /static/images/docs/77f0816336/img_ef7151b71ba345b89a37c328fec04e16.png HTTP/1.1[0m" 304 -
+2025-05-22 19:00:30,600 [INFO] - root - 找到已存在的搜索历史: ID=2, 查询='主播', 索引=1
+2025-05-22 19:00:30,601 [INFO] - root - 重用已有搜索结果: '主播'
+2025-05-22 19:00:30,601 [INFO] - root - 找到已存在的搜索历史: ID=2, 查询='主播', 索引=1
+2025-05-22 19:00:30,602 [INFO] - root - 更新搜索历史: 查询='主播', 结果数=20, 历史ID=2, 位置保持在索引=1
+2025-05-22 19:00:30,614 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:00:30] "GET /search?q=主播 HTTP/1.1" 200 -
+2025-05-22 19:00:30,641 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:00:30] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-22 19:00:30,642 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:00:30] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-22 19:00:34,501 [INFO] - root - 找到已存在的搜索历史: ID=2, 查询='主播', 索引=1
+2025-05-22 19:00:34,502 [INFO] - root - 重用已有搜索结果: '主播'
+2025-05-22 19:00:34,502 [INFO] - root - 找到已存在的搜索历史: ID=2, 查询='主播', 索引=1
+2025-05-22 19:00:34,503 [INFO] - root - 更新搜索历史: 查询='主播', 结果数=20, 历史ID=2, 位置保持在索引=1
+2025-05-22 19:00:34,514 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:00:34] "GET /search?q=主播&search_id=2 HTTP/1.1" 200 -
+2025-05-22 19:00:34,533 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:00:34] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-22 19:00:34,536 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:00:34] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-22 19:00:44,984 [INFO] - root - 文档ID 339: 使用原始标题 '三期Duoov1.1.0'
+2025-05-22 19:00:44,985 [INFO] - root - 文档 339 使用HTML内容显示
+2025-05-22 19:00:44,985 [INFO] - root - 传递查询参数到模板: '信用分', 搜索ID: '1'
+2025-05-22 19:00:44,991 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:00:44] "GET /document/339?q=信用分&search_id=1 HTTP/1.1" 200 -
+2025-05-22 19:00:45,027 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:00:45] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-22 19:00:45,028 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:00:45] "[36mGET /static/images/docs/bdbc5e5f86/img_f095508bf1004f4d915aaaaa6336033b.png HTTP/1.1[0m" 304 -
+2025-05-22 19:00:45,029 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:00:45] "[36mGET /static/js/document-search.js HTTP/1.1[0m" 304 -
+2025-05-22 19:00:45,032 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:00:45] "[36mGET /static/images/docs/bdbc5e5f86/img_7f2f42803dc14537bae750cf404d9609.png HTTP/1.1[0m" 304 -
+2025-05-22 19:00:45,048 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:00:45] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-22 19:00:51,159 [INFO] - root - 找到已存在的搜索历史: ID=1, 查询='信用分', 索引=0
+2025-05-22 19:00:51,159 [INFO] - root - 重用已有搜索结果: '信用分'
+2025-05-22 19:00:51,160 [INFO] - root - 找到已存在的搜索历史: ID=1, 查询='信用分', 索引=0
+2025-05-22 19:00:51,160 [INFO] - root - 更新搜索历史: 查询='信用分', 结果数=20, 历史ID=1, 位置保持在索引=0
+2025-05-22 19:00:51,170 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:00:51] "GET /search?q=信用分 HTTP/1.1" 200 -
+2025-05-22 19:00:51,203 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:00:51] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-22 19:00:51,210 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:00:51] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-22 19:00:53,647 [INFO] - root - 文档ID 334: 使用原始标题 '八期Duoov1.6.0'
+2025-05-22 19:00:53,648 [INFO] - root - 文档 334 使用HTML内容显示
+2025-05-22 19:00:53,648 [INFO] - root - 传递查询参数到模板: '信用分', 搜索ID: '1'
+2025-05-22 19:00:53,651 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:00:53] "GET /document/334?q=信用分&search_id=1 HTTP/1.1" 200 -
+2025-05-22 19:00:53,682 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:00:53] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-22 19:00:53,684 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:00:53] "[36mGET /static/images/docs/13408f7127/img_c4fcb9c3896542199aede859de8c222a.png HTTP/1.1[0m" 304 -
+2025-05-22 19:00:53,685 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:00:53] "[36mGET /static/images/docs/13408f7127/img_42852eb180434d1096d7073023119e54.png HTTP/1.1[0m" 304 -
+2025-05-22 19:00:53,685 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:00:53] "[36mGET /static/images/docs/13408f7127/img_5748ee35da76487c99e9862727196711.png HTTP/1.1[0m" 304 -
+2025-05-22 19:00:53,687 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:00:53] "[36mGET /static/images/docs/13408f7127/img_b6acb645e1a7483b80b09350ac22c943.png HTTP/1.1[0m" 304 -
+2025-05-22 19:00:53,694 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:00:53] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-22 19:00:53,696 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:00:53] "[36mGET /static/js/document-search.js HTTP/1.1[0m" 304 -
+2025-05-22 19:00:53,698 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:00:53] "[36mGET /static/images/docs/13408f7127/img_9707737375634a1ebd3157af94140c07.png HTTP/1.1[0m" 304 -
+2025-05-22 19:00:53,699 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:00:53] "[36mGET /static/images/docs/13408f7127/img_de26c1df9b6b46a98c074ae5695d15d7.png HTTP/1.1[0m" 304 -
+2025-05-22 19:00:53,701 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:00:53] "[36mGET /static/images/docs/13408f7127/img_4005a4a9b1e64bf2adb7c9645dac3d3c.png HTTP/1.1[0m" 304 -
+2025-05-22 19:00:53,703 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:00:53] "[36mGET /static/images/docs/13408f7127/img_c2b1287189a24e9987f79a0db7470d82.png HTTP/1.1[0m" 304 -
+2025-05-22 19:00:53,709 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:00:53] "[36mGET /static/images/docs/13408f7127/img_9ea83ed4c62c470a80a4f3fe6923691d.png HTTP/1.1[0m" 304 -
+2025-05-22 19:00:53,709 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:00:53] "[36mGET /static/images/docs/13408f7127/img_4527a46687cd4998a703f311e208a0a0.png HTTP/1.1[0m" 304 -
+2025-05-22 19:00:53,717 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:00:53] "[36mGET /static/images/docs/13408f7127/img_aa1850e4be7d49eba2d754447aaa5d8f.png HTTP/1.1[0m" 304 -
+2025-05-22 19:00:59,678 [INFO] - root - 找到已存在的搜索历史: ID=1, 查询='信用分', 索引=0
+2025-05-22 19:00:59,679 [INFO] - root - 重用已有搜索结果: '信用分'
+2025-05-22 19:00:59,679 [INFO] - root - 找到已存在的搜索历史: ID=1, 查询='信用分', 索引=0
+2025-05-22 19:00:59,680 [INFO] - root - 更新搜索历史: 查询='信用分', 结果数=20, 历史ID=1, 位置保持在索引=0
+2025-05-22 19:00:59,689 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:00:59] "GET /search?q=信用分 HTTP/1.1" 200 -
+2025-05-22 19:00:59,731 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:00:59] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-22 19:00:59,731 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:00:59] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-22 19:01:05,900 [INFO] - root - 找到已存在的搜索历史: ID=1, 查询='信用分', 索引=0
+2025-05-22 19:01:05,901 [INFO] - root - 重用已有搜索结果: '信用分'
+2025-05-22 19:01:05,901 [INFO] - root - 找到已存在的搜索历史: ID=1, 查询='信用分', 索引=0
+2025-05-22 19:01:05,902 [INFO] - root - 更新搜索历史: 查询='信用分', 结果数=20, 历史ID=1, 位置保持在索引=0
+2025-05-22 19:01:05,913 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:01:05] "GET /search?q=信用分&search_id=1 HTTP/1.1" 200 -
+2025-05-22 19:01:05,930 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:01:05] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-22 19:01:05,937 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:01:05] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-22 19:01:10,128 [INFO] - root - 文档ID 339: 使用原始标题 '三期Duoov1.1.0'
+2025-05-22 19:01:10,129 [INFO] - root - 文档 339 使用HTML内容显示
+2025-05-22 19:01:10,129 [INFO] - root - 传递查询参数到模板: '信用分', 搜索ID: '1'
+2025-05-22 19:01:10,133 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:01:10] "GET /document/339?q=信用分&search_id=1 HTTP/1.1" 200 -
+2025-05-22 19:01:10,168 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:01:10] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-22 19:01:10,168 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:01:10] "[36mGET /static/js/document-search.js HTTP/1.1[0m" 304 -
+2025-05-22 19:01:10,173 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:01:10] "[36mGET /static/images/docs/bdbc5e5f86/img_f095508bf1004f4d915aaaaa6336033b.png HTTP/1.1[0m" 304 -
+2025-05-22 19:01:10,188 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:01:10] "[36mGET /static/images/docs/bdbc5e5f86/img_7f2f42803dc14537bae750cf404d9609.png HTTP/1.1[0m" 304 -
+2025-05-22 19:01:10,204 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:01:10] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-22 19:01:12,766 [INFO] - root - 找到已存在的搜索历史: ID=1, 查询='信用分', 索引=0
+2025-05-22 19:01:12,766 [INFO] - root - 重用已有搜索结果: '信用分'
+2025-05-22 19:01:12,767 [INFO] - root - 找到已存在的搜索历史: ID=1, 查询='信用分', 索引=0
+2025-05-22 19:01:12,768 [INFO] - root - 更新搜索历史: 查询='信用分', 结果数=20, 历史ID=1, 位置保持在索引=0
+2025-05-22 19:01:12,778 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:01:12] "GET /search?q=信用分 HTTP/1.1" 200 -
+2025-05-22 19:01:12,812 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:01:12] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-22 19:01:12,821 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:01:12] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-22 19:12:30,955 [INFO] - root - 找到已存在的搜索历史: ID=1, 查询='信用分', 索引=0
+2025-05-22 19:12:30,955 [INFO] - root - 重用已有搜索结果: '信用分'
+2025-05-22 19:12:30,955 [INFO] - root - 找到已存在的搜索历史: ID=1, 查询='信用分', 索引=0
+2025-05-22 19:12:30,956 [INFO] - root - 更新搜索历史: 查询='信用分', 结果数=20, 历史ID=1, 位置保持在索引=0
+2025-05-22 19:12:30,985 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:12:30] "GET /search?q=信用分&search_id=1 HTTP/1.1" 200 -
+2025-05-22 19:12:31,006 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:12:31] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-22 19:12:31,023 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:12:31] "GET /static/js/main.js HTTP/1.1" 200 -
+2025-05-22 19:12:34,539 [INFO] - root - 文档ID 339: 使用原始标题 '三期Duoov1.1.0'
+2025-05-22 19:12:34,541 [INFO] - root - 文档 339 使用HTML内容显示
+2025-05-22 19:12:34,541 [INFO] - root - 传递查询参数到模板: '主播', 搜索ID: '2'
+2025-05-22 19:12:34,545 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:12:34] "GET /document/339?q=主播&search_id=2 HTTP/1.1" 200 -
+2025-05-22 19:12:34,578 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:12:34] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-22 19:12:34,579 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:12:34] "[36mGET /static/images/docs/bdbc5e5f86/img_f095508bf1004f4d915aaaaa6336033b.png HTTP/1.1[0m" 304 -
+2025-05-22 19:12:34,579 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:12:34] "[36mGET /static/images/docs/bdbc5e5f86/img_7f2f42803dc14537bae750cf404d9609.png HTTP/1.1[0m" 304 -
+2025-05-22 19:12:34,580 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:12:34] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-22 19:12:34,580 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:12:34] "[36mGET /static/js/document-search.js HTTP/1.1[0m" 304 -
+2025-05-22 19:12:36,107 [INFO] - root - 找到已存在的搜索历史: ID=2, 查询='主播', 索引=1
+2025-05-22 19:12:36,107 [INFO] - root - 重用已有搜索结果: '主播'
+2025-05-22 19:12:36,108 [INFO] - root - 找到已存在的搜索历史: ID=2, 查询='主播', 索引=1
+2025-05-22 19:12:36,108 [INFO] - root - 更新搜索历史: 查询='主播', 结果数=20, 历史ID=2, 位置保持在索引=1
+2025-05-22 19:12:36,117 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:12:36] "GET /search?q=主播 HTTP/1.1" 200 -
+2025-05-22 19:12:36,144 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:12:36] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-22 19:12:36,144 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:12:36] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-22 19:12:41,330 [INFO] - root - 文档ID 339: 使用原始标题 '三期Duoov1.1.0'
+2025-05-22 19:12:41,331 [INFO] - root - 文档 339 使用HTML内容显示
+2025-05-22 19:12:41,332 [INFO] - root - 传递查询参数到模板: '主播激励功能', 搜索ID: '3'
+2025-05-22 19:12:41,336 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:12:41] "GET /document/339?q=主播激励功能&search_id=3 HTTP/1.1" 200 -
+2025-05-22 19:12:41,369 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:12:41] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-22 19:12:41,370 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:12:41] "[36mGET /static/images/docs/bdbc5e5f86/img_7f2f42803dc14537bae750cf404d9609.png HTTP/1.1[0m" 304 -
+2025-05-22 19:12:41,375 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:12:41] "[36mGET /static/images/docs/bdbc5e5f86/img_f095508bf1004f4d915aaaaa6336033b.png HTTP/1.1[0m" 304 -
+2025-05-22 19:12:41,377 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:12:41] "[36mGET /static/js/document-search.js HTTP/1.1[0m" 304 -
+2025-05-22 19:12:41,391 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:12:41] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-22 19:12:46,232 [INFO] - root - 文档ID 339: 使用原始标题 '三期Duoov1.1.0'
+2025-05-22 19:12:46,234 [INFO] - root - 文档 339 使用HTML内容显示
+2025-05-22 19:12:46,234 [INFO] - root - 传递查询参数到模板: '信用分', 搜索ID: '1'
+2025-05-22 19:12:46,237 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:12:46] "GET /document/339?q=信用分&search_id=1 HTTP/1.1" 200 -
+2025-05-22 19:12:46,259 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:12:46] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-22 19:12:46,267 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:12:46] "[36mGET /static/images/docs/bdbc5e5f86/img_f095508bf1004f4d915aaaaa6336033b.png HTTP/1.1[0m" 304 -
+2025-05-22 19:12:46,268 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:12:46] "[36mGET /static/js/document-search.js HTTP/1.1[0m" 304 -
+2025-05-22 19:12:46,283 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:12:46] "[36mGET /static/images/docs/bdbc5e5f86/img_7f2f42803dc14537bae750cf404d9609.png HTTP/1.1[0m" 304 -
+2025-05-22 19:12:46,299 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:12:46] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-22 19:12:47,760 [INFO] - root - 找到已存在的搜索历史: ID=1, 查询='信用分', 索引=0
+2025-05-22 19:12:47,761 [INFO] - root - 重用已有搜索结果: '信用分'
+2025-05-22 19:12:47,762 [INFO] - root - 找到已存在的搜索历史: ID=1, 查询='信用分', 索引=0
+2025-05-22 19:12:47,762 [INFO] - root - 更新搜索历史: 查询='信用分', 结果数=20, 历史ID=1, 位置保持在索引=0
+2025-05-22 19:12:47,771 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:12:47] "GET /search?q=信用分 HTTP/1.1" 200 -
+2025-05-22 19:12:47,798 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:12:47] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-22 19:12:47,803 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:12:47] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-22 19:12:51,525 [INFO] - root - 文档ID 337: 使用原始标题 '五期Duoov1.3.0'
+2025-05-22 19:12:51,527 [INFO] - root - 文档 337 使用HTML内容显示
+2025-05-22 19:12:51,527 [INFO] - root - 传递查询参数到模板: '主播', 搜索ID: '2'
+2025-05-22 19:12:51,532 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:12:51] "GET /document/337?q=主播&search_id=2 HTTP/1.1" 200 -
+2025-05-22 19:12:51,566 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:12:51] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-22 19:12:51,569 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:12:51] "[36mGET /static/images/docs/045e5b7761/img_ce17241289de4567ba8d74f75d37a0b8.png HTTP/1.1[0m" 304 -
+2025-05-22 19:12:51,569 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:12:51] "[36mGET /static/images/docs/045e5b7761/img_ec8ee64429184f9b8ccad83e9257799a.png HTTP/1.1[0m" 304 -
+2025-05-22 19:12:51,574 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:12:51] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-22 19:12:51,576 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:12:51] "[36mGET /static/images/docs/045e5b7761/img_70b0f874c14a4518a61aa1c4b42ca647.png HTTP/1.1[0m" 304 -
+2025-05-22 19:12:51,579 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:12:51] "[36mGET /static/images/docs/045e5b7761/img_c31bb5bf6e5f4658b4a2e9e3c4fb9ebd.png HTTP/1.1[0m" 304 -
+2025-05-22 19:12:51,583 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:12:51] "[36mGET /static/images/docs/045e5b7761/img_d2245bf5ecc549318f15f4d0995eb235.png HTTP/1.1[0m" 304 -
+2025-05-22 19:12:51,588 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:12:51] "[36mGET /static/images/docs/045e5b7761/img_d20206c4a9f048d4aea0c263e22471f8.png HTTP/1.1[0m" 304 -
+2025-05-22 19:12:51,591 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:12:51] "[36mGET /static/images/docs/045e5b7761/img_77d5064094fb4b9cb534761fd27ddcbf.png HTTP/1.1[0m" 304 -
+2025-05-22 19:12:51,593 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:12:51] "[36mGET /static/images/docs/045e5b7761/img_3a683e24eb3448f8b601e54c7f4c8b0d.png HTTP/1.1[0m" 304 -
+2025-05-22 19:12:51,599 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:12:51] "[36mGET /static/images/docs/045e5b7761/img_e693876626b344c091ae983a26e68492.png HTTP/1.1[0m" 304 -
+2025-05-22 19:12:51,602 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:12:51] "[36mGET /static/images/docs/045e5b7761/img_cfde1346ce0448bbb8dff5b1eb952b54.png HTTP/1.1[0m" 304 -
+2025-05-22 19:12:51,605 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:12:51] "[36mGET /static/images/docs/045e5b7761/img_86c18a1c031c46c6b75512c5b5009141.png HTTP/1.1[0m" 304 -
+2025-05-22 19:12:51,609 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:12:51] "[36mGET /static/images/docs/045e5b7761/img_9fc894fde78e47e4bc055bced3565bd5.png HTTP/1.1[0m" 304 -
+2025-05-22 19:12:51,610 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:12:51] "[36mGET /static/js/document-search.js HTTP/1.1[0m" 304 -
+2025-05-22 19:12:51,616 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:12:51] "[36mGET /static/images/docs/045e5b7761/img_b930f50943bf441984b41ef60fd7c9c4.png HTTP/1.1[0m" 304 -
+2025-05-22 19:12:51,621 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:12:51] "[36mGET /static/images/docs/045e5b7761/img_5d113118e684417eb99aff260a16b51b.png HTTP/1.1[0m" 304 -
+2025-05-22 19:12:51,625 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:12:51] "[36mGET /static/images/docs/045e5b7761/img_57a94969df924d2186060fad5f72cd9c.png HTTP/1.1[0m" 304 -
+2025-05-22 19:12:51,625 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:12:51] "[36mGET /static/images/docs/045e5b7761/img_e65a053be11d4557907d8c7bd439042c.png HTTP/1.1[0m" 304 -
+2025-05-22 19:12:51,629 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:12:51] "[36mGET /static/images/docs/045e5b7761/img_469aa702597e4b6a8f5167e21c572ea5.png HTTP/1.1[0m" 304 -
+2025-05-22 19:12:51,632 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:12:51] "[36mGET /static/images/docs/045e5b7761/img_831ca964573f4b30baf3473622f147d2.png HTTP/1.1[0m" 304 -
+2025-05-22 19:12:51,639 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:12:51] "[36mGET /static/images/docs/045e5b7761/img_9d4d618b4bb74b138c2d7eb28c3306d9.png HTTP/1.1[0m" 304 -
+2025-05-22 19:12:51,639 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:12:51] "[36mGET /static/images/docs/045e5b7761/img_958d5aa109e64797aa99f2ec5e8c63ce.png HTTP/1.1[0m" 304 -
+2025-05-22 19:12:51,641 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:12:51] "[36mGET /static/images/docs/045e5b7761/img_e8747dae5f6b4d14ae4bd3f8840573bf.png HTTP/1.1[0m" 304 -
+2025-05-22 19:12:51,641 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:12:51] "[36mGET /static/images/docs/045e5b7761/img_65af7637cc684a96bbbd407ebec8ba6c.png HTTP/1.1[0m" 304 -
+2025-05-22 19:12:51,645 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:12:51] "[36mGET /static/images/docs/045e5b7761/img_aeca5a5751f34beca8212b6009a07e4b.png HTTP/1.1[0m" 304 -
+2025-05-22 19:12:51,648 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:12:51] "[36mGET /static/images/docs/045e5b7761/img_fd1653a5499a4cf6b49691f89adcc58d.png HTTP/1.1[0m" 304 -
+2025-05-22 19:12:51,657 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:12:51] "[36mGET /static/images/docs/045e5b7761/img_b49159ff3c3d4e568c269095b8bf2e50.png HTTP/1.1[0m" 304 -
+2025-05-22 19:12:51,658 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:12:51] "[36mGET /static/images/docs/045e5b7761/img_8f54a3507637405aa4508f4555c3e2a4.png HTTP/1.1[0m" 304 -
+2025-05-22 19:12:51,659 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:12:51] "[36mGET /static/images/docs/045e5b7761/img_a1a09a1a411c45428738c1ae413638bb.png HTTP/1.1[0m" 304 -
+2025-05-22 19:12:51,668 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:12:51] "[36mGET /static/images/docs/045e5b7761/img_c8b45fcad4494c76a975cae1962c65b1.png HTTP/1.1[0m" 304 -
+2025-05-22 19:12:54,086 [INFO] - root - 文档ID 337: 使用原始标题 '五期Duoov1.3.0'
+2025-05-22 19:12:54,087 [INFO] - root - 文档 337 使用HTML内容显示
+2025-05-22 19:12:54,088 [INFO] - root - 传递查询参数到模板: '主播', 搜索ID: '2'
+2025-05-22 19:12:54,091 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:12:54] "GET /document/337?q=主播&search_id=2 HTTP/1.1" 200 -
+2025-05-22 19:12:54,116 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:12:54] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-22 19:12:54,131 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:12:54] "[36mGET /static/images/docs/045e5b7761/img_ce17241289de4567ba8d74f75d37a0b8.png HTTP/1.1[0m" 304 -
+2025-05-22 19:12:54,131 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:12:54] "[36mGET /static/images/docs/045e5b7761/img_57a94969df924d2186060fad5f72cd9c.png HTTP/1.1[0m" 304 -
+2025-05-22 19:12:54,132 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:12:54] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-22 19:12:54,132 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:12:54] "[36mGET /static/images/docs/045e5b7761/img_ec8ee64429184f9b8ccad83e9257799a.png HTTP/1.1[0m" 304 -
+2025-05-22 19:12:54,135 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:12:54] "[36mGET /static/images/docs/045e5b7761/img_9fc894fde78e47e4bc055bced3565bd5.png HTTP/1.1[0m" 304 -
+2025-05-22 19:12:54,152 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:12:54] "[36mGET /static/images/docs/045e5b7761/img_d2245bf5ecc549318f15f4d0995eb235.png HTTP/1.1[0m" 304 -
+2025-05-22 19:12:54,157 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:12:54] "[36mGET /static/images/docs/045e5b7761/img_d20206c4a9f048d4aea0c263e22471f8.png HTTP/1.1[0m" 304 -
+2025-05-22 19:12:54,161 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:12:54] "[36mGET /static/images/docs/045e5b7761/img_77d5064094fb4b9cb534761fd27ddcbf.png HTTP/1.1[0m" 304 -
+2025-05-22 19:12:54,166 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:12:54] "[36mGET /static/images/docs/045e5b7761/img_e693876626b344c091ae983a26e68492.png HTTP/1.1[0m" 304 -
+2025-05-22 19:12:54,167 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:12:54] "[36mGET /static/js/document-search.js HTTP/1.1[0m" 304 -
+2025-05-22 19:12:54,167 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:12:54] "[36mGET /static/images/docs/045e5b7761/img_70b0f874c14a4518a61aa1c4b42ca647.png HTTP/1.1[0m" 304 -
+2025-05-22 19:12:54,170 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:12:54] "[36mGET /static/images/docs/045e5b7761/img_cfde1346ce0448bbb8dff5b1eb952b54.png HTTP/1.1[0m" 304 -
+2025-05-22 19:12:54,179 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:12:54] "[36mGET /static/images/docs/045e5b7761/img_86c18a1c031c46c6b75512c5b5009141.png HTTP/1.1[0m" 304 -
+2025-05-22 19:12:54,180 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:12:54] "[36mGET /static/images/docs/045e5b7761/img_5d113118e684417eb99aff260a16b51b.png HTTP/1.1[0m" 304 -
+2025-05-22 19:12:54,180 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:12:54] "[36mGET /static/images/docs/045e5b7761/img_c31bb5bf6e5f4658b4a2e9e3c4fb9ebd.png HTTP/1.1[0m" 304 -
+2025-05-22 19:12:54,181 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:12:54] "[36mGET /static/images/docs/045e5b7761/img_9d4d618b4bb74b138c2d7eb28c3306d9.png HTTP/1.1[0m" 304 -
+2025-05-22 19:12:54,193 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:12:54] "[36mGET /static/images/docs/045e5b7761/img_e65a053be11d4557907d8c7bd439042c.png HTTP/1.1[0m" 304 -
+2025-05-22 19:12:54,193 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:12:54] "[36mGET /static/images/docs/045e5b7761/img_469aa702597e4b6a8f5167e21c572ea5.png HTTP/1.1[0m" 304 -
+2025-05-22 19:12:54,193 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:12:54] "[36mGET /static/images/docs/045e5b7761/img_831ca964573f4b30baf3473622f147d2.png HTTP/1.1[0m" 304 -
+2025-05-22 19:12:54,193 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:12:54] "[36mGET /static/images/docs/045e5b7761/img_958d5aa109e64797aa99f2ec5e8c63ce.png HTTP/1.1[0m" 304 -
+2025-05-22 19:12:54,197 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:12:54] "[36mGET /static/images/docs/045e5b7761/img_b930f50943bf441984b41ef60fd7c9c4.png HTTP/1.1[0m" 304 -
+2025-05-22 19:12:54,207 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:12:54] "[36mGET /static/images/docs/045e5b7761/img_e8747dae5f6b4d14ae4bd3f8840573bf.png HTTP/1.1[0m" 304 -
+2025-05-22 19:12:54,208 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:12:54] "[36mGET /static/images/docs/045e5b7761/img_65af7637cc684a96bbbd407ebec8ba6c.png HTTP/1.1[0m" 304 -
+2025-05-22 19:12:54,210 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:12:54] "[36mGET /static/images/docs/045e5b7761/img_fd1653a5499a4cf6b49691f89adcc58d.png HTTP/1.1[0m" 304 -
+2025-05-22 19:12:54,211 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:12:54] "[36mGET /static/images/docs/045e5b7761/img_aeca5a5751f34beca8212b6009a07e4b.png HTTP/1.1[0m" 304 -
+2025-05-22 19:12:54,220 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:12:54] "[36mGET /static/images/docs/045e5b7761/img_c8b45fcad4494c76a975cae1962c65b1.png HTTP/1.1[0m" 304 -
+2025-05-22 19:12:54,221 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:12:54] "[36mGET /static/images/docs/045e5b7761/img_a1a09a1a411c45428738c1ae413638bb.png HTTP/1.1[0m" 304 -
+2025-05-22 19:12:54,227 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:12:54] "[36mGET /static/images/docs/045e5b7761/img_b49159ff3c3d4e568c269095b8bf2e50.png HTTP/1.1[0m" 304 -
+2025-05-22 19:12:54,241 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:12:54] "[36mGET /static/images/docs/045e5b7761/img_3a683e24eb3448f8b601e54c7f4c8b0d.png HTTP/1.1[0m" 304 -
+2025-05-22 19:12:54,259 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:12:54] "[36mGET /static/images/docs/045e5b7761/img_8f54a3507637405aa4508f4555c3e2a4.png HTTP/1.1[0m" 304 -
+2025-05-22 19:12:55,631 [INFO] - root - 找到已存在的搜索历史: ID=2, 查询='主播', 索引=1
+2025-05-22 19:12:55,631 [INFO] - root - 重用已有搜索结果: '主播'
+2025-05-22 19:12:55,632 [INFO] - root - 找到已存在的搜索历史: ID=2, 查询='主播', 索引=1
+2025-05-22 19:12:55,632 [INFO] - root - 更新搜索历史: 查询='主播', 结果数=20, 历史ID=2, 位置保持在索引=1
+2025-05-22 19:12:55,642 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:12:55] "GET /search?q=主播 HTTP/1.1" 200 -
+2025-05-22 19:12:55,671 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:12:55] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-22 19:12:55,671 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:12:55] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-22 19:13:02,276 [INFO] - root - 文档ID 339: 使用原始标题 '三期Duoov1.1.0'
+2025-05-22 19:13:02,277 [INFO] - root - 文档 339 使用HTML内容显示
+2025-05-22 19:13:02,277 [INFO] - root - 传递查询参数到模板: '主播', 搜索ID: '2'
+2025-05-22 19:13:02,281 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:13:02] "GET /document/339?q=主播&search_id=2 HTTP/1.1" 200 -
+2025-05-22 19:13:02,315 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:13:02] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-22 19:13:02,316 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:13:02] "[36mGET /static/images/docs/bdbc5e5f86/img_f095508bf1004f4d915aaaaa6336033b.png HTTP/1.1[0m" 304 -
+2025-05-22 19:13:02,316 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:13:02] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-22 19:13:02,316 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:13:02] "[36mGET /static/js/document-search.js HTTP/1.1[0m" 304 -
+2025-05-22 19:13:02,321 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:13:02] "[36mGET /static/images/docs/bdbc5e5f86/img_7f2f42803dc14537bae750cf404d9609.png HTTP/1.1[0m" 304 -
+2025-05-22 19:13:03,687 [INFO] - root - 找到已存在的搜索历史: ID=2, 查询='主播', 索引=1
+2025-05-22 19:13:03,687 [INFO] - root - 重用已有搜索结果: '主播'
+2025-05-22 19:13:03,688 [INFO] - root - 找到已存在的搜索历史: ID=2, 查询='主播', 索引=1
+2025-05-22 19:13:03,688 [INFO] - root - 更新搜索历史: 查询='主播', 结果数=20, 历史ID=2, 位置保持在索引=1
+2025-05-22 19:13:03,699 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:13:03] "GET /search?q=主播 HTTP/1.1" 200 -
+2025-05-22 19:13:03,724 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:13:03] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-22 19:13:03,728 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:13:03] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-22 19:13:07,805 [INFO] - root - 文档ID 334: 使用原始标题 '八期Duoov1.6.0'
+2025-05-22 19:13:07,806 [INFO] - root - 文档 334 使用HTML内容显示
+2025-05-22 19:13:07,807 [INFO] - root - 传递查询参数到模板: '信用分', 搜索ID: '1'
+2025-05-22 19:13:07,812 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:13:07] "GET /document/334?q=信用分&search_id=1 HTTP/1.1" 200 -
+2025-05-22 19:13:07,856 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:13:07] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-22 19:13:07,857 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:13:07] "[36mGET /static/images/docs/13408f7127/img_c4fcb9c3896542199aede859de8c222a.png HTTP/1.1[0m" 304 -
+2025-05-22 19:13:07,857 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:13:07] "[36mGET /static/images/docs/13408f7127/img_b6acb645e1a7483b80b09350ac22c943.png HTTP/1.1[0m" 304 -
+2025-05-22 19:13:07,857 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:13:07] "[36mGET /static/images/docs/13408f7127/img_c2b1287189a24e9987f79a0db7470d82.png HTTP/1.1[0m" 304 -
+2025-05-22 19:13:07,866 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:13:07] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-22 19:13:07,867 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:13:07] "[36mGET /static/images/docs/13408f7127/img_9707737375634a1ebd3157af94140c07.png HTTP/1.1[0m" 304 -
+2025-05-22 19:13:07,873 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:13:07] "[36mGET /static/images/docs/13408f7127/img_4005a4a9b1e64bf2adb7c9645dac3d3c.png HTTP/1.1[0m" 304 -
+2025-05-22 19:13:07,874 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:13:07] "[36mGET /static/images/docs/13408f7127/img_aa1850e4be7d49eba2d754447aaa5d8f.png HTTP/1.1[0m" 304 -
+2025-05-22 19:13:07,879 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:13:07] "[36mGET /static/images/docs/13408f7127/img_de26c1df9b6b46a98c074ae5695d15d7.png HTTP/1.1[0m" 304 -
+2025-05-22 19:13:07,882 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:13:07] "[36mGET /static/images/docs/13408f7127/img_9ea83ed4c62c470a80a4f3fe6923691d.png HTTP/1.1[0m" 304 -
+2025-05-22 19:13:07,882 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:13:07] "[36mGET /static/images/docs/13408f7127/img_4527a46687cd4998a703f311e208a0a0.png HTTP/1.1[0m" 304 -
+2025-05-22 19:13:07,895 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:13:07] "[36mGET /static/js/document-search.js HTTP/1.1[0m" 304 -
+2025-05-22 19:13:07,911 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:13:07] "[36mGET /static/images/docs/13408f7127/img_5748ee35da76487c99e9862727196711.png HTTP/1.1[0m" 304 -
+2025-05-22 19:13:07,941 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:13:07] "[36mGET /static/images/docs/13408f7127/img_42852eb180434d1096d7073023119e54.png HTTP/1.1[0m" 304 -
+2025-05-22 19:13:09,735 [INFO] - root - 找到已存在的搜索历史: ID=1, 查询='信用分', 索引=0
+2025-05-22 19:13:09,735 [INFO] - root - 重用已有搜索结果: '信用分'
+2025-05-22 19:13:09,735 [INFO] - root - 找到已存在的搜索历史: ID=1, 查询='信用分', 索引=0
+2025-05-22 19:13:09,736 [INFO] - root - 更新搜索历史: 查询='信用分', 结果数=20, 历史ID=1, 位置保持在索引=0
+2025-05-22 19:13:09,745 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:13:09] "GET /search?q=信用分 HTTP/1.1" 200 -
+2025-05-22 19:13:09,776 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:13:09] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-22 19:13:09,786 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:13:09] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-22 19:13:12,893 [INFO] - root - 文档ID 339: 使用原始标题 '三期Duoov1.1.0'
+2025-05-22 19:13:12,895 [INFO] - root - 文档 339 使用HTML内容显示
+2025-05-22 19:13:12,895 [INFO] - root - 传递查询参数到模板: '主播激励功能', 搜索ID: '3'
+2025-05-22 19:13:12,901 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:13:12] "GET /document/339?q=主播激励功能&search_id=3 HTTP/1.1" 200 -
+2025-05-22 19:13:12,931 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:13:12] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-22 19:13:12,931 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:13:12] "[36mGET /static/images/docs/bdbc5e5f86/img_f095508bf1004f4d915aaaaa6336033b.png HTTP/1.1[0m" 304 -
+2025-05-22 19:13:12,931 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:13:12] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-22 19:13:12,937 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:13:12] "[36mGET /static/images/docs/bdbc5e5f86/img_7f2f42803dc14537bae750cf404d9609.png HTTP/1.1[0m" 304 -
+2025-05-22 19:13:12,952 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:13:12] "[36mGET /static/js/document-search.js HTTP/1.1[0m" 304 -
+2025-05-22 19:13:14,279 [INFO] - root - 找到已存在的搜索历史: ID=3, 查询='主播激励功能', 索引=2
+2025-05-22 19:13:14,279 [INFO] - root - 重用已有搜索结果: '主播激励功能'
+2025-05-22 19:13:14,280 [INFO] - root - 找到已存在的搜索历史: ID=3, 查询='主播激励功能', 索引=2
+2025-05-22 19:13:14,280 [INFO] - root - 更新搜索历史: 查询='主播激励功能', 结果数=1, 历史ID=3, 位置保持在索引=2
+2025-05-22 19:13:14,290 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:13:14] "GET /search?q=主播激励功能 HTTP/1.1" 200 -
+2025-05-22 19:13:14,330 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:13:14] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-22 19:13:14,332 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:13:14] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-22 19:13:15,877 [INFO] - root - 文档ID 351: 使用原始标题 '二期Duoov1.0.1'
+2025-05-22 19:13:15,878 [INFO] - root - 文档 351 使用HTML内容显示
+2025-05-22 19:13:15,878 [INFO] - root - 传递查询参数到模板: '主播', 搜索ID: '2'
+2025-05-22 19:13:15,883 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:13:15] "GET /document/351?q=主播&search_id=2 HTTP/1.1" 200 -
+2025-05-22 19:13:15,911 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:13:15] "[36mGET /static/images/docs/c300c4e247/img_9a55a3f4845d4a278ee5a8e3f53c8e59.png HTTP/1.1[0m" 304 -
+2025-05-22 19:13:15,911 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:13:15] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-22 19:13:15,912 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:13:15] "[36mGET /static/js/document-search.js HTTP/1.1[0m" 304 -
+2025-05-22 19:13:15,927 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:13:15] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-22 19:13:17,079 [INFO] - root - 找到已存在的搜索历史: ID=2, 查询='主播', 索引=1
+2025-05-22 19:13:17,080 [INFO] - root - 重用已有搜索结果: '主播'
+2025-05-22 19:13:17,081 [INFO] - root - 找到已存在的搜索历史: ID=2, 查询='主播', 索引=1
+2025-05-22 19:13:17,081 [INFO] - root - 更新搜索历史: 查询='主播', 结果数=20, 历史ID=2, 位置保持在索引=1
+2025-05-22 19:13:17,090 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:13:17] "GET /search?q=主播 HTTP/1.1" 200 -
+2025-05-22 19:13:17,131 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:13:17] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-22 19:13:17,149 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:13:17] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-22 19:13:20,307 [INFO] - root - 文档ID 338: 使用原始标题 '四期Duoov1.2.1'
+2025-05-22 19:13:20,308 [INFO] - root - 文档 338 使用HTML内容显示
+2025-05-22 19:13:20,308 [INFO] - root - 传递查询参数到模板: '主播', 搜索ID: '2'
+2025-05-22 19:13:20,312 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:13:20] "GET /document/338?q=主播&search_id=2 HTTP/1.1" 200 -
+2025-05-22 19:13:20,351 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:13:20] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-22 19:13:20,353 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:13:20] "[36mGET /static/images/docs/03c724e240/img_f8e0b219369548adacedc4b964d205eb.png HTTP/1.1[0m" 304 -
+2025-05-22 19:13:20,355 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:13:20] "[36mGET /static/images/docs/03c724e240/img_e6bb24e36860403f98a3b2948361fcad.png HTTP/1.1[0m" 304 -
+2025-05-22 19:13:20,355 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:13:20] "[36mGET /static/images/docs/03c724e240/img_7696dbbc139a4b24baf7b01538bce647.png HTTP/1.1[0m" 304 -
+2025-05-22 19:13:20,361 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:13:20] "[36mGET /static/images/docs/03c724e240/img_fab033d31e554a48b070135b97ada3a0.png HTTP/1.1[0m" 304 -
+2025-05-22 19:13:20,364 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:13:20] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-22 19:13:20,369 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:13:20] "[36mGET /static/images/docs/03c724e240/img_824930ed99f646e2b88b8205e2d3e7c0.png HTTP/1.1[0m" 304 -
+2025-05-22 19:13:20,369 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:13:20] "[36mGET /static/images/docs/03c724e240/img_4f5e809ae73e48e2a0b1885f0beefc4c.png HTTP/1.1[0m" 304 -
+2025-05-22 19:13:20,374 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:13:20] "[36mGET /static/images/docs/03c724e240/img_1a0f1b30902343d28d434990c9223b23.png HTTP/1.1[0m" 304 -
+2025-05-22 19:13:20,392 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:13:20] "[36mGET /static/js/document-search.js HTTP/1.1[0m" 304 -
+2025-05-22 19:13:25,835 [INFO] - root - 文档ID 336: 使用原始标题 '六期Duoov1.4.0'
+2025-05-22 19:13:25,835 [INFO] - root - 文档 336 使用HTML内容显示
+2025-05-22 19:13:25,836 [INFO] - root - 传递查询参数到模板: '信用分', 搜索ID: '1'
+2025-05-22 19:13:25,839 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:13:25] "GET /document/336?q=信用分&search_id=1 HTTP/1.1" 200 -
+2025-05-22 19:13:25,861 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:13:25] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-22 19:13:25,875 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:13:25] "[36mGET /static/images/docs/1a44a38460/img_0f083676bc50476c8596f8870236aafb.png HTTP/1.1[0m" 304 -
+2025-05-22 19:13:25,875 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:13:25] "[36mGET /static/images/docs/1a44a38460/img_6c3ef98d770648c3a6d98afc31f267f8.png HTTP/1.1[0m" 304 -
+2025-05-22 19:13:25,876 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:13:25] "[36mGET /static/images/docs/1a44a38460/img_b680b5bfde8c4df4b979be00f8fd680f.png HTTP/1.1[0m" 304 -
+2025-05-22 19:13:25,876 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:13:25] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-22 19:13:25,882 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:13:25] "[36mGET /static/images/docs/1a44a38460/img_d74fb29b29cc4122925433628882fae0.png HTTP/1.1[0m" 304 -
+2025-05-22 19:13:25,889 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:13:25] "[36mGET /static/js/document-search.js HTTP/1.1[0m" 304 -
+2025-05-22 19:13:25,889 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:13:25] "[36mGET /static/images/docs/1a44a38460/img_262294b1ad544807b932533b82f0b35e.png HTTP/1.1[0m" 304 -
+2025-05-22 19:13:25,889 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:13:25] "[36mGET /static/images/docs/1a44a38460/img_1432c6dd70b0421f9cb2d961501f015a.png HTTP/1.1[0m" 304 -
+2025-05-22 19:13:25,894 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:13:25] "[36mGET /static/images/docs/1a44a38460/img_dc2d44f31fe54c78ac8dd010e18dc674.png HTTP/1.1[0m" 304 -
+2025-05-22 19:13:25,901 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:13:25] "[36mGET /static/images/docs/1a44a38460/img_a78f85bb869349558b9cb11d877e86f1.png HTTP/1.1[0m" 304 -
+2025-05-22 19:13:25,901 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:13:25] "[36mGET /static/images/docs/1a44a38460/img_4e99e3663f8a40558dce9e708a4ffed4.png HTTP/1.1[0m" 304 -
+2025-05-22 19:13:25,912 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:13:25] "[36mGET /static/images/docs/1a44a38460/img_9db65601d9eb48e6b9f4762f3517244a.png HTTP/1.1[0m" 304 -
+2025-05-22 19:13:25,928 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:13:25] "[36mGET /static/images/docs/1a44a38460/img_30552d22f2294b14844192cb2f9fcb4d.png HTTP/1.1[0m" 304 -
+2025-05-22 19:13:25,944 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:13:25] "[36mGET /static/images/docs/1a44a38460/img_e863eeb0cf9648fd84dd48a701164692.png HTTP/1.1[0m" 304 -
+2025-05-22 19:13:27,296 [INFO] - root - 找到已存在的搜索历史: ID=1, 查询='信用分', 索引=0
+2025-05-22 19:13:27,296 [INFO] - root - 重用已有搜索结果: '信用分'
+2025-05-22 19:13:27,296 [INFO] - root - 找到已存在的搜索历史: ID=1, 查询='信用分', 索引=0
+2025-05-22 19:13:27,297 [INFO] - root - 更新搜索历史: 查询='信用分', 结果数=20, 历史ID=1, 位置保持在索引=0
+2025-05-22 19:13:27,306 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:13:27] "GET /search?q=信用分 HTTP/1.1" 200 -
+2025-05-22 19:13:27,335 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:13:27] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-22 19:13:27,348 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 19:13:27] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -

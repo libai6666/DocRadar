@@ -440,6 +440,10 @@
                         localStorage.setItem('docradar_current_active_query', tabText);
                         localStorage.setItem('docradar_current_active_search_id', historyId);
                         console.log(`已保存当前活动的搜索状态: query="${tabText}", searchId=${historyId}`);
+                        
+                        // 重新标记文档浏览状态，确保使用当前关键词的浏览记录
+                        // 传递isTabSwitch=true参数表示这是标签切换
+                        markVisitedDocumentsInResults(false, true);
                     }
                 }
             });
@@ -678,6 +682,10 @@
                         localStorage.setItem('docradar_current_active_query', tabText);
                         localStorage.setItem('docradar_current_active_search_id', nextActiveTab.id.replace('tab-item-', ''));
                         console.log(`已保存当前活动的搜索状态: query="${tabText}", searchId=${nextActiveTab.id.replace('tab-item-', '')}`);
+                        
+                        // 重新标记文档浏览状态，确保使用当前关键词的浏览记录
+                        // 传递isTabSwitch=true参数表示这是标签切换
+                        markVisitedDocumentsInResults(false, true);
                     }
                 }
                 
