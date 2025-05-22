@@ -114,22 +114,48 @@ window.addEventListener('pageshow', function(event) {
         const urlParams = new URLSearchParams(window.location.search);
         const currentQuery = urlParams.get('q') || '';
         
-        // 检查是否有上次搜索查询的记录
+        // 获取上次访问的搜索查询
         const previousQuery = sessionStorage.getItem('docradar_current_search');
         
         console.log(`搜索结果页面，当前搜索词: "${currentQuery}", 上次搜索词: "${previousQuery || ''}"`);
         
-        // 如果是从文档页面返回，并且有保存的搜索查询
-        const isBackFromDocument = sessionStorage.getItem('docradar_back_to_search') === 'true';
-        if (isBackFromDocument && previousQuery) {
-            console.log(`从文档页面返回到搜索页面，使用保存的搜索查询: "${previousQuery}"`);
-            // 清除保存的搜索查询
-            sessionStorage.removeItem('docradar_current_search');
-        }
+        // 保存当前搜索查询，用于下次页面加载时判断是否切换了查询
+        sessionStorage.setItem('docradar_previous_search', currentQuery);
         
-        // 重新标记已浏览文档
-        console.log('搜索结果页面，正在重新标记已浏览文档');
-        markVisitedDocumentsInResults(false); // 总是传递false，保留已浏览标记
+        // 检查是否切换了搜索查询
+        const isQueryChanged = previousQuery && previousQuery !== currentQuery;
+        
+        // 如果是从文档页面返回，使用特殊处理
+        const isBackFromDocument = sessionStorage.getItem('docradar_back_to_search') === 'true';
+        
+        if (isBackFromDocument) {
+            console.log(`从文档页面返回到搜索页面，之前的搜索查询: "${previousQuery}"`);
+            
+            // 如果返回后搜索查询发生变化，则不显示之前的浏览状态
+            if (isQueryChanged) {
+                console.log(`搜索查询已变化(${previousQuery} -> ${currentQuery})，不恢复之前的浏览状态`);
+                // 使用isRefresh=true参数调用标记函数，这将清除当前查询的浏览记录
+                markVisitedDocumentsInResults(true);
+            } else {
+                // 使用之前的搜索查询重新标记已浏览文档
+                console.log(`使用之前的搜索查询"${previousQuery}"标记已浏览文档`);
+                markVisitedDocumentsInResults(false);
+            }
+            
+            // 清除保存的搜索查询和返回标记
+            sessionStorage.removeItem('docradar_current_search');
+            sessionStorage.removeItem('docradar_back_to_search');
+        } else {
+            // 如果不是从文档页面返回，但搜索查询变化了，模拟刷新行为
+            if (isQueryChanged) {
+                console.log(`检测到搜索查询变化(${previousQuery} -> ${currentQuery})，模拟刷新行为`);
+                markVisitedDocumentsInResults(true); // 传递true以清除当前查询的浏览状态
+            } else {
+                // 正常标记已浏览文档
+                console.log(`正常标记已浏览文档，搜索查询: "${currentQuery}"`);
+                markVisitedDocumentsInResults(false);
+            }
+        }
     }
 });
 
@@ -2072,12 +2098,16 @@ function initVisitedDocumentsTracker(isRefresh = false) {
                     
                     // 保存当前搜索查询，确保返回后仍使用同一个查询
                     if (searchQuery) {
+                        console.log(`保存当前搜索查询: "${searchQuery}"`);
                         sessionStorage.setItem('docradar_current_search', searchQuery);
+                    } else {
+                        // 如果没有搜索查询参数，清除之前保存的查询
+                        sessionStorage.removeItem('docradar_current_search');
                     }
                 });
             }
         } else {
-            // 在搜索结果页面检查并标记已浏览文档
+            // 只在非文档页面(搜索结果页面)调用标记函数
             markVisitedDocumentsInResults(isRefresh);
         }
     } catch (error) {
@@ -2238,6 +2268,45 @@ function markVisitedDocumentsInResults(isRefresh = false) {
         const isBackFromDocument = sessionStorage.getItem('docradar_back_to_search') === 'true';
         console.log(`是否从文档查看页面返回: ${isBackFromDocument}`);
         
+        // 如果是刷新页面且不是从文档返回，清除所有已浏览标记（包括localStorage中的记录）
+        if (isRefresh && !isBackFromDocument) {
+            console.log('检测到页面刷新，清除所有已浏览标记和存储记录');
+            
+            // 清除DOM元素上的visited类
+            resultItems.forEach(item => {
+                if (item.classList.contains('visited')) {
+                    item.classList.remove('visited');
+                }
+            });
+            
+            // 清除当前搜索查询的localStorage记录
+            if (currentQuery) {
+                // 获取已浏览文档映射表
+                const visitedDocsMapStr = localStorage.getItem('docradar_visited_docs_map');
+                if (visitedDocsMapStr) {
+                    try {
+                        const visitedDocsMap = JSON.parse(visitedDocsMapStr);
+                        
+                        // 只清除当前搜索查询的记录
+                        if (visitedDocsMap[currentQuery]) {
+                            console.log(`清除搜索"${currentQuery}"的浏览记录`);
+                            delete visitedDocsMap[currentQuery];
+                            localStorage.setItem('docradar_visited_docs_map', JSON.stringify(visitedDocsMap));
+                        }
+                    } catch (e) {
+                        console.error('解析已浏览文档映射表失败:', e);
+                    }
+                }
+            }
+            
+            // 清除会话标记
+            sessionStorage.removeItem('docradar_back_to_search');
+            
+            console.log('已清除所有文档的已浏览标记和存储记录');
+            return;
+        }
+        
+        // 如果没有刷新或是从文档返回，继续标记已浏览文档
         // 根据当前搜索查询获取已浏览文档列表
         const visitedDocs = getVisitedDocuments(currentQuery);
         console.log(`当前搜索"${currentQuery}"的已浏览文档列表: ${JSON.stringify(visitedDocs)}`);
@@ -2248,24 +2317,6 @@ function markVisitedDocumentsInResults(isRefresh = false) {
             resultItems.forEach(item => {
                 item.classList.remove('visited');
             });
-            return;
-        }
-        
-        // 如果是刷新页面且不是从文档返回，恢复原来的行为，移除所有已浏览标记
-        if (isRefresh && !isBackFromDocument) {
-            console.log('检测到页面刷新，移除所有已浏览标记');
-            resultItems.forEach(item => {
-                if (item.classList.contains('visited')) {
-                    item.classList.remove('visited');
-                }
-            });
-            console.log('已移除所有文档的已浏览标记');
-            
-            // 清除会话标记
-            if (isBackFromDocument) {
-                sessionStorage.removeItem('docradar_back_to_search');
-            }
-            
             return;
         }
         
