@@ -10,16 +10,23 @@
 function detectPageLoadType() {
     // 检测是否为刷新
     let isRefresh = false;
+    let refreshSource = '未检测到刷新';
     
     try {
         // 检查performance API
         if (performance && performance.navigation) {
             isRefresh = performance.navigation.type === 1;
+            if (isRefresh) {
+                refreshSource = 'performance.navigation.type';
+                console.log('检测到页面刷新: performance.navigation.type');
+            }
         } else if (window.performance && window.performance.getEntriesByType) {
             // 现代浏览器中的方法
             const navEntries = window.performance.getEntriesByType('navigation');
             if (navEntries.length > 0 && navEntries[0].type === 'reload') {
                 isRefresh = true;
+                refreshSource = 'performance.getEntriesByType';
+                console.log('检测到页面刷新: performance.getEntriesByType');
             }
         }
         
@@ -28,6 +35,8 @@ function detectPageLoadType() {
         if (pageLoadFlag) {
             // 如果标记存在，这很可能是刷新
             isRefresh = true;
+            refreshSource = 'sessionStorage.docradar_page_loaded';
+            console.log('检测到页面刷新: sessionStorage.docradar_page_loaded');
         }
         // 无论如何设置标记，以便下次可以检测
         sessionStorage.setItem('docradar_page_loaded', 'true');
@@ -44,6 +53,15 @@ function detectPageLoadType() {
             if (!urlQuery || !urlSearchId) {
                 console.log('检测到保存的搜索状态，但URL中没有搜索参数，可能是刷新');
                 isRefresh = true;
+                refreshSource = 'localStorage搜索状态与URL不匹配';
+            }
+        }
+        
+        // 如果是搜索结果页面，输出更多信息
+        if (window.location.pathname.includes('/search')) {
+            console.log('当前是搜索结果页面，刷新检测结果:', isRefresh);
+            if (isRefresh) {
+                console.log('页面刷新识别来源:', refreshSource);
             }
         }
     } catch (error) {
@@ -51,7 +69,8 @@ function detectPageLoadType() {
     }
     
     return {
-        isRefresh: isRefresh
+        isRefresh: isRefresh,
+        refreshSource: refreshSource
     };
 }
 
@@ -105,7 +124,8 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // 检测页面加载类型
     const pageLoadInfo = detectPageLoadType();
-    console.log(`DOMContentLoaded: 页面加载类型检测结果 - 刷新=${pageLoadInfo.isRefresh}`);
+    console.log(`DOMContentLoaded: 页面加载类型检测结果 - 刷新=${pageLoadInfo.isRefresh}` + 
+               (pageLoadInfo.isRefresh ? `, 来源=${pageLoadInfo.refreshSource}` : ''));
     
     // 初始化已浏览文档跟踪功能，传入刷新状态
     initVisitedDocumentsTracker(pageLoadInfo.isRefresh);
@@ -2104,6 +2124,7 @@ function initLiveSearch() {
 
 /**
  * 初始化已浏览文档跟踪功能
+ * @param {boolean} [isRefresh=false] - 是否是页面刷新
  */
 function initVisitedDocumentsTracker(isRefresh = false) {
     console.log('初始化已浏览文档跟踪功能');
@@ -2122,6 +2143,11 @@ function initVisitedDocumentsTracker(isRefresh = false) {
             // 获取URL查询参数中的搜索关键词
             const urlParams = new URLSearchParams(window.location.search);
             const searchQuery = urlParams.get('q') || '';
+            
+            // 如果是页面刷新，先记录这个信息
+            if (isRefresh) {
+                console.log(`检测到页面刷新，文档页面的刷新不会清空浏览记录`);
+            }
             
             // 标记文档为已浏览，传递搜索关键词
             markDocumentAsVisited(docId, isRefresh, searchQuery);
@@ -2148,7 +2174,14 @@ function initVisitedDocumentsTracker(isRefresh = false) {
                 });
             }
         } else {
-            // 只在非文档页面(搜索结果页面)调用标记函数
+            // 是搜索结果页面，检查是否为刷新
+            if (isRefresh) {
+                console.log(`检测到页面刷新，将清空所有关键词的浏览记录`);
+            } else {
+                console.log(`正常页面加载，将保留并标记已浏览文档`);
+            }
+            
+            // 调用标记函数，传递刷新状态
             markVisitedDocumentsInResults(isRefresh);
         }
     } catch (error) {
@@ -2328,34 +2361,39 @@ function markVisitedDocumentsInResults(isRefresh = false, isTabSwitch = false) {
         });
         console.log('已清除所有结果项的已浏览标记');
         
-        // 如果是刷新页面且不是从文档返回，清除当前关键词的浏览记录
+        // 如果是刷新页面且不是从文档返回，清除所有关键词的浏览记录
         if (isRefresh && !isBackFromDocument && !isTabSwitch) {
-            console.log('检测到页面刷新，清除当前关键词的浏览记录');
+            console.log('检测到页面刷新，清除所有关键词的浏览记录');
             
-            // 清除当前搜索查询的localStorage记录
-            if (currentQuery) {
-                // 获取已浏览文档映射表
-                const visitedDocsMapStr = localStorage.getItem('docradar_visited_docs_map');
-                if (visitedDocsMapStr) {
-                    try {
-                        const visitedDocsMap = JSON.parse(visitedDocsMapStr);
-                        
-                        // 只清除当前搜索查询的记录
-                        if (visitedDocsMap[currentQuery]) {
-                            console.log(`清除搜索"${currentQuery}"的浏览记录`);
-                            delete visitedDocsMap[currentQuery];
-                            localStorage.setItem('docradar_visited_docs_map', JSON.stringify(visitedDocsMap));
-                        }
-                    } catch (e) {
-                        console.error('解析已浏览文档映射表失败:', e);
+            // 清空整个浏览记录映射表
+            const visitedDocsMapStr = localStorage.getItem('docradar_visited_docs_map');
+            if (visitedDocsMapStr) {
+                try {
+                    const visitedDocsMap = JSON.parse(visitedDocsMapStr);
+                    
+                    // 记录清除了多少个关键词的记录
+                    const keywordCount = Object.keys(visitedDocsMap).length;
+                    
+                    if (keywordCount > 0) {
+                        // 清空整个映射表
+                        localStorage.setItem('docradar_visited_docs_map', JSON.stringify({}));
+                        console.log(`已清空所有关键词(${keywordCount}个)的浏览记录`);
+                    } else {
+                        console.log('浏览记录映射表中没有记录，无需清空');
                     }
+                } catch (e) {
+                    console.error('解析已浏览文档映射表失败:', e);
+                    // 出错时也尝试重置
+                    localStorage.setItem('docradar_visited_docs_map', JSON.stringify({}));
                 }
+            } else {
+                console.log('没有找到浏览记录映射表');
             }
             
             // 清除会话标记
             sessionStorage.removeItem('docradar_back_to_search');
             
-            console.log('已清除当前关键词的浏览记录');
+            console.log('已清除所有关键词的浏览记录');
             return;
         }
         
