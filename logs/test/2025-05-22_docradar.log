@@ -1,0 +1,68 @@
+2025-05-22 10:57:38,624 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 10:57:38] "GET / HTTP/1.1" 200 -
+2025-05-22 10:57:38,888 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 10:57:38] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-22 10:57:38,898 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 10:57:38] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-22 10:57:38,957 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 10:57:38] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-05-22 10:57:43,563 [INFO] - root - 文档ID 148: 使用原始标题 '二期Duoov1.0.1'
+2025-05-22 10:57:43,563 [INFO] - root - 文档 148 使用HTML内容显示
+2025-05-22 10:57:43,564 [INFO] - root - 传递查询参数到模板: '', 搜索ID: ''
+2025-05-22 10:57:43,575 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 10:57:43] "GET /document/148 HTTP/1.1" 200 -
+2025-05-22 10:57:43,596 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 10:57:43] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-22 10:57:43,605 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 10:57:43] "[36mGET /static/js/document-search.js HTTP/1.1[0m" 304 -
+2025-05-22 10:57:43,611 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 10:57:43] "GET /static/images/docs/148/img_2d198ebce0dc4a558b724871ba105d11.png HTTP/1.1" 200 -
+2025-05-22 10:57:43,625 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 10:57:43] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-22 10:57:48,912 [INFO] - root - 文档ID 156: 使用原始标题 '四期Duoov1.2.1'
+2025-05-22 10:57:48,913 [INFO] - root - 文档 156 使用HTML内容显示
+2025-05-22 10:57:48,914 [INFO] - root - 传递查询参数到模板: '', 搜索ID: ''
+2025-05-22 10:57:48,917 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 10:57:48] "GET /document/156 HTTP/1.1" 200 -
+2025-05-22 10:57:48,940 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 10:57:48] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-22 10:57:48,952 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 10:57:48] "[36mGET /static/images/docs/156/img_f6bf67431b4b42a894fd48bfa728f19e.png HTTP/1.1[0m" 304 -
+2025-05-22 10:57:48,953 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 10:57:48] "[36mGET /static/images/docs/156/img_f63783b1c62149a3b2e9b783f70c0c76.png HTTP/1.1[0m" 304 -
+2025-05-22 10:57:48,953 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 10:57:48] "[36mGET /static/images/docs/156/img_0b2b4dd58f594781b900f242a09b46a4.png HTTP/1.1[0m" 304 -
+2025-05-22 10:57:48,954 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 10:57:48] "[36mGET /static/images/docs/156/img_080754a3e56c47649a80783c579c31de.png HTTP/1.1[0m" 304 -
+2025-05-22 10:57:48,966 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 10:57:48] "[36mGET /static/js/document-search.js HTTP/1.1[0m" 304 -
+2025-05-22 10:57:48,966 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 10:57:48] "[36mGET /static/images/docs/156/img_7e761a6dc20f4639a1a234c52bc50eed.png HTTP/1.1[0m" 304 -
+2025-05-22 10:57:48,966 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 10:57:48] "[36mGET /static/images/docs/156/img_0df7197e834548f286c9e8d98c276305.png HTTP/1.1[0m" 304 -
+2025-05-22 10:57:48,967 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 10:57:48] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-22 10:57:48,981 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 10:57:48] "[36mGET /static/images/docs/156/img_16516c6f6fca49359dfed77a0bc69147.png HTTP/1.1[0m" 304 -
+2025-05-22 10:58:05,075 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 10:58:05] "GET /api/check-file?filename=四期Duoov1.2.1.docx&csrf_token=IjA4YzY1ZWViZGM4ZTFmNDM0YzE0N2EyNGJhNTRhODlkYjBhZjA0MDQi.aC6Sog.9gZMLfEyOFQb-w39xEx6NfyvSrs HTTP/1.1" 200 -
+2025-05-22 10:58:06,188 [INFO] - root - 原始文件名: 四期Duoov1.2.1.docx, 安全文件名: Duoov1.2.1.docx
+2025-05-22 10:58:06,192 [INFO] - root - 删除文档图片目录: app\static\images\docs\156
+2025-05-22 10:58:06,195 [INFO] - root - 删除文档成功: 156
+2025-05-22 10:58:06,195 [INFO] - root - 覆盖旧文件: 156
+2025-05-22 10:58:06,197 [INFO] - root - 文件已保存: D:\tools\Pycharm\PycharmWork\DocRadar\data\test\uploads\20250522105806_Duoov1.2.1.docx
+2025-05-22 10:58:06,202 [INFO] - root - 添加文档元数据: 157
+2025-05-22 10:58:06,214 [ERROR] - root - 提取DOCX图片失败: [Errno 2] No such file or directory: 'app\\static\\images\\docs\\157\\'
+2025-05-22 10:58:06,290 [INFO] - root - 图片尺寸: 528x1170
+2025-05-22 10:58:06,292 [INFO] - root - 图片尺寸: 584x1282
+2025-05-22 10:58:06,295 [INFO] - root - 图片尺寸: 540x1182
+2025-05-22 10:58:06,297 [INFO] - root - 图片尺寸: 772x1362
+2025-05-22 10:58:06,300 [INFO] - root - 图片尺寸: 1032x1746
+2025-05-22 10:58:06,301 [INFO] - root - 图片尺寸: 1436x612
+2025-05-22 10:58:06,303 [INFO] - root - 图片尺寸: 1260x722
+2025-05-22 10:58:06,313 [WARNING] - root - Mammoth警告: Message(type='warning', message='Run style with ID 000031 was referenced but not defined in the document')
+2025-05-22 10:58:06,314 [WARNING] - root - Mammoth警告: Message(type='warning', message='Table style with ID 000032 was referenced but not defined in the document')
+2025-05-22 10:58:06,315 [WARNING] - root - Mammoth警告: Message(type='warning', message='Unrecognised paragraph style: Title (Style ID: 000001)')
+2025-05-22 10:58:06,315 [WARNING] - root - Mammoth警告: Message(type='warning', message='Unrecognised run style: None (Style ID: 000031)')
+2025-05-22 10:58:06,319 [INFO] - root - 更新文档元数据: 157
+2025-05-22 10:58:06,324 [INFO] - root - 添加文档内容: 157
+2025-05-22 10:58:06,325 [INFO] - root - 保存文档HTML内容: 157
+2025-05-22 10:58:06,334 [INFO] - root - 文档 157 索引请求 - 操作已转移到Storage类
+2025-05-22 10:58:06,339 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 10:58:06] "POST /upload/batch HTTP/1.1" 200 -
+2025-05-22 10:58:07,487 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 10:58:07] "GET / HTTP/1.1" 200 -
+2025-05-22 10:58:07,502 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 10:58:07] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-22 10:58:07,506 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 10:58:07] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-22 10:58:08,628 [INFO] - root - 文档ID 157: 使用原始标题 '四期Duoov1.2.1'
+2025-05-22 10:58:08,629 [INFO] - root - 文档 157 使用HTML内容显示
+2025-05-22 10:58:08,629 [INFO] - root - 传递查询参数到模板: '', 搜索ID: ''
+2025-05-22 10:58:08,632 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 10:58:08] "GET /document/157 HTTP/1.1" 200 -
+2025-05-22 10:58:08,653 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 10:58:08] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-22 10:58:08,655 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 10:58:08] "GET /static/images/docs/157/img_e60ef00c60914c36a644e0cb9c18e593.png HTTP/1.1" 200 -
+2025-05-22 10:58:08,655 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 10:58:08] "GET /static/images/docs/157/img_b0ab752f3a334448a6c6c5dc30302ebd.png HTTP/1.1" 200 -
+2025-05-22 10:58:08,656 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 10:58:08] "GET /static/images/docs/157/img_5a377df14cd74ee58a1ea243219adc56.png HTTP/1.1" 200 -
+2025-05-22 10:58:08,656 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 10:58:08] "GET /static/images/docs/157/img_3a5ac40ab0b547be98dde03cd3b966cf.png HTTP/1.1" 200 -
+2025-05-22 10:58:08,661 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 10:58:08] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-22 10:58:08,667 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 10:58:08] "GET /static/images/docs/157/img_84e0c022d52b44ffb072ac373f9c5341.png HTTP/1.1" 200 -
+2025-05-22 10:58:08,667 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 10:58:08] "[36mGET /static/js/document-search.js HTTP/1.1[0m" 304 -
+2025-05-22 10:58:08,669 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 10:58:08] "GET /static/images/docs/157/img_da32bcf7b82840babceec559bb7e5b3e.png HTTP/1.1" 200 -
+2025-05-22 10:58:08,670 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 10:58:08] "GET /static/images/docs/157/img_3473effae08442f482aa02032834bf19.png HTTP/1.1" 200 -
+2025-05-22 10:58:26,109 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 10:58:26] "GET /document/157/original HTTP/1.1" 200 -

@@ -1,0 +1,18 @@
+2025-05-20 18:12:04,811 - werkzeug - INFO -  * Restarting with stat
+2025-05-20 18:12:05,267 - werkzeug - WARNING -  * Debugger is active!
+2025-05-20 18:12:05,272 - werkzeug - INFO -  * Debugger PIN: 129-233-724
+2025-05-20 18:12:05,362 - werkzeug - INFO -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2025-05-20 18:12:10,257 - werkzeug - INFO - 127.0.0.1 - - [20/May/2025 18:12:10] "[32mGET / HTTP/1.1[0m" 302 -
+2025-05-20 18:12:10,273 - werkzeug - INFO - 127.0.0.1 - - [20/May/2025 18:12:10] "GET /login?next=http%3A%2F%2F127.0.0.1%3A5000%2F HTTP/1.1" 200 -
+2025-05-20 18:12:10,423 - werkzeug - INFO - 127.0.0.1 - - [20/May/2025 18:12:10] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-20 18:12:19,444 - werkzeug - INFO - 127.0.0.1 - - [20/May/2025 18:12:19] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-05-20 18:12:19,467 - werkzeug - INFO - 127.0.0.1 - - [20/May/2025 18:12:19] "GET / HTTP/1.1" 200 -
+2025-05-20 18:12:19,489 - werkzeug - INFO - 127.0.0.1 - - [20/May/2025 18:12:19] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-20 18:12:19,489 - werkzeug - INFO - 127.0.0.1 - - [20/May/2025 18:12:19] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-20 18:12:25,587 - werkzeug - INFO - 127.0.0.1 - - [20/May/2025 18:12:25] "GET /search?q=adjustments HTTP/1.1" 200 -
+2025-05-20 18:12:25,611 - werkzeug - INFO - 127.0.0.1 - - [20/May/2025 18:12:25] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-20 18:12:25,612 - werkzeug - INFO - 127.0.0.1 - - [20/May/2025 18:12:25] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-20 18:12:28,166 - werkzeug - INFO - 127.0.0.1 - - [20/May/2025 18:12:28] "GET / HTTP/1.1" 200 -
+2025-05-20 18:12:28,189 - werkzeug - INFO - 127.0.0.1 - - [20/May/2025 18:12:28] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-20 18:12:28,190 - werkzeug - INFO - 127.0.0.1 - - [20/May/2025 18:12:28] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-20 18:12:37,859 - werkzeug - INFO -  * Restarting with stat

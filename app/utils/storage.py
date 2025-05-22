@@ -215,6 +215,12 @@ class Storage:
             conn = sqlite3.connect(self.db_path)
             cursor = conn.cursor()
             
+            # 确保标题不为空，如果为空则使用原始文件名（去掉扩展名）
+            if not title or not title.strip():
+                display_filename = original_filename or filename
+                title = os.path.splitext(display_filename)[0]
+                logging.info(f"文档标题为空，使用文件名作为标题: {title}")
+            
             # 插入文档元数据
             cursor.execute(
                 '''
@@ -272,8 +278,12 @@ class Storage:
             params = []
             
             if title is not None:
-                update_parts.append("title = ?")
-                params.append(title)
+                # 确保标题不为空
+                if title and title.strip():
+                    update_parts.append("title = ?")
+                    params.append(title)
+                else:
+                    logging.warning(f"更新文档 {doc_id} 时传入了空标题，忽略标题更新")
             
             if metadata is not None:
                 update_parts.append("metadata = ?")

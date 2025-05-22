@@ -672,42 +672,77 @@ function initFileUpload() {
             console.log(`${unselectedFiles.length}个文件被标记为跳过`);
             uploadStats.skipped += unselectedFiles.length;
             
-            // 先上传所有新文件
-            if (newFiles.length > 0) {
-                try {
-                    await uploadAllNewFiles(newFiles);
-                } catch (error) {
-                    console.error('上传新文件时出错:', error);
-                }
-            }
-            
-            // 如果没有选中要覆盖的文件，直接显示结果
-            if (filesToOverwrite.length === 0) {
-                showFinalResult();
-                return;
-            }
-            
             // 然后上传需要覆盖的文件
             uploadResult.innerHTML = '<div class="alert alert-info">上传覆盖文件中，请稍候...</div>';
             
-            for (let i = 0; i < filesToOverwrite.length; i++) {
-                const filename = filesToOverwrite[i];
-                const fileInfo = existingFiles.find(f => f.filename === filename);
+            // 修改确认覆盖文件的处理逻辑，添加延迟和重试机制
+            const processBatch = async (files, startIndex, batchSize) => {
+                const endIndex = Math.min(startIndex + batchSize, files.length);
+                console.log(`处理批次: ${startIndex}-${endIndex-1} / ${files.length}`);
                 
-                if (fileInfo && fileInfo.file) {
-                    try {
-                        console.log(`准备覆盖文件: ${filename}`);
-                        const result = await uploadSingleFile(fileInfo.file, true);
-                        updateUploadStats(result);
-                    } catch (error) {
-                        console.error(`上传文件 ${filename} 时出错:`, error);
+                for (let i = startIndex; i < endIndex; i++) {
+                    const filename = files[i];
+                    const fileInfo = existingFiles.find(f => f.filename === filename);
+                    
+                    if (!fileInfo || !fileInfo.file) {
+                        console.error(`未找到文件信息: ${filename}`);
+                        uploadStats.failed++;
+                        continue;
+                    }
+                    
+                    // 添加重试逻辑
+                    let success = false;
+                    let attempts = 0;
+                    const maxAttempts = 3;
+                    
+                    while (!success && attempts < maxAttempts) {
+                        attempts++;
+                        try {
+                            // 添加尝试信息和延迟
+                            if (attempts > 1) {
+                                console.log(`重试上传文件 (${attempts}/${maxAttempts}): ${filename}`);
+                                // 重试前等待一段时间，避免文件锁定
+                                await new Promise(resolve => setTimeout(resolve, 1500 * attempts));
+                            } else {
+                                console.log(`准备覆盖文件: ${filename}`);
+                            }
+                            
+                            const result = await uploadSingleFile(fileInfo.file, true);
+                            
+                            if (result && result.success) {
+                                success = true;
+                                updateUploadStats(result);
+                                console.log(`文件覆盖成功: ${filename}`);
+                            } else {
+                                console.warn(`文件覆盖失败 (${attempts}/${maxAttempts}): ${filename}, 错误: ${result?.error || '未知错误'}`);
+                            }
+                        } catch (error) {
+                            console.error(`上传文件时出错 (${attempts}/${maxAttempts}): ${filename}`, error);
+                        }
+                    }
+                    
+                    if (!success) {
+                        console.error(`文件在${maxAttempts}次尝试后仍然失败: ${filename}`);
                         uploadStats.failed++;
                     }
+                    
+                    // 更新进度
+                    updateProgress((i + 1) / files.length);
+                    
+                    // 文件之间添加小延迟，避免并发问题
+                    await new Promise(resolve => setTimeout(resolve, 200));
                 }
                 
-                // 更新进度
-                updateProgress((i + 1) / filesToOverwrite.length);
-            }
+                // 处理下一批次
+                if (endIndex < files.length) {
+                    // 批次之间添加更长的延迟
+                    await new Promise(resolve => setTimeout(resolve, 1000));
+                    await processBatch(files, endIndex, batchSize);
+                }
+            };
+            
+            // 开始分批处理，每批次3个文件
+            await processBatch(filesToOverwrite, 0, 3);
             
             // 显示最终结果
             showFinalResult();

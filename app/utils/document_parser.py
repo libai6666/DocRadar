@@ -12,6 +12,8 @@ import hashlib
 import mammoth
 from abc import ABC, abstractmethod
 from app.core.config import UPLOADS_DIR, ALLOWED_EXTENSIONS
+from PIL import Image
+from io import BytesIO
 
 class DocumentParser(ABC):
     """文档解析器抽象基类"""
@@ -129,7 +131,7 @@ class DocxParser(DocumentParser):
         return image_dir, rel_path
     
     def _extract_images(self, file_path, doc_id=None):
-        """提取DOCX文档中的图片"""
+        """提取DOCX文档中的图片，包括尺寸信息"""
         try:
             # 创建图片存储目录
             image_dir, rel_path = self._get_image_directory(file_path, doc_id)
@@ -151,14 +153,27 @@ class DocxParser(DocumentParser):
                     image_url = f"{rel_path}/{image_name}"
                     
                     # 提取图片文件
+                    image_data = z.read(zinfo.filename)
                     with open(image_path, 'wb') as f:
-                        f.write(z.read(zinfo.filename))
+                        f.write(image_data)
+                    
+                    # 获取图片尺寸
+                    width = None
+                    height = None
+                    try:
+                        with Image.open(BytesIO(image_data)) as img:
+                            width, height = img.size
+                            logging.info(f"图片尺寸: {width}x{height}")
+                    except Exception as e:
+                        logging.warning(f"无法获取图片尺寸: {e}")
                     
                     # 记录图片映射关系
                     image_mappings[image_name] = {
                         'path': image_path,
                         'url': image_url,
-                        'name': image_name
+                        'name': image_name,
+                        'width': width,
+                        'height': height
                     }
                     image_count += 1
             
@@ -187,10 +202,22 @@ class DocxParser(DocumentParser):
             # 创建图片处理器，将文档中的图片引用替换为静态URL
             def image_handler(image):
                 if image.alt_text and image.alt_text in image_mappings:
-                    return {"src": image_mappings[image.alt_text]['url']}
+                    img_info = image_mappings[image.alt_text]
+                    result = {"src": img_info['url']}
+                    if 'width' in img_info and img_info['width']:
+                        result['width'] = str(img_info['width'])
+                    if 'height' in img_info and img_info['height']:
+                        result['height'] = str(img_info['height'])
+                    return result
                 elif image.content_type and f"image.{image.content_type.split('/')[1]}" in image_mappings:
                     image_key = f"image.{image.content_type.split('/')[1]}"
-                    return {"src": image_mappings[image_key]['url']}
+                    img_info = image_mappings[image_key]
+                    result = {"src": img_info['url']}
+                    if 'width' in img_info and img_info['width']:
+                        result['width'] = str(img_info['width'])
+                    if 'height' in img_info and img_info['height']:
+                        result['height'] = str(img_info['height'])
+                    return result
                 else:
                     # 使用默认方式处理图片
                     with image.open() as image_bytes:
@@ -200,22 +227,103 @@ class DocxParser(DocumentParser):
                         image_path = os.path.join(image_dir, image_name)
                         image_url = f"{rel_path}/{image_name}"
                         
+                        # 读取图片数据
+                        image_data = image_bytes.read()
+                        
+                        # 获取图片尺寸
+                        width = None
+                        height = None
+                        try:
+                            with Image.open(BytesIO(image_data)) as img:
+                                width, height = img.size
+                                logging.info(f"图片尺寸: {width}x{height}")
+                        except Exception as e:
+                            logging.warning(f"无法获取图片尺寸: {e}")
+                        
                         # 保存图片
                         with open(image_path, "wb") as f:
-                            f.write(image_bytes.read())
+                            f.write(image_data)
                         
-                        return {"src": image_url}
+                        # 返回图片URL和尺寸信息
+                        result = {"src": image_url}
+                        if width and height:
+                            result['width'] = str(width)
+                            result['height'] = str(height)
+                        return result
+            
+            # 配置样式映射
+            style_map = """
+                p[style-name='Heading 1'] => h1:fresh
+                p[style-name='Heading 2'] => h2:fresh
+                p[style-name='Heading 3'] => h3:fresh
+                p[style-name='Heading 4'] => h4:fresh
+                p[style-name='Heading 5'] => h5:fresh
+                p[style-name='Heading 6'] => h6:fresh
+                r[style-name='Strong'] => strong
+                r[style-name='Emphasis'] => em
+                p[style-name='Quote'] => blockquote
+                p[style-name='Intense Quote'] => blockquote.intense
+                r[style-name='Underline'] => u
+                p[style-name='List Paragraph'] => li
+                table => table.table.table-bordered
+            """
             
             # 执行转换 - 直接传递关键字参数而不是options字典
             result = mammoth.convert_to_html(
                 file_path, 
-                convert_image=mammoth.images.img_element(image_handler)
+                convert_image=mammoth.images.img_element(image_handler),
+                style_map=style_map
             )
             html = result.value
             
+            # 记录警告信息
+            for message in result.messages:
+                if message.type == "warning":
+                    logging.warning(f"Mammoth警告: {message}")
+            
+            # 后处理HTML，为图片添加容器
+            import re
+            def wrap_images_with_container(html_content):
+                # 匹配HTML中的img标签
+                img_pattern = r'<img([^>]*)>'
+                
+                def replace_img(match):
+                    img_tag = match.group(0)
+                    # 将图片包装在容器中
+                    return f'<div class="image-container">{img_tag}</div>'
+                
+                # 替换所有图片标签
+                processed_html = re.sub(img_pattern, replace_img, html_content)
+                return processed_html
+            
+            # 应用图片容器处理
+            html = wrap_images_with_container(html)
+            
+            # 添加兜底展示：如果有提取的图片但在HTML中找不到，在底部显示
+            missing_images = []
+            for img_name, img_info in image_mappings.items():
+                if img_info['url'] not in html:
+                    missing_images.append(img_info)
+            
+            if missing_images:
+                html += '<div class="document-images-fallback"><h3>文档中的其他图片</h3><div class="image-gallery">'
+                for img_info in missing_images:
+                    width_attr = f' width="{img_info["width"]}"' if 'width' in img_info and img_info['width'] else ''
+                    height_attr = f' height="{img_info["height"]}"' if 'height' in img_info and img_info['height'] else ''
+                    html += f'<div class="image-item"><div class="image-container"><img src="{img_info["url"]}"{width_attr}{height_attr} alt="文档图片"></div><div class="image-caption">文档图片</div></div>'
+                html += '</div></div>'
+            
             # 添加基本样式
             styled_html = f"""
-            <div class="document-content">
+            <div class="document-content docx-document">
+                <style>
+                    .docx-document img {{ /* 移除max-width限制，使用原始尺寸 */ }}
+                    .document-images-fallback {{ margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #dee2e6; }}
+                    .image-gallery {{ display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 1rem; }}
+                    .image-item {{ width: auto; margin-bottom: 1rem; }}
+                    .image-caption {{ font-size: 0.8rem; color: #6c757d; margin-top: 0.5rem; text-align: center; }}
+                    .image-container {{ overflow-x: auto; margin: 1rem 0; }}
+                </style>
                 {html}
             </div>
             """

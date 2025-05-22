@@ -105,7 +105,11 @@ def process_upload(file, overwrite=False):
         doc_content = parser.parse(file_path, doc_id)
         
         # 更新文档元数据
-        title = doc_content['metadata'].get('title', title)
+        metadata_title = doc_content['metadata'].get('title')
+        # 确保标题不为空，如果元数据中的标题为空，则继续使用文件名作为标题
+        if metadata_title and metadata_title.strip():
+            title = metadata_title
+            
         storage.update_document_metadata(
             doc_id,
             title=title,

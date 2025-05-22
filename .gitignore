@@ -42,6 +42,3 @@ static/doc_images/
 
 # Admin config files (contain sensitive data)
 admin_config.json 
-
-#logs
-tmp/

@@ -12,6 +12,8 @@ import shutil
 import hashlib
 import mammoth
 from abc import ABC, abstractmethod
+from PIL import Image
+from io import BytesIO
 
 class DocumentParser(ABC):
     """文档解析器抽象基类"""
@@ -123,7 +125,7 @@ class DocxParser(DocumentParser):
     
     def _extract_images(self, doc, file_path, doc_id=None):
         """
-        从DOCX文档中提取图片
+        从DOCX文档中提取图片，包括尺寸信息
         
         Args:
             doc: python-docx Document对象
@@ -131,7 +133,7 @@ class DocxParser(DocumentParser):
             doc_id: 文档ID（如果有）
             
         Returns:
-            dict: 图片关系ID到图片URL的映射
+            dict: 图片关系ID到图片信息的映射
         """
         image_dir, image_url_path = self._get_image_directory(file_path, doc_id)
         logging.info(f"文档图片目录: {image_dir}")
@@ -155,9 +157,24 @@ class DocxParser(DocumentParser):
                     with open(image_path, 'wb') as f:
                         f.write(image_blob)
                     
-                    # 添加到映射
-                    image_map[rel.rId] = image_url
-                    logging.info(f"提取图片: {rel.rId} -> {image_url}")
+                    # 获取图片尺寸
+                    width = None
+                    height = None
+                    try:
+                        with Image.open(BytesIO(image_blob)) as img:
+                            width, height = img.size
+                            logging.info(f"图片尺寸: {width}x{height}")
+                    except Exception as e:
+                        logging.warning(f"无法获取图片尺寸: {e}")
+                    
+                    # 添加到映射，包含尺寸信息
+                    image_map[rel.rId] = {
+                        'url': image_url,
+                        'path': image_path,
+                        'width': width,
+                        'height': height
+                    }
+                    logging.info(f"提取图片: {rel.rId} -> {image_url} ({width}x{height})")
                 except Exception as e:
                     logging.error(f"提取图片失败 {rel.rId}: {e}")
                     continue
@@ -199,17 +216,35 @@ class DocxParser(DocumentParser):
                 with image.open() as image_data:
                     image_bytes = image_data.read()
                 
+                # 获取图片尺寸
+                width = None
+                height = None
+                try:
+                    with Image.open(BytesIO(image_bytes)) as img:
+                        width, height = img.size
+                        logging.info(f"Mammoth图片尺寸: {width}x{height}")
+                except Exception as e:
+                    logging.warning(f"无法获取Mammoth图片尺寸: {e}")
+                
                 # 将读取的图片数据写入文件
                 with open(image_path, 'wb') as f:
                     f.write(image_bytes)
                 
-                logging.info(f"Mammoth提取图片: {image_filename} -> {image_url}")
+                logging.info(f"Mammoth提取图片: {image_filename} -> {image_url} ({width}x{height})")
                 
                 # 记录提取的图片
-                extracted_images.append(image_url)
+                extracted_images.append({
+                    'url': image_url,
+                    'width': width,
+                    'height': height
+                })
                 
-                # 返回图片URL
-                return {'src': image_url}
+                # 返回图片URL和尺寸信息
+                result = {'src': image_url}
+                if width and height:
+                    result['width'] = str(width)
+                    result['height'] = str(height)
+                return result
             except Exception as e:
                 logging.error(f"Mammoth提取图片失败: {e}")
                 return {'src': ''}
@@ -263,21 +298,40 @@ class DocxParser(DocumentParser):
                 if message.type == "warning":
                     logging.warning(f"Mammoth警告: {message}")
             
+            # 后处理HTML，为图片添加容器
+            import re
+            def wrap_images_with_container(html_content):
+                # 匹配HTML中的img标签
+                img_pattern = r'<img([^>]*)>'
+                
+                def replace_img(match):
+                    img_tag = match.group(0)
+                    # 将图片包装在容器中
+                    return f'<div class="image-container">{img_tag}</div>'
+                
+                # 替换所有图片标签
+                processed_html = re.sub(img_pattern, replace_img, html_content)
+                return processed_html
+            
+            # 应用图片容器处理
+            html = wrap_images_with_container(html)
+            
             # 添加兜底展示：如果有提取的图片但在HTML中找不到，在底部显示
             if extracted_images:
                 # 检查HTML中是否包含所有提取的图片
                 missing_images = []
-                for img_url in extracted_images:
-                    # 从URL中提取文件名
-                    img_filename = img_url.split('/')[-1]
-                    if img_filename not in html:
-                        missing_images.append(img_url)
+                for img_info in extracted_images:
+                    img_url = img_info['url']
+                    if img_url not in html:
+                        missing_images.append(img_info)
                 
                 # 如果有未在HTML中找到的图片，添加到底部
                 if missing_images:
                     html += '<div class="document-images-fallback"><h3>文档中的其他图片</h3><div class="image-gallery">'
-                    for img_url in missing_images:
-                        html += f'<div class="image-item"><img src="{img_url}" alt="文档图片"><div class="image-caption">文档图片</div></div>'
+                    for img_info in missing_images:
+                        width_attr = f' width="{img_info["width"]}"' if 'width' in img_info and img_info['width'] else ''
+                        height_attr = f' height="{img_info["height"]}"' if 'height' in img_info and img_info['height'] else ''
+                        html += f'<div class="image-item"><div class="image-container"><img src="{img_info["url"]}"{width_attr}{height_attr} alt="文档图片"></div><div class="image-caption">文档图片</div></div>'
                     html += '</div></div>'
             
             # 包装HTML，添加额外样式
@@ -286,14 +340,15 @@ class DocxParser(DocumentParser):
                 <style>
                     .mammoth-converted table {{ border-collapse: collapse; width: 100%; margin-bottom: 1rem; }}
                     .mammoth-converted th, .mammoth-converted td {{ border: 1px solid #dee2e6; padding: 0.75rem; }}
-                    .mammoth-converted img {{ max-width: 100%; height: auto; }}
+                    .mammoth-converted img {{ /* 移除max-width限制，使用原始尺寸 */ }}
                     .mammoth-converted blockquote {{ padding: 0.5rem 1rem; border-left: 5px solid #eee; }}
                     .mammoth-converted blockquote.intense {{ background-color: #f8f9fa; }}
                     .mammoth-converted h1, .mammoth-converted h2, .mammoth-converted h3 {{ margin-top: 1rem; margin-bottom: 0.5rem; }}
                     .document-images-fallback {{ margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #dee2e6; }}
                     .image-gallery {{ display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 1rem; }}
-                    .image-item {{ width: 200px; }}
+                    .image-item {{ width: auto; margin-bottom: 1rem; }}
                     .image-caption {{ font-size: 0.8rem; color: #6c757d; margin-top: 0.5rem; text-align: center; }}
+                    .image-container {{ overflow-x: auto; margin: 1rem 0; }}
                 </style>
                 {html}
             </div>
