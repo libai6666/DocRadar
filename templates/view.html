@@ -23,26 +23,43 @@
         .docx-document p {
             margin-bottom: 1rem;
         }
+        /* 优化表格样式 */
         .docx-document table {
             width: 100%;
             margin-bottom: 1rem;
             border-collapse: collapse;
+            overflow-x: auto;
+            display: block; /* 使表格可以水平滚动 */
         }
-        /* 移除对图片尺寸的限制，使用原始尺寸 */
+        .docx-document table td, 
+        .docx-document table th {
+            border: 1px solid #dee2e6;
+            padding: 8px;
+            min-width: 60px; /* 设置最小宽度，避免内容过于挤压 */
+        }
+        /* 表格容器，允许水平滚动 */
+        .table-container {
+            width: 100%;
+            overflow-x: auto;
+            margin-bottom: 1rem;
+        }
+        /* 修改图片样式，添加最大宽度限制，同时保持原始宽高比 */
         .docx-document img {
-            /* 保留边框和阴影样式，但不限制尺寸 */
+            max-width: 100%; /* 限制最大宽度为容器宽度 */
+            height: auto; /* 保持原始宽高比 */
             border: 1px solid #eee;
             border-radius: 4px;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
-        /* 添加图片容器，防止过大图片溢出 */
+        /* 图片容器样式 */
         .image-container {
-            overflow-x: auto;
             margin: 1rem 0;
+            text-align: center; /* 图片居中显示 */
         }
-        /* 只有当图片超出容器宽度时才应用滚动 */
+        /* 移除之前的设置 */
         .image-container img {
-            max-width: none; /* 使用图片原始尺寸 */
+            max-width: 100%; /* 与上面保持一致 */
+            height: auto; /* 保持原始宽高比 */
         }
         mark {
             background-color: #fff5b1;

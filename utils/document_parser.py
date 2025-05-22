@@ -313,8 +313,25 @@ class DocxParser(DocumentParser):
                 processed_html = re.sub(img_pattern, replace_img, html_content)
                 return processed_html
             
+            # 添加表格处理函数，将表格包装在可滚动容器中
+            def wrap_tables_with_container(html_content):
+                # 匹配HTML中的table标签
+                table_pattern = r'<table([^>]*)>(.*?)</table>'
+                
+                def replace_table(match):
+                    table_tag = match.group(0)
+                    # 将表格包装在容器中
+                    return f'<div class="table-container">{table_tag}</div>'
+                
+                # 替换所有表格标签
+                processed_html = re.sub(table_pattern, replace_table, html_content, flags=re.DOTALL)
+                return processed_html
+            
             # 应用图片容器处理
             html = wrap_images_with_container(html)
+            
+            # 应用表格容器处理
+            html = wrap_tables_with_container(html)
             
             # 添加兜底展示：如果有提取的图片但在HTML中找不到，在底部显示
             if extracted_images:
@@ -339,8 +356,8 @@ class DocxParser(DocumentParser):
             <div class="docx-document mammoth-converted">
                 <style>
                     .mammoth-converted table {{ border-collapse: collapse; width: 100%; margin-bottom: 1rem; }}
-                    .mammoth-converted th, .mammoth-converted td {{ border: 1px solid #dee2e6; padding: 0.75rem; }}
-                    .mammoth-converted img {{ /* 移除max-width限制，使用原始尺寸 */ }}
+                    .mammoth-converted th, .mammoth-converted td {{ border: 1px solid #dee2e6; padding: 0.75rem; min-width: 60px; }}
+                    .mammoth-converted img {{ max-width: 100%; height: auto; }}
                     .mammoth-converted blockquote {{ padding: 0.5rem 1rem; border-left: 5px solid #eee; }}
                     .mammoth-converted blockquote.intense {{ background-color: #f8f9fa; }}
                     .mammoth-converted h1, .mammoth-converted h2, .mammoth-converted h3 {{ margin-top: 1rem; margin-bottom: 0.5rem; }}
@@ -348,7 +365,8 @@ class DocxParser(DocumentParser):
                     .image-gallery {{ display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 1rem; }}
                     .image-item {{ width: auto; margin-bottom: 1rem; }}
                     .image-caption {{ font-size: 0.8rem; color: #6c757d; margin-top: 0.5rem; text-align: center; }}
-                    .image-container {{ overflow-x: auto; margin: 1rem 0; }}
+                    .image-container {{ margin: 1rem 0; text-align: center; }}
+                    .table-container {{ width: 100%; overflow-x: auto; margin-bottom: 1rem; }}
                 </style>
                 {html}
             </div>

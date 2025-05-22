@@ -8,9 +8,14 @@ import sqlite3
 import logging
 import shutil
 import mimetypes
+import time
+import random
 from datetime import datetime
 from werkzeug.utils import secure_filename
 from app.core.config import UPLOADS_DIR, DATABASE_URI, ALLOWED_EXTENSIONS
+
+# 添加临时目录常量
+TEMP_DIR = os.path.join(os.path.dirname(UPLOADS_DIR), 'temp')
 
 class Storage:
     """存储管理类，负责文件存储和元数据管理"""
@@ -27,11 +32,19 @@ class Storage:
         self.db_path = db_path
         self._ensure_dirs()
         self.init_db()
+        
+        # 初始化时清理临时文件
+        self.cleanup_temp_files()
     
     def _ensure_dirs(self):
         """确保必要的目录存在"""
         if not os.path.exists(self.uploads_dir):
             os.makedirs(self.uploads_dir, exist_ok=True)
+        
+        # 确保临时目录存在
+        if not os.path.exists(TEMP_DIR):
+            os.makedirs(TEMP_DIR, exist_ok=True)
+            logging.info(f"创建临时目录: {TEMP_DIR}")
     
     def init_db(self):
         """初始化数据库"""
@@ -134,10 +147,18 @@ class Storage:
             conn.row_factory = sqlite3.Row
             cursor = conn.cursor()
             
-            # 查询数据库
+            # 规范化文件名以便进行比较
+            normalized_filename = filename.lower()
+            
+            # 查询数据库 - 使用LOWER函数进行不区分大小写的比较
             cursor.execute(
-                "SELECT id, title, file_type, file_size, created_at FROM documents WHERE original_filename = ? OR filename = ?", 
-                (filename, filename)
+                """
+                SELECT 
+                    id, title, file_type, file_size, created_at, original_filename, filename 
+                FROM documents 
+                WHERE LOWER(original_filename) = ? OR LOWER(filename) = ?
+                """, 
+                (normalized_filename, normalized_filename)
             )
             
             row = cursor.fetchone()
@@ -147,10 +168,13 @@ class Storage:
                 return {
                     'exists': True,
                     'doc_id': row['id'],
+                    'id': row['id'],  # 添加id字段，确保与doc_id一致
                     'title': row['title'],
                     'file_type': row['file_type'],
                     'file_size': row['file_size'],
-                    'created_at': row['created_at']
+                    'created_at': row['created_at'],
+                    'original_filename': row['original_filename'],
+                    'filename': row['filename']
                 }
             else:
                 # 文件不存在
@@ -167,6 +191,48 @@ class Storage:
         finally:
             if conn:
                 conn.close()
+    
+    def cleanup_temp_files(self, max_age_hours=24):
+        """
+        清理临时目录中的旧文件
+        
+        Args:
+            max_age_hours: 文件最大保留时间（小时）
+            
+        Returns:
+            int: 清理的文件数量
+        """
+        if not os.path.exists(TEMP_DIR):
+            return 0
+            
+        now = time.time()
+        max_age_seconds = max_age_hours * 3600
+        cleaned_count = 0
+        
+        try:
+            for filename in os.listdir(TEMP_DIR):
+                file_path = os.path.join(TEMP_DIR, filename)
+                
+                # 跳过目录
+                if os.path.isdir(file_path):
+                    continue
+                    
+                # 检查文件年龄
+                file_age = now - os.path.getmtime(file_path)
+                if file_age > max_age_seconds:
+                    try:
+                        os.remove(file_path)
+                        cleaned_count += 1
+                    except Exception as e:
+                        logging.warning(f"清理临时文件失败: {file_path}, 错误: {e}")
+            
+            if cleaned_count > 0:
+                logging.info(f"已清理 {cleaned_count} 个临时文件")
+                
+            return cleaned_count
+        except Exception as e:
+            logging.error(f"清理临时文件过程中发生错误: {e}")
+            return 0
     
     def save_file(self, file, filename):
         """
@@ -188,6 +254,9 @@ class Storage:
             # 保存文件
             file.save(file_path)
             logging.info(f"文件已保存: {file_path}")
+            
+            # 每次保存文件时尝试清理临时文件
+            self.cleanup_temp_files()
             
             return file_path
             
@@ -409,6 +478,53 @@ class Storage:
             if conn:
                 conn.close()
     
+    def safe_delete_file(self, file_path, max_retries=3, retry_delay=1.0):
+        """
+        安全删除文件，包含重试机制和临时目录处理
+        
+        Args:
+            file_path: 要删除的文件路径
+            max_retries: 最大重试次数
+            retry_delay: 重试间隔时间(秒)
+            
+        Returns:
+            bool: 删除是否成功
+        """
+        if not os.path.exists(file_path):
+            logging.warning(f"要删除的文件不存在: {file_path}")
+            return True  # 文件不存在视为删除成功
+        
+        # 尝试直接删除
+        for attempt in range(max_retries):
+            try:
+                os.remove(file_path)
+                logging.info(f"成功删除文件: {file_path}")
+                return True
+            except PermissionError as e:
+                logging.warning(f"删除文件失败(尝试 {attempt+1}/{max_retries}): {e}")
+                if attempt < max_retries - 1:
+                    # 添加随机延迟，避免多个进程同时尝试
+                    time.sleep(retry_delay + random.random())
+                    continue
+            except Exception as e:
+                logging.error(f"删除文件时发生未知错误: {e}")
+                break
+        
+        # 如果直接删除失败，尝试移动到临时目录
+        try:
+            # 生成唯一的临时文件名
+            temp_filename = f"del_{int(time.time())}_{os.path.basename(file_path)}"
+            temp_path = os.path.join(TEMP_DIR, temp_filename)
+            
+            # 移动文件到临时目录
+            shutil.move(file_path, temp_path)
+            logging.info(f"文件已移动到临时目录: {temp_path}")
+            
+            return True
+        except Exception as e:
+            logging.error(f"移动文件到临时目录失败: {e}")
+            return False
+    
     def delete_document(self, doc_id):
         """
         删除文档及其内容
@@ -419,6 +535,10 @@ class Storage:
         Returns:
             bool: 删除是否成功
         """
+        conn = None
+        file_deleted = False
+        db_deleted = False
+        
         try:
             conn = sqlite3.connect(self.db_path)
             cursor = conn.cursor()
@@ -433,26 +553,34 @@ class Storage:
                 
             filepath, metadata_json = result
             
-            # 删除数据库记录（document_content和document_html_content记录会通过外键级联删除）
-            cursor.execute("DELETE FROM documents WHERE id = ?", (doc_id,))
-            
-            # 删除文件
-            if os.path.exists(filepath):
-                os.remove(filepath)
+            # 尝试删除文件
+            if filepath and os.path.exists(filepath):
+                file_deleted = self.safe_delete_file(filepath)
+                if not file_deleted:
+                    logging.warning(f"文件删除失败，但将继续删除数据库记录: {filepath}")
+            else:
+                # 文件不存在视为删除成功
+                file_deleted = True
             
             # 删除相关的图片（如果是DOCX文档）
             if metadata_json:
                 try:
                     metadata = json.loads(metadata_json)
                     if 'image_directory' in metadata and os.path.exists(metadata['image_directory']):
-                        shutil.rmtree(metadata['image_directory'])
-                        logging.info(f"删除文档图片目录: {metadata['image_directory']}")
+                        try:
+                            shutil.rmtree(metadata['image_directory'])
+                            logging.info(f"删除文档图片目录: {metadata['image_directory']}")
+                        except Exception as e:
+                            logging.error(f"删除文档图片目录失败: {e}")
                 except Exception as e:
-                    logging.error(f"删除文档图片失败: {e}")
+                    logging.error(f"处理文档元数据失败: {e}")
             
+            # 无论文件删除是否成功，都删除数据库记录
+            cursor.execute("DELETE FROM documents WHERE id = ?", (doc_id,))
             conn.commit()
+            db_deleted = True
             
-            logging.info(f"删除文档成功: {doc_id}")
+            logging.info(f"删除文档成功: {doc_id}, 文件删除: {file_deleted}, 数据库删除: {db_deleted}")
             
             return True
             

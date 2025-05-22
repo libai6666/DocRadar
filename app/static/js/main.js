@@ -182,12 +182,13 @@ function initFileUpload() {
     // 存储已存在的文件
     let existingFiles = [];
     
-    // 上传结果统计
+    // 初始化上传统计
     let uploadStats = {
         success: 0,
-        failed: 0,
+        overwritten: 0,
         skipped: 0,
-        overwritten: 0
+        failed: 0,
+        failedFiles: [] // 添加失败文件列表
     };
     
     // 阻止浏览器默认拖放行为
@@ -441,17 +442,16 @@ function initFileUpload() {
     
     // 重置进度显示
     function resetProgress() {
-        progressBar.style.width = '0%';
-        progressText.textContent = '0%';
-        uploadResult.innerHTML = '';
-        
-        // 重置统计
         uploadStats = {
             success: 0,
-            failed: 0,
+            overwritten: 0,
             skipped: 0,
-            overwritten: 0
+            failed: 0,
+            failedFiles: [] // 重置失败文件列表
         };
+        progressBar.style.width = '0%';
+        progressBar.setAttribute('aria-valuenow', 0);
+        progressText.textContent = '0%';
         
         // 清空已存在文件列表
         existingFiles = [];
@@ -594,7 +594,7 @@ function initFileUpload() {
                 }
                 
                 // 更新上传统计
-                updateUploadStats(result);
+                updateUploadStats(result, fileInfo.file.name);
                 
                 // 显示上传结果
                 if (uploadStatus) {
@@ -711,7 +711,7 @@ function initFileUpload() {
                             
                             if (result && result.success) {
                                 success = true;
-                                updateUploadStats(result);
+                                updateUploadStats(result, filename);
                                 console.log(`文件覆盖成功: ${filename}`);
                             } else {
                                 console.warn(`文件覆盖失败 (${attempts}/${maxAttempts}): ${filename}, 错误: ${result?.error || '未知错误'}`);
@@ -960,19 +960,76 @@ function initFileUpload() {
         
         uploadResult.innerHTML = '<div class="alert alert-info">上传新文件中，请稍候...</div>';
         
-        // 上传所有新文件
-        for (let i = 0; i < files.length; i++) {
-            try {
-                const result = await uploadSingleFile(files[i], false);
-                updateUploadStats(result);
-            } catch (error) {
-                console.error(`上传文件 ${files[i].name} 时出错:`, error);
-                uploadStats.failed++;
+        // 上传所有新文件，使用分批处理
+        const batchSize = 5; // 每批处理5个文件
+        
+        // 分批处理上传
+        const processBatch = async (files, startIndex, batchSize) => {
+            const endIndex = Math.min(startIndex + batchSize, files.length);
+            console.log(`处理批次: ${startIndex + 1} 到 ${endIndex} (共 ${files.length} 个文件)`);
+            
+            // 处理当前批次的文件
+            for (let i = startIndex; i < endIndex; i++) {
+                const file = files[i];
+                console.log(`上传文件 ${i + 1}/${files.length}: ${file.name}`);
+                
+                // 添加重试机制
+                let success = false;
+                const maxAttempts = 3; // 最大重试次数
+                
+                for (let attempt = 1; attempt <= maxAttempts && !success; attempt++) {
+                    try {
+                        // 添加尝试信息和延迟
+                        if (attempt > 1) {
+                            console.log(`重试上传文件 (${attempt}/${maxAttempts}): ${file.name}`);
+                            // 重试前等待一段时间，避免文件锁定
+                            await new Promise(resolve => setTimeout(resolve, 1000 * attempt));
+                        }
+                        
+                        const result = await uploadSingleFile(file, false);
+                        
+                        if (result && result.success) {
+                            success = true;
+                            updateUploadStats(result, file.name);
+                            console.log(`文件上传成功: ${file.name}`);
+                        } else {
+                            console.warn(`文件上传失败 (${attempt}/${maxAttempts}): ${file.name}, 错误: ${result?.error || '未知错误'}`);
+                            
+                            // 只有在最后一次尝试失败时才记录失败
+                            if (attempt === maxAttempts) {
+                                updateUploadStats(result, file.name);
+                            }
+                        }
+                    } catch (error) {
+                        console.error(`上传文件时出错 (${attempt}/${maxAttempts}): ${file.name}`, error);
+                        
+                        // 只有在最后一次尝试失败时才记录失败
+                        if (attempt === maxAttempts) {
+                            updateUploadStats({
+                                success: false,
+                                error: error.message || '未知错误'
+                            }, file.name);
+                        }
+                    }
+                }
+                
+                // 更新上传进度
+                updateProgress((i + 1) / files.length);
+                
+                // 文件之间添加小延迟，避免并发问题
+                await new Promise(resolve => setTimeout(resolve, 200));
             }
             
-            // 更新上传进度
-            updateProgress((i + 1) / files.length);
-        }
+            // 处理下一批次
+            if (endIndex < files.length) {
+                // 批次之间添加更长的延迟
+                await new Promise(resolve => setTimeout(resolve, 1000));
+                await processBatch(files, endIndex, batchSize);
+            }
+        };
+        
+        // 开始分批处理
+        await processBatch(files, 0, batchSize);
         
         showFinalResult();
     }
@@ -1173,9 +1230,25 @@ function initFileUpload() {
         try {
             console.log('发送文件上传请求...');
             
-            // 添加请求超时处理
+            // 添加请求超时处理 - 根据文件大小动态调整超时时间
             const controller = new AbortController();
-            const timeoutId = setTimeout(() => controller.abort(), 30000); // 30秒超时
+            
+            // 计算超时时间：基础30秒 + 每MB增加5秒，最长5分钟
+            const fileSizeMB = file.size / (1024 * 1024);
+            const baseTimeout = 30000; // 30秒基础时间
+            const timePerMB = 5000; // 每MB增加5秒
+            const maxTimeout = 5 * 60 * 1000; // 最长5分钟
+            
+            // 计算实际超时时间
+            const calculatedTimeout = baseTimeout + (fileSizeMB * timePerMB);
+            const timeout = Math.min(calculatedTimeout, maxTimeout);
+            
+            console.log(`文件大小: ${fileSizeMB.toFixed(2)}MB, 设置超时时间: ${(timeout/1000).toFixed(1)}秒`);
+            
+            const timeoutId = setTimeout(() => {
+                console.warn(`上传文件 ${file.name} 超时，中断请求`);
+                controller.abort();
+            }, timeout);
             
             const response = await fetch('/upload/batch', {
                 method: 'POST',
@@ -1211,7 +1284,7 @@ function initFileUpload() {
             if (error.name === 'AbortError') {
                 return { 
                     success: false, 
-                    error: '请求超时，请检查网络连接或稍后重试' 
+                    error: '请求超时，文件可能过大或网络连接不稳定' 
                 };
             }
             
@@ -1223,7 +1296,7 @@ function initFileUpload() {
     }
     
     // 更新上传统计
-    function updateUploadStats(result) {
+    function updateUploadStats(result, filename) {
         if (result.success) {
             if (result.overwritten) {
                 uploadStats.overwritten++;
@@ -1234,6 +1307,13 @@ function initFileUpload() {
             uploadStats.skipped++;
         } else {
             uploadStats.failed++;
+            // 记录失败的文件名
+            if (filename) {
+                uploadStats.failedFiles.push({
+                    name: filename,
+                    error: result.error || '未知错误'
+                });
+            }
         }
     }
     
@@ -1282,6 +1362,17 @@ function initFileUpload() {
             resultHTML += `<li class="list-group-item list-group-item-danger">
                 <i class="bi bi-exclamation-triangle-fill me-2"></i>
                 上传失败: ${uploadStats.failed} 个文件
+                <div class="mt-2">
+                    <strong>失败文件列表:</strong>
+                    <ul class="mt-1 mb-0 small">`;
+            
+            // 添加失败文件列表
+            uploadStats.failedFiles.forEach(file => {
+                resultHTML += `<li>${file.name} - <span class="text-danger">${file.error}</span></li>`;
+            });
+            
+            resultHTML += `</ul>
+                </div>
             </li>`;
         }
         
@@ -1295,6 +1386,11 @@ function initFileUpload() {
         // 如果有跳过的文件，添加提示信息
         if (uploadStats.skipped > 0) {
             resultHTML += '<div class="alert alert-info"><i class="bi bi-info-circle-fill me-2"></i>如需覆盖跳过的文件，请重新选择这些文件并选择覆盖选项。</div>';
+        }
+        
+        // 如果有失败的文件，添加重试提示
+        if (uploadStats.failed > 0) {
+            resultHTML += '<div class="alert alert-warning"><i class="bi bi-arrow-clockwise me-2"></i>如需重新上传失败的文件，请在关闭此窗口后重新选择这些文件。</div>';
         }
         
         // 如果所有文件都被跳过，显示特殊提示

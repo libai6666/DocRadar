@@ -72,77 +72,64 @@ def process_upload(file, overwrite=False):
             }
         
         # 如果文件存在且允许覆盖，先删除旧文件
+        old_doc_id = None
         if file_exists['exists'] and overwrite:
             # 确保file_exists有id字段
             if 'id' not in file_exists and 'doc_id' in file_exists:
                 file_exists['id'] = file_exists['doc_id']
-                
-            storage.delete_document(file_exists['id'])
-            logging.info(f"覆盖旧文件: {file_exists['id']}")
+            
+            old_doc_id = file_exists['id']
+            # 删除旧文档，但不立即检查结果，继续上传新文件
+            delete_result = storage.delete_document(old_doc_id)
+            logging.info(f"覆盖旧文件: {old_doc_id}, 删除结果: {delete_result}")
         
         # 保存文件
         file_path = storage.save_file(file, filename)
         
         # 解析文档内容
         parser = DocumentParser.get_parser(file_path)
+        doc_result = parser.parse(file_path)
         
-        # 添加文档元数据（先添加以获取文档ID）
-        title = os.path.splitext(original_filename)[0]
-        file_size = os.path.getsize(file_path)
+        # 提取文档标题
+        title = None
+        if 'metadata' in doc_result and doc_result['metadata']:
+            title = doc_result['metadata'].get('title', '')
+        
+        # 如果没有提取到标题，使用文件名（不含扩展名）
+        if not title or not title.strip():
+            title = os.path.splitext(original_filename)[0]
         
         # 添加文档元数据
         doc_id = storage.add_document_metadata(
-            filename=original_filename,
+            filename=os.path.basename(file_path),
             filepath=file_path,
             title=title,
             file_type=file_type,
-            file_size=file_size,
-            metadata=None,
+            file_size=os.path.getsize(file_path),
+            metadata=doc_result.get('metadata', {}),
             original_filename=original_filename
         )
         
-        # 解析文档内容（传递文档ID）
-        doc_content = parser.parse(file_path, doc_id)
+        # 添加文档内容
+        if 'text' in doc_result:
+            html_content = doc_result.get('html_content', '')
+            storage.add_document_content(doc_id, doc_result['text'], html_content)
         
-        # 更新文档元数据
-        metadata_title = doc_content['metadata'].get('title')
-        # 确保标题不为空，如果元数据中的标题为空，则继续使用文件名作为标题
-        if metadata_title and metadata_title.strip():
-            title = metadata_title
-            
-        storage.update_document_metadata(
-            doc_id,
-            title=title,
-            metadata=doc_content['metadata']
-        )
-        
-        # 添加文档内容到索引
-        storage.add_document_content(
-            doc_id,
-            doc_content['text'],
-            doc_content.get('html_content', '')
-        )
-        
-        # 更新搜索索引
-        search_engine.index_document(
-            doc_id,
-            title,
-            doc_content['text'],
-            file_type
-        )
+        # 索引文档内容
+        logging.info(f"文档 {doc_id} 索引请求 - 操作已转移到Storage类")
         
         return {
             'success': True,
             'doc_id': doc_id,
-            'filename': filename,
-            'overwritten': file_exists['exists'] and overwrite
+            'title': title,
+            'overwritten': old_doc_id is not None
         }
         
     except Exception as e:
-        logging.error(f"文件处理失败: {e}")
+        logging.error(f"处理文件上传失败: {e}")
         return {
             'success': False,
-            'error': str(e)
+            'error': f'上传失败: {str(e)}'
         }
 
 @document_bp.route('/<int:doc_id>')
