@@ -138,6 +138,10 @@
             background-color: #dc3545;
         }
         
+        .form-check {
+            margin-bottom: 15px;
+        }
+        
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(-10px); }
             to { opacity: 1; transform: translateY(0); }
@@ -181,7 +185,7 @@
                     {% endif %}
                 {% endwith %}
                 
-                <form method="post" action="{{ url_for('main.login') }}">
+                <form method="post" action="{{ url_for('main.login') }}" id="loginForm">
                     <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
                     <input type="hidden" name="next" value="{{ next }}">
                     <div class="form-floating">
@@ -191,6 +195,12 @@
                     <div class="form-floating">
                         <input type="password" class="form-control" id="password" name="password" placeholder="密码" required>
                         <label for="password"><i class="bi bi-lock"></i> 密码</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="rememberPassword" name="rememberPassword">
+                        <label class="form-check-label" for="rememberPassword">
+                            记住密码
+                        </label>
                     </div>
                     <button class="btn btn-primary" type="submit">
                         <i class="bi bi-box-arrow-in-right me-2"></i> 登录
@@ -212,6 +222,191 @@
                 bsAlert.close();
             }
         }, 3000);
+
+        // 检查浏览器是否支持localStorage
+        function isLocalStorageAvailable() {
+            try {
+                const test = 'test';
+                localStorage.setItem(test, test);
+                localStorage.removeItem(test);
+                return true;
+            } catch (e) {
+                console.error('localStorage不可用:', e);
+                return false;
+            }
+        }
+
+        // 简单的Base64编码函数
+        function encodeBase64(text) {
+            try {
+                return btoa(encodeURIComponent(text));
+            } catch (e) {
+                console.error('编码失败:', e);
+                return '';
+            }
+        }
+
+        // 简单的Base64解码函数
+        function decodeBase64(encoded) {
+            try {
+                return decodeURIComponent(atob(encoded));
+            } catch (e) {
+                console.error('解码失败:', e);
+                return '';
+            }
+        }
+
+        // 保存凭证到本地存储
+        function saveCredentials(username, password, remember) {
+            try {
+                if (!isLocalStorageAvailable()) {
+                    return;
+                }
+                
+                if (remember) {
+                    console.log('保存凭证 - 用户名:', username, '记住密码:', remember);
+                    localStorage.setItem('docradar_username', username);
+                    localStorage.setItem('docradar_password', encodeBase64(password));
+                    localStorage.setItem('docradar_remember', 'true');
+                    localStorage.setItem('docradar_timestamp', Date.now().toString());
+                } else {
+                    // 如果不记住密码，则清除存储的凭证
+                    console.log('清除凭证');
+                    localStorage.removeItem('docradar_username');
+                    localStorage.removeItem('docradar_password');
+                    localStorage.removeItem('docradar_remember');
+                    localStorage.removeItem('docradar_timestamp');
+                }
+            } catch (e) {
+                console.error('保存凭证失败:', e);
+            }
+        }
+
+        // 从本地存储加载凭证
+        function loadCredentials() {
+            try {
+                if (!isLocalStorageAvailable()) {
+                    return;
+                }
+                
+                const remember = localStorage.getItem('docradar_remember') === 'true';
+                console.log('检查是否记住密码:', remember);
+                
+                if (remember) {
+                    const username = localStorage.getItem('docradar_username');
+                    const encodedPassword = localStorage.getItem('docradar_password');
+                    const timestamp = localStorage.getItem('docradar_timestamp');
+                    
+                    console.log('找到保存的凭证 - 用户名:', username, '密码是否存在:', !!encodedPassword);
+                    
+                    if (username && encodedPassword) {
+                        const usernameField = document.getElementById('username');
+                        const passwordField = document.getElementById('password');
+                        const rememberCheckbox = document.getElementById('rememberPassword');
+                        
+                        if (usernameField && passwordField && rememberCheckbox) {
+                            usernameField.value = username;
+                            
+                            const decodedPassword = decodeBase64(encodedPassword);
+                            if (decodedPassword) {
+                                passwordField.value = decodedPassword;
+                                console.log('密码解码成功');
+                            } else {
+                                console.error('密码解码失败');
+                            }
+                            
+                            rememberCheckbox.checked = true;
+                            console.log('已填充表单字段');
+                            
+                            // 检查URL中是否有错误参数或from_logout参数
+                            const urlParams = new URLSearchParams(window.location.search);
+                            const hasError = document.querySelector('.alert-danger') !== null;
+                            const isFromLogout = urlParams.has('from_logout');
+                            
+                            // 只有在没有错误消息且不是从退出登录页面来的情况下才自动提交
+                            if (!hasError && !urlParams.has('login_error') && !isFromLogout) {
+                                console.log('自动提交表单');
+                                // 使用延时确保DOM完全加载
+                                setTimeout(function() {
+                                    document.getElementById('loginForm').submit();
+                                }, 300);
+                            } else {
+                                if (isFromLogout) {
+                                    console.log('检测到退出登录参数，不自动提交表单');
+                                } else {
+                                    console.log('检测到错误，不自动提交表单');
+                                }
+                            }
+                        } else {
+                            console.error('表单元素未找到');
+                        }
+                    }
+                }
+            } catch (e) {
+                console.error('加载凭证失败:', e);
+            }
+        }
+
+        // 表单提交事件
+        function setupFormSubmitHandler() {
+            try {
+                const loginForm = document.getElementById('loginForm');
+                if (loginForm) {
+                    loginForm.addEventListener('submit', function(e) {
+                        try {
+                            const username = document.getElementById('username').value;
+                            const password = document.getElementById('password').value;
+                            const remember = document.getElementById('rememberPassword').checked;
+                            
+                            console.log('表单提交 - 记住密码:', remember);
+                            
+                            // 保存凭证（如果选择了记住密码）
+                            saveCredentials(username, password, remember);
+                            
+                            // 不阻止表单提交
+                            return true;
+                        } catch (err) {
+                            console.error('表单提交处理错误:', err);
+                            return true; // 即使出错也允许表单提交
+                        }
+                    });
+                    console.log('表单提交事件处理程序已设置');
+                } else {
+                    console.error('找不到登录表单元素');
+                }
+            } catch (e) {
+                console.error('设置表单提交处理程序失败:', e);
+            }
+        }
+
+        // 确保在DOM完全加载后执行
+        function initializeLoginPage() {
+            console.log('初始化登录页面');
+            setupFormSubmitHandler();
+            loadCredentials();
+        }
+
+        // 使用多种事件确保代码执行
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initializeLoginPage);
+            console.log('等待DOM加载完成');
+        } else {
+            console.log('DOM已加载，立即初始化');
+            initializeLoginPage();
+        }
+
+        // 额外的保障措施，确保代码执行
+        window.addEventListener('load', function() {
+            console.log('窗口加载完成');
+            // 如果DOM已加载但初始化可能失败，再次尝试
+            setTimeout(function() {
+                const username = document.getElementById('username');
+                if (username && !username.value) {
+                    console.log('延迟加载凭证');
+                    loadCredentials();
+                }
+            }, 500);
+        });
     </script>
 </body>
 </html> 

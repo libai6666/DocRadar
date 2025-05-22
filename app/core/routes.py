@@ -65,13 +65,19 @@ def login():
         username = request.form.get('username')
         password = request.form.get('password')
         next_url = request.form.get('next', '/')
+        remember_password = request.form.get('rememberPassword') == 'on'
+        
+        logging.info(f"登录尝试 - 用户名: {username}, 记住密码: {remember_password}")
         
         if authenticate(username, password):
             session['user'] = username
             flash('登录成功', 'success')
             return redirect(next_url)
         else:
+            logging.warning(f"登录失败 - 用户名: {username}")
             flash('用户名或密码错误', 'danger')
+            # 添加login_error参数，防止自动登录循环
+            return redirect(url_for('main.login', login_error=1, next=next_url))
     
     next_url = request.args.get('next', '/')
     return render_template('login.html', next=next_url)
@@ -79,9 +85,15 @@ def login():
 @main_bp.route('/logout')
 def logout():
     """用户退出"""
+    username = session.get('user')
+    if username:
+        logging.info(f"用户退出登录: {username}")
+    
+    # 只清除服务器端会话，不影响浏览器端存储的凭证
     session.pop('user', None)
     flash('已退出登录', 'info')
-    return redirect(url_for('main.login'))
+    # 添加from_logout参数，指示用户刚刚退出登录
+    return redirect(url_for('main.login', from_logout=1))
 
 @main_bp.route('/account')
 @login_required
