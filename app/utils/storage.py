@@ -33,8 +33,10 @@ class Storage:
         self._ensure_dirs()
         self.init_db()
         
-        # 初始化时清理临时文件
-        self.cleanup_temp_files()
+        # 启动时清理临时文件，使用较短的过期时间
+        cleaned = self.cleanup_temp_files(max_age_hours=1)
+        if cleaned > 0:
+            logging.info(f"启动时清理了 {cleaned} 个临时文件")
     
     def _ensure_dirs(self):
         """确保必要的目录存在"""
@@ -203,44 +205,121 @@ class Storage:
             int: 清理的文件数量
         """
         if not os.path.exists(TEMP_DIR):
+            os.makedirs(TEMP_DIR, exist_ok=True)
+            logging.info(f"创建临时目录: {TEMP_DIR}")
             return 0
             
         now = time.time()
         max_age_seconds = max_age_hours * 3600
         cleaned_count = 0
+        mark_files_processed = 0
         
         try:
+            # 处理标记文件（包含需要删除的文件路径）
+            mark_files = [f for f in os.listdir(TEMP_DIR) if f.startswith('mark_del_') and f.endswith('.txt')]
+            for mark_file in mark_files:
+                mark_path = os.path.join(TEMP_DIR, mark_file)
+                
+                try:
+                    # 检查标记文件的年龄
+                    file_age = now - os.path.getmtime(mark_path)
+                    
+                    # 只处理超过1小时的标记文件，避免处理刚创建的
+                    if file_age > 3600:
+                        try:
+                            # 读取标记文件中的文件路径
+                            with open(mark_path, 'r') as f:
+                                target_path = f.read().strip()
+                            
+                            # 检查目标文件是否存在
+                            if os.path.exists(target_path):
+                                # 检查文件是否被锁定
+                                if not self._is_file_locked(target_path):
+                                    # 尝试删除目标文件
+                                    try:
+                                        os.remove(target_path)
+                                        logging.info(f"成功删除标记的文件: {target_path}")
+                                        cleaned_count += 1
+                                    except Exception as e:
+                                        logging.warning(f"删除标记的文件失败: {target_path}, 错误: {e}")
+                            
+                            # 删除标记文件
+                            os.remove(mark_path)
+                            mark_files_processed += 1
+                            logging.info(f"处理并删除标记文件: {mark_path}")
+                        except Exception as e:
+                            logging.error(f"处理标记文件失败: {mark_path}, 错误: {e}")
+                except Exception as e:
+                    logging.error(f"检查标记文件时出错: {mark_path}, 错误: {e}")
+            
+            # 处理临时文件
             for filename in os.listdir(TEMP_DIR):
                 file_path = os.path.join(TEMP_DIR, filename)
                 
-                # 跳过目录
-                if os.path.isdir(file_path):
+                # 跳过目录和标记文件
+                if os.path.isdir(file_path) or filename.startswith('mark_del_'):
                     continue
                     
                 # 检查文件年龄
-                file_age = now - os.path.getmtime(file_path)
-                if file_age > max_age_seconds:
-                    try:
-                        os.remove(file_path)
-                        cleaned_count += 1
-                    except Exception as e:
-                        logging.warning(f"清理临时文件失败: {file_path}, 错误: {e}")
+                try:
+                    file_age = now - os.path.getmtime(file_path)
+                    
+                    # 对于temp_开头的文件（上传临时文件）使用较短的过期时间
+                    if filename.startswith('temp_') and file_age > 3600:  # 1小时
+                        self._try_delete_temp_file(file_path, cleaned_count)
+                    # 对于del_开头的文件（删除失败的文件）使用中等过期时间
+                    elif filename.startswith('del_') and file_age > 7200:  # 2小时
+                        self._try_delete_temp_file(file_path, cleaned_count)
+                    # 对于old_开头的文件（旧版本文件）使用较长的过期时间
+                    elif filename.startswith('old_') and file_age > 14400:  # 4小时
+                        self._try_delete_temp_file(file_path, cleaned_count)
+                    # 其他所有临时文件使用默认过期时间
+                    elif file_age > max_age_seconds:
+                        self._try_delete_temp_file(file_path, cleaned_count)
+                except Exception as e:
+                    logging.warning(f"检查临时文件年龄失败: {file_path}, 错误: {e}")
             
-            if cleaned_count > 0:
-                logging.info(f"已清理 {cleaned_count} 个临时文件")
+            if cleaned_count > 0 or mark_files_processed > 0:
+                logging.info(f"已清理 {cleaned_count} 个临时文件, 处理 {mark_files_processed} 个标记文件")
                 
             return cleaned_count
         except Exception as e:
             logging.error(f"清理临时文件过程中发生错误: {e}")
             return 0
     
-    def save_file(self, file, filename):
+    def _try_delete_temp_file(self, file_path, cleaned_count):
+        """
+        尝试删除临时文件
+        
+        Args:
+            file_path: 文件路径
+            cleaned_count: 已清理的文件计数引用
+            
+        Returns:
+            bool: 是否成功删除
+        """
+        try:
+            # 检查文件是否被锁定
+            if not self._is_file_locked(file_path):
+                os.remove(file_path)
+                cleaned_count += 1
+                logging.info(f"清理临时文件: {file_path}")
+                return True
+            else:
+                logging.warning(f"临时文件被锁定，无法清理: {file_path}")
+                return False
+        except Exception as e:
+            logging.warning(f"清理临时文件失败: {file_path}, 错误: {e}")
+            return False
+    
+    def save_file(self, file, filename, is_overwrite=False):
         """
         保存上传的文件
         
         Args:
             file: 文件对象
             filename: 安全处理后的文件名
+            is_overwrite: 是否是覆盖模式上传
             
         Returns:
             str: 文件保存路径
@@ -248,7 +327,10 @@ class Storage:
         try:
             # 生成唯一文件名
             timestamp = datetime.now().strftime("%Y%m%d%H%M%S")
-            safe_filename = f"{timestamp}_{filename}"
+            
+            # 在覆盖模式下，使用特殊前缀标记临时文件
+            prefix = "temp_" if is_overwrite else ""
+            safe_filename = f"{prefix}{timestamp}_{filename}"
             file_path = os.path.join(self.uploads_dir, safe_filename)
             
             # 保存文件
@@ -263,6 +345,131 @@ class Storage:
         except Exception as e:
             logging.error(f"保存文件失败: {e}")
             raise
+    
+    def replace_file(self, old_doc_id, new_filepath, new_filename, original_filename, file_type, file_size, metadata=None):
+        """
+        安全替换文件（用于文件覆盖操作）
+        
+        Args:
+            old_doc_id: 旧文档ID
+            new_filepath: 新文件路径
+            new_filename: 新文件名
+            original_filename: 原始文件名
+            file_type: 文件类型
+            file_size: 文件大小
+            metadata: 元数据字典
+            
+        Returns:
+            dict: 包含操作结果和新文档ID
+        """
+        conn = None
+        try:
+            # 首先获取旧文档信息
+            conn = sqlite3.connect(self.db_path)
+            cursor = conn.cursor()
+            
+            cursor.execute("SELECT filepath, title FROM documents WHERE id = ?", (old_doc_id,))
+            result = cursor.fetchone()
+            
+            if not result:
+                logging.warning(f"要替换的文档不存在: {old_doc_id}")
+                # 如果旧文档不存在，则作为新文档处理
+                doc_id = self.add_document_metadata(
+                    filename=os.path.basename(new_filepath),
+                    filepath=new_filepath,
+                    title=os.path.splitext(original_filename)[0],
+                    file_type=file_type,
+                    file_size=file_size,
+                    metadata=metadata,
+                    original_filename=original_filename
+                )
+                return {
+                    'success': True,
+                    'doc_id': doc_id,
+                    'replaced': False,
+                    'message': '旧文档不存在，已作为新文档添加'
+                }
+            
+            old_filepath, old_title = result
+            
+            # 新的文件替换策略：
+            # 1. 不直接删除旧文件，而是先更新数据库记录
+            # 2. 然后将旧文件标记为待删除，由清理任务处理
+            # 3. 这样即使旧文件被锁定，也不会影响覆盖操作
+            
+            # 更新数据库记录
+            cursor.execute(
+                """
+                UPDATE documents 
+                SET filename = ?, filepath = ?, file_type = ?, file_size = ?, 
+                    metadata = ?, original_filename = ?
+                WHERE id = ?
+                """,
+                (
+                    os.path.basename(new_filepath),
+                    new_filepath,
+                    file_type,
+                    file_size,
+                    json.dumps(metadata) if metadata else None,
+                    original_filename,
+                    old_doc_id
+                )
+            )
+            
+            conn.commit()
+            
+            # 异步处理旧文件：如果存在，将其移动到临时目录等待清理
+            if old_filepath and os.path.exists(old_filepath) and old_filepath != new_filepath:
+                try:
+                    # 生成临时文件名
+                    temp_filename = f"old_{int(time.time())}_{os.path.basename(old_filepath)}"
+                    temp_path = os.path.join(TEMP_DIR, temp_filename)
+                    
+                    # 确保临时目录存在
+                    if not os.path.exists(TEMP_DIR):
+                        os.makedirs(TEMP_DIR, exist_ok=True)
+                    
+                    # 尝试移动旧文件到临时目录
+                    try:
+                        shutil.move(old_filepath, temp_path)
+                        logging.info(f"旧文件已移动到临时目录: {temp_path}")
+                    except (PermissionError, OSError) as e:
+                        # 如果移动失败，记录但不中断流程
+                        logging.warning(f"移动旧文件到临时目录失败: {e}")
+                        
+                        # 创建一个标记文件，记录需要清理的文件路径
+                        mark_filename = f"mark_del_{int(time.time())}_{os.path.basename(old_filepath)}.txt"
+                        mark_path = os.path.join(TEMP_DIR, mark_filename)
+                        try:
+                            with open(mark_path, 'w') as f:
+                                f.write(old_filepath)
+                            logging.info(f"已创建文件删除标记: {mark_path}")
+                        except Exception as mark_err:
+                            logging.error(f"创建文件删除标记失败: {mark_err}")
+                except Exception as e:
+                    logging.warning(f"处理旧文件时出错，但不影响覆盖操作: {e}")
+            
+            logging.info(f"文件替换成功: {old_doc_id}, 新文件: {new_filepath}")
+            
+            return {
+                'success': True,
+                'doc_id': old_doc_id,
+                'replaced': True,
+                'message': '文件替换成功'
+            }
+            
+        except Exception as e:
+            logging.error(f"替换文件失败: {e}")
+            if conn:
+                conn.rollback()
+            return {
+                'success': False,
+                'error': str(e),
+                'message': '替换文件失败'
+            }
+        finally:
+            if conn:
+                conn.close()
     
     def add_document_metadata(self, filename, filepath, title, file_type, file_size, metadata=None, original_filename=None):
         """
@@ -494,6 +701,12 @@ class Storage:
             logging.warning(f"要删除的文件不存在: {file_path}")
             return True  # 文件不存在视为删除成功
         
+        # 检查文件是否被锁定
+        file_locked = self._is_file_locked(file_path)
+        if file_locked:
+            logging.warning(f"文件被锁定，无法直接删除: {file_path}")
+            return self._handle_locked_file(file_path)
+        
         # 尝试直接删除
         for attempt in range(max_retries):
             try:
@@ -502,27 +715,109 @@ class Storage:
                 return True
             except PermissionError as e:
                 logging.warning(f"删除文件失败(尝试 {attempt+1}/{max_retries}): {e}")
+                
+                # 检查是否是最后一次尝试
                 if attempt < max_retries - 1:
                     # 添加随机延迟，避免多个进程同时尝试
-                    time.sleep(retry_delay + random.random())
-                    continue
+                    delay_time = retry_delay + random.random()
+                    logging.info(f"等待 {delay_time:.2f} 秒后重试...")
+                    time.sleep(delay_time)
+                    
+                    # 重新检查文件是否被锁定
+                    if self._is_file_locked(file_path):
+                        logging.warning(f"检测到文件被锁定，跳过后续删除尝试: {file_path}")
+                        return self._handle_locked_file(file_path)
+                else:
+                    # 最后一次尝试也失败，处理锁定文件
+                    return self._handle_locked_file(file_path)
             except Exception as e:
                 logging.error(f"删除文件时发生未知错误: {e}")
                 break
         
-        # 如果直接删除失败，尝试移动到临时目录
+        # 如果所有尝试都失败，处理锁定文件
+        return self._handle_locked_file(file_path)
+    
+    def _is_file_locked(self, file_path):
+        """
+        检查文件是否被锁定
+        
+        Args:
+            file_path: 文件路径
+            
+        Returns:
+            bool: 文件是否被锁定
+        """
+        if not os.path.exists(file_path):
+            return False
+        
         try:
-            # 生成唯一的临时文件名
-            temp_filename = f"del_{int(time.time())}_{os.path.basename(file_path)}"
-            temp_path = os.path.join(TEMP_DIR, temp_filename)
+            # 尝试以写入模式打开文件
+            with open(file_path, 'a+b') as f:
+                # 尝试获取文件锁
+                try:
+                    # Windows平台
+                    if os.name == 'nt':
+                        import msvcrt
+                        msvcrt.locking(f.fileno(), msvcrt.LK_NBLCK, 1)
+                        # 如果成功获取锁，释放它
+                        msvcrt.locking(f.fileno(), msvcrt.LK_UNLCK, 1)
+                    # Unix/Linux平台
+                    else:
+                        import fcntl
+                        fcntl.flock(f.fileno(), fcntl.LOCK_EX | fcntl.LOCK_NB)
+                        # 如果成功获取锁，释放它
+                        fcntl.flock(f.fileno(), fcntl.LOCK_UN)
+                    return False  # 文件未被锁定
+                except (IOError, OSError):
+                    return True  # 文件被锁定
+        except (IOError, OSError):
+            return True  # 无法打开文件，视为被锁定
+    
+    def _handle_locked_file(self, file_path):
+        """
+        处理被锁定的文件
+        
+        Args:
+            file_path: 文件路径
             
-            # 移动文件到临时目录
-            shutil.move(file_path, temp_path)
-            logging.info(f"文件已移动到临时目录: {temp_path}")
+        Returns:
+            bool: 处理是否成功
+        """
+        try:
+            # 确保临时目录存在
+            if not os.path.exists(TEMP_DIR):
+                os.makedirs(TEMP_DIR, exist_ok=True)
             
-            return True
+            # 尝试移动到临时目录
+            try:
+                # 生成唯一的临时文件名
+                temp_filename = f"del_{int(time.time())}_{os.path.basename(file_path)}"
+                temp_path = os.path.join(TEMP_DIR, temp_filename)
+                
+                # 尝试移动文件
+                try:
+                    shutil.move(file_path, temp_path)
+                    logging.info(f"文件已移动到临时目录: {temp_path}")
+                    return True
+                except (PermissionError, OSError) as e:
+                    logging.warning(f"移动文件到临时目录失败: {e}")
+            except Exception as e:
+                logging.error(f"处理锁定文件时出错: {e}")
+            
+            # 如果移动失败，创建一个标记文件
+            mark_filename = f"mark_del_{int(time.time())}_{os.path.basename(file_path)}.txt"
+            mark_path = os.path.join(TEMP_DIR, mark_filename)
+            try:
+                with open(mark_path, 'w') as f:
+                    f.write(file_path)
+                logging.info(f"已创建文件删除标记: {mark_path}")
+                return True  # 创建标记成功，视为处理成功
+            except Exception as e:
+                logging.error(f"创建文件删除标记失败: {e}")
+                
+            return False  # 所有处理方法都失败
         except Exception as e:
-            logging.error(f"移动文件到临时目录失败: {e}")
+            logging.error(f"处理锁定文件的过程中发生错误: {e}")
             return False
     
     def delete_document(self, doc_id):

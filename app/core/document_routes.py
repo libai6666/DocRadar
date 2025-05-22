@@ -71,20 +71,15 @@ def process_upload(file, overwrite=False):
                 'existing_doc': file_exists
             }
         
-        # 如果文件存在且允许覆盖，先删除旧文件
+        # 确保file_exists有id字段
         old_doc_id = None
         if file_exists['exists'] and overwrite:
-            # 确保file_exists有id字段
             if 'id' not in file_exists and 'doc_id' in file_exists:
                 file_exists['id'] = file_exists['doc_id']
-            
             old_doc_id = file_exists['id']
-            # 删除旧文档，但不立即检查结果，继续上传新文件
-            delete_result = storage.delete_document(old_doc_id)
-            logging.info(f"覆盖旧文件: {old_doc_id}, 删除结果: {delete_result}")
         
-        # 保存文件
-        file_path = storage.save_file(file, filename)
+        # 保存文件 - 在覆盖模式下使用临时文件名
+        file_path = storage.save_file(file, filename, is_overwrite=overwrite)
         
         # 解析文档内容
         parser = DocumentParser.get_parser(file_path)
@@ -99,31 +94,68 @@ def process_upload(file, overwrite=False):
         if not title or not title.strip():
             title = os.path.splitext(original_filename)[0]
         
-        # 添加文档元数据
-        doc_id = storage.add_document_metadata(
-            filename=os.path.basename(file_path),
-            filepath=file_path,
-            title=title,
-            file_type=file_type,
-            file_size=os.path.getsize(file_path),
-            metadata=doc_result.get('metadata', {}),
-            original_filename=original_filename
-        )
-        
-        # 添加文档内容
-        if 'text' in doc_result:
-            html_content = doc_result.get('html_content', '')
-            storage.add_document_content(doc_id, doc_result['text'], html_content)
-        
-        # 索引文档内容
-        logging.info(f"文档 {doc_id} 索引请求 - 操作已转移到Storage类")
-        
-        return {
-            'success': True,
-            'doc_id': doc_id,
-            'title': title,
-            'overwritten': old_doc_id is not None
-        }
+        # 处理文档内容 - 根据是否覆盖使用不同的处理逻辑
+        if file_exists['exists'] and overwrite:
+            # 使用替换逻辑
+            result = storage.replace_file(
+                old_doc_id=old_doc_id,
+                new_filepath=file_path,
+                new_filename=os.path.basename(file_path),
+                original_filename=original_filename,
+                file_type=file_type,
+                file_size=os.path.getsize(file_path),
+                metadata=doc_result.get('metadata', {})
+            )
+            
+            if not result['success']:
+                return {
+                    'success': False,
+                    'error': f'替换文件失败: {result.get("message", "未知错误")}',
+                    'details': result
+                }
+            
+            doc_id = result['doc_id']
+            
+            # 添加/更新文档内容
+            if 'text' in doc_result:
+                html_content = doc_result.get('html_content', '')
+                storage.add_document_content(doc_id, doc_result['text'], html_content)
+            
+            logging.info(f"文档 {doc_id} 覆盖成功")
+            
+            return {
+                'success': True,
+                'doc_id': doc_id,
+                'title': title,
+                'overwritten': True,
+                'message': '文件覆盖成功'
+            }
+        else:
+            # 添加新文档
+            doc_id = storage.add_document_metadata(
+                filename=os.path.basename(file_path),
+                filepath=file_path,
+                title=title,
+                file_type=file_type,
+                file_size=os.path.getsize(file_path),
+                metadata=doc_result.get('metadata', {}),
+                original_filename=original_filename
+            )
+            
+            # 添加文档内容
+            if 'text' in doc_result:
+                html_content = doc_result.get('html_content', '')
+                storage.add_document_content(doc_id, doc_result['text'], html_content)
+            
+            # 索引文档内容
+            logging.info(f"文档 {doc_id} 索引请求 - 操作已转移到Storage类")
+            
+            return {
+                'success': True,
+                'doc_id': doc_id,
+                'title': title,
+                'overwritten': False
+            }
         
     except Exception as e:
         logging.error(f"处理文件上传失败: {e}")

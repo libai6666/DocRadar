@@ -1,119 +1,141 @@
-2025-05-22 14:01:35,932 [INFO] - root - 登录尝试 - 用户名: admin, 记住密码: True
-2025-05-22 14:01:35,935 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 14:01:35] "[32mPOST /login HTTP/1.1[0m" 302 -
-2025-05-22 14:01:35,944 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 14:01:35] "GET / HTTP/1.1" 200 -
-2025-05-22 14:01:35,966 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 14:01:35] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
-2025-05-22 14:01:35,969 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 14:01:35] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
-2025-05-22 14:01:39,872 [INFO] - root - 用户退出登录: admin
-2025-05-22 14:01:39,875 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 14:01:39] "[32mGET /logout HTTP/1.1[0m" 302 -
-2025-05-22 14:01:39,881 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 14:01:39] "GET /login HTTP/1.1" 200 -
-2025-05-22 14:01:39,901 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 14:01:39] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
-2025-05-22 14:02:01,055 [INFO] - root - 登录尝试 - 用户名: admin, 记住密码: True
-2025-05-22 14:02:01,055 [WARNING] - root - 登录失败 - 用户名: admin
-2025-05-22 14:02:01,058 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 14:02:01] "[32mPOST /login HTTP/1.1[0m" 302 -
-2025-05-22 14:02:01,064 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 14:02:01] "GET /login?login_error=1&next=%2F HTTP/1.1" 200 -
-2025-05-22 14:02:01,084 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 14:02:01] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
-2025-05-22 14:04:01,460 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 14:04:01] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
-2025-05-22 14:04:01,508 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 14:04:01] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
-2025-05-22 14:12:57,140 [INFO] - root - 日志系统初始化完成，使用日志文件: 2025-05-22_docradar.log
-2025-05-22 14:12:57,163 [INFO] - werkzeug -  * Restarting with stat
-2025-05-22 14:12:57,663 [INFO] - root - 日志系统初始化完成，使用日志文件: 2025-05-22_docradar.log
-2025-05-22 14:12:57,679 [WARNING] - werkzeug -  * Debugger is active!
-2025-05-22 14:12:57,684 [INFO] - werkzeug -  * Debugger PIN: 140-677-647
-2025-05-22 14:12:57,802 [INFO] - werkzeug -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
-2025-05-22 14:13:00,632 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 14:13:00] "GET /login?login_error=1&next=%2F HTTP/1.1" 200 -
-2025-05-22 14:13:00,656 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 14:13:00] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
-2025-05-22 14:13:00,802 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 14:13:00] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
-2025-05-22 14:13:06,019 [INFO] - root - 登录尝试 - 用户名: admin, 记住密码: True
-2025-05-22 14:13:06,020 [WARNING] - root - 登录失败 - 用户名: admin
-2025-05-22 14:13:06,023 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 14:13:06] "[32mPOST /login HTTP/1.1[0m" 302 -
-2025-05-22 14:13:06,029 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 14:13:06] "GET /login?login_error=1&next=%2F HTTP/1.1" 200 -
-2025-05-22 14:13:06,043 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 14:13:06] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
-2025-05-22 14:13:12,050 [INFO] - root - 登录尝试 - 用户名: admin, 记住密码: True
-2025-05-22 14:13:12,055 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 14:13:12] "[32mPOST /login HTTP/1.1[0m" 302 -
-2025-05-22 14:13:12,082 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 14:13:12] "GET / HTTP/1.1" 200 -
-2025-05-22 14:13:12,101 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 14:13:12] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
-2025-05-22 14:13:12,102 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 14:13:12] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
-2025-05-22 14:13:27,557 [INFO] - root - 文档ID 242: 使用原始标题 '三十四期Duoov4.0.0'
-2025-05-22 14:13:27,557 [INFO] - root - 搜索 'adjustments' 找到 1 个结果
-2025-05-22 14:13:27,558 [INFO] - root - 执行搜索: 'adjustments' 找到 1 个结果
-2025-05-22 14:13:27,558 [INFO] - root - 搜索结果 #0: id=242, title=三十四期Duoov4.0.0
-2025-05-22 14:13:27,559 [INFO] - root - 添加搜索历史: 查询='adjustments', 结果数=1, 历史ID=1
-2025-05-22 14:13:27,559 [INFO] - root - 搜索结果ID: [242]
-2025-05-22 14:13:27,584 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 14:13:27] "GET /search?q=adjustments HTTP/1.1" 200 -
-2025-05-22 14:13:27,616 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 14:13:27] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
-2025-05-22 14:13:27,622 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 14:13:27] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
-2025-05-22 14:13:29,681 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 14:13:29] "GET /search/clear?q=adjustments HTTP/1.1" 200 -
-2025-05-22 14:13:37,343 [INFO] - root - 用户退出登录: admin
-2025-05-22 14:13:37,346 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 14:13:37] "[32mGET /logout HTTP/1.1[0m" 302 -
-2025-05-22 14:13:37,352 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 14:13:37] "GET /login HTTP/1.1" 200 -
-2025-05-22 14:13:37,376 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 14:13:37] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
-2025-05-22 14:13:37,693 [INFO] - root - 登录尝试 - 用户名: admin, 记住密码: True
-2025-05-22 14:13:37,697 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 14:13:37] "[32mPOST /login HTTP/1.1[0m" 302 -
-2025-05-22 14:13:37,705 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 14:13:37] "GET / HTTP/1.1" 200 -
-2025-05-22 14:13:37,737 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 14:13:37] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
-2025-05-22 14:13:37,739 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 14:13:37] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
-2025-05-22 14:13:40,563 [INFO] - root - 用户退出登录: admin
-2025-05-22 14:13:40,566 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 14:13:40] "[32mGET /logout HTTP/1.1[0m" 302 -
-2025-05-22 14:13:40,572 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 14:13:40] "GET /login HTTP/1.1" 200 -
-2025-05-22 14:13:40,592 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 14:13:40] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
-2025-05-22 14:13:40,905 [INFO] - root - 登录尝试 - 用户名: admin, 记住密码: True
-2025-05-22 14:13:40,908 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 14:13:40] "[32mPOST /login HTTP/1.1[0m" 302 -
-2025-05-22 14:13:40,917 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 14:13:40] "GET / HTTP/1.1" 200 -
-2025-05-22 14:13:40,947 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 14:13:40] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
-2025-05-22 14:13:40,956 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 14:13:40] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
-2025-05-22 14:15:20,637 [INFO] - werkzeug -  * Detected change in 'D:\\tools\\Pycharm\\PycharmWork\\DocRadar\\app\\core\\routes.py', reloading
-2025-05-22 14:15:20,683 [INFO] - werkzeug -  * Restarting with stat
-2025-05-22 14:15:21,197 [INFO] - root - 日志系统初始化完成，使用日志文件: 2025-05-22_docradar.log
-2025-05-22 14:15:21,213 [WARNING] - werkzeug -  * Debugger is active!
-2025-05-22 14:15:21,220 [INFO] - werkzeug -  * Debugger PIN: 140-677-647
-2025-05-22 14:15:21,336 [INFO] - werkzeug -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
-2025-05-22 14:17:26,118 [INFO] - root - 日志系统初始化完成，使用日志文件: 2025-05-22_docradar.log
-2025-05-22 14:17:26,141 [INFO] - werkzeug -  * Restarting with stat
-2025-05-22 14:17:26,640 [INFO] - root - 日志系统初始化完成，使用日志文件: 2025-05-22_docradar.log
-2025-05-22 14:17:26,657 [WARNING] - werkzeug -  * Debugger is active!
-2025-05-22 14:17:26,663 [INFO] - werkzeug -  * Debugger PIN: 140-677-647
-2025-05-22 14:17:26,777 [INFO] - werkzeug -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
-2025-05-22 14:17:27,900 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 14:17:27] "GET / HTTP/1.1" 200 -
-2025-05-22 14:17:28,159 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 14:17:28] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
-2025-05-22 14:17:28,165 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 14:17:28] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
-2025-05-22 14:17:33,712 [INFO] - root - 用户退出登录: admin
-2025-05-22 14:17:33,715 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 14:17:33] "[32mGET /logout HTTP/1.1[0m" 302 -
-2025-05-22 14:17:33,727 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 14:17:33] "GET /login?from_logout=1 HTTP/1.1" 200 -
-2025-05-22 14:17:33,751 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 14:17:33] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
-2025-05-22 14:17:35,213 [INFO] - root - 登录尝试 - 用户名: admin, 记住密码: True
-2025-05-22 14:17:35,218 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 14:17:35] "[32mPOST /login HTTP/1.1[0m" 302 -
-2025-05-22 14:17:35,226 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 14:17:35] "GET / HTTP/1.1" 200 -
-2025-05-22 14:17:35,249 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 14:17:35] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
-2025-05-22 14:17:35,251 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 14:17:35] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
-2025-05-22 14:17:37,481 [INFO] - root - 用户退出登录: admin
-2025-05-22 14:17:37,486 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 14:17:37] "[32mGET /logout HTTP/1.1[0m" 302 -
-2025-05-22 14:17:37,491 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 14:17:37] "GET /login?from_logout=1 HTTP/1.1" 200 -
-2025-05-22 14:17:37,512 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 14:17:37] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
-2025-05-22 14:17:41,964 [INFO] - root - 登录尝试 - 用户名: admin, 记住密码: True
-2025-05-22 14:17:41,965 [WARNING] - root - 登录失败 - 用户名: admin
-2025-05-22 14:17:41,968 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 14:17:41] "[32mPOST /login HTTP/1.1[0m" 302 -
-2025-05-22 14:17:41,974 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 14:17:41] "GET /login?login_error=1&next=%2F HTTP/1.1" 200 -
-2025-05-22 14:17:41,997 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 14:17:41] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
-2025-05-22 14:17:48,271 [INFO] - root - 登录尝试 - 用户名: admin, 记住密码: False
-2025-05-22 14:17:48,275 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 14:17:48] "[32mPOST /login HTTP/1.1[0m" 302 -
-2025-05-22 14:17:48,283 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 14:17:48] "GET / HTTP/1.1" 200 -
-2025-05-22 14:17:48,308 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 14:17:48] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
-2025-05-22 14:17:48,310 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 14:17:48] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
-2025-05-22 14:17:50,140 [INFO] - root - 用户退出登录: admin
-2025-05-22 14:17:50,143 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 14:17:50] "[32mGET /logout HTTP/1.1[0m" 302 -
-2025-05-22 14:17:50,148 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 14:17:50] "GET /login?from_logout=1 HTTP/1.1" 200 -
-2025-05-22 14:17:50,171 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 14:17:50] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
-2025-05-22 14:17:59,855 [INFO] - root - 登录尝试 - 用户名: admin, 记住密码: True
-2025-05-22 14:17:59,860 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 14:17:59] "[32mPOST /login HTTP/1.1[0m" 302 -
-2025-05-22 14:17:59,869 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 14:17:59] "GET / HTTP/1.1" 200 -
-2025-05-22 14:17:59,888 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 14:17:59] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
-2025-05-22 14:17:59,894 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 14:17:59] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
-2025-05-22 14:18:01,273 [INFO] - root - 用户退出登录: admin
-2025-05-22 14:18:01,276 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 14:18:01] "[32mGET /logout HTTP/1.1[0m" 302 -
-2025-05-22 14:18:01,281 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 14:18:01] "GET /login?from_logout=1 HTTP/1.1" 200 -
-2025-05-22 14:18:01,303 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 14:18:01] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
-2025-05-22 14:18:02,507 [INFO] - root - 登录尝试 - 用户名: admin, 记住密码: True
-2025-05-22 14:18:02,511 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 14:18:02] "[32mPOST /login HTTP/1.1[0m" 302 -
-2025-05-22 14:18:02,519 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 14:18:02] "GET / HTTP/1.1" 200 -
-2025-05-22 14:18:02,541 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 14:18:02] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
-2025-05-22 14:18:02,548 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 14:18:02] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-22 16:10:39,693 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 16:10:39] "GET / HTTP/1.1" 200 -
+2025-05-22 16:10:39,938 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 16:10:39] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-22 16:10:39,945 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 16:10:39] "GET /static/js/main.js HTTP/1.1" 200 -
+2025-05-22 16:10:46,283 [INFO] - root - 批量删除文档请求: [350, 349]
+2025-05-22 16:10:46,285 [INFO] - root - 成功删除文件: D:\tools\Pycharm\PycharmWork\DocRadar\data\test\uploads\20250522160244_Duoov5.8.5.docx
+2025-05-22 16:10:46,288 [INFO] - root - 删除文档图片目录: app\static\images\docs\eed7dc0711
+2025-05-22 16:10:46,291 [INFO] - root - 删除文档成功: 350, 文件删除: True, 数据库删除: True
+2025-05-22 16:10:46,293 [INFO] - root - 成功删除文件: D:\tools\Pycharm\PycharmWork\DocRadar\data\test\uploads\temp_20250522160251_Duoov1.0.1.docx
+2025-05-22 16:10:46,295 [INFO] - root - 删除文档图片目录: app\static\images\docs\23f39f22c0
+2025-05-22 16:10:46,298 [INFO] - root - 删除文档成功: 349, 文件删除: True, 数据库删除: True
+2025-05-22 16:10:46,300 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 16:10:46] "POST /document/batch-delete HTTP/1.1" 200 -
+2025-05-22 16:10:46,314 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 16:10:46] "GET / HTTP/1.1" 200 -
+2025-05-22 16:10:46,333 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 16:10:46] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-22 16:10:46,336 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 16:10:46] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-22 16:10:52,126 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 16:10:52] "GET /api/check-file?filename=二期Duoov1.0.1.docx&csrf_token=Ijg3NzliMTFjNTcxNmFhYmEyYTFmYzg3MjQ0MGFkNzVhN2YzZDc5Zjci.aC7cBg.y-3qJm9oKCzn0UISMbdemJz_gbU HTTP/1.1" 200 -
+2025-05-22 16:10:52,134 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 16:10:52] "GET /api/check-file?filename=五十八期Duoov5.8.5.docx&csrf_token=Ijg3NzliMTFjNTcxNmFhYmEyYTFmYzg3MjQ0MGFkNzVhN2YzZDc5Zjci.aC7cBg.y-3qJm9oKCzn0UISMbdemJz_gbU HTTP/1.1" 200 -
+2025-05-22 16:10:52,142 [INFO] - root - 原始文件名: 二期Duoov1.0.1.docx, 安全文件名: Duoov1.0.1.docx
+2025-05-22 16:10:52,145 [INFO] - root - 文件已保存: D:\tools\Pycharm\PycharmWork\DocRadar\data\test\uploads\20250522161052_Duoov1.0.1.docx
+2025-05-22 16:10:52,154 [ERROR] - root - 提取DOCX图片失败: [Errno 2] No such file or directory: 'app\\static\\images\\docs\\3331b9cb78\\'
+2025-05-22 16:10:52,207 [INFO] - root - 图片尺寸: 736x706
+2025-05-22 16:10:52,216 [WARNING] - root - Mammoth警告: Message(type='warning', message='Run style with ID 00001a was referenced but not defined in the document')
+2025-05-22 16:10:52,217 [WARNING] - root - Mammoth警告: Message(type='warning', message='Table style with ID 00001b was referenced but not defined in the document')
+2025-05-22 16:10:52,218 [WARNING] - root - Mammoth警告: Message(type='warning', message='Unrecognised paragraph style: Title (Style ID: 000013)')
+2025-05-22 16:10:52,218 [WARNING] - root - Mammoth警告: Message(type='warning', message='Unrecognised run style: None (Style ID: 00001a)')
+2025-05-22 16:10:52,224 [INFO] - root - 添加文档元数据: 351
+2025-05-22 16:10:52,234 [INFO] - root - 添加文档内容: 351
+2025-05-22 16:10:52,235 [INFO] - root - 保存文档HTML内容: 351
+2025-05-22 16:10:52,241 [INFO] - root - 文档 351 索引请求 - 操作已转移到Storage类
+2025-05-22 16:10:52,244 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 16:10:52] "POST /upload/batch HTTP/1.1" 200 -
+2025-05-22 16:10:52,784 [INFO] - root - 原始文件名: 五十八期Duoov5.8.5.docx, 安全文件名: Duoov5.8.5.docx
+2025-05-22 16:10:52,796 [INFO] - root - 文件已保存: D:\tools\Pycharm\PycharmWork\DocRadar\data\test\uploads\20250522161052_Duoov5.8.5.docx
+2025-05-22 16:10:52,812 [ERROR] - root - 提取DOCX图片失败: [Errno 2] No such file or directory: 'app\\static\\images\\docs\\6aadc4ae60\\'
+2025-05-22 16:10:52,837 [INFO] - root - 图片尺寸: 746x1236
+2025-05-22 16:10:52,840 [INFO] - root - 图片尺寸: 662x1432
+2025-05-22 16:10:52,842 [INFO] - root - 图片尺寸: 932x574
+2025-05-22 16:10:52,845 [INFO] - root - 图片尺寸: 1532x1492
+2025-05-22 16:10:52,849 [INFO] - root - 图片尺寸: 1316x1342
+2025-05-22 16:10:52,854 [INFO] - root - 图片尺寸: 664x1452
+2025-05-22 16:10:52,857 [INFO] - root - 图片尺寸: 2696x1392
+2025-05-22 16:10:52,860 [WARNING] - root - Mammoth警告: Message(type='warning', message='Run style with ID 000022 was referenced but not defined in the document')
+2025-05-22 16:10:52,860 [WARNING] - root - Mammoth警告: Message(type='warning', message='Table style with ID 000023 was referenced but not defined in the document')
+2025-05-22 16:10:52,860 [WARNING] - root - Mammoth警告: Message(type='warning', message='Run style with ID 000062 was referenced but not defined in the document')
+2025-05-22 16:10:52,861 [WARNING] - root - Mammoth警告: Message(type='warning', message='Run style with ID  was referenced but not defined in the document')
+2025-05-22 16:10:52,861 [WARNING] - root - Mammoth警告: Message(type='warning', message='Unrecognised paragraph style: Title (Style ID: 000013)')
+2025-05-22 16:10:52,862 [WARNING] - root - Mammoth警告: Message(type='warning', message='Unrecognised run style: None (Style ID: 000022)')
+2025-05-22 16:10:52,862 [WARNING] - root - Mammoth警告: Message(type='warning', message='Unrecognised run style: None (Style ID: 000062)')
+2025-05-22 16:10:52,862 [WARNING] - root - Mammoth警告: Message(type='warning', message='Unrecognised run style: None (Style ID: )')
+2025-05-22 16:10:52,866 [INFO] - root - 添加文档元数据: 352
+2025-05-22 16:10:52,876 [INFO] - root - 添加文档内容: 352
+2025-05-22 16:10:52,877 [INFO] - root - 保存文档HTML内容: 352
+2025-05-22 16:10:52,879 [INFO] - root - 文档 352 索引请求 - 操作已转移到Storage类
+2025-05-22 16:10:52,883 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 16:10:52] "POST /upload/batch HTTP/1.1" 200 -
+2025-05-22 16:10:54,118 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 16:10:54] "GET / HTTP/1.1" 200 -
+2025-05-22 16:10:54,132 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 16:10:54] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-22 16:10:54,136 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 16:10:54] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-22 16:10:55,255 [INFO] - root - 文档ID 351: 使用原始标题 '二期Duoov1.0.1'
+2025-05-22 16:10:55,257 [INFO] - root - 文档 351 使用HTML内容显示
+2025-05-22 16:10:55,258 [INFO] - root - 传递查询参数到模板: '', 搜索ID: ''
+2025-05-22 16:10:55,270 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 16:10:55] "GET /document/351 HTTP/1.1" 200 -
+2025-05-22 16:10:55,287 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 16:10:55] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-22 16:10:55,294 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 16:10:55] "GET /static/images/docs/3331b9cb78/img_21041c487da94ebe8483d72fca0e24d9.png HTTP/1.1" 200 -
+2025-05-22 16:10:55,294 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 16:10:55] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-22 16:10:55,295 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 16:10:55] "[36mGET /static/js/document-search.js HTTP/1.1[0m" 304 -
+2025-05-22 16:11:02,725 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 16:11:02] "GET /api/check-file?filename=二期Duoov1.0.1.docx&csrf_token=Ijg3NzliMTFjNTcxNmFhYmEyYTFmYzg3MjQ0MGFkNzVhN2YzZDc5Zjci.aC7cDg.bMKrvVMgSfzJETlIM3eLdl0rwA8 HTTP/1.1" 200 -
+2025-05-22 16:11:02,732 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 16:11:02] "GET /api/check-file?filename=五十八期Duoov5.8.5.docx&csrf_token=Ijg3NzliMTFjNTcxNmFhYmEyYTFmYzg3MjQ0MGFkNzVhN2YzZDc5Zjci.aC7cDg.bMKrvVMgSfzJETlIM3eLdl0rwA8 HTTP/1.1" 200 -
+2025-05-22 16:11:05,008 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 16:11:05] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-22 16:11:05,019 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 16:11:05] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
+2025-05-22 16:11:09,300 [INFO] - root - 原始文件名: 二期Duoov1.0.1.docx, 安全文件名: Duoov1.0.1.docx
+2025-05-22 16:11:09,303 [INFO] - root - 文件已保存: D:\tools\Pycharm\PycharmWork\DocRadar\data\test\uploads\temp_20250522161109_Duoov1.0.1.docx
+2025-05-22 16:11:09,312 [ERROR] - root - 提取DOCX图片失败: [Errno 2] No such file or directory: 'app\\static\\images\\docs\\2b94f4dd5e\\'
+2025-05-22 16:11:09,352 [INFO] - root - 图片尺寸: 736x706
+2025-05-22 16:11:09,362 [WARNING] - root - Mammoth警告: Message(type='warning', message='Run style with ID 00001a was referenced but not defined in the document')
+2025-05-22 16:11:09,362 [WARNING] - root - Mammoth警告: Message(type='warning', message='Table style with ID 00001b was referenced but not defined in the document')
+2025-05-22 16:11:09,363 [WARNING] - root - Mammoth警告: Message(type='warning', message='Unrecognised paragraph style: Title (Style ID: 000013)')
+2025-05-22 16:11:09,363 [WARNING] - root - Mammoth警告: Message(type='warning', message='Unrecognised run style: None (Style ID: 00001a)')
+2025-05-22 16:11:09,371 [WARNING] - root - 移动旧文件到临时目录失败: [WinError 32] 另一个程序正在使用此文件，进程无法访问。: 'D:\\tools\\Pycharm\\PycharmWork\\DocRadar\\data\\test\\uploads\\20250522161052_Duoov1.0.1.docx'
+2025-05-22 16:11:09,372 [INFO] - root - 已创建文件删除标记: D:\tools\Pycharm\PycharmWork\DocRadar\data\test\temp\mark_del_1747901469_20250522161052_Duoov1.0.1.docx.txt
+2025-05-22 16:11:09,373 [INFO] - root - 文件替换成功: 351, 新文件: D:\tools\Pycharm\PycharmWork\DocRadar\data\test\uploads\temp_20250522161109_Duoov1.0.1.docx
+2025-05-22 16:11:09,390 [INFO] - root - 更新文档内容: 351
+2025-05-22 16:11:09,390 [INFO] - root - 保存文档HTML内容: 351
+2025-05-22 16:11:09,393 [INFO] - root - 文档 351 覆盖成功
+2025-05-22 16:11:09,397 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 16:11:09] "POST /upload/batch HTTP/1.1" 200 -
+2025-05-22 16:13:13,014 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 16:13:13] "GET / HTTP/1.1" 200 -
+2025-05-22 16:13:13,035 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 16:13:13] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-22 16:13:13,041 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 16:13:13] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-22 16:13:13,058 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 16:13:13] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
+2025-05-22 16:25:49,607 [INFO] - root - 日志系统初始化完成，使用日志文件: 2025-05-22_docradar.log
+2025-05-22 16:25:49,631 [INFO] - werkzeug -  * Restarting with stat
+2025-05-22 16:25:50,151 [INFO] - root - 日志系统初始化完成，使用日志文件: 2025-05-22_docradar.log
+2025-05-22 16:25:50,168 [WARNING] - werkzeug -  * Debugger is active!
+2025-05-22 16:25:50,174 [INFO] - werkzeug -  * Debugger PIN: 556-007-356
+2025-05-22 16:25:50,277 [INFO] - werkzeug -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2025-05-22 16:25:52,950 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 16:25:52] "GET / HTTP/1.1" 200 -
+2025-05-22 16:25:53,216 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 16:25:53] "GET /static/js/main.js HTTP/1.1" 200 -
+2025-05-22 16:25:53,220 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 16:25:53] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-22 16:26:05,946 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 16:26:05] "GET /api/check-file?filename=二期Duoov1.0.1.docx&csrf_token=Ijg3NzliMTFjNTcxNmFhYmEyYTFmYzg3MjQ0MGFkNzVhN2YzZDc5Zjci.aC7fkA.GuDw3xoop4tOQ22b9B8qbmLU7O0 HTTP/1.1" 200 -
+2025-05-22 16:26:05,953 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 16:26:05] "GET /api/check-file?filename=五十八期Duoov5.8.5.docx&csrf_token=Ijg3NzliMTFjNTcxNmFhYmEyYTFmYzg3MjQ0MGFkNzVhN2YzZDc5Zjci.aC7fkA.GuDw3xoop4tOQ22b9B8qbmLU7O0 HTTP/1.1" 200 -
+2025-05-22 16:26:07,750 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 16:26:07] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-22 16:26:07,760 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 16:26:07] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
+2025-05-22 16:26:11,096 [INFO] - root - 原始文件名: 二期Duoov1.0.1.docx, 安全文件名: Duoov1.0.1.docx
+2025-05-22 16:26:11,099 [INFO] - root - 文件已保存: D:\tools\Pycharm\PycharmWork\DocRadar\data\test\uploads\temp_20250522162611_Duoov1.0.1.docx
+2025-05-22 16:26:11,112 [ERROR] - root - 提取DOCX图片失败: [Errno 2] No such file or directory: 'app\\static\\images\\docs\\4bb4840079\\'
+2025-05-22 16:26:11,167 [INFO] - root - 图片尺寸: 736x706
+2025-05-22 16:26:11,176 [WARNING] - root - Mammoth警告: Message(type='warning', message='Run style with ID 00001a was referenced but not defined in the document')
+2025-05-22 16:26:11,177 [WARNING] - root - Mammoth警告: Message(type='warning', message='Table style with ID 00001b was referenced but not defined in the document')
+2025-05-22 16:26:11,178 [WARNING] - root - Mammoth警告: Message(type='warning', message='Unrecognised paragraph style: Title (Style ID: 000013)')
+2025-05-22 16:26:11,178 [WARNING] - root - Mammoth警告: Message(type='warning', message='Unrecognised run style: None (Style ID: 00001a)')
+2025-05-22 16:26:11,185 [INFO] - root - 旧文件已移动到临时目录: D:\tools\Pycharm\PycharmWork\DocRadar\data\test\temp\old_1747902371_temp_20250522161109_Duoov1.0.1.docx
+2025-05-22 16:26:11,186 [INFO] - root - 文件替换成功: 351, 新文件: D:\tools\Pycharm\PycharmWork\DocRadar\data\test\uploads\temp_20250522162611_Duoov1.0.1.docx
+2025-05-22 16:26:11,205 [INFO] - root - 更新文档内容: 351
+2025-05-22 16:26:11,206 [INFO] - root - 保存文档HTML内容: 351
+2025-05-22 16:26:11,210 [INFO] - root - 文档 351 覆盖成功
+2025-05-22 16:26:11,213 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 16:26:11] "POST /upload/batch HTTP/1.1" 200 -
+2025-05-22 16:26:18,251 [INFO] - root - 原始文件名: 五十八期Duoov5.8.5.docx, 安全文件名: Duoov5.8.5.docx
+2025-05-22 16:26:18,263 [INFO] - root - 文件已保存: D:\tools\Pycharm\PycharmWork\DocRadar\data\test\uploads\temp_20250522162618_Duoov5.8.5.docx
+2025-05-22 16:26:18,282 [ERROR] - root - 提取DOCX图片失败: [Errno 2] No such file or directory: 'app\\static\\images\\docs\\764f7e9543\\'
+2025-05-22 16:26:18,306 [INFO] - root - 图片尺寸: 746x1236
+2025-05-22 16:26:18,310 [INFO] - root - 图片尺寸: 662x1432
+2025-05-22 16:26:18,312 [INFO] - root - 图片尺寸: 932x574
+2025-05-22 16:26:18,315 [INFO] - root - 图片尺寸: 1532x1492
+2025-05-22 16:26:18,318 [INFO] - root - 图片尺寸: 1316x1342
+2025-05-22 16:26:18,321 [INFO] - root - 图片尺寸: 664x1452
+2025-05-22 16:26:18,323 [INFO] - root - 图片尺寸: 2696x1392
+2025-05-22 16:26:18,326 [WARNING] - root - Mammoth警告: Message(type='warning', message='Run style with ID 000022 was referenced but not defined in the document')
+2025-05-22 16:26:18,326 [WARNING] - root - Mammoth警告: Message(type='warning', message='Table style with ID 000023 was referenced but not defined in the document')
+2025-05-22 16:26:18,326 [WARNING] - root - Mammoth警告: Message(type='warning', message='Run style with ID 000062 was referenced but not defined in the document')
+2025-05-22 16:26:18,327 [WARNING] - root - Mammoth警告: Message(type='warning', message='Run style with ID  was referenced but not defined in the document')
+2025-05-22 16:26:18,327 [WARNING] - root - Mammoth警告: Message(type='warning', message='Unrecognised paragraph style: Title (Style ID: 000013)')
+2025-05-22 16:26:18,328 [WARNING] - root - Mammoth警告: Message(type='warning', message='Unrecognised run style: None (Style ID: 000022)')
+2025-05-22 16:26:18,328 [WARNING] - root - Mammoth警告: Message(type='warning', message='Unrecognised run style: None (Style ID: 000062)')
+2025-05-22 16:26:18,328 [WARNING] - root - Mammoth警告: Message(type='warning', message='Unrecognised run style: None (Style ID: )')
+2025-05-22 16:26:18,334 [INFO] - root - 旧文件已移动到临时目录: D:\tools\Pycharm\PycharmWork\DocRadar\data\test\temp\old_1747902378_20250522161052_Duoov5.8.5.docx
+2025-05-22 16:26:18,334 [INFO] - root - 文件替换成功: 352, 新文件: D:\tools\Pycharm\PycharmWork\DocRadar\data\test\uploads\temp_20250522162618_Duoov5.8.5.docx
+2025-05-22 16:26:18,349 [INFO] - root - 更新文档内容: 352
+2025-05-22 16:26:18,349 [INFO] - root - 保存文档HTML内容: 352
+2025-05-22 16:26:18,352 [INFO] - root - 文档 352 覆盖成功
+2025-05-22 16:26:18,356 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 16:26:18] "POST /upload/batch HTTP/1.1" 200 -
+2025-05-22 16:26:24,329 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 16:26:24] "GET / HTTP/1.1" 200 -
+2025-05-22 16:26:24,351 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 16:26:24] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-22 16:26:24,363 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 16:26:24] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-22 16:26:24,366 [INFO] - werkzeug - 127.0.0.1 - - [22/May/2025 16:26:24] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
