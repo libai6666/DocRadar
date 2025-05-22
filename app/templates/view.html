@@ -436,5 +436,44 @@
     <script src="{{ url_for('static', filename='js/main.js') }}"></script>
     <!-- 使用新的document-search.js替换simple-finder.js -->
     <script src="{{ url_for('static', filename='js/document-search.js') }}"></script>
+    
+    <!-- 页面级脚本：处理文档浏览状态和返回逻辑 -->
+    <script>
+    // 在页面加载时保存当前文档状态
+    document.addEventListener('DOMContentLoaded', function() {
+        // 获取当前文档ID和搜索查询
+        const urlPath = window.location.pathname;
+        const docRegex = /\/document\/(\d+)/;
+        const match = urlPath.match(docRegex);
+        
+        if (match && match[1]) {
+            const docId = match[1];
+            const urlParams = new URLSearchParams(window.location.search);
+            const searchQuery = urlParams.get('q') || '';
+            const searchId = urlParams.get('search_id') || '';
+            
+            console.log(`当前页面文档ID: ${docId}, 搜索查询: "${searchQuery}", 搜索ID: ${searchId}`);
+            
+            // 存储到sessionStorage，用于恢复
+            sessionStorage.setItem('docradar_last_viewed_doc_id', docId);
+            sessionStorage.setItem('docradar_last_viewed_doc_query', searchQuery);
+            sessionStorage.setItem('docradar_last_viewed_doc_search_id', searchId);
+            
+            // 处理浏览器的返回按钮
+            window.addEventListener('beforeunload', function() {
+                // 保存文档浏览状态并设置返回标记
+                console.log(`页面即将离开，保存文档 ${docId} 的浏览状态`);
+                
+                // 设置返回标记，告知搜索结果页面这是从文档页面返回的
+                sessionStorage.setItem('docradar_back_to_search', 'true');
+                
+                // 保存当前搜索查询
+                if (searchQuery) {
+                    sessionStorage.setItem('docradar_current_search', searchQuery);
+                }
+            });
+        }
+    });
+    </script>
 </body>
 </html> 

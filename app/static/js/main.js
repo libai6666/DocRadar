@@ -3,6 +3,11 @@
  * 负责文件拖放上传和实时搜索功能
  */
 
+// 全局状态变量，用于追踪文档浏览
+let lastViewedDocId = null;
+let lastViewedDocQuery = null;
+let isDocumentPage = false;
+
 /**
  * 检测页面加载类型（刷新、正常导航或从缓存恢复）
  * @returns {Object} 页面加载类型信息
@@ -140,6 +145,20 @@ window.addEventListener('pageshow', function(event) {
         
         // 清除页面加载标记，确保这不会被错误地识别为刷新
         sessionStorage.removeItem('docradar_page_loaded');
+        
+        // 检查是否是从文档页面返回到搜索结果页面
+        const docId = sessionStorage.getItem('docradar_last_viewed_doc_id');
+        const docQuery = sessionStorage.getItem('docradar_last_viewed_doc_query');
+        
+        if (docId && window.location.pathname.includes('/search')) {
+            console.log(`从文档页面(ID: ${docId})返回到搜索结果页面，设置返回标记`);
+            sessionStorage.setItem('docradar_back_to_search', 'true');
+            
+            if (docQuery) {
+                console.log(`恢复文档的搜索查询: "${docQuery}"`);
+                sessionStorage.setItem('docradar_current_search', docQuery);
+            }
+        }
     }
     
     // 检查当前页面是否为搜索结果页面
@@ -216,6 +235,27 @@ window.addEventListener('pageshow', function(event) {
                 console.log(`正常标记已浏览文档，搜索查询: "${currentQuery}"`);
                 markVisitedDocumentsInResults(false);
             }
+        }
+    }
+});
+
+// 添加页面离开处理，确保在离开文档页面时保存浏览状态
+window.addEventListener('pagehide', function(e) {
+    // 检查是否从文档页面离开
+    if (isDocumentPage && lastViewedDocId) {
+        console.log(`页面离开事件(pagehide)，当前查看的文档ID: ${lastViewedDocId}`);
+        
+        // 强制保存浏览状态
+        markDocumentAsVisited(lastViewedDocId, true, lastViewedDocQuery);
+        
+        // 设置会话标记，告知页面不要在下一个搜索页面加载时重置访问状态
+        console.log(`在页面离开时设置返回标记，下一页面加载时将恢复浏览状态`);
+        sessionStorage.setItem('docradar_back_to_search', 'true');
+        
+        // 保存当前搜索查询
+        if (lastViewedDocQuery) {
+            console.log(`保存当前搜索查询: "${lastViewedDocQuery}"`);
+            sessionStorage.setItem('docradar_current_search', lastViewedDocQuery);
         }
     }
 });
@@ -2143,6 +2183,17 @@ function initVisitedDocumentsTracker(isRefresh = false) {
             // 获取URL查询参数中的搜索关键词
             const urlParams = new URLSearchParams(window.location.search);
             const searchQuery = urlParams.get('q') || '';
+            const searchId = urlParams.get('search_id') || '';
+            
+            // 更新全局状态变量
+            isDocumentPage = true;
+            lastViewedDocId = docId;
+            lastViewedDocQuery = searchQuery;
+            
+            // 保存到会话存储，用于从缓存恢复时使用
+            sessionStorage.setItem('docradar_last_viewed_doc_id', docId);
+            sessionStorage.setItem('docradar_last_viewed_doc_query', searchQuery);
+            sessionStorage.setItem('docradar_last_viewed_doc_search_id', searchId);
             
             // 如果是页面刷新，先记录这个信息
             if (isRefresh) {
@@ -2150,7 +2201,7 @@ function initVisitedDocumentsTracker(isRefresh = false) {
             }
             
             // 标记文档为已浏览，传递搜索关键词
-            markDocumentAsVisited(docId, isRefresh, searchQuery);
+            markDocumentAsVisited(docId, false, searchQuery);
             
             // 为返回搜索结果按钮添加点击事件
             const backToSearchBtn = document.getElementById('back-to-search');
@@ -2174,7 +2225,10 @@ function initVisitedDocumentsTracker(isRefresh = false) {
                 });
             }
         } else {
-            // 是搜索结果页面，检查是否为刷新
+            // 是搜索结果页面
+            isDocumentPage = false;
+            
+            // 检查是否为刷新
             if (isRefresh) {
                 console.log(`检测到页面刷新，将清空所有关键词的浏览记录`);
             } else {
@@ -2246,24 +2300,17 @@ function markDocumentAsVisited(docId, force = false, searchQuery = '') {
             localStorage.setItem(`docradar_visit_time_${searchQuery}_${docId}`, visitTime);
             
             console.log(`文档 ${docId} 已标记为已浏览，关联搜索词: "${searchQuery}", 时间戳: ${visitTime}`);
+            
+            // 更新全局状态变量
+            lastViewedDocId = docId;
+            lastViewedDocQuery = searchQuery;
+            
+            // 将此文档ID和查询保存到sessionStorage，用于浏览器返回时识别
+            sessionStorage.setItem('docradar_last_viewed_doc_id', docId);
+            sessionStorage.setItem('docradar_last_viewed_doc_query', searchQuery);
         } else {
             console.log(`文档 ${docId} 之前已在搜索 "${searchQuery}" 中浏览过`);
         }
-        
-        // 移除对全局文档列表的更新，确保文档浏览状态仅关联到特定搜索关键词
-        // 下面的代码已被注释，不再使用全局列表
-        /*
-        // 兼容性处理：也保存到原来的格式
-        // 这是为了确保其他地方的代码仍能正常工作
-        let visitedDocs = getVisitedDocuments();
-        if (!visitedDocs.includes(docId)) {
-            visitedDocs.push(docId);
-            if (visitedDocs.length > 100) {
-                visitedDocs = visitedDocs.slice(-100);
-            }
-            localStorage.setItem('docradar_visited_docs', JSON.stringify(visitedDocs));
-        }
-        */
     } catch (error) {
         console.error('标记文档为已浏览时发生错误:', error);
     }
