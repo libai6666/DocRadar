@@ -442,16 +442,22 @@ function initFileUpload() {
     
     // 重置进度显示
     function resetProgress() {
+        // 保存之前的失败文件列表（如果有）
+        const previousFailedFiles = uploadStats.failedFiles ? [...uploadStats.failedFiles] : [];
+        
         uploadStats = {
             success: 0,
             overwritten: 0,
             skipped: 0,
             failed: 0,
-            failedFiles: [] // 重置失败文件列表
+            failedFiles: previousFailedFiles // 保留之前的失败文件列表
         };
         progressBar.style.width = '0%';
         progressBar.setAttribute('aria-valuenow', 0);
         progressText.textContent = '0%';
+        
+        // 移除动画效果（如果有）
+        progressBar.classList.remove('progress-bar-striped', 'progress-bar-animated');
         
         // 清空已存在文件列表
         existingFiles = [];
@@ -672,6 +678,35 @@ function initFileUpload() {
                 console.error('隐藏批量覆盖模态框时出错:', error);
             }
             
+            // 确保上传状态区域可见并显示进度条 - 使用更明确的方式显示
+            if (uploadStatus) {
+                // 先确保元素完全可见
+                uploadStatus.style.display = 'block';
+                uploadStatus.classList.remove('d-none');
+                
+                // 重置进度条状态
+                resetProgress();
+                
+                // 显式设置进度条为初始状态
+                progressBar.style.width = '0%';
+                progressBar.setAttribute('aria-valuenow', 0);
+                progressText.textContent = '0%';
+                
+                // 滚动到上传状态区域，确保用户可以看到
+                uploadStatus.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                
+                console.log('上传状态区域和进度条已显示');
+            } else {
+                console.error('找不到上传状态区域元素');
+            }
+            
+            // 显示正在处理的信息
+            uploadResult.innerHTML = '<div class="alert alert-info">' +
+                '<div class="d-flex align-items-center">' +
+                '<div class="spinner-border spinner-border-sm me-2" role="status"></div>' +
+                '<div>正在准备覆盖操作，处理 ' + filesToOverwrite.length + ' 个文件...</div>' +
+                '</div></div>';
+            
             // 获取所有新文件(不在existingFiles中的文件)
             const newFiles = selectedFiles.filter(file => 
                 !existingFiles.some(existing => existing.filename === file.name)
@@ -689,9 +724,6 @@ function initFileUpload() {
             
             console.log(`${unselectedFiles.length}个文件被标记为跳过`);
             uploadStats.skipped += unselectedFiles.length;
-            
-            // 然后上传需要覆盖的文件
-            uploadResult.innerHTML = '<div class="alert alert-info">上传覆盖文件中，请稍候...</div>';
             
             // 处理批量覆盖文件
             await processBatchOverwrite(filesToOverwrite);
@@ -1281,21 +1313,34 @@ function initFileUpload() {
         } else {
             uploadStats.failed++;
             
+            // 初始化失败文件列表（如果不存在）
+            if (!uploadStats.failedFiles) {
+                uploadStats.failedFiles = [];
+            }
+            
+            // 确保有文件名信息
+            let failedFileName = result.filename || filename || '未知文件';
+            let errorMessage = result.error || '未知错误';
+            
+            // 获取详细的错误信息
+            if (result.message && result.message !== result.error) {
+                errorMessage += ` (${result.message})`;
+            }
+            
             // 如果结果中包含文件名和错误信息，添加到失败文件列表
-            if (result.filename || result.error || filename) {
-                const failedFile = {
-                    name: result.filename || filename || '未知文件',
-                    error: result.error || '未知错误'
-                };
-                
-                // 检查是否已经存在相同的失败记录，避免重复
-                const exists = uploadStats.failedFiles.some(file => 
-                    file.name === failedFile.name && file.error === failedFile.error
-                );
-                
-                if (!exists) {
-                    uploadStats.failedFiles.push(failedFile);
-                }
+            const failedFile = {
+                name: failedFileName,
+                error: errorMessage
+            };
+            
+            // 检查是否已经存在相同的失败记录，避免重复
+            const exists = uploadStats.failedFiles.some(file => 
+                file.name === failedFile.name && file.error === failedFile.error
+            );
+            
+            if (!exists) {
+                console.error(`记录失败文件: ${failedFile.name}, 错误: ${failedFile.error}`);
+                uploadStats.failedFiles.push(failedFile);
             }
         }
     }
@@ -1313,6 +1358,10 @@ function initFileUpload() {
         // 确保uploadResultContent元素存在
         if (!uploadResultContent) {
             console.error('找不到上传结果内容元素');
+            // 即使找不到上传结果内容元素，也在控制台显示失败文件信息
+            if (uploadStats.failedFiles && uploadStats.failedFiles.length > 0) {
+                console.error('失败文件列表:', uploadStats.failedFiles);
+            }
             alert(`上传完成: 成功 ${uploadStats.success}, 覆盖 ${uploadStats.overwritten}, 跳过 ${uploadStats.skipped}, 失败 ${uploadStats.failed}`);
             return;
         }
@@ -1346,17 +1395,23 @@ function initFileUpload() {
                 <i class="bi bi-exclamation-triangle-fill me-2"></i>
                 上传失败: ${uploadStats.failed} 个文件`;
             
-            // 添加失败文件详情
+            // 添加失败文件详情，确保始终显示
             if (uploadStats.failedFiles && uploadStats.failedFiles.length > 0) {
                 resultHTML += `<div class="mt-2">
                     <strong>失败详情:</strong>
                     <ul class="mt-1 mb-0 small">`;
                 
+                // 确保所有失败文件都被显示
                 uploadStats.failedFiles.forEach(file => {
-                    resultHTML += `<li>${file.name} - <span class="text-danger">${file.error}</span></li>`;
+                    resultHTML += `<li><strong>${file.name || '未知文件'}</strong> - <span class="text-danger">${file.error || '未知错误'}</span></li>`;
                 });
                 
                 resultHTML += `</ul>
+                </div>`;
+            } else {
+                // 如果 failedFiles 数组不存在或为空，但 failed 计数大于0，显示通用错误信息
+                resultHTML += `<div class="mt-2">
+                    <span class="text-danger">发生错误，但未能获取详细信息</span>
                 </div>`;
             }
             
@@ -1396,6 +1451,10 @@ function initFileUpload() {
         if (typeof bootstrap === 'undefined') {
             console.error('Bootstrap未加载');
             alert(`上传完成: 成功 ${uploadStats.success}, 覆盖 ${uploadStats.overwritten}, 跳过 ${uploadStats.skipped}, 失败 ${uploadStats.failed}`);
+            // 在控制台显示失败文件信息
+            if (uploadStats.failedFiles && uploadStats.failedFiles.length > 0) {
+                console.error('失败文件列表:', uploadStats.failedFiles);
+            }
             return;
         }
         
@@ -1413,6 +1472,10 @@ function initFileUpload() {
         } catch (error) {
             console.error('显示上传结果模态框时出错:', error);
             alert(`上传完成: 成功 ${uploadStats.success}, 覆盖 ${uploadStats.overwritten}, 跳过 ${uploadStats.skipped}, 失败 ${uploadStats.failed}`);
+            // 在控制台显示失败文件信息
+            if (uploadStats.failedFiles && uploadStats.failedFiles.length > 0) {
+                console.error('失败文件列表:', uploadStats.failedFiles);
+            }
         }
         
         // 清空文件列表
@@ -1505,18 +1568,45 @@ function initFileUpload() {
             fileMap.set(file.name, file);
         });
         
-        uploadResult.innerHTML = '<div class="alert alert-info">覆盖文件中，请稍候...</div>';
+        // 确保进度条区域完全可见
+        uploadStatus.style.display = 'block';
+        uploadStatus.classList.remove('d-none');
         
-        // 分批处理覆盖，每批次更小
-        const batchSize = 1; // 每批处理1个文件，完全串行化处理
+        // 使用更明显的进度条样式
+        progressBar.classList.add('progress-bar-striped', 'progress-bar-animated');
+        progressBar.style.width = '0%';
+        progressBar.setAttribute('aria-valuenow', 0);
+        progressText.textContent = '0%';
+        
+        // 显示正在处理的信息
+        uploadResult.innerHTML = '<div class="alert alert-info">' +
+            '<div class="d-flex align-items-center">' +
+            '<div class="spinner-border spinner-border-sm me-2" role="status"></div>' +
+            '<div>正在准备覆盖文件，总计: ' + filesToOverwrite.length + ' 个文件</div>' +
+            '</div></div>';
+        
+        // 分批处理覆盖，适当增加批次大小
+        const batchSize = 2; // 增加到每批处理2个文件，提高效率
         
         const processBatch = async (files, startIndex, batchSize) => {
             const endIndex = Math.min(startIndex + batchSize, files.length);
             console.log(`处理覆盖批次: ${startIndex + 1} 到 ${endIndex} (共 ${files.length} 个文件)`);
             
+            // 更新总体进度显示
+            const batchProgress = Math.round((startIndex / files.length) * 100);
+            progressBar.style.width = `${batchProgress}%`;
+            progressBar.setAttribute('aria-valuenow', batchProgress);
+            progressText.textContent = `${batchProgress}%`;
+            
             for (let i = startIndex; i < endIndex; i++) {
                 const filename = files[i];
                 console.log(`尝试查找文件对象: ${filename}`);
+                
+                // 更新进度条显示当前处理的文件
+                const currentProgress = Math.round(((i + 0.5) / files.length) * 100);
+                progressBar.style.width = `${currentProgress}%`;
+                progressBar.setAttribute('aria-valuenow', currentProgress);
+                progressText.textContent = `${currentProgress}%`;
                 
                 // 增强文件名匹配逻辑
                 let file = null;
@@ -1597,10 +1687,27 @@ function initFileUpload() {
                         name: filename,
                         error: '找不到文件对象'
                     });
+                    
+                    // 更新进度条
+                    const progress = Math.round(((i + 1) / files.length) * 100);
+                    progressBar.style.width = `${progress}%`;
+                    progressBar.setAttribute('aria-valuenow', progress);
+                    progressText.textContent = `${progress}%`;
+                    
                     continue;
                 }
                 
                 console.log(`覆盖文件 ${i + 1}/${files.length}: ${file.name}`);
+                
+                // 更新处理状态显示
+                uploadResult.innerHTML = `<div class="alert alert-info">
+                    <div class="d-flex align-items-center">
+                        <div class="spinner-border spinner-border-sm me-2" role="status"></div>
+                        <div>
+                            正在覆盖文件 (${i + 1}/${files.length}): ${file.name}
+                        </div>
+                    </div>
+                </div>`;
                 
                 // 添加重试机制
                 let success = false;
@@ -1610,21 +1717,21 @@ function initFileUpload() {
                     try {
                         // 如果不是第一次尝试，添加延迟
                         if (attempt > 0) {
-                            const retryDelay = 3000 * attempt; // 递增延迟
+                            const retryDelay = 2000 * attempt; // 减少到2秒的基础延迟
                             console.log(`尝试第 ${attempt + 1} 次覆盖文件: ${file.name}，等待 ${retryDelay/1000} 秒...`);
                             await new Promise(resolve => setTimeout(resolve, retryDelay));
-                        }
-                        
-                        // 更新UI显示当前正在处理的文件
-                        uploadResult.innerHTML = `<div class="alert alert-info">
-                            <div class="d-flex align-items-center">
-                                <div class="spinner-border spinner-border-sm me-2" role="status"></div>
-                                <div>
-                                    正在覆盖文件 (${i + 1}/${files.length}): ${file.name}
-                                    ${attempt > 0 ? `<span class="badge bg-warning ms-2">第 ${attempt + 1} 次尝试</span>` : ''}
+                            
+                            // 更新重试状态显示
+                            uploadResult.innerHTML = `<div class="alert alert-warning">
+                                <div class="d-flex align-items-center">
+                                    <div class="spinner-border spinner-border-sm me-2" role="status"></div>
+                                    <div>
+                                        正在覆盖文件 (${i + 1}/${files.length}): ${file.name}
+                                        <span class="badge bg-warning ms-2">第 ${attempt + 1} 次尝试</span>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>`;
+                            </div>`;
+                        }
                         
                         const result = await uploadSingleFile(file, true);
                         
@@ -1648,6 +1755,12 @@ function initFileUpload() {
                                     name: file.name,
                                     error: result.error || '未知错误'
                                 });
+                                
+                                // 更新进度条
+                                const progress = Math.round(((i + 1) / files.length) * 100);
+                                progressBar.style.width = `${progress}%`;
+                                progressBar.setAttribute('aria-valuenow', progress);
+                                progressText.textContent = `${progress}%`;
                             }
                         }
                     } catch (error) {
@@ -1659,20 +1772,26 @@ function initFileUpload() {
                                 name: file.name,
                                 error: error.message || '未知错误'
                             });
+                            
+                            // 更新进度条
+                            const progress = Math.round(((i + 1) / files.length) * 100);
+                            progressBar.style.width = `${progress}%`;
+                            progressBar.setAttribute('aria-valuenow', progress);
+                            progressText.textContent = `${progress}%`;
                         }
                     }
                 }
                 
-                // 文件之间添加更长的延迟，避免并发问题
-                const fileDelay = 2000; // 2秒
+                // 文件之间添加短暂延迟，避免并发问题但提高速度
+                const fileDelay = 1000; // 减少到1秒，提高速度
                 console.log(`文件处理完成，等待 ${fileDelay/1000} 秒后处理下一个文件...`);
                 await new Promise(resolve => setTimeout(resolve, fileDelay));
             }
             
             // 处理下一批次
             if (endIndex < files.length) {
-                // 批次之间添加更长的延迟
-                const batchDelay = 5000; // 5秒
+                // 批次之间添加适当的延迟
+                const batchDelay = 2000; // 减少到2秒，提高速度
                 console.log(`批次处理完成，等待 ${batchDelay/1000} 秒后处理下一批次...`);
                 uploadResult.innerHTML = `<div class="alert alert-info">
                     <div class="d-flex align-items-center">
@@ -1688,8 +1807,11 @@ function initFileUpload() {
         };
         
         try {
-            // 开始分批处理，每批次1个文件
+            // 开始分批处理，增加批次大小
             await processBatch(filesToOverwrite, 0, batchSize);
+            
+            // 完成后移除动画效果
+            progressBar.classList.remove('progress-bar-striped', 'progress-bar-animated');
             
             // 显示最终结果
             showFinalResult();
@@ -1698,6 +1820,9 @@ function initFileUpload() {
             uploadResult.innerHTML = `<div class="alert alert-danger">
                 批量覆盖处理过程中发生错误: ${error.message || '未知错误'}
             </div>`;
+            
+            // 出错时也移除动画效果
+            progressBar.classList.remove('progress-bar-striped', 'progress-bar-animated');
             
             // 即使出错也显示当前结果
             showFinalResult();
