@@ -1055,16 +1055,6 @@ function initFileUpload() {
                     uploadStatus.classList.add('d-none');
                 }
             }
-            
-            // 上传其他新文件
-            const newFiles = selectedFiles.filter(file => 
-                !existingFiles.some(existing => existing.filename === file.name)
-            );
-            
-            if (newFiles.length > 0) {
-                console.log('上传其他新文件:', newFiles.length);
-                uploadAllNewFiles(newFiles);
-            }
         });
     } else {
         console.error('确认覆盖按钮元素不存在');
@@ -1144,11 +1134,6 @@ function initFileUpload() {
                 '<div>正在准备覆盖操作，处理 ' + filesToOverwrite.length + ' 个文件...</div>' +
                 '</div></div>';
             
-            // 获取所有新文件(不在existingFiles中的文件)
-            const newFiles = selectedFiles.filter(file => 
-                !existingFiles.some(existing => existing.filename === file.name)
-            );
-            
             // 标记未选中的文件为跳过
             const unselectedFiles = existingFiles.filter(fileInfo => {
                 // 如果文件对象存在，使用文件对象的名称进行匹配
@@ -1164,6 +1149,9 @@ function initFileUpload() {
             
             // 处理批量覆盖文件
             await processBatchOverwrite(filesToOverwrite);
+            
+            // 显示最终结果
+            showFinalResult();
         });
     }
     
@@ -1251,7 +1239,16 @@ function initFileUpload() {
         console.log('新文件列表:', newFiles.map(f => f.name));
         console.log('已存在文件列表:', existingFiles.map(f => f.filename));
         
-        // 如果有已存在的文件，显示覆盖确认对话框
+        // 修改逻辑：先上传新文件，再处理覆盖
+        
+        // 第一步：如果有新文件，先上传新文件
+        if (newFiles.length > 0) {
+            console.log('先上传新文件，数量:', newFiles.length);
+            await uploadAllNewFiles(newFiles);
+            // 注意：此时不调用showFinalResult()，因为还有可能需要处理覆盖文件
+        }
+        
+        // 第二步：如果有已存在的文件，显示覆盖确认对话框
         if (existingFiles.length > 0) {
             console.log(`发现${existingFiles.length}个已存在的文件，准备显示覆盖确认对话框`);
             
@@ -1268,6 +1265,11 @@ function initFileUpload() {
                     // 恢复批量删除按钮
                     if (batchDeleteBtn) {
                         batchDeleteBtn.disabled = false;
+                    }
+                    
+                    // 如果已经上传了新文件，显示最终结果
+                    if (newFiles.length > 0) {
+                        showFinalResult();
                     }
                     return;
                 }
@@ -1300,8 +1302,10 @@ function initFileUpload() {
                             console.log('重新初始化覆盖确认模态框成功');
                         } catch (error) {
                             console.error('重新初始化覆盖确认模态框失败:', error);
-                            // 如果无法初始化模态框，直接上传新文件
-                            uploadAllNewFiles(newFiles);
+                            // 如果无法初始化模态框，但已经上传了新文件，显示最终结果
+                            if (newFiles.length > 0) {
+                                showFinalResult();
+                            }
                             uploadBtn.disabled = false;
                             
                             // 恢复批量删除按钮
@@ -1312,8 +1316,10 @@ function initFileUpload() {
                         }
                     } else {
                         console.error('覆盖确认模态框元素不存在');
-                        // 如果模态框元素不存在，直接上传新文件
-                        uploadAllNewFiles(newFiles);
+                        // 如果模态框元素不存在，但已经上传了新文件，显示最终结果
+                        if (newFiles.length > 0) {
+                            showFinalResult();
+                        }
                         uploadBtn.disabled = false;
                         
                         // 恢复批量删除按钮
@@ -1330,7 +1336,10 @@ function initFileUpload() {
                     if (typeof bootstrap === 'undefined') {
                         console.error('Bootstrap未加载');
                         alert('系统错误: Bootstrap库未加载，无法显示确认对话框');
-                        uploadAllNewFiles(newFiles);
+                        // 如果已经上传了新文件，显示最终结果
+                        if (newFiles.length > 0) {
+                            showFinalResult();
+                        }
                         uploadBtn.disabled = false;
                         
                         // 恢复批量删除按钮
@@ -1346,8 +1355,10 @@ function initFileUpload() {
                     console.log('显示单文件覆盖确认模态框成功');
                 } catch (error) {
                     console.error('显示单文件覆盖确认模态框时出错:', error);
-                    // 如果无法显示模态框，直接上传新文件
-                    uploadAllNewFiles(newFiles);
+                    // 如果无法显示模态框，但已经上传了新文件，显示最终结果
+                    if (newFiles.length > 0) {
+                        showFinalResult();
+                    }
                     
                     // 恢复批量删除按钮
                     if (batchDeleteBtn) {
@@ -1358,12 +1369,14 @@ function initFileUpload() {
             // 如果有多个文件，显示批量覆盖选择界面
             else {
                 console.log('准备显示批量覆盖选择界面');
-                showBatchOverwriteModal(newFiles);
+                showBatchOverwriteModal();
             }
+        } else if (newFiles.length > 0) {
+            // 如果没有已存在的文件，但已经上传了新文件，显示最终结果
+            showFinalResult();
         } else {
-            // 如果没有已存在的文件，直接上传所有新文件
-            console.log('没有已存在的文件，直接上传所有新文件');
-            uploadAllNewFiles(newFiles);
+            // 如果既没有新文件也没有已存在的文件，显示提示
+            uploadResult.innerHTML = '<div class="alert alert-warning">没有文件需要上传</div>';
         }
         
         uploadBtn.disabled = false;
@@ -1372,11 +1385,25 @@ function initFileUpload() {
     // 上传所有新文件
     async function uploadAllNewFiles(files) {
         if (files.length === 0) {
-            showFinalResult();
+            // 不显示最终结果，因为可能还有覆盖操作
             return;
         }
         
         uploadResult.innerHTML = '<div class="alert alert-info">上传新文件中，请稍候...</div>';
+        
+        // 确保上传状态区域可见
+        if (uploadStatus) {
+            uploadStatus.style.display = 'block';
+            uploadStatus.classList.remove('d-none');
+            
+            // 重置进度条状态
+            progressBar.style.width = '0%';
+            progressBar.setAttribute('aria-valuenow', 0);
+            progressText.textContent = '0%';
+            
+            // 添加动画效果，使进度条更明显
+            progressBar.classList.add('progress-bar-striped', 'progress-bar-animated');
+        }
         
         // 上传所有新文件，使用分批处理
         const batchSize = 3; // 每批处理3个文件（减小批次大小）
@@ -1390,6 +1417,16 @@ function initFileUpload() {
             for (let i = startIndex; i < endIndex; i++) {
                 const file = files[i];
                 console.log(`上传文件 ${i + 1}/${files.length}: ${file.name}`);
+                
+                // 更新上传状态显示
+                uploadResult.innerHTML = `<div class="alert alert-info">
+                    <div class="d-flex align-items-center">
+                        <div class="spinner-border spinner-border-sm me-2" role="status"></div>
+                        <div>
+                            正在上传新文件 (${i + 1}/${files.length}): ${file.name}
+                        </div>
+                    </div>
+                </div>`;
                 
                 // 添加重试机制
                 let success = false;
@@ -1455,7 +1492,13 @@ function initFileUpload() {
         // 开始分批处理
         await processBatch(files, 0, batchSize);
         
-        showFinalResult();
+        // 完成后移除进度条动画效果
+        if (progressBar) {
+            progressBar.classList.remove('progress-bar-striped', 'progress-bar-animated');
+        }
+        
+        // 注意：不调用showFinalResult()，因为可能还有覆盖操作
+        console.log('新文件上传完成');
     }
     
     // 获取CSRF令牌的辅助函数
@@ -1526,27 +1569,23 @@ function initFileUpload() {
     }
     
     // 显示批量覆盖选择模态框
-    function showBatchOverwriteModal(newFiles) {
+    function showBatchOverwriteModal() {
         console.log('准备显示批量覆盖选择模态框', existingFiles.length);
         console.log('已存在文件列表:', existingFiles);
         
         // 确保模态框元素和对象存在
         if (!batchOverwriteModalEl) {
             console.error('找不到批量覆盖模态框元素');
-            // 如果无法显示模态框，直接上传新文件
-            if (newFiles && newFiles.length > 0) {
-                uploadAllNewFiles(newFiles);
-            }
+            // 如果无法显示模态框，显示最终结果
+            showFinalResult();
             return;
         }
         
         // 确保existingFilesList元素存在
         if (!existingFilesList) {
             console.error('找不到existingFilesList元素');
-            // 如果无法显示模态框，直接上传新文件
-            if (newFiles && newFiles.length > 0) {
-                uploadAllNewFiles(newFiles);
-            }
+            // 如果无法显示模态框，显示最终结果
+            showFinalResult();
             return;
         }
         
@@ -1631,9 +1670,8 @@ function initFileUpload() {
         if (typeof bootstrap === 'undefined') {
             console.error('Bootstrap未加载');
             alert('系统错误: Bootstrap库未加载，无法显示确认对话框');
-            if (newFiles && newFiles.length > 0) {
-                uploadAllNewFiles(newFiles);
-            }
+            // 显示最终结果
+            showFinalResult();
             return;
         }
         
@@ -1645,10 +1683,8 @@ function initFileUpload() {
             console.log('批量覆盖模态框已显示');
         } catch (error) {
             console.error('显示批量覆盖模态框时出错:', error);
-            // 如果无法显示模态框，直接上传新文件
-            if (newFiles && newFiles.length > 0) {
-                uploadAllNewFiles(newFiles);
-            }
+            // 如果无法显示模态框，显示最终结果
+            showFinalResult();
         }
     }
     
@@ -2219,51 +2255,28 @@ function initFileUpload() {
                     }
                 }
                 
-                // 文件之间添加短暂延迟，避免并发问题但提高速度
-                const fileDelay = 1000; // 减少到1秒，提高速度
-                console.log(`文件处理完成，等待 ${fileDelay/1000} 秒后处理下一个文件...`);
-                await new Promise(resolve => setTimeout(resolve, fileDelay));
+                // 文件之间添加短暂延迟，避免并发问题
+                await new Promise(resolve => setTimeout(resolve, 500));
             }
             
             // 处理下一批次
             if (endIndex < files.length) {
-                // 批次之间添加适当的延迟
-                const batchDelay = 2000; // 减少到2秒，提高速度
-                console.log(`批次处理完成，等待 ${batchDelay/1000} 秒后处理下一批次...`);
-                uploadResult.innerHTML = `<div class="alert alert-info">
-                    <div class="d-flex align-items-center">
-                        <div class="spinner-border spinner-border-sm me-2" role="status"></div>
-                        <div>
-                            已处理 ${endIndex}/${files.length} 个文件，准备处理下一批...
-                        </div>
-                    </div>
-                </div>`;
-                await new Promise(resolve => setTimeout(resolve, batchDelay));
+                // 批次之间添加更长的延迟
+                await new Promise(resolve => setTimeout(resolve, 2000)); // 增加到2秒
                 await processBatch(files, endIndex, batchSize);
             }
         };
         
-        try {
-            // 开始分批处理，增加批次大小
+        // 开始分批处理
+        if (filesToOverwrite.length > 0) {
             await processBatch(filesToOverwrite, 0, batchSize);
-            
-            // 完成后移除动画效果
-            progressBar.classList.remove('progress-bar-striped', 'progress-bar-animated');
-            
-            // 显示最终结果
-            showFinalResult();
-        } catch (error) {
-            console.error('批量覆盖处理过程中发生错误:', error);
-            uploadResult.innerHTML = `<div class="alert alert-danger">
-                批量覆盖处理过程中发生错误: ${error.message || '未知错误'}
-            </div>`;
-            
-            // 出错时也移除动画效果
-            progressBar.classList.remove('progress-bar-striped', 'progress-bar-animated');
-            
-            // 即使出错也显示当前结果
-            showFinalResult();
+            console.log('批量覆盖处理完成');
+        } else {
+            console.log('没有文件需要覆盖');
         }
+        
+        // 不在这里调用showFinalResult，让调用方决定何时显示最终结果
+        // 这样可以在处理完所有文件（包括新文件）后再显示最终结果
     }
 }
 

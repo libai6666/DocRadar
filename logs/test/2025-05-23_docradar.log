@@ -180,3 +180,732 @@
 2025-05-23 11:35:45,439 [WARNING] - werkzeug -  * Debugger is active!
 2025-05-23 11:35:45,444 [INFO] - werkzeug -  * Debugger PIN: 114-528-488
 2025-05-23 11:35:45,552 [INFO] - werkzeug -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2025-05-23 11:41:38,239 [INFO] - root - 日志系统初始化完成，使用日志文件: 2025-05-23_docradar.log
+2025-05-23 11:41:38,264 [INFO] - werkzeug -  * Restarting with stat
+2025-05-23 11:41:38,750 [INFO] - root - 日志系统初始化完成，使用日志文件: 2025-05-23_docradar.log
+2025-05-23 11:41:38,768 [WARNING] - werkzeug -  * Debugger is active!
+2025-05-23 11:41:38,773 [INFO] - werkzeug -  * Debugger PIN: 114-528-488
+2025-05-23 11:41:38,873 [INFO] - werkzeug -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2025-05-23 11:41:46,790 [INFO] - root - 文档ID 416: 使用原始标题 '五十五期Duoov5.6.4'
+2025-05-23 11:41:46,791 [INFO] - root - 文档 416 使用HTML内容显示
+2025-05-23 11:41:46,792 [INFO] - root - 传递查询参数到模板: '', 搜索ID: ''
+2025-05-23 11:41:46,807 [INFO] - werkzeug - 127.0.0.1 - - [23/May/2025 11:41:46] "GET /document/416 HTTP/1.1" 200 -
+2025-05-23 11:41:47,269 [INFO] - werkzeug - 127.0.0.1 - - [23/May/2025 11:41:47] "[36mGET /static/document_images/test/202505/f2e9c3b586/img_3213af76e8054ef89ddd9cfb50f3aef7.png HTTP/1.1[0m" 304 -
+2025-05-23 11:41:47,269 [INFO] - werkzeug - 127.0.0.1 - - [23/May/2025 11:41:47] "[36mGET /static/document_images/test/202505/f2e9c3b586/img_4201c56ce3eb46aeb88024cda135d672.png HTTP/1.1[0m" 304 -
+2025-05-23 11:41:47,269 [INFO] - werkzeug - 127.0.0.1 - - [23/May/2025 11:41:47] "[36mGET /static/document_images/test/202505/f2e9c3b586/img_fe00e8dfbc264410b74a314b7644a744.png HTTP/1.1[0m" 304 -
+2025-05-23 11:41:47,271 [INFO] - werkzeug - 127.0.0.1 - - [23/May/2025 11:41:47] "[36mGET /static/document_images/test/202505/f2e9c3b586/img_612528a0a4ff4ebf903edef7a0e3f8ac.png HTTP/1.1[0m" 304 -
+2025-05-23 11:41:47,279 [INFO] - werkzeug - 127.0.0.1 - - [23/May/2025 11:41:47] "GET /static/js/main.js HTTP/1.1" 200 -
+2025-05-23 11:41:47,279 [INFO] - werkzeug - 127.0.0.1 - - [23/May/2025 11:41:47] "[36mGET /static/js/document-search.js HTTP/1.1[0m" 304 -
+2025-05-23 11:41:47,281 [INFO] - werkzeug - 127.0.0.1 - - [23/May/2025 11:41:47] "[36mGET /static/document_images/test/202505/f2e9c3b586/img_8e07680d315845458872d9b1a9810131.png HTTP/1.1[0m" 304 -
+2025-05-23 11:41:47,282 [INFO] - werkzeug - 127.0.0.1 - - [23/May/2025 11:41:47] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-23 11:41:47,286 [INFO] - werkzeug - 127.0.0.1 - - [23/May/2025 11:41:47] "[36mGET /static/document_images/test/202505/f2e9c3b586/img_80862dc27aa140d09ccbee935642f928.png HTTP/1.1[0m" 304 -
+2025-05-23 11:41:47,293 [INFO] - werkzeug - 127.0.0.1 - - [23/May/2025 11:41:47] "[36mGET /static/document_images/test/202505/f2e9c3b586/img_183e5e1c55984837aa42c23a93f01416.png HTTP/1.1[0m" 304 -
+2025-05-23 11:41:47,295 [INFO] - werkzeug - 127.0.0.1 - - [23/May/2025 11:41:47] "[36mGET /static/document_images/test/202505/f2e9c3b586/img_642428aac98149989bc1ef6562f1b572.png HTTP/1.1[0m" 304 -
+2025-05-23 11:41:50,419 [INFO] - werkzeug - 127.0.0.1 - - [23/May/2025 11:41:50] "GET / HTTP/1.1" 200 -
+2025-05-23 11:41:50,434 [INFO] - werkzeug - 127.0.0.1 - - [23/May/2025 11:41:50] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-23 11:41:50,437 [INFO] - werkzeug - 127.0.0.1 - - [23/May/2025 11:41:50] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-23 11:41:51,639 [INFO] - werkzeug - 127.0.0.1 - - [23/May/2025 11:41:51] "GET / HTTP/1.1" 200 -
+2025-05-23 11:41:51,655 [INFO] - werkzeug - 127.0.0.1 - - [23/May/2025 11:41:51] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-23 11:41:51,659 [INFO] - werkzeug - 127.0.0.1 - - [23/May/2025 11:41:51] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-23 11:41:52,720 [INFO] - werkzeug - 127.0.0.1 - - [23/May/2025 11:41:52] "GET / HTTP/1.1" 200 -
+2025-05-23 11:41:52,739 [INFO] - werkzeug - 127.0.0.1 - - [23/May/2025 11:41:52] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-23 11:41:52,739 [INFO] - werkzeug - 127.0.0.1 - - [23/May/2025 11:41:52] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-23 11:41:58,847 [INFO] - werkzeug - 127.0.0.1 - - [23/May/2025 11:41:58] "GET /api/check-file?filename=二期Duoov1.0.1.docx&csrf_token=Ijg3NzliMTFjNTcxNmFhYmEyYTFmYzg3MjQ0MGFkNzVhN2YzZDc5Zjci.aC_ugA.yYekcvSoDpWBjYun8r7SlWNl4E4 HTTP/1.1" 200 -
+2025-05-23 11:41:58,854 [INFO] - werkzeug - 127.0.0.1 - - [23/May/2025 11:41:58] "GET /api/check-file?filename=五十八期Duoov5.8.5.docx&csrf_token=Ijg3NzliMTFjNTcxNmFhYmEyYTFmYzg3MjQ0MGFkNzVhN2YzZDc5Zjci.aC_ugA.yYekcvSoDpWBjYun8r7SlWNl4E4 HTTP/1.1" 200 -
+2025-05-23 11:41:58,865 [INFO] - werkzeug - 127.0.0.1 - - [23/May/2025 11:41:58] "GET /api/check-file?filename=五十七期Duoov5.8.4.docx&csrf_token=Ijg3NzliMTFjNTcxNmFhYmEyYTFmYzg3MjQ0MGFkNzVhN2YzZDc5Zjci.aC_ugA.yYekcvSoDpWBjYun8r7SlWNl4E4 HTTP/1.1" 200 -
+2025-05-23 11:41:58,871 [INFO] - werkzeug - 127.0.0.1 - - [23/May/2025 11:41:58] "GET /api/check-file?filename=五十六期Duoov5.7.4.docx&csrf_token=Ijg3NzliMTFjNTcxNmFhYmEyYTFmYzg3MjQ0MGFkNzVhN2YzZDc5Zjci.aC_ugA.yYekcvSoDpWBjYun8r7SlWNl4E4 HTTP/1.1" 200 -
+2025-05-23 11:41:58,878 [INFO] - werkzeug - 127.0.0.1 - - [23/May/2025 11:41:58] "GET /api/check-file?filename=五十五期Duoov5.6.4.docx&csrf_token=Ijg3NzliMTFjNTcxNmFhYmEyYTFmYzg3MjQ0MGFkNzVhN2YzZDc5Zjci.aC_ugA.yYekcvSoDpWBjYun8r7SlWNl4E4 HTTP/1.1" 200 -
+2025-05-23 11:41:58,887 [INFO] - werkzeug - 127.0.0.1 - - [23/May/2025 11:41:58] "GET /api/check-file?filename=五十四期Duoov5.6.5.docx&csrf_token=Ijg3NzliMTFjNTcxNmFhYmEyYTFmYzg3MjQ0MGFkNzVhN2YzZDc5Zjci.aC_ugA.yYekcvSoDpWBjYun8r7SlWNl4E4 HTTP/1.1" 200 -
+2025-05-23 11:41:58,894 [INFO] - werkzeug - 127.0.0.1 - - [23/May/2025 11:41:58] "GET /api/check-file?filename=五十三期Duoov5.6.4.docx&csrf_token=Ijg3NzliMTFjNTcxNmFhYmEyYTFmYzg3MjQ0MGFkNzVhN2YzZDc5Zjci.aC_ugA.yYekcvSoDpWBjYun8r7SlWNl4E4 HTTP/1.1" 200 -
+2025-05-23 11:41:58,900 [INFO] - werkzeug - 127.0.0.1 - - [23/May/2025 11:41:58] "GET /api/check-file?filename=五十二期Duoov5.6.3.docx&csrf_token=Ijg3NzliMTFjNTcxNmFhYmEyYTFmYzg3MjQ0MGFkNzVhN2YzZDc5Zjci.aC_ugA.yYekcvSoDpWBjYun8r7SlWNl4E4 HTTP/1.1" 200 -
+2025-05-23 11:41:58,909 [INFO] - werkzeug - 127.0.0.1 - - [23/May/2025 11:41:58] "GET /api/check-file?filename=五十一期Duoov5.6.2.docx&csrf_token=Ijg3NzliMTFjNTcxNmFhYmEyYTFmYzg3MjQ0MGFkNzVhN2YzZDc5Zjci.aC_ugA.yYekcvSoDpWBjYun8r7SlWNl4E4 HTTP/1.1" 200 -
+2025-05-23 11:41:58,916 [INFO] - werkzeug - 127.0.0.1 - - [23/May/2025 11:41:58] "GET /api/check-file?filename=五十期Duoov5.6.0.docx&csrf_token=Ijg3NzliMTFjNTcxNmFhYmEyYTFmYzg3MjQ0MGFkNzVhN2YzZDc5Zjci.aC_ugA.yYekcvSoDpWBjYun8r7SlWNl4E4 HTTP/1.1" 200 -
+2025-05-23 11:41:58,923 [INFO] - werkzeug - 127.0.0.1 - - [23/May/2025 11:41:58] "GET /api/check-file?filename=四十九期Duoov5.5.0.docx&csrf_token=Ijg3NzliMTFjNTcxNmFhYmEyYTFmYzg3MjQ0MGFkNzVhN2YzZDc5Zjci.aC_ugA.yYekcvSoDpWBjYun8r7SlWNl4E4 HTTP/1.1" 200 -
+2025-05-23 11:41:58,929 [INFO] - werkzeug - 127.0.0.1 - - [23/May/2025 11:41:58] "GET /api/check-file?filename=四十八期Duoov5.4.0.docx&csrf_token=Ijg3NzliMTFjNTcxNmFhYmEyYTFmYzg3MjQ0MGFkNzVhN2YzZDc5Zjci.aC_ugA.yYekcvSoDpWBjYun8r7SlWNl4E4 HTTP/1.1" 200 -
+2025-05-23 11:41:58,936 [INFO] - werkzeug - 127.0.0.1 - - [23/May/2025 11:41:58] "GET /api/check-file?filename=四十七期Duoov5.3.0.docx&csrf_token=Ijg3NzliMTFjNTcxNmFhYmEyYTFmYzg3MjQ0MGFkNzVhN2YzZDc5Zjci.aC_ugA.yYekcvSoDpWBjYun8r7SlWNl4E4 HTTP/1.1" 200 -
+2025-05-23 11:41:58,943 [INFO] - werkzeug - 127.0.0.1 - - [23/May/2025 11:41:58] "GET /api/check-file?filename=四十六期Duoov5.2.0.docx&csrf_token=Ijg3NzliMTFjNTcxNmFhYmEyYTFmYzg3MjQ0MGFkNzVhN2YzZDc5Zjci.aC_ugA.yYekcvSoDpWBjYun8r7SlWNl4E4 HTTP/1.1" 200 -
+2025-05-23 11:41:58,949 [INFO] - werkzeug - 127.0.0.1 - - [23/May/2025 11:41:58] "GET /api/check-file?filename=四十五期Duoov5.1.0.docx&csrf_token=Ijg3NzliMTFjNTcxNmFhYmEyYTFmYzg3MjQ0MGFkNzVhN2YzZDc5Zjci.aC_ugA.yYekcvSoDpWBjYun8r7SlWNl4E4 HTTP/1.1" 200 -
+2025-05-23 11:42:00,696 [INFO] - root - 原始文件名: 二期Duoov1.0.1.docx, 安全文件名: Duoov1.0.1.docx
+2025-05-23 11:42:00,698 [INFO] - root - 文件已保存: D:\tools\Pycharm\PycharmWork\DocRadar\data\test\uploads\temp_20250523114200_Duoov1.0.1.docx
+2025-05-23 11:42:00,708 [INFO] - root - 创建图片目录: D:\tools\Pycharm\PycharmWork\DocRadar\data\test\document_images\202505\1e041419e1
+2025-05-23 11:42:00,709 [ERROR] - root - 提取DOCX图片失败: [Errno 2] No such file or directory: 'D:\\tools\\Pycharm\\PycharmWork\\DocRadar\\data\\test\\document_images\\202505\\1e041419e1\\'
+2025-05-23 11:42:00,759 [INFO] - root - 图片尺寸: 736x706
+2025-05-23 11:42:00,767 [WARNING] - root - Mammoth警告: Message(type='warning', message='Run style with ID 00001a was referenced but not defined in the document')
+2025-05-23 11:42:00,767 [WARNING] - root - Mammoth警告: Message(type='warning', message='Table style with ID 00001b was referenced but not defined in the document')
+2025-05-23 11:42:00,767 [WARNING] - root - Mammoth警告: Message(type='warning', message='Unrecognised paragraph style: Title (Style ID: 000013)')
+2025-05-23 11:42:00,768 [WARNING] - root - Mammoth警告: Message(type='warning', message='Unrecognised run style: None (Style ID: 00001a)')
+2025-05-23 11:42:00,775 [INFO] - root - 旧文件已移动到临时目录: D:\tools\Pycharm\PycharmWork\DocRadar\data\test\temp\old_1747971720_temp_20250523113506_Duoov1.0.1.docx
+2025-05-23 11:42:00,776 [INFO] - root - 文件替换成功: 412, 新文件: D:\tools\Pycharm\PycharmWork\DocRadar\data\test\uploads\temp_20250523114200_Duoov1.0.1.docx
+2025-05-23 11:42:00,793 [INFO] - root - 更新文档内容: 412
+2025-05-23 11:42:00,794 [INFO] - root - 保存文档HTML内容: 412
+2025-05-23 11:42:00,798 [INFO] - root - 文档 412 覆盖成功
+2025-05-23 11:42:00,801 [INFO] - werkzeug - 127.0.0.1 - - [23/May/2025 11:42:00] "POST /upload/batch HTTP/1.1" 200 -
+2025-05-23 11:42:01,337 [INFO] - root - 原始文件名: 五十八期Duoov5.8.5.docx, 安全文件名: Duoov5.8.5.docx
+2025-05-23 11:42:01,346 [INFO] - root - 文件已保存: D:\tools\Pycharm\PycharmWork\DocRadar\data\test\uploads\temp_20250523114201_Duoov5.8.5.docx
+2025-05-23 11:42:01,362 [INFO] - root - 创建图片目录: D:\tools\Pycharm\PycharmWork\DocRadar\data\test\document_images\202505\c48d1182c2
+2025-05-23 11:42:01,363 [ERROR] - root - 提取DOCX图片失败: [Errno 2] No such file or directory: 'D:\\tools\\Pycharm\\PycharmWork\\DocRadar\\data\\test\\document_images\\202505\\c48d1182c2\\'
+2025-05-23 11:42:01,389 [INFO] - root - 图片尺寸: 746x1236
+2025-05-23 11:42:01,392 [INFO] - root - 图片尺寸: 662x1432
+2025-05-23 11:42:01,394 [INFO] - root - 图片尺寸: 932x574
+2025-05-23 11:42:01,398 [INFO] - root - 图片尺寸: 1532x1492
+2025-05-23 11:42:01,402 [INFO] - root - 图片尺寸: 1316x1342
+2025-05-23 11:42:01,405 [INFO] - root - 图片尺寸: 664x1452
+2025-05-23 11:42:01,407 [INFO] - root - 图片尺寸: 2696x1392
+2025-05-23 11:42:01,410 [WARNING] - root - Mammoth警告: Message(type='warning', message='Run style with ID 000022 was referenced but not defined in the document')
+2025-05-23 11:42:01,410 [WARNING] - root - Mammoth警告: Message(type='warning', message='Table style with ID 000023 was referenced but not defined in the document')
+2025-05-23 11:42:01,410 [WARNING] - root - Mammoth警告: Message(type='warning', message='Run style with ID 000062 was referenced but not defined in the document')
+2025-05-23 11:42:01,411 [WARNING] - root - Mammoth警告: Message(type='warning', message='Run style with ID  was referenced but not defined in the document')
+2025-05-23 11:42:01,411 [WARNING] - root - Mammoth警告: Message(type='warning', message='Unrecognised paragraph style: Title (Style ID: 000013)')
+2025-05-23 11:42:01,411 [WARNING] - root - Mammoth警告: Message(type='warning', message='Unrecognised run style: None (Style ID: 000022)')
+2025-05-23 11:42:01,412 [WARNING] - root - Mammoth警告: Message(type='warning', message='Unrecognised run style: None (Style ID: 000062)')
+2025-05-23 11:42:01,412 [WARNING] - root - Mammoth警告: Message(type='warning', message='Unrecognised run style: None (Style ID: )')
+2025-05-23 11:42:01,417 [INFO] - root - 旧文件已移动到临时目录: D:\tools\Pycharm\PycharmWork\DocRadar\data\test\temp\old_1747971721_temp_20250523113507_Duoov5.8.5.docx
+2025-05-23 11:42:01,417 [INFO] - root - 文件替换成功: 413, 新文件: D:\tools\Pycharm\PycharmWork\DocRadar\data\test\uploads\temp_20250523114201_Duoov5.8.5.docx
+2025-05-23 11:42:01,432 [INFO] - root - 更新文档内容: 413
+2025-05-23 11:42:01,433 [INFO] - root - 保存文档HTML内容: 413
+2025-05-23 11:42:01,437 [INFO] - root - 文档 413 覆盖成功
+2025-05-23 11:42:01,440 [INFO] - werkzeug - 127.0.0.1 - - [23/May/2025 11:42:01] "POST /upload/batch HTTP/1.1" 200 -
+2025-05-23 11:42:03,968 [INFO] - root - 原始文件名: 五十七期Duoov5.8.4.docx, 安全文件名: Duoov5.8.4.docx
+2025-05-23 11:42:03,975 [INFO] - root - 文件已保存: D:\tools\Pycharm\PycharmWork\DocRadar\data\test\uploads\temp_20250523114203_Duoov5.8.4.docx
+2025-05-23 11:42:03,989 [INFO] - root - 创建图片目录: D:\tools\Pycharm\PycharmWork\DocRadar\data\test\document_images\202505\54de62b9b0
+2025-05-23 11:42:03,990 [ERROR] - root - 提取DOCX图片失败: [Errno 2] No such file or directory: 'D:\\tools\\Pycharm\\PycharmWork\\DocRadar\\data\\test\\document_images\\202505\\54de62b9b0\\'
+2025-05-23 11:42:04,018 [INFO] - root - 图片尺寸: 1308x1360
+2025-05-23 11:42:04,021 [INFO] - root - 图片尺寸: 2308x1268
+2025-05-23 11:42:04,023 [INFO] - root - 图片尺寸: 884x1266
+2025-05-23 11:42:04,026 [INFO] - root - 图片尺寸: 1558x1574
+2025-05-23 11:42:04,029 [INFO] - root - 图片尺寸: 1618x1112
+2025-05-23 11:42:04,032 [INFO] - root - 图片尺寸: 706x602
+2025-05-23 11:42:04,034 [WARNING] - root - Mammoth警告: Message(type='warning', message='Run style with ID 000022 was referenced but not defined in the document')
+2025-05-23 11:42:04,034 [WARNING] - root - Mammoth警告: Message(type='warning', message='Table style with ID 000023 was referenced but not defined in the document')
+2025-05-23 11:42:04,035 [WARNING] - root - Mammoth警告: Message(type='warning', message='Unrecognised paragraph style: Title (Style ID: 000013)')
+2025-05-23 11:42:04,035 [WARNING] - root - Mammoth警告: Message(type='warning', message='Unrecognised run style: None (Style ID: 000022)')
+2025-05-23 11:42:04,039 [INFO] - root - 旧文件已移动到临时目录: D:\tools\Pycharm\PycharmWork\DocRadar\data\test\temp\old_1747971724_temp_20250523113510_Duoov5.8.4.docx
+2025-05-23 11:42:04,040 [INFO] - root - 文件替换成功: 414, 新文件: D:\tools\Pycharm\PycharmWork\DocRadar\data\test\uploads\temp_20250523114203_Duoov5.8.4.docx
+2025-05-23 11:42:04,055 [INFO] - root - 更新文档内容: 414
+2025-05-23 11:42:04,056 [INFO] - root - 保存文档HTML内容: 414
+2025-05-23 11:42:04,058 [INFO] - root - 文档 414 覆盖成功
+2025-05-23 11:42:04,062 [INFO] - werkzeug - 127.0.0.1 - - [23/May/2025 11:42:04] "POST /upload/batch HTTP/1.1" 200 -
+2025-05-23 11:42:04,583 [INFO] - root - 原始文件名: 五十六期Duoov5.7.4.docx, 安全文件名: Duoov5.7.4.docx
+2025-05-23 11:42:04,589 [INFO] - root - 文件已保存: D:\tools\Pycharm\PycharmWork\DocRadar\data\test\uploads\temp_20250523114204_Duoov5.7.4.docx
+2025-05-23 11:42:04,602 [INFO] - root - 创建图片目录: D:\tools\Pycharm\PycharmWork\DocRadar\data\test\document_images\202505\dccdd4d295
+2025-05-23 11:42:04,603 [ERROR] - root - 提取DOCX图片失败: [Errno 2] No such file or directory: 'D:\\tools\\Pycharm\\PycharmWork\\DocRadar\\data\\test\\document_images\\202505\\dccdd4d295\\'
+2025-05-23 11:42:04,623 [INFO] - root - 图片尺寸: 1596x1056
+2025-05-23 11:42:04,626 [INFO] - root - 图片尺寸: 912x1186
+2025-05-23 11:42:04,628 [INFO] - root - 图片尺寸: 1824x1048
+2025-05-23 11:42:04,630 [INFO] - root - 图片尺寸: 594x1280
+2025-05-23 11:42:04,632 [INFO] - root - 图片尺寸: 676x1456
+2025-05-23 11:42:04,635 [WARNING] - root - Mammoth警告: Message(type='warning', message='Run style with ID 000022 was referenced but not defined in the document')
+2025-05-23 11:42:04,636 [WARNING] - root - Mammoth警告: Message(type='warning', message='Table style with ID 000023 was referenced but not defined in the document')
+2025-05-23 11:42:04,636 [WARNING] - root - Mammoth警告: Message(type='warning', message='Run style with ID  was referenced but not defined in the document')
+2025-05-23 11:42:04,636 [WARNING] - root - Mammoth警告: Message(type='warning', message='Run style with ID 000020 was referenced but not defined in the document')
+2025-05-23 11:42:04,637 [WARNING] - root - Mammoth警告: Message(type='warning', message='Unrecognised paragraph style: Title (Style ID: 000013)')
+2025-05-23 11:42:04,638 [WARNING] - root - Mammoth警告: Message(type='warning', message='Unrecognised run style: None (Style ID: 000022)')
+2025-05-23 11:42:04,638 [WARNING] - root - Mammoth警告: Message(type='warning', message='Unrecognised run style: None (Style ID: )')
+2025-05-23 11:42:04,639 [WARNING] - root - Mammoth警告: Message(type='warning', message='Unrecognised run style: None (Style ID: 000020)')
+2025-05-23 11:42:04,642 [INFO] - root - 旧文件已移动到临时目录: D:\tools\Pycharm\PycharmWork\DocRadar\data\test\temp\old_1747971724_temp_20250523113511_Duoov5.7.4.docx
+2025-05-23 11:42:04,643 [INFO] - root - 文件替换成功: 415, 新文件: D:\tools\Pycharm\PycharmWork\DocRadar\data\test\uploads\temp_20250523114204_Duoov5.7.4.docx
+2025-05-23 11:42:04,658 [INFO] - root - 更新文档内容: 415
+2025-05-23 11:42:04,659 [INFO] - root - 保存文档HTML内容: 415
+2025-05-23 11:42:04,660 [INFO] - root - 文档 415 覆盖成功
+2025-05-23 11:42:04,664 [INFO] - werkzeug - 127.0.0.1 - - [23/May/2025 11:42:04] "POST /upload/batch HTTP/1.1" 200 -
+2025-05-23 11:42:07,187 [INFO] - root - 原始文件名: 五十五期Duoov5.6.4.docx, 安全文件名: Duoov5.6.4.docx
+2025-05-23 11:42:07,191 [INFO] - root - 文件已保存: D:\tools\Pycharm\PycharmWork\DocRadar\data\test\uploads\temp_20250523114207_Duoov5.6.4.docx
+2025-05-23 11:42:07,201 [INFO] - root - 创建图片目录: D:\tools\Pycharm\PycharmWork\DocRadar\data\test\document_images\202505\af7dc2e4d9
+2025-05-23 11:42:07,202 [ERROR] - root - 提取DOCX图片失败: [Errno 2] No such file or directory: 'D:\\tools\\Pycharm\\PycharmWork\\DocRadar\\data\\test\\document_images\\202505\\af7dc2e4d9\\'
+2025-05-23 11:42:07,243 [INFO] - root - 图片尺寸: 526x1116
+2025-05-23 11:42:07,245 [INFO] - root - 图片尺寸: 978x1582
+2025-05-23 11:42:07,247 [INFO] - root - 图片尺寸: 806x966
+2025-05-23 11:42:07,250 [INFO] - root - 图片尺寸: 1102x426
+2025-05-23 11:42:07,251 [INFO] - root - 图片尺寸: 1192x260
+2025-05-23 11:42:07,253 [INFO] - root - 图片尺寸: 860x528
+2025-05-23 11:42:07,255 [INFO] - root - 图片尺寸: 966x1734
+2025-05-23 11:42:07,257 [INFO] - root - 图片尺寸: 1124x360
+2025-05-23 11:42:07,259 [WARNING] - root - Mammoth警告: Message(type='warning', message='Run style with ID 000022 was referenced but not defined in the document')
+2025-05-23 11:42:07,259 [WARNING] - root - Mammoth警告: Message(type='warning', message='Table style with ID 000023 was referenced but not defined in the document')
+2025-05-23 11:42:07,260 [WARNING] - root - Mammoth警告: Message(type='warning', message='Run style with ID 000020 was referenced but not defined in the document')
+2025-05-23 11:42:07,261 [WARNING] - root - Mammoth警告: Message(type='warning', message='Unrecognised paragraph style: Title (Style ID: 000013)')
+2025-05-23 11:42:07,261 [WARNING] - root - Mammoth警告: Message(type='warning', message='Unrecognised run style: None (Style ID: 000022)')
+2025-05-23 11:42:07,261 [WARNING] - root - Mammoth警告: Message(type='warning', message='Unrecognised run style: None (Style ID: 000020)')
+2025-05-23 11:42:07,265 [INFO] - root - 旧文件已移动到临时目录: D:\tools\Pycharm\PycharmWork\DocRadar\data\test\temp\old_1747971727_temp_20250523113514_Duoov5.6.4.docx
+2025-05-23 11:42:07,266 [INFO] - root - 文件替换成功: 416, 新文件: D:\tools\Pycharm\PycharmWork\DocRadar\data\test\uploads\temp_20250523114207_Duoov5.6.4.docx
+2025-05-23 11:42:07,283 [INFO] - root - 更新文档内容: 416
+2025-05-23 11:42:07,284 [INFO] - root - 保存文档HTML内容: 416
+2025-05-23 11:42:07,287 [INFO] - root - 文档 416 覆盖成功
+2025-05-23 11:42:07,290 [INFO] - werkzeug - 127.0.0.1 - - [23/May/2025 11:42:07] "POST /upload/batch HTTP/1.1" 200 -
+2025-05-23 11:42:07,806 [INFO] - root - 原始文件名: 五十四期Duoov5.6.5.docx, 安全文件名: Duoov5.6.5.docx
+2025-05-23 11:42:07,810 [INFO] - root - 文件已保存: D:\tools\Pycharm\PycharmWork\DocRadar\data\test\uploads\temp_20250523114207_Duoov5.6.5.docx
+2025-05-23 11:42:07,820 [INFO] - root - 创建图片目录: D:\tools\Pycharm\PycharmWork\DocRadar\data\test\document_images\202505\072ad6bcac
+2025-05-23 11:42:07,821 [ERROR] - root - 提取DOCX图片失败: [Errno 2] No such file or directory: 'D:\\tools\\Pycharm\\PycharmWork\\DocRadar\\data\\test\\document_images\\202505\\072ad6bcac\\'
+2025-05-23 11:42:07,837 [INFO] - root - 图片尺寸: 1750x1096
+2025-05-23 11:42:07,840 [WARNING] - root - Mammoth警告: Message(type='warning', message='Run style with ID 000022 was referenced but not defined in the document')
+2025-05-23 11:42:07,840 [WARNING] - root - Mammoth警告: Message(type='warning', message='Table style with ID 000023 was referenced but not defined in the document')
+2025-05-23 11:42:07,841 [WARNING] - root - Mammoth警告: Message(type='warning', message='Unrecognised paragraph style: Title (Style ID: 000013)')
+2025-05-23 11:42:07,841 [WARNING] - root - Mammoth警告: Message(type='warning', message='Unrecognised run style: None (Style ID: 000022)')
+2025-05-23 11:42:07,845 [INFO] - root - 旧文件已移动到临时目录: D:\tools\Pycharm\PycharmWork\DocRadar\data\test\temp\old_1747971727_temp_20250523113515_Duoov5.6.5.docx
+2025-05-23 11:42:07,845 [INFO] - root - 文件替换成功: 417, 新文件: D:\tools\Pycharm\PycharmWork\DocRadar\data\test\uploads\temp_20250523114207_Duoov5.6.5.docx
+2025-05-23 11:42:07,862 [INFO] - root - 更新文档内容: 417
+2025-05-23 11:42:07,862 [INFO] - root - 保存文档HTML内容: 417
+2025-05-23 11:42:07,865 [INFO] - root - 文档 417 覆盖成功
+2025-05-23 11:42:07,868 [INFO] - werkzeug - 127.0.0.1 - - [23/May/2025 11:42:07] "POST /upload/batch HTTP/1.1" 200 -
+2025-05-23 11:42:10,392 [INFO] - root - 原始文件名: 五十三期Duoov5.6.4.docx, 安全文件名: Duoov5.6.4.docx
+2025-05-23 11:42:10,396 [INFO] - root - 文件已保存: D:\tools\Pycharm\PycharmWork\DocRadar\data\test\uploads\temp_20250523114210_Duoov5.6.4.docx
+2025-05-23 11:42:10,407 [INFO] - root - 创建图片目录: D:\tools\Pycharm\PycharmWork\DocRadar\data\test\document_images\202505\5a8182a825
+2025-05-23 11:42:10,407 [ERROR] - root - 提取DOCX图片失败: [Errno 2] No such file or directory: 'D:\\tools\\Pycharm\\PycharmWork\\DocRadar\\data\\test\\document_images\\202505\\5a8182a825\\'
+2025-05-23 11:42:10,427 [INFO] - root - 图片尺寸: 610x1314
+2025-05-23 11:42:10,430 [INFO] - root - 图片尺寸: 1080x1920
+2025-05-23 11:42:10,433 [INFO] - root - 图片尺寸: 568x1228
+2025-05-23 11:42:10,435 [INFO] - root - 图片尺寸: 576x1232
+2025-05-23 11:42:10,437 [WARNING] - root - Mammoth警告: Message(type='warning', message='Run style with ID 000022 was referenced but not defined in the document')
+2025-05-23 11:42:10,437 [WARNING] - root - Mammoth警告: Message(type='warning', message='Table style with ID 000023 was referenced but not defined in the document')
+2025-05-23 11:42:10,438 [WARNING] - root - Mammoth警告: Message(type='warning', message='Run style with ID  was referenced but not defined in the document')
+2025-05-23 11:42:10,438 [WARNING] - root - Mammoth警告: Message(type='warning', message='Run style with ID 000049 was referenced but not defined in the document')
+2025-05-23 11:42:10,439 [WARNING] - root - Mammoth警告: Message(type='warning', message='Unrecognised paragraph style: Title (Style ID: 000013)')
+2025-05-23 11:42:10,439 [WARNING] - root - Mammoth警告: Message(type='warning', message='Unrecognised run style: None (Style ID: 000022)')
+2025-05-23 11:42:10,439 [WARNING] - root - Mammoth警告: Message(type='warning', message='Unrecognised run style: None (Style ID: )')
+2025-05-23 11:42:10,440 [WARNING] - root - Mammoth警告: Message(type='warning', message='Unrecognised run style: None (Style ID: 000049)')
+2025-05-23 11:42:10,445 [INFO] - root - 旧文件已移动到临时目录: D:\tools\Pycharm\PycharmWork\DocRadar\data\test\temp\old_1747971730_temp_20250523113518_Duoov5.6.4.docx
+2025-05-23 11:42:10,446 [INFO] - root - 文件替换成功: 418, 新文件: D:\tools\Pycharm\PycharmWork\DocRadar\data\test\uploads\temp_20250523114210_Duoov5.6.4.docx
+2025-05-23 11:42:10,462 [INFO] - root - 更新文档内容: 418
+2025-05-23 11:42:10,463 [INFO] - root - 保存文档HTML内容: 418
+2025-05-23 11:42:10,465 [INFO] - root - 文档 418 覆盖成功
+2025-05-23 11:42:10,468 [INFO] - werkzeug - 127.0.0.1 - - [23/May/2025 11:42:10] "POST /upload/batch HTTP/1.1" 200 -
+2025-05-23 11:42:10,983 [INFO] - root - 原始文件名: 二期Duoov1.0.1.docx, 安全文件名: Duoov1.0.1.docx
+2025-05-23 11:42:10,986 [INFO] - werkzeug - 127.0.0.1 - - [23/May/2025 11:42:10] "POST /upload/batch HTTP/1.1" 200 -
+2025-05-23 11:42:12,993 [INFO] - root - 原始文件名: 二期Duoov1.0.1.docx, 安全文件名: Duoov1.0.1.docx
+2025-05-23 11:42:12,997 [INFO] - werkzeug - 127.0.0.1 - - [23/May/2025 11:42:12] "POST /upload/batch HTTP/1.1" 200 -
+2025-05-23 11:42:17,006 [INFO] - root - 原始文件名: 二期Duoov1.0.1.docx, 安全文件名: Duoov1.0.1.docx
+2025-05-23 11:42:17,009 [INFO] - werkzeug - 127.0.0.1 - - [23/May/2025 11:42:17] "POST /upload/batch HTTP/1.1" 200 -
+2025-05-23 11:42:17,543 [INFO] - root - 原始文件名: 五十八期Duoov5.8.5.docx, 安全文件名: Duoov5.8.5.docx
+2025-05-23 11:42:17,547 [INFO] - werkzeug - 127.0.0.1 - - [23/May/2025 11:42:17] "POST /upload/batch HTTP/1.1" 200 -
+2025-05-23 11:42:19,584 [INFO] - root - 原始文件名: 五十八期Duoov5.8.5.docx, 安全文件名: Duoov5.8.5.docx
+2025-05-23 11:42:19,588 [INFO] - werkzeug - 127.0.0.1 - - [23/May/2025 11:42:19] "POST /upload/batch HTTP/1.1" 200 -
+2025-05-23 11:42:23,625 [INFO] - root - 原始文件名: 五十八期Duoov5.8.5.docx, 安全文件名: Duoov5.8.5.docx
+2025-05-23 11:42:23,629 [INFO] - werkzeug - 127.0.0.1 - - [23/May/2025 11:42:23] "POST /upload/batch HTTP/1.1" 200 -
+2025-05-23 11:42:24,160 [INFO] - root - 原始文件名: 五十七期Duoov5.8.4.docx, 安全文件名: Duoov5.8.4.docx
+2025-05-23 11:42:24,163 [INFO] - werkzeug - 127.0.0.1 - - [23/May/2025 11:42:24] "POST /upload/batch HTTP/1.1" 200 -
+2025-05-23 11:42:26,191 [INFO] - root - 原始文件名: 五十七期Duoov5.8.4.docx, 安全文件名: Duoov5.8.4.docx
+2025-05-23 11:42:26,194 [INFO] - werkzeug - 127.0.0.1 - - [23/May/2025 11:42:26] "POST /upload/batch HTTP/1.1" 200 -
+2025-05-23 11:42:30,222 [INFO] - root - 原始文件名: 五十七期Duoov5.8.4.docx, 安全文件名: Duoov5.8.4.docx
+2025-05-23 11:42:30,225 [INFO] - werkzeug - 127.0.0.1 - - [23/May/2025 11:42:30] "POST /upload/batch HTTP/1.1" 200 -
+2025-05-23 11:42:32,747 [INFO] - root - 原始文件名: 五十六期Duoov5.7.4.docx, 安全文件名: Duoov5.7.4.docx
+2025-05-23 11:42:32,751 [INFO] - werkzeug - 127.0.0.1 - - [23/May/2025 11:42:32] "POST /upload/batch HTTP/1.1" 200 -
+2025-05-23 11:42:34,777 [INFO] - root - 原始文件名: 五十六期Duoov5.7.4.docx, 安全文件名: Duoov5.7.4.docx
+2025-05-23 11:42:34,781 [INFO] - werkzeug - 127.0.0.1 - - [23/May/2025 11:42:34] "POST /upload/batch HTTP/1.1" 200 -
+2025-05-23 11:42:38,808 [INFO] - root - 原始文件名: 五十六期Duoov5.7.4.docx, 安全文件名: Duoov5.7.4.docx
+2025-05-23 11:42:38,811 [INFO] - werkzeug - 127.0.0.1 - - [23/May/2025 11:42:38] "POST /upload/batch HTTP/1.1" 200 -
+2025-05-23 11:42:39,334 [INFO] - root - 原始文件名: 五十五期Duoov5.6.4.docx, 安全文件名: Duoov5.6.4.docx
+2025-05-23 11:42:39,337 [INFO] - werkzeug - 127.0.0.1 - - [23/May/2025 11:42:39] "POST /upload/batch HTTP/1.1" 200 -
+2025-05-23 11:42:41,355 [INFO] - root - 原始文件名: 五十五期Duoov5.6.4.docx, 安全文件名: Duoov5.6.4.docx
+2025-05-23 11:42:41,359 [INFO] - werkzeug - 127.0.0.1 - - [23/May/2025 11:42:41] "POST /upload/batch HTTP/1.1" 200 -
+2025-05-23 11:42:45,376 [INFO] - root - 原始文件名: 五十五期Duoov5.6.4.docx, 安全文件名: Duoov5.6.4.docx
+2025-05-23 11:42:45,380 [INFO] - werkzeug - 127.0.0.1 - - [23/May/2025 11:42:45] "POST /upload/batch HTTP/1.1" 200 -
+2025-05-23 11:42:45,894 [INFO] - root - 原始文件名: 五十四期Duoov5.6.5.docx, 安全文件名: Duoov5.6.5.docx
+2025-05-23 11:42:45,898 [INFO] - werkzeug - 127.0.0.1 - - [23/May/2025 11:42:45] "POST /upload/batch HTTP/1.1" 200 -
+2025-05-23 11:42:47,918 [INFO] - root - 原始文件名: 五十四期Duoov5.6.5.docx, 安全文件名: Duoov5.6.5.docx
+2025-05-23 11:42:47,922 [INFO] - werkzeug - 127.0.0.1 - - [23/May/2025 11:42:47] "POST /upload/batch HTTP/1.1" 200 -
+2025-05-23 11:42:51,943 [INFO] - root - 原始文件名: 五十四期Duoov5.6.5.docx, 安全文件名: Duoov5.6.5.docx
+2025-05-23 11:42:51,947 [INFO] - werkzeug - 127.0.0.1 - - [23/May/2025 11:42:51] "POST /upload/batch HTTP/1.1" 200 -
+2025-05-23 11:42:54,475 [INFO] - root - 原始文件名: 五十三期Duoov5.6.4.docx, 安全文件名: Duoov5.6.4.docx
+2025-05-23 11:42:54,479 [INFO] - werkzeug - 127.0.0.1 - - [23/May/2025 11:42:54] "POST /upload/batch HTTP/1.1" 200 -
+2025-05-23 11:42:56,505 [INFO] - root - 原始文件名: 五十三期Duoov5.6.4.docx, 安全文件名: Duoov5.6.4.docx
+2025-05-23 11:42:56,509 [INFO] - werkzeug - 127.0.0.1 - - [23/May/2025 11:42:56] "POST /upload/batch HTTP/1.1" 200 -
+2025-05-23 11:43:00,528 [INFO] - root - 原始文件名: 五十三期Duoov5.6.4.docx, 安全文件名: Duoov5.6.4.docx
+2025-05-23 11:43:00,531 [INFO] - werkzeug - 127.0.0.1 - - [23/May/2025 11:43:00] "POST /upload/batch HTTP/1.1" 200 -
+2025-05-23 11:43:01,052 [INFO] - root - 原始文件名: 五十二期Duoov5.6.3.docx, 安全文件名: Duoov5.6.3.docx
+2025-05-23 11:43:01,058 [INFO] - root - 文件已保存: D:\tools\Pycharm\PycharmWork\DocRadar\data\test\uploads\20250523114301_Duoov5.6.3.docx
+2025-05-23 11:43:01,071 [INFO] - root - 创建图片目录: D:\tools\Pycharm\PycharmWork\DocRadar\data\test\document_images\202505\6e9b955e5a
+2025-05-23 11:43:01,072 [ERROR] - root - 提取DOCX图片失败: [Errno 2] No such file or directory: 'D:\\tools\\Pycharm\\PycharmWork\\DocRadar\\data\\test\\document_images\\202505\\6e9b955e5a\\'
+2025-05-23 11:43:01,098 [INFO] - root - 图片尺寸: 908x904
+2025-05-23 11:43:01,100 [INFO] - root - 图片尺寸: 375x812
+2025-05-23 11:43:01,101 [INFO] - root - 图片尺寸: 315x89
+2025-05-23 11:43:01,102 [INFO] - root - 图片尺寸: 472x1438
+2025-05-23 11:43:01,104 [INFO] - root - 图片尺寸: 1125x2436
+2025-05-23 11:43:01,106 [INFO] - root - 图片尺寸: 1104x550
+2025-05-23 11:43:01,111 [INFO] - root - 图片尺寸: 1496x1446
+2025-05-23 11:43:01,112 [INFO] - root - 图片尺寸: 474x416
+2025-05-23 11:43:01,114 [INFO] - root - 图片尺寸: 3020x1538
+2025-05-23 11:43:01,117 [INFO] - root - 图片尺寸: 1188x756
+2025-05-23 11:43:01,119 [WARNING] - root - Mammoth警告: Message(type='warning', message='Run style with ID 000022 was referenced but not defined in the document')
+2025-05-23 11:43:01,119 [WARNING] - root - Mammoth警告: Message(type='warning', message='Table style with ID 000023 was referenced but not defined in the document')
+2025-05-23 11:43:01,120 [WARNING] - root - Mammoth警告: Message(type='warning', message='Unrecognised paragraph style: Title (Style ID: 000013)')
+2025-05-23 11:43:01,120 [WARNING] - root - Mammoth警告: Message(type='warning', message='Unrecognised run style: None (Style ID: 000022)')
+2025-05-23 11:43:01,123 [INFO] - root - 添加文档元数据: 419
+2025-05-23 11:43:01,134 [INFO] - root - 添加文档内容: 419
+2025-05-23 11:43:01,134 [INFO] - root - 保存文档HTML内容: 419
+2025-05-23 11:43:01,139 [INFO] - root - 文档 419 索引请求 - 操作已转移到Storage类
+2025-05-23 11:43:01,142 [INFO] - werkzeug - 127.0.0.1 - - [23/May/2025 11:43:01] "POST /upload/batch HTTP/1.1" 200 -
+2025-05-23 11:43:01,649 [INFO] - root - 原始文件名: 五十一期Duoov5.6.2.docx, 安全文件名: Duoov5.6.2.docx
+2025-05-23 11:43:01,650 [INFO] - root - 文件已保存: D:\tools\Pycharm\PycharmWork\DocRadar\data\test\uploads\20250523114301_Duoov5.6.2.docx
+2025-05-23 11:43:01,658 [INFO] - root - 创建图片目录: D:\tools\Pycharm\PycharmWork\DocRadar\data\test\document_images\202505\6b7041f923
+2025-05-23 11:43:01,659 [ERROR] - root - 提取DOCX图片失败: [Errno 2] No such file or directory: 'D:\\tools\\Pycharm\\PycharmWork\\DocRadar\\data\\test\\document_images\\202505\\6b7041f923\\'
+2025-05-23 11:43:01,674 [INFO] - root - 图片尺寸: 560x168
+2025-05-23 11:43:01,676 [WARNING] - root - Mammoth警告: Message(type='warning', message='Run style with ID 000022 was referenced but not defined in the document')
+2025-05-23 11:43:01,677 [WARNING] - root - Mammoth警告: Message(type='warning', message='Table style with ID 000023 was referenced but not defined in the document')
+2025-05-23 11:43:01,677 [WARNING] - root - Mammoth警告: Message(type='warning', message='Unrecognised paragraph style: Title (Style ID: 000013)')
+2025-05-23 11:43:01,677 [WARNING] - root - Mammoth警告: Message(type='warning', message='Unrecognised run style: None (Style ID: 000022)')
+2025-05-23 11:43:01,681 [INFO] - root - 添加文档元数据: 420
+2025-05-23 11:43:01,691 [INFO] - root - 添加文档内容: 420
+2025-05-23 11:43:01,692 [INFO] - root - 保存文档HTML内容: 420
+2025-05-23 11:43:01,694 [INFO] - root - 文档 420 索引请求 - 操作已转移到Storage类
+2025-05-23 11:43:01,697 [INFO] - werkzeug - 127.0.0.1 - - [23/May/2025 11:43:01] "POST /upload/batch HTTP/1.1" 200 -
+2025-05-23 11:43:04,218 [INFO] - root - 原始文件名: 五十期Duoov5.6.0.docx, 安全文件名: Duoov5.6.0.docx
+2025-05-23 11:43:04,222 [INFO] - root - 文件已保存: D:\tools\Pycharm\PycharmWork\DocRadar\data\test\uploads\20250523114304_Duoov5.6.0.docx
+2025-05-23 11:43:04,233 [INFO] - root - 创建图片目录: D:\tools\Pycharm\PycharmWork\DocRadar\data\test\document_images\202505\91d9a197d1
+2025-05-23 11:43:04,234 [ERROR] - root - 提取DOCX图片失败: [Errno 2] No such file or directory: 'D:\\tools\\Pycharm\\PycharmWork\\DocRadar\\data\\test\\document_images\\202505\\91d9a197d1\\'
+2025-05-23 11:43:04,255 [INFO] - root - 图片尺寸: 3068x1668
+2025-05-23 11:43:04,257 [INFO] - root - 图片尺寸: 3060x1664
+2025-05-23 11:43:04,260 [INFO] - root - 图片尺寸: 3070x1674
+2025-05-23 11:43:04,263 [INFO] - root - 图片尺寸: 534x1062
+2025-05-23 11:43:04,265 [WARNING] - root - Mammoth警告: Message(type='warning', message='Run style with ID 000022 was referenced but not defined in the document')
+2025-05-23 11:43:04,265 [WARNING] - root - Mammoth警告: Message(type='warning', message='Table style with ID 000023 was referenced but not defined in the document')
+2025-05-23 11:43:04,266 [WARNING] - root - Mammoth警告: Message(type='warning', message='Unrecognised paragraph style: Title (Style ID: 000013)')
+2025-05-23 11:43:04,267 [WARNING] - root - Mammoth警告: Message(type='warning', message='Unrecognised run style: None (Style ID: 000022)')
+2025-05-23 11:43:04,271 [INFO] - root - 添加文档元数据: 421
+2025-05-23 11:43:04,280 [INFO] - root - 添加文档内容: 421
+2025-05-23 11:43:04,280 [INFO] - root - 保存文档HTML内容: 421
+2025-05-23 11:43:04,285 [INFO] - root - 文档 421 索引请求 - 操作已转移到Storage类
+2025-05-23 11:43:04,289 [INFO] - werkzeug - 127.0.0.1 - - [23/May/2025 11:43:04] "POST /upload/batch HTTP/1.1" 200 -
+2025-05-23 11:43:04,799 [INFO] - root - 原始文件名: 四十九期Duoov5.5.0.docx, 安全文件名: Duoov5.5.0.docx
+2025-05-23 11:43:04,803 [INFO] - root - 文件已保存: D:\tools\Pycharm\PycharmWork\DocRadar\data\test\uploads\20250523114304_Duoov5.5.0.docx
+2025-05-23 11:43:04,814 [INFO] - root - 创建图片目录: D:\tools\Pycharm\PycharmWork\DocRadar\data\test\document_images\202505\9c934bfc49
+2025-05-23 11:43:04,815 [ERROR] - root - 提取DOCX图片失败: [Errno 2] No such file or directory: 'D:\\tools\\Pycharm\\PycharmWork\\DocRadar\\data\\test\\document_images\\202505\\9c934bfc49\\'
+2025-05-23 11:43:04,851 [INFO] - root - 图片尺寸: 544x1134
+2025-05-23 11:43:04,852 [INFO] - root - 图片尺寸: 564x1246
+2025-05-23 11:43:04,854 [INFO] - root - 图片尺寸: 502x1076
+2025-05-23 11:43:04,856 [INFO] - root - 图片尺寸: 590x1278
+2025-05-23 11:43:04,861 [INFO] - root - 图片尺寸: 544x1202
+2025-05-23 11:43:04,868 [WARNING] - root - Mammoth警告: Message(type='warning', message='Run style with ID 000026 was referenced but not defined in the document')
+2025-05-23 11:43:04,869 [WARNING] - root - Mammoth警告: Message(type='warning', message='Table style with ID 000027 was referenced but not defined in the document')
+2025-05-23 11:43:04,869 [WARNING] - root - Mammoth警告: Message(type='warning', message='Unrecognised paragraph style: Title (Style ID: 00000c)')
+2025-05-23 11:43:04,870 [WARNING] - root - Mammoth警告: Message(type='warning', message='Unrecognised run style: None (Style ID: 000026)')
+2025-05-23 11:43:04,873 [INFO] - root - 添加文档元数据: 422
+2025-05-23 11:43:04,882 [INFO] - root - 添加文档内容: 422
+2025-05-23 11:43:04,882 [INFO] - root - 保存文档HTML内容: 422
+2025-05-23 11:43:04,886 [INFO] - root - 文档 422 索引请求 - 操作已转移到Storage类
+2025-05-23 11:43:04,890 [INFO] - werkzeug - 127.0.0.1 - - [23/May/2025 11:43:04] "POST /upload/batch HTTP/1.1" 200 -
+2025-05-23 11:43:05,424 [INFO] - root - 原始文件名: 四十八期Duoov5.4.0.docx, 安全文件名: Duoov5.4.0.docx
+2025-05-23 11:43:05,431 [INFO] - root - 文件已保存: D:\tools\Pycharm\PycharmWork\DocRadar\data\test\uploads\20250523114305_Duoov5.4.0.docx
+2025-05-23 11:43:05,452 [INFO] - root - 创建图片目录: D:\tools\Pycharm\PycharmWork\DocRadar\data\test\document_images\202505\c80fe14750
+2025-05-23 11:43:05,453 [ERROR] - root - 提取DOCX图片失败: [Errno 2] No such file or directory: 'D:\\tools\\Pycharm\\PycharmWork\\DocRadar\\data\\test\\document_images\\202505\\c80fe14750\\'
+2025-05-23 11:43:05,558 [INFO] - root - 图片尺寸: 584x436
+2025-05-23 11:43:05,562 [INFO] - root - 图片尺寸: 886x798
+2025-05-23 11:43:05,563 [INFO] - root - 图片尺寸: 520x1136
+2025-05-23 11:43:05,566 [INFO] - root - 图片尺寸: 868x810
+2025-05-23 11:43:05,569 [INFO] - root - 图片尺寸: 864x842
+2025-05-23 11:43:05,572 [INFO] - root - 图片尺寸: 886x806
+2025-05-23 11:43:05,574 [INFO] - root - 图片尺寸: 866x846
+2025-05-23 11:43:05,576 [INFO] - root - 图片尺寸: 896x788
+2025-05-23 11:43:05,579 [INFO] - root - 图片尺寸: 880x788
+2025-05-23 11:43:05,581 [INFO] - root - 图片尺寸: 616x1090
+2025-05-23 11:43:05,606 [WARNING] - root - Mammoth警告: Message(type='warning', message='Run style with ID 000033 was referenced but not defined in the document')
+2025-05-23 11:43:05,607 [WARNING] - root - Mammoth警告: Message(type='warning', message='Table style with ID 000034 was referenced but not defined in the document')
+2025-05-23 11:43:05,608 [WARNING] - root - Mammoth警告: Message(type='warning', message='Unrecognised paragraph style: Title (Style ID: 000028)')
+2025-05-23 11:43:05,609 [WARNING] - root - Mammoth警告: Message(type='warning', message='Unrecognised run style: None (Style ID: 000033)')
+2025-05-23 11:43:05,613 [INFO] - root - 添加文档元数据: 423
+2025-05-23 11:43:05,622 [INFO] - root - 添加文档内容: 423
+2025-05-23 11:43:05,623 [INFO] - root - 保存文档HTML内容: 423
+2025-05-23 11:43:05,625 [INFO] - root - 文档 423 索引请求 - 操作已转移到Storage类
+2025-05-23 11:43:05,629 [INFO] - werkzeug - 127.0.0.1 - - [23/May/2025 11:43:05] "POST /upload/batch HTTP/1.1" 200 -
+2025-05-23 11:43:08,147 [INFO] - root - 原始文件名: 四十七期Duoov5.3.0.docx, 安全文件名: Duoov5.3.0.docx
+2025-05-23 11:43:08,151 [INFO] - root - 文件已保存: D:\tools\Pycharm\PycharmWork\DocRadar\data\test\uploads\20250523114308_Duoov5.3.0.docx
+2025-05-23 11:43:08,162 [INFO] - root - 创建图片目录: D:\tools\Pycharm\PycharmWork\DocRadar\data\test\document_images\202505\cc917380da
+2025-05-23 11:43:08,163 [ERROR] - root - 提取DOCX图片失败: [Errno 2] No such file or directory: 'D:\\tools\\Pycharm\\PycharmWork\\DocRadar\\data\\test\\document_images\\202505\\cc917380da\\'
+2025-05-23 11:43:08,195 [INFO] - root - 图片尺寸: 622x1362
+2025-05-23 11:43:08,198 [INFO] - root - 图片尺寸: 622x296
+2025-05-23 11:43:08,202 [INFO] - root - 图片尺寸: 708x710
+2025-05-23 11:43:08,210 [WARNING] - root - Mammoth警告: Message(type='warning', message='Run style with ID 00001a was referenced but not defined in the document')
+2025-05-23 11:43:08,210 [WARNING] - root - Mammoth警告: Message(type='warning', message='Table style with ID 00001b was referenced but not defined in the document')
+2025-05-23 11:43:08,211 [WARNING] - root - Mammoth警告: Message(type='warning', message='Unrecognised paragraph style: Title (Style ID: 000003)')
+2025-05-23 11:43:08,211 [WARNING] - root - Mammoth警告: Message(type='warning', message='Unrecognised run style: None (Style ID: 00001a)')
+2025-05-23 11:43:08,217 [INFO] - root - 添加文档元数据: 424
+2025-05-23 11:43:08,226 [INFO] - root - 添加文档内容: 424
+2025-05-23 11:43:08,227 [INFO] - root - 保存文档HTML内容: 424
+2025-05-23 11:43:08,231 [INFO] - root - 文档 424 索引请求 - 操作已转移到Storage类
+2025-05-23 11:43:08,234 [INFO] - werkzeug - 127.0.0.1 - - [23/May/2025 11:43:08] "POST /upload/batch HTTP/1.1" 200 -
+2025-05-23 11:43:08,776 [INFO] - root - 原始文件名: 四十六期Duoov5.2.0.docx, 安全文件名: Duoov5.2.0.docx
+2025-05-23 11:43:08,787 [INFO] - root - 文件已保存: D:\tools\Pycharm\PycharmWork\DocRadar\data\test\uploads\20250523114308_Duoov5.2.0.docx
+2025-05-23 11:43:08,819 [INFO] - root - 创建图片目录: D:\tools\Pycharm\PycharmWork\DocRadar\data\test\document_images\202505\406e366bb0
+2025-05-23 11:43:08,823 [ERROR] - root - 提取DOCX图片失败: [Errno 2] No such file or directory: 'D:\\tools\\Pycharm\\PycharmWork\\DocRadar\\data\\test\\document_images\\202505\\406e366bb0\\'
+2025-05-23 11:43:08,969 [INFO] - root - 图片尺寸: 590x1278
+2025-05-23 11:43:08,971 [INFO] - root - 图片尺寸: 590x1278
+2025-05-23 11:43:08,973 [INFO] - root - 图片尺寸: 590x1278
+2025-05-23 11:43:08,974 [INFO] - root - 图片尺寸: 590x1278
+2025-05-23 11:43:08,977 [INFO] - root - 图片尺寸: 602x86
+2025-05-23 11:43:08,980 [INFO] - root - 图片尺寸: 590x1278
+2025-05-23 11:43:08,983 [INFO] - root - 图片尺寸: 550x454
+2025-05-23 11:43:08,984 [INFO] - root - 图片尺寸: 554x448
+2025-05-23 11:43:08,986 [INFO] - root - 图片尺寸: 560x460
+2025-05-23 11:43:08,987 [INFO] - root - 图片尺寸: 570x472
+2025-05-23 11:43:08,989 [INFO] - root - 图片尺寸: 1094x902
+2025-05-23 11:43:08,992 [INFO] - root - 图片尺寸: 1126x918
+2025-05-23 11:43:08,994 [INFO] - root - 图片尺寸: 534x620
+2025-05-23 11:43:08,996 [INFO] - root - 图片尺寸: 560x498
+2025-05-23 11:43:08,998 [INFO] - root - 图片尺寸: 556x498
+2025-05-23 11:43:09,000 [INFO] - root - 图片尺寸: 548x504
+2025-05-23 11:43:09,009 [INFO] - root - 图片尺寸: 1248x1334
+2025-05-23 11:43:09,029 [WARNING] - root - Mammoth警告: Message(type='warning', message='Run style with ID 00002b was referenced but not defined in the document')
+2025-05-23 11:43:09,030 [WARNING] - root - Mammoth警告: Message(type='warning', message='Table style with ID 00002c was referenced but not defined in the document')
+2025-05-23 11:43:09,030 [WARNING] - root - Mammoth警告: Message(type='warning', message='Unrecognised paragraph style: Title (Style ID: 000027)')
+2025-05-23 11:43:09,030 [WARNING] - root - Mammoth警告: Message(type='warning', message='Unrecognised run style: None (Style ID: 00002b)')
+2025-05-23 11:43:09,034 [INFO] - root - 添加文档元数据: 425
+2025-05-23 11:43:09,044 [INFO] - root - 添加文档内容: 425
+2025-05-23 11:43:09,045 [INFO] - root - 保存文档HTML内容: 425
+2025-05-23 11:43:09,048 [INFO] - root - 文档 425 索引请求 - 操作已转移到Storage类
+2025-05-23 11:43:09,053 [INFO] - werkzeug - 127.0.0.1 - - [23/May/2025 11:43:09] "POST /upload/batch HTTP/1.1" 200 -
+2025-05-23 11:43:09,565 [INFO] - root - 原始文件名: 四十五期Duoov5.1.0.docx, 安全文件名: Duoov5.1.0.docx
+2025-05-23 11:43:09,567 [INFO] - root - 文件已保存: D:\tools\Pycharm\PycharmWork\DocRadar\data\test\uploads\20250523114309_Duoov5.1.0.docx
+2025-05-23 11:43:09,580 [INFO] - root - 创建图片目录: D:\tools\Pycharm\PycharmWork\DocRadar\data\test\document_images\202505\78d0b15372
+2025-05-23 11:43:09,581 [ERROR] - root - 提取DOCX图片失败: [Errno 2] No such file or directory: 'D:\\tools\\Pycharm\\PycharmWork\\DocRadar\\data\\test\\document_images\\202505\\78d0b15372\\'
+2025-05-23 11:43:09,659 [INFO] - root - 图片尺寸: 1276x623
+2025-05-23 11:43:09,662 [INFO] - root - 图片尺寸: 3070x1678
+2025-05-23 11:43:09,688 [INFO] - root - 图片尺寸: 576x1288
+2025-05-23 11:43:09,691 [INFO] - root - 图片尺寸: 756x1156
+2025-05-23 11:43:09,703 [WARNING] - root - Mammoth警告: Message(type='warning', message='Run style with ID 00001d was referenced but not defined in the document')
+2025-05-23 11:43:09,704 [WARNING] - root - Mammoth警告: Message(type='warning', message='Table style with ID 00001e was referenced but not defined in the document')
+2025-05-23 11:43:09,704 [WARNING] - root - Mammoth警告: Message(type='warning', message='Unrecognised paragraph style: Title (Style ID: 00000a)')
+2025-05-23 11:43:09,705 [WARNING] - root - Mammoth警告: Message(type='warning', message='Unrecognised run style: None (Style ID: 00001d)')
+2025-05-23 11:43:09,710 [INFO] - root - 添加文档元数据: 426
+2025-05-23 11:43:09,720 [INFO] - root - 添加文档内容: 426
+2025-05-23 11:43:09,721 [INFO] - root - 保存文档HTML内容: 426
+2025-05-23 11:43:09,724 [INFO] - root - 文档 426 索引请求 - 操作已转移到Storage类
+2025-05-23 11:43:09,727 [INFO] - werkzeug - 127.0.0.1 - - [23/May/2025 11:43:09] "POST /upload/batch HTTP/1.1" 200 -
+2025-05-23 12:15:43,748 [INFO] - root - 日志系统初始化完成，使用日志文件: 2025-05-23_docradar.log
+2025-05-23 12:15:43,772 [INFO] - werkzeug -  * Restarting with stat
+2025-05-23 12:15:44,266 [INFO] - root - 日志系统初始化完成，使用日志文件: 2025-05-23_docradar.log
+2025-05-23 12:15:44,283 [WARNING] - werkzeug -  * Debugger is active!
+2025-05-23 12:15:44,288 [INFO] - werkzeug -  * Debugger PIN: 114-528-488
+2025-05-23 12:15:44,384 [INFO] - werkzeug -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2025-05-23 12:15:46,780 [INFO] - werkzeug - 127.0.0.1 - - [23/May/2025 12:15:46] "GET / HTTP/1.1" 200 -
+2025-05-23 12:15:46,964 [INFO] - werkzeug - 127.0.0.1 - - [23/May/2025 12:15:46] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-23 12:15:46,964 [INFO] - werkzeug - 127.0.0.1 - - [23/May/2025 12:15:46] "GET /static/js/main.js HTTP/1.1" 200 -
+2025-05-23 12:15:51,227 [INFO] - werkzeug - 127.0.0.1 - - [23/May/2025 12:15:51] "GET /?page=2&limit=10&search= HTTP/1.1" 200 -
+2025-05-23 12:15:51,243 [INFO] - werkzeug - 127.0.0.1 - - [23/May/2025 12:15:51] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-23 12:15:51,246 [INFO] - werkzeug - 127.0.0.1 - - [23/May/2025 12:15:51] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-23 12:15:52,851 [INFO] - werkzeug - 127.0.0.1 - - [23/May/2025 12:15:52] "GET /?page=1&limit=10&search= HTTP/1.1" 200 -
+2025-05-23 12:15:52,867 [INFO] - werkzeug - 127.0.0.1 - - [23/May/2025 12:15:52] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-23 12:15:52,867 [INFO] - werkzeug - 127.0.0.1 - - [23/May/2025 12:15:52] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-23 12:16:20,551 [INFO] - werkzeug - 127.0.0.1 - - [23/May/2025 12:16:20] "GET /api/check-file?filename=四十六期Duoov5.2.0.docx&csrf_token=Ijg3NzliMTFjNTcxNmFhYmEyYTFmYzg3MjQ0MGFkNzVhN2YzZDc5Zjci.aC_2eA.7GJC3-zSg55bQtzrOgv61Fg_lis HTTP/1.1" 200 -
+2025-05-23 12:16:20,559 [INFO] - werkzeug - 127.0.0.1 - - [23/May/2025 12:16:20] "GET /api/check-file?filename=四十五期Duoov5.1.0.docx&csrf_token=Ijg3NzliMTFjNTcxNmFhYmEyYTFmYzg3MjQ0MGFkNzVhN2YzZDc5Zjci.aC_2eA.7GJC3-zSg55bQtzrOgv61Fg_lis HTTP/1.1" 200 -
+2025-05-23 12:16:20,566 [INFO] - werkzeug - 127.0.0.1 - - [23/May/2025 12:16:20] "GET /api/check-file?filename=四十四期Duoov5.0.0.docx&csrf_token=Ijg3NzliMTFjNTcxNmFhYmEyYTFmYzg3MjQ0MGFkNzVhN2YzZDc5Zjci.aC_2eA.7GJC3-zSg55bQtzrOgv61Fg_lis HTTP/1.1" 200 -
+2025-05-23 12:16:20,574 [INFO] - werkzeug - 127.0.0.1 - - [23/May/2025 12:16:20] "GET /api/check-file?filename=四十三期Duoov4.9.0.docx&csrf_token=Ijg3NzliMTFjNTcxNmFhYmEyYTFmYzg3MjQ0MGFkNzVhN2YzZDc5Zjci.aC_2eA.7GJC3-zSg55bQtzrOgv61Fg_lis HTTP/1.1" 200 -
+2025-05-23 12:16:20,581 [INFO] - werkzeug - 127.0.0.1 - - [23/May/2025 12:16:20] "GET /api/check-file?filename=四十二Duoov4.8.0.docx&csrf_token=Ijg3NzliMTFjNTcxNmFhYmEyYTFmYzg3MjQ0MGFkNzVhN2YzZDc5Zjci.aC_2eA.7GJC3-zSg55bQtzrOgv61Fg_lis HTTP/1.1" 200 -
+2025-05-23 12:16:20,588 [INFO] - werkzeug - 127.0.0.1 - - [23/May/2025 12:16:20] "GET /api/check-file?filename=四十一Duoov4.7.0.docx&csrf_token=Ijg3NzliMTFjNTcxNmFhYmEyYTFmYzg3MjQ0MGFkNzVhN2YzZDc5Zjci.aC_2eA.7GJC3-zSg55bQtzrOgv61Fg_lis HTTP/1.1" 200 -
+2025-05-23 12:16:20,595 [INFO] - werkzeug - 127.0.0.1 - - [23/May/2025 12:16:20] "GET /api/check-file?filename=四十期Duoov4.6.0.docx&csrf_token=Ijg3NzliMTFjNTcxNmFhYmEyYTFmYzg3MjQ0MGFkNzVhN2YzZDc5Zjci.aC_2eA.7GJC3-zSg55bQtzrOgv61Fg_lis HTTP/1.1" 200 -
+2025-05-23 12:16:20,603 [INFO] - werkzeug - 127.0.0.1 - - [23/May/2025 12:16:20] "GET /api/check-file?filename=三十九期Duoov4.5.0.docx&csrf_token=Ijg3NzliMTFjNTcxNmFhYmEyYTFmYzg3MjQ0MGFkNzVhN2YzZDc5Zjci.aC_2eA.7GJC3-zSg55bQtzrOgv61Fg_lis HTTP/1.1" 200 -
+2025-05-23 12:16:20,610 [INFO] - werkzeug - 127.0.0.1 - - [23/May/2025 12:16:20] "GET /api/check-file?filename=三十八期Duoov4.4.0.docx&csrf_token=Ijg3NzliMTFjNTcxNmFhYmEyYTFmYzg3MjQ0MGFkNzVhN2YzZDc5Zjci.aC_2eA.7GJC3-zSg55bQtzrOgv61Fg_lis HTTP/1.1" 200 -
+2025-05-23 12:16:20,620 [INFO] - werkzeug - 127.0.0.1 - - [23/May/2025 12:16:20] "GET /api/check-file?filename=三十七期Duoov4.3.0.docx&csrf_token=Ijg3NzliMTFjNTcxNmFhYmEyYTFmYzg3MjQ0MGFkNzVhN2YzZDc5Zjci.aC_2eA.7GJC3-zSg55bQtzrOgv61Fg_lis HTTP/1.1" 200 -
+2025-05-23 12:16:20,627 [INFO] - werkzeug - 127.0.0.1 - - [23/May/2025 12:16:20] "GET /api/check-file?filename=三十六期Duoov4.2.0.docx&csrf_token=Ijg3NzliMTFjNTcxNmFhYmEyYTFmYzg3MjQ0MGFkNzVhN2YzZDc5Zjci.aC_2eA.7GJC3-zSg55bQtzrOgv61Fg_lis HTTP/1.1" 200 -
+2025-05-23 12:16:20,634 [INFO] - werkzeug - 127.0.0.1 - - [23/May/2025 12:16:20] "GET /api/check-file?filename=三十五期Duoov4.1.0.docx&csrf_token=Ijg3NzliMTFjNTcxNmFhYmEyYTFmYzg3MjQ0MGFkNzVhN2YzZDc5Zjci.aC_2eA.7GJC3-zSg55bQtzrOgv61Fg_lis HTTP/1.1" 200 -
+2025-05-23 12:16:20,641 [INFO] - werkzeug - 127.0.0.1 - - [23/May/2025 12:16:20] "GET /api/check-file?filename=三十四期Duoov4.0.0.docx&csrf_token=Ijg3NzliMTFjNTcxNmFhYmEyYTFmYzg3MjQ0MGFkNzVhN2YzZDc5Zjci.aC_2eA.7GJC3-zSg55bQtzrOgv61Fg_lis HTTP/1.1" 200 -
+2025-05-23 12:16:20,659 [INFO] - root - 原始文件名: 四十四期Duoov5.0.0.docx, 安全文件名: Duoov5.0.0.docx
+2025-05-23 12:16:20,667 [INFO] - root - 文件已保存: D:\tools\Pycharm\PycharmWork\DocRadar\data\test\uploads\20250523121620_Duoov5.0.0.docx
+2025-05-23 12:16:20,687 [INFO] - root - 创建图片目录: D:\tools\Pycharm\PycharmWork\DocRadar\data\test\document_images\202505\238e1afe51
+2025-05-23 12:16:20,688 [ERROR] - root - 提取DOCX图片失败: [Errno 2] No such file or directory: 'D:\\tools\\Pycharm\\PycharmWork\\DocRadar\\data\\test\\document_images\\202505\\238e1afe51\\'
+2025-05-23 12:16:20,759 [INFO] - root - 图片尺寸: 1642x702
+2025-05-23 12:16:20,761 [INFO] - root - 图片尺寸: 596x1270
+2025-05-23 12:16:20,763 [INFO] - root - 图片尺寸: 538x1168
+2025-05-23 12:16:20,765 [INFO] - root - 图片尺寸: 1600x1129
+2025-05-23 12:16:20,768 [INFO] - root - 图片尺寸: 620x1320
+2025-05-23 12:16:20,770 [INFO] - root - 图片尺寸: 530x1140
+2025-05-23 12:16:20,774 [INFO] - root - 图片尺寸: 1404x1454
+2025-05-23 12:16:20,778 [INFO] - root - 图片尺寸: 1754x1246
+2025-05-23 12:16:20,780 [INFO] - root - 图片尺寸: 1764x1252
+2025-05-23 12:16:20,782 [INFO] - root - 图片尺寸: 530x1140
+2025-05-23 12:16:20,784 [INFO] - root - 图片尺寸: 1246x1326
+2025-05-23 12:16:20,792 [INFO] - root - 图片尺寸: 3068x1678
+2025-05-23 12:16:20,794 [INFO] - root - 图片尺寸: 3070x1678
+2025-05-23 12:16:20,806 [WARNING] - root - Mammoth警告: Message(type='warning', message='Run style with ID 000020 was referenced but not defined in the document')
+2025-05-23 12:16:20,806 [WARNING] - root - Mammoth警告: Message(type='warning', message='Table style with ID 000021 was referenced but not defined in the document')
+2025-05-23 12:16:20,807 [WARNING] - root - Mammoth警告: Message(type='warning', message='Unrecognised paragraph style: Title (Style ID: 000007)')
+2025-05-23 12:16:20,808 [WARNING] - root - Mammoth警告: Message(type='warning', message='Unrecognised run style: None (Style ID: 000020)')
+2025-05-23 12:16:20,812 [INFO] - root - 添加文档元数据: 427
+2025-05-23 12:16:20,822 [INFO] - root - 添加文档内容: 427
+2025-05-23 12:16:20,823 [INFO] - root - 保存文档HTML内容: 427
+2025-05-23 12:16:20,827 [INFO] - root - 文档 427 索引请求 - 操作已转移到Storage类
+2025-05-23 12:16:20,830 [INFO] - werkzeug - 127.0.0.1 - - [23/May/2025 12:16:20] "POST /upload/batch HTTP/1.1" 200 -
+2025-05-23 12:16:21,339 [INFO] - root - 原始文件名: 四十三期Duoov4.9.0.docx, 安全文件名: Duoov4.9.0.docx
+2025-05-23 12:16:21,341 [INFO] - root - 文件已保存: D:\tools\Pycharm\PycharmWork\DocRadar\data\test\uploads\20250523121621_Duoov4.9.0.docx
+2025-05-23 12:16:21,349 [INFO] - root - 创建图片目录: D:\tools\Pycharm\PycharmWork\DocRadar\data\test\document_images\202505\47431e436a
+2025-05-23 12:16:21,350 [ERROR] - root - 提取DOCX图片失败: [Errno 2] No such file or directory: 'D:\\tools\\Pycharm\\PycharmWork\\DocRadar\\data\\test\\document_images\\202505\\47431e436a\\'
+2025-05-23 12:16:21,374 [INFO] - root - 图片尺寸: 1070x604
+2025-05-23 12:16:21,376 [INFO] - root - 图片尺寸: 1070x1060
+2025-05-23 12:16:21,379 [INFO] - root - 图片尺寸: 3070x1668
+2025-05-23 12:16:21,381 [INFO] - root - 图片尺寸: 722x604
+2025-05-23 12:16:21,387 [WARNING] - root - Mammoth警告: Message(type='warning', message='Run style with ID 00001b was referenced but not defined in the document')
+2025-05-23 12:16:21,388 [WARNING] - root - Mammoth警告: Message(type='warning', message='Table style with ID 00001c was referenced but not defined in the document')
+2025-05-23 12:16:21,389 [WARNING] - root - Mammoth警告: Message(type='warning', message='Unrecognised paragraph style: Title (Style ID: 000001)')
+2025-05-23 12:16:21,389 [WARNING] - root - Mammoth警告: Message(type='warning', message='Unrecognised run style: None (Style ID: 00001b)')
+2025-05-23 12:16:21,394 [INFO] - root - 添加文档元数据: 428
+2025-05-23 12:16:21,405 [INFO] - root - 添加文档内容: 428
+2025-05-23 12:16:21,405 [INFO] - root - 保存文档HTML内容: 428
+2025-05-23 12:16:21,408 [INFO] - root - 文档 428 索引请求 - 操作已转移到Storage类
+2025-05-23 12:16:21,411 [INFO] - werkzeug - 127.0.0.1 - - [23/May/2025 12:16:21] "POST /upload/batch HTTP/1.1" 200 -
+2025-05-23 12:16:21,961 [INFO] - root - 原始文件名: 四十二Duoov4.8.0.docx, 安全文件名: Duoov4.8.0.docx
+2025-05-23 12:16:21,974 [INFO] - root - 文件已保存: D:\tools\Pycharm\PycharmWork\DocRadar\data\test\uploads\20250523121621_Duoov4.8.0.docx
+2025-05-23 12:16:22,004 [INFO] - root - 创建图片目录: D:\tools\Pycharm\PycharmWork\DocRadar\data\test\document_images\202505\a38faab585
+2025-05-23 12:16:22,005 [ERROR] - root - 提取DOCX图片失败: [Errno 2] No such file or directory: 'D:\\tools\\Pycharm\\PycharmWork\\DocRadar\\data\\test\\document_images\\202505\\a38faab585\\'
+2025-05-23 12:16:22,106 [INFO] - root - 图片尺寸: 514x1172
+2025-05-23 12:16:22,108 [INFO] - root - 图片尺寸: 680x1190
+2025-05-23 12:16:22,110 [INFO] - root - 图片尺寸: 2086x882
+2025-05-23 12:16:22,112 [INFO] - root - 图片尺寸: 812x402
+2025-05-23 12:16:22,114 [INFO] - root - 图片尺寸: 1158x1214
+2025-05-23 12:16:22,117 [INFO] - root - 图片尺寸: 1378x1444
+2025-05-23 12:16:22,125 [INFO] - root - 图片尺寸: 1430x1444
+2025-05-23 12:16:22,126 [INFO] - root - 图片尺寸: 684x632
+2025-05-23 12:16:22,129 [INFO] - root - 图片尺寸: 682x646
+2025-05-23 12:16:22,131 [INFO] - root - 图片尺寸: 1302x1262
+2025-05-23 12:16:22,135 [INFO] - root - 图片尺寸: 1302x1262
+2025-05-23 12:16:22,139 [INFO] - root - 图片尺寸: 1434x632
+2025-05-23 12:16:22,142 [INFO] - root - 图片尺寸: 1436x1456
+2025-05-23 12:16:22,146 [INFO] - root - 图片尺寸: 1370x663
+2025-05-23 12:16:22,147 [INFO] - root - 图片尺寸: 1370x663
+2025-05-23 12:16:22,151 [INFO] - root - 图片尺寸: 1370x667
+2025-05-23 12:16:22,152 [INFO] - root - 图片尺寸: 1370x659
+2025-05-23 12:16:22,154 [INFO] - root - 图片尺寸: 1370x671
+2025-05-23 12:16:22,156 [INFO] - root - 图片尺寸: 1370x671
+2025-05-23 12:16:22,158 [INFO] - root - 图片尺寸: 1370x663
+2025-05-23 12:16:22,160 [INFO] - root - 图片尺寸: 1370x663
+2025-05-23 12:16:22,162 [INFO] - root - 图片尺寸: 1370x667
+2025-05-23 12:16:22,164 [INFO] - root - 图片尺寸: 1360x662
+2025-05-23 12:16:22,166 [INFO] - root - 图片尺寸: 1370x659
+2025-05-23 12:16:22,168 [INFO] - root - 图片尺寸: 1370x671
+2025-05-23 12:16:22,170 [INFO] - root - 图片尺寸: 1370x671
+2025-05-23 12:16:22,172 [INFO] - root - 图片尺寸: 3070x1674
+2025-05-23 12:16:22,175 [INFO] - root - 图片尺寸: 3070x1676
+2025-05-23 12:16:22,177 [INFO] - root - 图片尺寸: 1600x877
+2025-05-23 12:16:22,180 [INFO] - root - 图片尺寸: 1556x696
+2025-05-23 12:16:22,199 [WARNING] - root - Mammoth警告: Message(type='warning', message='Run style with ID 00004c was referenced but not defined in the document')
+2025-05-23 12:16:22,200 [WARNING] - root - Mammoth警告: Message(type='warning', message='Table style with ID 00004d was referenced but not defined in the document')
+2025-05-23 12:16:22,200 [WARNING] - root - Mammoth警告: Message(type='warning', message='Unrecognised paragraph style: Title (Style ID: 000045)')
+2025-05-23 12:16:22,201 [WARNING] - root - Mammoth警告: Message(type='warning', message='Unrecognised run style: None (Style ID: 00004c)')
+2025-05-23 12:16:22,205 [INFO] - root - 添加文档元数据: 429
+2025-05-23 12:16:22,214 [INFO] - root - 添加文档内容: 429
+2025-05-23 12:16:22,214 [INFO] - root - 保存文档HTML内容: 429
+2025-05-23 12:16:22,228 [INFO] - root - 文档 429 索引请求 - 操作已转移到Storage类
+2025-05-23 12:16:22,233 [INFO] - werkzeug - 127.0.0.1 - - [23/May/2025 12:16:22] "POST /upload/batch HTTP/1.1" 200 -
+2025-05-23 12:16:24,746 [INFO] - root - 原始文件名: 四十一Duoov4.7.0.docx, 安全文件名: Duoov4.7.0.docx
+2025-05-23 12:16:24,749 [INFO] - root - 文件已保存: D:\tools\Pycharm\PycharmWork\DocRadar\data\test\uploads\20250523121624_Duoov4.7.0.docx
+2025-05-23 12:16:24,757 [INFO] - root - 创建图片目录: D:\tools\Pycharm\PycharmWork\DocRadar\data\test\document_images\202505\55939a2bbc
+2025-05-23 12:16:24,758 [ERROR] - root - 提取DOCX图片失败: [Errno 2] No such file or directory: 'D:\\tools\\Pycharm\\PycharmWork\\DocRadar\\data\\test\\document_images\\202505\\55939a2bbc\\'
+2025-05-23 12:16:24,775 [INFO] - root - 图片尺寸: 1416x1534
+2025-05-23 12:16:24,778 [INFO] - root - 图片尺寸: 3070x1388
+2025-05-23 12:16:24,780 [INFO] - root - 图片尺寸: 1856x1026
+2025-05-23 12:16:24,784 [WARNING] - root - Mammoth警告: Message(type='warning', message='Run style with ID 000010 was referenced but not defined in the document')
+2025-05-23 12:16:24,784 [WARNING] - root - Mammoth警告: Message(type='warning', message='Table style with ID 000011 was referenced but not defined in the document')
+2025-05-23 12:16:24,784 [WARNING] - root - Mammoth警告: Message(type='warning', message='Unrecognised paragraph style: Title (Style ID: 000006)')
+2025-05-23 12:16:24,785 [WARNING] - root - Mammoth警告: Message(type='warning', message='Unrecognised run style: None (Style ID: 000010)')
+2025-05-23 12:16:24,791 [INFO] - root - 添加文档元数据: 430
+2025-05-23 12:16:24,800 [INFO] - root - 添加文档内容: 430
+2025-05-23 12:16:24,801 [INFO] - root - 保存文档HTML内容: 430
+2025-05-23 12:16:24,804 [INFO] - root - 文档 430 索引请求 - 操作已转移到Storage类
+2025-05-23 12:16:24,807 [INFO] - werkzeug - 127.0.0.1 - - [23/May/2025 12:16:24] "POST /upload/batch HTTP/1.1" 200 -
+2025-05-23 12:16:25,330 [INFO] - root - 原始文件名: 四十期Duoov4.6.0.docx, 安全文件名: Duoov4.6.0.docx
+2025-05-23 12:16:25,336 [INFO] - root - 文件已保存: D:\tools\Pycharm\PycharmWork\DocRadar\data\test\uploads\20250523121625_Duoov4.6.0.docx
+2025-05-23 12:16:25,353 [INFO] - root - 创建图片目录: D:\tools\Pycharm\PycharmWork\DocRadar\data\test\document_images\202505\a3cc0ec006
+2025-05-23 12:16:25,354 [ERROR] - root - 提取DOCX图片失败: [Errno 2] No such file or directory: 'D:\\tools\\Pycharm\\PycharmWork\\DocRadar\\data\\test\\document_images\\202505\\a3cc0ec006\\'
+2025-05-23 12:16:25,427 [INFO] - root - 图片尺寸: 430x500
+2025-05-23 12:16:25,431 [INFO] - root - 图片尺寸: 240x230
+2025-05-23 12:16:25,433 [INFO] - root - 图片尺寸: 912x940
+2025-05-23 12:16:25,436 [INFO] - root - 图片尺寸: 254x206
+2025-05-23 12:16:25,439 [INFO] - root - 图片尺寸: 1402x1370
+2025-05-23 12:16:25,448 [INFO] - root - 图片尺寸: 1218x176
+2025-05-23 12:16:25,450 [INFO] - root - 图片尺寸: 1320x1566
+2025-05-23 12:16:25,453 [INFO] - root - 图片尺寸: 1832x996
+2025-05-23 12:16:25,467 [WARNING] - root - Mammoth警告: Message(type='warning', message='Run style with ID 00001d was referenced but not defined in the document')
+2025-05-23 12:16:25,467 [WARNING] - root - Mammoth警告: Message(type='warning', message='Table style with ID 00001e was referenced but not defined in the document')
+2025-05-23 12:16:25,468 [WARNING] - root - Mammoth警告: Message(type='warning', message='Unrecognised paragraph style: Title (Style ID: 000009)')
+2025-05-23 12:16:25,468 [WARNING] - root - Mammoth警告: Message(type='warning', message='Unrecognised run style: None (Style ID: 00001d)')
+2025-05-23 12:16:25,472 [INFO] - root - 添加文档元数据: 431
+2025-05-23 12:16:25,482 [INFO] - root - 添加文档内容: 431
+2025-05-23 12:16:25,483 [INFO] - root - 保存文档HTML内容: 431
+2025-05-23 12:16:25,486 [INFO] - root - 文档 431 索引请求 - 操作已转移到Storage类
+2025-05-23 12:16:25,490 [INFO] - werkzeug - 127.0.0.1 - - [23/May/2025 12:16:25] "POST /upload/batch HTTP/1.1" 200 -
+2025-05-23 12:16:26,007 [INFO] - root - 原始文件名: 三十九期Duoov4.5.0.docx, 安全文件名: Duoov4.5.0.docx
+2025-05-23 12:16:26,011 [INFO] - root - 文件已保存: D:\tools\Pycharm\PycharmWork\DocRadar\data\test\uploads\20250523121626_Duoov4.5.0.docx
+2025-05-23 12:16:26,026 [INFO] - root - 创建图片目录: D:\tools\Pycharm\PycharmWork\DocRadar\data\test\document_images\202505\c99513a9d0
+2025-05-23 12:16:26,027 [ERROR] - root - 提取DOCX图片失败: [Errno 2] No such file or directory: 'D:\\tools\\Pycharm\\PycharmWork\\DocRadar\\data\\test\\document_images\\202505\\c99513a9d0\\'
+2025-05-23 12:16:26,072 [INFO] - root - 图片尺寸: 1210x1194
+2025-05-23 12:16:26,075 [INFO] - root - 图片尺寸: 616x1280
+2025-05-23 12:16:26,078 [INFO] - root - 图片尺寸: 606x1272
+2025-05-23 12:16:26,080 [INFO] - root - 图片尺寸: 598x1262
+2025-05-23 12:16:26,082 [INFO] - root - 图片尺寸: 564x1198
+2025-05-23 12:16:26,090 [INFO] - root - 图片尺寸: 440x1178
+2025-05-23 12:16:26,092 [INFO] - root - 图片尺寸: 558x1194
+2025-05-23 12:16:26,094 [INFO] - root - 图片尺寸: 954x862
+2025-05-23 12:16:26,098 [INFO] - root - 图片尺寸: 3070x1638
+2025-05-23 12:16:26,100 [INFO] - root - 图片尺寸: 3070x1616
+2025-05-23 12:16:26,109 [WARNING] - root - Mammoth警告: Message(type='warning', message='Run style with ID 00002c was referenced but not defined in the document')
+2025-05-23 12:16:26,110 [WARNING] - root - Mammoth警告: Message(type='warning', message='Table style with ID 00002d was referenced but not defined in the document')
+2025-05-23 12:16:26,111 [WARNING] - root - Mammoth警告: Message(type='warning', message='Unrecognised paragraph style: Title (Style ID: 00001f)')
+2025-05-23 12:16:26,111 [WARNING] - root - Mammoth警告: Message(type='warning', message='Unrecognised run style: None (Style ID: 00002c)')
+2025-05-23 12:16:26,115 [INFO] - root - 添加文档元数据: 432
+2025-05-23 12:16:26,124 [INFO] - root - 添加文档内容: 432
+2025-05-23 12:16:26,125 [INFO] - root - 保存文档HTML内容: 432
+2025-05-23 12:16:26,128 [INFO] - root - 文档 432 索引请求 - 操作已转移到Storage类
+2025-05-23 12:16:26,132 [INFO] - werkzeug - 127.0.0.1 - - [23/May/2025 12:16:26] "POST /upload/batch HTTP/1.1" 200 -
+2025-05-23 12:16:28,644 [INFO] - root - 原始文件名: 三十八期Duoov4.4.0.docx, 安全文件名: Duoov4.4.0.docx
+2025-05-23 12:16:28,648 [INFO] - root - 文件已保存: D:\tools\Pycharm\PycharmWork\DocRadar\data\test\uploads\20250523121628_Duoov4.4.0.docx
+2025-05-23 12:16:28,660 [INFO] - root - 创建图片目录: D:\tools\Pycharm\PycharmWork\DocRadar\data\test\document_images\202505\a65e164e5f
+2025-05-23 12:16:28,661 [ERROR] - root - 提取DOCX图片失败: [Errno 2] No such file or directory: 'D:\\tools\\Pycharm\\PycharmWork\\DocRadar\\data\\test\\document_images\\202505\\a65e164e5f\\'
+2025-05-23 12:16:28,728 [INFO] - root - 图片尺寸: 628x626
+2025-05-23 12:16:28,730 [INFO] - root - 图片尺寸: 628x382
+2025-05-23 12:16:28,733 [INFO] - root - 图片尺寸: 1014x1096
+2025-05-23 12:16:28,736 [INFO] - root - 图片尺寸: 1809x1892
+2025-05-23 12:16:28,750 [WARNING] - root - Mammoth警告: Message(type='warning', message='Run style with ID 000034 was referenced but not defined in the document')
+2025-05-23 12:16:28,751 [WARNING] - root - Mammoth警告: Message(type='warning', message='Table style with ID 000035 was referenced but not defined in the document')
+2025-05-23 12:16:28,752 [WARNING] - root - Mammoth警告: Message(type='warning', message='Unrecognised paragraph style: Title (Style ID: 00000b)')
+2025-05-23 12:16:28,753 [WARNING] - root - Mammoth警告: Message(type='warning', message='Unrecognised run style: None (Style ID: 000034)')
+2025-05-23 12:16:28,758 [INFO] - root - 添加文档元数据: 433
+2025-05-23 12:16:28,767 [INFO] - root - 添加文档内容: 433
+2025-05-23 12:16:28,767 [INFO] - root - 保存文档HTML内容: 433
+2025-05-23 12:16:28,772 [INFO] - root - 文档 433 索引请求 - 操作已转移到Storage类
+2025-05-23 12:16:28,775 [INFO] - werkzeug - 127.0.0.1 - - [23/May/2025 12:16:28] "POST /upload/batch HTTP/1.1" 200 -
+2025-05-23 12:16:29,295 [INFO] - root - 原始文件名: 三十七期Duoov4.3.0.docx, 安全文件名: Duoov4.3.0.docx
+2025-05-23 12:16:29,299 [INFO] - root - 文件已保存: D:\tools\Pycharm\PycharmWork\DocRadar\data\test\uploads\20250523121629_Duoov4.3.0.docx
+2025-05-23 12:16:29,335 [INFO] - root - 创建图片目录: D:\tools\Pycharm\PycharmWork\DocRadar\data\test\document_images\202505\6c58361824
+2025-05-23 12:16:29,337 [ERROR] - root - 提取DOCX图片失败: [Errno 2] No such file or directory: 'D:\\tools\\Pycharm\\PycharmWork\\DocRadar\\data\\test\\document_images\\202505\\6c58361824\\'
+2025-05-23 12:16:29,490 [INFO] - root - 图片尺寸: 3070x1084
+2025-05-23 12:16:29,493 [INFO] - root - 图片尺寸: 936x1398
+2025-05-23 12:16:29,498 [INFO] - root - 图片尺寸: 3070x1476
+2025-05-23 12:16:29,500 [INFO] - root - 图片尺寸: 3070x1046
+2025-05-23 12:16:29,504 [INFO] - root - 图片尺寸: 1576x584
+2025-05-23 12:16:29,510 [INFO] - root - 图片尺寸: 1626x908
+2025-05-23 12:16:29,524 [INFO] - root - 图片尺寸: 3068x1676
+2025-05-23 12:16:29,527 [INFO] - root - 图片尺寸: 1334x1390
+2025-05-23 12:16:29,578 [WARNING] - root - Mammoth警告: Message(type='warning', message='Run style with ID 00005b was referenced but not defined in the document')
+2025-05-23 12:16:29,578 [WARNING] - root - Mammoth警告: Message(type='warning', message='Table style with ID 00005c was referenced but not defined in the document')
+2025-05-23 12:16:29,579 [WARNING] - root - Mammoth警告: Message(type='warning', message='Unrecognised paragraph style: Title (Style ID: 000050)')
+2025-05-23 12:16:29,579 [WARNING] - root - Mammoth警告: Message(type='warning', message='Unrecognised run style: None (Style ID: 00005b)')
+2025-05-23 12:16:29,583 [INFO] - root - 添加文档元数据: 434
+2025-05-23 12:16:29,594 [INFO] - root - 添加文档内容: 434
+2025-05-23 12:16:29,595 [INFO] - root - 保存文档HTML内容: 434
+2025-05-23 12:16:29,599 [INFO] - root - 文档 434 索引请求 - 操作已转移到Storage类
+2025-05-23 12:16:29,604 [INFO] - werkzeug - 127.0.0.1 - - [23/May/2025 12:16:29] "POST /upload/batch HTTP/1.1" 200 -
+2025-05-23 12:16:30,140 [INFO] - root - 原始文件名: 三十六期Duoov4.2.0.docx, 安全文件名: Duoov4.2.0.docx
+2025-05-23 12:16:30,148 [INFO] - root - 文件已保存: D:\tools\Pycharm\PycharmWork\DocRadar\data\test\uploads\20250523121630_Duoov4.2.0.docx
+2025-05-23 12:16:30,167 [INFO] - root - 创建图片目录: D:\tools\Pycharm\PycharmWork\DocRadar\data\test\document_images\202505\862b4209b2
+2025-05-23 12:16:30,168 [ERROR] - root - 提取DOCX图片失败: [Errno 2] No such file or directory: 'D:\\tools\\Pycharm\\PycharmWork\\DocRadar\\data\\test\\document_images\\202505\\862b4209b2\\'
+2025-05-23 12:16:30,214 [INFO] - root - 图片尺寸: 1974x2618
+2025-05-23 12:16:30,216 [INFO] - root - 图片尺寸: 460x986
+2025-05-23 12:16:30,219 [INFO] - root - 图片尺寸: 1526x984
+2025-05-23 12:16:30,222 [INFO] - root - 图片尺寸: 460x986
+2025-05-23 12:16:30,226 [INFO] - root - 图片尺寸: 1800x1212
+2025-05-23 12:16:30,233 [INFO] - root - 图片尺寸: 516x1128
+2025-05-23 12:16:30,237 [INFO] - root - 图片尺寸: 536x1164
+2025-05-23 12:16:30,241 [INFO] - root - 图片尺寸: 540x1162
+2025-05-23 12:16:30,244 [INFO] - root - 图片尺寸: 576x1238
+2025-05-23 12:16:30,248 [INFO] - root - 图片尺寸: 568x1228
+2025-05-23 12:16:30,250 [INFO] - root - 图片尺寸: 568x1224
+2025-05-23 12:16:30,260 [WARNING] - root - Mammoth警告: Message(type='warning', message='Run style with ID 000027 was referenced but not defined in the document')
+2025-05-23 12:16:30,261 [WARNING] - root - Mammoth警告: Message(type='warning', message='Table style with ID 000028 was referenced but not defined in the document')
+2025-05-23 12:16:30,262 [WARNING] - root - Mammoth警告: Message(type='warning', message='Unrecognised paragraph style: Title (Style ID: 000021)')
+2025-05-23 12:16:30,262 [WARNING] - root - Mammoth警告: Message(type='warning', message='Unrecognised run style: None (Style ID: 000027)')
+2025-05-23 12:16:30,267 [INFO] - root - 添加文档元数据: 435
+2025-05-23 12:16:30,277 [INFO] - root - 添加文档内容: 435
+2025-05-23 12:16:30,278 [INFO] - root - 保存文档HTML内容: 435
+2025-05-23 12:16:30,281 [INFO] - root - 文档 435 索引请求 - 操作已转移到Storage类
+2025-05-23 12:16:30,285 [INFO] - werkzeug - 127.0.0.1 - - [23/May/2025 12:16:30] "POST /upload/batch HTTP/1.1" 200 -
+2025-05-23 12:16:32,801 [INFO] - root - 原始文件名: 三十五期Duoov4.1.0.docx, 安全文件名: Duoov4.1.0.docx
+2025-05-23 12:16:32,805 [INFO] - root - 文件已保存: D:\tools\Pycharm\PycharmWork\DocRadar\data\test\uploads\20250523121632_Duoov4.1.0.docx
+2025-05-23 12:16:32,818 [INFO] - root - 创建图片目录: D:\tools\Pycharm\PycharmWork\DocRadar\data\test\document_images\202505\86e456de0d
+2025-05-23 12:16:32,819 [ERROR] - root - 提取DOCX图片失败: [Errno 2] No such file or directory: 'D:\\tools\\Pycharm\\PycharmWork\\DocRadar\\data\\test\\document_images\\202505\\86e456de0d\\'
+2025-05-23 12:16:32,859 [INFO] - root - 图片尺寸: 1430x840
+2025-05-23 12:16:32,861 [INFO] - root - 图片尺寸: 1654x1116
+2025-05-23 12:16:32,863 [INFO] - root - 图片尺寸: 1600x747
+2025-05-23 12:16:32,865 [INFO] - root - 图片尺寸: 1600x856
+2025-05-23 12:16:32,866 [INFO] - root - 图片尺寸: 1080x534
+2025-05-23 12:16:32,869 [INFO] - root - 图片尺寸: 2412x1720
+2025-05-23 12:16:32,873 [INFO] - root - 图片尺寸: 928x1136
+2025-05-23 12:16:32,879 [WARNING] - root - Mammoth警告: Message(type='warning', message='Run style with ID 00002b was referenced but not defined in the document')
+2025-05-23 12:16:32,880 [WARNING] - root - Mammoth警告: Message(type='warning', message='Table style with ID 00002c was referenced but not defined in the document')
+2025-05-23 12:16:32,880 [WARNING] - root - Mammoth警告: Message(type='warning', message='Unrecognised paragraph style: Title (Style ID: 000029)')
+2025-05-23 12:16:32,881 [WARNING] - root - Mammoth警告: Message(type='warning', message='Unrecognised run style: None (Style ID: 00002b)')
+2025-05-23 12:16:32,885 [INFO] - root - 添加文档元数据: 436
+2025-05-23 12:16:32,896 [INFO] - root - 添加文档内容: 436
+2025-05-23 12:16:32,897 [INFO] - root - 保存文档HTML内容: 436
+2025-05-23 12:16:32,899 [INFO] - root - 文档 436 索引请求 - 操作已转移到Storage类
+2025-05-23 12:16:32,901 [INFO] - werkzeug - 127.0.0.1 - - [23/May/2025 12:16:32] "POST /upload/batch HTTP/1.1" 200 -
+2025-05-23 12:16:33,424 [INFO] - root - 原始文件名: 三十四期Duoov4.0.0.docx, 安全文件名: Duoov4.0.0.docx
+2025-05-23 12:16:33,430 [INFO] - root - 文件已保存: D:\tools\Pycharm\PycharmWork\DocRadar\data\test\uploads\20250523121633_Duoov4.0.0.docx
+2025-05-23 12:16:33,451 [INFO] - root - 创建图片目录: D:\tools\Pycharm\PycharmWork\DocRadar\data\test\document_images\202505\b0b713665f
+2025-05-23 12:16:33,453 [ERROR] - root - 提取DOCX图片失败: [Errno 2] No such file or directory: 'D:\\tools\\Pycharm\\PycharmWork\\DocRadar\\data\\test\\document_images\\202505\\b0b713665f\\'
+2025-05-23 12:16:33,523 [INFO] - root - 图片尺寸: 1600x872
+2025-05-23 12:16:33,525 [INFO] - root - 图片尺寸: 992x818
+2025-05-23 12:16:33,529 [INFO] - root - 图片尺寸: 1744x1170
+2025-05-23 12:16:33,530 [INFO] - root - 图片尺寸: 1628x1646
+2025-05-23 12:16:33,532 [INFO] - root - 图片尺寸: 1200x1014
+2025-05-23 12:16:33,535 [INFO] - root - 图片尺寸: 1046x856
+2025-05-23 12:16:33,537 [INFO] - root - 图片尺寸: 1044x856
+2025-05-23 12:16:33,538 [INFO] - root - 图片尺寸: 1052x856
+2025-05-23 12:16:33,539 [INFO] - root - 图片尺寸: 1460x1636
+2025-05-23 12:16:33,541 [INFO] - root - 图片尺寸: 846x890
+2025-05-23 12:16:33,543 [INFO] - root - 图片尺寸: 824x912
+2025-05-23 12:16:33,546 [INFO] - root - 图片尺寸: 3070x1672
+2025-05-23 12:16:33,548 [INFO] - root - 图片尺寸: 3070x1674
+2025-05-23 12:16:33,550 [INFO] - root - 图片尺寸: 3070x1392
+2025-05-23 12:16:33,552 [INFO] - root - 图片尺寸: 1534x804
+2025-05-23 12:16:33,555 [INFO] - root - 图片尺寸: 910x460
+2025-05-23 12:16:33,557 [INFO] - root - 图片尺寸: 3070x1316
+2025-05-23 12:16:33,559 [INFO] - root - 图片尺寸: 1600x734
+2025-05-23 12:16:33,561 [INFO] - root - 图片尺寸: 668x914
+2025-05-23 12:16:33,570 [WARNING] - root - Mammoth警告: Message(type='warning', message='Run style with ID 00003b was referenced but not defined in the document')
+2025-05-23 12:16:33,570 [WARNING] - root - Mammoth警告: Message(type='warning', message='Table style with ID 00003c was referenced but not defined in the document')
+2025-05-23 12:16:33,571 [WARNING] - root - Mammoth警告: Message(type='warning', message='Unrecognised paragraph style: Title (Style ID: 000038)')
+2025-05-23 12:16:33,571 [WARNING] - root - Mammoth警告: Message(type='warning', message='Unrecognised run style: None (Style ID: 00003b)')
+2025-05-23 12:16:33,576 [INFO] - root - 添加文档元数据: 437
+2025-05-23 12:16:33,585 [INFO] - root - 添加文档内容: 437
+2025-05-23 12:16:33,585 [INFO] - root - 保存文档HTML内容: 437
+2025-05-23 12:16:33,590 [INFO] - root - 文档 437 索引请求 - 操作已转移到Storage类
+2025-05-23 12:16:33,594 [INFO] - werkzeug - 127.0.0.1 - - [23/May/2025 12:16:33] "POST /upload/batch HTTP/1.1" 200 -
+2025-05-23 12:16:35,681 [INFO] - root - 原始文件名: 四十六期Duoov5.2.0.docx, 安全文件名: Duoov5.2.0.docx
+2025-05-23 12:16:35,690 [INFO] - root - 文件已保存: D:\tools\Pycharm\PycharmWork\DocRadar\data\test\uploads\temp_20250523121635_Duoov5.2.0.docx
+2025-05-23 12:16:35,715 [INFO] - root - 创建图片目录: D:\tools\Pycharm\PycharmWork\DocRadar\data\test\document_images\202505\0f7e88dd9d
+2025-05-23 12:16:35,716 [ERROR] - root - 提取DOCX图片失败: [Errno 2] No such file or directory: 'D:\\tools\\Pycharm\\PycharmWork\\DocRadar\\data\\test\\document_images\\202505\\0f7e88dd9d\\'
+2025-05-23 12:16:35,813 [INFO] - root - 图片尺寸: 590x1278
+2025-05-23 12:16:35,815 [INFO] - root - 图片尺寸: 590x1278
+2025-05-23 12:16:35,818 [INFO] - root - 图片尺寸: 590x1278
+2025-05-23 12:16:35,821 [INFO] - root - 图片尺寸: 590x1278
+2025-05-23 12:16:35,824 [INFO] - root - 图片尺寸: 602x86
+2025-05-23 12:16:35,829 [INFO] - root - 图片尺寸: 590x1278
+2025-05-23 12:16:35,831 [INFO] - root - 图片尺寸: 550x454
+2025-05-23 12:16:35,833 [INFO] - root - 图片尺寸: 554x448
+2025-05-23 12:16:35,834 [INFO] - root - 图片尺寸: 560x460
+2025-05-23 12:16:35,836 [INFO] - root - 图片尺寸: 570x472
+2025-05-23 12:16:35,839 [INFO] - root - 图片尺寸: 1094x902
+2025-05-23 12:16:35,842 [INFO] - root - 图片尺寸: 1126x918
+2025-05-23 12:16:35,844 [INFO] - root - 图片尺寸: 534x620
+2025-05-23 12:16:35,847 [INFO] - root - 图片尺寸: 560x498
+2025-05-23 12:16:35,850 [INFO] - root - 图片尺寸: 556x498
+2025-05-23 12:16:35,851 [INFO] - root - 图片尺寸: 548x504
+2025-05-23 12:16:35,860 [INFO] - root - 图片尺寸: 1248x1334
+2025-05-23 12:16:35,907 [WARNING] - root - Mammoth警告: Message(type='warning', message='Run style with ID 00002b was referenced but not defined in the document')
+2025-05-23 12:16:35,908 [WARNING] - root - Mammoth警告: Message(type='warning', message='Table style with ID 00002c was referenced but not defined in the document')
+2025-05-23 12:16:35,909 [WARNING] - root - Mammoth警告: Message(type='warning', message='Unrecognised paragraph style: Title (Style ID: 000027)')
+2025-05-23 12:16:35,909 [WARNING] - root - Mammoth警告: Message(type='warning', message='Unrecognised run style: None (Style ID: 00002b)')
+2025-05-23 12:16:35,914 [INFO] - root - 旧文件已移动到临时目录: D:\tools\Pycharm\PycharmWork\DocRadar\data\test\temp\old_1747973795_20250523114308_Duoov5.2.0.docx
+2025-05-23 12:16:35,914 [INFO] - root - 文件替换成功: 425, 新文件: D:\tools\Pycharm\PycharmWork\DocRadar\data\test\uploads\temp_20250523121635_Duoov5.2.0.docx
+2025-05-23 12:16:35,932 [INFO] - root - 更新文档内容: 425
+2025-05-23 12:16:35,933 [INFO] - root - 保存文档HTML内容: 425
+2025-05-23 12:16:35,937 [INFO] - root - 文档 425 覆盖成功
+2025-05-23 12:16:35,940 [INFO] - werkzeug - 127.0.0.1 - - [23/May/2025 12:16:35] "POST /upload/batch HTTP/1.1" 200 -
+2025-05-23 12:16:36,452 [INFO] - root - 原始文件名: 四十五期Duoov5.1.0.docx, 安全文件名: Duoov5.1.0.docx
+2025-05-23 12:16:36,455 [INFO] - root - 文件已保存: D:\tools\Pycharm\PycharmWork\DocRadar\data\test\uploads\temp_20250523121636_Duoov5.1.0.docx
+2025-05-23 12:16:36,467 [INFO] - root - 创建图片目录: D:\tools\Pycharm\PycharmWork\DocRadar\data\test\document_images\202505\1570726240
+2025-05-23 12:16:36,468 [ERROR] - root - 提取DOCX图片失败: [Errno 2] No such file or directory: 'D:\\tools\\Pycharm\\PycharmWork\\DocRadar\\data\\test\\document_images\\202505\\1570726240\\'
+2025-05-23 12:16:36,541 [INFO] - root - 图片尺寸: 1276x623
+2025-05-23 12:16:36,544 [INFO] - root - 图片尺寸: 3070x1678
+2025-05-23 12:16:36,550 [INFO] - root - 图片尺寸: 576x1288
+2025-05-23 12:16:36,553 [INFO] - root - 图片尺寸: 756x1156
+2025-05-23 12:16:36,563 [WARNING] - root - Mammoth警告: Message(type='warning', message='Run style with ID 00001d was referenced but not defined in the document')
+2025-05-23 12:16:36,564 [WARNING] - root - Mammoth警告: Message(type='warning', message='Table style with ID 00001e was referenced but not defined in the document')
+2025-05-23 12:16:36,565 [WARNING] - root - Mammoth警告: Message(type='warning', message='Unrecognised paragraph style: Title (Style ID: 00000a)')
+2025-05-23 12:16:36,565 [WARNING] - root - Mammoth警告: Message(type='warning', message='Unrecognised run style: None (Style ID: 00001d)')
+2025-05-23 12:16:36,570 [INFO] - root - 旧文件已移动到临时目录: D:\tools\Pycharm\PycharmWork\DocRadar\data\test\temp\old_1747973796_20250523114309_Duoov5.1.0.docx
+2025-05-23 12:16:36,570 [INFO] - root - 文件替换成功: 426, 新文件: D:\tools\Pycharm\PycharmWork\DocRadar\data\test\uploads\temp_20250523121636_Duoov5.1.0.docx
+2025-05-23 12:16:36,586 [INFO] - root - 更新文档内容: 426
+2025-05-23 12:16:36,587 [INFO] - root - 保存文档HTML内容: 426
+2025-05-23 12:16:36,590 [INFO] - root - 文档 426 覆盖成功
+2025-05-23 12:16:36,594 [INFO] - werkzeug - 127.0.0.1 - - [23/May/2025 12:16:36] "POST /upload/batch HTTP/1.1" 200 -
+2025-05-23 12:16:38,130 [INFO] - werkzeug - 127.0.0.1 - - [23/May/2025 12:16:38] "GET /?page=1&limit=10&search= HTTP/1.1" 200 -
+2025-05-23 12:16:38,148 [INFO] - werkzeug - 127.0.0.1 - - [23/May/2025 12:16:38] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-05-23 12:16:38,165 [INFO] - werkzeug - 127.0.0.1 - - [23/May/2025 12:16:38] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
