@@ -12,7 +12,7 @@ import time
 import random
 from datetime import datetime
 from werkzeug.utils import secure_filename
-from app.core.config import UPLOADS_DIR, DATABASE_URI, ALLOWED_EXTENSIONS
+from app.core.config import UPLOADS_DIR, DATABASE_URI, ALLOWED_EXTENSIONS, DOCUMENT_IMAGES_DIR
 
 # 添加临时目录常量
 TEMP_DIR = os.path.join(os.path.dirname(UPLOADS_DIR), 'temp')
@@ -861,17 +861,31 @@ class Storage:
             if metadata_json:
                 try:
                     metadata = json.loads(metadata_json)
+                    # 检查旧格式的图片目录
                     if 'image_directory' in metadata and os.path.exists(metadata['image_directory']):
                         try:
                             shutil.rmtree(metadata['image_directory'])
                             logging.info(f"删除文档图片目录: {metadata['image_directory']}")
                         except Exception as e:
                             logging.error(f"删除文档图片目录失败: {e}")
+                    
+                    # 查找并删除新格式的图片目录
+                    if os.path.exists(DOCUMENT_IMAGES_DIR):
+                        # 查找所有可能的年月子目录
+                        for year_month_dir in os.listdir(DOCUMENT_IMAGES_DIR):
+                            doc_image_dir = os.path.join(DOCUMENT_IMAGES_DIR, year_month_dir, str(doc_id))
+                            if os.path.exists(doc_image_dir):
+                                try:
+                                    shutil.rmtree(doc_image_dir)
+                                    logging.info(f"删除文档图片目录: {doc_image_dir}")
+                                except Exception as e:
+                                    logging.error(f"删除文档图片目录失败: {e}")
                 except Exception as e:
                     logging.error(f"处理文档元数据失败: {e}")
             
             # 无论文件删除是否成功，都删除数据库记录
             cursor.execute("DELETE FROM documents WHERE id = ?", (doc_id,))
+            cursor.execute("DELETE FROM document_content WHERE doc_id = ?", (doc_id,))
             conn.commit()
             db_deleted = True
             

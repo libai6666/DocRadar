@@ -10,8 +10,9 @@ import uuid
 import shutil
 import hashlib
 import mammoth
+from datetime import datetime
 from abc import ABC, abstractmethod
-from app.core.config import UPLOADS_DIR, ALLOWED_EXTENSIONS
+from app.core.config import UPLOADS_DIR, ALLOWED_EXTENSIONS, DOCUMENT_IMAGES_DIR, DOCUMENT_IMAGES_URL, ENV
 from PIL import Image
 from io import BytesIO
 
@@ -112,21 +113,37 @@ class DocxParser(DocumentParser):
     
     def _get_image_directory(self, file_path, doc_id):
         """获取文档图片目录"""
-        doc_dir = os.path.dirname(file_path)
-        # 图片存储目录: static/images/docs/{doc_id}/
-        doc_filename = os.path.basename(file_path)
+        # 使用配置的文档图片目录
+        # 按年月组织图片，便于管理
+        today = datetime.now()
+        year_month = today.strftime('%Y%m')
+        
         if doc_id:
-            image_dir = os.path.join('app', 'static', 'images', 'docs', str(doc_id))
-            rel_path = f'/static/images/docs/{doc_id}'
+            # 使用文档ID创建目录
+            image_dir = os.path.join(DOCUMENT_IMAGES_DIR, year_month, str(doc_id))
+            # URL路径使用环境特定的前缀
+            rel_path = f'{DOCUMENT_IMAGES_URL}/{year_month}/{doc_id}'
         else:
             # 如果没有文档ID，使用文件名哈希作为目录
+            doc_filename = os.path.basename(file_path)
             file_hash = hashlib.md5(doc_filename.encode()).hexdigest()[:10]
-            image_dir = os.path.join('app', 'static', 'images', 'docs', file_hash)
-            rel_path = f'/static/images/docs/{file_hash}'
+            image_dir = os.path.join(DOCUMENT_IMAGES_DIR, year_month, file_hash)
+            rel_path = f'{DOCUMENT_IMAGES_URL}/{year_month}/{file_hash}'
         
         # 确保目录存在
         if not os.path.exists(image_dir):
-            os.makedirs(image_dir, exist_ok=True)
+            try:
+                os.makedirs(image_dir, exist_ok=True)
+                logging.info(f"创建图片目录: {image_dir}")
+            except Exception as e:
+                logging.error(f"创建图片目录失败: {e}, 路径: {image_dir}")
+                # 尝试使用备用路径
+                backup_dir = os.path.join('app', 'static', 'images', 'docs', str(doc_id) if doc_id else file_hash)
+                if not os.path.exists(backup_dir):
+                    os.makedirs(backup_dir, exist_ok=True)
+                image_dir = backup_dir
+                rel_path = f'/static/images/docs/{str(doc_id) if doc_id else file_hash}'
+                logging.info(f"使用备用图片目录: {image_dir}")
             
         return image_dir, rel_path
     

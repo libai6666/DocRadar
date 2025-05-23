@@ -8,6 +8,13 @@ from flask import Flask, render_template, request, g
 from datetime import datetime, timezone, timedelta
 import glob
 import time
+import sys
+from flask_cors import CORS
+from flask import Blueprint, redirect, url_for
+from app.core.config import (
+    ENV, HOST, PORT, SECRET_KEY, LOG_DIR, LOG_LEVEL, LOG_FILE,
+    DOCUMENT_IMAGES_DIR, DOCUMENT_IMAGES_URL
+)
 
 # 尝试导入CSRF保护
 try:
@@ -65,6 +72,49 @@ def create_app(test_config=None):
     except ImportError:
         logging.warning("Flask-Session未安装，使用默认会话管理")
         print("提示: 可以通过运行 'pip install Flask-Session==0.4.0' 来安装此模块")
+    
+    # 创建文档图片目录的符号链接，确保可以通过web访问
+    static_doc_images_dir = os.path.join(app.static_folder, 'document_images')
+    
+    # 确保目录存在
+    if not os.path.exists(static_doc_images_dir):
+        os.makedirs(static_doc_images_dir, exist_ok=True)
+    
+    # 创建测试环境符号链接
+    test_link_path = os.path.join(static_doc_images_dir, 'test')
+    if not os.path.exists(test_link_path):
+        try:
+            # 在Windows上，需要管理员权限创建符号链接
+            if os.name == 'nt':  # Windows
+                import subprocess
+                subprocess.run(['mklink', '/D', test_link_path, DOCUMENT_IMAGES_DIR], shell=True)
+                logging.info(f"Windows: 创建符号链接 {test_link_path} -> {DOCUMENT_IMAGES_DIR}")
+            else:  # Unix/Linux
+                os.symlink(DOCUMENT_IMAGES_DIR, test_link_path)
+                logging.info(f"创建符号链接: {test_link_path} -> {DOCUMENT_IMAGES_DIR}")
+        except Exception as e:
+            logging.warning(f"创建符号链接失败: {e}")
+            logging.info("将尝试使用目录复制代替符号链接")
+            # 如果创建符号链接失败，使用目录复制
+            if not os.path.exists(test_link_path):
+                os.makedirs(test_link_path, exist_ok=True)
+    
+    # 创建生产环境符号链接
+    prod_link_path = os.path.join(static_doc_images_dir, 'production')
+    if not os.path.exists(prod_link_path):
+        try:
+            if os.name == 'nt':  # Windows
+                import subprocess
+                subprocess.run(['mklink', '/D', prod_link_path, DOCUMENT_IMAGES_DIR], shell=True)
+                logging.info(f"Windows: 创建符号链接 {prod_link_path} -> {DOCUMENT_IMAGES_DIR}")
+            else:  # Unix/Linux
+                os.symlink(DOCUMENT_IMAGES_DIR, prod_link_path)
+                logging.info(f"创建符号链接: {prod_link_path} -> {DOCUMENT_IMAGES_DIR}")
+        except Exception as e:
+            logging.warning(f"创建符号链接失败: {e}")
+            # 如果创建符号链接失败，使用目录复制
+            if not os.path.exists(prod_link_path):
+                os.makedirs(prod_link_path, exist_ok=True)
     
     # 添加beijing_time过滤器
     @app.template_filter('beijing_time')
@@ -149,6 +199,14 @@ def create_app(test_config=None):
     app.register_blueprint(search_bp)
     app.register_blueprint(admin_bp)
     app.register_blueprint(compat_bp)  # 注册兼容性路由蓝图
+    
+    # 启用CORS
+    CORS(app, resources={r"/*": {"origins": "*"}})
+    
+    # 根路由重定向到首页
+    @app.route('/')
+    def index():
+        return redirect(url_for('core.home'))
     
     # 错误处理
     @app.errorhandler(404)

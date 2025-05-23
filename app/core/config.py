@@ -34,6 +34,19 @@ else:  # production
 UPLOADS_DIR = os.path.join(DATA_DIR, 'uploads')
 DB_DIR = os.path.join(DATA_DIR, 'db')
 
+# 文档图片存储配置 - 区分测试和生产环境
+if ENV == 'test':
+    DOCUMENT_IMAGES_DIR = os.path.join(DATA_DIR, 'document_images')
+    DOCUMENT_IMAGES_URL = '/static/document_images/test'
+else:  # production
+    DOCUMENT_IMAGES_DIR = os.path.join(DATA_DIR, 'document_images')
+    DOCUMENT_IMAGES_URL = '/static/document_images/production'
+
+# 确保文档图片目录存在
+if not os.path.exists(DOCUMENT_IMAGES_DIR):
+    os.makedirs(DOCUMENT_IMAGES_DIR, exist_ok=True)
+    logging.info(f"创建文档图片目录: {DOCUMENT_IMAGES_DIR}")
+
 # 日志目录
 if ENV == 'test':
     LOG_DIR = os.path.join(ROOT_DIR, 'logs', 'test')
