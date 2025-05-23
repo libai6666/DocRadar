@@ -275,4 +275,16 @@ def clear_history():
     
     # 返回到原始页面
     return_url = request.args.get('return_to', request.referrer or '/')
-    return redirect(return_url) 
+    return redirect(return_url)
+
+@search_bp.route('/history', methods=['GET'])
+@login_required
+def get_history_ajax():
+    """获取搜索历史的AJAX接口"""
+    search_history = get_search_history()
+    
+    # 返回JSON格式的搜索历史
+    return jsonify({
+        'success': True,
+        'history': search_history
+    }) 

@@ -127,6 +127,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // 初始化消息自动关闭功能
     initAutoCloseAlerts();
     
+    // 初始化搜索历史按钮功能
+    initSearchHistoryButtons();
+    
     // 检测页面加载类型
     const pageLoadInfo = detectPageLoadType();
     console.log(`DOMContentLoaded: 页面加载类型检测结果 - 刷新=${pageLoadInfo.isRefresh}` + 
@@ -135,6 +138,18 @@ document.addEventListener('DOMContentLoaded', function() {
     // 初始化已浏览文档跟踪功能，传入刷新状态
     initVisitedDocumentsTracker(pageLoadInfo.isRefresh);
 });
+
+/**
+ * 初始化搜索历史相关的按钮事件
+ */
+function initSearchHistoryButtons() {
+    // 获取清空历史按钮
+    const clearAllBtn = document.getElementById('clear-all-history');
+    if (clearAllBtn) {
+        // 已经在HTML中添加了onclick事件，这里不需要重复添加
+        console.log('搜索历史按钮已初始化');
+    }
+}
 
 // 添加pageshow事件处理，处理从浏览器缓存恢复页面的情况
 // 这确保了当用户点击返回按钮时也能正确标记已浏览文档
@@ -165,6 +180,12 @@ window.addEventListener('pageshow', function(event) {
                 console.log(`恢复文档的搜索查询: "${docQuery}"`);
                 sessionStorage.setItem('docradar_current_search', docQuery);
             }
+        }
+        
+        // 检查是否在首页，如果是则刷新搜索历史
+        if (window.location.pathname === '/' || window.location.pathname === '/index') {
+            console.log('从其他页面返回到首页，刷新搜索历史');
+            refreshSearchHistory();
         }
     }
     
@@ -254,6 +275,163 @@ window.addEventListener('pageshow', function(event) {
         }
     }
 });
+
+/**
+ * 通过AJAX刷新首页的搜索历史
+ * 当用户从其他页面返回到首页时调用此函数
+ */
+function refreshSearchHistory() {
+    // 检查是否在首页
+    if (window.location.pathname !== '/' && window.location.pathname !== '/index') {
+        console.log('不在首页，不需要刷新搜索历史');
+        return;
+    }
+    
+    console.log('开始刷新首页搜索历史...');
+    
+    // 发送AJAX请求获取最新的搜索历史
+    fetch('/search/history', {
+        method: 'GET',
+        headers: {
+            'X-Requested-With': 'XMLHttpRequest',
+            'Accept': 'application/json'
+        }
+    })
+    .then(response => {
+        if (response.ok) {
+            return response.json();
+        }
+        throw new Error('获取搜索历史失败');
+    })
+    .then(data => {
+        if (data.success) {
+            // 更新搜索历史区域
+            updateSearchHistoryUI(data.history);
+            console.log('搜索历史已刷新，共', data.history.length, '条记录');
+        } else {
+            console.error('刷新搜索历史失败:', data.message);
+        }
+    })
+    .catch(error => {
+        console.error('刷新搜索历史出错:', error);
+    });
+}
+
+/**
+ * 更新搜索历史UI
+ * @param {Array} history - 搜索历史数据
+ */
+function updateSearchHistoryUI(history) {
+    // 获取搜索历史容器
+    const historyContainer = document.querySelector('.col-md-4 .card-body');
+    if (!historyContainer) {
+        console.error('未找到搜索历史容器');
+        return;
+    }
+    
+    // 获取搜索历史计数标签
+    const historyCountBadge = document.querySelector('.col-md-4 .card-header .badge');
+    if (historyCountBadge) {
+        historyCountBadge.textContent = history.length;
+    }
+    
+    // 获取搜索历史卡片头部
+    const cardHeader = document.querySelector('.col-md-4 .card-header .d-flex');
+    
+    // 获取清空历史按钮
+    let clearHistoryBtn = document.getElementById('clear-all-history');
+    
+    // 如果没有历史记录
+    if (!history || history.length === 0) {
+        // 隐藏或移除清空按钮
+        if (clearHistoryBtn) {
+            clearHistoryBtn.style.display = 'none';
+        }
+        
+        // 显示无历史记录提示
+        historyContainer.innerHTML = `
+            <div class="alert alert-info">
+                <div class="text-center py-3">
+                    <i class="bi bi-clock-history display-4 text-muted"></i>
+                    <h5 class="mt-3">暂无搜索历史</h5>
+                    <p>您还没有进行过任何搜索。</p>
+                    <a href="#search-input" class="btn btn-outline-primary" onclick="document.getElementById('search-input').focus()">
+                        <i class="bi bi-search"></i> 开始搜索
+                    </a>
+                </div>
+            </div>
+        `;
+        return;
+    }
+    
+    // 如果有搜索历史
+    if (history && history.length > 0) {
+        // 如果清空按钮不存在但有卡片头部，则创建一个新的清空按钮
+        if (!clearHistoryBtn && cardHeader) {
+            clearHistoryBtn = document.createElement('a');
+            clearHistoryBtn.href = '/search/clear?return_to=/';
+            clearHistoryBtn.className = 'btn btn-sm btn-outline-danger';
+            clearHistoryBtn.title = '清空所有搜索记录';
+            clearHistoryBtn.id = 'clear-all-history';
+            clearHistoryBtn.innerHTML = '<i class="bi bi-trash"></i> 清空历史';
+            
+            // 添加确认对话框
+            clearHistoryBtn.onclick = function() {
+                return confirm('确定要清空所有搜索记录吗？');
+            };
+            
+            // 添加到卡片头部
+            cardHeader.appendChild(clearHistoryBtn);
+            console.log('已创建并添加清空历史按钮');
+        }
+        
+        // 显示清空按钮（如果存在）
+        if (clearHistoryBtn) {
+            clearHistoryBtn.style.display = '';
+        }
+    }
+    
+    // 创建历史记录列表
+    let historyHTML = '<div class="list-group">';
+    
+    history.forEach(item => {
+        historyHTML += `
+            <div class="list-group-item list-group-item-action">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <a href="/search?q=${encodeURIComponent(item.query)}" class="text-decoration-none">
+                            <h6 class="mb-1">
+                                <i class="bi bi-search text-primary me-2"></i>
+                                "${item.query}"
+                            </h6>
+                        </a>
+                        <p class="mb-1 text-muted small">
+                            <span class="me-3">
+                                <i class="bi bi-clock"></i> 
+                                ${item.timestamp}
+                            </span>
+                            <span>
+                                <i class="bi bi-file-text"></i> 
+                                ${item.results_count} 个结果
+                            </span>
+                        </p>
+                    </div>
+                    <div>
+                        <a href="/search/delete/${item.id}?return_to=/" 
+                           class="btn btn-sm btn-outline-danger"
+                           title="删除此搜索记录"
+                           onclick="return confirm('确定要删除此搜索记录吗？');">
+                            <i class="bi bi-x"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        `;
+    });
+    
+    historyHTML += '</div>';
+    historyContainer.innerHTML = historyHTML;
+}
 
 // 添加页面离开处理，确保在离开文档页面时保存浏览状态
 window.addEventListener('pagehide', function(e) {
