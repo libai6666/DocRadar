@@ -16,6 +16,7 @@ from app.core.auth import get_last_login
 from app.utils.document_parser import DocumentParser
 from app.utils.search_engine import SearchEngine
 from app.utils.storage import Storage
+from app.core.search_routes import get_search_history  # 导入获取搜索历史的函数
 
 # 创建蓝图
 main_bp = Blueprint('main', __name__)
@@ -51,11 +52,15 @@ def index():
     # 获取文档（带分页）
     documents_data = storage.get_all_documents(page=page, limit=limit, search_query=search)
     
+    # 获取搜索历史
+    search_history = get_search_history()
+    
     return render_template(
         'index.html', 
         documents=documents_data['documents'], 
         pagination=documents_data['pagination'],
-        search_query=search
+        search_query=search,
+        search_history=search_history  # 传递搜索历史到模板
     )
 
 @main_bp.route('/login', methods=['GET', 'POST'])

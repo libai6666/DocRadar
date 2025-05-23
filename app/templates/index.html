@@ -52,6 +52,61 @@
         .env-production {
             background-color: #dc3545;
         }
+        
+        /* 标签页样式 */
+        .nav-tabs .nav-link {
+            position: relative;
+            display: flex;
+            align-items: center;
+            padding-right: 28px; /* 为关闭图标预留空间 */
+        }
+        /* 删除按钮样式 */
+        .tab-close-icon {
+            position: absolute;
+            right: 6px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #dc3545;
+            background-color: transparent;
+            border-radius: 4px;
+            width: 18px;
+            height: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0.7;
+            font-size: 12px;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: 1px solid transparent;
+        }
+        .nav-tabs .nav-link:hover .tab-close-icon {
+            opacity: 1;
+            border-color: #dc3545;
+            background-color: rgba(220, 53, 69, 0.1);
+        }
+        .tab-close-icon:hover {
+            background-color: #dc3545;
+            color: white;
+            opacity: 1;
+            border-color: #dc3545;
+        }
+        /* 确保标签页内容样式正确 */
+        .tab-content .tab-pane {
+            display: none;
+        }
+        .tab-content .tab-pane.active {
+            display: block;
+        }
+        /* 添加Chrome特定的样式修复 */
+        @supports (-webkit-appearance: none) {
+            .nav-tabs .nav-link {
+                border-radius: 0.25rem 0.25rem 0 0;
+            }
+            .form-control:focus {
+                box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+            }
+        }
     </style>
 </head>
 <body>
@@ -103,7 +158,8 @@
     </nav>
 
     <div class="container mt-5">
-        <div class="row justify-content-center">
+        <div class="row">
+            <!-- 左侧主内容区 -->
             <div class="col-md-8">
                 {% with messages = get_flashed_messages() %}
                     {% if messages %}
@@ -172,11 +228,13 @@
                     </div>
                 </div>
 
-                <!-- 已上传文档列表 -->
+                <!-- 已上传文档区域 -->
                 <div class="card mt-4">
-                    <div class="card-header d-flex justify-content-between align-items-center">
-                        <h5 class="mb-0">已上传文档</h5>
-                        <span class="badge bg-primary">{{ pagination.total }}</span>
+                    <div class="card-header">
+                        <h5 class="mb-0">
+                            <i class="bi bi-file-earmark-text"></i> 已上传文档
+                            <span class="badge bg-primary ms-1">{{ pagination.total }}</span>
+                        </h5>
                     </div>
                     <div class="card-body">
                         <!-- 搜索表单 -->
@@ -329,6 +387,78 @@
                                 <p>请上传文档以开始使用系统。</p>
                             </div>
                             {% endif %}
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 右侧边栏 -->
+            <div class="col-md-4">
+                <!-- 搜索历史区域 -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <h5 class="mb-0">
+                                <i class="bi bi-clock-history"></i> 搜索历史
+                                <span class="badge bg-primary ms-1">{{ search_history|length }}</span>
+                            </h5>
+                            {% if search_history %}
+                            <a href="{{ url_for('search.clear_history', return_to=url_for('main.index')) }}" 
+                               class="btn btn-sm btn-outline-danger" 
+                               title="清空所有搜索记录"
+                               id="clear-all-history">
+                                <i class="bi bi-trash"></i> 清空历史
+                            </a>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        {% if search_history %}
+                        <div class="list-group">
+                            {% for history in search_history %}
+                            <div class="list-group-item list-group-item-action">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <a href="{{ url_for('search.search', q=history.query) }}" class="text-decoration-none">
+                                            <h6 class="mb-1">
+                                                <i class="bi bi-search text-primary me-2"></i>
+                                                "{{ history.query }}"
+                                            </h6>
+                                        </a>
+                                        <p class="mb-1 text-muted small">
+                                            <span class="me-3">
+                                                <i class="bi bi-clock"></i> 
+                                                {{ history.timestamp }}
+                                            </span>
+                                            <span>
+                                                <i class="bi bi-file-text"></i> 
+                                                {{ history.results_count }} 个结果
+                                            </span>
+                                        </p>
+                                    </div>
+                                    <div>
+                                        <a href="{{ url_for('search.delete_history', history_id=history.id, return_to=url_for('main.index')) }}" 
+                                           class="btn btn-sm btn-outline-danger"
+                                           title="删除此搜索记录"
+                                           onclick="return confirm('确定要删除此搜索记录吗？');">
+                                            <i class="bi bi-x"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                        {% else %}
+                        <div class="alert alert-info">
+                            <div class="text-center py-3">
+                                <i class="bi bi-clock-history display-4 text-muted"></i>
+                                <h5 class="mt-3">暂无搜索历史</h5>
+                                <p>您还没有进行过任何搜索。</p>
+                                <a href="#search-input" class="btn btn-outline-primary" onclick="document.getElementById('search-input').focus()">
+                                    <i class="bi bi-search"></i> 开始搜索
+                                </a>
+                            </div>
                         </div>
                         {% endif %}
                     </div>
