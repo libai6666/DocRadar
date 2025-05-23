@@ -113,15 +113,13 @@ class DocxParser(DocumentParser):
     
     def _get_image_directory(self, file_path, doc_id):
         """获取文档图片目录"""
-        # 使用配置的文档图片目录
-        # 按年月组织图片，便于管理
-        today = datetime.now()
-        year_month = today.strftime('%Y%m')
+        # 使用指定的目录结构：data/[env]/document_images/202505/
+        year_month = "202505"  # 直接使用指定的年月
         
         if doc_id:
             # 使用文档ID创建目录
             image_dir = os.path.join(DOCUMENT_IMAGES_DIR, year_month, str(doc_id))
-            # URL路径使用环境特定的前缀
+            # URL路径
             rel_path = f'{DOCUMENT_IMAGES_URL}/{year_month}/{doc_id}'
         else:
             # 如果没有文档ID，使用文件名哈希作为目录
@@ -130,16 +128,16 @@ class DocxParser(DocumentParser):
             image_dir = os.path.join(DOCUMENT_IMAGES_DIR, year_month, file_hash)
             rel_path = f'{DOCUMENT_IMAGES_URL}/{year_month}/{file_hash}'
         
-        # 确保目录存在 - 增强的目录创建逻辑
+        # 确保目录存在
         if not os.path.exists(image_dir):
             try:
-                # 先确保父目录存在
+                # 确保父目录存在
                 parent_dir = os.path.dirname(image_dir)
                 if not os.path.exists(parent_dir):
                     os.makedirs(parent_dir, exist_ok=True)
                     logging.info(f"创建父目录: {parent_dir}")
                 
-                # 然后创建图片目录
+                # 创建图片目录
                 os.makedirs(image_dir, exist_ok=True)
                 logging.info(f"创建图片目录: {image_dir}")
                 
@@ -155,26 +153,30 @@ class DocxParser(DocumentParser):
                     os.remove(test_file)
                     logging.info(f"目录权限检查通过: {image_dir}")
                 except Exception as e:
+                    logging.error(f"目录不可写: {image_dir}, 错误: {e}")
                     raise IOError(f"目录不可写: {image_dir}, 错误: {e}")
                 
             except Exception as e:
                 logging.error(f"创建图片目录失败: {e}, 路径: {image_dir}")
-                # 尝试使用系统临时目录作为备用
-                import tempfile
-                temp_dir = os.path.join(tempfile.gettempdir(), 'docradar_images', str(doc_id) if doc_id else file_hash)
-                try:
-                    os.makedirs(temp_dir, exist_ok=True)
-                    logging.warning(f"使用临时目录作为备用: {temp_dir}")
-                    image_dir = temp_dir
-                    rel_path = f'/static/temp_images/{str(doc_id) if doc_id else file_hash}'
-                except Exception as temp_err:
-                    logging.error(f"创建临时目录也失败: {temp_err}")
-                    # 最后的备用方案，使用static目录
-                    static_dir = os.path.join('app', 'static', 'images', 'docs', str(doc_id) if doc_id else file_hash)
-                    os.makedirs(static_dir, exist_ok=True)
-                    logging.warning(f"使用静态目录作为最后手段: {static_dir}")
-                    image_dir = static_dir
-                    rel_path = f'/static/images/docs/{str(doc_id) if doc_id else file_hash}'
+                # 使用备用目录 - 静态文件夹中的目录
+                backup_dir = os.path.join('app', 'static', 'images', 'docs', year_month, str(doc_id) if doc_id else file_hash)
+                
+                # 确保备用目录存在
+                if not os.path.exists(backup_dir):
+                    try:
+                        os.makedirs(backup_dir, exist_ok=True)
+                        logging.info(f"创建备用图片目录: {backup_dir}")
+                    except Exception as backup_err:
+                        logging.error(f"创建备用图片目录也失败: {backup_err}")
+                        # 最后尝试使用临时目录
+                        import tempfile
+                        backup_dir = os.path.join(tempfile.gettempdir(), 'docradar_images', year_month, str(doc_id) if doc_id else file_hash)
+                        os.makedirs(backup_dir, exist_ok=True)
+                        logging.warning(f"使用临时目录作为最后手段: {backup_dir}")
+                
+                image_dir = backup_dir
+                rel_path = f'/static/images/docs/{year_month}/{str(doc_id) if doc_id else file_hash}'
+                logging.info(f"使用备用图片目录: {image_dir}")
         else:
             logging.info(f"图片目录已存在: {image_dir}")
         
@@ -186,32 +188,21 @@ class DocxParser(DocumentParser):
             # 创建图片存储目录
             image_dir, rel_path = self._get_image_directory(file_path, doc_id)
             
-            # 再次验证目录是否存在且可写
-            if not os.path.exists(image_dir):
-                logging.error(f"图片目录不存在，尝试重新创建: {image_dir}")
-                os.makedirs(image_dir, exist_ok=True)
+            # 同时准备静态目录路径
+            static_dir = os.path.join('app', 'static', 'document_images', ENV, '202505')
             
-            # 验证目录可写性
-            try:
-                test_file = os.path.join(image_dir, '.write_test')
-                with open(test_file, 'w') as f:
-                    f.write('test')
-                os.remove(test_file)
-            except Exception as e:
-                logging.error(f"图片目录不可写，尝试修复权限: {e}")
-                # 尝试修复权限
-                try:
-                    import stat
-                    os.chmod(image_dir, stat.S_IRWXU | stat.S_IRWXG | stat.S_IRWXO)  # 777权限
-                except Exception as chmod_err:
-                    logging.error(f"修复权限失败: {chmod_err}")
-                    # 如果修复失败，尝试使用临时目录
-                    import tempfile
-                    temp_dir = os.path.join(tempfile.gettempdir(), 'docradar_temp_images')
-                    os.makedirs(temp_dir, exist_ok=True)
-                    image_dir = temp_dir
-                    rel_path = '/static/temp_images'
-                    logging.warning(f"使用临时目录作为备用: {image_dir}")
+            # 确保静态目录存在
+            if not os.path.exists(static_dir):
+                os.makedirs(static_dir, exist_ok=True)
+                logging.info(f"创建静态图片根目录: {static_dir}")
+            
+            # 创建文档特定的静态目录
+            doc_id_or_hash = str(doc_id) if doc_id else os.path.basename(image_dir)
+            static_image_dir = os.path.join(static_dir, doc_id_or_hash)
+            
+            if not os.path.exists(static_image_dir):
+                os.makedirs(static_image_dir, exist_ok=True)
+                logging.info(f"创建静态图片目录: {static_image_dir}")
             
             # 打开docx文件
             from zipfile import ZipFile
@@ -223,64 +214,49 @@ class DocxParser(DocumentParser):
             
             for zinfo in z.filelist:
                 if zinfo.filename.startswith('word/media/'):
+                    # 获取原始文件名
+                    image_name = os.path.basename(zinfo.filename)
+                    # 构建新的图片路径和URL
+                    image_path = os.path.join(image_dir, image_name)
+                    image_url = f"{rel_path}/{image_name}"
+                    
+                    # 提取图片文件
+                    image_data = z.read(zinfo.filename)
+                    
+                    # 保存到数据目录
+                    with open(image_path, 'wb') as f:
+                        f.write(image_data)
+                    
+                    # 同时保存到静态目录
+                    static_image_path = os.path.join(static_image_dir, image_name)
+                    with open(static_image_path, 'wb') as f:
+                        f.write(image_data)
+                    
+                    # 获取图片尺寸
+                    width = None
+                    height = None
                     try:
-                        # 获取原始文件名
-                        image_name = os.path.basename(zinfo.filename)
-                        # 构建新的图片路径和URL
-                        image_path = os.path.join(image_dir, image_name)
-                        image_url = f"{rel_path}/{image_name}"
-                        
-                        # 提取图片文件
-                        image_data = z.read(zinfo.filename)
-                        
-                        # 确保目录存在
-                        img_dir = os.path.dirname(image_path)
-                        if not os.path.exists(img_dir):
-                            os.makedirs(img_dir, exist_ok=True)
-                        
-                        # 写入图片文件
-                        with open(image_path, 'wb') as f:
-                            f.write(image_data)
-                        
-                        # 验证文件是否成功写入
-                        if not os.path.exists(image_path) or os.path.getsize(image_path) == 0:
-                            raise IOError(f"图片文件写入失败: {image_path}")
-                        
-                        # 获取图片尺寸
-                        width = None
-                        height = None
-                        try:
-                            with Image.open(BytesIO(image_data)) as img:
-                                width, height = img.size
-                                logging.info(f"图片尺寸: {width}x{height}")
-                        except Exception as e:
-                            logging.warning(f"无法获取图片尺寸: {e}")
-                        
-                        # 记录图片映射关系
-                        image_mappings[image_name] = {
-                            'path': image_path,
-                            'url': image_url,
-                            'name': image_name,
-                            'width': width,
-                            'height': height
-                        }
-                        image_count += 1
-                        
-                    except Exception as img_err:
-                        logging.error(f"处理图片失败: {zinfo.filename}, 错误: {img_err}")
-                        continue
+                        with Image.open(BytesIO(image_data)) as img:
+                            width, height = img.size
+                            logging.info(f"图片尺寸: {width}x{height}")
+                    except Exception as e:
+                        logging.warning(f"无法获取图片尺寸: {e}")
+                    
+                    # 记录图片映射关系
+                    image_mappings[image_name] = {
+                        'path': image_path,
+                        'url': image_url,
+                        'name': image_name,
+                        'width': width,
+                        'height': height
+                    }
+                    image_count += 1
             
             logging.info(f"从DOCX文档提取了 {image_count} 张图片")
-            
-            # 如果没有提取到任何图片，可能是文档格式问题
-            if image_count == 0:
-                logging.warning("未从文档中提取到任何图片，可能是文档格式问题")
-            
             return image_mappings
             
         except Exception as e:
             logging.error(f"提取DOCX图片失败: {e}")
-            # 返回空映射，确保不会因为图片提取失败而中断整个文档处理
             return {}
     
     def _convert_docx_to_html_mammoth(self, file_path, doc_id=None):
@@ -301,9 +277,18 @@ class DocxParser(DocumentParser):
             # 创建图片处理器，将文档中的图片引用替换为静态URL
             def image_handler(image):
                 try:
+                    from app.core.config import ENV
+                    # 使用固定路径模式，确保URL正确
+                    url_prefix = f'/static/document_images/{ENV}/202505/'
+                    
                     if image.alt_text and image.alt_text in image_mappings:
                         img_info = image_mappings[image.alt_text]
-                        result = {"src": img_info['url']}
+                        # 使用仅文件名部分，不使用完整路径
+                        img_name = os.path.basename(img_info['path'])
+                        doc_id_or_hash = str(doc_id) if doc_id else os.path.basename(os.path.dirname(img_info['path']))
+                        img_url = f"{url_prefix}{doc_id_or_hash}/{img_name}"
+                        
+                        result = {"src": img_url}
                         if 'width' in img_info and img_info['width']:
                             result['width'] = str(img_info['width'])
                         if 'height' in img_info and img_info['height']:
@@ -312,7 +297,13 @@ class DocxParser(DocumentParser):
                     elif image.content_type and f"image.{image.content_type.split('/')[1]}" in image_mappings:
                         image_key = f"image.{image.content_type.split('/')[1]}"
                         img_info = image_mappings[image_key]
-                        result = {"src": img_info['url']}
+                        
+                        # 使用仅文件名部分，不使用完整路径
+                        img_name = os.path.basename(img_info['path'])
+                        doc_id_or_hash = str(doc_id) if doc_id else os.path.basename(os.path.dirname(img_info['path']))
+                        img_url = f"{url_prefix}{doc_id_or_hash}/{img_name}"
+                        
+                        result = {"src": img_url}
                         if 'width' in img_info and img_info['width']:
                             result['width'] = str(img_info['width'])
                         if 'height' in img_info and img_info['height']:
@@ -320,84 +311,52 @@ class DocxParser(DocumentParser):
                         return result
                     else:
                         # 使用默认方式处理图片
-                        try:
-                            with image.open() as image_bytes:
-                                # 生成唯一文件名
-                                image_ext = 'png'  # 默认扩展名
-                                if image.content_type and '/' in image.content_type:
-                                    image_ext = image.content_type.split('/')[1]
-                                image_name = f"img_{uuid.uuid4().hex}.{image_ext}"
-                                
-                                # 获取图片目录，确保存在
-                                image_dir, rel_path = self._get_image_directory(file_path, doc_id)
-                                if not os.path.exists(image_dir):
-                                    os.makedirs(image_dir, exist_ok=True)
-                                    logging.info(f"为内嵌图片创建目录: {image_dir}")
-                                
-                                image_path = os.path.join(image_dir, image_name)
-                                image_url = f"{rel_path}/{image_name}"
-                                
-                                # 读取图片数据
-                                try:
-                                    image_data = image_bytes.read()
-                                    if not image_data:
-                                        raise ValueError("读取到的图片数据为空")
-                                except Exception as read_err:
-                                    logging.error(f"读取图片数据失败: {read_err}")
-                                    # 返回空图片占位符
-                                    return {"src": "/static/images/image_placeholder.png", "alt": "图片加载失败"}
-                                
-                                # 获取图片尺寸
-                                width = None
-                                height = None
-                                try:
-                                    with Image.open(BytesIO(image_data)) as img:
-                                        width, height = img.size
-                                        logging.info(f"图片尺寸: {width}x{height}")
-                                except Exception as e:
-                                    logging.warning(f"无法获取图片尺寸: {e}")
-                                
-                                # 保存图片
-                                try:
-                                    with open(image_path, "wb") as f:
-                                        f.write(image_data)
-                                    
-                                    # 验证图片是否成功保存
-                                    if not os.path.exists(image_path) or os.path.getsize(image_path) == 0:
-                                        raise IOError(f"图片保存失败: {image_path}")
-                                        
-                                except Exception as save_err:
-                                    logging.error(f"保存图片失败: {save_err}")
-                                    # 尝试使用临时目录
-                                    import tempfile
-                                    temp_dir = os.path.join(tempfile.gettempdir(), 'docradar_images')
-                                    os.makedirs(temp_dir, exist_ok=True)
-                                    image_path = os.path.join(temp_dir, image_name)
-                                    
-                                    try:
-                                        with open(image_path, "wb") as f:
-                                            f.write(image_data)
-                                        image_url = f"/static/temp_images/{image_name}"
-                                    except Exception as temp_save_err:
-                                        logging.error(f"保存到临时目录也失败: {temp_save_err}")
-                                        # 最后的备用方案：返回空图片占位符
-                                        return {"src": "/static/images/image_placeholder.png", "alt": "图片加载失败"}
-                                
-                                # 返回图片URL和尺寸信息
-                                result = {"src": image_url}
-                                if width and height:
-                                    result['width'] = str(width)
-                                    result['height'] = str(height)
-                                return result
-                                
-                        except Exception as e:
-                            logging.error(f"处理图片时发生错误: {e}")
-                            # 返回空图片占位符
-                            return {"src": "/static/images/image_placeholder.png", "alt": "图片加载失败"}
-                except Exception as outer_e:
-                    logging.error(f"图片处理器外层错误: {outer_e}")
-                    # 最后的备用方案
-                    return {"src": "/static/images/image_placeholder.png", "alt": "图片处理错误"}
+                        with image.open() as image_bytes:
+                            # 生成唯一文件名
+                            image_name = f"img_{uuid.uuid4().hex}.{image.content_type.split('/')[1]}"
+                            image_dir, rel_path = self._get_image_directory(file_path, doc_id)
+                            image_path = os.path.join(image_dir, image_name)
+                            
+                            # 使用统一的URL格式
+                            doc_id_or_hash = str(doc_id) if doc_id else os.path.basename(image_dir)
+                            image_url = f"{url_prefix}{doc_id_or_hash}/{image_name}"
+                            
+                            # 读取图片数据
+                            image_data = image_bytes.read()
+                            
+                            # 获取图片尺寸
+                            width = None
+                            height = None
+                            try:
+                                with Image.open(BytesIO(image_data)) as img:
+                                    width, height = img.size
+                                    logging.info(f"图片尺寸: {width}x{height}")
+                            except Exception as e:
+                                logging.warning(f"无法获取图片尺寸: {e}")
+                            
+                            # 保存图片到数据目录
+                            with open(image_path, "wb") as f:
+                                f.write(image_data)
+                            
+                            # 同时保存到静态目录
+                            static_dir = os.path.join('app', 'static', 'document_images', ENV, '202505', doc_id_or_hash)
+                            if not os.path.exists(static_dir):
+                                os.makedirs(static_dir, exist_ok=True)
+                            
+                            static_image_path = os.path.join(static_dir, image_name)
+                            with open(static_image_path, 'wb') as f:
+                                f.write(image_data)
+                            
+                            # 返回图片URL和尺寸信息
+                            result = {"src": image_url}
+                            if width and height:
+                                result['width'] = str(width)
+                                result['height'] = str(height)
+                            return result
+                except Exception as e:
+                    logging.error(f"处理图片失败: {e}")
+                    # 返回占位符图片
+                    return {"src": "/static/images/image_placeholder.png"}
             
             # 配置样式映射
             style_map = """

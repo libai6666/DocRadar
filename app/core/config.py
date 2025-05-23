@@ -47,6 +47,12 @@ if not os.path.exists(DOCUMENT_IMAGES_DIR):
     os.makedirs(DOCUMENT_IMAGES_DIR, exist_ok=True)
     logging.info(f"创建文档图片目录: {DOCUMENT_IMAGES_DIR}")
 
+# 确保202505年月目录存在
+images_year_month_dir = os.path.join(DOCUMENT_IMAGES_DIR, '202505')
+if not os.path.exists(images_year_month_dir):
+    os.makedirs(images_year_month_dir, exist_ok=True)
+    logging.info(f"创建202505年月目录: {images_year_month_dir}")
+
 # 日志目录
 if ENV == 'test':
     LOG_DIR = os.path.join(ROOT_DIR, 'logs', 'test')

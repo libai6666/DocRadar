@@ -15,7 +15,6 @@ from app.core.config import (
     ENV, HOST, PORT, SECRET_KEY, LOG_DIR, LOG_LEVEL, LOG_FILE,
     DOCUMENT_IMAGES_DIR, DOCUMENT_IMAGES_URL
 )
-import shutil
 
 # 尝试导入CSRF保护
 try:
@@ -80,99 +79,90 @@ def create_app(test_config=None):
     # 确保目录存在
     if not os.path.exists(static_doc_images_dir):
         os.makedirs(static_doc_images_dir, exist_ok=True)
-        logging.info(f"创建静态文档图片目录: {static_doc_images_dir}")
     
-    # 根据环境设置符号链接路径
-    if ENV == 'test':
-        env_link_path = os.path.join(static_doc_images_dir, 'test')
-        source_dir = DOCUMENT_IMAGES_DIR
-    else:  # production
-        env_link_path = os.path.join(static_doc_images_dir, 'production')
-        source_dir = DOCUMENT_IMAGES_DIR
+    # 创建环境子目录
+    env_static_dir = os.path.join(static_doc_images_dir, ENV)
+    if not os.path.exists(env_static_dir):
+        os.makedirs(env_static_dir, exist_ok=True)
+        logging.info(f"创建环境静态目录: {env_static_dir}")
     
-    # 确保源目录存在
-    if not os.path.exists(source_dir):
-        os.makedirs(source_dir, exist_ok=True)
-        logging.info(f"创建源文档图片目录: {source_dir}")
+    # 创建202505子目录
+    year_month_static_dir = os.path.join(env_static_dir, '202505')
+    if not os.path.exists(year_month_static_dir):
+        os.makedirs(year_month_static_dir, exist_ok=True)
+        logging.info(f"创建年月静态目录: {year_month_static_dir}")
     
-    # 定义同步目录函数
-    def sync_directories(src, dst):
-        """同步两个目录的内容"""
-        if not os.path.exists(src) or not os.path.exists(dst):
-            return
+    # 获取实际图片目录路径
+    source_year_month_dir = os.path.join(DOCUMENT_IMAGES_DIR, '202505')
+    
+    # 尝试直接复制文件而不是使用符号链接（更可靠）
+    for doc_dir in os.listdir(source_year_month_dir):
+        source_doc_dir = os.path.join(source_year_month_dir, doc_dir)
+        target_doc_dir = os.path.join(year_month_static_dir, doc_dir)
         
-        # 同步第一级子目录
-        for item in os.listdir(src):
-            src_item = os.path.join(src, item)
-            dst_item = os.path.join(dst, item)
+        # 只处理目录
+        if os.path.isdir(source_doc_dir):
+            # 如果目标目录已存在，则跳过
+            if os.path.exists(target_doc_dir):
+                logging.info(f"目标文档目录已存在: {target_doc_dir}")
+                continue
+                
+            # 创建目标目录
+            os.makedirs(target_doc_dir, exist_ok=True)
+            logging.info(f"创建文档图片目录链接: {target_doc_dir}")
             
-            if os.path.isdir(src_item) and not os.path.exists(dst_item):
-                try:
-                    os.makedirs(dst_item, exist_ok=True)
-                    logging.info(f"同步创建目录: {dst_item}")
-                except Exception as e:
-                    logging.warning(f"同步创建目录失败: {e}")
+            # 复制所有图片文件
+            try:
+                for img_file in os.listdir(source_doc_dir):
+                    source_img = os.path.join(source_doc_dir, img_file)
+                    target_img = os.path.join(target_doc_dir, img_file)
+                    
+                    # 只复制文件
+                    if os.path.isfile(source_img) and not os.path.exists(target_img):
+                        import shutil
+                        shutil.copy2(source_img, target_img)
+                        logging.info(f"复制图片文件: {source_img} -> {target_img}")
+            except Exception as e:
+                logging.error(f"复制图片文件失败: {e}")
     
-    # 清除旧的符号链接
-    if os.path.exists(env_link_path):
-        try:
-            if os.path.islink(env_link_path):
-                os.unlink(env_link_path)
-                logging.info(f"删除旧的符号链接: {env_link_path}")
-            else:
-                shutil.rmtree(env_link_path)
-                logging.info(f"删除旧的目录: {env_link_path}")
-        except Exception as e:
-            logging.warning(f"清除旧链接或目录失败: {e}")
-    
-    # 创建新的符号链接
-    try:
-        # 在Windows上，需要管理员权限创建符号链接
-        if os.name == 'nt':  # Windows
-            import subprocess
-            subprocess.run(['mklink', '/D', env_link_path, source_dir], shell=True)
-            logging.info(f"Windows: 创建符号链接 {env_link_path} -> {source_dir}")
+    # 为新上传的文档创建符号链接钩子，在每次请求后执行
+    @app.after_request
+    def sync_document_images(response):
+        """同步新上传的文档图片到静态目录"""
+        # 获取实际图片目录路径
+        source_year_month_dir = os.path.join(DOCUMENT_IMAGES_DIR, '202505')
+        year_month_static_dir = os.path.join(static_doc_images_dir, ENV, '202505')
+        
+        # 确保源目录和目标目录存在
+        if not os.path.exists(source_year_month_dir) or not os.path.exists(year_month_static_dir):
+            return response
             
-            # 验证符号链接是否创建成功
-            if not os.path.exists(env_link_path):
-                logging.error(f"Windows符号链接创建失败，将使用目录复制")
-                if not os.path.exists(env_link_path):
-                    os.makedirs(env_link_path, exist_ok=True)
-                    logging.info(f"创建普通目录代替符号链接: {env_link_path}")
-        else:  # Unix/Linux
-            os.symlink(source_dir, env_link_path)
-            logging.info(f"创建符号链接: {env_link_path} -> {source_dir}")
-    except Exception as e:
-        logging.warning(f"创建符号链接失败: {e}")
-        logging.info("将使用目录复制代替符号链接")
-        # 如果创建符号链接失败，使用目录复制
-        if not os.path.exists(env_link_path):
-            os.makedirs(env_link_path, exist_ok=True)
-            logging.info(f"创建普通目录代替符号链接: {env_link_path}")
-    
-    # 创建年月子目录
-    today = datetime.now()
-    year_month = today.strftime('%Y%m')
-    year_month_dir = os.path.join(env_link_path, year_month)
-    if not os.path.exists(year_month_dir):
         try:
-            os.makedirs(year_month_dir, exist_ok=True)
-            logging.info(f"创建年月子目录: {year_month_dir}")
+            # 检查有没有新的文档目录需要同步
+            for doc_dir in os.listdir(source_year_month_dir):
+                source_doc_dir = os.path.join(source_year_month_dir, doc_dir)
+                target_doc_dir = os.path.join(year_month_static_dir, doc_dir)
+                
+                # 只处理目录，且只处理尚未同步的目录
+                if os.path.isdir(source_doc_dir) and not os.path.exists(target_doc_dir):
+                    # 创建目标目录
+                    os.makedirs(target_doc_dir, exist_ok=True)
+                    logging.info(f"创建新的文档图片目录链接: {target_doc_dir}")
+                    
+                    # 复制所有图片文件
+                    for img_file in os.listdir(source_doc_dir):
+                        source_img = os.path.join(source_doc_dir, img_file)
+                        target_img = os.path.join(target_doc_dir, img_file)
+                        
+                        # 只复制文件
+                        if os.path.isfile(source_img) and not os.path.exists(target_img):
+                            import shutil
+                            shutil.copy2(source_img, target_img)
+                            logging.info(f"复制新图片文件: {source_img} -> {target_img}")
         except Exception as e:
-            logging.warning(f"创建年月子目录失败: {e}")
-    
-    # 同步源目录和链接目录
-    try:
-        sync_directories(source_dir, env_link_path)
-        logging.info(f"同步目录完成: {source_dir} -> {env_link_path}")
-    except Exception as e:
-        logging.warning(f"同步目录失败: {e}")
-    
-    # 创建临时图片目录
-    temp_images_dir = os.path.join(app.static_folder, 'temp_images')
-    if not os.path.exists(temp_images_dir):
-        os.makedirs(temp_images_dir, exist_ok=True)
-        logging.info(f"创建临时图片目录: {temp_images_dir}")
+            logging.error(f"同步文档图片失败: {e}")
+            
+        return response
     
     # 确保占位符图片存在
     placeholder_dir = os.path.join(app.static_folder, 'images')
@@ -184,6 +174,18 @@ def create_app(test_config=None):
     if not os.path.exists(docs_dir):
         os.makedirs(docs_dir, exist_ok=True)
         logging.info(f"创建文档图片目录: {docs_dir}")
+    
+    # 确保202505目录存在
+    docs_year_month_dir = os.path.join(docs_dir, '202505')
+    if not os.path.exists(docs_year_month_dir):
+        os.makedirs(docs_year_month_dir, exist_ok=True)
+        logging.info(f"创建文档图片年月目录: {docs_year_month_dir}")
+    
+    # 在static/document_images目录中也创建202505目录
+    static_doc_images_year_month_dir = os.path.join(static_doc_images_dir, '202505')
+    if not os.path.exists(static_doc_images_year_month_dir):
+        os.makedirs(static_doc_images_year_month_dir, exist_ok=True)
+        logging.info(f"创建静态文档图片年月目录: {static_doc_images_year_month_dir}")
     
     placeholder_path = os.path.join(placeholder_dir, 'image_placeholder.png')
     if not os.path.exists(placeholder_path):
