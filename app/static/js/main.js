@@ -2071,6 +2071,11 @@ function initFileUpload() {
             hideUploadUI();
         }
         
+        // 隐藏顶部进度条
+        if (topProgressContainer) {
+            topProgressContainer.style.display = 'none';
+        }
+        
         // 清空existingFiles数组
         existingFiles = [];
     }
