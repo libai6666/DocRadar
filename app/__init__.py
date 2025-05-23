@@ -15,6 +15,7 @@ from app.core.config import (
     ENV, HOST, PORT, SECRET_KEY, LOG_DIR, LOG_LEVEL, LOG_FILE,
     DOCUMENT_IMAGES_DIR, DOCUMENT_IMAGES_URL
 )
+import shutil
 
 # 尝试导入CSRF保护
 try:
@@ -79,42 +80,126 @@ def create_app(test_config=None):
     # 确保目录存在
     if not os.path.exists(static_doc_images_dir):
         os.makedirs(static_doc_images_dir, exist_ok=True)
+        logging.info(f"创建静态文档图片目录: {static_doc_images_dir}")
     
-    # 创建测试环境符号链接
-    test_link_path = os.path.join(static_doc_images_dir, 'test')
-    if not os.path.exists(test_link_path):
-        try:
-            # 在Windows上，需要管理员权限创建符号链接
-            if os.name == 'nt':  # Windows
-                import subprocess
-                subprocess.run(['mklink', '/D', test_link_path, DOCUMENT_IMAGES_DIR], shell=True)
-                logging.info(f"Windows: 创建符号链接 {test_link_path} -> {DOCUMENT_IMAGES_DIR}")
-            else:  # Unix/Linux
-                os.symlink(DOCUMENT_IMAGES_DIR, test_link_path)
-                logging.info(f"创建符号链接: {test_link_path} -> {DOCUMENT_IMAGES_DIR}")
-        except Exception as e:
-            logging.warning(f"创建符号链接失败: {e}")
-            logging.info("将尝试使用目录复制代替符号链接")
-            # 如果创建符号链接失败，使用目录复制
-            if not os.path.exists(test_link_path):
-                os.makedirs(test_link_path, exist_ok=True)
+    # 根据环境设置符号链接路径
+    if ENV == 'test':
+        env_link_path = os.path.join(static_doc_images_dir, 'test')
+        source_dir = DOCUMENT_IMAGES_DIR
+    else:  # production
+        env_link_path = os.path.join(static_doc_images_dir, 'production')
+        source_dir = DOCUMENT_IMAGES_DIR
     
-    # 创建生产环境符号链接
-    prod_link_path = os.path.join(static_doc_images_dir, 'production')
-    if not os.path.exists(prod_link_path):
+    # 确保源目录存在
+    if not os.path.exists(source_dir):
+        os.makedirs(source_dir, exist_ok=True)
+        logging.info(f"创建源文档图片目录: {source_dir}")
+    
+    # 定义同步目录函数
+    def sync_directories(src, dst):
+        """同步两个目录的内容"""
+        if not os.path.exists(src) or not os.path.exists(dst):
+            return
+        
+        # 同步第一级子目录
+        for item in os.listdir(src):
+            src_item = os.path.join(src, item)
+            dst_item = os.path.join(dst, item)
+            
+            if os.path.isdir(src_item) and not os.path.exists(dst_item):
+                try:
+                    os.makedirs(dst_item, exist_ok=True)
+                    logging.info(f"同步创建目录: {dst_item}")
+                except Exception as e:
+                    logging.warning(f"同步创建目录失败: {e}")
+    
+    # 清除旧的符号链接
+    if os.path.exists(env_link_path):
         try:
-            if os.name == 'nt':  # Windows
-                import subprocess
-                subprocess.run(['mklink', '/D', prod_link_path, DOCUMENT_IMAGES_DIR], shell=True)
-                logging.info(f"Windows: 创建符号链接 {prod_link_path} -> {DOCUMENT_IMAGES_DIR}")
-            else:  # Unix/Linux
-                os.symlink(DOCUMENT_IMAGES_DIR, prod_link_path)
-                logging.info(f"创建符号链接: {prod_link_path} -> {DOCUMENT_IMAGES_DIR}")
+            if os.path.islink(env_link_path):
+                os.unlink(env_link_path)
+                logging.info(f"删除旧的符号链接: {env_link_path}")
+            else:
+                shutil.rmtree(env_link_path)
+                logging.info(f"删除旧的目录: {env_link_path}")
         except Exception as e:
-            logging.warning(f"创建符号链接失败: {e}")
-            # 如果创建符号链接失败，使用目录复制
-            if not os.path.exists(prod_link_path):
-                os.makedirs(prod_link_path, exist_ok=True)
+            logging.warning(f"清除旧链接或目录失败: {e}")
+    
+    # 创建新的符号链接
+    try:
+        # 在Windows上，需要管理员权限创建符号链接
+        if os.name == 'nt':  # Windows
+            import subprocess
+            subprocess.run(['mklink', '/D', env_link_path, source_dir], shell=True)
+            logging.info(f"Windows: 创建符号链接 {env_link_path} -> {source_dir}")
+            
+            # 验证符号链接是否创建成功
+            if not os.path.exists(env_link_path):
+                logging.error(f"Windows符号链接创建失败，将使用目录复制")
+                if not os.path.exists(env_link_path):
+                    os.makedirs(env_link_path, exist_ok=True)
+                    logging.info(f"创建普通目录代替符号链接: {env_link_path}")
+        else:  # Unix/Linux
+            os.symlink(source_dir, env_link_path)
+            logging.info(f"创建符号链接: {env_link_path} -> {source_dir}")
+    except Exception as e:
+        logging.warning(f"创建符号链接失败: {e}")
+        logging.info("将使用目录复制代替符号链接")
+        # 如果创建符号链接失败，使用目录复制
+        if not os.path.exists(env_link_path):
+            os.makedirs(env_link_path, exist_ok=True)
+            logging.info(f"创建普通目录代替符号链接: {env_link_path}")
+    
+    # 创建年月子目录
+    today = datetime.now()
+    year_month = today.strftime('%Y%m')
+    year_month_dir = os.path.join(env_link_path, year_month)
+    if not os.path.exists(year_month_dir):
+        try:
+            os.makedirs(year_month_dir, exist_ok=True)
+            logging.info(f"创建年月子目录: {year_month_dir}")
+        except Exception as e:
+            logging.warning(f"创建年月子目录失败: {e}")
+    
+    # 同步源目录和链接目录
+    try:
+        sync_directories(source_dir, env_link_path)
+        logging.info(f"同步目录完成: {source_dir} -> {env_link_path}")
+    except Exception as e:
+        logging.warning(f"同步目录失败: {e}")
+    
+    # 创建临时图片目录
+    temp_images_dir = os.path.join(app.static_folder, 'temp_images')
+    if not os.path.exists(temp_images_dir):
+        os.makedirs(temp_images_dir, exist_ok=True)
+        logging.info(f"创建临时图片目录: {temp_images_dir}")
+    
+    # 确保占位符图片存在
+    placeholder_dir = os.path.join(app.static_folder, 'images')
+    if not os.path.exists(placeholder_dir):
+        os.makedirs(placeholder_dir, exist_ok=True)
+    
+    # 确保文档图片目录存在
+    docs_dir = os.path.join(placeholder_dir, 'docs')
+    if not os.path.exists(docs_dir):
+        os.makedirs(docs_dir, exist_ok=True)
+        logging.info(f"创建文档图片目录: {docs_dir}")
+    
+    placeholder_path = os.path.join(placeholder_dir, 'image_placeholder.png')
+    if not os.path.exists(placeholder_path):
+        # 创建一个简单的占位符图片
+        try:
+            from PIL import Image, ImageDraw, ImageFont
+            img = Image.new('RGB', (200, 150), color=(240, 240, 240))
+            d = ImageDraw.Draw(img)
+            d.text((40, 65), "图片加载失败", fill=(80, 80, 80))
+            img.save(placeholder_path)
+            logging.info(f"创建占位符图片: {placeholder_path}")
+        except Exception as e:
+            logging.warning(f"创建占位符图片失败: {e}")
+            # 如果无法创建图片，尝试写入一个空文件
+            with open(placeholder_path, 'wb') as f:
+                f.write(b'')
     
     # 添加beijing_time过滤器
     @app.template_filter('beijing_time')
