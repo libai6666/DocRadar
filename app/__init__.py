@@ -36,6 +36,34 @@ from app.core.admin_routes import admin_bp
 _last_log_date = None
 _log_updated_today = False
 
+# 创建一个自定义的日志格式化器，始终使用北京时间（东八区）
+class BeijingTimeFormatter(logging.Formatter):
+    """自定义日志格式化器，始终使用北京时间（东八区）"""
+    
+    def formatTime(self, record, datefmt=None):
+        """
+        重写格式化时间方法，使用北京时间
+        
+        Args:
+            record: 日志记录
+            datefmt: 日期格式
+            
+        Returns:
+            str: 格式化的北京时间字符串
+        """
+        # 获取UTC时间
+        utc_time = datetime.fromtimestamp(record.created, timezone.utc)
+        
+        # 转换为北京时间（UTC+8）
+        beijing_tz = timezone(timedelta(hours=8))
+        beijing_time = utc_time.astimezone(beijing_tz)
+        
+        # 使用指定格式或默认格式
+        if datefmt:
+            return beijing_time.strftime(datefmt)
+        else:
+            return beijing_time.strftime('%Y-%m-%d %H:%M:%S')
+
 def create_app(test_config=None):
     """创建并配置Flask应用实例"""
     # 创建Flask应用
@@ -252,8 +280,8 @@ def _create_file_handler(log_date):
     # 使用日期作为日志文件名的一部分
     log_file = os.path.join(LOG_DIR, f"{log_date}_{LOG_FILE}")
     
-    # 创建日志格式化器
-    log_formatter = logging.Formatter(
+    # 创建日志格式化器（使用自定义的北京时间格式化器）
+    log_formatter = BeijingTimeFormatter(
         "%(asctime)s [%(levelname)s] - %(name)s - %(message)s")
     
     # 创建文件处理器（使用循环日志文件）并指定UTF-8编码
@@ -304,9 +332,9 @@ def _setup_logging():
     file_handler = _create_file_handler(today)
     root_logger.addHandler(file_handler)
     
-    # 添加控制台处理器
+    # 添加控制台处理器（也使用自定义的北京时间格式化器）
     console_handler = logging.StreamHandler()
-    console_formatter = logging.Formatter(
+    console_formatter = BeijingTimeFormatter(
         "%(asctime)s [%(levelname)s] - %(name)s - %(message)s")
     console_handler.setFormatter(console_formatter)
     root_logger.addHandler(console_handler)

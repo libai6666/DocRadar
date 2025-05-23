@@ -8,7 +8,12 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libpoppler-cpp-dev \
     poppler-utils \
     libmagic1 \
+    tzdata \
     && rm -rf /var/lib/apt/lists/*
+
+# 设置时区为东八区（北京时间）
+ENV TZ=Asia/Shanghai
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 # 复制项目文件
 COPY . .

@@ -21,6 +21,7 @@ services:
       - ADMIN_KEY=IEbdFkZWuwm4zHpUy61BX9gD7aj3qoti
       - DOCRADAR_ENV=production
       - FLASK_DEBUG=0
+      - TZ=Asia/Shanghai
     command: gunicorn --workers=4 --bind=0.0.0.0:5000 --log-file=/app/logs/production/gunicorn.log --log-level=info app:app
     # 使用网络别名，使内部服务保持一致
     networks:
@@ -48,6 +49,7 @@ services:
       - ADMIN_KEY=TestAdminKeyDifferentFromProduction
       - DOCRADAR_ENV=test
       - FLASK_DEBUG=1
+      - TZ=Asia/Shanghai
     command: gunicorn --workers=2 --bind=0.0.0.0:5000 --log-file=/app/logs/test/gunicorn.log --log-level=info app:app
     # 使用网络别名，使内部服务保持一致
     networks:
