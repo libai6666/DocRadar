@@ -61,7 +61,10 @@ else:  # production
 
 # 日志配置
 LOG_LEVEL = logging.INFO
-LOG_FILE = 'docradar.log'
+if ENV == 'test':
+    LOG_FILE = 'docradar_test.log'
+else:  # production
+    LOG_FILE = 'docradar_prod.log'
 
 # 确保目录存在
 for directory in [DATA_DIR, UPLOADS_DIR, DB_DIR, LOG_DIR]:
@@ -113,7 +116,7 @@ ALLOWED_EXTENSIONS = {
 }
 
 # 搜索引擎配置
-SEARCH_RESULT_LIMIT = 20  # 搜索结果限制数量
+SEARCH_RESULT_LIMIT = 50 # 搜索结果限制数量
 PREVIEW_LENGTH = 200  # 预览内容长度（字符数）
 
 # 安全配置

@@ -17,7 +17,9 @@ COPY . .
 RUN pip install --no-cache-dir -i https://pypi.tuna.tsinghua.edu.cn/simple -r requirements.txt
 
 # 确保目录存在
-RUN mkdir -p /app/data/uploads /app/data/db /app/logs/production /app/logs/test
+RUN mkdir -p /app/data/production/uploads /app/data/production/db /app/data/production/document_images \
+    /app/data/test/uploads /app/data/test/db /app/data/test/document_images \
+    /logs/production /logs/test
 
 # 设置环境变量
 ENV PYTHONUNBUFFERED=1
@@ -25,5 +27,5 @@ ENV PYTHONUNBUFFERED=1
 # 暴露端口
 EXPOSE 5000
 
-# 启动应用（仍使用app.py）
+# 启动应用
 CMD ["gunicorn", "--bind", "0.0.0.0:5000", "app:app"] 

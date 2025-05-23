@@ -11,8 +11,8 @@ DocRadar 使用分层的日志管理策略:
 
 ## 日志文件位置
 
-- 测试环境: `logs/test/YYYY-MM-DD_docradar.log`
-- 生产环境: `logs/production/YYYY-MM-DD_docradar.log`
+- 测试环境: `logs/test/YYYY-MM-DD_docradar_test.log`
+- 生产环境: `logs/production/YYYY-MM-DD_docradar_prod.log`
 
 ## 日志清理
 
