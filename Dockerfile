@@ -19,7 +19,7 @@ RUN pip install --no-cache-dir -i https://pypi.tuna.tsinghua.edu.cn/simple -r re
 # 确保目录存在
 RUN mkdir -p /app/data/production/uploads /app/data/production/db /app/data/production/document_images \
     /app/data/test/uploads /app/data/test/db /app/data/test/document_images \
-    /logs/production /logs/test
+    /app/logs/production /app/logs/test
 
 # 设置环境变量
 ENV PYTHONUNBUFFERED=1

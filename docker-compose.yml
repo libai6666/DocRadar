@@ -13,7 +13,7 @@ services:
       - ./data/production/uploads:/app/data/production/uploads
       - ./data/production/db:/app/data/production/db
       - ./data/production/document_images:/app/data/production/document_images
-      - ./logs/production:/logs/production
+      - ./logs/production:/app/logs/production
       - ./config/users_production.json:/app/config/users_production.json
       - ./config/admin_config_production.json:/app/config/admin_config_production.json
     environment:
@@ -21,7 +21,7 @@ services:
       - ADMIN_KEY=IEbdFkZWuwm4zHpUy61BX9gD7aj3qoti
       - DOCRADAR_ENV=production
       - FLASK_DEBUG=0
-    command: gunicorn --workers=4 --bind=0.0.0.0:5000 app:app
+    command: gunicorn --workers=4 --bind=0.0.0.0:5000 --log-file=/app/logs/production/gunicorn.log --log-level=info app:app
     # 使用网络别名，使内部服务保持一致
     networks:
       docradar_net:
@@ -40,7 +40,7 @@ services:
       - ./data/test/uploads:/app/data/test/uploads
       - ./data/test/db:/app/data/test/db
       - ./data/test/document_images:/app/data/test/document_images
-      - ./logs/test:/logs/test
+      - ./logs/test:/app/logs/test
       - ./config/users_test.json:/app/config/users_test.json
       - ./config/admin_config_test.json:/app/config/admin_config_test.json
     environment:
@@ -48,7 +48,7 @@ services:
       - ADMIN_KEY=TestAdminKeyDifferentFromProduction
       - DOCRADAR_ENV=test
       - FLASK_DEBUG=1
-    command: gunicorn --workers=2 --bind=0.0.0.0:5000 app:app
+    command: gunicorn --workers=2 --bind=0.0.0.0:5000 --log-file=/app/logs/test/gunicorn.log --log-level=info app:app
     # 使用网络别名，使内部服务保持一致
     networks:
       docradar_net:
