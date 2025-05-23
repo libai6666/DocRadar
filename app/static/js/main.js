@@ -528,6 +528,12 @@ function initFileUpload() {
     const progressText = document.getElementById('upload-progress-text');
     const uploadResult = document.getElementById('upload-result');
     
+    // 顶部进度条相关元素
+    const topProgressContainer = document.getElementById('top-progress-container');
+    const topProgressBar = document.getElementById('top-upload-progress-bar');
+    const topProgressText = document.getElementById('top-upload-progress-text');
+    const topCurrentFile = document.getElementById('top-upload-current-file');
+    
     // 覆盖确认模态框元素
     const overwriteModalEl = document.getElementById('overwriteConfirmModal');
     const batchOverwriteModalEl = document.getElementById('batchOverwriteModal');
@@ -889,12 +895,31 @@ function initFileUpload() {
             failed: 0,
             failedFiles: previousFailedFiles // 保留之前的失败文件列表
         };
+        
+        // 重置原始进度条
         progressBar.style.width = '0%';
         progressBar.setAttribute('aria-valuenow', 0);
         progressText.textContent = '0%';
         
         // 移除动画效果（如果有）
         progressBar.classList.remove('progress-bar-striped', 'progress-bar-animated');
+        
+        // 重置顶部进度条
+        if (topProgressBar && topProgressText) {
+            topProgressBar.style.width = '0%';
+            topProgressBar.setAttribute('aria-valuenow', 0);
+            topProgressText.textContent = '0%';
+            
+            // 隐藏顶部进度条容器
+            if (topProgressContainer) {
+                topProgressContainer.style.display = 'none';
+            }
+            
+            // 重置当前文件显示
+            if (topCurrentFile) {
+                topCurrentFile.textContent = '正在传输文件...';
+            }
+        }
         
         // 清空已存在文件列表
         existingFiles = [];
@@ -1187,6 +1212,19 @@ function initFileUpload() {
             batchDeleteBtn.disabled = true;
         }
         
+        // 显示顶部进度条
+        if (topProgressContainer) {
+            topProgressContainer.style.display = 'block';
+            if (topCurrentFile) {
+                topCurrentFile.textContent = '正在检查文件...';
+            }
+            if (topProgressBar && topProgressText) {
+                topProgressBar.style.width = '0%';
+                topProgressBar.setAttribute('aria-valuenow', 0);
+                topProgressText.textContent = '0%';
+            }
+        }
+        
         uploadResult.innerHTML = '<div class="alert alert-info">检查文件中，请稍候...</div>';
         
         // 重置文件列表
@@ -1428,6 +1466,12 @@ function initFileUpload() {
                     </div>
                 </div>`;
                 
+                // 更新顶部进度条状态
+                if (topProgressContainer && topCurrentFile) {
+                    topProgressContainer.style.display = 'block';
+                    topCurrentFile.textContent = `正在上传文件 (${i + 1}/${files.length}): ${file.name}`;
+                }
+                
                 // 添加重试机制
                 let success = false;
                 const maxAttempts = 3;
@@ -1451,6 +1495,13 @@ function initFileUpload() {
                             progressBar.style.width = `${progress}%`;
                             progressBar.setAttribute('aria-valuenow', progress);
                             progressText.textContent = `${progress}%`;
+                            
+                            // 同时更新顶部进度条
+                            if (topProgressBar && topProgressText) {
+                                topProgressBar.style.width = `${progress}%`;
+                                topProgressBar.setAttribute('aria-valuenow', progress);
+                                topProgressText.textContent = `${progress}%`;
+                            }
                             
                             break; // 成功后跳出重试循环
                         } else {
@@ -1691,6 +1742,15 @@ function initFileUpload() {
     // 上传单个文件
     async function uploadSingleFile(file, overwrite = false) {
         console.log(`准备上传文件: ${file.name}, 覆盖模式: ${overwrite}`);
+        
+        // 显示顶部进度条并更新当前文件信息
+        if (topProgressContainer && topCurrentFile) {
+            topProgressContainer.style.display = 'block';
+            topCurrentFile.textContent = `正在传输文件: ${file.name}`;
+            topProgressBar.style.width = '0%';
+            topProgressBar.setAttribute('aria-valuenow', 0);
+            topProgressText.textContent = '0%';
+        }
         
         const formData = new FormData();
         formData.append('file', file);
@@ -1962,8 +2022,21 @@ function initFileUpload() {
     // 更新进度条
     function updateProgress(percentage) {
         const percent = Math.round(percentage * 100);
+        
+        // 更新原始进度条
         progressBar.style.width = `${percent}%`;
         progressText.textContent = `${percent}%`;
+        
+        // 同时更新顶部进度条
+        if (topProgressBar && topProgressText) {
+            topProgressBar.style.width = `${percent}%`;
+            topProgressText.textContent = `${percent}%`;
+            
+            // 确保顶部进度条容器可见
+            if (topProgressContainer) {
+                topProgressContainer.style.display = 'block';
+            }
+        }
     }
     
     // 格式化文件大小
@@ -2009,6 +2082,25 @@ function initFileUpload() {
             progressBar.style.width = '100%';
             progressBar.setAttribute('aria-valuenow', 100);
             progressText.textContent = '100%';
+        }
+        
+        // 同时更新顶部进度条
+        if (topProgressBar && topProgressText) {
+            topProgressBar.style.width = '100%';
+            topProgressBar.setAttribute('aria-valuenow', 100);
+            topProgressText.textContent = '100%';
+            
+            // 更新当前处理文件提示
+            if (topCurrentFile) {
+                topCurrentFile.textContent = '上传完成';
+            }
+            
+            // 3秒后自动隐藏顶部进度条
+            setTimeout(() => {
+                if (topProgressContainer) {
+                    topProgressContainer.style.display = 'none';
+                }
+            }, 3000);
         }
         
         // 显示临时上传结果
@@ -2080,6 +2172,23 @@ function initFileUpload() {
                 progressBar.style.width = `${currentProgress}%`;
                 progressBar.setAttribute('aria-valuenow', currentProgress);
                 progressText.textContent = `${currentProgress}%`;
+                
+                // 同时更新顶部进度条
+                if (topProgressBar && topProgressText) {
+                    topProgressBar.style.width = `${currentProgress}%`;
+                    topProgressBar.setAttribute('aria-valuenow', currentProgress);
+                    topProgressText.textContent = `${currentProgress}%`;
+                    
+                    // 确保顶部进度条容器可见
+                    if (topProgressContainer) {
+                        topProgressContainer.style.display = 'block';
+                    }
+                    
+                    // 更新当前处理文件信息
+                    if (topCurrentFile) {
+                        topCurrentFile.textContent = `正在传输文件 (${i + 1}/${files.length}): ${filename}`;
+                    }
+                }
                 
                 // 增强文件名匹配逻辑
                 let file = null;
@@ -2218,6 +2327,13 @@ function initFileUpload() {
                             progressBar.setAttribute('aria-valuenow', progress);
                             progressText.textContent = `${progress}%`;
                             
+                            // 同时更新顶部进度条
+                            if (topProgressBar && topProgressText) {
+                                topProgressBar.style.width = `${progress}%`;
+                                topProgressBar.setAttribute('aria-valuenow', progress);
+                                topProgressText.textContent = `${progress}%`;
+                            }
+                            
                             break; // 成功后跳出重试循环
                         } else {
                             console.error(`覆盖文件失败: ${file.name}`, result);
@@ -2234,6 +2350,13 @@ function initFileUpload() {
                                 progressBar.style.width = `${progress}%`;
                                 progressBar.setAttribute('aria-valuenow', progress);
                                 progressText.textContent = `${progress}%`;
+                                
+                                // 同时更新顶部进度条
+                                if (topProgressBar && topProgressText) {
+                                    topProgressBar.style.width = `${progress}%`;
+                                    topProgressBar.setAttribute('aria-valuenow', progress);
+                                    topProgressText.textContent = `${progress}%`;
+                                }
                             }
                         }
                     } catch (error) {
@@ -2251,6 +2374,13 @@ function initFileUpload() {
                             progressBar.style.width = `${progress}%`;
                             progressBar.setAttribute('aria-valuenow', progress);
                             progressText.textContent = `${progress}%`;
+                            
+                            // 同时更新顶部进度条
+                            if (topProgressBar && topProgressText) {
+                                topProgressBar.style.width = `${progress}%`;
+                                topProgressBar.setAttribute('aria-valuenow', progress);
+                                topProgressText.textContent = `${progress}%`;
+                            }
                         }
                     }
                 }

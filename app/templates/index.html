@@ -110,6 +110,29 @@
     </style>
 </head>
 <body>
+    <!-- 顶部固定进度条容器 -->
+    <div id="top-progress-container" style="display: none; position: fixed; top: 0; left: 0; right: 0; z-index: 1050; background-color: rgba(255, 255, 255, 0.9); padding: 8px 15px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-auto">
+                    <div class="d-flex align-items-center">
+                        <div class="spinner-border spinner-border-sm me-2 text-primary" role="status"></div>
+                        <span id="top-upload-current-file" class="me-2">正在传输文件...</span>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="d-flex justify-content-between align-items-center mb-1">
+                        <span>总体进度：</span>
+                        <span id="top-upload-progress-text">0%</span>
+                    </div>
+                    <div class="progress" style="height: 6px;">
+                        <div id="top-upload-progress-bar" class="progress-bar bg-primary" role="progressbar" style="width: 0%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     {% if is_test_env or is_prod_env %}
     <div class="bg-dark text-white py-1 text-center small">
         {% if is_test_env %}
