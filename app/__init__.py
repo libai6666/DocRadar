@@ -4,7 +4,7 @@ DocRadar应用初始化模块
 import os
 import logging
 from logging.handlers import RotatingFileHandler
-from flask import Flask, render_template, request, g
+from flask import Flask, render_template, request, g, send_from_directory
 from datetime import datetime, timezone, timedelta
 import glob
 import time
@@ -76,93 +76,9 @@ def create_app(test_config=None):
     # 创建文档图片目录的符号链接，确保可以通过web访问
     static_doc_images_dir = os.path.join(app.static_folder, 'document_images')
     
-    # 确保目录存在
+    # 确保静态目录存在，但不再用于存储实际图片
     if not os.path.exists(static_doc_images_dir):
         os.makedirs(static_doc_images_dir, exist_ok=True)
-    
-    # 创建环境子目录
-    env_static_dir = os.path.join(static_doc_images_dir, ENV)
-    if not os.path.exists(env_static_dir):
-        os.makedirs(env_static_dir, exist_ok=True)
-        logging.info(f"创建环境静态目录: {env_static_dir}")
-    
-    # 创建202505子目录
-    year_month_static_dir = os.path.join(env_static_dir, '202505')
-    if not os.path.exists(year_month_static_dir):
-        os.makedirs(year_month_static_dir, exist_ok=True)
-        logging.info(f"创建年月静态目录: {year_month_static_dir}")
-    
-    # 获取实际图片目录路径
-    source_year_month_dir = os.path.join(DOCUMENT_IMAGES_DIR, '202505')
-    
-    # 尝试直接复制文件而不是使用符号链接（更可靠）
-    for doc_dir in os.listdir(source_year_month_dir):
-        source_doc_dir = os.path.join(source_year_month_dir, doc_dir)
-        target_doc_dir = os.path.join(year_month_static_dir, doc_dir)
-        
-        # 只处理目录
-        if os.path.isdir(source_doc_dir):
-            # 如果目标目录已存在，则跳过
-            if os.path.exists(target_doc_dir):
-                logging.info(f"目标文档目录已存在: {target_doc_dir}")
-                continue
-                
-            # 创建目标目录
-            os.makedirs(target_doc_dir, exist_ok=True)
-            logging.info(f"创建文档图片目录链接: {target_doc_dir}")
-            
-            # 复制所有图片文件
-            try:
-                for img_file in os.listdir(source_doc_dir):
-                    source_img = os.path.join(source_doc_dir, img_file)
-                    target_img = os.path.join(target_doc_dir, img_file)
-                    
-                    # 只复制文件
-                    if os.path.isfile(source_img) and not os.path.exists(target_img):
-                        import shutil
-                        shutil.copy2(source_img, target_img)
-                        logging.info(f"复制图片文件: {source_img} -> {target_img}")
-            except Exception as e:
-                logging.error(f"复制图片文件失败: {e}")
-    
-    # 为新上传的文档创建符号链接钩子，在每次请求后执行
-    @app.after_request
-    def sync_document_images(response):
-        """同步新上传的文档图片到静态目录"""
-        # 获取实际图片目录路径
-        source_year_month_dir = os.path.join(DOCUMENT_IMAGES_DIR, '202505')
-        year_month_static_dir = os.path.join(static_doc_images_dir, ENV, '202505')
-        
-        # 确保源目录和目标目录存在
-        if not os.path.exists(source_year_month_dir) or not os.path.exists(year_month_static_dir):
-            return response
-            
-        try:
-            # 检查有没有新的文档目录需要同步
-            for doc_dir in os.listdir(source_year_month_dir):
-                source_doc_dir = os.path.join(source_year_month_dir, doc_dir)
-                target_doc_dir = os.path.join(year_month_static_dir, doc_dir)
-                
-                # 只处理目录，且只处理尚未同步的目录
-                if os.path.isdir(source_doc_dir) and not os.path.exists(target_doc_dir):
-                    # 创建目标目录
-                    os.makedirs(target_doc_dir, exist_ok=True)
-                    logging.info(f"创建新的文档图片目录链接: {target_doc_dir}")
-                    
-                    # 复制所有图片文件
-                    for img_file in os.listdir(source_doc_dir):
-                        source_img = os.path.join(source_doc_dir, img_file)
-                        target_img = os.path.join(target_doc_dir, img_file)
-                        
-                        # 只复制文件
-                        if os.path.isfile(source_img) and not os.path.exists(target_img):
-                            import shutil
-                            shutil.copy2(source_img, target_img)
-                            logging.info(f"复制新图片文件: {source_img} -> {target_img}")
-        except Exception as e:
-            logging.error(f"同步文档图片失败: {e}")
-            
-        return response
     
     # 确保占位符图片存在
     placeholder_dir = os.path.join(app.static_folder, 'images')
@@ -174,18 +90,6 @@ def create_app(test_config=None):
     if not os.path.exists(docs_dir):
         os.makedirs(docs_dir, exist_ok=True)
         logging.info(f"创建文档图片目录: {docs_dir}")
-    
-    # 确保202505目录存在
-    docs_year_month_dir = os.path.join(docs_dir, '202505')
-    if not os.path.exists(docs_year_month_dir):
-        os.makedirs(docs_year_month_dir, exist_ok=True)
-        logging.info(f"创建文档图片年月目录: {docs_year_month_dir}")
-    
-    # 在static/document_images目录中也创建202505目录
-    static_doc_images_year_month_dir = os.path.join(static_doc_images_dir, '202505')
-    if not os.path.exists(static_doc_images_year_month_dir):
-        os.makedirs(static_doc_images_year_month_dir, exist_ok=True)
-        logging.info(f"创建静态文档图片年月目录: {static_doc_images_year_month_dir}")
     
     placeholder_path = os.path.join(placeholder_dir, 'image_placeholder.png')
     if not os.path.exists(placeholder_path):
@@ -304,6 +208,31 @@ def create_app(test_config=None):
     def server_error(e):
         logging.error(f"服务器错误: {e}")
         return render_template("500.html"), 500
+    
+    # 为文档图片创建直接访问路由
+    @app.route('/document_images/<path:image_path>')
+    def serve_document_image(image_path):
+        """直接从物理数据目录提供文档图片"""
+        # 构建完整的图片物理路径
+        full_path = os.path.join(DOCUMENT_IMAGES_DIR, image_path)
+        
+        # 检查文件是否存在
+        if not os.path.isfile(full_path):
+            logging.warning(f"请求的图片不存在: {full_path}")
+            # 返回404或占位符图片
+            return app.send_static_file('images/image_placeholder.png')
+            
+        # 获取图片目录
+        image_dir = os.path.dirname(full_path)
+        if not os.path.exists(image_dir):
+            logging.warning(f"图片目录不存在: {image_dir}")
+            return app.send_static_file('images/image_placeholder.png')
+        
+        # 获取图片文件名
+        filename = os.path.basename(full_path)
+        
+        # 从数据目录发送文件
+        return send_from_directory(image_dir, filename)
     
     return app
 

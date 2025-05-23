@@ -113,20 +113,21 @@ class DocxParser(DocumentParser):
     
     def _get_image_directory(self, file_path, doc_id):
         """获取文档图片目录"""
-        # 使用指定的目录结构：data/[env]/document_images/202505/
-        year_month = "202505"  # 直接使用指定的年月
+        # 使用按年月组织的动态目录结构
+        today = datetime.now()
+        year_month = today.strftime('%Y%m')
         
         if doc_id:
             # 使用文档ID创建目录
             image_dir = os.path.join(DOCUMENT_IMAGES_DIR, year_month, str(doc_id))
-            # URL路径
-            rel_path = f'{DOCUMENT_IMAGES_URL}/{year_month}/{doc_id}'
+            # 直接使用数据目录URL路径
+            rel_path = f'/document_images/{year_month}/{doc_id}'
         else:
             # 如果没有文档ID，使用文件名哈希作为目录
             doc_filename = os.path.basename(file_path)
             file_hash = hashlib.md5(doc_filename.encode()).hexdigest()[:10]
             image_dir = os.path.join(DOCUMENT_IMAGES_DIR, year_month, file_hash)
-            rel_path = f'{DOCUMENT_IMAGES_URL}/{year_month}/{file_hash}'
+            rel_path = f'/document_images/{year_month}/{file_hash}'
         
         # 确保目录存在
         if not os.path.exists(image_dir):
@@ -188,21 +189,8 @@ class DocxParser(DocumentParser):
             # 创建图片存储目录
             image_dir, rel_path = self._get_image_directory(file_path, doc_id)
             
-            # 同时准备静态目录路径
-            static_dir = os.path.join('app', 'static', 'document_images', ENV, '202505')
-            
-            # 确保静态目录存在
-            if not os.path.exists(static_dir):
-                os.makedirs(static_dir, exist_ok=True)
-                logging.info(f"创建静态图片根目录: {static_dir}")
-            
-            # 创建文档特定的静态目录
-            doc_id_or_hash = str(doc_id) if doc_id else os.path.basename(image_dir)
-            static_image_dir = os.path.join(static_dir, doc_id_or_hash)
-            
-            if not os.path.exists(static_image_dir):
-                os.makedirs(static_image_dir, exist_ok=True)
-                logging.info(f"创建静态图片目录: {static_image_dir}")
+            # 获取年月信息
+            year_month = os.path.basename(os.path.dirname(image_dir))
             
             # 打开docx文件
             from zipfile import ZipFile
@@ -227,11 +215,6 @@ class DocxParser(DocumentParser):
                     with open(image_path, 'wb') as f:
                         f.write(image_data)
                     
-                    # 同时保存到静态目录
-                    static_image_path = os.path.join(static_image_dir, image_name)
-                    with open(static_image_path, 'wb') as f:
-                        f.write(image_data)
-                    
                     # 获取图片尺寸
                     width = None
                     height = None
@@ -248,7 +231,8 @@ class DocxParser(DocumentParser):
                         'url': image_url,
                         'name': image_name,
                         'width': width,
-                        'height': height
+                        'height': height,
+                        'year_month': year_month  # 添加年月信息，方便后续处理
                     }
                     image_count += 1
             
@@ -277,18 +261,10 @@ class DocxParser(DocumentParser):
             # 创建图片处理器，将文档中的图片引用替换为静态URL
             def image_handler(image):
                 try:
-                    from app.core.config import ENV
-                    # 使用固定路径模式，确保URL正确
-                    url_prefix = f'/static/document_images/{ENV}/202505/'
-                    
                     if image.alt_text and image.alt_text in image_mappings:
                         img_info = image_mappings[image.alt_text]
-                        # 使用仅文件名部分，不使用完整路径
-                        img_name = os.path.basename(img_info['path'])
-                        doc_id_or_hash = str(doc_id) if doc_id else os.path.basename(os.path.dirname(img_info['path']))
-                        img_url = f"{url_prefix}{doc_id_or_hash}/{img_name}"
-                        
-                        result = {"src": img_url}
+                        # 使用直接数据目录URL
+                        result = {"src": img_info['url']}
                         if 'width' in img_info and img_info['width']:
                             result['width'] = str(img_info['width'])
                         if 'height' in img_info and img_info['height']:
@@ -298,12 +274,8 @@ class DocxParser(DocumentParser):
                         image_key = f"image.{image.content_type.split('/')[1]}"
                         img_info = image_mappings[image_key]
                         
-                        # 使用仅文件名部分，不使用完整路径
-                        img_name = os.path.basename(img_info['path'])
-                        doc_id_or_hash = str(doc_id) if doc_id else os.path.basename(os.path.dirname(img_info['path']))
-                        img_url = f"{url_prefix}{doc_id_or_hash}/{img_name}"
-                        
-                        result = {"src": img_url}
+                        # 使用直接数据目录URL
+                        result = {"src": img_info['url']}
                         if 'width' in img_info and img_info['width']:
                             result['width'] = str(img_info['width'])
                         if 'height' in img_info and img_info['height']:
@@ -317,9 +289,8 @@ class DocxParser(DocumentParser):
                             image_dir, rel_path = self._get_image_directory(file_path, doc_id)
                             image_path = os.path.join(image_dir, image_name)
                             
-                            # 使用统一的URL格式
-                            doc_id_or_hash = str(doc_id) if doc_id else os.path.basename(image_dir)
-                            image_url = f"{url_prefix}{doc_id_or_hash}/{image_name}"
+                            # 使用直接数据目录URL
+                            image_url = f"{rel_path}/{image_name}"
                             
                             # 读取图片数据
                             image_data = image_bytes.read()
@@ -336,15 +307,6 @@ class DocxParser(DocumentParser):
                             
                             # 保存图片到数据目录
                             with open(image_path, "wb") as f:
-                                f.write(image_data)
-                            
-                            # 同时保存到静态目录
-                            static_dir = os.path.join('app', 'static', 'document_images', ENV, '202505', doc_id_or_hash)
-                            if not os.path.exists(static_dir):
-                                os.makedirs(static_dir, exist_ok=True)
-                            
-                            static_image_path = os.path.join(static_dir, image_name)
-                            with open(static_image_path, 'wb') as f:
                                 f.write(image_data)
                             
                             # 返回图片URL和尺寸信息

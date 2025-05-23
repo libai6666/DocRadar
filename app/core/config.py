@@ -37,10 +37,10 @@ DB_DIR = os.path.join(DATA_DIR, 'db')
 # 文档图片存储配置 - 区分测试和生产环境
 if ENV == 'test':
     DOCUMENT_IMAGES_DIR = os.path.join(DATA_DIR, 'document_images')
-    DOCUMENT_IMAGES_URL = '/static/document_images/test'
+    DOCUMENT_IMAGES_URL = '/document_images'  # 直接使用路由访问
 else:  # production
     DOCUMENT_IMAGES_DIR = os.path.join(DATA_DIR, 'document_images')
-    DOCUMENT_IMAGES_URL = '/static/document_images/production'
+    DOCUMENT_IMAGES_URL = '/document_images'  # 直接使用路由访问
 
 # 确保文档图片目录存在
 if not os.path.exists(DOCUMENT_IMAGES_DIR):
