@@ -547,6 +547,13 @@ function initFileUpload() {
     const uploadResultContent = document.getElementById('upload-result-content');
     const uploadResultClose = document.getElementById('upload-result-close');
     
+    // 全局上传进度跟踪变量
+    let totalBytesToUpload = 0;      // 所有文件的总字节数
+    let totalBytesUploaded = 0;      // 已上传的总字节数
+    let previousFilesBytes = 0;      // 之前已上传文件的总字节数
+    let currentFileIndex = 0;        // 当前正在上传的文件索引
+    let totalFiles = 0;              // 要上传的文件总数
+    
     // 初始化模态框对象
     let overwriteModal, batchOverwriteModal, uploadResultModal;
     
@@ -895,6 +902,13 @@ function initFileUpload() {
             failed: 0,
             failedFiles: previousFailedFiles // 保留之前的失败文件列表
         };
+        
+        // 重置全局进度变量
+        totalBytesToUpload = 0;
+        totalBytesUploaded = 0;
+        previousFilesBytes = 0;
+        currentFileIndex = 0;
+        totalFiles = 0;
         
         // 重置原始进度条
         progressBar.style.width = '0%';
@@ -1443,6 +1457,14 @@ function initFileUpload() {
             progressBar.classList.add('progress-bar-striped', 'progress-bar-animated');
         }
         
+        // 计算所有文件的总大小，用于进度计算
+        totalBytesToUpload = files.reduce((total, file) => total + file.size, 0);
+        totalBytesUploaded = 0;
+        previousFilesBytes = 0;
+        totalFiles = files.length;
+        
+        console.log(`准备上传 ${files.length} 个文件，总大小: ${formatFileSize(totalBytesToUpload)}`);
+        
         // 上传所有新文件，使用分批处理
         const batchSize = 3; // 每批处理3个文件（减小批次大小）
         
@@ -1481,28 +1503,18 @@ function initFileUpload() {
                         // 如果不是第一次尝试，添加延迟
                         if (attempt > 0) {
                             console.log(`尝试第 ${attempt + 1} 次上传文件: ${file.name}`);
-                            await new Promise(resolve => setTimeout(resolve, 2000 * attempt)); // 递增延迟
+                            await new Promise(resolve => setTimeout(resolve, 2000)); // 2秒延迟
                         }
                         
-                        const result = await uploadSingleFile(file, false);
+                        // 上传文件，传递文件索引和总数
+                        const result = await uploadSingleFile(file, false, i, files.length);
+                        
+                        // 更新上传统计
+                        updateUploadStats(result, file.name);
                         
                         if (result.success) {
+                            console.log(`成功上传文件: ${file.name}`);
                             success = true;
-                            updateUploadStats(result);
-                            
-                            // 更新进度条
-                            const progress = Math.round(((i + 1) / files.length) * 100);
-                            progressBar.style.width = `${progress}%`;
-                            progressBar.setAttribute('aria-valuenow', progress);
-                            progressText.textContent = `${progress}%`;
-                            
-                            // 同时更新顶部进度条
-                            if (topProgressBar && topProgressText) {
-                                topProgressBar.style.width = `${progress}%`;
-                                topProgressBar.setAttribute('aria-valuenow', progress);
-                                topProgressText.textContent = `${progress}%`;
-                            }
-                            
                             break; // 成功后跳出重试循环
                         } else {
                             console.error(`上传文件失败: ${file.name}`, result);
@@ -1522,7 +1534,7 @@ function initFileUpload() {
                             uploadStats.failed++;
                             uploadStats.failedFiles.push({
                                 name: file.name,
-                                error: error.message || '未知错误'
+                                error: error.error || error.message || '未知错误'
                             });
                         }
                     }
@@ -1740,16 +1752,20 @@ function initFileUpload() {
     }
     
     // 上传单个文件
-    async function uploadSingleFile(file, overwrite = false) {
-        console.log(`准备上传文件: ${file.name}, 覆盖模式: ${overwrite}`);
+    async function uploadSingleFile(file, overwrite = false, fileIndex = 0, filesCount = 1) {
+        console.log(`准备上传文件: ${file.name}, 覆盖模式: ${overwrite}, 索引: ${fileIndex}/${filesCount}`);
         
         // 显示顶部进度条并更新当前文件信息
         if (topProgressContainer && topCurrentFile) {
             topProgressContainer.style.display = 'block';
             topCurrentFile.textContent = `正在传输文件: ${file.name}`;
-            topProgressBar.style.width = '0%';
-            topProgressBar.setAttribute('aria-valuenow', 0);
-            topProgressText.textContent = '0%';
+            
+            // 只有在第一个文件时才重置进度条，否则保持当前进度
+            if (fileIndex === 0 && previousFilesBytes === 0) {
+                topProgressBar.style.width = '0%';
+                topProgressBar.setAttribute('aria-valuenow', 0);
+                topProgressText.textContent = '0%';
+            }
         }
         
         const formData = new FormData();
@@ -1765,72 +1781,110 @@ function initFileUpload() {
             console.warn('未能获取CSRF令牌，尝试继续上传');
         }
         
-        try {
-            console.log('发送文件上传请求...');
-            
-            // 添加请求超时处理 - 根据文件大小动态调整超时时间
-            const controller = new AbortController();
-            
-            // 计算超时时间：基础30秒 + 每MB增加5秒，最长5分钟
-            const fileSizeMB = file.size / (1024 * 1024);
-            const baseTimeout = 30000; // 30秒基础时间
-            const timePerMB = 5000; // 每MB增加5秒
-            const maxTimeout = 5 * 60 * 1000; // 最长5分钟
-            
-            // 计算实际超时时间
-            const calculatedTimeout = baseTimeout + (fileSizeMB * timePerMB);
-            const timeout = Math.min(calculatedTimeout, maxTimeout);
-            
-            console.log(`文件大小: ${fileSizeMB.toFixed(2)}MB, 设置超时时间: ${(timeout/1000).toFixed(1)}秒`);
-            
-            const timeoutId = setTimeout(() => {
-                console.warn(`上传文件 ${file.name} 超时，中断请求`);
-                controller.abort();
-            }, timeout);
-            
-            const response = await fetch('/upload/batch', {
-                method: 'POST',
-                body: formData,
-                signal: controller.signal
-            });
-            
-            // 清除超时计时器
-            clearTimeout(timeoutId);
-            
-            if (!response.ok) {
-                console.error(`服务器响应错误: ${response.status} ${response.statusText}`);
-                return { 
-                    success: false, 
-                    error: `服务器响应错误: ${response.status} ${response.statusText}` 
-                };
+        return new Promise((resolve, reject) => {
+            try {
+                console.log('发送文件上传请求...');
+                
+                // 计算超时时间：基础30秒 + 每MB增加5秒，最长5分钟
+                const fileSizeMB = file.size / (1024 * 1024);
+                const baseTimeout = 30000; // 30秒基础时间
+                const timePerMB = 5000; // 每MB增加5秒
+                const maxTimeout = 5 * 60 * 1000; // 最长5分钟
+                
+                // 计算实际超时时间
+                const calculatedTimeout = baseTimeout + (fileSizeMB * timePerMB);
+                const timeout = Math.min(calculatedTimeout, maxTimeout);
+                
+                console.log(`文件大小: ${fileSizeMB.toFixed(2)}MB, 设置超时时间: ${(timeout/1000).toFixed(1)}秒`);
+                
+                // 使用XMLHttpRequest替代fetch，以便能够监听上传进度
+                const xhr = new XMLHttpRequest();
+                
+                // 设置超时
+                xhr.timeout = timeout;
+                
+                // 上传进度事件
+                xhr.upload.addEventListener('progress', (event) => {
+                    if (event.lengthComputable) {
+                        // 计算当前文件的上传进度
+                        const fileProgress = event.loaded / event.total;
+                        
+                        // 计算总体进度：之前已上传的文件 + 当前文件的进度
+                        const currentFileBytes = event.loaded;
+                        const overallProgress = (previousFilesBytes + currentFileBytes) / totalBytesToUpload;
+                        
+                        console.log(`文件 ${fileIndex + 1}/${filesCount} 进度: ${Math.round(fileProgress * 100)}%, 总进度: ${Math.round(overallProgress * 100)}%`);
+                        
+                        // 更新进度条
+                        updateProgress(overallProgress);
+                    }
+                });
+                
+                // 请求完成事件
+                xhr.addEventListener('load', () => {
+                    if (xhr.status >= 200 && xhr.status < 300) {
+                        try {
+                            const result = JSON.parse(xhr.responseText);
+                            console.log(`文件 ${file.name} 上传结果:`, result);
+                            
+                            // 更新已上传的总字节数
+                            previousFilesBytes += file.size;
+                            
+                            // 检查结果中是否包含嵌套的结果数组
+                            if (result.results && Array.isArray(result.results) && result.results.length > 0) {
+                                // 返回第一个结果项
+                                resolve(result.results[0]);
+                            } else {
+                                resolve(result);
+                            }
+                        } catch (error) {
+                            console.error('解析响应JSON时出错:', error);
+                            reject({
+                                success: false,
+                                error: '解析服务器响应时出错'
+                            });
+                        }
+                    } else {
+                        console.error(`服务器响应错误: ${xhr.status} ${xhr.statusText}`);
+                        reject({
+                            success: false,
+                            error: `服务器响应错误: ${xhr.status} ${xhr.statusText}`
+                        });
+                    }
+                });
+                
+                // 请求错误事件
+                xhr.addEventListener('error', () => {
+                    console.error('请求发生错误');
+                    reject({
+                        success: false,
+                        error: '网络错误，请检查您的连接'
+                    });
+                });
+                
+                // 请求超时事件
+                xhr.addEventListener('timeout', () => {
+                    console.warn(`上传文件 ${file.name} 超时`);
+                    reject({
+                        success: false,
+                        error: '请求超时，文件可能过大或网络连接不稳定'
+                    });
+                });
+                
+                // 打开请求
+                xhr.open('POST', '/upload/batch');
+                
+                // 发送请求
+                xhr.send(formData);
+                
+            } catch (error) {
+                console.error(`上传文件 ${file.name} 时发生错误:`, error);
+                reject({
+                    success: false,
+                    error: error.message || '未知错误'
+                });
             }
-            
-            const result = await response.json();
-            console.log(`文件 ${file.name} 上传结果:`, result);
-            
-            // 检查结果中是否包含嵌套的结果数组
-            if (result.results && Array.isArray(result.results) && result.results.length > 0) {
-                // 返回第一个结果项
-                return result.results[0];
-            }
-            
-            return result;
-        } catch (error) {
-            console.error(`上传文件 ${file.name} 时发生错误:`, error);
-            
-            // 检查是否是超时错误
-            if (error.name === 'AbortError') {
-                return { 
-                    success: false, 
-                    error: '请求超时，文件可能过大或网络连接不稳定' 
-                };
-            }
-            
-            return { 
-                success: false, 
-                error: error.message || '未知错误' 
-            };
-        }
+        });
     }
     
     // 更新上传统计
@@ -2063,7 +2117,7 @@ function initFileUpload() {
         selectedFiles = selectedFiles.filter(file => !filesToRemove.includes(file.name));
         console.log(`移除后队列中还剩 ${selectedFiles.length} 个文件`);
         
-        // 更新文件列表UI
+        // 更新文件列表
         updateFileList();
         
         // 如果没有文件了，隐藏上传UI
@@ -2155,6 +2209,34 @@ function initFileUpload() {
             '<div>正在准备覆盖文件，总计: ' + filesToOverwrite.length + ' 个文件</div>' +
             '</div></div>';
         
+        // 计算要覆盖的文件的总大小
+        // 首先需要找到所有文件对象
+        const filesToProcess = [];
+        for (const filename of filesToOverwrite) {
+            let file = fileMap.get(filename) || 
+                       selectedFiles.find(f => f.name === filename) ||
+                       selectedFiles.find(f => f.name.toLowerCase() === filename.toLowerCase());
+            
+            if (file) {
+                filesToProcess.push(file);
+            }
+        }
+        
+        // 计算总字节数
+        const overwriteTotalBytes = filesToProcess.reduce((total, file) => total + file.size, 0);
+        
+        // 如果之前有上传过文件，保留之前的总字节数，否则重置
+        if (totalBytesToUpload > 0) {
+            totalBytesToUpload += overwriteTotalBytes;
+        } else {
+            totalBytesToUpload = overwriteTotalBytes;
+            previousFilesBytes = 0;
+        }
+        
+        totalFiles = filesToProcess.length;
+        
+        console.log(`准备覆盖 ${filesToProcess.length} 个文件，总大小: ${formatFileSize(overwriteTotalBytes)}`);
+        
         // 分批处理覆盖，适当增加批次大小
         const batchSize = 2; // 增加到每批处理2个文件，提高效率
         
@@ -2162,37 +2244,14 @@ function initFileUpload() {
             const endIndex = Math.min(startIndex + batchSize, files.length);
             console.log(`处理覆盖批次: ${startIndex + 1} 到 ${endIndex} (共 ${files.length} 个文件)`);
             
-            // 更新总体进度显示
-            const batchProgress = Math.round((startIndex / files.length) * 100);
-            progressBar.style.width = `${batchProgress}%`;
-            progressBar.setAttribute('aria-valuenow', batchProgress);
-            progressText.textContent = `${batchProgress}%`;
-            
             for (let i = startIndex; i < endIndex; i++) {
                 const filename = files[i];
                 console.log(`尝试查找文件对象: ${filename}`);
                 
-                // 更新进度条显示当前处理的文件
-                const currentProgress = Math.round(((i + 0.5) / files.length) * 100);
-                progressBar.style.width = `${currentProgress}%`;
-                progressBar.setAttribute('aria-valuenow', currentProgress);
-                progressText.textContent = `${currentProgress}%`;
-                
-                // 同时更新顶部进度条
-                if (topProgressBar && topProgressText) {
-                    topProgressBar.style.width = `${currentProgress}%`;
-                    topProgressBar.setAttribute('aria-valuenow', currentProgress);
-                    topProgressText.textContent = `${currentProgress}%`;
-                    
-                    // 确保顶部进度条容器可见
-                    if (topProgressContainer) {
-                        topProgressContainer.style.display = 'block';
-                    }
-                    
-                    // 更新当前处理文件信息
-                    if (topCurrentFile) {
-                        topCurrentFile.textContent = `正在传输文件 (${i + 1}/${files.length}): ${filename}`;
-                    }
+                // 更新顶部进度条状态
+                if (topProgressContainer && topCurrentFile) {
+                    topProgressContainer.style.display = 'block';
+                    topCurrentFile.textContent = `正在传输文件 (${i + 1}/${files.length}): ${filename}`;
                 }
                 
                 // 增强文件名匹配逻辑
@@ -2217,177 +2276,42 @@ function initFileUpload() {
                     console.log(`直接匹配失败，尝试通过存储的文件信息查找: ${filename}`);
                     const fileInfo = existingFilesCopy.find(info => info.filename === filename);
                     if (fileInfo && fileInfo.file_name) {
-                        file = fileMap.get(fileInfo.file_name) || selectedFiles.find(f => f.name === fileInfo.file_name);
+                        file = selectedFiles.find(f => f.name === fileInfo.file_name);
                         if (file) {
                             console.log(`方法3成功: 通过存储的文件信息找到文件对象: ${file.name}`);
                         }
                     }
                 }
                 
-                // 方法4: 尝试不区分大小写匹配
+                // 如果找不到文件对象，记录错误并继续
                 if (!file) {
-                    console.log(`尝试不区分大小写匹配: ${filename}`);
-                    const lowerFilename = filename.toLowerCase();
-                    file = selectedFiles.find(f => f.name.toLowerCase() === lowerFilename);
-                    if (file) {
-                        console.log(`方法4成功: 通过不区分大小写匹配到文件对象: ${file.name}`);
-                    }
-                }
-                
-                // 方法5: 尝试匹配原始文件名
-                if (!file) {
-                    console.log(`尝试匹配原始文件名: ${filename}`);
-                    // 在原始存储的文件信息中查找
-                    const matchingFileInfo = existingFilesCopy.find(info => 
-                        info.original_filename === filename || 
-                        (info.original_filename && info.original_filename.toLowerCase() === filename.toLowerCase())
-                    );
-                    if (matchingFileInfo && matchingFileInfo.file_name) {
-                        file = fileMap.get(matchingFileInfo.file_name) || selectedFiles.find(f => f.name === matchingFileInfo.file_name);
-                        if (file) {
-                            console.log(`方法5成功: 通过原始文件名找到文件对象: ${file.name}`);
-                        }
-                    }
-                }
-                
-                // 方法6: 最后尝试，遍历所有文件对象
-                if (!file) {
-                    console.log(`尝试遍历所有文件对象进行匹配`);
-                    for (const f of selectedFiles) {
-                        console.log(`检查文件: ${f.name}`);
-                        // 检查文件名是否部分匹配
-                        if (f.name.includes(filename) || filename.includes(f.name)) {
-                            file = f;
-                            console.log(`方法6成功: 通过部分匹配找到文件对象: ${file.name}`);
-                            break;
-                        }
-                    }
-                }
-                
-                if (!file) {
-                    console.error(`找不到要覆盖的文件: ${filename}`);
-                    console.error('当前选中的文件列表:', selectedFiles.map(f => f.name));
-                    console.error('已存在的文件列表副本:', existingFilesCopy);
-                    console.error('文件映射:', Array.from(fileMap.entries()));
+                    console.error(`无法找到文件对象: ${filename}`);
                     uploadStats.failed++;
                     uploadStats.failedFiles.push({
                         name: filename,
                         error: '找不到文件对象'
                     });
-                    
-                    // 更新进度条
-                    const progress = Math.round(((i + 1) / files.length) * 100);
-                    progressBar.style.width = `${progress}%`;
-                    progressBar.setAttribute('aria-valuenow', progress);
-                    progressText.textContent = `${progress}%`;
-                    
                     continue;
                 }
                 
-                console.log(`覆盖文件 ${i + 1}/${files.length}: ${file.name}`);
-                
-                // 更新处理状态显示
-                uploadResult.innerHTML = `<div class="alert alert-info">
-                    <div class="d-flex align-items-center">
-                        <div class="spinner-border spinner-border-sm me-2" role="status"></div>
-                        <div>
-                            正在覆盖文件 (${i + 1}/${files.length}): ${file.name}
-                        </div>
-                    </div>
-                </div>`;
-                
-                // 添加重试机制
-                let success = false;
-                const maxAttempts = 3;
-                
-                for (let attempt = 0; attempt < maxAttempts; attempt++) {
-                    try {
-                        // 如果不是第一次尝试，添加延迟
-                        if (attempt > 0) {
-                            const retryDelay = 2000 * attempt; // 减少到2秒的基础延迟
-                            console.log(`尝试第 ${attempt + 1} 次覆盖文件: ${file.name}，等待 ${retryDelay/1000} 秒...`);
-                            await new Promise(resolve => setTimeout(resolve, retryDelay));
-                            
-                            // 更新重试状态显示
-                            uploadResult.innerHTML = `<div class="alert alert-warning">
-                                <div class="d-flex align-items-center">
-                                    <div class="spinner-border spinner-border-sm me-2" role="status"></div>
-                                    <div>
-                                        正在覆盖文件 (${i + 1}/${files.length}): ${file.name}
-                                        <span class="badge bg-warning ms-2">第 ${attempt + 1} 次尝试</span>
-                                    </div>
-                                </div>
-                            </div>`;
-                        }
-                        
-                        const result = await uploadSingleFile(file, true);
-                        
-                        if (result.success) {
-                            success = true;
-                            updateUploadStats(result, file.name);
-                            
-                            // 更新进度条
-                            const progress = Math.round(((i + 1) / files.length) * 100);
-                            progressBar.style.width = `${progress}%`;
-                            progressBar.setAttribute('aria-valuenow', progress);
-                            progressText.textContent = `${progress}%`;
-                            
-                            // 同时更新顶部进度条
-                            if (topProgressBar && topProgressText) {
-                                topProgressBar.style.width = `${progress}%`;
-                                topProgressBar.setAttribute('aria-valuenow', progress);
-                                topProgressText.textContent = `${progress}%`;
-                            }
-                            
-                            break; // 成功后跳出重试循环
-                        } else {
-                            console.error(`覆盖文件失败: ${file.name}`, result);
-                            // 如果是最后一次尝试，记录失败
-                            if (attempt === maxAttempts - 1) {
-                                uploadStats.failed++;
-                                uploadStats.failedFiles.push({
-                                    name: file.name,
-                                    error: result.error || '未知错误'
-                                });
-                                
-                                // 更新进度条
-                                const progress = Math.round(((i + 1) / files.length) * 100);
-                                progressBar.style.width = `${progress}%`;
-                                progressBar.setAttribute('aria-valuenow', progress);
-                                progressText.textContent = `${progress}%`;
-                                
-                                // 同时更新顶部进度条
-                                if (topProgressBar && topProgressText) {
-                                    topProgressBar.style.width = `${progress}%`;
-                                    topProgressBar.setAttribute('aria-valuenow', progress);
-                                    topProgressText.textContent = `${progress}%`;
-                                }
-                            }
-                        }
-                    } catch (error) {
-                        console.error(`覆盖文件出错: ${file.name}`, error);
-                        // 如果是最后一次尝试，记录失败
-                        if (attempt === maxAttempts - 1) {
-                            uploadStats.failed++;
-                            uploadStats.failedFiles.push({
-                                name: file.name,
-                                error: error.message || '未知错误'
-                            });
-                            
-                            // 更新进度条
-                            const progress = Math.round(((i + 1) / files.length) * 100);
-                            progressBar.style.width = `${progress}%`;
-                            progressBar.setAttribute('aria-valuenow', progress);
-                            progressText.textContent = `${progress}%`;
-                            
-                            // 同时更新顶部进度条
-                            if (topProgressBar && topProgressText) {
-                                topProgressBar.style.width = `${progress}%`;
-                                topProgressBar.setAttribute('aria-valuenow', progress);
-                                topProgressText.textContent = `${progress}%`;
-                            }
-                        }
-                    }
+                try {
+                    console.log(`开始上传文件: ${file.name} (覆盖模式)`);
+                    
+                    // 上传文件（覆盖模式），传递文件索引和总数
+                    const result = await uploadSingleFile(file, true, i, files.length);
+                    
+                    // 更新上传统计
+                    updateUploadStats(result, file.name);
+                    
+                    console.log(`文件 ${file.name} 上传结果:`, result);
+                    
+                } catch (error) {
+                    console.error(`上传文件时出错: ${file.name}`, error);
+                    uploadStats.failed++;
+                    uploadStats.failedFiles.push({
+                        name: file.name,
+                        error: error.error || error.message || '未知错误'
+                    });
                 }
                 
                 // 文件之间添加短暂延迟，避免并发问题
@@ -2397,7 +2321,7 @@ function initFileUpload() {
             // 处理下一批次
             if (endIndex < files.length) {
                 // 批次之间添加更长的延迟
-                await new Promise(resolve => setTimeout(resolve, 2000)); // 增加到2秒
+                await new Promise(resolve => setTimeout(resolve, 1000));
                 await processBatch(files, endIndex, batchSize);
             }
         };
