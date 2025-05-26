@@ -1933,8 +1933,8 @@ function initFileUpload() {
     }
     
     // 显示最终结果
-    function showFinalResult() {
-        console.log('显示上传结果', uploadStats);
+    function showFinalResult(isCancelled = false) {
+        console.log('显示上传结果', uploadStats, isCancelled ? '(取消覆盖)' : '');
         
         // 恢复批量删除按钮
         const batchDeleteBtn = document.getElementById('batch-delete-queue');
@@ -2007,29 +2007,35 @@ function initFileUpload() {
         
         resultHTML += '</ul>';
         
-        // 根据是否有成功上传决定显示提示
-        if (uploadStats.success > 0 || uploadStats.overwritten > 0) {
-            resultHTML += '<div class="alert alert-success"><i class="bi bi-info-circle-fill me-2"></i>系统将在关闭此窗口后刷新页面，显示最新上传的文件。</div>';
-        }
-        
-        // 如果有跳过的文件，添加提示信息
-        if (uploadStats.skipped > 0) {
-            resultHTML += '<div class="alert alert-info"><i class="bi bi-info-circle-fill me-2"></i>如需覆盖跳过的文件，请重新选择这些文件并选择覆盖选项。</div>';
-        }
-        
-        // 如果有失败的文件，添加重试提示和批量覆盖建议
-        if (uploadStats.failed > 0) {
-            resultHTML += `<div class="alert alert-warning">
-                <i class="bi bi-arrow-clockwise me-2"></i>如需重新上传失败的文件，请在关闭此窗口后重新选择这些文件。
-                <div class="mt-2 small text-muted">
-                    <strong>提示:</strong> 对于批量覆盖失败的文件，建议尝试单个文件逐一覆盖，或者在系统较空闲时再次尝试。
-                </div>
-            </div>`;
-        }
-        
-        // 如果所有文件都被跳过，显示特殊提示
-        if (uploadStats.success === 0 && uploadStats.overwritten === 0 && uploadStats.skipped > 0 && uploadStats.failed === 0) {
-            resultHTML += '<div class="alert alert-warning"><i class="bi bi-exclamation-triangle-fill me-2"></i>所有文件都已跳过上传，没有任何文件被添加或覆盖。</div>';
+        // 根据是否是取消覆盖操作显示不同的提示信息
+        if (isCancelled) {
+            // 取消覆盖操作的提示信息
+            resultHTML += '<div class="alert alert-info"><i class="bi bi-info-circle-fill me-2"></i>您已取消覆盖操作，但部分文件已上传成功。点击确定刷新页面查看最新上传的文件。</div>';
+        } else {
+            // 正常上传完成的提示信息
+            if (uploadStats.success > 0 || uploadStats.overwritten > 0) {
+                resultHTML += '<div class="alert alert-success"><i class="bi bi-info-circle-fill me-2"></i>系统将在关闭此窗口后刷新页面，显示最新上传的文件。</div>';
+            }
+            
+            // 如果有跳过的文件，添加提示信息
+            if (uploadStats.skipped > 0) {
+                resultHTML += '<div class="alert alert-info"><i class="bi bi-info-circle-fill me-2"></i>如需覆盖跳过的文件，请重新选择这些文件并选择覆盖选项。</div>';
+            }
+            
+            // 如果有失败的文件，添加重试提示和批量覆盖建议
+            if (uploadStats.failed > 0) {
+                resultHTML += `<div class="alert alert-warning">
+                    <i class="bi bi-arrow-clockwise me-2"></i>如需重新上传失败的文件，请在关闭此窗口后重新选择这些文件。
+                    <div class="mt-2 small text-muted">
+                        <strong>提示:</strong> 对于批量覆盖失败的文件，建议尝试单个文件逐一覆盖，或者在系统较空闲时再次尝试。
+                    </div>
+                </div>`;
+            }
+            
+            // 如果所有文件都被跳过，显示特殊提示
+            if (uploadStats.success === 0 && uploadStats.overwritten === 0 && uploadStats.skipped > 0 && uploadStats.failed === 0) {
+                resultHTML += '<div class="alert alert-warning"><i class="bi bi-exclamation-triangle-fill me-2"></i>所有文件都已跳过上传，没有任何文件被添加或覆盖。</div>';
+            }
         }
         
         uploadResultContent.innerHTML = resultHTML;
@@ -2132,6 +2138,12 @@ function initFileUpload() {
         
         // 清空existingFiles数组
         existingFiles = [];
+        
+        // 检查是否有成功上传的文件，如果有则显示上传结果
+        if (uploadStats.success > 0 || uploadStats.overwritten > 0 || uploadStats.failed > 0) {
+            console.log('检测到已有文件上传，显示上传结果');
+            showFinalResult(true);
+        }
     }
     
     // 显示上传进度结果
