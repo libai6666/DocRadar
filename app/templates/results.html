@@ -487,6 +487,15 @@
                     })
                     .then(function(data) {
                         if (data.success) {
+                            // 清除localStorage中的搜索状态，防止页面刷新时重新创建历史
+                            localStorage.removeItem('docradar_current_active_query');
+                            localStorage.removeItem('docradar_current_active_search_id');
+                            console.log('已清除localStorage中的搜索状态，防止页面刷新时重新创建历史');
+                            
+                            // 修改URL，移除查询参数，防止刷新页面时重新执行搜索
+                            history.replaceState({}, '', window.location.pathname);
+                            console.log('已修改URL，移除查询参数，防止刷新页面时重新执行搜索');
+                            
                             // 成功清空历史后，直接从DOM中清除所有标签和内容
                             const tabItems = document.querySelectorAll('#searchTabs .nav-item');
                             const tabContents = document.querySelectorAll('.tab-pane');
@@ -582,33 +591,43 @@
     
     // 删除搜索历史条目
     function deleteHistoryItem(historyId) {
-        if (confirm('确定要删除这条搜索历史记录吗？')) {
-            const deleteUrl = "{{ url_for('search.delete_history', history_id=0) }}".replace('0', historyId);
-            const currentUrl = "{{ request.url|urlencode }}";
-            
-            // 获取要删除的标签和面板元素
-            const tabItem = document.getElementById('tab-item-' + historyId);
-            const tabContent = document.getElementById('search-content-' + historyId);
-            
-            // 检查是否为最后一个标签
-            const isLastTab = document.querySelectorAll('#searchTabs .nav-item').length <= 1;
-            
-            // 使用fetch API进行AJAX请求
-            fetch(deleteUrl + '?return_to=' + currentUrl, {
-                method: 'GET',
-                headers: {
-                    'X-Requested-With': 'XMLHttpRequest'
-                }
-            })
-            .then(function(response) {
+        if (!historyId) return;
+        
+        // 获取标签元素和内容面板
+        const tabItem = document.getElementById(`tab-item-${historyId}`);
+        const tabContent = document.getElementById(`search-content-${historyId}`);
+        
+        // 检查是否是最后一个标签
+        const isLastTab = document.querySelectorAll('#searchTabs .nav-item').length <= 1;
+        
+        // 检查是否是当前活动的搜索
+        const currentActiveSearchId = localStorage.getItem('docradar_current_active_search_id');
+        const isCurrentActive = currentActiveSearchId === historyId;
+        
+        console.log(`删除历史记录: ID=${historyId}, 是否是最后一个标签=${isLastTab}, 是否是当前活动搜索=${isCurrentActive}`);
+        
+        // 发送删除请求
+        fetch(`/search/delete/${historyId}`, {
+            method: 'GET',
+            headers: {
+                'X-Requested-With': 'XMLHttpRequest'
+            }
+        })
+            .then(response => {
                 if (response.ok) {
-                    // 尝试解析JSON响应，如果不是JSON则返回null
-                    return response.json().catch(() => null);
+                    return response.json();
                 }
                 throw new Error('网络响应异常');
             })
             .then(function(data) {
                 // 无论服务器返回什么，我们都认为删除成功（因为服务器会重定向）
+                
+                // 如果删除的是当前活动的搜索，清除localStorage
+                if (isCurrentActive) {
+                    localStorage.removeItem('docradar_current_active_query');
+                    localStorage.removeItem('docradar_current_active_search_id');
+                    console.log('已清除localStorage中的当前活动搜索状态，防止页面刷新时重新创建历史');
+                }
                 
                 // 如果有活动的标签，先找到下一个要激活的标签
                 let nextActiveTab = null;
@@ -626,6 +645,10 @@
                     // 移除清空历史按钮
                     const clearAllBtn = document.getElementById('clear-all-history');
                     if (clearAllBtn) clearAllBtn.remove();
+                    
+                    // 修改URL，移除查询参数，防止刷新页面时重新执行搜索
+                    history.replaceState({}, '', window.location.pathname);
+                    console.log('已修改URL，移除查询参数，防止刷新页面时重新执行搜索');
                     
                     // 显示无搜索记录状态
                     const noResultsDiv = document.createElement('div');
@@ -705,7 +728,6 @@
                 console.error('删除搜索历史出错:', error);
                 alert('删除搜索历史记录时出现错误');
             });
-        }
     }
     </script>
 </body>
