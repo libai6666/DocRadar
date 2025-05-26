@@ -1009,6 +1009,52 @@ class Storage:
             if conn:
                 conn.close()
     
+    def find_latest_document_by_filename(self, filename):
+        """
+        查找最新上传的同名文档
+        
+        Args:
+            filename: 文件名
+            
+        Returns:
+            int or None: 文档ID，如果找不到则返回None
+        """
+        try:
+            conn = sqlite3.connect(self.db_path)
+            cursor = conn.cursor()
+            
+            # 规范化文件名以便进行比较
+            normalized_filename = filename.lower() if filename else ""
+            
+            if not normalized_filename:
+                return None
+            
+            # 查询数据库 - 使用LOWER函数进行不区分大小写的比较，按创建时间降序排序
+            cursor.execute(
+                """
+                SELECT id 
+                FROM documents 
+                WHERE LOWER(original_filename) = ? OR LOWER(filename) = ?
+                ORDER BY created_at DESC
+                LIMIT 1
+                """, 
+                (normalized_filename, normalized_filename)
+            )
+            
+            row = cursor.fetchone()
+            
+            if row:
+                return row[0]
+            else:
+                return None
+                
+        except Exception as e:
+            logging.error(f"查找同名文档失败: {e}")
+            return None
+        finally:
+            if conn:
+                conn.close()
+    
     def get_mime_type(self, file_path):
         """
         获取文件的MIME类型

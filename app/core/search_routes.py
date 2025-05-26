@@ -17,6 +17,33 @@ search_bp = Blueprint('search', __name__, url_prefix='/search')
 # 初始化搜索引擎
 search_engine = SearchEngine()
 
+def filter_valid_results(results):
+    """
+    过滤搜索结果，移除不存在的文档
+    
+    Args:
+        results: 搜索结果列表
+        
+    Returns:
+        list: 过滤后的搜索结果列表
+    """
+    if not results:
+        return []
+    
+    valid_results = []
+    for result in results:
+        if not result or 'id' not in result:
+            continue
+            
+        # 检查文档是否存在
+        doc = search_engine.get_document_by_id(result['id'])
+        if doc:
+            valid_results.append(result)
+        else:
+            logging.info(f"从搜索结果中移除不存在的文档: ID={result['id']}")
+    
+    return valid_results
+
 # 搜索历史管理
 def get_search_history():
     """获取当前会话的搜索历史"""
@@ -120,29 +147,39 @@ def search():
     # 检查是否已有相同的搜索
     existing_search, _ = find_existing_search(query)
     if existing_search:
-        # 如果有相同的搜索，直接使用已有的结果
+        # 如果有相同的搜索，验证并过滤结果，移除不存在的文档
         logging.info(f"重用已有搜索结果: '{query}'")
+        filtered_results = filter_valid_results(existing_search['results'])
+        
+        # 如果过滤后的结果数量与原始结果不同，更新搜索历史
+        if len(filtered_results) != len(existing_search['results']):
+            logging.info(f"过滤后的结果数量 ({len(filtered_results)}) 与原始结果数量 ({len(existing_search['results'])}) 不同，更新搜索历史")
         
         # 更新时间戳但不改变位置
         # 使用修改后的add_search_history函数
-        add_search_history(query, existing_search['results'])
+        add_search_history(query, filtered_results)
         
         # 重新获取搜索历史（可能已被更新）
         search_history = get_search_history()
         
         return render_template('results.html',
                               query=query,
-                              results=existing_search['results'],
+                              results=filtered_results,
                               search_history=search_history,
                               history_id=existing_search['id'],
-                              has_results=len(existing_search['results']) > 0)
+                              has_results=len(filtered_results) > 0)
     
     # 执行搜索
     results = search_engine.search(query, limit=SEARCH_RESULT_LIMIT)
     logging.info(f"执行搜索: '{query}' 找到 {len(results)} 个结果")
     
+    # 验证并过滤结果，移除不存在的文档
+    filtered_results = filter_valid_results(results)
+    if len(filtered_results) != len(results):
+        logging.info(f"过滤后的结果数量 ({len(filtered_results)}) 与原始结果数量 ({len(results)}) 不同")
+    
     # 记录搜索历史
-    if not results:
+    if not filtered_results:
         logging.warning(f"搜索 '{query}' 未找到结果")
         # 即使没有结果也记录搜索历史
         history_id = add_search_history(query, [])
@@ -156,7 +193,7 @@ def search():
                               has_results=False)
     
     # 检查结果格式是否正确
-    for i, result in enumerate(results):
+    for i, result in enumerate(filtered_results):
         if not isinstance(result, dict) or 'id' not in result:
             logging.error(f"搜索结果 #{i} 格式错误: {result}")
         else:
@@ -166,13 +203,13 @@ def search():
                 logging.info(f"搜索结果 #{i}: id={result['id']}, title={result['title']}")
     
     # 有结果，记录搜索历史
-    history_id = add_search_history(query, results)
+    history_id = add_search_history(query, filtered_results)
     search_history = get_search_history()
     
     # 直接将搜索结果传递给模板，而不是通过历史记录间接访问
     return render_template('results.html',
                           query=query,
-                          results=results,
+                          results=filtered_results,
                           search_history=search_history,
                           history_id=history_id,
                           has_results=True)
@@ -193,11 +230,13 @@ def api_search():
     # 检查是否已有相同的搜索
     existing_search, _ = find_existing_search(query)
     if existing_search:
-        # 如果有相同的搜索，直接使用已有的结果
+        # 如果有相同的搜索，验证并过滤结果，移除不存在的文档
         logging.info(f"API重用已有搜索结果: '{query}'")
         
+        filtered_results = filter_valid_results(existing_search['results'])
+        
         # 更新时间戳但不改变位置
-        add_search_history(query, existing_search['results'])
+        add_search_history(query, filtered_results)
         
         # 重新获取搜索历史（可能已被更新）
         search_history = get_search_history()
@@ -205,24 +244,27 @@ def api_search():
         return jsonify({
             'success': True,
             'query': query,
-            'results': existing_search['results'],
+            'results': filtered_results,
             'history_id': existing_search['id'],
-            'count': len(existing_search['results']),
+            'count': len(filtered_results),
             'reused': True
         })
     
     # 执行搜索
     results = search_engine.search(query, limit=limit)
     
+    # 验证并过滤结果，移除不存在的文档
+    filtered_results = filter_valid_results(results)
+    
     # 记录搜索历史
-    history_id = add_search_history(query, results)
+    history_id = add_search_history(query, filtered_results)
     
     return jsonify({
         'success': True,
         'query': query,
-        'results': results,
+        'results': filtered_results,
         'history_id': history_id,
-        'count': len(results),
+        'count': len(filtered_results),
         'reused': False
     })
 

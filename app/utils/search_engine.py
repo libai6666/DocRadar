@@ -382,7 +382,58 @@ class SearchEngine:
             row = cursor.fetchone()
             
             if not row:
-                return None
+                # 文档不存在，尝试查找是否有同名文档被重新上传
+                logging.info(f"文档ID {doc_id} 不存在，尝试查找原始文件名")
+                
+                # 先尝试从session中的搜索历史中查找文档的原始文件名
+                from flask import session
+                original_filename = None
+                
+                if 'search_history' in session:
+                    search_history = session['search_history']
+                    for history_item in search_history:
+                        for result in history_item.get('results', []):
+                            if result.get('id') == doc_id and 'original_filename' in result:
+                                original_filename = result['original_filename']
+                                logging.info(f"从搜索历史中找到文档ID {doc_id} 的原始文件名: {original_filename}")
+                                break
+                        if original_filename:
+                            break
+                
+                if original_filename:
+                    # 使用Storage类查找最新上传的同名文档
+                    from app.utils.storage import Storage
+                    storage = Storage()
+                    new_doc_id = storage.find_latest_document_by_filename(original_filename)
+                    
+                    if new_doc_id:
+                        logging.info(f"找到与文档ID {doc_id} 同名的新上传文档: ID={new_doc_id}")
+                        
+                        # 重新查询新文档的信息
+                        cursor.execute('''
+                        SELECT 
+                            d.id, d.title, d.file_type, d.file_size, d.created_at, d.filename, d.filepath, d.original_filename, d.metadata,
+                            dc.content
+                        FROM 
+                            documents d
+                        LEFT JOIN 
+                            document_content dc ON d.id = dc.doc_id
+                        WHERE 
+                            d.id = ?
+                        ''', (new_doc_id,))
+                        
+                        row = cursor.fetchone()
+                        
+                        if not row:
+                            logging.warning(f"找到的新文档ID {new_doc_id} 无法获取详细信息")
+                            return None
+                    else:
+                        logging.info(f"找不到与文档ID {doc_id} 同名的新上传文档")
+                        return None
+                else:
+                    # 没有找到原始文件名，无法查找同名文档
+                    logging.info(f"无法找到文档ID {doc_id} 的原始文件名，无法查找同名文档")
+                    return None
                 
             document = dict(row)
             
@@ -393,20 +444,20 @@ class SearchEngine:
                 # 如果标题为空，使用原始文件名
                 if document['original_filename'] and document['original_filename'].strip() != '':
                     document['title'] = os.path.splitext(document['original_filename'])[0]
-                    logging.info(f"文档ID {doc_id}: 标题为空，使用原始文件名 '{document['original_filename']}' 作为标题")
+                    logging.info(f"文档ID {document['id']}: 标题为空，使用原始文件名 '{document['original_filename']}' 作为标题")
                 else:
                     # 如果原始文件名也为空，使用默认标题
                     document['title'] = f"无标题文档 #{document['id']}"
-                    logging.info(f"文档ID {doc_id}: 标题和原始文件名均为空，使用默认标题 '{document['title']}'")
+                    logging.info(f"文档ID {document['id']}: 标题和原始文件名均为空，使用默认标题 '{document['title']}'")
             else:
-                logging.info(f"文档ID {doc_id}: 使用原始标题 '{document['title']}'")
+                logging.info(f"文档ID {document['id']}: 使用原始标题 '{document['title']}'")
             
             # 尝试获取HTML内容
             cursor.execute('''
             SELECT html_content 
             FROM document_html_content 
             WHERE doc_id = ?
-            ''', (doc_id,))
+            ''', (document['id'],))
             
             html_row = cursor.fetchone()
             

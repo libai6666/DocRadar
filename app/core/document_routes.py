@@ -178,6 +178,12 @@ def view_document(doc_id):
             flash('找不到该文档，可能已被删除。')
             return redirect(url_for('main.index'))
         
+        # 检查文档ID是否与请求的ID不同，如果不同，说明找到了同名文档
+        if document['id'] != doc_id:
+            logging.info(f"文档ID {doc_id} 已被替换为同名文档ID {document['id']}，重定向")
+            flash('原文档已被删除，已自动跳转到最新上传的同名文档。')
+            return redirect(url_for('document.view_document', doc_id=document['id'], q=query, search_id=search_id))
+        
         # 检查content是否存在且不为空
         if 'content' not in document or not document['content']:
             logging.warning(f"文档 {doc_id} 内容为空")
