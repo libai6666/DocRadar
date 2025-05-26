@@ -2,6 +2,11 @@
     "admin": {
         "password_hash": "28302ae65e01a8fbd51096c668d413780b5d23366b85abc9a4e8c1f6251fabd6",
         "role": "admin",
-        "last_login": "2025-05-23 08:17:39"
+        "last_login": "2025-05-26 14:27:39"
+    },
+    "adminli": {
+        "password_hash": "28302ae65e01a8fbd51096c668d413780b5d23366b85abc9a4e8c1f6251fabd6",
+        "role": "admin",
+        "last_login": "2025-05-26 14:29:26"
     }
 }

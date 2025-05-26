@@ -32,37 +32,12 @@ from app.core.document_routes import document_bp, compat_bp
 from app.core.search_routes import search_bp
 from app.core.admin_routes import admin_bp
 
+# 导入日志工具
+from app.utils.log_utils import UsernameFormatter, get_current_username
+
 # 定义应用级别变量来跟踪日志状态
 _last_log_date = None
 _log_updated_today = False
-
-# 创建一个自定义的日志格式化器，始终使用北京时间（东八区）
-class BeijingTimeFormatter(logging.Formatter):
-    """自定义日志格式化器，始终使用北京时间（东八区）"""
-    
-    def formatTime(self, record, datefmt=None):
-        """
-        重写格式化时间方法，使用北京时间
-        
-        Args:
-            record: 日志记录
-            datefmt: 日期格式
-            
-        Returns:
-            str: 格式化的北京时间字符串
-        """
-        # 获取UTC时间
-        utc_time = datetime.fromtimestamp(record.created, timezone.utc)
-        
-        # 转换为北京时间（UTC+8）
-        beijing_tz = timezone(timedelta(hours=8))
-        beijing_time = utc_time.astimezone(beijing_tz)
-        
-        # 使用指定格式或默认格式
-        if datefmt:
-            return beijing_time.strftime(datefmt)
-        else:
-            return beijing_time.strftime('%Y-%m-%d %H:%M:%S')
 
 def create_app(test_config=None):
     """创建并配置Flask应用实例"""
@@ -212,6 +187,12 @@ def create_app(test_config=None):
         # 在请求对象中存储当前日志日期
         g.log_date = today
     
+    # 在每个请求之前将用户名添加到g对象
+    @app.before_request
+    def add_user_to_g():
+        # 从会话中获取用户名并存储到g对象
+        g.username = get_current_username()
+    
     # 注册蓝图
     app.register_blueprint(main_bp)
     app.register_blueprint(document_bp)
@@ -280,14 +261,9 @@ def _create_file_handler(log_date):
     # 使用日期作为日志文件名的一部分
     log_file = os.path.join(LOG_DIR, f"{log_date}_{LOG_FILE}")
     
-    # 创建日志格式化器（使用自定义的北京时间格式化器）
-    log_formatter = BeijingTimeFormatter(
-        "%(asctime)s [%(levelname)s] - %(name)s - %(message)s")
-    
     # 创建文件处理器（使用循环日志文件）并指定UTF-8编码
     file_handler = RotatingFileHandler(
         log_file, maxBytes=10 * 1024 * 1024, backupCount=5, encoding='utf-8')
-    file_handler.setFormatter(log_formatter)
     
     return file_handler
 
@@ -328,16 +304,27 @@ def _setup_logging():
     for handler in root_logger.handlers[:]:
         root_logger.removeHandler(handler)
     
+    # 创建日志格式化器
+    log_formatter = UsernameFormatter(
+        "%(asctime)s [%(levelname)s] - %(name)s - [%(username)s] - %(message)s")
+    
     # 添加文件处理器
     file_handler = _create_file_handler(today)
+    file_handler.setFormatter(log_formatter)
     root_logger.addHandler(file_handler)
     
-    # 添加控制台处理器（也使用自定义的北京时间格式化器）
+    # 添加控制台处理器
     console_handler = logging.StreamHandler()
-    console_formatter = BeijingTimeFormatter(
-        "%(asctime)s [%(levelname)s] - %(name)s - %(message)s")
+    console_formatter = UsernameFormatter(
+        "%(asctime)s [%(levelname)s] - %(name)s - [%(username)s] - %(message)s")
     console_handler.setFormatter(console_formatter)
     root_logger.addHandler(console_handler)
+    
+    # 确保 werkzeug 日志记录器也使用我们的格式化器
+    werkzeug_logger = logging.getLogger('werkzeug')
+    for handler in werkzeug_logger.handlers[:]:
+        werkzeug_logger.removeHandler(handler)
+    werkzeug_logger.propagate = True  # 确保 werkzeug 日志传递到根记录器
     
     # 记录一次日志更新信息
     logging.info(f"日志系统初始化完成，使用日志文件: {today}_{LOG_FILE}")
