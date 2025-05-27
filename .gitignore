@@ -62,3 +62,4 @@ admin_config.json
 app/static/images/
 logs/
 flask_session/
+config/
