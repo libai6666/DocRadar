@@ -116,7 +116,7 @@ ALLOWED_EXTENSIONS = {
 }
 
 # 搜索引擎配置
-SEARCH_RESULT_LIMIT = 50 # 搜索结果限制数量
+SEARCH_RESULT_LIMIT = 100 # 搜索结果限制数量
 PREVIEW_LENGTH = 200  # 预览内容长度（字符数）
 
 # 安全配置
