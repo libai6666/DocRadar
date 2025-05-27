@@ -198,7 +198,7 @@
                                             {% if result and result.id %}
                                             <div class="search-result-item mb-4 p-3 border rounded">
                                                 <h5 class="result-title">
-                                                    <a href="{{ url_for('document.view_document', doc_id=result.id, q=history.query, search_id=history.id) }}">
+                                                    <a href="{{ url_for('document.view_document', doc_id=result.id, q=history.query, search_id=history.id, original_filename=result.original_filename) }}" data-original-filename="{{ result.original_filename }}">
                                                         {% if result.title %}
                                                             {{ result.title }}
                                                         {% elif result.original_filename %}
@@ -234,7 +234,7 @@
                                                     {% endif %}
                                                 </div>
                                                 <div class="result-actions mt-2">
-                                                    <a href="{{ url_for('document.view_document', doc_id=result.id, q=history.query, search_id=history.id) }}" class="btn btn-sm btn-primary me-1">
+                                                    <a href="{{ url_for('document.view_document', doc_id=result.id, q=history.query, search_id=history.id, original_filename=result.original_filename) }}" class="btn btn-sm btn-primary me-1" data-original-filename="{{ result.original_filename }}">
                                                         <i class="bi bi-eye"></i> 查看
                                                     </a>
                                                     <a href="{{ url_for('document.download_original', doc_id=result.id) }}"
@@ -267,7 +267,7 @@
                                             {% if result and result.id %}
                                             <div class="search-result-item mb-4 p-3 border rounded">
                                                 <h5 class="result-title">
-                                                    <a href="{{ url_for('document.view_document', doc_id=result.id, q=history.query, search_id=history.id) }}">
+                                                    <a href="{{ url_for('document.view_document', doc_id=result.id, q=history.query, search_id=history.id, original_filename=result.original_filename) }}" data-original-filename="{{ result.original_filename }}">
                                                         {% if result.title %}
                                                             {{ result.title }}
                                                         {% elif result.original_filename %}
@@ -303,7 +303,7 @@
                                                     {% endif %}
                                                 </div>
                                                 <div class="result-actions mt-2">
-                                                    <a href="{{ url_for('document.view_document', doc_id=result.id, q=history.query, search_id=history.id) }}" class="btn btn-sm btn-primary me-1">
+                                                    <a href="{{ url_for('document.view_document', doc_id=result.id, q=history.query, search_id=history.id, original_filename=result.original_filename) }}" class="btn btn-sm btn-primary me-1" data-original-filename="{{ result.original_filename }}">
                                                         <i class="bi bi-eye"></i> 查看
                                                     </a>
                                                     <a href="{{ url_for('document.download_original', doc_id=result.id) }}"
@@ -730,5 +730,47 @@
             });
     }
     </script>
+    
+    <script>
+    // 为所有文档链接添加点击事件，保存原始文件名
+    document.addEventListener('DOMContentLoaded', function() {
+        const docLinks = document.querySelectorAll('a[href*="/document/"][data-original-filename]');
+        console.log(`找到 ${docLinks.length} 个文档链接，添加原始文件名保存功能`);
+        
+        docLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                // 从链接中提取文档ID
+                const href = this.getAttribute('href');
+                const docRegex = /\/document\/(\d+)/;
+                const match = href.match(docRegex);
+                
+                if (match && match[1]) {
+                    const docId = match[1];
+                    
+                    // 获取原始文件名（从data属性）
+                    const originalFilename = this.getAttribute('data-original-filename');
+                    if (originalFilename) {
+                        // 保存到localStorage
+                        try {
+                            let filenameMap = {};
+                            const storedMap = localStorage.getItem('docradar_original_filenames');
+                            if (storedMap) {
+                                filenameMap = JSON.parse(storedMap);
+                            }
+                            filenameMap[docId] = originalFilename;
+                            localStorage.setItem('docradar_original_filenames', JSON.stringify(filenameMap));
+                            console.log(`已保存文档ID ${docId} 的原始文件名: ${originalFilename}`);
+                        } catch (error) {
+                            console.error('保存文档原始文件名时出错:', error);
+                        }
+                    }
+                }
+            });
+        });
+    });
+    </script>
+    
+    <!-- 添加文档ID映射器 -->
+    <script src="{{ url_for('static', filename='js/document-id-mapper.js') }}"></script>
 </body>
 </html> 

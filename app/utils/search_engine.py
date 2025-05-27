@@ -351,12 +351,13 @@ class SearchEngine:
             logging.error(f"高亮内容失败: {e}")
             return content
     
-    def get_document_by_id(self, doc_id):
+    def get_document_by_id(self, doc_id, original_filename_from_url=None):
         """
-        通过ID获取文档
+        通过ID获取文档，如果找不到则尝试查找同名或相似文档
         
         Args:
             doc_id: 文档ID
+            original_filename_from_url: 从URL参数获取的原始文件名（可选）
             
         Returns:
             dict: 文档信息
@@ -383,31 +384,42 @@ class SearchEngine:
             
             if not row:
                 # 文档不存在，尝试查找是否有同名文档被重新上传
-                logging.info(f"文档ID {doc_id} 不存在，尝试查找原始文件名")
+                logging.info(f"文档ID {doc_id} 不存在，尝试查找替代文档")
                 
-                # 先尝试从session中的搜索历史中查找文档的原始文件名
-                from flask import session
-                original_filename = None
+                # 首先尝试使用URL参数中的原始文件名
+                original_filename = original_filename_from_url
                 
-                if 'search_history' in session:
-                    search_history = session['search_history']
-                    for history_item in search_history:
-                        for result in history_item.get('results', []):
-                            if result.get('id') == doc_id and 'original_filename' in result:
-                                original_filename = result['original_filename']
-                                logging.info(f"从搜索历史中找到文档ID {doc_id} 的原始文件名: {original_filename}")
+                # 如果URL中没有提供，再尝试从session中的搜索历史获取
+                if not original_filename:
+                    from flask import session
+                    
+                    if 'search_history' in session:
+                        search_history = session['search_history']
+                        for history_item in search_history:
+                            for result in history_item.get('results', []):
+                                if result.get('id') == doc_id and 'original_filename' in result:
+                                    original_filename = result['original_filename']
+                                    logging.info(f"从搜索历史中找到文档ID {doc_id} 的原始文件名: {original_filename}")
+                                    break
+                            if original_filename:
                                 break
-                        if original_filename:
-                            break
                 
+                # 如果找到了原始文件名，尝试查找同名文档
                 if original_filename:
                     # 使用Storage类查找最新上传的同名文档
                     from app.utils.storage import Storage
                     storage = Storage()
+                    
+                    # 先尝试精确匹配
                     new_doc_id = storage.find_latest_document_by_filename(original_filename)
                     
+                    # 如果精确匹配失败，尝试模糊匹配
+                    if not new_doc_id:
+                        logging.info(f"未找到与 '{original_filename}' 精确匹配的文档，尝试模糊匹配")
+                        new_doc_id = storage.find_latest_document_by_filename(original_filename, fuzzy_match=True)
+                    
                     if new_doc_id:
-                        logging.info(f"找到与文档ID {doc_id} 同名的新上传文档: ID={new_doc_id}")
+                        logging.info(f"找到与文档ID {doc_id} 同名或相似的新上传文档: ID={new_doc_id}")
                         
                         # 重新查询新文档的信息
                         cursor.execute('''
@@ -427,8 +439,13 @@ class SearchEngine:
                         if not row:
                             logging.warning(f"找到的新文档ID {new_doc_id} 无法获取详细信息")
                             return None
+                        else:
+                            # 将原始文件名添加到文档信息中，用于后续判断匹配类型
+                            document = dict(row)
+                            document['search_original_filename'] = original_filename
+                            row = document
                     else:
-                        logging.info(f"找不到与文档ID {doc_id} 同名的新上传文档")
+                        logging.info(f"找不到与文档ID {doc_id} 同名或相似的新上传文档")
                         return None
                 else:
                     # 没有找到原始文件名，无法查找同名文档

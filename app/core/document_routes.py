@@ -170,19 +170,45 @@ def view_document(doc_id):
     """查看文档内容"""
     query = request.args.get('q', '')
     search_id = request.args.get('search_id', '')
+    original_filename = request.args.get('original_filename', '')
     
     try:
-        document = search_engine.get_document_by_id(doc_id)
+        # 如果URL中提供了原始文件名，添加到session中的搜索历史
+        if original_filename:
+            if 'search_history' in session:
+                for history_item in session['search_history']:
+                    for result in history_item.get('results', []):
+                        if result.get('id') == doc_id and 'original_filename' not in result:
+                            result['original_filename'] = original_filename
+                            logging.info(f"从URL参数添加文档ID {doc_id} 的原始文件名: {original_filename}")
+        
+        document = search_engine.get_document_by_id(doc_id, original_filename_from_url=original_filename)
         
         if not document:
             flash('找不到该文档，可能已被删除。')
             return redirect(url_for('main.index'))
         
-        # 检查文档ID是否与请求的ID不同，如果不同，说明找到了同名文档
+        # 检查文档ID是否与请求的ID不同，如果不同，说明找到了替代文档
         if document['id'] != doc_id:
-            logging.info(f"文档ID {doc_id} 已被替换为同名文档ID {document['id']}，重定向")
-            flash('原文档已被删除，已自动跳转到最新上传的同名文档。')
-            return redirect(url_for('document.view_document', doc_id=document['id'], q=query, search_id=search_id))
+            # 判断是精确匹配还是模糊匹配
+            is_exact_match = False
+            if 'search_original_filename' in document and document['original_filename']:
+                is_exact_match = (document['original_filename'].lower() == document.get('search_original_filename', '').lower())
+            
+            if is_exact_match:
+                logging.info(f"文档ID {doc_id} 已被替换为同名文档ID {document['id']}，重定向")
+                flash('原文档已被删除，已自动跳转到最新上传的同名文档。')
+            else:
+                logging.info(f"文档ID {doc_id} 已被替换为相似文档ID {document['id']}，重定向")
+                flash('原文档已被删除，已自动跳转到可能相关的文档。')
+            
+            # 重定向时添加from_doc_id参数，标记这是一个重定向
+            return redirect(url_for('document.view_document', 
+                                   doc_id=document['id'], 
+                                   q=query, 
+                                   search_id=search_id, 
+                                   original_filename=document.get('original_filename', ''),
+                                   from_doc_id=doc_id))  # 添加原始文档ID
         
         # 检查content是否存在且不为空
         if 'content' not in document or not document['content']:

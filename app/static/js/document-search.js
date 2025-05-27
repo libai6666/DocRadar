@@ -471,4 +471,86 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // 初始化搜索
     initSearch();
+
+    /**
+     * 保存文档的原始文件名到本地存储
+     * @param {string} docId - 文档ID
+     * @param {string} originalFilename - 原始文件名
+     */
+    function saveDocumentOriginalFilename(docId, originalFilename) {
+        if (!docId || !originalFilename) return;
+        
+        try {
+            // 获取现有的映射表
+            let filenameMap = {};
+            const storedMap = localStorage.getItem('docradar_original_filenames');
+            if (storedMap) {
+                filenameMap = JSON.parse(storedMap);
+            }
+            
+            // 添加或更新映射
+            filenameMap[docId] = originalFilename;
+            
+            // 保存回本地存储
+            localStorage.setItem('docradar_original_filenames', JSON.stringify(filenameMap));
+            console.log(`已保存文档ID ${docId} 的原始文件名: ${originalFilename}`);
+        } catch (error) {
+            console.error('保存文档原始文件名时出错:', error);
+        }
+    }
+
+    /**
+     * 从本地存储中获取文档的原始文件名
+     * @param {string} docId - 文档ID
+     * @returns {string|null} 原始文件名，如果不存在则返回null
+     */
+    function getDocumentOriginalFilename(docId) {
+        if (!docId) return null;
+        
+        try {
+            const storedMap = localStorage.getItem('docradar_original_filenames');
+            if (storedMap) {
+                const filenameMap = JSON.parse(storedMap);
+                return filenameMap[docId] || null;
+            }
+        } catch (error) {
+            console.error('获取文档原始文件名时出错:', error);
+        }
+        
+        return null;
+    }
+
+    /**
+     * 拦截文档链接点击，确保包含原始文件名参数
+     */
+    document.body.addEventListener('click', function(e) {
+        // 检查是否点击了文档链接
+        let target = e.target;
+        while (target && target !== document.body) {
+            if (target.tagName === 'A' && target.href && target.href.includes('/document/')) {
+                // 从链接中提取文档ID
+                const docRegex = /\/document\/(\d+)/;
+                const match = target.href.match(docRegex);
+                
+                if (match && match[1]) {
+                    const docId = match[1];
+                    
+                    // 检查链接是否已包含原始文件名参数
+                    const url = new URL(target.href);
+                    if (!url.searchParams.has('original_filename')) {
+                        // 尝试从localStorage获取原始文件名
+                        const originalFilename = getDocumentOriginalFilename(docId);
+                        if (originalFilename) {
+                            // 添加原始文件名参数
+                            url.searchParams.set('original_filename', originalFilename);
+                            target.href = url.toString();
+                            console.log(`已为文档链接添加原始文件名参数: ${originalFilename}`);
+                        }
+                    }
+                }
+                break;
+            }
+            target = target.parentElement;
+        }
+    }, true);
 }); 

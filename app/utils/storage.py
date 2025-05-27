@@ -10,6 +10,7 @@ import shutil
 import mimetypes
 import time
 import random
+import re
 from datetime import datetime
 from werkzeug.utils import secure_filename
 from app.core.config import UPLOADS_DIR, DATABASE_URI, ALLOWED_EXTENSIONS, DOCUMENT_IMAGES_DIR
@@ -1009,12 +1010,13 @@ class Storage:
             if conn:
                 conn.close()
     
-    def find_latest_document_by_filename(self, filename):
+    def find_latest_document_by_filename(self, filename, fuzzy_match=False):
         """
-        查找最新上传的同名文档
+        查找最新上传的同名或相似文档
         
         Args:
             filename: 文件名
+            fuzzy_match: 是否启用模糊匹配
             
         Returns:
             int or None: 文档ID，如果找不到则返回None
@@ -1029,7 +1031,7 @@ class Storage:
             if not normalized_filename:
                 return None
             
-            # 查询数据库 - 使用LOWER函数进行不区分大小写的比较，按创建时间降序排序
+            # 先尝试精确匹配
             cursor.execute(
                 """
                 SELECT id 
@@ -1045,8 +1047,35 @@ class Storage:
             
             if row:
                 return row[0]
-            else:
-                return None
+            
+            # 如果启用模糊匹配且精确匹配没有结果
+            if fuzzy_match:
+                # 移除版本号等常见后缀进行匹配
+                # 例如：从 "文档v1.0.pdf" 提取 "文档"
+                base_name = re.sub(r'[_\s-]?v\d+(\.\d+)*|[_\s-]?\d+(\.\d+)*$', '', 
+                                   os.path.splitext(normalized_filename)[0])
+                
+                if len(base_name) > 3:  # 确保基础名称足够长，避免过于宽泛的匹配
+                    search_pattern = f"{base_name}%"
+                    
+                    cursor.execute(
+                        """
+                        SELECT id 
+                        FROM documents 
+                        WHERE LOWER(original_filename) LIKE ? OR LOWER(filename) LIKE ?
+                        ORDER BY created_at DESC
+                        LIMIT 1
+                        """, 
+                        (search_pattern, search_pattern)
+                    )
+                    
+                    row = cursor.fetchone()
+                    
+                    if row:
+                        logging.info(f"通过模糊匹配找到相似文档: 原始='{filename}', 基础名称='{base_name}'")
+                        return row[0]
+            
+            return None
                 
         except Exception as e:
             logging.error(f"查找同名文档失败: {e}")
