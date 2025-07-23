@@ -4,6 +4,7 @@
 """
 import logging
 import threading
+import sys
 from flask import session, g, has_request_context
 from datetime import datetime, timezone, timedelta
 
@@ -81,3 +82,128 @@ def get_current_username():
         _thread_local.username = username
         return username
     return "系统" 
+
+class LoggingStreamHandler:
+    """将标准输出重定向到日志系统的处理器"""
+    
+    def __init__(self, logger, level=logging.INFO):
+        """
+        初始化流处理器
+        
+        Args:
+            logger: 要使用的日志记录器
+            level: 日志级别
+        """
+        self.logger = logger
+        self.level = level
+        self.buffer = ""
+        # 保存原始的stdout和stderr，用于避免递归
+        self._original_stdout = sys.__stdout__
+        self._original_stderr = sys.__stderr__
+    
+    def write(self, message):
+        """
+        写入消息到日志系统
+        
+        Args:
+            message: 要写入的消息
+        """
+        # 忽略空消息
+        if not message or message.isspace():
+            return
+        
+        # 处理缓冲区
+        if self.buffer:
+            message = self.buffer + message
+            self.buffer = ""
+        
+        # 处理不完整的行（没有换行符结尾）
+        if not message.endswith('\n'):
+            self.buffer = message
+            return
+        
+        # 记录完整的行（去除末尾换行符）
+        for line in message.rstrip('\n').split('\n'):
+            # 使用原始stdout写入，避免递归
+            try:
+                # 临时恢复原始stdout/stderr以避免递归
+                old_stdout = sys.stdout
+                old_stderr = sys.stderr
+                sys.stdout = self._original_stdout
+                sys.stderr = self._original_stderr
+                
+                # 记录日志
+                self.logger.log(self.level, f"[STDOUT] {line}")
+            finally:
+                # 恢复重定向
+                sys.stdout = old_stdout
+                sys.stderr = old_stderr
+    
+    def flush(self):
+        """刷新缓冲区"""
+        if self.buffer:
+            try:
+                # 临时恢复原始stdout/stderr以避免递归
+                old_stdout = sys.stdout
+                old_stderr = sys.stderr
+                sys.stdout = self._original_stdout
+                sys.stderr = self._original_stderr
+                
+                # 记录日志
+                self.logger.log(self.level, f"[STDOUT] {self.buffer}")
+            finally:
+                # 恢复重定向
+                sys.stdout = old_stdout
+                sys.stderr = old_stderr
+            self.buffer = ""
+    
+    # 确保兼容文件对象接口
+    def isatty(self):
+        return False
+    
+    def fileno(self):
+        return -1
+
+class LoggingErrorStreamHandler(LoggingStreamHandler):
+    """将标准错误重定向到日志系统的处理器"""
+    
+    def __init__(self, logger, level=logging.ERROR):
+        """初始化错误流处理器"""
+        super().__init__(logger, level)
+    
+    def write(self, message):
+        """
+        写入错误消息到日志系统
+        
+        Args:
+            message: 要写入的错误消息
+        """
+        # 忽略空消息
+        if not message or message.isspace():
+            return
+        
+        # 处理缓冲区
+        if self.buffer:
+            message = self.buffer + message
+            self.buffer = ""
+        
+        # 处理不完整的行（没有换行符结尾）
+        if not message.endswith('\n'):
+            self.buffer = message
+            return
+        
+        # 记录完整的行（去除末尾换行符）
+        for line in message.rstrip('\n').split('\n'):
+            try:
+                # 临时恢复原始stdout/stderr以避免递归
+                old_stdout = sys.stdout
+                old_stderr = sys.stderr
+                sys.stdout = self._original_stdout
+                sys.stderr = self._original_stderr
+                
+                # 记录日志
+                self.logger.log(self.level, f"[STDERR] {line}")
+            finally:
+                # 恢复重定向
+                sys.stdout = old_stdout
+                sys.stderr = old_stderr 

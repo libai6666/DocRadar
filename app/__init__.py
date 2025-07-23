@@ -2,42 +2,93 @@
 DocRadar应用初始化模块
 """
 import os
+import sys
 import logging
 from logging.handlers import RotatingFileHandler
-from flask import Flask, render_template, request, g, send_from_directory
 from datetime import datetime, timezone, timedelta
 import glob
 import time
-import sys
+
+# 导入日志配置
+from app.core.config import LOG_DIR, LOG_LEVEL, LOG_FILE
+
+# 导入日志工具
+from app.utils.log_utils import UsernameFormatter, get_current_username, LoggingStreamHandler, LoggingErrorStreamHandler
+
+# 定义应用级别变量来跟踪日志状态
+_last_log_date = None
+_log_updated_today = False
+
+# 在导入其他模块前初始化日志系统
+def _early_setup_logging():
+    """在应用启动早期设置基本日志系统"""
+    # 获取当前日期
+    today = datetime.now().strftime('%Y-%m-%d')
+    
+    # 确保日志目录存在
+    if not os.path.exists(LOG_DIR):
+        os.makedirs(LOG_DIR)
+    
+    # 使用日期作为日志文件名的一部分
+    log_file = os.path.join(LOG_DIR, f"{today}_{LOG_FILE}")
+    
+    # 配置根日志记录器
+    root_logger = logging.getLogger()
+    root_logger.setLevel(LOG_LEVEL)
+    
+    # 移除现有处理器
+    for handler in root_logger.handlers[:]:
+        root_logger.removeHandler(handler)
+    
+    # 创建日志格式化器
+    log_formatter = UsernameFormatter(
+        "%(asctime)s [%(levelname)s] - %(name)s - [%(username)s] - %(message)s")
+    
+    # 创建文件处理器
+    file_handler = RotatingFileHandler(
+        log_file, maxBytes=10 * 1024 * 1024, backupCount=5, encoding='utf-8')
+    file_handler.setFormatter(log_formatter)
+    root_logger.addHandler(file_handler)
+    
+    # 添加控制台处理器
+    console_handler = logging.StreamHandler(sys.__stdout__)
+    console_formatter = UsernameFormatter(
+        "%(asctime)s [%(levelname)s] - %(name)s - [%(username)s] - %(message)s")
+    console_handler.setFormatter(console_formatter)
+    root_logger.addHandler(console_handler)
+    
+    # 记录一次日志更新信息
+    logging.info(f"早期日志系统初始化完成，使用日志文件: {today}_{LOG_FILE}")
+    
+    # 不再在早期阶段重定向stdout和stderr
+    # 这将在应用完全初始化后在_setup_logging中进行
+    # 这样可以避免递归问题
+
+# 在导入其他模块前执行早期日志设置
+_early_setup_logging()
+
+# 继续导入其他模块
+from flask import Flask, render_template, request, g, send_from_directory
 from flask_cors import CORS
 from flask import Blueprint, redirect, url_for
 from app.core.config import (
-    ENV, HOST, PORT, SECRET_KEY, LOG_DIR, LOG_LEVEL, LOG_FILE,
-    DOCUMENT_IMAGES_DIR, DOCUMENT_IMAGES_URL
+    ENV, HOST, PORT, SECRET_KEY, DOCUMENT_IMAGES_DIR, DOCUMENT_IMAGES_URL
 )
 
 # 尝试导入CSRF保护
 try:
     from flask_wtf.csrf import CSRFProtect
     has_csrf = True
-    print("已启用CSRF保护")
+    logging.info("已启用CSRF保护")
 except ImportError:
     has_csrf = False
-    print("警告: flask-wtf模块未安装，CSRF保护将不可用")
-    print("提示: 可以通过运行 'pip install Flask-WTF==1.0.0' 来安装此模块")
+    logging.warning("警告: flask-wtf模块未安装，CSRF保护将不可用")
+    logging.info("提示: 可以通过运行 'pip install Flask-WTF==1.0.0' 来安装此模块")
 
-from app.core.config import SECRET_KEY, LOG_DIR, LOG_LEVEL, LOG_FILE
 from app.core.routes import main_bp
 from app.core.document_routes import document_bp, compat_bp
 from app.core.search_routes import search_bp
 from app.core.admin_routes import admin_bp
-
-# 导入日志工具
-from app.utils.log_utils import UsernameFormatter, get_current_username
-
-# 定义应用级别变量来跟踪日志状态
-_last_log_date = None
-_log_updated_today = False
 
 def create_app(test_config=None):
     """创建并配置Flask应用实例"""
@@ -74,7 +125,7 @@ def create_app(test_config=None):
         logging.info("使用Flask-Session进行会话管理")
     except ImportError:
         logging.warning("Flask-Session未安装，使用默认会话管理")
-        print("提示: 可以通过运行 'pip install Flask-Session==0.4.0' 来安装此模块")
+        logging.info("提示: 可以通过运行 'pip install Flask-Session==0.4.0' 来安装此模块")
     
     # 创建文档图片目录的符号链接，确保可以通过web访问
     static_doc_images_dir = os.path.join(app.static_folder, 'document_images')
@@ -314,7 +365,7 @@ def _setup_logging():
     root_logger.addHandler(file_handler)
     
     # 添加控制台处理器
-    console_handler = logging.StreamHandler()
+    console_handler = logging.StreamHandler(sys.__stdout__)
     console_formatter = UsernameFormatter(
         "%(asctime)s [%(levelname)s] - %(name)s - [%(username)s] - %(message)s")
     console_handler.setFormatter(console_formatter)
@@ -325,6 +376,10 @@ def _setup_logging():
     for handler in werkzeug_logger.handlers[:]:
         werkzeug_logger.removeHandler(handler)
     werkzeug_logger.propagate = True  # 确保 werkzeug 日志传递到根记录器
+    
+    # 在完全初始化后安全地重定向标准输出和标准错误
+    # 这里不再使用重定向，以避免递归问题
+    # 所有print输出将通过控制台处理器正常输出
     
     # 记录一次日志更新信息
     logging.info(f"日志系统初始化完成，使用日志文件: {today}_{LOG_FILE}")
@@ -346,11 +401,11 @@ def _setup_logging():
             if file_mtime < cutoff_timestamp:
                 try:
                     os.remove(log_file)
-                    print(f"已删除旧日志文件: {log_file}")
+                    logging.info(f"已删除旧日志文件: {log_file}")
                 except Exception as e:
-                    print(f"无法删除日志文件 {log_file}: {e}")
+                    logging.error(f"无法删除日志文件 {log_file}: {e}")
     except Exception as e:
-        print(f"日志清理过程中出错: {e}")
+        logging.error(f"日志清理过程中出错: {e}")
 
 # 导入应用实例，方便import
 app = create_app()
