@@ -225,14 +225,15 @@ def create_app(test_config=None):
         # 获取当前日期
         today = datetime.now().strftime('%Y-%m-%d')
         
-        # 仅在日期变化或首次运行时更新日志文件
+        # 当日期变化时更新日志文件
         if _last_log_date != today:
             _last_log_date = today
             _log_updated_today = False
-            
+            _update_log_file_handler(today)
+        
         # 确保每天只输出一次日志更新消息
         if not _log_updated_today:
-            _update_log_file_handler(today)
+            logging.info(f"今日首次访问，日志文件: {today}_{LOG_FILE}")
             _log_updated_today = True
         
         # 在请求对象中存储当前日志日期
@@ -332,9 +333,22 @@ def _update_log_file_handler(log_date):
         if isinstance(handler, RotatingFileHandler):
             root_logger.removeHandler(handler)
     
+    # 创建日志格式化器
+    log_formatter = UsernameFormatter(
+        "%(asctime)s [%(levelname)s] - %(name)s - [%(username)s] - %(message)s")
+    
     # 添加新的文件处理器
     file_handler = _create_file_handler(log_date)
+    file_handler.setFormatter(log_formatter)
     root_logger.addHandler(file_handler)
+    
+    # 重新设置标准输出和标准错误的重定向
+    # 确保在日志文件更新后，所有print输出也会正确格式化
+    if not any(isinstance(h, LoggingStreamHandler) for h in root_logger.handlers):
+        # 设置标准输出重定向
+        sys.stdout = LoggingStreamHandler(root_logger, logging.INFO)
+        # 设置标准错误重定向
+        sys.stderr = LoggingErrorStreamHandler(root_logger, logging.ERROR)
     
     # 记录一次日志更新信息
     logging.info(f"已更新日志文件为: {log_date}_{LOG_FILE}")
@@ -378,8 +392,10 @@ def _setup_logging():
     werkzeug_logger.propagate = True  # 确保 werkzeug 日志传递到根记录器
     
     # 在完全初始化后安全地重定向标准输出和标准错误
-    # 这里不再使用重定向，以避免递归问题
-    # 所有print输出将通过控制台处理器正常输出
+    # 设置标准输出重定向
+    sys.stdout = LoggingStreamHandler(root_logger, logging.INFO)
+    # 设置标准错误重定向
+    sys.stderr = LoggingErrorStreamHandler(root_logger, logging.ERROR)
     
     # 记录一次日志更新信息
     logging.info(f"日志系统初始化完成，使用日志文件: {today}_{LOG_FILE}")
