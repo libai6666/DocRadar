@@ -5,7 +5,7 @@
 import logging
 import threading
 import sys
-from flask import session, g, has_request_context
+from flask import session, g, has_request_context, request
 from datetime import datetime, timezone, timedelta
 
 # 使用线程本地存储来保存当前请求的用户名
@@ -77,7 +77,21 @@ def get_current_username():
         str: 当前用户名，如果没有则返回"未登录"或"系统"
     """
     if has_request_context():
-        username = session.get('user', '未登录')
+        # 首先尝试从会话中获取用户名
+        username = session.get('user')
+        
+        # 如果会话中没有用户名，但g对象中有，则使用g对象中的用户名
+        if username is None and hasattr(g, 'username') and g.username != '未登录':
+            username = g.username
+        
+        # 如果仍然没有用户名，但请求中包含特定的认证头，则尝试从头中提取
+        if username is None and request.headers.get('X-Auth-User'):
+            username = request.headers.get('X-Auth-User')
+            
+        # 如果仍然没有找到用户名，则使用默认值
+        if username is None:
+            username = '未登录'
+            
         # 存储到线程本地变量，供所有日志记录器使用
         _thread_local.username = username
         return username

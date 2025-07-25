@@ -233,6 +233,9 @@ def create_app(test_config=None):
         
         # 确保每天只输出一次日志更新消息
         if not _log_updated_today:
+            # 获取用户名，但不在日志消息中使用，而是依赖日志格式化器
+            # 这样可以避免在不确定用户身份的情况下记录"未登录"
+            get_current_username()  # 这会将用户名存储到线程本地变量
             logging.info(f"今日首次访问，日志文件: {today}_{LOG_FILE}")
             _log_updated_today = True
         
@@ -351,6 +354,7 @@ def _update_log_file_handler(log_date):
         sys.stderr = LoggingErrorStreamHandler(root_logger, logging.ERROR)
     
     # 记录一次日志更新信息
+    # 这里不直接使用用户名，而是依赖日志格式化器
     logging.info(f"已更新日志文件为: {log_date}_{LOG_FILE}")
 
 def _setup_logging():

@@ -1,66 +1,61 @@
 """
-DocRadar - 路由模块
-定义应用的所有路由和视图函数
+DocRadar - 核心路由模块
+提供基本的页面路由和视图函数
 """
-import os
 import logging
-import mimetypes
+import os
+import sqlite3
 from datetime import datetime
-from flask import Blueprint, render_template, request, redirect, url_for, flash, jsonify
-from flask import session, abort, send_file, make_response
+from flask import (
+    Blueprint, render_template, request, redirect, url_for, 
+    flash, session, g, jsonify, current_app
+)
+from werkzeug.utils import secure_filename
 
-from app.core.auth import login_required, admin_required
-from app.core.auth import authenticate, get_user_role, change_password as auth_change_password
-from app.core.auth import get_last_login
-
-from app.utils.document_parser import DocumentParser
-from app.utils.search_engine import SearchEngine
-from app.utils.storage import Storage
-from app.core.search_routes import get_search_history  # 导入获取搜索历史的函数
+from app.core.auth import (
+    authenticate, login_required, admin_required, get_last_login,
+    get_user_role, change_password
+)
+from app.core.config import (
+    ALLOWED_EXTENSIONS, UPLOAD_FOLDER, DATABASE_URI,
+    SQLITE_CONFIG, DOCUMENT_IMAGES_DIR
+)
+from app.utils.document_parser import (
+    extract_text_from_file, get_document_preview
+)
+from app.utils.search_engine import (
+    create_search_index, add_document_to_index, search_documents,
+    get_document_by_id, update_document_in_index
+)
+from app.utils.storage import (
+    save_document_to_db, get_document_metadata, get_all_documents,
+    get_document_content, update_document_metadata, delete_document,
+    get_document_count, get_document_history, add_search_history,
+    get_recent_searches, clear_search_history, get_search_history_by_id
+)
 
 # 创建蓝图
 main_bp = Blueprint('main', __name__)
 
-# 初始化存储、搜索引擎
-storage = Storage()
-search_engine = SearchEngine()
-
-# 模板上下文处理器，添加环境信息
-@main_bp.context_processor
-def inject_env():
-    """向所有模板注入环境变量"""
-    from app.core.config import ENV, HOST, PORT
-    return dict(
-        env=ENV,
-        is_test_env=ENV == 'test',
-        is_prod_env=ENV == 'production',
-        host=HOST,
-        port=PORT,
-        current_year=datetime.now().year
-    )
-
-# 路由定义
 @main_bp.route('/')
-@login_required
-def index():
-    """首页路由"""
-    # 获取分页和搜索参数
-    page = request.args.get('page', 1, type=int)
-    limit = request.args.get('limit', 10, type=int)
-    search = request.args.get('search', '')
+def home():
+    """首页视图"""
+    # 获取文档总数
+    doc_count = get_document_count()
     
-    # 获取文档（带分页）
-    documents_data = storage.get_all_documents(page=page, limit=limit, search_query=search)
+    # 获取最近的搜索历史
+    recent_searches = get_recent_searches(limit=5)
     
-    # 获取搜索历史
-    search_history = get_search_history()
+    # 获取用户角色
+    role = None
+    if 'user' in session:
+        role = get_user_role(session['user'])
     
     return render_template(
         'index.html', 
-        documents=documents_data['documents'], 
-        pagination=documents_data['pagination'],
-        search_query=search,
-        search_history=search_history  # 传递搜索历史到模板
+        doc_count=doc_count,
+        recent_searches=recent_searches,
+        role=role
     )
 
 @main_bp.route('/login', methods=['GET', 'POST'])
@@ -76,6 +71,8 @@ def login():
         
         if authenticate(username, password):
             session['user'] = username
+            # 添加会话诊断日志
+            logging.info(f"用户 {username} 登录成功，会话ID: {session.sid if hasattr(session, 'sid') else '未知'}")
             flash('登录成功', 'success')
             return redirect(next_url)
         else:
@@ -89,75 +86,70 @@ def login():
 
 @main_bp.route('/logout')
 def logout():
-    """用户退出"""
-    username = session.get('user')
-    if username:
-        logging.info(f"用户退出登录: {username}")
+    """用户登出"""
+    # 添加会话诊断日志
+    if 'user' in session:
+        username = session['user']
+        session_id = session.sid if hasattr(session, 'sid') else '未知'
+        logging.info(f"用户 {username} 登出，会话ID: {session_id}")
     
-    # 只清除服务器端会话，不影响浏览器端存储的凭证
-    session.pop('user', None)
-    flash('已退出登录', 'info')
-    # 添加from_logout参数，指示用户刚刚退出登录
-    return redirect(url_for('main.login', from_logout=1))
+    # 清除会话
+    session.clear()
+    flash('您已成功登出', 'info')
+    return redirect(url_for('main.login'))
 
-@main_bp.route('/account')
+@main_bp.route('/account', methods=['GET', 'POST'])
 @login_required
 def account():
-    """用户账号设置页面"""
-    username = session.get('user')
-    user_role = None
-    last_login = None
+    """用户账户管理"""
+    username = session['user']
+    last_login = get_last_login(username)
+    role = get_user_role(username)
     
-    if username:
-        # 获取用户角色
-        user_role = get_user_role(username)
+    if request.method == 'POST':
+        current_password = request.form.get('currentPassword')
+        new_password = request.form.get('newPassword')
+        confirm_password = request.form.get('confirmPassword')
         
-        # 获取上次登录时间
-        last_login = get_last_login(username)
+        # 验证当前密码
+        if not authenticate(username, current_password):
+            flash('当前密码不正确', 'danger')
+            return redirect(url_for('main.account'))
+        
+        # 验证新密码
+        if new_password != confirm_password:
+            flash('新密码与确认密码不匹配', 'danger')
+            return redirect(url_for('main.account'))
+        
+        # 更改密码
+        if change_password(username, new_password):
+            # 添加会话诊断日志
+            logging.info(f"用户 {username} 修改密码成功，会话ID: {session.sid if hasattr(session, 'sid') else '未知'}")
+            flash('密码已成功更改', 'success')
+        else:
+            flash('密码更改失败', 'danger')
+        
+        return redirect(url_for('main.account'))
     
-    return render_template(
-        'account.html',
-        user_role=user_role,
-        last_login=last_login
-    )
+    # 添加会话诊断日志
+    session_id = session.sid if hasattr(session, 'sid') else '未知'
+    logging.info(f"用户 {username} 访问账户页面，会话ID: {session_id}, 角色: {role}")
+    
+    return render_template('account.html', username=username, last_login=last_login, role=role)
 
-@main_bp.route('/account/change-password', methods=['POST'])
-@login_required
-def change_password():
-    """修改用户密码"""
-    username = session.get('user')
-    current_password = request.form.get('current_password')
-    new_password = request.form.get('new_password')
-    confirm_password = request.form.get('confirm_password')
+@main_bp.route('/session_check')
+def session_check():
+    """会话状态检查API，用于诊断会话问题"""
+    # 检查会话状态
+    is_logged_in = 'user' in session
+    username = session.get('user', '未登录')
+    session_id = session.sid if hasattr(session, 'sid') else '未知'
     
-    # 验证输入
-    if not all([current_password, new_password, confirm_password]):
-        flash('所有字段都必须填写', 'danger')
-        return redirect(url_for('main.account'))
+    # 记录会话检查日志
+    logging.info(f"会话状态检查 - 用户: {username}, 已登录: {is_logged_in}, 会话ID: {session_id}")
     
-    if new_password != confirm_password:
-        flash('两次输入的新密码不一致', 'danger')
-        return redirect(url_for('main.account'))
-    
-    if len(new_password) < 8:
-        flash('新密码长度必须至少为8个字符', 'danger')
-        return redirect(url_for('main.account'))
-    
-    # 验证当前密码
-    if not authenticate(username, current_password):
-        flash('当前密码不正确', 'danger')
-        return redirect(url_for('main.account'))
-    
-    # 修改密码
-    success = auth_change_password(username, new_password)
-    
-    if success:
-        # 密码修改成功后，清除用户会话并重定向到登录页面
-        flash('密码修改成功，请使用新密码重新登录', 'success')
-        session.pop('user', None)  # 清除用户会话
-        return redirect(url_for('main.login'))
-    else:
-        flash('密码修改失败，请稍后重试', 'danger')
-        return redirect(url_for('main.account'))
-
-# 其他路由根据功能在其他模块中定义 
+    return jsonify({
+        'logged_in': is_logged_in,
+        'username': username,
+        'session_id': session_id
+    }) 
