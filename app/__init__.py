@@ -345,14 +345,15 @@ def _update_log_file_handler(log_date):
     file_handler.setFormatter(log_formatter)
     root_logger.addHandler(file_handler)
     
-    # 在生产环境下重新设置标准输出和标准错误的重定向
-    # 确保在日志文件更新后，所有print输出也会正确格式化
+    # 在生产环境下谨慎处理标准输出重定向
+    # 为了避免与Flask/Click冲突，暂时禁用stdout/stderr重定向
     from app.core.config import DEBUG
-    if not DEBUG and not any(isinstance(h, LoggingStreamHandler) for h in root_logger.handlers):
-        # 设置标准输出重定向
-        sys.stdout = LoggingStreamHandler(root_logger, logging.INFO)
-        # 设置标准错误重定向
-        sys.stderr = LoggingErrorStreamHandler(root_logger, logging.ERROR)
+    if not DEBUG:
+        # 暂时注释掉stdout/stderr重定向，避免与Flask启动冲突
+        # if not any(isinstance(h, LoggingStreamHandler) for h in root_logger.handlers):
+        #     sys.stdout = LoggingStreamHandler(root_logger, logging.INFO)
+        #     sys.stderr = LoggingErrorStreamHandler(root_logger, logging.ERROR)
+        pass
     
     # 记录一次日志更新信息
     # 这里不直接使用用户名，而是依赖日志格式化器
@@ -396,15 +397,14 @@ def _setup_logging():
         werkzeug_logger.removeHandler(handler)
     werkzeug_logger.propagate = True  # 确保 werkzeug 日志传递到根记录器
     
-    # 在生产环境下重定向标准输出和标准错误到日志系统
-    # 在调试模式下保持原始的stdout/stderr，避免与Flask开发服务器冲突
+    # 在生产环境下谨慎处理标准输出重定向
+    # 为了避免与Flask/Click冲突，暂时禁用stdout/stderr重定向
     from app.core.config import DEBUG
     if not DEBUG:
-        # 设置标准输出重定向
-        sys.stdout = LoggingStreamHandler(root_logger, logging.INFO)
-        # 设置标准错误重定向
-        sys.stderr = LoggingErrorStreamHandler(root_logger, logging.ERROR)
-        logging.info("已启用stdout/stderr重定向到日志系统（生产模式）")
+        # 暂时注释掉stdout/stderr重定向，避免与Flask启动冲突
+        # sys.stdout = LoggingStreamHandler(root_logger, logging.INFO)
+        # sys.stderr = LoggingErrorStreamHandler(root_logger, logging.ERROR)
+        logging.info("生产模式：保持原始stdout/stderr以避免Flask启动冲突")
     else:
         logging.info("调试模式下保持原始stdout/stderr输出")
     
