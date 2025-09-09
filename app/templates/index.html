@@ -311,7 +311,7 @@
                                             </span>
                                             <span>
                                                 <i class="bi bi-calendar"></i> 
-                                                {{ doc.created_at|beijing_time }}
+                                                {{ doc.document_date or doc.created_at|beijing_time }}
                                             </span>
                                         </p>
                                     </div>

@@ -223,7 +223,7 @@
                                                     </span>
                                                     <span>
                                                         <i class="bi bi-calendar"></i> 
-                                                        {{ result.created_at|beijing_time if result.created_at else 'Unknown date' }}
+                                                        {{ result.document_date or result.created_at|beijing_time if result.created_at else 'Unknown date' }}
                                                     </span>
                                                 </div>
                                                 <div class="result-preview">
@@ -292,7 +292,7 @@
                                                     </span>
                                                     <span>
                                                         <i class="bi bi-calendar"></i> 
-                                                        {{ result.created_at|beijing_time if result.created_at else 'Unknown date' }}
+                                                        {{ result.document_date or result.created_at|beijing_time if result.created_at else 'Unknown date' }}
                                                     </span>
                                                 </div>
                                                 <div class="result-preview">

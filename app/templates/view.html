@@ -384,8 +384,8 @@
                             </div>
                             <div class="mb-2">
                                 <i class="bi bi-calendar"></i> 
-                                <strong>上传时间:</strong> 
-                                <span>{{ document.created_at|beijing_time }}</span>
+                                <strong>文档时间:</strong> 
+                                <span>{{ document.document_date or document.created_at|beijing_time }}</span>
                             </div>
                         </div>
                         

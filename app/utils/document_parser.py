@@ -10,6 +10,7 @@ import uuid
 import shutil
 import hashlib
 import mammoth
+import re
 from datetime import datetime
 from abc import ABC, abstractmethod
 from app.core.config import UPLOADS_DIR, ALLOWED_EXTENSIONS, DOCUMENT_IMAGES_DIR, DOCUMENT_IMAGES_URL, ENV
@@ -31,6 +32,91 @@ class DocumentParser(ABC):
             dict: 包含解析后的文本内容和元数据
         """
         pass
+    
+    def extract_document_date(self, text_content):
+        """
+        从文档内容中提取日期
+        
+        Args:
+            text_content: 文档文本内容
+            
+        Returns:
+            str: 找到的最后一个日期，格式为 YYYY-MM-DD，如果没找到则返回 None
+        """
+        if not text_content:
+            return None
+            
+        # 定义多种日期格式的正则表达式
+        date_patterns = [
+            # YYYY-MM-DD, YYYY/MM/DD, YYYY.MM.DD
+            r'(\d{4})[-/.](\d{1,2})[-/.](\d{1,2})',
+            # YYYY年MM月DD日
+            r'(\d{4})年(\d{1,2})月(\d{1,2})日',
+            # MM-DD-YYYY, MM/DD/YYYY
+            r'(\d{1,2})[-/.](\d{1,2})[-/.](\d{4})',
+            # 版本号中的日期：23.04.26, v1.0.2 23.04.23, 24.11.7, 24.9.24
+            r'(\d{2})\.(\d{1,2})\.(\d{1,2})',
+        ]
+        
+        found_dates = []
+        
+        for pattern in date_patterns:
+            matches = re.findall(pattern, text_content)
+            for match in matches:
+                try:
+                    if len(match) == 3:
+                        # 处理不同的日期格式
+                        if len(match[0]) == 4:  # YYYY-MM-DD 格式
+                            year, month, day = match[0], match[1], match[2]
+                        elif len(match[2]) == 4:  # MM-DD-YYYY 或 DD-MM-YYYY 格式
+                            year = match[2]
+                            # 尝试判断是 MM-DD 还是 DD-MM
+                            if int(match[0]) > 12:  # 第一个数字大于12，说明是 DD-MM
+                                day, month = match[0], match[1]
+                            else:  # 否则假设是 MM-DD
+                                month, day = match[0], match[1]
+                        elif len(match[0]) == 2:  # YY.MM.DD 格式（需要转换为完整年份）
+                            yy = int(match[0])
+                            # 智能判断年份：如果小于50则认为是20XX，否则认为是19XX
+                            # 但对于文档日期，通常是最近的年份，所以做特殊处理
+                            if yy >= 0 and yy <= 50:  # 00-50年认为是2000-2050
+                                year = f"20{match[0]}"
+                            else:  # 51-99年认为是1951-1999
+                                year = f"19{match[0]}"
+                            month, day = match[1], match[2]
+                        else:
+                            continue
+                        
+                        # 验证日期的有效性
+                        year = int(year)
+                        month = int(month)
+                        day = int(day)
+                        
+                        # 基本范围检查
+                        if year < 1900 or year > 2100:
+                            continue
+                        if month < 1 or month > 12:
+                            continue
+                        if day < 1 or day > 31:
+                            continue
+                            
+                        # 尝试创建datetime对象来验证日期
+                        try:
+                            valid_date = datetime(year, month, day)
+                            found_dates.append(valid_date)
+                        except ValueError:
+                            # 无效日期，跳过
+                            continue
+                            
+                except (ValueError, IndexError):
+                    continue
+        
+        # 如果找到了日期，返回最后一个（最新的）
+        if found_dates:
+            latest_date = max(found_dates)
+            return latest_date.strftime('%Y-%m-%d')
+        
+        return None
 
     @staticmethod
     def get_parser(file_path):
@@ -100,6 +186,11 @@ class PdfParser(DocumentParser):
         except Exception as e:
             logging.error(f"解析PDF文件失败: {e}")
             raise
+        
+        # 提取文档日期
+        document_date = self.extract_document_date(text)
+        if document_date:
+            metadata['document_date'] = document_date
             
         return {
             'text': text.strip(),
@@ -454,12 +545,32 @@ class DocxParser(DocumentParser):
             for para in doc.paragraphs:
                 text += para.text + "\n"
             
+            # 处理表格内容 - 确保表格中的日期也能被提取
+            for table in doc.tables:
+                for row in table.rows:
+                    row_text = []
+                    for cell in row.cells:
+                        # 获取单元格的所有段落内容
+                        cell_content = []
+                        for paragraph in cell.paragraphs:
+                            if paragraph.text.strip():
+                                cell_content.append(paragraph.text.strip())
+                        if cell_content:
+                            row_text.append(' '.join(cell_content))
+                    if row_text:
+                        text += ' | '.join(row_text) + "\n"
+            
             # 使用mammoth生成高保真HTML
             html_content = self._convert_docx_to_html_mammoth(file_path, doc_id)
             
             # 保存图片目录信息，用于后续文档删除时清理
             image_dir, _ = self._get_image_directory(file_path, doc_id)
             metadata['image_directory'] = image_dir
+            
+            # 提取文档日期
+            document_date = self.extract_document_date(text)
+            if document_date:
+                metadata['document_date'] = document_date
                 
         except Exception as e:
             logging.error(f"解析DOCX文件失败: {e}")
@@ -517,6 +628,11 @@ class TxtParser(DocumentParser):
             
             # 创建简单的HTML表示
             html_content = f"<pre>{text}</pre>"
+            
+            # 提取文档日期
+            document_date = self.extract_document_date(text)
+            if document_date:
+                metadata['document_date'] = document_date
                 
         except Exception as e:
             logging.error(f"解析TXT文件失败: {e}")

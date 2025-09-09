@@ -136,7 +136,7 @@ class SearchEngine:
             # 使用LIKE搜索
             sql = '''
             SELECT 
-                d.id, d.title, d.file_type, d.file_size, d.created_at, d.original_filename,
+                d.id, d.title, d.file_type, d.file_size, d.created_at, d.original_filename, d.document_date,
                 dc.content
             FROM 
                 documents d
@@ -181,6 +181,7 @@ class SearchEngine:
                     'file_type': row['file_type'],
                     'file_size': row['file_size'],
                     'created_at': row['created_at'],
+                    'document_date': row['document_date'],
                     'original_filename': row['original_filename'],
                     'preview': preview
                 }
@@ -370,7 +371,7 @@ class SearchEngine:
             # 获取文档基本信息
             cursor.execute('''
             SELECT 
-                d.id, d.title, d.file_type, d.file_size, d.created_at, d.filename, d.filepath, d.original_filename, d.metadata,
+                d.id, d.title, d.file_type, d.file_size, d.created_at, d.filename, d.filepath, d.original_filename, d.metadata, d.document_date,
                 dc.content
             FROM 
                 documents d
@@ -424,7 +425,7 @@ class SearchEngine:
                         # 重新查询新文档的信息
                         cursor.execute('''
                         SELECT 
-                            d.id, d.title, d.file_type, d.file_size, d.created_at, d.filename, d.filepath, d.original_filename, d.metadata,
+                            d.id, d.title, d.file_type, d.file_size, d.created_at, d.filename, d.filepath, d.original_filename, d.metadata, d.document_date,
                             dc.content
                         FROM 
                             documents d

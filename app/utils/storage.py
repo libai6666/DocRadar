@@ -72,9 +72,17 @@ class Storage:
                 file_size INTEGER NOT NULL,
                 created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
                 metadata TEXT,
-                original_filename TEXT
+                original_filename TEXT,
+                document_date TEXT
             )
             ''')
+            
+            # 检查是否需要添加document_date列
+            cursor.execute("PRAGMA table_info(documents)")
+            columns = [column[1] for column in cursor.fetchall()]
+            if 'document_date' not in columns:
+                logging.info("添加document_date列到documents表")
+                cursor.execute("ALTER TABLE documents ADD COLUMN document_date TEXT")
             
             # 启用外键约束
             cursor.execute("PRAGMA foreign_keys = ON")
@@ -157,7 +165,7 @@ class Storage:
             cursor.execute(
                 """
                 SELECT 
-                    id, title, file_type, file_size, created_at, original_filename, filename 
+                    id, title, file_type, file_size, created_at, original_filename, filename, document_date 
                 FROM documents 
                 WHERE LOWER(original_filename) = ? OR LOWER(filename) = ?
                 """, 
@@ -176,6 +184,7 @@ class Storage:
                     'file_type': row['file_type'],
                     'file_size': row['file_size'],
                     'created_at': row['created_at'],
+                    'document_date': row['document_date'],
                     'original_filename': row['original_filename'],
                     'filename': row['filename']
                 }
@@ -498,12 +507,17 @@ class Storage:
                 title = os.path.splitext(display_filename)[0]
                 logging.info(f"文档标题为空，使用文件名作为标题: {title}")
             
+            # 提取文档日期
+            document_date = None
+            if metadata and isinstance(metadata, dict) and 'document_date' in metadata:
+                document_date = metadata['document_date']
+            
             # 插入文档元数据
             cursor.execute(
                 '''
                 INSERT INTO documents 
-                (filename, filepath, title, file_type, file_size, metadata, original_filename) 
-                VALUES (?, ?, ?, ?, ?, ?, ?)
+                (filename, filepath, title, file_type, file_size, metadata, original_filename, document_date) 
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?)
                 ''',
                 (
                     filename, 
@@ -512,7 +526,8 @@ class Storage:
                     file_type, 
                     file_size, 
                     json.dumps(metadata) if metadata else None,
-                    original_filename or filename
+                    original_filename or filename,
+                    document_date
                 )
             )
             
@@ -615,7 +630,7 @@ class Storage:
             # 构建SQL查询
             sql = '''
             SELECT 
-                id, filename, filepath, title, file_type, file_size, created_at, original_filename 
+                id, filename, filepath, title, file_type, file_size, created_at, original_filename, document_date 
             FROM 
                 documents 
             '''
