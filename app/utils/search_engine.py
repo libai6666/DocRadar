@@ -146,7 +146,7 @@ class SearchEngine:
                 d.title LIKE ? OR
                 dc.content LIKE ?
             ORDER BY 
-                d.created_at DESC
+                COALESCE(d.document_date, d.created_at) ASC, d.created_at ASC
             LIMIT ?
             '''
             

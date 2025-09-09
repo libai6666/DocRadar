@@ -608,14 +608,16 @@ class Storage:
             if conn:
                 conn.close()
     
-    def get_all_documents(self, page=1, limit=None, search_query=None):
+    def get_all_documents(self, page=1, limit=None, search_query=None, start_date=None, end_date=None):
         """
-        获取文档的元数据，支持分页和搜索
+        获取文档的元数据，支持分页、搜索和日期筛选
         
         Args:
             page: 页码（从1开始）
             limit: 每页数量，None表示获取所有
             search_query: 搜索关键字
+            start_date: 开始日期（格式：YYYY-MM-DD）
+            end_date: 结束日期（格式：YYYY-MM-DD）
             
         Returns:
             dict: 包含文档列表和分页信息
@@ -637,13 +639,25 @@ class Storage:
             
             params = []
             
-            # 添加搜索条件
+            # 添加搜索和日期筛选条件
+            conditions = []
             if search_query:
-                sql += "WHERE title LIKE ? OR filename LIKE ? OR original_filename LIKE ? "
+                conditions.append("(title LIKE ? OR filename LIKE ? OR original_filename LIKE ?)")
                 params.extend([f'%{search_query}%', f'%{search_query}%', f'%{search_query}%'])
             
-            # 添加排序
-            sql += "ORDER BY created_at DESC "
+            if start_date:
+                conditions.append("(COALESCE(document_date, created_at) >= ?)")
+                params.append(start_date)
+            
+            if end_date:
+                conditions.append("(COALESCE(document_date, created_at) <= ?)")
+                params.append(end_date)
+            
+            if conditions:
+                sql += "WHERE " + " AND ".join(conditions) + " "
+            
+            # 添加排序 - 按文档日期升序，空值时使用创建时间
+            sql += "ORDER BY COALESCE(document_date, created_at) ASC, created_at ASC "
             
             # 添加分页
             if limit is not None:
@@ -662,9 +676,22 @@ class Storage:
             count_sql = "SELECT COUNT(*) FROM documents"
             count_params = []
             
+            # 应用相同的筛选条件到计数查询
+            count_conditions = []
             if search_query:
-                count_sql += " WHERE title LIKE ? OR filename LIKE ? OR original_filename LIKE ?"
+                count_conditions.append("(title LIKE ? OR filename LIKE ? OR original_filename LIKE ?)")
                 count_params.extend([f'%{search_query}%', f'%{search_query}%', f'%{search_query}%'])
+            
+            if start_date:
+                count_conditions.append("(COALESCE(document_date, created_at) >= ?)")
+                count_params.append(start_date)
+            
+            if end_date:
+                count_conditions.append("(COALESCE(document_date, created_at) <= ?)")
+                count_params.append(end_date)
+            
+            if count_conditions:
+                count_sql += " WHERE " + " AND ".join(count_conditions)
                 
             cursor.execute(count_sql, count_params)
             total_count = cursor.fetchone()[0]

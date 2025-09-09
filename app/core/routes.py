@@ -39,9 +39,25 @@ def home():
     limit = request.args.get('limit', 10, type=int)
     search_query = request.args.get('search', '', type=str)
     
+    # 获取日期筛选参数
+    start_date = request.args.get('start_date', '', type=str)
+    end_date = request.args.get('end_date', '', type=str)
+    
+    # 验证日期格式（如果提供了日期）
+    if start_date and not start_date.strip():
+        start_date = None
+    if end_date and not end_date.strip():
+        end_date = None
+    
     # 获取文档列表和分页信息
     try:
-        result = storage.get_all_documents(page=page, limit=limit, search_query=search_query if search_query else None)
+        result = storage.get_all_documents(
+            page=page, 
+            limit=limit, 
+            search_query=search_query if search_query else None,
+            start_date=start_date,
+            end_date=end_date
+        )
         documents = result.get('documents', [])
         pagination = result.get('pagination', {})
         doc_count = pagination.get('total', 0)
@@ -73,7 +89,9 @@ def home():
         doc_count=doc_count,
         search_query=search_query,
         recent_searches=recent_searches,
-        role=role
+        role=role,
+        start_date=start_date or '',
+        end_date=end_date or ''
     )
 
 @main_bp.route('/login', methods=['GET', 'POST'])

@@ -276,6 +276,48 @@
                             </div>
                         </form>
                         
+                        <!-- 日期筛选表单 -->
+                        <form id="date-filter-form" class="mb-3">
+                            <div class="row g-2 align-items-end">
+                                <div class="col-md-3">
+                                    <label for="start-date" class="form-label small">开始日期</label>
+                                    <div class="input-group">
+                                        <input type="text" id="start-date" name="start_date" class="form-control" 
+                                               placeholder="YYYY-MM-DD" pattern="\d{4}-\d{2}-\d{2}"
+                                               value="{{ request.args.get('start_date', '') }}">
+                                        <button type="button" class="btn btn-outline-secondary" id="start-date-picker-btn" title="选择日期">
+                                            <i class="bi bi-calendar3"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="end-date" class="form-label small">结束日期</label>
+                                    <div class="input-group">
+                                        <input type="text" id="end-date" name="end_date" class="form-control" 
+                                               placeholder="YYYY-MM-DD" pattern="\d{4}-\d{2}-\d{2}"
+                                               value="{{ request.args.get('end_date', '') }}">
+                                        <button type="button" class="btn btn-outline-secondary" id="end-date-picker-btn" title="选择日期">
+                                            <i class="bi bi-calendar3"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="btn-group" role="group">
+                                        <button type="submit" class="btn btn-outline-success">
+                                            <i class="bi bi-funnel"></i> 筛选
+                                        </button>
+                                        <button type="button" class="btn btn-outline-warning" id="reset-date-filter">
+                                            <i class="bi bi-arrow-clockwise"></i> 重置
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- 保持搜索查询参数 -->
+                            {% if search_query %}
+                            <input type="hidden" name="search" value="{{ search_query }}">
+                            {% endif %}
+                        </form>
+                        
                         {% if documents %}
                         <!-- 批量操作工具栏 -->
                         <div class="d-flex justify-content-between align-items-center mb-3">
@@ -311,7 +353,7 @@
                                             </span>
                                             <span>
                                                 <i class="bi bi-calendar"></i> 
-                                                {{ doc.document_date or doc.created_at|beijing_time }}
+                                                {{ (doc.document_date or doc.created_at)|beijing_time|truncate(10, True, '') }}
                                             </span>
                                         </p>
                                     </div>
@@ -350,16 +392,16 @@
                                 <ul class="dropdown-menu">
                                     <li class="nav-item">
                                         <a class="nav-link {% if pagination.limit == 10 %}active{% endif %}"
-                                        href="{{ url_for('main.index', page=1, limit=10, search=search_query) }}">每页 10 项</a></li>
+                                        href="{{ url_for('main.index', page=1, limit=10, search=search_query, start_date=request.args.get('start_date', ''), end_date=request.args.get('end_date', '')) }}">每页 10 项</a></li>
                                     <li class="nav-item">
                                         <a class="nav-link {% if pagination.limit == 20 %}active{% endif %}"
-                                        href="{{ url_for('main.index', page=1, limit=20, search=search_query) }}">每页 20 项</a></li>
+                                        href="{{ url_for('main.index', page=1, limit=20, search=search_query, start_date=request.args.get('start_date', ''), end_date=request.args.get('end_date', '')) }}">每页 20 项</a></li>
                                     <li class="nav-item">
                                         <a class="nav-link {% if pagination.limit == 50 %}active{% endif %}"
-                                        href="{{ url_for('main.index', page=1, limit=50, search=search_query) }}">每页 50 项</a></li>
+                                        href="{{ url_for('main.index', page=1, limit=50, search=search_query, start_date=request.args.get('start_date', ''), end_date=request.args.get('end_date', '')) }}">每页 50 项</a></li>
                                     <li class="nav-item">
                                         <a class="nav-link {% if pagination.limit == 100 %}active{% endif %}"
-                                        href="{{ url_for('main.index', page=1, limit=100, search=search_query) }}">每页 100 项</a></li>
+                                        href="{{ url_for('main.index', page=1, limit=100, search=search_query, start_date=request.args.get('start_date', ''), end_date=request.args.get('end_date', '')) }}">每页 100 项</a></li>
                                 </ul>
                             </div>
                             
@@ -367,7 +409,7 @@
                             <nav aria-label="文档分页">
                                 <ul class="pagination mb-0">
                                     <li class="page-item {% if pagination.page == 1 %}disabled{% endif %}">
-                                        <a class="page-link" href="{{ url_for('main.index', page=pagination.page-1, limit=pagination.limit, search=search_query) }}">
+                                        <a class="page-link" href="{{ url_for('main.index', page=pagination.page-1, limit=pagination.limit, search=search_query, start_date=request.args.get('start_date', ''), end_date=request.args.get('end_date', '')) }}">
                                             <i class="bi bi-chevron-left"></i>
                                         </a>
                                     </li>
@@ -378,14 +420,14 @@
                                     
                                     {% for p in range(start_page, end_page + 1) %}
                                     <li class="page-item {% if p == pagination.page %}active{% endif %}">
-                                        <a class="page-link" href="{{ url_for('main.index', page=p, limit=pagination.limit, search=search_query) }}">
+                                        <a class="page-link" href="{{ url_for('main.index', page=p, limit=pagination.limit, search=search_query, start_date=request.args.get('start_date', ''), end_date=request.args.get('end_date', '')) }}">
                                             {{ p }}
                                         </a>
                                     </li>
                                     {% endfor %}
                                     
                                     <li class="page-item {% if pagination.page == pagination.pages %}disabled{% endif %}">
-                                        <a class="page-link" href="{{ url_for('main.index', page=pagination.page+1, limit=pagination.limit, search=search_query) }}">
+                                        <a class="page-link" href="{{ url_for('main.index', page=pagination.page+1, limit=pagination.limit, search=search_query, start_date=request.args.get('start_date', ''), end_date=request.args.get('end_date', '')) }}">
                                             <i class="bi bi-chevron-right"></i>
                                         </a>
                                     </li>
@@ -779,6 +821,151 @@
             
             // 初始化按钮状态
             updateDeleteButtonState();
+        });
+
+        // 日期筛选功能
+        document.addEventListener('DOMContentLoaded', function() {
+            const dateFilterForm = document.getElementById('date-filter-form');
+            const startDateInput = document.getElementById('start-date');
+            const endDateInput = document.getElementById('end-date');
+            const resetDateFilterBtn = document.getElementById('reset-date-filter');
+            const startDatePickerBtn = document.getElementById('start-date-picker-btn');
+            const endDatePickerBtn = document.getElementById('end-date-picker-btn');
+
+            // 日期格式验证函数
+            function isValidDate(dateString) {
+                if (!dateString) return true; // 空值是有效的
+                const regex = /^\d{4}-\d{2}-\d{2}$/;
+                if (!regex.test(dateString)) return false;
+                
+                const date = new Date(dateString);
+                const timestamp = date.getTime();
+                if (typeof timestamp !== 'number' || Number.isNaN(timestamp)) return false;
+                
+                return dateString === date.toISOString().split('T')[0];
+            }
+
+            // 显示验证错误
+            function showValidationError(input, message) {
+                input.classList.add('is-invalid');
+                let feedback = input.parentNode.querySelector('.invalid-feedback');
+                if (!feedback) {
+                    feedback = document.createElement('div');
+                    feedback.className = 'invalid-feedback';
+                    input.parentNode.appendChild(feedback);
+                }
+                feedback.textContent = message;
+            }
+
+            // 清除验证错误
+            function clearValidationError(input) {
+                input.classList.remove('is-invalid');
+                const feedback = input.parentNode.querySelector('.invalid-feedback');
+                if (feedback) {
+                    feedback.remove();
+                }
+            }
+
+            // 日期输入验证
+            function validateDateInput(input) {
+                const value = input.value.trim();
+                clearValidationError(input);
+                
+                if (value && !isValidDate(value)) {
+                    showValidationError(input, '请输入正确的日期格式（YYYY-MM-DD）');
+                    return false;
+                }
+                return true;
+            }
+
+            // 日期范围验证
+            function validateDateRange() {
+                const startDate = startDateInput.value.trim();
+                const endDate = endDateInput.value.trim();
+                
+                if (startDate && endDate) {
+                    if (new Date(startDate) > new Date(endDate)) {
+                        showValidationError(endDateInput, '结束日期不能早于开始日期');
+                        return false;
+                    }
+                }
+                return true;
+            }
+
+            // 输入事件监听
+            startDateInput.addEventListener('blur', function() {
+                validateDateInput(this);
+                if (this.value && endDateInput.value) {
+                    validateDateRange();
+                }
+            });
+
+            endDateInput.addEventListener('blur', function() {
+                validateDateInput(this);
+                if (this.value && startDateInput.value) {
+                    validateDateRange();
+                }
+            });
+
+            // 表单提交验证
+            dateFilterForm.addEventListener('submit', function(e) {
+                let isValid = true;
+                
+                if (!validateDateInput(startDateInput)) isValid = false;
+                if (!validateDateInput(endDateInput)) isValid = false;
+                if (!validateDateRange()) isValid = false;
+                
+                if (!isValid) {
+                    e.preventDefault();
+                    return false;
+                }
+            });
+
+            // 重置按钮功能
+            resetDateFilterBtn.addEventListener('click', function() {
+                startDateInput.value = '';
+                endDateInput.value = '';
+                clearValidationError(startDateInput);
+                clearValidationError(endDateInput);
+                
+                // 重置后自动提交表单以更新页面
+                dateFilterForm.submit();
+            });
+
+            // 日期选择器按钮功能
+            function createDatePicker(input, button) {
+                button.addEventListener('click', function() {
+                    // 创建临时的date input来触发日期选择器
+                    const tempInput = document.createElement('input');
+                    tempInput.type = 'date';
+                    tempInput.style.position = 'absolute';
+                    tempInput.style.left = '-9999px';
+                    tempInput.value = input.value;
+                    
+                    document.body.appendChild(tempInput);
+                    
+                    tempInput.addEventListener('change', function() {
+                        input.value = this.value;
+                        validateDateInput(input);
+                        document.body.removeChild(tempInput);
+                    });
+                    
+                    tempInput.addEventListener('blur', function() {
+                        setTimeout(() => {
+                            if (document.body.contains(tempInput)) {
+                                document.body.removeChild(tempInput);
+                            }
+                        }, 100);
+                    });
+                    
+                    tempInput.focus();
+                    tempInput.click();
+                });
+            }
+
+            // 初始化日期选择器
+            createDatePicker(startDateInput, startDatePickerBtn);
+            createDatePicker(endDateInput, endDatePickerBtn);
         });
     </script>
 </body>
