@@ -13,6 +13,10 @@ python-docx==0.8.11
 pdfplumber==0.9.0
 mammoth==1.5.1
 
+# HTML/XML解析 - 用于搜索引擎中的HTML内容处理
+beautifulsoup4==4.11.1
+lxml==4.9.1
+
 # 搜索引擎
 Whoosh==2.7.4
 

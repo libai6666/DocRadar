@@ -20,31 +20,46 @@ from app.core.config import (
     ALLOWED_EXTENSIONS, UPLOAD_FOLDER, DATABASE_URI,
     SQLITE_CONFIG, DOCUMENT_IMAGES_DIR
 )
-from app.utils.document_parser import (
-    extract_text_from_file, get_document_preview
-)
-from app.utils.search_engine import (
-    create_search_index, add_document_to_index, search_documents,
-    get_document_by_id, update_document_in_index
-)
-from app.utils.storage import (
-    save_document_to_db, get_document_metadata, get_all_documents,
-    get_document_content, update_document_metadata, delete_document,
-    get_document_count, get_document_history, add_search_history,
-    get_recent_searches, clear_search_history, get_search_history_by_id
-)
+# 文档解析器类在其他模块中使用
+# from app.utils.document_parser import DocumentParser
+# 搜索引擎和存储管理使用类的方式导入
+from app.utils.search_engine import SearchEngine
+from app.utils.storage import Storage
 
 # 创建蓝图
 main_bp = Blueprint('main', __name__)
 
-@main_bp.route('/')
+@main_bp.route('/', endpoint='index')
 def home():
     """首页视图"""
-    # 获取文档总数
-    doc_count = get_document_count()
+    storage = Storage()
     
-    # 获取最近的搜索历史
-    recent_searches = get_recent_searches(limit=5)
+    # 获取分页参数
+    page = request.args.get('page', 1, type=int)
+    limit = request.args.get('limit', 10, type=int)
+    search_query = request.args.get('search', '', type=str)
+    
+    # 获取文档列表和分页信息
+    try:
+        result = storage.get_all_documents(page=page, limit=limit, search_query=search_query if search_query else None)
+        documents = result.get('documents', [])
+        pagination = result.get('pagination', {})
+        doc_count = pagination.get('total', 0)
+    except Exception as e:
+        logging.error(f"获取文档列表失败: {e}")
+        documents = []
+        pagination = {
+            'page': 1,
+            'limit': 10,
+            'total': 0,
+            'pages': 0,
+            'has_prev': False,
+            'has_next': False
+        }
+        doc_count = 0
+    
+    # 搜索历史功能暂时禁用
+    recent_searches = []
     
     # 获取用户角色
     role = None
@@ -53,7 +68,10 @@ def home():
     
     return render_template(
         'index.html', 
+        documents=documents,
+        pagination=pagination,
         doc_count=doc_count,
+        search_query=search_query,
         recent_searches=recent_searches,
         role=role
     )

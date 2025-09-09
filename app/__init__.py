@@ -345,9 +345,10 @@ def _update_log_file_handler(log_date):
     file_handler.setFormatter(log_formatter)
     root_logger.addHandler(file_handler)
     
-    # 重新设置标准输出和标准错误的重定向
+    # 在生产环境下重新设置标准输出和标准错误的重定向
     # 确保在日志文件更新后，所有print输出也会正确格式化
-    if not any(isinstance(h, LoggingStreamHandler) for h in root_logger.handlers):
+    from app.core.config import DEBUG
+    if not DEBUG and not any(isinstance(h, LoggingStreamHandler) for h in root_logger.handlers):
         # 设置标准输出重定向
         sys.stdout = LoggingStreamHandler(root_logger, logging.INFO)
         # 设置标准错误重定向
@@ -395,11 +396,17 @@ def _setup_logging():
         werkzeug_logger.removeHandler(handler)
     werkzeug_logger.propagate = True  # 确保 werkzeug 日志传递到根记录器
     
-    # 在完全初始化后安全地重定向标准输出和标准错误
-    # 设置标准输出重定向
-    sys.stdout = LoggingStreamHandler(root_logger, logging.INFO)
-    # 设置标准错误重定向
-    sys.stderr = LoggingErrorStreamHandler(root_logger, logging.ERROR)
+    # 在生产环境下重定向标准输出和标准错误到日志系统
+    # 在调试模式下保持原始的stdout/stderr，避免与Flask开发服务器冲突
+    from app.core.config import DEBUG
+    if not DEBUG:
+        # 设置标准输出重定向
+        sys.stdout = LoggingStreamHandler(root_logger, logging.INFO)
+        # 设置标准错误重定向
+        sys.stderr = LoggingErrorStreamHandler(root_logger, logging.ERROR)
+        logging.info("已启用stdout/stderr重定向到日志系统（生产模式）")
+    else:
+        logging.info("调试模式下保持原始stdout/stderr输出")
     
     # 记录一次日志更新信息
     logging.info(f"日志系统初始化完成，使用日志文件: {today}_{LOG_FILE}")
