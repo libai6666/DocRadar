@@ -111,7 +111,7 @@
                                                     <label class="col-sm-3 col-form-label">用户角色</label>
                                                     <div class="col-sm-9">
                                                         <p class="form-control-plaintext">
-                                                            {% if user_role == 'admin' %}
+                                                            {% if role == 'admin' %}
                                                                 <span class="badge bg-danger">管理员</span>
                                                             {% else %}
                                                                 <span class="badge bg-primary">普通用户</span>
@@ -139,7 +139,7 @@
                                     <!-- 修改密码 -->
                                     <div class="tab-pane fade" id="password" role="tabpanel" aria-labelledby="password-tab">
                                         <h5 class="mb-3">修改密码</h5>
-                                        <form action="{{ url_for('main.change_password') }}" method="POST">
+                                        <form action="{{ url_for('main.account') }}" method="POST">
                                             <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
                                             <div class="mb-3">
                                                 <label for="current_password" class="form-label">当前密码</label>

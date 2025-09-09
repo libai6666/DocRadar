@@ -261,7 +261,7 @@ def create_app(test_config=None):
     # 根路由重定向到首页
     @app.route('/')
     def index():
-        return redirect(url_for('core.home'))
+        return redirect(url_for('main.index'))
     
     # 错误处理
     @app.errorhandler(404)

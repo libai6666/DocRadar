@@ -125,9 +125,9 @@ def account():
     role = get_user_role(username)
     
     if request.method == 'POST':
-        current_password = request.form.get('currentPassword')
-        new_password = request.form.get('newPassword')
-        confirm_password = request.form.get('confirmPassword')
+        current_password = request.form.get('current_password')
+        new_password = request.form.get('new_password')
+        confirm_password = request.form.get('confirm_password')
         
         # 验证当前密码
         if not authenticate(username, current_password):
