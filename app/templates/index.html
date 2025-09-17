@@ -285,9 +285,6 @@
                                         <input type="text" id="start-date" name="start_date" class="form-control" 
                                                placeholder="YYYY-MM-DD" pattern="\d{4}-\d{2}-\d{2}"
                                                value="{{ request.args.get('start_date', '') }}">
-                                        <button type="button" class="btn btn-outline-secondary" id="start-date-picker-btn" title="选择日期">
-                                            <i class="bi bi-calendar3"></i>
-                                        </button>
                                     </div>
                                 </div>
                                 <div class="col-md-3">
@@ -296,9 +293,6 @@
                                         <input type="text" id="end-date" name="end_date" class="form-control" 
                                                placeholder="YYYY-MM-DD" pattern="\d{4}-\d{2}-\d{2}"
                                                value="{{ request.args.get('end_date', '') }}">
-                                        <button type="button" class="btn btn-outline-secondary" id="end-date-picker-btn" title="选择日期">
-                                            <i class="bi bi-calendar3"></i>
-                                        </button>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -829,8 +823,7 @@
             const startDateInput = document.getElementById('start-date');
             const endDateInput = document.getElementById('end-date');
             const resetDateFilterBtn = document.getElementById('reset-date-filter');
-            const startDatePickerBtn = document.getElementById('start-date-picker-btn');
-            const endDatePickerBtn = document.getElementById('end-date-picker-btn');
+            // 日期选择按钮已移除
 
             // 日期格式验证函数
             function isValidDate(dateString) {
@@ -932,40 +925,7 @@
                 dateFilterForm.submit();
             });
 
-            // 日期选择器按钮功能
-            function createDatePicker(input, button) {
-                button.addEventListener('click', function() {
-                    // 创建临时的date input来触发日期选择器
-                    const tempInput = document.createElement('input');
-                    tempInput.type = 'date';
-                    tempInput.style.position = 'absolute';
-                    tempInput.style.left = '-9999px';
-                    tempInput.value = input.value;
-                    
-                    document.body.appendChild(tempInput);
-                    
-                    tempInput.addEventListener('change', function() {
-                        input.value = this.value;
-                        validateDateInput(input);
-                        document.body.removeChild(tempInput);
-                    });
-                    
-                    tempInput.addEventListener('blur', function() {
-                        setTimeout(() => {
-                            if (document.body.contains(tempInput)) {
-                                document.body.removeChild(tempInput);
-                            }
-                        }, 100);
-                    });
-                    
-                    tempInput.focus();
-                    tempInput.click();
-                });
-            }
-
-            // 初始化日期选择器
-            createDatePicker(startDateInput, startDatePickerBtn);
-            createDatePicker(endDateInput, endDatePickerBtn);
+            // 日期选择器按钮功能已移除
         });
     </script>
 </body>

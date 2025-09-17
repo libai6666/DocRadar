@@ -132,7 +132,7 @@ def logout():
     # 清除会话
     session.clear()
     flash('您已成功登出', 'info')
-    return redirect(url_for('main.login'))
+    return redirect(url_for('main.login', from_logout=1))
 
 @main_bp.route('/account', methods=['GET', 'POST'])
 @login_required
