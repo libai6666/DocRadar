@@ -2,6 +2,29 @@
 
 本文档提供了使用Docker部署DocRadar应用的详细步骤。
 
+### 更新应用
+
+当有新版本发布时，您可以按照以下步骤更新：
+
+```bash
+优先第一个方法，服务启动失败旧的服务也不会挂如下：
+
+git pull
+docker-compose up --build -d
+
+第二个方法比较慢，并且服务启动失败，旧的服务也挂了如下：
+
+git pull  # 获取最新代码
+docker-compose down  # 停止当前服务
+docker-compose build  # 重新构建镜像
+docker-compose up -d  # 启动更新后的服务
+```
+出现容器已经存在的现象，可以以下解决方法
+ ```bash
+docker stop test-report-server  --停止容器
+docker rm -f test-report-server --强制删除容器
+docker-compose up --build -d  --重新构造
+ ```
 ## 前置条件
 
 - 安装 [Docker](https://docs.docker.com/get-docker/)
@@ -117,16 +140,6 @@ docker-compose restart docradar
 docker-compose down
 ```
 
-### 更新应用
-
-当有新版本发布时，您可以按照以下步骤更新：
-
-```bash
-git pull  # 获取最新代码
-docker-compose down  # 停止当前服务
-docker-compose build  # 重新构建镜像
-docker-compose up -d  # 启动更新后的服务
-```
 
 ## 高级配置
 

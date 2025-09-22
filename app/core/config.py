@@ -16,7 +16,7 @@ if ENV == 'test':
     HOST = '127.0.0.1'
     PORT = 5000
 else:  # production
-    HOST = '192.168.0.110'
+    HOST = '192.168.0.105'  
     PORT = 5000
 
 # 记录当前环境

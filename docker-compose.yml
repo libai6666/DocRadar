@@ -8,7 +8,7 @@ services:
     container_name: docradar
     restart: always
     ports:
-      - "192.168.0.110:5000:5000"  # 只绑定到192.168.0.110
+      - "192.168.0.105:5000:5000"  
     volumes:
       - ./data/production/uploads:/app/data/production/uploads
       - ./data/production/db:/app/data/production/db
