@@ -38,7 +38,13 @@ def main():
     from app import app
     
     # 根据环境设置主机和端口
-    from app.core.config import HOST, PORT, DEBUG
+    from app.core.config import HOST, PORT, DEBUG, CURRENT_IP
+    
+    # 打印实际IP地址信息
+    print(f"应用已启动，绑定地址: {HOST}:{PORT}")
+    print(f"您可以通过以下地址访问应用:")
+    print(f"- 本地访问: http://127.0.0.1:{PORT}/")
+    print(f"- 局域网访问: http://{CURRENT_IP}:{PORT}/")
     
     # 运行应用
     app.run(host=HOST, port=PORT, debug=DEBUG)

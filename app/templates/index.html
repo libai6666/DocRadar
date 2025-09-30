@@ -136,9 +136,10 @@
     {% if is_test_env or is_prod_env %}
     <div class="bg-dark text-white py-1 text-center small">
         {% if is_test_env %}
-        <i class="bi bi-gear-fill"></i> 测试环境 ({{ host }}:{{ port }}) - 此环境下的操作不会影响生产数据
+        <!-- ({{ current_ip }}:{{ port }}) -->
+        <i class="bi bi-gear-fill"></i> 测试环境  - 此环境下的操作不会影响生产数据
         {% else %}
-        <i class="bi bi-exclamation-triangle-fill"></i> 生产环境 ({{ host }}:{{ port }}) - 请谨慎操作
+        <i class="bi bi-exclamation-triangle-fill"></i> 生产环境  - 请谨慎操作
         {% endif %}
     </div>
     {% endif %}

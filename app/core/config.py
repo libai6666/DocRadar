@@ -13,14 +13,45 @@ ROOT_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
 
 # 根据环境设置不同的主机地址
 if ENV == 'test':
+    # 测试环境使用localhost
     HOST = '127.0.0.1'
     PORT = 5000
 else:  # production
-    HOST = '192.168.0.105'  
+    # 生产环境优先使用环境变量中的IP，如果没有则使用自动检测的IP
+    HOST = os.environ.get('DOCRADAR_HOST', '0.0.0.0')  
     PORT = 5000
 
+# 尝试从配置文件读取当前IP（用于显示，不影响绑定）
+try:
+    ip_config_path = os.path.join(ROOT_DIR, 'config', 'ip_config.json')
+    if os.path.exists(ip_config_path):
+        with open(ip_config_path, 'r') as f:
+            ip_config = json.load(f)
+            CURRENT_IP = ip_config.get('current_ip', HOST)
+    else:
+        # 如果配置文件不存在，尝试自动检测IP
+        import socket
+        try:
+            s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+            s.connect(("8.8.8.8", 80))
+            detected_ip = s.getsockname()[0]
+            s.close()
+            CURRENT_IP = detected_ip
+            # 创建配置目录（如果不存在）
+            os.makedirs(os.path.dirname(ip_config_path), exist_ok=True)
+            # 保存检测到的IP到配置文件
+            with open(ip_config_path, 'w') as f:
+                json.dump({"current_ip": detected_ip}, f, indent=2)
+            logging.info(f"自动检测并保存IP地址: {detected_ip}")
+        except Exception as e:
+            logging.warning(f"自动检测IP地址失败: {e}")
+            CURRENT_IP = HOST
+except Exception as e:
+    logging.warning(f"读取IP配置文件失败: {e}")
+    CURRENT_IP = HOST
+
 # 记录当前环境
-logging.info(f"当前环境: {ENV}, 主机: {HOST}")
+logging.info(f"当前环境: {ENV}, 绑定主机: {HOST}, 当前IP: {CURRENT_IP}")
 
 # 应用目录
 APP_DIR = os.path.join(ROOT_DIR, 'app')

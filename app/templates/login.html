@@ -158,9 +158,9 @@
     {% if is_test_env or is_prod_env %}
     <div class="env-indicator {% if is_test_env %}env-test{% else %}env-production{% endif %}">
         {% if is_test_env %}
-        <i class="bi bi-gear-fill"></i> 测试环境 ({{ host }}:{{ port }})
+        <i class="bi bi-gear-fill"></i> 测试环境 ({{ current_ip }}:{{ port }})
         {% else %}
-        <i class="bi bi-exclamation-triangle-fill"></i> 生产环境 ({{ host }}:{{ port }})
+        <i class="bi bi-exclamation-triangle-fill"></i> 生产环境 ({{ current_ip }}:{{ port }})
         {% endif %}
     </div>
     {% endif %}

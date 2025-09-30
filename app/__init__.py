@@ -248,6 +248,19 @@ def create_app(test_config=None):
         # 从会话中获取用户名并存储到g对象
         g.username = get_current_username()
     
+    # 添加全局模板上下文处理器，提供环境标志变量
+    @app.context_processor
+    def inject_env_flags():
+        """为所有模板注入环境标志变量"""
+        from app.core.config import ENV, HOST, PORT, CURRENT_IP
+        return {
+            'is_test_env': ENV == 'test',
+            'is_prod_env': ENV == 'production',
+            'host': HOST,
+            'current_ip': CURRENT_IP,
+            'port': PORT
+        }
+    
     # 注册蓝图
     app.register_blueprint(main_bp)
     app.register_blueprint(document_bp)
